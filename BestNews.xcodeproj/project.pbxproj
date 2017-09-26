@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0214D8E7CC8C45B6FE9D066D /* Pods_BestNews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEA9997CD925F2C7B1649D76 /* Pods_BestNews.framework */; };
+		CC01705E1F6835400069D38B /* ActivityCoverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC01705C1F6835400069D38B /* ActivityCoverCell.swift */; };
+		CC01705F1F6835400069D38B /* ActivityCoverCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC01705D1F6835400069D38B /* ActivityCoverCell.xib */; };
+		CC0170621F6840D00069D38B /* ActivityDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0170601F6840D00069D38B /* ActivityDetailController.swift */; };
+		CC0170631F6840D00069D38B /* ActivityDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC0170611F6840D00069D38B /* ActivityDetailController.xib */; };
 		CC2906C91F6599C7001894DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2906C81F6599C7001894DA /* AppDelegate.swift */; };
 		CC2906D21F6599C7001894DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC2906D11F6599C7001894DA /* Assets.xcassets */; };
 		CC2906D51F6599C7001894DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC2906D31F6599C7001894DA /* LaunchScreen.storyboard */; };
@@ -32,9 +37,19 @@
 		CC29070D1F65A334001894DA /* BaseTabBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC29070C1F65A334001894DA /* BaseTabBarView.xib */; };
 		CC29070F1F65A8B5001894DA /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC29070E1F65A8B5001894DA /* BaseView.swift */; };
 		CC2907111F65AC08001894DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC2907101F65AC08001894DA /* Main.storyboard */; };
+		CCDB6D3B1F79C6DF0012432E /* TYPageStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDB6D381F79C58C0012432E /* TYPageStyle.swift */; };
+		CCDB6D3C1F79C6DF0012432E /* TYPageTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDB6D3A1F79C58C0012432E /* TYPageTitleView.swift */; };
+		CCDB6D411F79D6C30012432E /* TYPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDB6D401F79D6C30012432E /* TYPageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		11340A3AC197F199C7182F7A /* Pods-BestNews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BestNews.release.xcconfig"; path = "Pods/Target Support Files/Pods-BestNews/Pods-BestNews.release.xcconfig"; sourceTree = "<group>"; };
+		49FBDE1023696FAD0FCB9971 /* Pods-BestNews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BestNews.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BestNews/Pods-BestNews.debug.xcconfig"; sourceTree = "<group>"; };
+		BEA9997CD925F2C7B1649D76 /* Pods_BestNews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BestNews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CC01705C1F6835400069D38B /* ActivityCoverCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityCoverCell.swift; sourceTree = "<group>"; };
+		CC01705D1F6835400069D38B /* ActivityCoverCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityCoverCell.xib; sourceTree = "<group>"; };
+		CC0170601F6840D00069D38B /* ActivityDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityDetailController.swift; sourceTree = "<group>"; };
+		CC0170611F6840D00069D38B /* ActivityDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityDetailController.xib; sourceTree = "<group>"; };
 		CC2906C51F6599C7001894DA /* BestNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BestNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC2906C81F6599C7001894DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC2906D11F6599C7001894DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -62,6 +77,9 @@
 		CC29070C1F65A334001894DA /* BaseTabBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaseTabBarView.xib; sourceTree = "<group>"; };
 		CC29070E1F65A8B5001894DA /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		CC2907101F65AC08001894DA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		CCDB6D381F79C58C0012432E /* TYPageStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TYPageStyle.swift; sourceTree = "<group>"; };
+		CCDB6D3A1F79C58C0012432E /* TYPageTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TYPageTitleView.swift; sourceTree = "<group>"; };
+		CCDB6D401F79D6C30012432E /* TYPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TYPageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,17 +87,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0214D8E7CC8C45B6FE9D066D /* Pods_BestNews.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		85AE75980DD2A6FE905ED4F0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				49FBDE1023696FAD0FCB9971 /* Pods-BestNews.debug.xcconfig */,
+				11340A3AC197F199C7182F7A /* Pods-BestNews.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		CC2906BC1F6599C7001894DA = {
 			isa = PBXGroup;
 			children = (
 				CC2906C71F6599C7001894DA /* BestNews */,
 				CC2906C61F6599C7001894DA /* Products */,
+				85AE75980DD2A6FE905ED4F0 /* Pods */,
+				DA9A2F6D064F31B78C69EBB6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -160,7 +190,7 @@
 		CC2906F51F65A03A001894DA /* Class */ = {
 			isa = PBXGroup;
 			children = (
-				CC2906F61F65A048001894DA /* Main */,
+				CC2906F61F65A048001894DA /* Home */,
 				CC2906F71F65A052001894DA /* Activity */,
 				CC2906F81F65A072001894DA /* Circle */,
 				CC2906F91F65A085001894DA /* Me */,
@@ -168,13 +198,14 @@
 			name = Class;
 			sourceTree = "<group>";
 		};
-		CC2906F61F65A048001894DA /* Main */ = {
+		CC2906F61F65A048001894DA /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				CCDB6D371F79C5790012432E /* TYView */,
 				CC2906FA1F65A0AB001894DA /* MainController.swift */,
 				CC2906FB1F65A0AB001894DA /* MainController.xib */,
 			);
-			name = Main;
+			name = Home;
 			sourceTree = "<group>";
 		};
 		CC2906F71F65A052001894DA /* Activity */ = {
@@ -182,6 +213,10 @@
 			children = (
 				CC2906FE1F65A0C3001894DA /* ActivityController.swift */,
 				CC2906FF1F65A0C3001894DA /* ActivityController.xib */,
+				CC01705C1F6835400069D38B /* ActivityCoverCell.swift */,
+				CC01705D1F6835400069D38B /* ActivityCoverCell.xib */,
+				CC0170601F6840D00069D38B /* ActivityDetailController.swift */,
+				CC0170611F6840D00069D38B /* ActivityDetailController.xib */,
 			);
 			name = Activity;
 			sourceTree = "<group>";
@@ -204,6 +239,25 @@
 			name = Me;
 			sourceTree = "<group>";
 		};
+		CCDB6D371F79C5790012432E /* TYView */ = {
+			isa = PBXGroup;
+			children = (
+				CCDB6D381F79C58C0012432E /* TYPageStyle.swift */,
+				CCDB6D401F79D6C30012432E /* TYPageView.swift */,
+				CCDB6D3A1F79C58C0012432E /* TYPageTitleView.swift */,
+			);
+			name = TYView;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		DA9A2F6D064F31B78C69EBB6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BEA9997CD925F2C7B1649D76 /* Pods_BestNews.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -211,9 +265,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CC2906D91F6599C7001894DA /* Build configuration list for PBXNativeTarget "BestNews" */;
 			buildPhases = (
+				72D918B5801B1AF2E73A7CBB /* [CP] Check Pods Manifest.lock */,
 				CC2906C11F6599C7001894DA /* Sources */,
 				CC2906C21F6599C7001894DA /* Frameworks */,
 				CC2906C31F6599C7001894DA /* Resources */,
+				5799AFBF694AEB3711AF1921 /* [CP] Embed Pods Frameworks */,
+				7722DC2021E2A5D91490BD32 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -269,30 +326,85 @@
 				CC2906D51F6599C7001894DA /* LaunchScreen.storyboard in Resources */,
 				CC2907111F65AC08001894DA /* Main.storyboard in Resources */,
 				CC2906D21F6599C7001894DA /* Assets.xcassets in Resources */,
+				CC01705F1F6835400069D38B /* ActivityCoverCell.xib in Resources */,
 				CC29070D1F65A334001894DA /* BaseTabBarView.xib in Resources */,
 				CC2906FD1F65A0AB001894DA /* MainController.xib in Resources */,
 				CC2907091F65A0F0001894DA /* MeController.xib in Resources */,
+				CC0170631F6840D00069D38B /* ActivityDetailController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5799AFBF694AEB3711AF1921 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BestNews/Pods-BestNews-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		72D918B5801B1AF2E73A7CBB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7722DC2021E2A5D91490BD32 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BestNews/Pods-BestNews-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CC2906C11F6599C7001894DA /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCDB6D3B1F79C6DF0012432E /* TYPageStyle.swift in Sources */,
+				CCDB6D3C1F79C6DF0012432E /* TYPageTitleView.swift in Sources */,
 				CC2906E11F659E77001894DA /* BaseNavigationController.swift in Sources */,
 				CC29070B1F65A323001894DA /* BaseTabBarView.swift in Sources */,
 				CC2906EF1F659EBA001894DA /* UIView+Position.swift in Sources */,
 				CC29070F1F65A8B5001894DA /* BaseView.swift in Sources */,
 				CC2906EA1F659EBA001894DA /* DateExtension.swift in Sources */,
 				CC2906ED1F659EBA001894DA /* UIImageExtension.swift in Sources */,
+				CC01705E1F6835400069D38B /* ActivityCoverCell.swift in Sources */,
 				CC2907041F65A0E0001894DA /* TimeLineController.swift in Sources */,
 				CC2906FC1F65A0AB001894DA /* MainController.swift in Sources */,
 				CC2906F41F65A028001894DA /* BestTabbarViewController.swift in Sources */,
 				CC2906EB1F659EBA001894DA /* StringExtension.swift in Sources */,
 				CC2906F21F659F58001894DA /* ConstantHelper.swift in Sources */,
+				CCDB6D411F79D6C30012432E /* TYPageView.swift in Sources */,
+				CC0170621F6840D00069D38B /* ActivityDetailController.swift in Sources */,
 				CC2907081F65A0F0001894DA /* MeController.swift in Sources */,
 				CC2906EC1F659EBA001894DA /* UIColorExtensions.swift in Sources */,
 				CC2906C91F6599C7001894DA /* AppDelegate.swift in Sources */,
@@ -411,6 +523,7 @@
 		};
 		CC2906DA1F6599C7001894DA /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 49FBDE1023696FAD0FCB9971 /* Pods-BestNews.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 99BGKUDWHK;
@@ -425,6 +538,7 @@
 		};
 		CC2906DB1F6599C7001894DA /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 11340A3AC197F199C7182F7A /* Pods-BestNews.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 99BGKUDWHK;
@@ -456,6 +570,7 @@
 				CC2906DB1F6599C7001894DA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

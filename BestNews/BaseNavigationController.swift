@@ -24,11 +24,11 @@ class BaseNavigationController: UINavigationController {
         self.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationBar.shadowImage = UIImage()
         if tint.isEqual(UIColor.white) {
-            let backImg = UIImage(named: "nav-back-white")
+            let backImg = #imageLiteral(resourceName: "iconBack")
             self.navigationItem.backBarButtonItem?.setBackgroundImage(backImg, for: .normal, barMetrics: .default)
         }
         else {
-            let backImg = UIImage(named: "nav-back-dark")
+            let backImg = #imageLiteral(resourceName: "iconBack")
             self.navigationItem.backBarButtonItem?.setBackgroundImage(backImg, for: .normal, barMetrics: .default)
 
         }

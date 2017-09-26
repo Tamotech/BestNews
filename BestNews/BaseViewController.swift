@@ -76,6 +76,10 @@ class BaseViewController: UIViewController {
         }
         else {
             self.barView.isHidden = true
+            if navigationController is BaseNavigationController {
+               let navVC = navigationController as! BaseNavigationController
+                navVC.setTintColor(tint: UIColor.white)
+            }
         }
         
         if (!closeBtn.isHidden) {

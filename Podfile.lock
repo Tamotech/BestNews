@@ -1,0 +1,46 @@
+PODS:
+  - Alamofire (4.5.0)
+  - AlamofireObjectMapper (4.1.0):
+    - Alamofire (~> 4.1)
+    - ObjectMapper (~> 2.0)
+  - AMPopTip (2.1.6)
+  - CRRefresh (1.0.5)
+  - HandyJSON (1.7.1)
+  - IQKeyboardManagerSwift (4.0.10)
+  - Kingfisher (3.10.2)
+  - ObjectMapper (2.2.7)
+  - PopupDialog (0.5.4)
+  - Presentr (1.2.3)
+  - SnapKit (3.2.0)
+  - SwiftyJSON (3.1.4)
+
+DEPENDENCIES:
+  - Alamofire
+  - AlamofireObjectMapper (~> 4.0)
+  - AMPopTip
+  - CRRefresh
+  - HandyJSON
+  - IQKeyboardManagerSwift (= 4.0.10)
+  - Kingfisher (~> 3.0)
+  - PopupDialog (~> 0.5)
+  - Presentr
+  - SnapKit (~> 3.2.0)
+  - SwiftyJSON
+
+SPEC CHECKSUMS:
+  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
+  AlamofireObjectMapper: 435adc82f5b367679bd9e71c4974a54efd0b2521
+  AMPopTip: 81f57556ae12500d30ff595078b1b6d11076ced8
+  CRRefresh: 718be57647db922a4a3af3f17fc41289145d8e83
+  HandyJSON: 54b6ce942795f7b2e61b82fe73cf25d9f139d125
+  IQKeyboardManagerSwift: 75ba21a23794a1e6b6fe6d9a267ea17f80e06771
+  Kingfisher: 7297492bf8cec9b2e2dee3519f2219948580d98e
+  ObjectMapper: 65abcfd9a61cf7396cbd14a4fb22fddfcc46577e
+  PopupDialog: 75cf955693590b0cb2fdde00223fb65d99c57247
+  Presentr: a21c7bbb3532c8ff60320e235c0a4869e72f8885
+  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+
+PODFILE CHECKSUM: d37478f4413a7eeba8ea7ca46ebfc5e042c39c9f
+
+COCOAPODS: 1.2.1
