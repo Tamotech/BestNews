@@ -33,8 +33,23 @@ class BaseNavigationController: UINavigationController {
 
         }
         
-        self.navigationItem.backBarButtonItem?.setBackButtonTitlePositionAdjustment(UIOffset.init(horizontal: -100, vertical: -100), for: .default)
+    self.navigationItem.backBarButtonItem?.setBackButtonTitlePositionAdjustment(UIOffset.init(horizontal: -100, vertical: -100), for: .default)
         
+    }
+    
+    func setBarBackgroundClear(clear: Bool) {
+        if clear {
+            self.navigationBar.setBackgroundImage(UIImage(), for: .default)
+            self.navigationBar.shadowImage = UIImage()
+            self.navigationBar.tintColor = UIColor.white
+        }
+        else {
+            let bgImg = UIImage.image(backgroundColor: UIColor.white, size: CGSize(width: 2, height: 2))
+            let shadowImg = UIImage.image(backgroundColor: UIColor(hexString: "#e5e5e5")!, size: CGSize(width: 0.5, height: 0.5))
+            self.navigationBar.setBackgroundImage(bgImg, for: .default)
+            self.navigationBar.shadowImage = shadowImg
+            self.navigationBar.tintColor = gray51
+        }
     }
 
 }

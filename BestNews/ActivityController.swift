@@ -19,6 +19,11 @@ class ActivityController: BaseViewController, UITableViewDelegate, UITableViewDa
 
         // Do any additional setup after loading the view.
         self.showCustomTitle(title: "活动")
+        if #available(iOS 11.0, *) {
+            tableView.contentInsetAdjustmentBehavior = .never
+        } else {
+            // Fallback on earlier versions
+        }
         tableView.delegate = self
         tableView.dataSource = self
         self.view.addSubview(tableView)
@@ -31,6 +36,7 @@ class ActivityController: BaseViewController, UITableViewDelegate, UITableViewDa
         let messageItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_meassage"), style: .plain, target: self, action: #selector(handleTapMessage(_:)))
         self.navigationItem.leftBarButtonItem = searchItem
         self.navigationItem.rightBarButtonItem = messageItem
+        
     }
     
     

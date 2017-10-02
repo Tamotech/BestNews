@@ -9,6 +9,9 @@
 import UIKit
 
 extension UIImage {
+    
+    
+    ///带圆环的文字图片
     class func image(_ text:String,size:(CGFloat,CGFloat),backColor:UIColor=UIColor.white,textColor:UIColor=UIColor.green,isCircle:Bool=true) -> UIImage?{
         // 过滤空""
         if text.isEmpty { return nil }
@@ -40,4 +43,15 @@ extension UIImage {
         return image
     }
     
+    ///生成纯色背景的图片
+    class func image(backgroundColor: UIColor, size: CGSize)->UIImage {
+        let rect = CGRect(x: 0, y: 0, width: size.width, height: size.height)
+        UIGraphicsBeginImageContext(size)
+        let ctx = UIGraphicsGetCurrentContext()
+        ctx?.setFillColor(backgroundColor.cgColor)
+        ctx?.fill(rect)
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return img!
+    }
 }

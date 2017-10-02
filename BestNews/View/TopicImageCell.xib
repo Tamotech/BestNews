@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="Cell" id="gTV-IL-0wX" customClass="TopicImageCell" customModule="BestNews" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="148" height="77"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="148" height="77"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cover1M2-4" translatesAutoresizingMaskIntoConstraints="NO" id="eIW-wq-hgm">
+                        <rect key="frame" x="0.0" y="0.0" width="148" height="77"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="4"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="专题" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZi-4n-ETQ">
+                        <rect key="frame" x="10" y="0.0" width="128" height="77"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="HZi-4n-ETQ" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" id="AwX-Rk-DzX"/>
+                <constraint firstItem="eIW-wq-hgm" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" id="Q6u-ff-bEg"/>
+                <constraint firstItem="eIW-wq-hgm" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="VUf-SJ-Ucp"/>
+                <constraint firstItem="HZi-4n-ETQ" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="WYx-KA-T7i"/>
+                <constraint firstItem="eIW-wq-hgm" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="jWd-Si-7JP"/>
+                <constraint firstItem="HZi-4n-ETQ" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" constant="-20" id="nhB-pu-HFS"/>
+                <constraint firstItem="eIW-wq-hgm" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="tNR-R1-l2s"/>
+                <constraint firstItem="HZi-4n-ETQ" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="tzS-ba-hpJ"/>
+            </constraints>
+            <size key="customSize" width="148" height="77"/>
+            <connections>
+                <outlet property="coverImageView" destination="eIW-wq-hgm" id="QPZ-db-UOa"/>
+                <outlet property="topicLabel" destination="HZi-4n-ETQ" id="3qZ-YL-pfn"/>
+            </connections>
+            <point key="canvasLocation" x="-26" y="58.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="Cover1M2-4" width="375" height="211"/>
+    </resources>
+</document>

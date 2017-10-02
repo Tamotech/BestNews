@@ -14,7 +14,7 @@ class BestTabbarViewController: UIViewController {
     let mainVC = MainController.init(nibName: "MainController", bundle: nil)
     let activityVC = ActivityController.init(nibName: "ActivityController", bundle: nil)
 
-    let timelineVC = TimeLineController.init(nibName: "TimeLineController", bundle: nil)
+    let timelineVC = CircleHomeViewController.init(nibName: "CircleHomeViewController", bundle: nil)
     let meVC = MeController.init(nibName: "MeController", bundle: nil)
     
     let tabbarView = BaseTabBarView.instanceFromXib() as! BaseTabBarView

@@ -29,6 +29,7 @@ class TYPageTitleView: UIView {
         let line = UIView()
         line.backgroundColor = self.style.bottomLineColor
         line.frame.size.height = 2
+        line.layer.cornerRadius = 1
         line.frame.origin.y = self.bounds.size.height - line.frame.size.height
         return line
     }()
@@ -198,22 +199,8 @@ extension TYPageTitleView{
         //设置lineView宽度的渐变
         if style.isShowBottomLine {
             //1.位置的变化
-            var deltaX:CGFloat = 0
-            if style.bottomAlginLabel {
-               deltaX = nextLabel.center.x - currentLabel.center.x
-            }else{
-                deltaX = nextLabel.center.x - currentLabel.center.x
-            }
-            lineView.center.x = currentLabel.center.x + deltaX*progress
-            //2.宽度的变化
-            var deltaW:CGFloat = 0
-            if style.bottomAlginLabel {
-                deltaW = nextLabel.bounds.width - currentLabel.bounds.width
-            }else{
-                deltaW = widthForContent(nextLabel) - widthForContent(currentLabel)
-            }
-            lineView.frame.size.width = (style.bottomAlginLabel ? currentLabel.frame.size.width : widthForContent(currentLabel)) + deltaW*progress
-            //设置字体大小的渐变
+           
+            lineView.center.x = currentLabel.center.x
         }
 
     }
@@ -224,6 +211,20 @@ extension TYPageTitleView{
         let selectLabel = titleLabels[pageIndex]
         ajustViewPostion(selectLabel)
         
+    }
+    
+    ///更换主题颜色
+    func updateTintcolor(currentItemColor: UIColor, unselectItemColor: UIColor) {
+        style.selectColor = currentItemColor
+        style.normalColor = unselectItemColor
+        for (i, lb) in titleLabels.enumerated() {
+            if i == currentIndex {
+                lb.textColor = currentItemColor
+            }
+            else {
+                lb.textColor = unselectItemColor
+            }
+        }
     }
     
     private func getGRBValue(_ color : UIColor) -> (CGFloat, CGFloat, CGFloat) {
