@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="GiX-Fo-bZP" customClass="ActivityTicketSheetView" customModule="BestNews" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OLZ-x7-92B">
+                    <rect key="frame" x="0.0" y="867" width="375" height="79"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R4J-JH-egB">
+                            <rect key="frame" x="15" y="15" width="165" height="49"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <state key="normal" title="取消">
+                                <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="handleTapCancelBtn:" destination="GiX-Fo-bZP" eventType="touchUpInside" id="8pd-9j-yIS"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D6X-nI-gtS">
+                            <rect key="frame" x="195" y="15" width="165" height="49"/>
+                            <color key="backgroundColor" red="0.0" green="0.59607843140000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <state key="normal" title="下一步">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                    <real key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                    <size key="value" width="0.0" height="5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                    <real key="value" value="0.29999999999999999"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                    <color key="value" red="0.0" green="0.59607843140000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="handleTapNextBtn:" destination="GiX-Fo-bZP" eventType="touchUpInside" id="aMt-GZ-45p"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="R4J-JH-egB" firstAttribute="leading" secondItem="OLZ-x7-92B" secondAttribute="leading" constant="15" id="2QR-zv-ZhX"/>
+                        <constraint firstItem="R4J-JH-egB" firstAttribute="width" secondItem="D6X-nI-gtS" secondAttribute="width" id="5kI-5O-fmc"/>
+                        <constraint firstAttribute="bottom" secondItem="R4J-JH-egB" secondAttribute="bottom" constant="15" id="6DT-Cd-hZR"/>
+                        <constraint firstItem="D6X-nI-gtS" firstAttribute="leading" secondItem="R4J-JH-egB" secondAttribute="trailing" constant="15" id="SXf-Si-NXD"/>
+                        <constraint firstAttribute="trailing" secondItem="D6X-nI-gtS" secondAttribute="trailing" constant="15" id="SpX-it-17h"/>
+                        <constraint firstAttribute="height" constant="79" id="TnD-JB-Xjn"/>
+                        <constraint firstItem="R4J-JH-egB" firstAttribute="top" secondItem="D6X-nI-gtS" secondAttribute="top" id="XCK-4h-Ze8"/>
+                        <constraint firstItem="R4J-JH-egB" firstAttribute="top" secondItem="OLZ-x7-92B" secondAttribute="top" constant="15" id="hEb-GS-fWn"/>
+                        <constraint firstItem="R4J-JH-egB" firstAttribute="bottom" secondItem="D6X-nI-gtS" secondAttribute="bottom" id="ozR-MG-VaO"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qIK-9j-uAT">
+                    <rect key="frame" x="0.0" y="667" width="375" height="200"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="200" id="aja-ds-hgf"/>
+                    </constraints>
+                </tableView>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="OLZ-x7-92B" firstAttribute="top" secondItem="qIK-9j-uAT" secondAttribute="bottom" id="LnO-BP-m02"/>
+                <constraint firstItem="qIK-9j-uAT" firstAttribute="width" secondItem="GiX-Fo-bZP" secondAttribute="width" id="NpL-CW-zcD"/>
+                <constraint firstItem="qIK-9j-uAT" firstAttribute="centerX" secondItem="GiX-Fo-bZP" secondAttribute="centerX" id="OIU-Xo-Eia"/>
+                <constraint firstAttribute="bottom" secondItem="qIK-9j-uAT" secondAttribute="top" id="r1u-1b-dvD"/>
+                <constraint firstItem="OLZ-x7-92B" firstAttribute="centerX" secondItem="GiX-Fo-bZP" secondAttribute="centerX" id="tsU-4c-5t1"/>
+                <constraint firstItem="OLZ-x7-92B" firstAttribute="width" secondItem="GiX-Fo-bZP" secondAttribute="width" id="xae-pC-qs6"/>
+            </constraints>
+            <connections>
+                <outlet property="tableView" destination="qIK-9j-uAT" id="zuw-xa-A1J"/>
+                <outlet property="tableViewHeight" destination="aja-ds-hgf" id="0Ow-zU-XLW"/>
+                <outlet property="tableViewTop" destination="LnO-BP-m02" id="4kW-st-hme"/>
+            </connections>
+        </view>
+    </objects>
+</document>

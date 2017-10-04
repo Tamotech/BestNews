@@ -64,6 +64,7 @@ class BaseViewController: UIViewController {
 //        if self.navigationController != nil && self.navigationController?.childViewControllers.count == 1 {
             self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 //        }
+        self.hidesBottomBarWhenPushed = true
         
     }
     
@@ -73,6 +74,8 @@ class BaseViewController: UIViewController {
         if !shouldClearNavBar {
             self.barView.isHidden = false
             self.view.bringSubview(toFront: barView)
+            let nav = navigationController as! BaseNavigationController
+            nav.navigationBar.tintColor = gray51
         }
         else {
             self.barView.isHidden = true
@@ -101,14 +104,6 @@ class BaseViewController: UIViewController {
         print("deinit ----- \(self.classForCoder)")
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }

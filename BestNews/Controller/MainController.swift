@@ -19,10 +19,14 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.shouldClearNavBar = true
+        self.shouldClearNavBar = false
         self.setupChildView()
         self.setupNavigationItems()
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.switchToIndex(index: currentIndex)
     }
     
     func setupChildView() {
@@ -164,10 +168,17 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
         if index == 1 || index == 2 || index == 4 {
             navVC.setBarBackgroundClear(clear: false)
             titleView?.updateTintcolor(currentItemColor: gray51!, unselectItemColor: UIColor(ri: 51, gi: 51, bi: 51, alpha: 0.5)!)
+            UIView.animate(withDuration: 0.3, animations: {
+                self.barView.alpha = 1
+            })
         }
         else {
             navVC.setBarBackgroundClear(clear: true)
             titleView?.updateTintcolor(currentItemColor: UIColor.init(white: 1, alpha: 1), unselectItemColor: UIColor.init(white: 1, alpha: 0.5))
+            UIView.animate(withDuration: 0.3, animations: {
+                self.barView.alpha = 0
+            })
+
         }
     }
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BestTabbarViewController: UIViewController {
+class BestTabbarViewController: UIViewController, UINavigationControllerDelegate {
 
     
     let mainVC = MainController.init(nibName: "MainController", bundle: nil)
@@ -25,22 +25,25 @@ class BestTabbarViewController: UIViewController {
         self.addChildViewController(navVC1)
         self.view.addSubview(navVC1.view)
         navVC1.view.isHidden = false
+        navVC1.delegate = self
 
         let navVC2 = BaseNavigationController(rootViewController: activityVC)
         self.addChildViewController(navVC2)
         self.view.addSubview(navVC2.view)
         navVC2.view.isHidden = true
+        navVC2.delegate = self
 
         let navVC3 = BaseNavigationController(rootViewController: timelineVC)
         self.addChildViewController(navVC3)
         self.view.addSubview(navVC3.view)
         navVC3.view.isHidden = true
+        navVC3.delegate = self
 
         let navVC4 = BaseNavigationController(rootViewController: meVC)
         self.addChildViewController(navVC4)
         self.view.addSubview(navVC4.view)
         navVC4.view.isHidden = true
-
+        navVC4.delegate = self
     }
     
     override func viewDidLoad() {
@@ -61,6 +64,42 @@ class BestTabbarViewController: UIViewController {
         }
     }
     
+    //MARK: - navigation
     
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        if navigationController.childViewControllers.first == viewController {
+            //tabbarView.isHidden = false
+        }
+        else {
+            //tabbarView.isHidden = true
+            self.showTabbarViewAnimated(show: false)
+        }
+    }
+    
+    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+        if navigationController.childViewControllers.first == viewController {
+            //tabbarView.isHidden = false
+            self.showTabbarViewAnimated(show: true)
+        }
+        else {
+            //tabbarView.isHidden = true
+            self.showTabbarViewAnimated(show: false)
+        }
+    }
+    
+    func showTabbarViewAnimated(show: Bool) {
+        if show {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.tabbarView.top = screenHeight-self.tabbarView.height
+                self.tabbarView.alpha = 1
+            })
+        }
+        else {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.tabbarView.top = screenHeight
+                self.tabbarView.alpha = 0
+            })
+        }
+    }
 
 }

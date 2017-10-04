@@ -11,7 +11,7 @@ import UIKit
 class ActivityController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
 
     
-    let tableView = UITableView(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: screenHeight-50), style: .grouped)
+    let tableView = UITableView(frame: CGRect.init(x: 0, y: 64, width: screenWidth, height: screenHeight-50-64), style: .grouped)
     
     
     override func viewDidLoad() {
@@ -68,6 +68,11 @@ class ActivityController: BaseViewController, UITableViewDelegate, UITableViewDa
         let n = ["活动标题一行显示19个字，最多显示两行活动标题一行显示19个字，最多显示两行", "活动标题一行显示19个字"]
         cell.titleLb.text = n[indexPath.row%2]
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = ActivityDetailController(nibName: "ActivityDetailController", bundle: nil)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     //MARK: - actions

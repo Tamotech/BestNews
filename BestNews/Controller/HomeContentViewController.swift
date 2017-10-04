@@ -81,6 +81,8 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = NewsDetailController.init(nibName: "NewsDetailController", bundle: nil)
+        navigationController?.pushViewController(vc, animated: true)
         
     }
 

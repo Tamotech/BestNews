@@ -7,29 +7,59 @@
 //
 
 import UIKit
+import Presentr
 
-class ActivityDetailController: BaseViewController {
+class ActivityDetailController: BaseViewController, ActivityTicketListControllerDelgate {
 
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+    lazy var presentr:Presentr = {
+        let pr = Presentr(presentationType: .fullScreen)
+        pr.transitionType = TransitionType.coverVertical
+        pr.dismissOnSwipe = true
+        pr.dismissAnimated = true
+       return pr
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        self.shouldClearNavBar = true
+        let collectionBar = UIBarButtonItem(image: #imageLiteral(resourceName: "iconCollection"), style: .plain, target: self, action: #selector(handleTapCollectionBtn(sender:)))
+        let repostBar = UIBarButtonItem(image: #imageLiteral(resourceName: "iconShare"), style: .plain, target: self, action: #selector(handleTapRepostBtn(sender:)))
+        navigationItem.rightBarButtonItems = [repostBar, collectionBar]
+        if #available(iOS 11.0, *) {
+            scrollView.contentInsetAdjustmentBehavior = .never
+        } else {
+            // Fallback on earlier versions
+        }
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    //MARK: - acions
+    func handleTapCollectionBtn(sender: Any) {
+        
     }
-    */
-
+    
+    func handleTapRepostBtn(sender: Any) {
+        
+    }
+    
+    @IBAction func handleTapJoinBtn(_ sender: UIButton) {
+        let vc = ActivityTicketListController(nibName: "ActivityTicketListController", bundle: nil)
+        vc.delegate = self
+        presentr.viewControllerForContext = self
+        presentr.shouldIgnoreTapOutsideContext = true
+        customPresentViewController(presentr, viewController: vc, animated: true) {
+            
+        }
+    }
+    
+    func handleTapNextBtn(vc: ActivityTicketListController) {
+        vc.dismiss(animated: true, completion: nil)
+        let registVC = ActivityRegistController(nibName: "ActivityRegistController", bundle: nil)
+        navigationController?.pushViewController(registVC, animated: true)
+    }
+        
 }
