@@ -65,6 +65,7 @@ class BaseViewController: UIViewController {
             self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
 //        }
         self.hidesBottomBarWhenPushed = true
+        self.automaticallyAdjustsScrollViewInsets = false
         
     }
     

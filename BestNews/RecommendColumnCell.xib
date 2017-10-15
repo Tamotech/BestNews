@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="gTV-IL-0wX" customClass="RecommendColumnCell" customModule="BestNews" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="117" height="140"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="117" height="140"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jd_login" translatesAutoresizingMaskIntoConstraints="NO" id="ZFX-JM-z9b">
+                        <rect key="frame" x="22.5" y="0.0" width="72" height="72"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="72" id="ALX-0W-FLC"/>
+                            <constraint firstAttribute="width" constant="72" id="z7R-zi-uAj"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="36"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="机构名称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pQA-vk-kJJ">
+                        <rect key="frame" x="29.5" y="80" width="57.5" height="17"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KSS-VA-CR5">
+                        <rect key="frame" x="28" y="105" width="60" height="30"/>
+                        <color key="backgroundColor" red="0.0" green="0.59607843140000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="60" id="afw-lk-Nye"/>
+                            <constraint firstAttribute="height" constant="30" id="hrP-N4-2sr"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <state key="normal" title="订阅">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="4"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                <real key="value" value="4"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                <size key="value" width="0.0" height="5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                <real key="value" value="0.29999999999999999"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                <color key="value" red="0.0" green="0.59607843140000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="handleTapSubscriptBtn:" destination="gTV-IL-0wX" eventType="touchUpInside" id="itq-aF-196"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="ZFX-JM-z9b" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="LW6-XO-VpC"/>
+                <constraint firstItem="ZFX-JM-z9b" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Y77-ni-O7Q"/>
+                <constraint firstItem="pQA-vk-kJJ" firstAttribute="top" secondItem="ZFX-JM-z9b" secondAttribute="bottom" constant="8" id="YNg-ae-hxE"/>
+                <constraint firstItem="KSS-VA-CR5" firstAttribute="centerX" secondItem="pQA-vk-kJJ" secondAttribute="centerX" id="bfE-HG-BQw"/>
+                <constraint firstItem="KSS-VA-CR5" firstAttribute="top" secondItem="pQA-vk-kJJ" secondAttribute="bottom" constant="8" id="gyb-vz-UG7"/>
+                <constraint firstItem="pQA-vk-kJJ" firstAttribute="centerX" secondItem="ZFX-JM-z9b" secondAttribute="centerX" id="izL-WF-D2x"/>
+            </constraints>
+            <size key="customSize" width="117" height="140"/>
+            <connections>
+                <outlet property="avatarView" destination="ZFX-JM-z9b" id="2dg-sY-zOC"/>
+                <outlet property="nameLb" destination="pQA-vk-kJJ" id="9Ig-Yb-w04"/>
+                <outlet property="scriptBtn" destination="KSS-VA-CR5" id="SLc-Xq-bVe"/>
+            </connections>
+            <point key="canvasLocation" x="97.5" y="141"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="jd_login" width="60" height="60"/>
+    </resources>
+</document>

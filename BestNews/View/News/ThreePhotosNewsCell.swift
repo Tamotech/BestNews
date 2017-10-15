@@ -26,6 +26,9 @@ class ThreePhotosNewsCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        photoView1.image = #imageLiteral(resourceName: "cover3m2_1")
+        photoView2.image = #imageLiteral(resourceName: "Cover2M3-1")
+        photoView3.image = #imageLiteral(resourceName: "cover4m2_1")
     }
     
 }

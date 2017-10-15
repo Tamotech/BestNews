@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" rowHeight="85" id="KGk-i7-Jjw" customClass="MessageCenterListCell" customModule="BestNews" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="85"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="84.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tG2-To-M99">
+                        <rect key="frame" x="15" y="18.5" width="48" height="48"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="48" id="78r-le-T03"/>
+                            <constraint firstAttribute="height" constant="48" id="MoJ-yq-8id"/>
+                        </constraints>
+                        <state key="normal" image="Avatar1M5-3"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="24"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </button>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="米妮小雯" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T62-SB-CK0">
+                        <rect key="frame" x="78" y="22.5" width="142" height="17"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
+                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="08/29 8:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vyA-8m-caS">
+                        <rect key="frame" x="241" y="24" width="64" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.70980392156862748" green="0.70980392156862748" blue="0.70980392156862748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="回复你的评论“太好了太好了太好了”哈哈哈…" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MKC-73-PNw">
+                        <rect key="frame" x="78" y="45.5" width="227" height="17"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="MKC-73-PNw" secondAttribute="trailing" constant="15" id="0Tv-Sc-Wj6"/>
+                    <constraint firstItem="T62-SB-CK0" firstAttribute="top" secondItem="tG2-To-M99" secondAttribute="top" constant="4" id="36U-ob-PF4"/>
+                    <constraint firstItem="T62-SB-CK0" firstAttribute="leading" secondItem="tG2-To-M99" secondAttribute="trailing" constant="15" id="3NW-oI-669"/>
+                    <constraint firstItem="MKC-73-PNw" firstAttribute="leading" secondItem="T62-SB-CK0" secondAttribute="leading" id="7FJ-QL-90z"/>
+                    <constraint firstItem="vyA-8m-caS" firstAttribute="centerY" secondItem="T62-SB-CK0" secondAttribute="centerY" id="Mhv-Ve-MVi"/>
+                    <constraint firstItem="tG2-To-M99" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="MxN-OP-sDc"/>
+                    <constraint firstAttribute="trailing" secondItem="T62-SB-CK0" secondAttribute="trailing" constant="100" id="P3d-0S-iIh"/>
+                    <constraint firstItem="tG2-To-M99" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="S2d-Oa-hpI"/>
+                    <constraint firstItem="MKC-73-PNw" firstAttribute="top" secondItem="T62-SB-CK0" secondAttribute="bottom" constant="6" id="jGI-V9-QG5"/>
+                    <constraint firstAttribute="trailing" secondItem="vyA-8m-caS" secondAttribute="trailing" constant="15" id="pqZ-dF-SXm"/>
+                </constraints>
+            </tableViewCellContentView>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+            <connections>
+                <outlet property="avatarBtn" destination="tG2-To-M99" id="G38-mb-rPm"/>
+                <outlet property="contentLb" destination="MKC-73-PNw" id="bno-dI-rNZ"/>
+                <outlet property="dateLb" destination="vyA-8m-caS" id="dFI-19-nS7"/>
+                <outlet property="nameLb" destination="T62-SB-CK0" id="YgP-7d-uAn"/>
+            </connections>
+            <point key="canvasLocation" x="43" y="116.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Avatar1M5-3" width="54" height="54"/>
+    </resources>
+</document>

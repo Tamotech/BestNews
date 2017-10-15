@@ -10,7 +10,7 @@ import UIKit
 
 class SubscriptionListControllerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var newsTableView: UITableView!
     
     @IBOutlet weak var myScriptionBtn: UIButton!
     
@@ -33,13 +33,16 @@ class SubscriptionListControllerViewController: UIViewController, UITableViewDel
     func setupView() {
         
         let nib1 = UINib(nibName: "SinglePhotoNewsCell", bundle: nil)
-        tableView.register(nib1, forCellReuseIdentifier: "SinglePhotoNewsCell")
-        tableView.rowHeight = 135;
+        newsTableView.register(nib1, forCellReuseIdentifier: "SinglePhotoNewsCell")
+        newsTableView.rowHeight = 135;
+        
+        
         let nib2 = UINib(nibName: "SubscriptListCell", bundle: nil)
         columeTableView.register(nib2, forCellReuseIdentifier: "ColumeCell")
         let nib3 = UINib(nibName: "ColumesCollectionViewCell", bundle: nil)
         columeTableView.rowHeight = 96;
         columeCollectionView.register(nib3, forCellWithReuseIdentifier: "Cell")
+        
         let layout = columeCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
         columeCollectionView.contentInset = UIEdgeInsetsMake(0, 15, 0, 15)
         layout.minimumLineSpacing = 8
@@ -59,7 +62,7 @@ class SubscriptionListControllerViewController: UIViewController, UITableViewDel
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if tableView == self.tableView {
+        if tableView == self.newsTableView {
             return 10
         }
         else {
@@ -78,7 +81,7 @@ class SubscriptionListControllerViewController: UIViewController, UITableViewDel
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        if tableView == self.tableView {
+        if tableView == self.newsTableView {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SinglePhotoNewsCell", for: indexPath)
         
             return cell
@@ -91,7 +94,15 @@ class SubscriptionListControllerViewController: UIViewController, UITableViewDel
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        /// WHY?
+        if tableView == self.newsTableView {
+            let vc = NewsDetailController.init(nibName: "NewsDetailController", bundle: nil)
+            navigationController?.pushViewController(vc, animated: true)
+        }
+        else {
+            let vc = OrgnizationController(nibName: "OrgnizationController", bundle: nil)
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     
@@ -125,13 +136,13 @@ class SubscriptionListControllerViewController: UIViewController, UITableViewDel
         if index == 0 {
             myScriptionBtn.isSelected = true
             scriptionListBtn.isSelected = false
-            tableView.isHidden = false
+            newsTableView.isHidden = false
             subscriptMoreView.isHidden = true
         }
         else {
             myScriptionBtn.isSelected = false
             scriptionListBtn.isSelected = true
-            tableView.isHidden = true
+            newsTableView.isHidden = true
             subscriptMoreView.isHidden = false
 
         }

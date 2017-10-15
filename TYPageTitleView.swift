@@ -105,9 +105,12 @@ extension TYPageTitleView{
                     x = (bounds.size.width - textWidth*CGFloat(titles.count))/CGFloat(2)
                 }
 
-                lineView.frame.origin.x = x
-                lineView.frame.size.width = style.bottomAlginLabel ? labelWidth : textWidth
+//                lineView.frame.origin.x = x
+//                lineView.frame.size.width = style.bottomAlginLabel ? labelWidth : textWidth
+                lineView.frame.size.width = textWidth
+                lineView.centerX = labelWidth/2
                 titleLabel.textColor = style.selectColor
+                
 
             }else{
                 if style.labelLayout == .scroll {
@@ -148,12 +151,14 @@ extension TYPageTitleView{
         //计算textWidth
         UIView .animate(withDuration: 0.25) {
             if self.style.bottomAlginLabel{
-                self.lineView.frame.origin.x = selectLabel.frame.origin.x
+                self.lineView.centerX = selectLabel.centerX
             }else{
                 //使用center.x会有偏差，采用frame.x
                 self.lineView.frame.origin.x = (selectLabel.frame.size.width - self.widthForContent(selectLabel))/CGFloat(2) + selectLabel.frame.minX
+                
             }
-            self.lineView.frame.size.width = self.style.bottomAlginLabel ? selectLabel.frame.size.width : self.widthForContent(selectLabel)
+//            self.lineView.frame.size.width = self.style.bottomAlginLabel ? selectLabel.frame.size.width : self.widthForContent(selectLabel)
+            self.lineView.frame.size.width = self.widthForContent(selectLabel)
         }
         
         if style.labelLayout == .scroll {

@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import PopupDialog
+import Presentr
 
-class ActivityRegistController: BaseViewController {
+class ActivityRegistController: BaseViewController, UINavigationControllerDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
     override func viewDidLoad() {
@@ -19,6 +21,8 @@ class ActivityRegistController: BaseViewController {
             // Fallback on earlier versions
         }
         self.showCustomTitle(title: "活动报名")
+        let backBtn = UIBarButtonItem(image: #imageLiteral(resourceName: "iconBack"), style: .plain, target: self, action: #selector(handleTapBackButton(_:)))
+        navigationItem.leftBarButtonItem = backBtn
         
     }
 
@@ -28,14 +32,29 @@ class ActivityRegistController: BaseViewController {
     }
     
 
-    /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    
+    func handleTapBackButton(_:Any) {
+        let dialog = PopupDialog(title: "确认要离开本页?", message: "离开后已填写的信息将不再保存", image: nil, buttonAlignment: .horizontal, transitionStyle: .zoomIn, gestureDismissal: false) {
+            
+        }
+            //PopupDialog(title: "确认要离开本页?", message: "离开后已填写的信息将不再保存")
+        dialog.addButton(PopupDialogButton(title: "取消", action: {
+            
+        }))
+        dialog.addButton(PopupDialogButton(title: "确认", action: {
+            self.navigationController?.popViewController(animated: true)
+        }))
+        self.present(dialog, animated: true, completion: {
+            
+        })
+        
     }
-    */
+
+    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
+        if viewController != self {
+            
+        }
+    }
 
 }

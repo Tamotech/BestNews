@@ -13,6 +13,15 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
     lazy var headerImgView: UIImageView = {
         let v = UIImageView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenWidth*243.0/375.0))
         v.image = #imageLiteral(resourceName: "cover1m2_1")
+        let bv = UIView(frame: CGRect(x: 0, y: v.height-75, width: v.width, height: 75))
+        bv.backgroundColor = UIColor(white: 0, alpha: 0.4)
+        v.addSubview(bv)
+        let titleLb = UILabel(frame: CGRect(x: 15, y: 10, width: bv.width-30, height: 75-25))
+        titleLb.numberOfLines = 2
+        titleLb.font = UIFont.systemFont(ofSize: 18)
+        titleLb.textColor = UIColor.white
+        titleLb.text = "封面新闻标题封面新闻标题封面新闻标题封面新闻标题封面新闻标题"
+        bv.addSubview(titleLb)
         return v
     }()
     
@@ -54,6 +63,9 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 50))
     }
     
+    
+    
+    
     //MARK: - tableView
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -84,6 +96,28 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
         let vc = NewsDetailController.init(nibName: "NewsDetailController", bundle: nil)
         navigationController?.pushViewController(vc, animated: true)
         
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y > -10 && scrollView.contentOffset.y < 100
+        {
+            autoAjustToNavColor()
+        }
+    }
+    
+    ///根据scrollview的位置自动调节到相应的颜色
+    func autoAjustToNavColor() {
+        let offset = tableView.contentOffset
+        guard let vc = self.parent else {
+            return
+        }
+        let parent = vc as! MainController
+        if offset.y < 50 {
+            parent.navBarTurnBg(white: false)
+        }
+        else if offset.y > 50 {
+            parent.navBarTurnBg(white: true)
+        }
     }
 
 }

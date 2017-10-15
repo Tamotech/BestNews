@@ -50,10 +50,24 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
         if #available(iOS 11.0, *) {
             scrollView.contentInsetAdjustmentBehavior = .never
         } else {
-            // Fallback on earlier versions
+            self.automaticallyAdjustsScrollViewInsets = false
         }
+        
+        let messageItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_meassage"), style: .plain, target: self, action: #selector(handleTapMessageBtn(sender:)))
+        navigationItem.rightBarButtonItem = messageItem
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.tintColor = gray51
+        self.navigationController?.navigationBar.barTintColor = gray51
+    }
+    
+    //MARK: - actions
+    func handleTapMessageBtn(sender: Any) {
+        let vc = MessageCenterController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
 
     //MARK: - tableView
     func numberOfSections(in tableView: UITableView) -> Int {

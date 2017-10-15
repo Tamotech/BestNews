@@ -19,7 +19,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="277.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cover3m2_1_2a" translatesAutoresizingMaskIntoConstraints="NO" id="LMT-fG-viR">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cover6m2_1" translatesAutoresizingMaskIntoConstraints="NO" id="LMT-fG-viR">
                         <rect key="frame" x="15" y="15" width="290" height="217"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="LMT-fG-viR" secondAttribute="height" multiplier="345:258" priority="900" id="FMa-m3-CqL"/>
@@ -87,6 +87,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="cover3m2_1_2a" width="85" height="85"/>
+        <image name="cover6m2_1" width="345" height="258"/>
     </resources>
 </document>

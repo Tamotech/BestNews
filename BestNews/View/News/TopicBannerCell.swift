@@ -40,7 +40,10 @@ class TopicBannerCell: UITableViewCell, UICollectionViewDelegate, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! TopicImageCell
-        cell.coverImageView.image = #imageLiteral(resourceName: "cover3m2_1")
+//        cell.coverImageView.image = #imageLiteral(resourceName: "cover3m2_1")
+        
+        let imgs = [#imageLiteral(resourceName: "topic1m2_1"), #imageLiteral(resourceName: "topic2m2_1"), #imageLiteral(resourceName: "imgM2-5-2")]
+        cell.coverImageView.image = imgs[indexPath.row%3]
         return cell
     }
     

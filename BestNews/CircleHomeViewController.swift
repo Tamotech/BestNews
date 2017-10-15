@@ -18,7 +18,7 @@ class CircleHomeViewController: BaseViewController, UIScrollViewDelegate, TYPage
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.shouldClearNavBar = true
+        self.shouldClearNavBar = false
         self.setupChildView()
         self.setupNavigationItems()
         
@@ -33,7 +33,10 @@ class CircleHomeViewController: BaseViewController, UIScrollViewDelegate, TYPage
     
     func setupChildView() {
         let titles = ["机构","名人","理财"]
-        titleView = TYPageTitleView(frame: CGRect.init(x: 0, y: 0, width: screenWidth-49-88, height: 44), titles: titles)
+        //titleView = TYPageTitleView(frame: CGRect.init(x: 0, y: 0, width: screenWidth-49-88, height: 44), titles: titles)
+        let style = TYPageStyle()
+        style.labelLayout = .divide
+        titleView = TYPageTitleView(frame: CGRect.init(x: 0, y: 0, width: screenWidth-49-88, height: 44), titles: titles, style: style)
         titleView?.delegate = self
         self.navigationItem.titleView = titleView
         
@@ -44,13 +47,18 @@ class CircleHomeViewController: BaseViewController, UIScrollViewDelegate, TYPage
         scrollView.isPagingEnabled = true
         scrollView.delegate = self
         self.view.addSubview(scrollView)
-        self.automaticallyAdjustsScrollViewInsets = false
+        if #available(iOS 11.0, *) {
+            scrollView.contentInsetAdjustmentBehavior = .never
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = false
+        }
         
         for i in 0..<titles.count {
             let vc = OrgnizationListController(nibName: "OrgnizationListController", bundle: nil)
+            vc.type = i
             addChildViewController(vc)
             let x = screenWidth*CGFloat(i)
-            vc.view.frame = CGRect(x: x, y: 0, width: screenWidth, height: screenHeight-64-49)
+            vc.view.frame = CGRect(x: x, y: 64, width: screenWidth, height: screenHeight-49)
             scrollView.addSubview(vc.view)
         }
     }
@@ -129,11 +137,13 @@ class CircleHomeViewController: BaseViewController, UIScrollViewDelegate, TYPage
     //MARK: - actions
     
     func handleTapSearchItem(sender: Any) {
-        
+        let vc = HomeSearchController(nibName: "HomeSearchController", bundle: nil)
+        navigationController?.present(vc, animated: false, completion: nil)
     }
     
     func handleTapMessageItem(sender: Any) {
-        
+        let vc = MessageCenterController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func switchToIndex(index: Int) {

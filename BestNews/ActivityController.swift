@@ -19,11 +19,7 @@ class ActivityController: BaseViewController, UITableViewDelegate, UITableViewDa
 
         // Do any additional setup after loading the view.
         self.showCustomTitle(title: "活动")
-        if #available(iOS 11.0, *) {
-            tableView.contentInsetAdjustmentBehavior = .never
-        } else {
-            // Fallback on earlier versions
-        }
+        
         tableView.delegate = self
         tableView.dataSource = self
         self.view.addSubview(tableView)
@@ -31,12 +27,17 @@ class ActivityController: BaseViewController, UITableViewDelegate, UITableViewDa
         let nib = UINib(nibName: "ActivityCoverCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "Cell")
         tableView.separatorStyle = .none
+        tableView.sectionHeaderHeight = 0.1
         
         let searchItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_search"), landscapeImagePhone: #imageLiteral(resourceName: "icon_search"), style: .plain, target: self, action: #selector(handleTapSearch(_:)))
         let messageItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_meassage"), style: .plain, target: self, action: #selector(handleTapMessage(_:)))
         self.navigationItem.leftBarButtonItem = searchItem
         self.navigationItem.rightBarButtonItem = messageItem
-        
+        if #available(iOS 11.0, *) {
+            tableView.contentInsetAdjustmentBehavior = .never
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = false
+        }
     }
     
     
@@ -78,11 +79,13 @@ class ActivityController: BaseViewController, UITableViewDelegate, UITableViewDa
     //MARK: - actions
     
     func handleTapSearch(_:Any) {
-        
+        let vc = HomeSearchController(nibName: "HomeSearchController", bundle: nil)
+        navigationController?.present(vc, animated: false, completion: nil)
     }
     
     func handleTapMessage(_:Any) {
-        
+        let vc = MessageCenterController()
+        navigationController?.pushViewController(vc, animated: true)
     }
 
 

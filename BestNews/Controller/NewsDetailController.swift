@@ -8,6 +8,7 @@
 
 import UIKit
 import WebKit
+import Presentr
 
 class NewsDetailController: BaseViewController, UITableViewDelegate, UITableViewDataSource, CommentBarDelegate {
 
@@ -35,6 +36,14 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
     
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     var commentBar = NewsCommentBar()
+    
+    lazy var presentr:Presentr = {
+        let pr = Presentr(presentationType: .fullScreen)
+        pr.transitionType = TransitionType.coverVertical
+        pr.dismissOnTap = true
+        pr.dismissAnimated = true
+        return pr
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -107,6 +116,12 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
     }
     
     func tapRepostHandler() {
-        
+        let vc = BaseShareViewController(nibName: "BaseShareViewController", bundle: nil)
+        presentr.viewControllerForContext = self
+        presentr.shouldIgnoreTapOutsideContext = false
+        presentr.dismissOnTap = true
+        customPresentViewController(presentr, viewController: vc, animated: true) {
+            
+        }
     }
 }

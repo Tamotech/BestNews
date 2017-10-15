@@ -151,21 +151,41 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
     //MARK: - actions
     
     func handleTapSearchItem(sender: Any) {
-        
+        let vc = HomeSearchController(nibName: "HomeSearchController", bundle: nil)
+        navigationController?.present(vc, animated: false, completion: nil)
     }
     
     func handleTapMenuItem(sender: Any) {
-        
+        let selectColumnView = SelectColumeView(frame: UIScreen.main.bounds)
+        selectColumnView.show()
     }
     
     func handleTapMessageItem(sender: Any) {
-        
+        let vc = MessageCenterController()
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func switchToIndex(index: Int) {
         currentIndex = index
-        let navVC = self.navigationController as! BaseNavigationController
+        
         if index == 1 || index == 2 || index == 4 {
+            self.navBarTurnBg(white: true)
+        }
+        else {
+            let vc = childViewControllers[index]
+            if vc is HomeContentViewController {
+                (vc as! HomeContentViewController).autoAjustToNavColor()
+            }
+            else {
+                self.navBarTurnBg(white: false)
+            }
+        }
+    }
+    
+    /// 导航栏颜色变化
+    func navBarTurnBg(white: Bool) {
+        let navVC = self.navigationController as! BaseNavigationController
+        if white {
             navVC.setBarBackgroundClear(clear: false)
             titleView?.updateTintcolor(currentItemColor: gray51!, unselectItemColor: UIColor(ri: 51, gi: 51, bi: 51, alpha: 0.5)!)
             UIView.animate(withDuration: 0.3, animations: {
@@ -178,7 +198,6 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
             UIView.animate(withDuration: 0.3, animations: {
                 self.barView.alpha = 0
             })
-
         }
     }
 

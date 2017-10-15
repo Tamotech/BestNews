@@ -16,7 +16,7 @@ class ActivityDetailController: BaseViewController, ActivityTicketListController
     lazy var presentr:Presentr = {
         let pr = Presentr(presentationType: .fullScreen)
         pr.transitionType = TransitionType.coverVertical
-        pr.dismissOnSwipe = true
+        pr.dismissOnTap = true
         pr.dismissAnimated = true
        return pr
     }()
@@ -43,7 +43,12 @@ class ActivityDetailController: BaseViewController, ActivityTicketListController
     }
     
     func handleTapRepostBtn(sender: Any) {
-        
+        let vc = BaseShareViewController(nibName: "BaseShareViewController", bundle: nil)
+        presentr.viewControllerForContext = self
+        presentr.shouldIgnoreTapOutsideContext = false
+        customPresentViewController(presentr, viewController: vc, animated: true) {
+            
+        }
     }
     
     @IBAction func handleTapJoinBtn(_ sender: UIButton) {
