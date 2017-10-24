@@ -23,6 +23,7 @@ let gray181 = UIColor(ri: 181, gi: 181, bi: 181)
 let gray229 = UIColor(ri: 229, gi: 229, bi: 229)
 let gray244 = UIColor(ri: 244, gi: 244, bi: 244)
 let translucentBGColor = UIColor(white: 0, alpha: 0.5)
+let barLightGrayColor = UIColor(ri: 209, gi: 213, bi: 219)
 
 let baseUrlString = "http://xinhuaNews"
     

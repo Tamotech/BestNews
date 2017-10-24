@@ -20,7 +20,12 @@ class BaseViewController: UIViewController {
     
     lazy var titleLabel: UILabel = {
         let label = UILabel(frame: CGRect(x: 80, y: 20, width: screenWidth-160, height: 44))
-        label.font = UIFont.systemFont(ofSize: 18)
+        
+        if #available(iOS 8.2, *) {
+            label.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightMedium)
+        } else {
+            label.font = UIFont.systemFont(ofSize: 18)
+        }
         label.textColor = UIColor(hexString: "333333")
         label.textAlignment = .center
         return label

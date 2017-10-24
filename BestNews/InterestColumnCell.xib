@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="gTV-IL-0wX" customClass="InterestColumnCell" customModule="BestNews" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="106" height="105"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="106" height="105"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cover2m2_1_2a" translatesAutoresizingMaskIntoConstraints="NO" id="4V3-6J-nZn">
+                        <rect key="frame" x="0.0" y="-0.5" width="106" height="105"/>
+                    </imageView>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2lK-A6-STh" userLabel="cover">
+                        <rect key="frame" x="0.0" y="-0.5" width="106" height="105"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.29628638698630139" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="4"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="金融" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bTu-pO-TN5">
+                        <rect key="frame" x="37" y="33" width="33" height="19.5"/>
+                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
+                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="add-white" translatesAutoresizingMaskIntoConstraints="NO" id="uz3-1i-Q8r">
+                        <rect key="frame" x="46.5" y="61.5" width="14" height="14"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="4V3-6J-nZn" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="6ex-q7-9hk"/>
+                <constraint firstItem="4V3-6J-nZn" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="9Wi-n5-2YU"/>
+                <constraint firstItem="2lK-A6-STh" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="ELT-dl-8gA"/>
+                <constraint firstItem="bTu-pO-TN5" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" constant="-10" id="Eul-qF-6fH"/>
+                <constraint firstItem="4V3-6J-nZn" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" id="HIb-Kp-s1p"/>
+                <constraint firstItem="2lK-A6-STh" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" id="Zez-a7-wgI"/>
+                <constraint firstItem="uz3-1i-Q8r" firstAttribute="centerX" secondItem="bTu-pO-TN5" secondAttribute="centerX" id="aob-eE-z47"/>
+                <constraint firstItem="uz3-1i-Q8r" firstAttribute="top" secondItem="bTu-pO-TN5" secondAttribute="bottom" constant="9" id="ecB-wg-9EI"/>
+                <constraint firstItem="4V3-6J-nZn" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="ewV-VB-79B"/>
+                <constraint firstItem="2lK-A6-STh" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="flD-CC-3hH"/>
+                <constraint firstItem="bTu-pO-TN5" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="gqG-iH-8CS"/>
+                <constraint firstItem="2lK-A6-STh" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="sAe-8d-Nmc"/>
+            </constraints>
+            <size key="customSize" width="106" height="105"/>
+            <connections>
+                <outlet property="addImg" destination="uz3-1i-Q8r" id="CKU-QJ-I90"/>
+                <outlet property="coverImg" destination="4V3-6J-nZn" id="Adt-JL-O7j"/>
+                <outlet property="coverView" destination="2lK-A6-STh" id="gOG-jG-LGS"/>
+                <outlet property="titleLab" destination="bTu-pO-TN5" id="ncH-qr-W2a"/>
+            </connections>
+            <point key="canvasLocation" x="-27" y="41.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="add-white" width="14" height="14"/>
+        <image name="cover2m2_1_2a" width="85" height="85"/>
+    </resources>
+</document>

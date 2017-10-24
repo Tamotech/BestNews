@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SelectInterestItemController" customModule="BestNews" customModuleProvider="target">
+            <connections>
+                <outlet property="collectionView" destination="gtP-A5-lWy" id="j9Y-DV-wzz"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="gtP-A5-lWy">
+                    <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="pVf-aN-bVP">
+                        <size key="itemSize" width="50" height="50"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="PHG-tt-KLX"/>
+                        <outlet property="delegate" destination="-1" id="hVk-nd-Z2m"/>
+                    </connections>
+                </collectionView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J01-C7-FpS">
+                    <rect key="frame" x="-0.5" y="617" width="375" height="50"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="开启阅读" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8IT-2J-tPa">
+                            <rect key="frame" x="138" y="15" width="69.5" height="21"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="17"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow-right-white" translatesAutoresizingMaskIntoConstraints="NO" id="AbO-Id-FL1">
+                            <rect key="frame" x="219.5" y="17" width="11" height="16"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="16" id="aTc-bP-k7V"/>
+                            </constraints>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.59607843140000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <gestureRecognizers/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="1F3-LR-Tfc"/>
+                        <constraint firstItem="AbO-Id-FL1" firstAttribute="leading" secondItem="8IT-2J-tPa" secondAttribute="trailing" constant="12" id="3rJ-s8-alb"/>
+                        <constraint firstItem="8IT-2J-tPa" firstAttribute="centerY" secondItem="J01-C7-FpS" secondAttribute="centerY" id="ReP-E7-V4R"/>
+                        <constraint firstItem="AbO-Id-FL1" firstAttribute="centerY" secondItem="8IT-2J-tPa" secondAttribute="centerY" id="aAg-YQ-Bdz"/>
+                        <constraint firstItem="8IT-2J-tPa" firstAttribute="centerX" secondItem="J01-C7-FpS" secondAttribute="centerX" constant="-15" id="lOb-bM-FaN"/>
+                    </constraints>
+                    <connections>
+                        <outletCollection property="gestureRecognizers" destination="MTW-NU-NrR" appends="YES" id="AHB-KP-hg5"/>
+                    </connections>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="gtP-A5-lWy" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="64" id="JhH-I1-cKg"/>
+                <constraint firstItem="gtP-A5-lWy" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Kxw-gM-QLU"/>
+                <constraint firstAttribute="bottom" secondItem="gtP-A5-lWy" secondAttribute="bottom" constant="49" id="Lbv-Ss-LiU"/>
+                <constraint firstAttribute="bottom" secondItem="J01-C7-FpS" secondAttribute="bottom" id="O66-eQ-ZFd"/>
+                <constraint firstItem="J01-C7-FpS" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="RLP-KZ-T36"/>
+                <constraint firstItem="gtP-A5-lWy" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="UHH-82-FeY"/>
+                <constraint firstItem="J01-C7-FpS" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="UTD-mp-Q5C"/>
+            </constraints>
+            <point key="canvasLocation" x="43.5" y="53.5"/>
+        </view>
+        <tapGestureRecognizer id="MTW-NU-NrR">
+            <connections>
+                <action selector="handleTapStartRead:" destination="-1" id="pF1-yI-LX4"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+    <resources>
+        <image name="arrow-right-white" width="11" height="19"/>
+    </resources>
+</document>

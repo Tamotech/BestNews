@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginCaptchaController" customModule="BestNews" customModuleProvider="target">
+            <connections>
+                <outlet property="captchaImgView" destination="YoJ-0B-CxO" id="0uO-DG-rrT"/>
+                <outlet property="captchaView" destination="BHf-2C-wFl" id="86B-u1-tlf"/>
+                <outlet property="view" destination="8qS-5l-9WM" id="mjt-C6-OqR"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="8qS-5l-9WM">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入图形验证码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BE9-M3-fCa">
+                    <rect key="frame" x="25" y="144" width="131" height="19"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <color key="textColor" red="0.80784313730000001" green="0.82352941180000006" blue="0.84705882349999995" alpha="0.79901541099999995" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BaX-d5-T72">
+                    <rect key="frame" x="25" y="183" width="325" height="40"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BHf-2C-wFl">
+                            <rect key="frame" x="0.0" y="0.0" width="195" height="40"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="captcha-icon" translatesAutoresizingMaskIntoConstraints="NO" id="YoJ-0B-CxO">
+                            <rect key="frame" x="195" y="4" width="94" height="36"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ccb-Jz-9em">
+                            <rect key="frame" x="289" y="4" width="36" height="36"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="36" id="MfN-ZM-bVm"/>
+                                <constraint firstAttribute="width" constant="36" id="u2s-OB-891"/>
+                            </constraints>
+                            <state key="normal" image="refresh-captcha"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" red="0.80784313730000001" green="0.82352941180000006" blue="0.84705882349999995" alpha="0.79901541099999995" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="handleTapRefresh:" destination="-1" eventType="touchUpInside" id="2tV-J3-Pwb"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="ccb-Jz-9em" secondAttribute="trailing" id="1qC-Io-gAH"/>
+                        <constraint firstItem="YoJ-0B-CxO" firstAttribute="bottom" secondItem="ccb-Jz-9em" secondAttribute="bottom" id="2ZK-Cq-LPY"/>
+                        <constraint firstItem="BHf-2C-wFl" firstAttribute="top" secondItem="BaX-d5-T72" secondAttribute="top" id="4Gu-6c-hQA"/>
+                        <constraint firstAttribute="bottom" secondItem="ccb-Jz-9em" secondAttribute="bottom" id="Cwd-DH-8Cc"/>
+                        <constraint firstItem="YoJ-0B-CxO" firstAttribute="leading" secondItem="BHf-2C-wFl" secondAttribute="trailing" id="EGf-m1-L2n"/>
+                        <constraint firstAttribute="height" constant="40" id="Ezn-BJ-pAu"/>
+                        <constraint firstItem="BHf-2C-wFl" firstAttribute="width" secondItem="BaX-d5-T72" secondAttribute="width" multiplier="3:5" id="GSL-o1-C7F"/>
+                        <constraint firstItem="BHf-2C-wFl" firstAttribute="leading" secondItem="BaX-d5-T72" secondAttribute="leading" id="V8U-YY-OhB"/>
+                        <constraint firstItem="YoJ-0B-CxO" firstAttribute="top" secondItem="ccb-Jz-9em" secondAttribute="top" id="a89-pj-zB3"/>
+                        <constraint firstItem="ccb-Jz-9em" firstAttribute="leading" secondItem="YoJ-0B-CxO" secondAttribute="trailing" id="l7X-ny-qQi"/>
+                        <constraint firstAttribute="bottom" secondItem="BHf-2C-wFl" secondAttribute="bottom" id="yi3-pq-Rvd"/>
+                    </constraints>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="attention-red" translatesAutoresizingMaskIntoConstraints="NO" id="9FB-aX-DyJ">
+                    <rect key="frame" x="25" y="238" width="16" height="16"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入正确的图形验证码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mxH-5d-acD">
+                    <rect key="frame" x="49" y="239" width="135" height="14.5"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                    <color key="textColor" red="0.99607843139999996" green="0.32549019610000002" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Baw-ku-K7A">
+                    <rect key="frame" x="25" y="293.5" width="325" height="80"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="80" id="Vgg-PX-hqH"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Baw-ku-K7A" firstAttribute="centerY" secondItem="8qS-5l-9WM" secondAttribute="centerY" id="3FL-uZ-1jA"/>
+                <constraint firstItem="mxH-5d-acD" firstAttribute="leading" secondItem="9FB-aX-DyJ" secondAttribute="trailing" constant="8" id="4PQ-qN-g54"/>
+                <constraint firstItem="BE9-M3-fCa" firstAttribute="leading" secondItem="8qS-5l-9WM" secondAttribute="leading" constant="25" id="56K-wO-BEw"/>
+                <constraint firstItem="Baw-ku-K7A" firstAttribute="leading" secondItem="8qS-5l-9WM" secondAttribute="leading" constant="25" id="A1K-hQ-LqX"/>
+                <constraint firstItem="BaX-d5-T72" firstAttribute="leading" secondItem="8qS-5l-9WM" secondAttribute="leading" constant="25" id="Mrz-BA-05y"/>
+                <constraint firstAttribute="trailing" secondItem="Baw-ku-K7A" secondAttribute="trailing" constant="25" id="Nhq-Ld-NDS"/>
+                <constraint firstItem="Baw-ku-K7A" firstAttribute="top" secondItem="mxH-5d-acD" secondAttribute="bottom" constant="40" id="Qf5-79-Hg6"/>
+                <constraint firstItem="BaX-d5-T72" firstAttribute="top" secondItem="BE9-M3-fCa" secondAttribute="bottom" constant="20" id="WFP-MU-uSu"/>
+                <constraint firstItem="9FB-aX-DyJ" firstAttribute="leading" secondItem="BaX-d5-T72" secondAttribute="leading" id="fOm-3X-jZY"/>
+                <constraint firstItem="9FB-aX-DyJ" firstAttribute="top" secondItem="BaX-d5-T72" secondAttribute="bottom" constant="15" id="iSM-Pz-nmA"/>
+                <constraint firstItem="mxH-5d-acD" firstAttribute="centerY" secondItem="9FB-aX-DyJ" secondAttribute="centerY" id="kH7-Mh-pka"/>
+                <constraint firstAttribute="trailing" secondItem="BaX-d5-T72" secondAttribute="trailing" constant="25" id="uVu-rL-0rU"/>
+            </constraints>
+            <point key="canvasLocation" x="33.5" y="53.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="attention-red" width="16" height="16"/>
+        <image name="captcha-icon" width="100" height="32"/>
+        <image name="refresh-captcha" width="20" height="18"/>
+    </resources>
+</document>

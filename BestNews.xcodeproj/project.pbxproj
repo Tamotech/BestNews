@@ -8,6 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		0214D8E7CC8C45B6FE9D066D /* Pods_BestNews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEA9997CD925F2C7B1649D76 /* Pods_BestNews.framework */; };
+		5A0979B71F9F2632004BB0AD /* SwiftyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0979B51F9F23A8004BB0AD /* SwiftyTextField.swift */; };
+		5A0979B81F9F2632004BB0AD /* SwiftyVerificationCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0979B61F9F23A8004BB0AD /* SwiftyVerificationCodeView.swift */; };
+		5A0A13951F9EB1B400DF57B9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0A13931F9EB1B400DF57B9 /* LoginViewController.swift */; };
+		5A0A13961F9EB1B400DF57B9 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A0A13941F9EB1B400DF57B9 /* LoginViewController.xib */; };
+		5A0A13991F9EB7C300DF57B9 /* LoginCaptchaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0A13971F9EB7C300DF57B9 /* LoginCaptchaController.swift */; };
+		5A0A139A1F9EB7C300DF57B9 /* LoginCaptchaController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A0A13981F9EB7C300DF57B9 /* LoginCaptchaController.xib */; };
+		5A0A139D1F9EBC4100DF57B9 /* LoginSMSCaptchaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0A139B1F9EBC4100DF57B9 /* LoginSMSCaptchaController.swift */; };
+		5A0A139E1F9EBC4100DF57B9 /* LoginSMSCaptchaController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A0A139C1F9EBC4100DF57B9 /* LoginSMSCaptchaController.xib */; };
 		5A0D23C31F83225A00FC9D4D /* NewsCommentBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0D23C21F83225A00FC9D4D /* NewsCommentBar.swift */; };
 		5A0D23C61F832BD000FC9D4D /* NewsDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0D23C41F832BD000FC9D4D /* NewsDetailController.swift */; };
 		5A0D23C71F832BD000FC9D4D /* NewsDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A0D23C51F832BD000FC9D4D /* NewsDetailController.xib */; };
@@ -58,6 +66,11 @@
 		5AC6848A1F8054C1006CEB53 /* SingleBigPhotoNewsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AC684881F8054C1006CEB53 /* SingleBigPhotoNewsCell.xib */; };
 		5AC684931F807BBD006CEB53 /* FastNewsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AC684911F807BBD006CEB53 /* FastNewsController.swift */; };
 		5AC684941F807BBD006CEB53 /* FastNewsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AC684921F807BBD006CEB53 /* FastNewsController.xib */; };
+		5ACCDD2B1F9F75CE004D3809 /* SelectInterestItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACCDD291F9F75CE004D3809 /* SelectInterestItemController.swift */; };
+		5ACCDD2C1F9F75CE004D3809 /* SelectInterestItemController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5ACCDD2A1F9F75CE004D3809 /* SelectInterestItemController.xib */; };
+		5ACCDD2F1F9F7AEA004D3809 /* InterestColumnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACCDD2D1F9F7AEA004D3809 /* InterestColumnCell.swift */; };
+		5ACCDD301F9F7AEA004D3809 /* InterestColumnCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5ACCDD2E1F9F7AEA004D3809 /* InterestColumnCell.xib */; };
+		5ACCDD321F9F809F004D3809 /* InterestColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACCDD311F9F809F004D3809 /* InterestColumn.swift */; };
 		5AF9CE361F813F06002AA4A6 /* CircleHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF9CE341F813F06002AA4A6 /* CircleHomeViewController.swift */; };
 		5AF9CE371F813F06002AA4A6 /* CircleHomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9CE351F813F06002AA4A6 /* CircleHomeViewController.xib */; };
 		5AF9CE3D1F814880002AA4A6 /* ProfileCenterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF9CE3B1F814880002AA4A6 /* ProfileCenterCell.swift */; };
@@ -108,6 +121,14 @@
 /* Begin PBXFileReference section */
 		11340A3AC197F199C7182F7A /* Pods-BestNews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BestNews.release.xcconfig"; path = "Pods/Target Support Files/Pods-BestNews/Pods-BestNews.release.xcconfig"; sourceTree = "<group>"; };
 		49FBDE1023696FAD0FCB9971 /* Pods-BestNews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BestNews.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BestNews/Pods-BestNews.debug.xcconfig"; sourceTree = "<group>"; };
+		5A0979B51F9F23A8004BB0AD /* SwiftyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyTextField.swift; sourceTree = "<group>"; };
+		5A0979B61F9F23A8004BB0AD /* SwiftyVerificationCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyVerificationCodeView.swift; sourceTree = "<group>"; };
+		5A0A13931F9EB1B400DF57B9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		5A0A13941F9EB1B400DF57B9 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
+		5A0A13971F9EB7C300DF57B9 /* LoginCaptchaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCaptchaController.swift; sourceTree = "<group>"; };
+		5A0A13981F9EB7C300DF57B9 /* LoginCaptchaController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginCaptchaController.xib; sourceTree = "<group>"; };
+		5A0A139B1F9EBC4100DF57B9 /* LoginSMSCaptchaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSMSCaptchaController.swift; sourceTree = "<group>"; };
+		5A0A139C1F9EBC4100DF57B9 /* LoginSMSCaptchaController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginSMSCaptchaController.xib; sourceTree = "<group>"; };
 		5A0D23C21F83225A00FC9D4D /* NewsCommentBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCommentBar.swift; sourceTree = "<group>"; };
 		5A0D23C41F832BD000FC9D4D /* NewsDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailController.swift; sourceTree = "<group>"; };
 		5A0D23C51F832BD000FC9D4D /* NewsDetailController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsDetailController.xib; sourceTree = "<group>"; };
@@ -158,6 +179,11 @@
 		5AC684881F8054C1006CEB53 /* SingleBigPhotoNewsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SingleBigPhotoNewsCell.xib; sourceTree = "<group>"; };
 		5AC684911F807BBD006CEB53 /* FastNewsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastNewsController.swift; sourceTree = "<group>"; };
 		5AC684921F807BBD006CEB53 /* FastNewsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FastNewsController.xib; sourceTree = "<group>"; };
+		5ACCDD291F9F75CE004D3809 /* SelectInterestItemController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectInterestItemController.swift; sourceTree = "<group>"; };
+		5ACCDD2A1F9F75CE004D3809 /* SelectInterestItemController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SelectInterestItemController.xib; sourceTree = "<group>"; };
+		5ACCDD2D1F9F7AEA004D3809 /* InterestColumnCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestColumnCell.swift; sourceTree = "<group>"; };
+		5ACCDD2E1F9F7AEA004D3809 /* InterestColumnCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InterestColumnCell.xib; sourceTree = "<group>"; };
+		5ACCDD311F9F809F004D3809 /* InterestColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestColumn.swift; sourceTree = "<group>"; };
 		5AF9CE341F813F06002AA4A6 /* CircleHomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleHomeViewController.swift; sourceTree = "<group>"; };
 		5AF9CE351F813F06002AA4A6 /* CircleHomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CircleHomeViewController.xib; sourceTree = "<group>"; };
 		5AF9CE3B1F814880002AA4A6 /* ProfileCenterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCenterCell.swift; sourceTree = "<group>"; };
@@ -220,6 +246,58 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A0979B41F9F238B004BB0AD /* SwiftyInputField */ = {
+			isa = PBXGroup;
+			children = (
+				5A0979B51F9F23A8004BB0AD /* SwiftyTextField.swift */,
+				5A0979B61F9F23A8004BB0AD /* SwiftyVerificationCodeView.swift */,
+			);
+			name = SwiftyInputField;
+			sourceTree = "<group>";
+		};
+		5A0A138F1F9EB16800DF57B9 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				5A0A13911F9EB18200DF57B9 /* Model */,
+				5A0A13921F9EB18800DF57B9 /* View */,
+				5A0A13901F9EB17700DF57B9 /* Controller */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		5A0A13901F9EB17700DF57B9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				5A0979B41F9F238B004BB0AD /* SwiftyInputField */,
+				5A0A13931F9EB1B400DF57B9 /* LoginViewController.swift */,
+				5A0A13941F9EB1B400DF57B9 /* LoginViewController.xib */,
+				5A0A13971F9EB7C300DF57B9 /* LoginCaptchaController.swift */,
+				5A0A13981F9EB7C300DF57B9 /* LoginCaptchaController.xib */,
+				5A0A139B1F9EBC4100DF57B9 /* LoginSMSCaptchaController.swift */,
+				5A0A139C1F9EBC4100DF57B9 /* LoginSMSCaptchaController.xib */,
+				5ACCDD291F9F75CE004D3809 /* SelectInterestItemController.swift */,
+				5ACCDD2A1F9F75CE004D3809 /* SelectInterestItemController.xib */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		5A0A13911F9EB18200DF57B9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5ACCDD311F9F809F004D3809 /* InterestColumn.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		5A0A13921F9EB18800DF57B9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5ACCDD2D1F9F7AEA004D3809 /* InterestColumnCell.swift */,
+				5ACCDD2E1F9F7AEA004D3809 /* InterestColumnCell.xib */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		5A0D23BE1F831F0C00FC9D4D /* Component */ = {
 			isa = PBXGroup;
 			children = (
@@ -483,6 +561,7 @@
 		CC2906F51F65A03A001894DA /* Class */ = {
 			isa = PBXGroup;
 			children = (
+				5A0A138F1F9EB16800DF57B9 /* Login */,
 				CC2906F61F65A048001894DA /* Home */,
 				CC2906F71F65A052001894DA /* Activity */,
 				CC2906F81F65A072001894DA /* Circle */,
@@ -657,12 +736,15 @@
 				5A5446081F84A6220004F192 /* ActivityTicketCell.xib in Resources */,
 				5AF9CE3E1F814880002AA4A6 /* ProfileCenterCell.xib in Resources */,
 				5A0D23CE1F839B2900FC9D4D /* CommentCell.xib in Resources */,
+				5ACCDD301F9F7AEA004D3809 /* InterestColumnCell.xib in Resources */,
 				5A32A7001F92FDF300773884 /* HomeSearchController.xib in Resources */,
+				5ACCDD2C1F9F75CE004D3809 /* SelectInterestItemController.xib in Resources */,
 				5A0D23C71F832BD000FC9D4D /* NewsDetailController.xib in Resources */,
 				5AC684821F7FFC2E006CEB53 /* ThreePhotosNewsCell.xib in Resources */,
 				5A32A7081F930CC100773884 /* MessageCenterListCell.xib in Resources */,
 				5AC684941F807BBD006CEB53 /* FastNewsController.xib in Resources */,
 				5AC6848A1F8054C1006CEB53 /* SingleBigPhotoNewsCell.xib in Resources */,
+				5A0A139E1F9EBC4100DF57B9 /* LoginSMSCaptchaController.xib in Resources */,
 				CCDB6D501F7A32B40012432E /* TopicBannerCell.xib in Resources */,
 				CC2907011F65A0C3001894DA /* ActivityController.xib in Resources */,
 				5AFF34A31F93A78600D8115E /* BaseShareViewController.xib in Resources */,
@@ -689,6 +771,8 @@
 				5A5446041F84A13E0004F192 /* ActivityTicketListController.xib in Resources */,
 				CCDB6D541F7A39CE0012432E /* TopicImageCell.xib in Resources */,
 				5A90CFF31F81273900F16869 /* LiveListCell.xib in Resources */,
+				5A0A13961F9EB1B400DF57B9 /* LoginViewController.xib in Resources */,
+				5A0A139A1F9EB7C300DF57B9 /* LoginCaptchaController.xib in Resources */,
 				CCDB6D4C1F7A2E7A0012432E /* HomeContentViewController.xib in Resources */,
 				5A90CFEF1F8123F500F16869 /* LiveListController.xib in Resources */,
 				5A90D0041F8138EE00F16869 /* OrgnizationListController.xib in Resources */,
@@ -750,6 +834,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A0979B71F9F2632004BB0AD /* SwiftyTextField.swift in Sources */,
+				5A0979B81F9F2632004BB0AD /* SwiftyVerificationCodeView.swift in Sources */,
 				CCDB6D3B1F79C6DF0012432E /* TYPageStyle.swift in Sources */,
 				5A90CFE61F80F7F900F16869 /* SubscriptListCell.swift in Sources */,
 				CCDB6D3C1F79C6DF0012432E /* TYPageTitleView.swift in Sources */,
@@ -758,6 +844,7 @@
 				5A0D23CD1F839B2900FC9D4D /* CommentCell.swift in Sources */,
 				5A5446031F84A13E0004F192 /* ActivityTicketListController.swift in Sources */,
 				5A90CFF21F81273900F16869 /* LiveListCell.swift in Sources */,
+				5ACCDD2B1F9F75CE004D3809 /* SelectInterestItemController.swift in Sources */,
 				CC2906E11F659E77001894DA /* BaseNavigationController.swift in Sources */,
 				CC29070B1F65A323001894DA /* BaseTabBarView.swift in Sources */,
 				CC2906EF1F659EBA001894DA /* UIView+Position.swift in Sources */,
@@ -778,12 +865,16 @@
 				5AF9CE361F813F06002AA4A6 /* CircleHomeViewController.swift in Sources */,
 				5A38B6BC1F808BA600AF4A91 /* FastNewsSectionHeaderView.swift in Sources */,
 				5A38B6C51F80ED1800AF4A91 /* ColumesCollectionViewCell.swift in Sources */,
+				5ACCDD321F9F809F004D3809 /* InterestColumn.swift in Sources */,
+				5A0A13991F9EB7C300DF57B9 /* LoginCaptchaController.swift in Sources */,
 				5A32A6FF1F92FDF300773884 /* HomeSearchController.swift in Sources */,
 				5AC684931F807BBD006CEB53 /* FastNewsController.swift in Sources */,
 				5A47F2E71F92EA0700C483C1 /* SelectColumeView.swift in Sources */,
 				CC2906FC1F65A0AB001894DA /* MainController.swift in Sources */,
 				CC2906F41F65A028001894DA /* BestTabbarViewController.swift in Sources */,
+				5A0A139D1F9EBC4100DF57B9 /* LoginSMSCaptchaController.swift in Sources */,
 				5A0D23D01F83A07300FC9D4D /* CommentListController.swift in Sources */,
+				5A0A13951F9EB1B400DF57B9 /* LoginViewController.swift in Sources */,
 				CC2906EB1F659EBA001894DA /* StringExtension.swift in Sources */,
 				5A90D0031F8138EE00F16869 /* OrgnizationListController.swift in Sources */,
 				5AC684811F7FFC2E006CEB53 /* ThreePhotosNewsCell.swift in Sources */,
@@ -791,6 +882,7 @@
 				5A32A70F1F93353700773884 /* BaseSegmentControl.swift in Sources */,
 				CC2906F21F659F58001894DA /* ConstantHelper.swift in Sources */,
 				5AF9CE3D1F814880002AA4A6 /* ProfileCenterCell.swift in Sources */,
+				5ACCDD2F1F9F7AEA004D3809 /* InterestColumnCell.swift in Sources */,
 				CCDB6D531F7A39CE0012432E /* TopicImageCell.swift in Sources */,
 				CCDB6D411F79D6C30012432E /* TYPageView.swift in Sources */,
 				CC0170621F6840D00069D38B /* ActivityDetailController.swift in Sources */,
