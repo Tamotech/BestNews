@@ -111,6 +111,9 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
         guard let vc = self.parent else {
             return
         }
+        if !(vc is MainController) {
+            return
+        }
         let parent = vc as! MainController
         if offset.y < 50 {
             parent.navBarTurnBg(white: false)

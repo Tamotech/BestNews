@@ -15,6 +15,9 @@ class LoginSMSCaptchaController: BaseViewController, SwiftyVerificationCodeViewD
     
     @IBOutlet weak var captchaView: UIView!
     
+    var phone: String?
+    var smsCode: String?
+    
     @IBOutlet weak var loginBtn: UIButton!
     lazy var codeView: SwiftyVerificationCodeView = {
         let wid = (self.captchaView.width-16*5)/4
@@ -42,6 +45,7 @@ class LoginSMSCaptchaController: BaseViewController, SwiftyVerificationCodeViewD
         let close = UIBarButtonItem(image: #imageLiteral(resourceName: "close-light-gray"), style: .plain, target: self, action: #selector(handleTapClose(_:)))
         navigationItem.rightBarButtonItem = close
         loginBtnEnable(enable: false)
+        sendSMSCode()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -55,9 +59,30 @@ class LoginSMSCaptchaController: BaseViewController, SwiftyVerificationCodeViewD
     }
     
     
+    func sendSMSCode() {
+        guard let ph = self.phone else {
+            return
+        }
+        APIRequest.sendSMSCode(phone: ph) { [weak self](success, sms) in
+            if success {
+                self?.smsCode = sms
+                self?.codeView.setText(text: sms!)
+                self?.loginBtnEnable(enable: true)
+                SessionManager.sharedInstance.loginInfo.phone = ph
+                SessionManager.sharedInstance.loginInfo.captcha = sms!
+            }
+        }
+    }
+    
     //MARK: - vertificationView Delegate
     func verificationCodeDidFinishedInput(verificationCodeView: SwiftyVerificationCodeView, code: String) {
-        loginBtnEnable(enable: true)
+        
+        if smsCode != nil && smsCode == code {
+            
+            SessionManager.sharedInstance.loginInfo.phone = phone!
+            SessionManager.sharedInstance.loginInfo.captcha = code
+            loginBtnEnable(enable: true)
+        }
     }
     
     //MARK: - actions
@@ -66,14 +91,34 @@ class LoginSMSCaptchaController: BaseViewController, SwiftyVerificationCodeViewD
         navigationController?.dismiss(animated: true, completion: nil)
     }
     
-    @IBAction func handleTapLogin(_ sender: Any) {
+    @IBAction func handleTapLogin(_ sender: Any?) {
         
-        let vc = SelectInterestItemController(nibName: "SelectInterestItemController", bundle: nil)
-        navigationController?.pushViewController(vc, animated: true)
+        SessionManager.sharedInstance.login { [weak self](JSON, code, msg) in
+            if code == 0 {
+                let vc = SelectInterestItemController(nibName: "SelectInterestItemController", bundle: nil)
+                self?.navigationController?.pushViewController(vc, animated: true)
+                BLHUDBarManager.showSuccess(msg: "登陆成功", seconds: 2)
+            }
+            else if code == -114{
+                //未注册
+                SessionManager.sharedInstance.regist(results: { (JSON1, code1, msg1) in
+                    if code1 == 0 {
+                        self?.handleTapLogin(nil)
+                    }
+                    else {
+                        BLHUDBarManager.showError(msg: msg1)
+                    }
+                })
+            }
+            else {
+                BLHUDBarManager.showError(msg: msg)
+            }
+        }
     }
     
     @IBAction func handleTapResend(_ sender: Any) {
-        
+        sendSMSCode()
+        BLHUDBarManager.showSuccess(msg: "验证码已发送", seconds: 1)
     }
     
     @IBAction func handleTapProtocol(_ sender: Any) {

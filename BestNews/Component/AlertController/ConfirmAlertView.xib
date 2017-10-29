@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="xia-su-FyY" customClass="ConfirmAlertView" customModule="Summer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iN0-l3-epB">
+                    <rect key="frame" x="52.5" y="238" width="270" height="190"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="清零" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOC-7u-cDs">
+                            <rect key="frame" x="115" y="20" width="41" height="24"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="24" id="rb9-pg-tkk"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="确定清零步数？" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ivj-Qb-ahP">
+                            <rect key="frame" x="0.0" y="50" width="270" height="85"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uVt-yw-1zR">
+                            <rect key="frame" x="0.0" y="141" width="270" height="1"/>
+                            <color key="backgroundColor" red="0.87058823529411766" green="0.87058823529411766" blue="0.87058823529411766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="lQv-bF-LW1"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="44A-0F-mVt">
+                            <rect key="frame" x="0.0" y="142" width="120" height="48"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <state key="normal" title="取消">
+                                <color key="titleColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="handleTapCancelBtn:" destination="xia-su-FyY" eventType="touchUpInside" id="1Me-Id-Mw5"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dJE-BE-RM3">
+                            <rect key="frame" x="150" y="142" width="120" height="48"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <state key="normal" title="确定">
+                                <color key="titleColor" red="0.0" green="0.61176470589999998" blue="0.87058823529999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="handleTapConfirmBtn:" destination="xia-su-FyY" eventType="touchUpInside" id="V1V-4w-SL0"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="270" id="08F-Hh-CSf"/>
+                        <constraint firstItem="ivj-Qb-ahP" firstAttribute="top" secondItem="AOC-7u-cDs" secondAttribute="bottom" constant="6" id="1Vi-1k-m2f"/>
+                        <constraint firstAttribute="trailing" secondItem="ivj-Qb-ahP" secondAttribute="trailing" id="2NU-84-rpn"/>
+                        <constraint firstItem="AOC-7u-cDs" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="9m9-Cx-Roy"/>
+                        <constraint firstAttribute="bottom" secondItem="uVt-yw-1zR" secondAttribute="bottom" constant="48" id="D4B-04-5wp"/>
+                        <constraint firstAttribute="bottom" secondItem="44A-0F-mVt" secondAttribute="bottom" id="Dwd-7c-Epa"/>
+                        <constraint firstItem="dJE-BE-RM3" firstAttribute="top" secondItem="44A-0F-mVt" secondAttribute="top" id="EMF-PY-4nF"/>
+                        <constraint firstItem="dJE-BE-RM3" firstAttribute="bottom" secondItem="44A-0F-mVt" secondAttribute="bottom" id="GGy-DS-pvK"/>
+                        <constraint firstItem="dJE-BE-RM3" firstAttribute="leading" secondItem="44A-0F-mVt" secondAttribute="trailing" constant="30" id="LKE-8f-etj"/>
+                        <constraint firstItem="44A-0F-mVt" firstAttribute="top" secondItem="uVt-yw-1zR" secondAttribute="bottom" id="LUY-eh-lv5"/>
+                        <constraint firstItem="ivj-Qb-ahP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="MjI-0x-GN6"/>
+                        <constraint firstItem="44A-0F-mVt" firstAttribute="width" secondItem="dJE-BE-RM3" secondAttribute="width" id="Qff-LW-37j"/>
+                        <constraint firstAttribute="height" constant="190" id="Rzu-ag-945"/>
+                        <constraint firstAttribute="trailing" secondItem="uVt-yw-1zR" secondAttribute="trailing" id="TJv-27-mAc"/>
+                        <constraint firstItem="uVt-yw-1zR" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="WdS-9p-1dy"/>
+                        <constraint firstItem="uVt-yw-1zR" firstAttribute="top" secondItem="ivj-Qb-ahP" secondAttribute="bottom" constant="6" id="Zfc-hh-kn9"/>
+                        <constraint firstItem="44A-0F-mVt" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Zzz-wB-0yK"/>
+                        <constraint firstItem="AOC-7u-cDs" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="dVe-uW-JWs"/>
+                        <constraint firstAttribute="trailing" secondItem="dJE-BE-RM3" secondAttribute="trailing" id="j4H-fc-NNx"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.50433761503067487" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="iN0-l3-epB" firstAttribute="centerX" secondItem="xia-su-FyY" secondAttribute="centerX" id="3DN-v8-1VO"/>
+                <constraint firstItem="iN0-l3-epB" firstAttribute="centerY" secondItem="xia-su-FyY" secondAttribute="centerY" id="Mhm-nf-w4o"/>
+            </constraints>
+            <connections>
+                <outlet property="cancelBtn" destination="44A-0F-mVt" id="D7i-kS-g5h"/>
+                <outlet property="confirmBtn" destination="dJE-BE-RM3" id="lzw-pN-Gsq"/>
+                <outlet property="msgLabel" destination="ivj-Qb-ahP" id="YJ7-kR-OzZ"/>
+                <outlet property="titleLabel" destination="AOC-7u-cDs" id="xne-Uv-XjR"/>
+            </connections>
+        </view>
+    </objects>
+</document>

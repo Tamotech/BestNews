@@ -9,6 +9,8 @@
 import UIKit
 
 class MeController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var avatarView: UIButton!
@@ -23,6 +25,7 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var activityAmountLb: UILabel!
     
+    @IBOutlet weak var articleAmountLb: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
     let settingData: [(String, UIImage)] = [("实名认证", #imageLiteral(resourceName: "me_identity")),
                        ("开通VIP", #imageLiteral(resourceName: "me_open_vip")),
@@ -68,6 +71,38 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
         let vc = MessageCenterController()
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    
+    @IBAction func handleTapAvatarBtn(_ sender: UIButton) {
+        let vc = ProfileCenterController(nibName: "ProfileCenterController", bundle: nil)
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    ///点击已认证
+    @IBAction func handleTapIdentifyBtn(_ sender: UIButton) {
+        
+    }
+    
+    @IBAction func handleTapSubscripBtn(_ sender: Any) {
+        let vc = MySubscriptListController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func handleTapCollection(_ sender: Any) {
+        let vc = MeCollectionViewController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func handleTapActivity(_ sender: UITapGestureRecognizer) {
+        let vc = MyActivityListController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func handleTapArticle(_ sender: UITapGestureRecognizer) {
+        let vc = MyArticleListController()
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
 
     //MARK: - tableView
     func numberOfSections(in tableView: UITableView) -> Int {

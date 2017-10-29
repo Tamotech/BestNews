@@ -64,6 +64,20 @@ class SwiftyVerificationCodeView: UIView {
         
     }
     
+    func setText(text: String) {
+        var len = numOfRect
+        if text.characters.count < len {
+            len = text.characters.count
+        }
+        for i in 0..<len {
+            let start = text.index(text.startIndex, offsetBy: i)
+            let end = text.index(start, offsetBy: 1)
+            let subText = text.substring(with: start..<end)
+            let tv = textfieldarray[i]
+            tv.text = subText
+        }
+    }
+    
 }
 
 // MARK: - UI 相关方法

@@ -63,6 +63,7 @@ extension TYPageTitleView{
         scrollView.addSubview(lineView)
         //初始化title
         setupLabels()
+        self.backgroundColor = style.backgroundColor
     }
     
     // MARK: 初始化Item
@@ -143,7 +144,7 @@ extension TYPageTitleView{
     private func ajustViewPostion(_ selectLabel:UILabel){
         let preLabel = titleLabels[currentIndex]
         currentIndex = selectLabel.tag
-        self.backgroundColor = UIColor.clear
+        self.backgroundColor = style.backgroundColor
         preLabel.textColor = style.normalColor
         selectLabel.textColor = style.selectColor
         

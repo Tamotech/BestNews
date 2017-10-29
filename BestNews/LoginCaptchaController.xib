@@ -14,6 +14,7 @@
             <connections>
                 <outlet property="captchaImgView" destination="YoJ-0B-CxO" id="0uO-DG-rrT"/>
                 <outlet property="captchaView" destination="BHf-2C-wFl" id="86B-u1-tlf"/>
+                <outlet property="tipView" destination="4X5-79-Lfe" id="zOq-nX-rXa"/>
                 <outlet property="view" destination="8qS-5l-9WM" id="mjt-C6-OqR"/>
             </connections>
         </placeholder>
@@ -22,6 +23,9 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login-bg" translatesAutoresizingMaskIntoConstraints="NO" id="7Ej-Li-f9h">
+                    <rect key="frame" x="123" y="0.0" width="252" height="121"/>
+                </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入图形验证码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BE9-M3-fCa">
                     <rect key="frame" x="25" y="144" width="131" height="19"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -35,7 +39,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="195" height="40"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </view>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="captcha-icon" translatesAutoresizingMaskIntoConstraints="NO" id="YoJ-0B-CxO">
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YoJ-0B-CxO">
                             <rect key="frame" x="195" y="4" width="94" height="36"/>
                         </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ccb-Jz-9em">
@@ -73,15 +77,28 @@
                         <constraint firstAttribute="bottom" secondItem="BHf-2C-wFl" secondAttribute="bottom" id="yi3-pq-Rvd"/>
                     </constraints>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="attention-red" translatesAutoresizingMaskIntoConstraints="NO" id="9FB-aX-DyJ">
-                    <rect key="frame" x="25" y="238" width="16" height="16"/>
-                </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入正确的图形验证码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mxH-5d-acD">
-                    <rect key="frame" x="49" y="239" width="135" height="14.5"/>
-                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
-                    <color key="textColor" red="0.99607843139999996" green="0.32549019610000002" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4X5-79-Lfe" userLabel="tipView">
+                    <rect key="frame" x="25" y="238" width="325" height="20"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="attention-red" translatesAutoresizingMaskIntoConstraints="NO" id="TXf-kc-RXk">
+                            <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入正确的图形验证码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uoT-gl-6po">
+                            <rect key="frame" x="24" y="1" width="135" height="14.5"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                            <color key="textColor" red="0.99607843139999996" green="0.32549019610000002" blue="0.34509803919999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="0br-xG-vWy"/>
+                        <constraint firstItem="TXf-kc-RXk" firstAttribute="top" secondItem="4X5-79-Lfe" secondAttribute="top" id="64B-pZ-C3f"/>
+                        <constraint firstItem="TXf-kc-RXk" firstAttribute="leading" secondItem="4X5-79-Lfe" secondAttribute="leading" id="8dD-nw-gVG"/>
+                        <constraint firstItem="uoT-gl-6po" firstAttribute="centerY" secondItem="TXf-kc-RXk" secondAttribute="centerY" id="Hnl-ed-PEX"/>
+                        <constraint firstItem="uoT-gl-6po" firstAttribute="leading" secondItem="TXf-kc-RXk" secondAttribute="trailing" constant="8" id="uyk-vL-t4j"/>
+                    </constraints>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Baw-ku-K7A">
                     <rect key="frame" x="25" y="293.5" width="325" height="80"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -93,16 +110,17 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Baw-ku-K7A" firstAttribute="centerY" secondItem="8qS-5l-9WM" secondAttribute="centerY" id="3FL-uZ-1jA"/>
-                <constraint firstItem="mxH-5d-acD" firstAttribute="leading" secondItem="9FB-aX-DyJ" secondAttribute="trailing" constant="8" id="4PQ-qN-g54"/>
                 <constraint firstItem="BE9-M3-fCa" firstAttribute="leading" secondItem="8qS-5l-9WM" secondAttribute="leading" constant="25" id="56K-wO-BEw"/>
                 <constraint firstItem="Baw-ku-K7A" firstAttribute="leading" secondItem="8qS-5l-9WM" secondAttribute="leading" constant="25" id="A1K-hQ-LqX"/>
+                <constraint firstItem="4X5-79-Lfe" firstAttribute="trailing" secondItem="BaX-d5-T72" secondAttribute="trailing" id="HDc-yS-dXu"/>
+                <constraint firstItem="7Ej-Li-f9h" firstAttribute="top" secondItem="8qS-5l-9WM" secondAttribute="top" id="MM9-B6-4pZ"/>
                 <constraint firstItem="BaX-d5-T72" firstAttribute="leading" secondItem="8qS-5l-9WM" secondAttribute="leading" constant="25" id="Mrz-BA-05y"/>
                 <constraint firstAttribute="trailing" secondItem="Baw-ku-K7A" secondAttribute="trailing" constant="25" id="Nhq-Ld-NDS"/>
-                <constraint firstItem="Baw-ku-K7A" firstAttribute="top" secondItem="mxH-5d-acD" secondAttribute="bottom" constant="40" id="Qf5-79-Hg6"/>
+                <constraint firstAttribute="trailing" secondItem="7Ej-Li-f9h" secondAttribute="trailing" id="QaN-EJ-7mF"/>
+                <constraint firstItem="4X5-79-Lfe" firstAttribute="leading" secondItem="BaX-d5-T72" secondAttribute="leading" id="U45-bt-mNJ"/>
                 <constraint firstItem="BaX-d5-T72" firstAttribute="top" secondItem="BE9-M3-fCa" secondAttribute="bottom" constant="20" id="WFP-MU-uSu"/>
-                <constraint firstItem="9FB-aX-DyJ" firstAttribute="leading" secondItem="BaX-d5-T72" secondAttribute="leading" id="fOm-3X-jZY"/>
-                <constraint firstItem="9FB-aX-DyJ" firstAttribute="top" secondItem="BaX-d5-T72" secondAttribute="bottom" constant="15" id="iSM-Pz-nmA"/>
-                <constraint firstItem="mxH-5d-acD" firstAttribute="centerY" secondItem="9FB-aX-DyJ" secondAttribute="centerY" id="kH7-Mh-pka"/>
+                <constraint firstItem="4X5-79-Lfe" firstAttribute="top" secondItem="BaX-d5-T72" secondAttribute="bottom" constant="15" id="dY7-IN-mho"/>
+                <constraint firstItem="Baw-ku-K7A" firstAttribute="top" secondItem="4X5-79-Lfe" secondAttribute="bottom" constant="36" id="gtm-hA-o8J"/>
                 <constraint firstAttribute="trailing" secondItem="BaX-d5-T72" secondAttribute="trailing" constant="25" id="uVu-rL-0rU"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="53.5"/>
@@ -110,7 +128,7 @@
     </objects>
     <resources>
         <image name="attention-red" width="16" height="16"/>
-        <image name="captcha-icon" width="100" height="32"/>
+        <image name="login-bg" width="252" height="121"/>
         <image name="refresh-captcha" width="20" height="18"/>
     </resources>
 </document>

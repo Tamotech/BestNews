@@ -8,6 +8,9 @@
 
 import UIKit
 
+let kLoginWechatSuccessNotifi = Notification.Name(rawValue:"Login_Wechat_Success_Notify_key")
+let kAppDidBecomeActiveNotify = Notification.Name("App_did_become_active_key")
+let kUserInfoDidUpdateNotify = Notification.Name("user_info_did_update_noti_key")
 
 let screenWidth = UIScreen.main.bounds.size.width
 let screenHeight = UIScreen.main.bounds.size.height

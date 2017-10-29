@@ -27,4 +27,5 @@ class TYPageStyle {
     var isShowBottomLine:Bool = true        //是否显示底部的线
     var bottomLineColor:UIColor = themeColor!
     var bottomAlginLabel:Bool = true        //bottomline跟随文字标签宽度  默认跟随label的宽度 false跟随labelText的宽度
+    var backgroundColor: UIColor = UIColor.clear
 }
