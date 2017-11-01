@@ -10,16 +10,16 @@ import UIKit
 import IQKeyboardManagerSwift
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
 
     var window: UIWindow?
-
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
         window?.rootViewController = BestTabbarViewController()
         
+        WXApi.registerApp(wxAppId)
         IQKeyboardManager.sharedManager().enable = true
         
         return true
@@ -47,6 +47,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    
+    //MARK: - Wechat
+    
+    func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
+        return WXApi.handleOpen(url, delegate: self)
+    }
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        return WXApi.handleOpen(url, delegate: self)
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        return WXApi.handleOpen(url, delegate: self)
+    }
+    
+    func onReq(_ req: BaseReq!) {
+        print(req)
+    }
+    
+    func onResp(_ resp: BaseResp!) {
+        print(resp)
+        if resp is SendAuthResp {
+            let send = resp as! SendAuthResp
+            let info = ["code": send.code,
+                        "state": send.state,
+                        "country": send.country,
+                        "lang": send.lang]
+            NotificationCenter.default.post(name: kLoginWechatSuccessNotifi, object: info)
+        }
+    }
 
 }
+
 

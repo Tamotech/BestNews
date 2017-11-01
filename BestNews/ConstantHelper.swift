@@ -8,7 +8,17 @@
 
 import UIKit
 
+let wxAppId = "wx3b03f4dfa9d44785"
+let wxSecretKey = "3bd9585d9accda261e9b85276ba0c866"
+let jPushKey = "1c5b0bf1379cf38b6a436146"
+let jPushSecret = "02348df4cadd5293af3e7c0a"
+
+let qqAppID = "1106506886"
+let qqAppKey = "x0Sb91LBlbKBkYum"
+
+
 let kLoginWechatSuccessNotifi = Notification.Name(rawValue:"Login_Wechat_Success_Notify_key")
+let kUserLoginStatusChangeNoti = Notification.Name("user_login_status_change_key")
 let kAppDidBecomeActiveNotify = Notification.Name("App_did_become_active_key")
 let kUserInfoDidUpdateNotify = Notification.Name("user_info_did_update_noti_key")
 

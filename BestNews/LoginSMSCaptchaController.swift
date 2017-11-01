@@ -93,11 +93,12 @@ class LoginSMSCaptchaController: BaseViewController, SwiftyVerificationCodeViewD
     
     @IBAction func handleTapLogin(_ sender: Any?) {
         
-        SessionManager.sharedInstance.login { [weak self](JSON, code, msg) in
+        let type = SessionManager.sharedInstance.loginInfo.type
+        SessionManager.sharedInstance.login(type: type) { [weak self](JSON, code, msg) in
             if code == 0 {
                 let vc = SelectInterestItemController(nibName: "SelectInterestItemController", bundle: nil)
                 self?.navigationController?.pushViewController(vc, animated: true)
-                BLHUDBarManager.showSuccess(msg: "登陆成功", seconds: 2)
+                BLHUDBarManager.showSuccess(msg: "登录成功", seconds: 2)
             }
             else if code == -114{
                 //未注册

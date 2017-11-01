@@ -20,12 +20,11 @@ struct LoginInfo {
     var name: String = ""
     var age: String = ""
     var gender: String = ""
-    var height: CGFloat = 0
-    var weight: CGFloat = 0
     var isLogin: Bool = false
     var avatarUrl: String = ""
     var birthday: String = ""
     var idfv: String = ""
+    var type: Int = 0   // 0 默认手机号  1 微信  2 微博  3 qq
 }
 
 
@@ -37,7 +36,7 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
     var token:String = ""       //登录令牌
     var userId: String = ""     //用户 Id
     var userInfo: UserInfo?
-    //var wxUserInfo: WXUserInfo?
+    var wxUserInfo: WXUserInfo?
     let locationManager = CLLocationManager()
     var currentLocation: CLLocation = CLLocation()        ///定位
     var lock = NSLock()
@@ -46,13 +45,27 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
         super.init()
         
 //        self.openAndLocation()
-//        self.readLoginInfo()
+        self.readLoginInfo()
     }
     
     
-    func login(results: @escaping(_ resultObject: JSON?, _ code: Int, _ msg: String) -> ()) {
-        let params = ["mobile": self.loginInfo.phone,
-                      "captcha": self.loginInfo.captcha]
+    
+    /// 登录
+    ///
+    /// - Parameters:
+    ///   - type: 0 手机号 1 微信  2 微博  3 qq
+    ///   - results: 结果
+    func login(type: Int, results: @escaping(_ resultObject: JSON?, _ code: Int, _ msg: String) -> ()) {
+        
+        
+        var params: [String: String] =
+            ["mobile": self.loginInfo.phone,
+             "captcha": self.loginInfo.captcha]
+        if type == 1 {
+            params["wxid"] = wxUserInfo?.openid ?? ""
+            params["wxinfo"] = wxUserInfo?.unionid ?? ""
+        }
+        
         APIManager.shareInstance.postRequest(urlString: "/login/login.htm", params: params, result: { [weak self](result, code, msg) in
             if code == 0 {
                 let token = result?["memo"].string!

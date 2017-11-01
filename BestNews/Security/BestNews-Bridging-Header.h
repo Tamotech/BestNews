@@ -3,3 +3,5 @@
 //
 
 #import "DES3EncryptUtil.h"
+#import "WXApi.h"
+#import "WXApiObject.h"

@@ -12,6 +12,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="BestNews" customModuleProvider="target">
             <connections>
+                <outlet property="avartarInfoView" destination="bAo-Hh-CK9" id="oLR-v3-VL0"/>
+                <outlet property="avatarImg" destination="RhB-Zs-amL" id="NeO-5O-NjY"/>
+                <outlet property="nickNameLb" destination="Q8X-28-rBi" id="fWi-RE-Z0U"/>
                 <outlet property="phoneField" destination="79n-BB-Lwi" id="YAZ-6u-I2T"/>
                 <outlet property="thirdLoginView" destination="sHp-ps-iFf" id="rJ8-4G-x9w"/>
                 <outlet property="tipView" destination="pca-hi-MFg" id="QwW-JF-Tgz"/>
@@ -26,6 +29,46 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login-bg" translatesAutoresizingMaskIntoConstraints="NO" id="ciC-K3-897">
                     <rect key="frame" x="162" y="0.0" width="252" height="121"/>
                 </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bAo-Hh-CK9" userLabel="个人信息">
+                    <rect key="frame" x="24" y="44" width="200" height="80"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RhB-Zs-amL">
+                            <rect key="frame" x="0.0" y="0.0" width="80" height="80"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="80" id="wB2-j6-2db"/>
+                                <constraint firstAttribute="width" constant="80" id="xIU-Ry-4k3"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="40"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="欢迎你" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZgS-Z4-6Xa">
+                            <rect key="frame" x="104.00000000000001" y="12" width="61.333333333333357" height="24"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q8X-28-rBi">
+                            <rect key="frame" x="104" y="46" width="35.333333333333343" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="Q8X-28-rBi" firstAttribute="top" secondItem="ZgS-Z4-6Xa" secondAttribute="bottom" constant="10" id="4GE-Xu-7WT"/>
+                        <constraint firstItem="RhB-Zs-amL" firstAttribute="leading" secondItem="bAo-Hh-CK9" secondAttribute="leading" id="6em-LP-OoR"/>
+                        <constraint firstAttribute="width" constant="200" id="7YJ-fQ-0RT"/>
+                        <constraint firstAttribute="height" constant="80" id="GVx-jl-19i"/>
+                        <constraint firstItem="ZgS-Z4-6Xa" firstAttribute="top" secondItem="RhB-Zs-amL" secondAttribute="top" constant="12" id="Hnt-7p-GJX"/>
+                        <constraint firstItem="RhB-Zs-amL" firstAttribute="top" secondItem="bAo-Hh-CK9" secondAttribute="top" id="PLM-1l-IfI"/>
+                        <constraint firstItem="ZgS-Z4-6Xa" firstAttribute="leading" secondItem="RhB-Zs-amL" secondAttribute="trailing" constant="24" id="Vq0-jX-t5z"/>
+                        <constraint firstItem="Q8X-28-rBi" firstAttribute="leading" secondItem="ZgS-Z4-6Xa" secondAttribute="leading" id="mf5-f2-gNB"/>
+                    </constraints>
+                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入手机号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ih-cd-XOs">
                     <rect key="frame" x="25" y="178.33333333333334" width="98" height="19.333333333333314"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -133,6 +176,7 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="bAo-Hh-CK9" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="24" id="0fi-Ce-MPh"/>
                 <constraint firstItem="sHp-ps-iFf" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="6J1-d4-hsI"/>
                 <constraint firstItem="79n-BB-Lwi" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="25" id="9lB-WM-V65"/>
                 <constraint firstItem="sHp-ps-iFf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="25" id="D1L-l2-1bB"/>
@@ -149,6 +193,7 @@
                 <constraint firstItem="79n-BB-Lwi" firstAttribute="top" secondItem="8Ih-cd-XOs" secondAttribute="bottom" constant="20" id="v6z-BO-pmQ"/>
                 <constraint firstAttribute="trailing" secondItem="ciC-K3-897" secondAttribute="trailing" id="vPn-88-Gw5"/>
                 <constraint firstItem="pca-hi-MFg" firstAttribute="leading" secondItem="RYE-LL-H56" secondAttribute="leading" id="wp5-mG-tKw"/>
+                <constraint firstItem="bAo-Hh-CK9" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="44" id="xXH-ql-9OH"/>
             </constraints>
         </view>
     </objects>

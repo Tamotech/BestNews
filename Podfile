@@ -15,6 +15,7 @@ target 'BestNews' do
    pod 'Presentr'
    pod 'PopupDialog', '~> 0.5'
    pod 'AMPopTip'
+   pod 'WechatOpenSDK'
    pod 'IQKeyboardManagerSwift', '4.0.10'
    pod 'CRRefresh'
 

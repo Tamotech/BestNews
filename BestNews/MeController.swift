@@ -120,5 +120,36 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
         cell.titleLb.text = data.0
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0:
+            
+            break
+        case 1:
+            
+            break
+            
+        case 2:
+            
+            break
+        case 3:
+            
+            break
+        case 4:
+            
+            break
+        case 5:
+            
+            break
+        case 6:
+            SessionManager.sharedInstance.logoutCurrentUser()
+            let vc = LoginViewController(nibName: "LoginViewController", bundle: nil)
+            navigationController?.present(vc, animated: true, completion: nil)  
+            break
+        default:
+            break
+        }
+    }
 
 }

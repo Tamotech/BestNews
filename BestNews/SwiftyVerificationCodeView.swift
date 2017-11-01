@@ -120,7 +120,7 @@ extension SwiftyVerificationCodeView{
         tv.delegate = self
         tv.deleteDelegate = self
         addSubview(tv)
-        tv.keyboardType = .numberPad
+//        tv.keyboardType = .numbersAndPunctuation
         return tv
         
     }
@@ -130,6 +130,11 @@ extension SwiftyVerificationCodeView{
 
 
 extension SwiftyVerificationCodeView:UITextFieldDelegate,SwiftyTextFieldDeleteDelegate{
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+         textField.keyboardType = .default
+        return true
+    }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
