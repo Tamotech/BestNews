@@ -110,5 +110,26 @@ class APIRequest: NSObject {
         }
     }
     
+    /// 首页banner
+    class func getBannerListAPI(result: @escaping JSONResult) {
+        let path = "/article/getIdxBanner.htm"
+        APIManager.shareInstance.postRequest(urlString: path, params: nil) { (JSON, code, msg) in
+            if code == 0 {
+                let data = [HomeArticle].deserialize(from: JSON!["data"].rawString())
+                result(data)
+            }
+        }
+    }
+    
+    /// 首页专题列表
+    class func getSpecialListAPI(result: @escaping JSONResult) {
+        let path = "/article/getSpecialChannelList.htm"
+        APIManager.shareInstance.postRequest(urlString: path, params: nil) { (JSON, code, msg) in
+            if code == 0 {
+                let data = [SpecialChannel].deserialize(from: JSON!["data"].rawString())
+                result(data)
+            }
+        }
+    }
     
 }

@@ -22,6 +22,10 @@
 		5A0D23CD1F839B2900FC9D4D /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0D23CB1F839B2900FC9D4D /* CommentCell.swift */; };
 		5A0D23CE1F839B2900FC9D4D /* CommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A0D23CC1F839B2900FC9D4D /* CommentCell.xib */; };
 		5A0D23D01F83A07300FC9D4D /* CommentListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0D23CF1F83A07300FC9D4D /* CommentListController.swift */; };
+		5A186C611FAA8B0B007216CE /* YLCycleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A690B221FAA0394008FF1EC /* YLCycleCell.swift */; };
+		5A186C621FAA8B0B007216CE /* YLCycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A690B231FAA0394008FF1EC /* YLCycleView.swift */; };
+		5A186C641FAA8C62007216CE /* HomeArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A186C631FAA8C62007216CE /* HomeArticle.swift */; };
+		5A186C661FAA9AA1007216CE /* SpecialChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A186C651FAA9AA1007216CE /* SpecialChannel.swift */; };
 		5A27E7271F935361007C5D6B /* RecommendColumnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A27E7251F935361007C5D6B /* RecommendColumnCell.swift */; };
 		5A27E7281F935361007C5D6B /* RecommendColumnCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A27E7261F935361007C5D6B /* RecommendColumnCell.xib */; };
 		5A27E72B1F936857007C5D6B /* FinanceProductDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A27E7291F936857007C5D6B /* FinanceProductDetailController.swift */; };
@@ -161,6 +165,8 @@
 		5A0D23CB1F839B2900FC9D4D /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
 		5A0D23CC1F839B2900FC9D4D /* CommentCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentCell.xib; sourceTree = "<group>"; };
 		5A0D23CF1F83A07300FC9D4D /* CommentListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentListController.swift; sourceTree = "<group>"; };
+		5A186C631FAA8C62007216CE /* HomeArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeArticle.swift; sourceTree = "<group>"; };
+		5A186C651FAA9AA1007216CE /* SpecialChannel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialChannel.swift; sourceTree = "<group>"; };
 		5A27E7251F935361007C5D6B /* RecommendColumnCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendColumnCell.swift; sourceTree = "<group>"; };
 		5A27E7261F935361007C5D6B /* RecommendColumnCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendColumnCell.xib; sourceTree = "<group>"; };
 		5A27E7291F936857007C5D6B /* FinanceProductDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceProductDetailController.swift; sourceTree = "<group>"; };
@@ -190,6 +196,8 @@
 		5A54460E1F852A1E0004F192 /* ActivityRegistController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityRegistController.xib; sourceTree = "<group>"; };
 		5A547EE31FA2157C00FA0C36 /* ProfileCenterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCenterController.swift; sourceTree = "<group>"; };
 		5A547EE41FA2157C00FA0C36 /* ProfileCenterController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCenterController.xib; sourceTree = "<group>"; };
+		5A690B221FAA0394008FF1EC /* YLCycleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YLCycleCell.swift; sourceTree = "<group>"; };
+		5A690B231FAA0394008FF1EC /* YLCycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YLCycleView.swift; sourceTree = "<group>"; };
 		5A90CFE21F80F48A00F16869 /* SubscriptSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptSectionHeaderView.swift; sourceTree = "<group>"; };
 		5A90CFE41F80F7F900F16869 /* SubscriptListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptListCell.swift; sourceTree = "<group>"; };
 		5A90CFE51F80F7F900F16869 /* SubscriptListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubscriptListCell.xib; sourceTree = "<group>"; };
@@ -463,6 +471,15 @@
 			children = (
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		5A690B211FAA0379008FF1EC /* CircleScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				5A690B221FAA0394008FF1EC /* YLCycleCell.swift */,
+				5A690B231FAA0394008FF1EC /* YLCycleView.swift */,
+			);
+			path = CircleScrollView;
 			sourceTree = "<group>";
 		};
 		5A90CFF41F8134F400F16869 /* View */ = {
@@ -742,6 +759,8 @@
 		CCDB6D431F7A26530012432E /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5A186C631FAA8C62007216CE /* HomeArticle.swift */,
+				5A186C651FAA9AA1007216CE /* SpecialChannel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -749,6 +768,7 @@
 		CCDB6D441F7A26590012432E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5A690B211FAA0379008FF1EC /* CircleScrollView */,
 				5A0D23C81F839AC300FC9D4D /* News */,
 				5A0D23C91F839AE600FC9D4D /* Live */,
 				5A0D23CA1F839AFA00FC9D4D /* Comment */,
@@ -962,6 +982,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A186C611FAA8B0B007216CE /* YLCycleCell.swift in Sources */,
+				5A186C621FAA8B0B007216CE /* YLCycleView.swift in Sources */,
 				5ABB92C31FA5EB1A002E3180 /* BaseAlertView.swift in Sources */,
 				5ABB92C51FA5EB1A002E3180 /* BLHUDBarManager.swift in Sources */,
 				5ABB92C61FA5EB1A002E3180 /* BottomWechatShareView.swift in Sources */,
@@ -984,6 +1006,8 @@
 				5A27E72B1F936857007C5D6B /* FinanceProductDetailController.swift in Sources */,
 				5A32A7031F930BF100773884 /* MessageCenterController.swift in Sources */,
 				5A0D23CD1F839B2900FC9D4D /* CommentCell.swift in Sources */,
+				5A186C641FAA8C62007216CE /* HomeArticle.swift in Sources */,
+				5A186C661FAA9AA1007216CE /* SpecialChannel.swift in Sources */,
 				5A5446031F84A13E0004F192 /* ActivityTicketListController.swift in Sources */,
 				5A90CFF21F81273900F16869 /* LiveListCell.swift in Sources */,
 				5ACCDD2B1F9F75CE004D3809 /* SelectInterestItemController.swift in Sources */,

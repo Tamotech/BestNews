@@ -23,9 +23,8 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
         self.setupChildView()
         self.setupNavigationItems()
         
-        let loginVC = LoginViewController(nibName: "LoginViewController", bundle: nil)
-        let navVC = BaseNavigationController(rootViewController: loginVC)
-        navigationController?.present(navVC, animated: true, completion: nil)
+        
+        Toolkit.showLoginVC()
     }
     
     override func viewWillAppear(_ animated: Bool) {

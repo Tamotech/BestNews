@@ -140,6 +140,9 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
         if info != nil {
             token = info!["token"] ?? ""
             userId = info!["userId"] ?? ""
+            if token.characters.count > 0 {
+                loginInfo.isLogin = true
+            }
             
             if (userId.characters.count > 0) {
                 //绑定别名

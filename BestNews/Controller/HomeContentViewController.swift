@@ -8,20 +8,13 @@
 
 import UIKit
 
-class HomeContentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
-    lazy var headerImgView: UIImageView = {
-        let v = UIImageView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenWidth*243.0/375.0))
-        v.image = #imageLiteral(resourceName: "cover1m2_1")
-        let bv = UIView(frame: CGRect(x: 0, y: v.height-75, width: v.width, height: 75))
-        bv.backgroundColor = UIColor(white: 0, alpha: 0.4)
-        v.addSubview(bv)
-        let titleLb = UILabel(frame: CGRect(x: 15, y: 10, width: bv.width-30, height: 75-25))
-        titleLb.numberOfLines = 2
-        titleLb.font = UIFont.systemFont(ofSize: 18)
-        titleLb.textColor = UIColor.white
-        titleLb.text = "封面新闻标题封面新闻标题封面新闻标题封面新闻标题封面新闻标题"
-        bv.addSubview(titleLb)
+class HomeContentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, YLCycleViewDelegate {
+    
+    var specialList: [SpecialChannel] = []
+    
+    lazy var headerBannerView: YLCycleView = {
+       let v = YLCycleView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenWidth*243.0/375.0), images:["banner-default"], titles: [""])
+        v.delegate = self
         return v
     }()
     
@@ -41,11 +34,12 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
 
         setupView()
+        updateBanner()
     }
     
     func setupView() {
         self.view.addSubview(tableView)
-        tableView.tableHeaderView = headerImgView
+        tableView.tableHeaderView = headerBannerView
         for i in 0..<cellIdentifiers.count {
             let identifier = cellIdentifiers[i]
             let nib = UINib(nibName: identifier, bundle: nil)
@@ -64,7 +58,11 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     
+    //MARK: - banner delegate
     
+    func clickedCycleView(_ cycleView: YLCycleView, selectedIndex index: Int) {
+        
+    }
     
     //MARK: - tableView
     
@@ -123,4 +121,23 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
         }
     }
 
+}
+
+// MARK: - load data
+extension HomeContentViewController {
+    
+    
+}
+
+
+//MARK: - update View
+extension HomeContentViewController {
+    
+    func updateBanner() {
+        headerBannerView.reloadData()
+    }
+    
+    func updateSpecialListView() {
+        
+    }
 }

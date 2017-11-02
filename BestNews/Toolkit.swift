@@ -23,5 +23,14 @@ class Toolkit: NSObject {
         }
         return topVC
     }
+    
+    class func showLoginVC() {
+        if !SessionManager.sharedInstance.loginInfo.isLogin {
+            let loginVC = LoginViewController(nibName: "LoginViewController", bundle: nil)
+            let navVC = BaseNavigationController(rootViewController: loginVC)
+            let rootVC = Toolkit.getCurrentViewController()
+            rootVC?.present(navVC, animated: true, completion: nil)
+        }
+    }
 }
 

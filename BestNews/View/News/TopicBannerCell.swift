@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// 专题列表
 class TopicBannerCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
 
     
@@ -15,7 +16,7 @@ class TopicBannerCell: UITableViewCell, UICollectionViewDelegate, UICollectionVi
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    
+    var specialList: [SpecialChannel] = []
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -27,6 +28,17 @@ class TopicBannerCell: UITableViewCell, UICollectionViewDelegate, UICollectionVi
         layout.itemSize = CGSize(width: 160, height: 92)
         layout.minimumLineSpacing = 10
         layout.minimumInteritemSpacing = 10
+        
+        loadSpecialCannelData()
+    }
+    
+    
+    /// load data
+    func loadSpecialCannelData() {
+        APIRequest.getSpecialListAPI { [weak self](data) in
+            self?.specialList = data as! [SpecialChannel]
+            self?.collectionView.reloadData()
+        }
     }
 
     //MARK: - collectionview
@@ -35,15 +47,14 @@ class TopicBannerCell: UITableViewCell, UICollectionViewDelegate, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 3
+        return specialList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! TopicImageCell
-//        cell.coverImageView.image = #imageLiteral(resourceName: "cover3m2_1")
-        
-        let imgs = [#imageLiteral(resourceName: "topic1m2_1"), #imageLiteral(resourceName: "topic2m2_1"), #imageLiteral(resourceName: "imgM2-5-2")]
-        cell.coverImageView.image = imgs[indexPath.row%3]
+
+        let data = specialList[indexPath.row]
+        cell.updateCell(data: data)
         return cell
     }
     

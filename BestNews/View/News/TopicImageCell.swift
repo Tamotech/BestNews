@@ -7,7 +7,9 @@
 //
 
 import UIKit
+import Kingfisher
 
+/// 专题
 class TopicImageCell: UICollectionViewCell {
 
     @IBOutlet weak var coverImageView: UIImageView!
@@ -19,4 +21,11 @@ class TopicImageCell: UICollectionViewCell {
         // Initialization code
     }
 
+    func updateCell(data: SpecialChannel) {
+        let img = data.preimgpath
+        let name = data.fullname
+        let rc = ImageResource(downloadURL: URL(string: img)!)
+        coverImageView.kf.setImage(with: rc)
+        topicLabel.text = name
+    }
 }
