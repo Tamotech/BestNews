@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Kingfisher
 
-class SinglePhotoNewsCell: UITableViewCell {
+class SinglePhotoNewsCell: BaseNewsCell {
 
     @IBOutlet weak var photoView1: UIImageView!
     
@@ -27,6 +28,25 @@ class SinglePhotoNewsCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    override func updateCell(article: HomeArticle) {
+        super.updateCell(article: article)
+        titleLb.text = article.title
+        descLb.text = article.descString()
+        if article.preimglist.count > 0 {
+            let img = article.preimglist[0]
+            let rc = ImageResource(downloadURL: URL(string: img)!)
+            photoView1.kf.setImage(with: rc)
+        }
+        if article.marks.characters.count > 0 {
+            labelBtn.isHidden = false
+            labelBtn.setTitle(article.marks, for: .normal)
+            labelBtn.backgroundColor = article.markColor()
+        }
+        else {
+            labelBtn.isHidden = true
+        }
     }
     
 }

@@ -29,17 +29,13 @@ class TopicBannerCell: UITableViewCell, UICollectionViewDelegate, UICollectionVi
         layout.minimumLineSpacing = 10
         layout.minimumInteritemSpacing = 10
         
-        loadSpecialCannelData()
     }
     
-    
-    /// load data
-    func loadSpecialCannelData() {
-        APIRequest.getSpecialListAPI { [weak self](data) in
-            self?.specialList = data as! [SpecialChannel]
-            self?.collectionView.reloadData()
-        }
+    func updateCell(data: [SpecialChannel]) {
+        self.specialList = data
+        collectionView.reloadData()
     }
+    
 
     //MARK: - collectionview
     func numberOfSections(in collectionView: UICollectionView) -> Int {

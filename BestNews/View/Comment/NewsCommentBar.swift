@@ -15,12 +15,29 @@ protocol CommentBarDelegate: class {
     func tapCollectionHandler()
     func tapRepostHandler()
     func tapReportHandler()
-    func tapPostHandler()
+//    func tapPostHandler()
+    
     
 }
 
 class NewsCommentBar: UIView, UITextViewDelegate {
-
+    
+    
+    /// 回复某人   nil  则发表评论
+    var replySomeone: String?
+    var targetCommentId: String?
+    var articleId: String = ""
+    
+    lazy var commentBtn: UIButton = {
+        let commentBtn = UIButton()
+        commentBtn.setImage(#imageLiteral(resourceName: "comment_dark"), for: .normal)
+        commentBtn.setTitleColor(gray34, for: .normal)
+        commentBtn.titleLabel?.font = UIFont.systemFont(ofSize: 11)
+        commentBtn.setTitle(" 0", for: .normal)
+        commentBtn.addTarget(self, action: #selector(handleTapCommentBtn(sender:)), for: .touchUpInside)
+        return commentBtn
+    }()
+    
     lazy var barView: UIView = {
         let v = UIView()
         v.backgroundColor = UIColor.white
@@ -80,14 +97,8 @@ class NewsCommentBar: UIView, UITextViewDelegate {
             make.width.equalTo(btnWidth)
         })
         
-        let commentBtn = UIButton()
-        commentBtn.setImage(#imageLiteral(resourceName: "comment_dark"), for: .normal)
-        commentBtn.setTitleColor(gray34, for: .normal)
-        commentBtn.titleLabel?.font = UIFont.systemFont(ofSize: 11)
-        commentBtn.setTitle(" 0", for: .normal)
-        commentBtn.addTarget(self, action: #selector(handleTapCommentBtn(sender:)), for: .touchUpInside)
-        v.addSubview(commentBtn)
-        commentBtn.snp.makeConstraints({ (make) in
+        v.addSubview(self.commentBtn)
+        self.commentBtn.snp.makeConstraints({ (make) in
             make.top.bottom.equalTo(0)
             make.right.equalTo(collectionBtn.snp.left)
             make.width.equalTo(52)
@@ -193,9 +204,7 @@ class NewsCommentBar: UIView, UITextViewDelegate {
     }
     
     func handleTapPostBtn(sender: UIButton) {
-        if delegate != nil {
-            delegate?.tapPostHandler()
-        }
+        postComment()
     }
     
     func handleTapBarView(sender: Any) {
@@ -218,8 +227,18 @@ class NewsCommentBar: UIView, UITextViewDelegate {
     
     //MARK: - textView
 
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if replySomeone == nil {
+            textField.placeholderText = "发表评论..."
+        }
+        else {
+            textField.placeholderText = "回复\(replySomeone!)"
+        }
+    }
+    
     func textViewDidEndEditing(_ textView: UITextView) {
         textField.text = ""
+        targetCommentId = nil
         sizeToFit()
         switchToEditMode(edit: false)
     }
@@ -271,4 +290,21 @@ class NewsCommentBar: UIView, UITextViewDelegate {
         self.frame = CGRect(x: 0, y: self.bottom-tarHeight, width: screenWidth, height: tarHeight)
     }
 
+}
+
+//post data
+extension NewsCommentBar {
+    
+    func postComment() {
+        let content = textField.text
+        if content?.characters.count == 0 {
+            return
+        }
+        APIRequest.commentAPI(articleId: articleId, commentId: targetCommentId, content: content!) { [weak self](JSON) in
+            self?.textField.text = ""
+            self?.switchToEditMode(edit: false)
+            self?.targetCommentId = nil
+            
+        }
+    }
 }

@@ -15,17 +15,47 @@ class HomeArticle: HandyJSON {
     var title: String = ""
     var channeltype: String = ""
     var channelname: String = ""
-    var masks: String = ""
-    var preimglist: [Any] = []
-    var publishdate: Date = Date()
+    var marks: String = ""
+    var preimglist: [String] = []
+    var publishdate: Int = 0
     var titleimgpath: String = ""
     var preimgtype: String = ""
     var publisher: String = ""
     
     required init() {}
     
-    func mapping(mapper: HelpingMapper) {
-        mapper <<<
-            publishdate <-- DateTransform()
+    
+    ///标签颜色
+    func markColor() -> UIColor {
+        if marks == "原创" {
+            return UIColor(hexString: "#60ACFD")!
+        }
+        else if marks == "推广" {
+            return UIColor(hexString: "#FFD772")!
+        }
+        else if marks == "快讯" {
+            return UIColor(hexString: "CFB2FF")!
+        }
+        else if marks == "专题" {
+            return UIColor(hexString: "FE8A8A")!
+        }
+        return themeColor!
     }
+    
+    func descString() -> String {
+        
+        let date = Date(timeIntervalSince1970: Double(publishdate)/1000)
+        let dateStr = date.newsDateStr()
+        return "\(publisher)∙\(dateStr)∙\(channelname)"
+    }
+}
+
+class HomeArticleList: HandyJSON {
+    
+    required init() {}
+    
+    var rows: Int = 0
+    var total: Int = 0
+    var page: Int = 1
+    var list: [HomeArticle] = []
 }

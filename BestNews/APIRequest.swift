@@ -103,9 +103,7 @@ class APIRequest: NSObject {
                     let data = WXUserInfo.deserialize(from: dic.rawString())
                     result(data)
                 }
-                else {
-                    
-                }
+                
             }
         }
     }
@@ -118,6 +116,7 @@ class APIRequest: NSObject {
                 let data = [HomeArticle].deserialize(from: JSON!["data"].rawString())
                 result(data)
             }
+            
         }
     }
     
@@ -128,6 +127,139 @@ class APIRequest: NSObject {
             if code == 0 {
                 let data = [SpecialChannel].deserialize(from: JSON!["data"].rawString())
                 result(data)
+            }
+            
+        }
+    }
+    
+    ///首页文章列表
+    class func getHomeArticleListAPI(page: Int, row: Int, result: @escaping JSONResult) {
+        let path = "/article/getIdxRecommendArticles.htm?page=\(page)&rows=\(row)"
+        APIManager.shareInstance.postRequest(urlString: path, params: nil) { (JSON, code, msg) in
+            if code == 0 {
+                let data = HomeArticleList.deserialize(from: JSON!["data"].rawString())
+                result(data)
+            }
+            
+        }
+    }
+    
+    ///推荐文章列表
+    class func getRecommendArticleListAPI(articleId: String, page: Int, row: Int, result: @escaping JSONResult) {
+        let path = "/article/articleRecommendPage.htm?id=\(articleId)&page=\(page)&rows=\(row)"
+        APIManager.shareInstance.postRequest(urlString: path, params: nil) { (JSON, code, msg) in
+            if code == 0 {
+                let data = HomeArticleList.deserialize(from: JSON!["data"].rawString())
+                result(data)
+            }
+            
+        }
+    }
+    
+    ///文章详情页
+    class func newsDetailAPI(id: String, result: @escaping JSONResult) {
+        let path = "/article/articleDetail.htm?id=\(id)"
+        APIManager.shareInstance.postRequest(urlString: path, params: nil) { (JSON, code, msg) in
+            if code == 0 {
+                let data = HomeNewsDetail.deserialize(from: JSON!["data"].rawString())
+                result(data)
+            }
+            
+        }
+    }
+    
+    
+    /// 发表评论
+    ///
+    /// - Parameters:
+    ///   - articleId: 文章id
+    ///   - commentId: 评论id
+    ///   - content: 内容
+    ///   - result: 回调
+    class func commentAPI(articleId: String, commentId: String?, content: String, result: @escaping JSONResult) {
+        let path = "/articleoperate/articleComment.htm"
+        var params = ["articleid": articleId,
+                      "content": content]
+        if commentId != nil {
+            params["replyid"] = commentId!
+        }
+        APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
+            if code == 0 {
+                BLHUDBarManager.showSuccess(msg: "评论成功", seconds: 1)
+                result(JSON!["data"])
+            }
+            else {
+                BLHUDBarManager.showError(msg: msg)
+            }
+        }
+        
+    }
+    
+    
+    
+    /// 评论列表
+    ///
+    /// - Parameters:
+    ///   - articleId: 文章id
+    ///   - commentId: 评论id
+    ///   - page: 第几页   1,2,3
+    ///   - result: 回调
+    class func commentListAPI(articleId: String, commentId: String?, page: Int, result: @escaping JSONResult) {
+        let path = "/articleoperate/commentPage.htm"
+        /// TREAT: 回复默认最多加载100条 不做分页
+        let rows = commentId == nil ? 20 : 100
+        var params = ["articleid": articleId,
+                      "page": "\(page)",
+                      "rows": "\(rows)"]
+        if commentId != nil {
+            params["replyid"] = commentId!
+        }
+        APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
+            if code == 0 {
+                let data = CommentList.deserialize(from: JSON!["data"].rawString())
+                result(data)
+            }
+        }
+        
+    }
+    
+    
+    /// 评论点赞
+    ///
+    /// - Parameters:
+    ///   - commentId: 评论id
+    ///   - result: 结果
+    class func commentPraiseAPI(commentId: String, result: @escaping (_ success: Bool)->()) {
+        let path = "/articleoperate/praise.htm"
+        let params = ["id": commentId,
+                      "type": "comment"]
+        APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
+            if code == 0 {
+                result(true)
+            }
+            else {
+                BLHUDBarManager.showError(msg: msg)
+                result(false)
+            }
+        }
+    }
+    
+    /// 评论取消点赞
+    ///
+    /// - Parameters:
+    ///   - commentId: 评论id
+    ///   - result: 结果
+    class func commentCancelPraiseAPI(commentId: String, result: @escaping (_ success: Bool)->()) {
+        let path = "/articleoperate/cancelPraise.htm"
+        let params = ["id": commentId,
+                      "type": "comment"]
+        APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
+            if code == 0 {
+                result(true)
+            }
+            else {
+                result(false)
+                BLHUDBarManager.showError(msg: msg)
             }
         }
     }

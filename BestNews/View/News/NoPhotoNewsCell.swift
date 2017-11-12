@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NoPhotoNewsCell: UITableViewCell {
+class NoPhotoNewsCell: BaseNewsCell {
 
     
     @IBOutlet weak var titleLb: UILabel!
@@ -25,6 +25,12 @@ class NoPhotoNewsCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    override func updateCell(article: HomeArticle) {
+        super.updateCell(article: article)
+        titleLb.text = article.title
+        descLb.text = article.descString()
     }
     
 }

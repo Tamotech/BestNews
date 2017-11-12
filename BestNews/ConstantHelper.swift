@@ -39,6 +39,7 @@ let translucentBGColor = UIColor(white: 0, alpha: 0.5)
 let barLightGrayColor = UIColor(ri: 209, gi: 213, bi: 219)
 
 let baseUrlString = "http://xinhuaNews"
+let baseHtmlString = "<html><head><style>body {font:24px/1.5 tahoma,arial,sans-serif;}</style></head><body>${htmlContent}</body></html>"
     
     
 

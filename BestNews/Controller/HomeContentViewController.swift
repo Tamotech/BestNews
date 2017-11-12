@@ -11,6 +11,8 @@ import UIKit
 class HomeContentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, YLCycleViewDelegate {
     
     var specialList: [SpecialChannel] = []
+    var articleList: HomeArticleList?
+    var page: Int = 1
     
     lazy var headerBannerView: YLCycleView = {
        let v = YLCycleView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenWidth*243.0/375.0), images:["banner-default"], titles: [""])
@@ -35,6 +37,8 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
 
         setupView()
         updateBanner()
+        self.reloadArticleList()
+        self.loadSpecialCannelData()
     }
     
     func setupView() {
@@ -71,7 +75,10 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        if articleList == nil {
+            return 0
+        }
+        return articleList!.list.count+1
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -84,15 +91,50 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let identifier = cellIdentifiers[indexPath.row%cellIdentifiers.count]
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
-        
-        return cell
+        //["TopicBannerCell", "SinglePhotoNewsCell", "ThreePhotosNewsCell", "NoPhotoNewsCell", "SingleBigPhotoNewsCell"]
+        var index = 0
+        if indexPath.row == 0 {
+            index = 0
+            let identifier = cellIdentifiers[index]
+            let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! TopicBannerCell
+            cell.updateCell(data: specialList)
+            return cell
+        }
+        else {
+            let article = articleList!.list[indexPath.row - 1];
+            if article.preimglist.count == 0 {
+                index = 3
+            }
+            else if article.preimglist.count == 1 && article.preimgtype == "big1" {
+                index = 4
+            }
+            else if article.preimglist.count == 1 && article.preimgtype == "small3" {
+                index = 1
+            }
+            else {
+                index = 2
+            }
+            
+            let identifier = cellIdentifiers[index]
+            let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! BaseNewsCell
+            cell.updateCell(article: article)
+            return cell
+        }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = NewsDetailController.init(nibName: "NewsDetailController", bundle: nil)
-        navigationController?.pushViewController(vc, animated: true)
+        
+        if indexPath.row == 0 {
+            let vc = SpecialChannelListController()
+            vc.specialList = specialList
+            navigationController?.pushViewController(vc, animated: true)
+        }
+        else {
+            let article = articleList?.list[indexPath.row - 1]
+            let vc = NewsDetailController.init(nibName: "NewsDetailController", bundle: nil) as NewsDetailController
+            vc.articleId = article!.id
+            navigationController?.pushViewController(vc, animated: true)
+        }
         
     }
     
@@ -126,7 +168,37 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
 // MARK: - load data
 extension HomeContentViewController {
     
+    func reloadArticleList() {
+        APIRequest.getHomeArticleListAPI(page: 1, row: 10) { [weak self](data) in
+            self?.page = 1
+            self?.articleList = data as? HomeArticleList
+            self?.tableView.reloadData()
+        }
+    }
     
+    func loadMoreArticleList() {
+        if self.articleList == nil {
+            self.reloadArticleList()
+            return
+        }
+        page = page + 1
+        APIRequest.getHomeArticleListAPI(page: page, row: 10) { [weak self](data) in
+            self?.page = 1
+            let list = data as? HomeArticleList
+            if list != nil {
+                self?.articleList?.list.append(contentsOf: list!.list)
+                self?.tableView.reloadData()
+            }
+        }
+    }
+    
+    /// load data
+    func loadSpecialCannelData() {
+        APIRequest.getSpecialListAPI { [weak self](data) in
+            self?.specialList = data as! [SpecialChannel]
+            self?.tableView.reloadData()
+        }
+    }
 }
 
 

@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Kingfisher
 
-class ThreePhotosNewsCell: UITableViewCell {
+class ThreePhotosNewsCell: BaseNewsCell {
 
     @IBOutlet weak var titleLb: UILabel!
     
@@ -26,9 +27,26 @@ class ThreePhotosNewsCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        photoView1.image = #imageLiteral(resourceName: "cover3m2_1")
-        photoView2.image = #imageLiteral(resourceName: "Cover2M3-1")
-        photoView3.image = #imageLiteral(resourceName: "cover4m2_1")
+        
+    }
+    
+    override func updateCell(article: HomeArticle) {
+        super.updateCell(article: article)
+        titleLb.text = article.title
+        descLb.text = article.descString()
+        for i in 0..<article.preimglist.count {
+            let img = article.preimglist[i]
+            let rc = ImageResource(downloadURL: URL(string: img)!)
+            if i == 0 {
+                photoView1.kf.setImage(with: rc)
+            }
+            else if i == 2 {
+                photoView2.kf.setImage(with: rc)
+            }
+            else if i == 3 {
+                photoView3.kf.setImage(with: rc)
+            }
+        }
     }
     
 }

@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import Kingfisher
 
-class SingleBigPhotoNewsCell: UITableViewCell {
+class SingleBigPhotoNewsCell: BaseNewsCell {
     @IBOutlet weak var photoView1: UIImageView!
     
     @IBOutlet weak var titleLb: UILabel!
@@ -21,5 +22,14 @@ class SingleBigPhotoNewsCell: UITableViewCell {
         // Initialization code
     }
 
-
+    override func updateCell(article: HomeArticle) {
+        super.updateCell(article: article)
+        titleLb.text = article.title
+        descLb.text = article.descString()
+        if article.preimglist.count > 0 {
+            let img = article.preimglist[0]
+            let rc = ImageResource(downloadURL: URL(string: img)!)
+            photoView1.kf.setImage(with: rc)
+        }
+    }
 }
