@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,9 +13,21 @@
             <connections>
                 <outlet property="chuangyeView" destination="PI2-Wd-eze" id="y9c-4N-LgP"/>
                 <outlet property="headerView" destination="YWX-rP-Ioe" id="iNZ-xP-R1k"/>
+                <outlet property="nameLb1" destination="DI9-Fg-gl0" id="bxj-aZ-t6k"/>
+                <outlet property="nameLb2" destination="Pd3-cs-0CT" id="Sdb-5v-16l"/>
+                <outlet property="nameLb3" destination="1ql-bM-yiV" id="suM-e1-rBz"/>
+                <outlet property="percentLb1" destination="IdB-RZ-IUM" id="ZEq-ea-CSe"/>
+                <outlet property="percentLb2" destination="T37-hZ-bxX" id="bKp-nO-TZx"/>
+                <outlet property="percentLb3" destination="bvZ-69-roX" id="ywy-ZC-qhH"/>
+                <outlet property="priceLb1" destination="lXO-cC-zbQ" id="OgR-wj-6S4"/>
+                <outlet property="priceLb2" destination="Ilb-SY-mrS" id="Di8-Z4-fzY"/>
+                <outlet property="priceLb3" destination="Xhc-WF-TIM" id="hnD-qf-jr6"/>
                 <outlet property="shangzhenView" destination="vuZ-3G-qH7" id="DDB-Av-vN8"/>
                 <outlet property="shenzhengView" destination="AiH-T4-VaX" id="Rgv-6S-q4i"/>
                 <outlet property="tableView" destination="Gsl-jS-Ile" id="8cI-Ii-Dg1"/>
+                <outlet property="updownLb1" destination="fWT-NB-yxu" id="X8j-95-C0o"/>
+                <outlet property="updownLb2" destination="XSj-hn-Yae" id="ABX-hb-4Cx"/>
+                <outlet property="updownLb3" destination="6DN-x3-udr" id="n27-xq-nMo"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -263,7 +275,7 @@
                 <constraint firstItem="PI2-Wd-eze" firstAttribute="bottom" secondItem="AiH-T4-VaX" secondAttribute="bottom" id="yh4-4N-aL0"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-405.5" y="-197.5"/>
+            <point key="canvasLocation" x="-358" y="-166"/>
         </view>
     </objects>
     <resources>

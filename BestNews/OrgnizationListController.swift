@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import CRRefresh
 
 class OrgnizationListController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     //// 0 机构  1 名人  2 金融
     var type: Int = 0
+    var ognizationList = OgnizationList()
     
     
     override func viewDidLoad() {
@@ -28,6 +30,17 @@ class OrgnizationListController: UIViewController, UITableViewDataSource, UITabl
         tableView.rowHeight = 95
         tableView.sectionHeaderHeight = 0.1
         tableView.sectionFooterHeight = 0.1
+        tableView.cr.addHeadRefresh {
+            [weak self] in
+            self?.reloadOgnizationList()
+        }
+        tableView.cr.addFootRefresh {
+            [weak self] in
+            self?.loadMoreOgnizationList()
+        }
+        
+        reloadOgnizationList()
+        
         if #available(iOS 11.0, *) {
             tableView.contentInsetAdjustmentBehavior = .never
         } else {
@@ -41,14 +54,14 @@ class OrgnizationListController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return ognizationList.list.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ColumeCell", for: indexPath) as! SubscriptListCell
         if type == 0 {
-            cell.nameLb.text = "机构名称"
-            cell.avtarBtn.setImage(#imageLiteral(resourceName: "orgnization_avatar"), for: .normal)
+            let data = ognizationList.list[indexPath.row]
+            cell.updateCell(data)
         }
         else if type == 1 {
             cell.nameLb.text = "名人名称"
@@ -77,5 +90,32 @@ class OrgnizationListController: UIViewController, UITableViewDataSource, UITabl
             navigationController?.pushViewController(vc, animated: true)
         }
         
+    }
+}
+
+extension OrgnizationListController {
+    
+    //机构
+    func reloadOgnizationList() {
+        ognizationList.page = 1
+        APIRequest.ognizationListAPI(page: 1) { [weak self](data) in
+            self?.tableView.cr.endHeaderRefresh()
+            self?.ognizationList = data as! OgnizationList
+            self?.tableView.reloadData()
+        }
+    }
+    
+    func loadMoreOgnizationList() {
+        if ognizationList.list.count >= ognizationList.total {
+            tableView.cr.noticeNoMoreData()
+            return
+        }
+        ognizationList.page = ognizationList.page + 1
+        APIRequest.ognizationListAPI(page: ognizationList.page) { [weak self](data) in
+            self?.tableView.cr.endLoadingMore()
+            let list = data as! OgnizationList
+            self?.ognizationList.list.append(contentsOf: list.list)
+            self?.tableView.reloadData()
+        }
     }
 }

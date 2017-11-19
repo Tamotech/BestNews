@@ -63,7 +63,7 @@ class CommentCell: UITableViewCell {
     func updateCell(_ comment: CommentObject) {
         nameLb.text = comment.username
         self.comment = comment
-        if comment.headimg.characters.count > 0 {
+        if comment.headimg.count > 0 {
             let rc = ImageResource(downloadURL: URL.init(string: comment.headimg)!)
             avatarBtn.kf.setImage(with: rc, for: .normal)
         }

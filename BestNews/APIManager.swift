@@ -45,12 +45,14 @@ class APIManager: NSObject {
                 let resultDic = JSON(value)
                 let num = resultDic["num"]
                 let info = resultDic["info"]
-                if num.intValue == -1004 {
+                if num.intValue == -1 {
                     //token 失效
-                    //SessionManager.sharedInstance.logoutCurrentUser()
+                    SessionManager.sharedInstance.logoutCurrentUser()
+                    Toolkit.showLoginVC()
                 }
-                
-                result(resultDic, num.intValue, info.stringValue)
+                else {
+                    result(resultDic, num.intValue, info.stringValue)
+                }
             }
             else {
                 result(nil, -2222, "网络请求失败!")

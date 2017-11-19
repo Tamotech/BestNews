@@ -28,8 +28,10 @@ class SingleBigPhotoNewsCell: BaseNewsCell {
         descLb.text = article.descString()
         if article.preimglist.count > 0 {
             let img = article.preimglist[0]
-            let rc = ImageResource(downloadURL: URL(string: img)!)
-            photoView1.kf.setImage(with: rc)
+            if img.count > 0 {
+                let rc = ImageResource(downloadURL: URL(string: img)!)
+                photoView1.kf.setImage(with: rc)
+            }
         }
     }
 }

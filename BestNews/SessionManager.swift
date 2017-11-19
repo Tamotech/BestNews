@@ -91,7 +91,7 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
                       "name": loginInfo.name,
                       "sex": loginInfo.gender,
                       "headimg": loginInfo.avatarUrl]
-        if loginInfo.wxid.characters.count > 0 {
+        if loginInfo.wxid.count > 0 {
             params["wxid"] = loginInfo.wxid
         }
         APIManager.shareInstance.postRequest(urlString: "/regist/mobileregist.htm", params: params) { [weak self](JSON, code, msg) in
@@ -140,11 +140,11 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
         if info != nil {
             token = info!["token"] ?? ""
             userId = info!["userId"] ?? ""
-            if token.characters.count > 0 {
+            if token.count > 0 {
                 loginInfo.isLogin = true
             }
             
-            if (userId.characters.count > 0) {
+            if (userId.count > 0) {
                 //绑定别名
                 //JPUSHService.setTags(Set(["DefaultTag"]), aliasInbackground: userId)
             }

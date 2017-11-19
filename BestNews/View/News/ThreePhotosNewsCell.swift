@@ -36,15 +36,17 @@ class ThreePhotosNewsCell: BaseNewsCell {
         descLb.text = article.descString()
         for i in 0..<article.preimglist.count {
             let img = article.preimglist[i]
-            let rc = ImageResource(downloadURL: URL(string: img)!)
-            if i == 0 {
-                photoView1.kf.setImage(with: rc)
-            }
-            else if i == 2 {
-                photoView2.kf.setImage(with: rc)
-            }
-            else if i == 3 {
-                photoView3.kf.setImage(with: rc)
+            if img.count > 0 {
+                let rc = ImageResource(downloadURL: URL(string: img)!)
+                if i == 0 {
+                    photoView1.kf.setImage(with: rc)
+                }
+                else if i == 2 {
+                    photoView2.kf.setImage(with: rc)
+                }
+                else if i == 3 {
+                    photoView3.kf.setImage(with: rc)
+                }
             }
         }
     }

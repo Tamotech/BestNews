@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -62,6 +62,7 @@
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <gestureRecognizers/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="44" id="4ld-Ti-nwN"/>
                                                 <constraint firstItem="eHK-C4-tXW" firstAttribute="centerY" secondItem="cNS-V6-gXj" secondAttribute="centerY" id="HEB-FJ-Sul"/>
@@ -71,6 +72,9 @@
                                                 <constraint firstItem="cNS-V6-gXj" firstAttribute="centerY" secondItem="lGW-ki-SrQ" secondAttribute="centerY" id="ZZh-OF-vR6"/>
                                                 <constraint firstItem="lGW-ki-SrQ" firstAttribute="leading" secondItem="70l-pA-seS" secondAttribute="leading" constant="15" id="fXj-TT-FGc"/>
                                             </constraints>
+                                            <connections>
+                                                <outletCollection property="gestureRecognizers" destination="CbG-jN-vmG" appends="YES" id="Ves-Em-pu6"/>
+                                            </connections>
                                         </view>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="SZr-oE-rb9">
                                             <rect key="frame" x="0.0" y="48" width="375" height="400"/>
@@ -109,6 +113,7 @@
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <gestureRecognizers/>
                                             <constraints>
                                                 <constraint firstItem="ntQ-WN-EOY" firstAttribute="centerY" secondItem="ctO-2T-sdK" secondAttribute="centerY" id="MDI-6i-ovH"/>
                                                 <constraint firstItem="ctO-2T-sdK" firstAttribute="leading" secondItem="Abh-Br-1Fe" secondAttribute="leading" constant="15" id="QEO-k4-yQV"/>
@@ -118,6 +123,9 @@
                                                 <constraint firstItem="ntQ-WN-EOY" firstAttribute="leading" secondItem="ojm-Dh-njY" secondAttribute="trailing" constant="6" id="seK-tr-vgp"/>
                                                 <constraint firstAttribute="trailing" secondItem="ntQ-WN-EOY" secondAttribute="trailing" constant="15" id="xYZ-LR-Gvu"/>
                                             </constraints>
+                                            <connections>
+                                                <outletCollection property="gestureRecognizers" destination="abJ-v8-RHT" appends="YES" id="nDm-uO-A26"/>
+                                            </connections>
                                         </view>
                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QOF-jz-WeP">
                                             <rect key="frame" x="0.0" y="502" width="375" height="340"/>
@@ -270,6 +278,16 @@
             </constraints>
             <point key="canvasLocation" x="33.5" y="342"/>
         </view>
+        <tapGestureRecognizer id="CbG-jN-vmG">
+            <connections>
+                <action selector="handleTapAllChannels:" destination="-1" id="mai-ph-3y0"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="abJ-v8-RHT">
+            <connections>
+                <action selector="handleTapAllOgnization:" destination="-1" id="xFi-f7-45g"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="icon_more_blue" width="16" height="16"/>

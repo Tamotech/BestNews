@@ -145,7 +145,8 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
         case 6:
             SessionManager.sharedInstance.logoutCurrentUser()
             let vc = LoginViewController(nibName: "LoginViewController", bundle: nil)
-            navigationController?.present(vc, animated: true, completion: nil)  
+            let navVC = BaseNavigationController(rootViewController: vc)
+            navigationController?.present(navVC, animated: true, completion: nil)  
             break
         default:
             break

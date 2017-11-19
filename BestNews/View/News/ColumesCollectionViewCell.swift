@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ColumesCollectionViewCell: UICollectionViewCell {
 
@@ -22,6 +23,15 @@ class ColumesCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
 
+    
+    func updateCell(_ channel: NewsChannel) {
+        ///TODO: prepath 不正确
+        if channel.preimgpath.count > 0 {
+//            let rc = ImageResource(downloadURL: URL(string: channel.preimgpath)!)
+//            coverPhotoView.kf.setImage(with: rc)
+        }
+        columeNameLb.text = channel.name
+    }
     
     @IBAction func handleTapScriptBtn(_ sender: UIButton) {
         

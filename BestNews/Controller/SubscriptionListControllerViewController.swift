@@ -22,12 +22,17 @@ class SubscriptionListControllerViewController: UIViewController, UITableViewDel
     
     @IBOutlet weak var subscriptMoreView: UIView!
     
-    
+    ///专题列表
+    var channels: [NewsChannel] = []
+    //机构列表
+    var ognizationList = OgnizationList()
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupView()
+        loadNewsChannel()
+        reloadOgnizationList()
     }
     
     func setupView() {
@@ -66,7 +71,7 @@ class SubscriptionListControllerViewController: UIViewController, UITableViewDel
             return 10
         }
         else {
-            return 3
+            return ognizationList.list.count > 3 ? 3 : ognizationList.list.count
         }
     }
     
@@ -87,8 +92,9 @@ class SubscriptionListControllerViewController: UIViewController, UITableViewDel
             return cell
         }
         else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ColumeCell", for: indexPath)
-            
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ColumeCell", for: indexPath) as! SubscriptListCell
+            let ognization = ognizationList.list[indexPath.row]
+            cell.updateCell(ognization)
             return cell
         }
     }
@@ -112,12 +118,14 @@ class SubscriptionListControllerViewController: UIViewController, UITableViewDel
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 9
+        return channels.count > 9 ? 9 : channels.count
     }
     
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! ColumesCollectionViewCell
+        let channel = channels[indexPath.row]
+        cell.updateCell(channel)
         return cell
     }
     
@@ -129,6 +137,15 @@ class SubscriptionListControllerViewController: UIViewController, UITableViewDel
     
     @IBAction func handleTapScriptionListBtn(_ sender: UIButton) {
         selectItem(index: 1)
+    }
+    
+    @IBAction func handleTapAllChannels(_ sender: UITapGestureRecognizer) {
+        let vc = SelectInterestItemController(nibName: "SelectInterestItemController", bundle: nil)
+        vc.entry = 1
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    @IBAction func handleTapAllOgnization(_ sender: UITapGestureRecognizer) {
     }
     
     /// 我的订阅 | 订阅更多
@@ -148,4 +165,25 @@ class SubscriptionListControllerViewController: UIViewController, UITableViewDel
         }
     }
 
+}
+
+extension SubscriptionListControllerViewController {
+    
+    //专题列表
+    func loadNewsChannel() {
+        APIRequest.getAllChannelAPI { [weak self](data) in
+            self?.channels = data as! [NewsChannel]
+            self?.columeCollectionView.reloadData()
+        }
+    }
+    
+    //机构
+    func reloadOgnizationList() {
+        ognizationList.page = 1
+        APIRequest.ognizationListAPI(page: 1) { [weak self](data) in
+            self?.ognizationList = data as! OgnizationList
+            self?.columeTableView.reloadData()
+        }
+    }
+    
 }

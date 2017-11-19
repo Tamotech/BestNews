@@ -1,18 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActivityDetailController" customModule="BestNews" customModuleProvider="target">
             <connections>
+                <outlet property="addressLb" destination="n0w-Cu-rqE" id="OBj-ur-8f3"/>
+                <outlet property="coverPhotov" destination="qS4-n0-aWj" id="ibk-Q5-ApY"/>
+                <outlet property="dateLb" destination="mAY-s5-vPT" id="lqT-w7-lL6"/>
+                <outlet property="labelsContainer" destination="0Ef-KQ-DtH" id="ux5-Es-9Zj"/>
+                <outlet property="labelsContainerHeight" destination="cgC-bx-Dpc" id="kKh-SO-n7L"/>
+                <outlet property="limitNumLb" destination="1H0-lv-1dj" id="b7B-gZ-JaC"/>
                 <outlet property="scrollView" destination="Hor-hb-l3W" id="5M3-hs-mb5"/>
+                <outlet property="sponsorLb" destination="M0J-Su-i6g" id="UKr-1t-D6v"/>
+                <outlet property="ticketPriceLb" destination="KYx-RK-qfw" id="iBI-fQ-iSq"/>
+                <outlet property="titleLb" destination="bVJ-BH-maa" id="cjc-B1-pCH"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="webParentView" destination="C1H-lu-ZZJ" id="c29-4m-CSS"/>
+                <outlet property="webViewHeight" destination="3K6-sW-sn0" id="M3N-hU-cdp"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -24,7 +35,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="1092"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pt5-XH-GL8" userLabel="contentView">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="1106"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="1137"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cover1M2-4" translatesAutoresizingMaskIntoConstraints="NO" id="qS4-n0-aWj">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="279"/>
@@ -33,7 +44,7 @@
                                     </constraints>
                                 </imageView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fdN-fL-v9r">
-                                    <rect key="frame" x="0.0" y="279" width="375" height="292"/>
+                                    <rect key="frame" x="0.0" y="279" width="375" height="323"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="炒房时代结束了！A股的春天才刚刚开始？" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVJ-BH-maa">
                                             <rect key="frame" x="19.5" y="25" width="335" height="53"/>
@@ -169,6 +180,13 @@
                                                 <constraint firstItem="3Z2-e6-dhn" firstAttribute="centerX" secondItem="isM-E2-agv" secondAttribute="centerX" id="y1H-Se-aJB"/>
                                             </constraints>
                                         </view>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Ef-KQ-DtH" userLabel="labelContainer" customClass="LabelsContainerView" customModule="BestNews" customModuleProvider="target">
+                                            <rect key="frame" x="20" y="253" width="335" height="40"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="cgC-bx-Dpc"/>
+                                            </constraints>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
@@ -176,22 +194,25 @@
                                         <constraint firstItem="bVJ-BH-maa" firstAttribute="top" secondItem="fdN-fL-v9r" secondAttribute="top" constant="25" id="4do-Cf-jjq"/>
                                         <constraint firstItem="bVJ-BH-maa" firstAttribute="leading" secondItem="fdN-fL-v9r" secondAttribute="leading" constant="20" id="4vK-FL-rst"/>
                                         <constraint firstItem="qDl-DJ-fn9" firstAttribute="leading" secondItem="6lb-8m-RrE" secondAttribute="leading" id="5Hc-nM-gps"/>
+                                        <constraint firstItem="0Ef-KQ-DtH" firstAttribute="leading" secondItem="isM-E2-agv" secondAttribute="leading" id="6EN-8l-iAa"/>
                                         <constraint firstItem="isM-E2-agv" firstAttribute="top" secondItem="qDl-DJ-fn9" secondAttribute="bottom" id="83s-8r-c76"/>
                                         <constraint firstItem="OL6-wC-PEl" firstAttribute="trailing" secondItem="bVJ-BH-maa" secondAttribute="trailing" id="932-YI-KqS"/>
                                         <constraint firstItem="OL6-wC-PEl" firstAttribute="leading" secondItem="bVJ-BH-maa" secondAttribute="leading" id="EWx-Mf-U8E"/>
+                                        <constraint firstAttribute="bottom" secondItem="0Ef-KQ-DtH" secondAttribute="bottom" constant="30" id="GiG-q1-LJv"/>
                                         <constraint firstItem="6lb-8m-RrE" firstAttribute="leading" secondItem="OL6-wC-PEl" secondAttribute="leading" id="Mt0-d4-NLz"/>
                                         <constraint firstItem="OL6-wC-PEl" firstAttribute="top" secondItem="bVJ-BH-maa" secondAttribute="bottom" constant="20" id="RF7-Rm-Oja"/>
-                                        <constraint firstAttribute="height" constant="292" id="Rby-Os-RBy"/>
                                         <constraint firstItem="isM-E2-agv" firstAttribute="leading" secondItem="qDl-DJ-fn9" secondAttribute="leading" id="VoQ-CG-Fvc"/>
                                         <constraint firstItem="6lb-8m-RrE" firstAttribute="top" secondItem="OL6-wC-PEl" secondAttribute="bottom" id="hjG-TI-Ncu"/>
                                         <constraint firstItem="6lb-8m-RrE" firstAttribute="trailing" secondItem="OL6-wC-PEl" secondAttribute="trailing" id="jGk-ln-wKG"/>
+                                        <constraint firstItem="0Ef-KQ-DtH" firstAttribute="top" secondItem="isM-E2-agv" secondAttribute="bottom" constant="15" id="mZU-Om-83d"/>
                                         <constraint firstItem="qDl-DJ-fn9" firstAttribute="trailing" secondItem="6lb-8m-RrE" secondAttribute="trailing" id="v7j-Di-Ez0"/>
                                         <constraint firstItem="isM-E2-agv" firstAttribute="trailing" secondItem="qDl-DJ-fn9" secondAttribute="trailing" id="xDY-Kr-lnP"/>
+                                        <constraint firstItem="0Ef-KQ-DtH" firstAttribute="trailing" secondItem="isM-E2-agv" secondAttribute="trailing" id="y15-D5-iGJ"/>
                                         <constraint firstAttribute="trailing" secondItem="bVJ-BH-maa" secondAttribute="trailing" constant="20" id="za1-WK-djl"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PUs-G7-EVt">
-                                    <rect key="frame" x="0.0" y="586" width="375" height="40"/>
+                                    <rect key="frame" x="0.0" y="617" width="375" height="40"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="详情描述" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eCS-9H-Uwc">
                                             <rect key="frame" x="154.5" y="10" width="65.5" height="19.5"/>
@@ -218,7 +239,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C1H-lu-ZZJ">
-                                    <rect key="frame" x="0.0" y="626" width="375" height="400"/>
+                                    <rect key="frame" x="0.0" y="657" width="375" height="400"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="400" id="3K6-sW-sn0"/>

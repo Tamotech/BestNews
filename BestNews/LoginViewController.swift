@@ -131,10 +131,10 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
                 }
             })
         }
-        else if newText.characters.count >= 11 {
+        else if newText.count >= 11 {
             tipView.isHidden = false
         }
-        else if newText.characters.count < 11 {
+        else if newText.count < 11 {
             tipView.isHidden = true
         }
         

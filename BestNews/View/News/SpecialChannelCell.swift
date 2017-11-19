@@ -23,8 +23,10 @@ class SpecialChannelCell: UITableViewCell {
     }
 
     func updateCell(data: SpecialChannel) {
-        let rc = ImageResource(downloadURL: URL(string: data.preimgpath)!)
-        coverImg.kf.setImage(with: rc)
+        if data.preimgpath.count > 0 {
+            let rc = ImageResource(downloadURL: URL(string: data.preimgpath)!)
+            coverImg.kf.setImage(with: rc)
+        }
         titleLb.text = data.name
     }
     

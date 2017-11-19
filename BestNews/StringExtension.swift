@@ -65,6 +65,20 @@ extension String {
         let strSize = statusLabelText.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: dic, context: nil)
         return strSize.height
     }
+    
+    /// 计算文字的宽度
+    ///
+    /// - Parameters:
+    ///   - font: 字体
+    ///   - width: 宽度
+    /// - Returns: 宽度
+    func getLabWidth(font:UIFont,height:CGFloat) -> CGFloat {
+        let statusLabelText: NSString = NSString(string: self)
+        let size = CGSize(width: 900, height: height)
+        let dic = [NSFontAttributeName: font]
+        let strSize = statusLabelText.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: dic, context: nil)
+        return strSize.width
+    }
 }
 
 

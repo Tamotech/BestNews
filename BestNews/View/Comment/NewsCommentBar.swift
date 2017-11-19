@@ -114,7 +114,7 @@ class NewsCommentBar: UIView, UITextViewDelegate {
     lazy var textField:UITextView = {
        let field = UITextView()
         field.layer.cornerRadius = 16
-        field.placeholderText = "发表评论..."
+        field.toolbarPlaceholder = "发表评论..."
         field.font = UIFont.systemFont(ofSize: 15)
         field.textContainerInset = UIEdgeInsetsMake(8, 8, 8, 8)
         field.backgroundColor = gray244
@@ -229,10 +229,10 @@ class NewsCommentBar: UIView, UITextViewDelegate {
 
     func textViewDidBeginEditing(_ textView: UITextView) {
         if replySomeone == nil {
-            textField.placeholderText = "发表评论..."
+            textField.toolbarPlaceholder = "发表评论..."
         }
         else {
-            textField.placeholderText = "回复\(replySomeone!)"
+            textField.toolbarPlaceholder = "回复\(replySomeone!)"
         }
     }
     
@@ -246,7 +246,7 @@ class NewsCommentBar: UIView, UITextViewDelegate {
     func textViewDidChange(_ textView: UITextView) {
         self.sizeToFit()
         let text = textView.text.trip()
-        if text.characters.count > 0 {
+        if text.count > 0 {
             postBtn.isEnabled = true
             postBtn.alpha = 1
         }
@@ -297,7 +297,7 @@ extension NewsCommentBar {
     
     func postComment() {
         let content = textField.text
-        if content?.characters.count == 0 {
+        if content?.count == 0 {
             return
         }
         APIRequest.commentAPI(articleId: articleId, commentId: targetCommentId, content: content!) { [weak self](JSON) in

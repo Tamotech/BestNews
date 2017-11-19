@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ActivityCoverCell: UITableViewCell {
 
@@ -25,10 +26,14 @@ class ActivityCoverCell: UITableViewCell {
         // Initialization code
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    func updateCell(_ data: ActivityModel) {
+        if data.preimgpath.count > 0 {
+            let rc = ImageResource(downloadURL: URL(string: data.preimgpath)!)
+            coverBg.kf.setImage(with: rc)
+        }
+        titleLb.text = data.title
+        dateLb.text = data.dateStr()
+        addressLb.text = data.address
     }
     
 }

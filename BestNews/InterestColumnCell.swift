@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class InterestColumnCell: UICollectionViewCell {
 
@@ -34,7 +35,7 @@ class InterestColumnCell: UICollectionViewCell {
         
     }
     
-    func updateCell(data: InterestColumn) {
+    func updateCell(data: NewsChannel) {
         titleLab.text = data.name
         if data.selected {
             gLayer.isHidden = false
@@ -44,6 +45,16 @@ class InterestColumnCell: UICollectionViewCell {
             gLayer.isHidden = true
             addImg.image = #imageLiteral(resourceName: "add-white")
         }
+        if data.preimgpath.count == 0 {
+            return
+        }
+        guard let url = URL(string: data.preimgpath) else {
+            return
+        }
+        let rc = ImageResource(downloadURL: url)
+        coverImg.kf.setImage(with: rc)
+
+        
     }
     
     override func layoutSubviews() {

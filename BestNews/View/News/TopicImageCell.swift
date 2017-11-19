@@ -24,8 +24,10 @@ class TopicImageCell: UICollectionViewCell {
     func updateCell(data: SpecialChannel) {
         let img = data.preimgpath
         let name = data.fullname
-        let rc = ImageResource(downloadURL: URL(string: img)!)
-        coverImageView.kf.setImage(with: rc)
+        if img.count > 0 {
+            let rc = ImageResource(downloadURL: URL(string: img)!)
+            coverImageView.kf.setImage(with: rc)
+        }
         topicLabel.text = name
     }
 }

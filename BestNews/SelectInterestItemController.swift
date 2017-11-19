@@ -8,22 +8,19 @@
 
 import UIKit
 
+/// 首页 订阅列表
 class SelectInterestItemController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var items: [InterestColumn] = []
+    var items: [NewsChannel] = []
+    
+    ///入口   0 登录  1 首页订阅专题
+    var entry: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let names = ["宏观", "国际", "金融", "产经", "理财", "地产", "公司", "互联网", "科学", "保险", "历史", "新三板", "股票", "银行", "创投", "基金", "黄金", "外汇"]
-        for i in 0..<18 {
-            let data = InterestColumn()
-            data.selected = (i%2 == 0)
-            data.name = names[i]
-            items.append(data)
-        }
         
         self.shouldClearNavBar = false
         self.showCustomTitle(title: "选择你感兴趣的内容")
@@ -36,6 +33,8 @@ class SelectInterestItemController: BaseViewController, UICollectionViewDelegate
         
         let nib = UINib(nibName: "InterestColumnCell", bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: "Cell")
+        
+        self.loadNewsChannel()
     }
 
     
@@ -45,7 +44,7 @@ class SelectInterestItemController: BaseViewController, UICollectionViewDelegate
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 18
+        return items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -68,8 +67,44 @@ class SelectInterestItemController: BaseViewController, UICollectionViewDelegate
     
     //MARK: - actions
     @IBAction func handleTapStartRead(_ sender: UITapGestureRecognizer) {
-        navigationController?.dismiss(animated: true, completion: nil)
+        
+        //批量订阅
+        
+        var ids: [String] = []
+        for data in items {
+            if data.selected {
+                ids.append(data.id)
+            }
+        }
+        if ids.count == 0 {
+            navigationController?.dismiss(animated: true, completion: nil)
+            return
+        }
+        
+        let channelids = ids.joined(separator: ",")
+        APIRequest.multiSubscriptChannelAPI(channelIds: channelids) {[weak self] (success) in
+            if success {
+                
+                if self?.entry == 0 {
+                    self?.navigationController?.dismiss(animated: true, completion: nil)
+                }
+                else if self?.entry == 1 {
+                self?.navigationController?.popViewController(animated: true)
+                }
+            }
+        }
+        
     }
     
 
+}
+
+///load data
+extension SelectInterestItemController {
+    func loadNewsChannel() {
+        APIRequest.getAllChannelAPI { [weak self](data) in
+            self?.items = data as! [NewsChannel]
+            self?.collectionView.reloadData()
+        }
+    }
 }

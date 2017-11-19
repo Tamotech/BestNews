@@ -24,7 +24,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
         self.setupNavigationItems()
         
         
-        Toolkit.showLoginVC()
+        //Toolkit.showLoginVC()
     }
     
     override func viewWillAppear(_ animated: Bool) {

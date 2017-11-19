@@ -21,6 +21,10 @@ class FastNewsCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
+    
+    func updateCell(news: FastNews) {
+        contentLb.text = news.content
+    }
 
     @IBAction func handTapRepostBtn(_ sender: UIButton) {
         

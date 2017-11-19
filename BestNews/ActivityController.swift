@@ -7,10 +7,12 @@
 //
 
 import UIKit
+import CRRefresh
 
 class ActivityController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
 
     
+    var activityList = ActivityList()
     let tableView = UITableView(frame: CGRect.init(x: 0, y: 64, width: screenWidth, height: screenHeight-50-64), style: .grouped)
     
     
@@ -38,6 +40,17 @@ class ActivityController: BaseViewController, UITableViewDelegate, UITableViewDa
         } else {
             self.automaticallyAdjustsScrollViewInsets = false
         }
+        
+        tableView.cr.addHeadRefresh {
+            [weak self]in
+            self?.reloadData()
+        }
+        
+        tableView.cr.addFootRefresh {
+            [weak self] in
+            self?.loadMoreData()
+        }
+        reloadData()
     }
     
     
@@ -48,7 +61,7 @@ class ActivityController: BaseViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return activityList.list.count
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -65,14 +78,16 @@ class ActivityController: BaseViewController, UITableViewDelegate, UITableViewDa
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ActivityCoverCell
-        
-        let n = ["活动标题一行显示19个字，最多显示两行活动标题一行显示19个字，最多显示两行", "活动标题一行显示19个字"]
-        cell.titleLb.text = n[indexPath.row%2]
+        let data = activityList.list[indexPath.row]
+        cell.updateCell(data)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let activity = activityList.list[indexPath.row]
         let vc = ActivityDetailController(nibName: "ActivityDetailController", bundle: nil)
+        vc.activityId = activity.id
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -89,4 +104,32 @@ class ActivityController: BaseViewController, UITableViewDelegate, UITableViewDa
     }
 
 
+}
+
+
+/// load data
+extension ActivityController {
+    
+    func reloadData() {
+        activityList.total = 0
+        activityList.page = 1
+        APIRequest.activityListAPI(page: 1) { [weak self](data) in
+            self?.tableView.cr.endHeaderRefresh()
+            self?.activityList = data as! ActivityList
+            self?.tableView.reloadData()
+        }
+    }
+    
+    func loadMoreData() {
+        if activityList.total <= activityList.list.count {
+            self.tableView.cr.noticeNoMoreData()
+            return
+        }
+        activityList.page = activityList.page+1
+        APIRequest.activityListAPI(page: activityList.page) { [weak self](data) in
+            self?.activityList.list.append(contentsOf: (data as! ActivityList).list)
+            self?.tableView.cr.endLoadingMore()
+            self?.tableView.reloadData()
+        }
+    }
 }

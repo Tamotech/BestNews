@@ -90,6 +90,7 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
         }
         self.automaticallyAdjustsScrollViewInsets = false
         
+        commentBar.articleId = articleId
         self.loadNewsDetail()
         self.loadRecommendArticleList()
         self.loadCommentList()
@@ -139,7 +140,7 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
     
     func tapPostHandler() {
         let content = commentBar.textField.text
-        if content?.characters.count == 0 {
+        if content?.count == 0 {
             return
         }
         APIRequest.commentAPI(articleId: articleId, commentId: nil, content: content!) { [weak self](JSON) in
@@ -227,6 +228,15 @@ extension NewsDetailController {
         APIRequest.commentListAPI(articleId: articleId, commentId: nil, page: 1) { [weak self](data) in
             self?.commentList = data as? CommentList
             self?.updateCommentBar()
+        }
+    }
+    
+    func loadRewardList() {
+        APIRequest.ArticleReardManListAPI(articleId: articleId) { (data) in
+//            if let rewardList = data as? RewardManList {
+//                
+//            }
+            
         }
     }
     
