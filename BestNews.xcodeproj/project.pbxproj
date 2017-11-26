@@ -73,6 +73,7 @@
 		5A62A4661FABE73B0087D936 /* ListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A62A4651FABE73B0087D936 /* ListManager.swift */; };
 		5A62A4681FAE039B0087D936 /* BaseNewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A62A4671FAE039B0087D936 /* BaseNewsCell.swift */; };
 		5A62A46A1FAE1AEB0087D936 /* HomeNewsDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A62A4691FAE1AEB0087D936 /* HomeNewsDetail.swift */; };
+		5A7F21611FCB118C00DFC606 /* SwiftNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7F21601FCB118C00DFC606 /* SwiftNotice.swift */; };
 		5A90CFE31F80F48A00F16869 /* SubscriptSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A90CFE21F80F48A00F16869 /* SubscriptSectionHeaderView.swift */; };
 		5A90CFE61F80F7F900F16869 /* SubscriptListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A90CFE41F80F7F900F16869 /* SubscriptListCell.swift */; };
 		5A90CFE71F80F7F900F16869 /* SubscriptListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A90CFE51F80F7F900F16869 /* SubscriptListCell.xib */; };
@@ -236,6 +237,7 @@
 		5A62A4691FAE1AEB0087D936 /* HomeNewsDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNewsDetail.swift; sourceTree = "<group>"; };
 		5A690B221FAA0394008FF1EC /* YLCycleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YLCycleCell.swift; sourceTree = "<group>"; };
 		5A690B231FAA0394008FF1EC /* YLCycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YLCycleView.swift; sourceTree = "<group>"; };
+		5A7F21601FCB118C00DFC606 /* SwiftNotice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftNotice.swift; sourceTree = "<group>"; };
 		5A90CFE21F80F48A00F16869 /* SubscriptSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptSectionHeaderView.swift; sourceTree = "<group>"; };
 		5A90CFE41F80F7F900F16869 /* SubscriptListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptListCell.swift; sourceTree = "<group>"; };
 		5A90CFE51F80F7F900F16869 /* SubscriptListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubscriptListCell.xib; sourceTree = "<group>"; };
@@ -410,6 +412,7 @@
 		5A0D23BE1F831F0C00FC9D4D /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				5A7F215F1FCB117C00DFC606 /* HUD */,
 				5A06DF4B1FCABCD700F225F1 /* ImagePicker */,
 				5A32A70D1F93352100773884 /* Segment */,
 				5A2341D71F87CA7000BEB06F /* AlertController */,
@@ -538,6 +541,14 @@
 				5A690B231FAA0394008FF1EC /* YLCycleView.swift */,
 			);
 			path = CircleScrollView;
+			sourceTree = "<group>";
+		};
+		5A7F215F1FCB117C00DFC606 /* HUD */ = {
+			isa = PBXGroup;
+			children = (
+				5A7F21601FCB118C00DFC606 /* SwiftNotice.swift */,
+			);
+			path = HUD;
 			sourceTree = "<group>";
 		};
 		5A90CFF41F8134F400F16869 /* View */ = {
@@ -1093,6 +1104,7 @@
 				CC29070F1F65A8B5001894DA /* BaseView.swift in Sources */,
 				5A5446071F84A6220004F192 /* ActivityTicketCell.swift in Sources */,
 				5A62A46A1FAE1AEB0087D936 /* HomeNewsDetail.swift in Sources */,
+				5A7F21611FCB118C00DFC606 /* SwiftNotice.swift in Sources */,
 				5A32A7071F930CC100773884 /* MessageCenterListCell.swift in Sources */,
 				5AC684851F7FFF24006CEB53 /* NoPhotoNewsCell.swift in Sources */,
 				5A06DF491FCAA9A600F225F1 /* ProfessionListController.swift in Sources */,

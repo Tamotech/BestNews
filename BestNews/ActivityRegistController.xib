@@ -936,6 +936,9 @@
                             <state key="normal" title="确认支付">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </state>
+                            <connections>
+                                <action selector="handleTapApplyBtn:" destination="-1" eventType="touchUpInside" id="6B6-vm-hmv"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

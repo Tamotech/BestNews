@@ -12,7 +12,7 @@ import HandyJSON
 class ActivityPrepare: HandyJSON {
 
     required init(){}
-    var sex: String = ""
+    var sex: String = "male"
     var idnum: String = ""
     var trade: String = ""
     var profession: String = ""
@@ -21,5 +21,17 @@ class ActivityPrepare: HandyJSON {
     var buscard: String = ""
     var mobile: String = ""
     
+    ///外面赋值
+    var aid: String = ""
+    var tid: String = ""
+    
+    
+    func isCompleteFill() -> Bool {
+        if sex == "" || idnum == "" || name == "" || trade == ""
+            || company == "" || mobile == "" || profession == "" {
+            return false
+        }
+        return true
+    }
     
 }

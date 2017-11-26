@@ -184,6 +184,35 @@ class ActivityRegistController: BaseViewController, UINavigationControllerDelega
     }
     
     
+    ///参加报名
+    @IBAction func handleTapApplyBtn(_ sender: UIButton) {
+        
+        if captcha != captchaField.text {
+            BLHUDBarManager.showError(msg: "验证码不正确")
+            return
+        }
+        prepare.name = nameField.text ?? ""
+        prepare.mobile = phoneField.text ?? ""
+        prepare.idnum = idCardField.text ?? ""
+        prepare.company = companyField.text ?? ""
+        prepare.trade = professionField.text ?? ""
+        prepare.profession = jobField.text ?? ""
+        prepare.aid = activity?.id ?? ""
+        prepare.tid = ticket?.id ?? ""
+        if !prepare.isCompleteFill() {
+            BLHUDBarManager.showError(msg: "请填写完整")
+            return
+        }
+        
+        APIRequest.applyActivityAPI(activity: prepare) { [weak self](data) in
+            if data != nil {
+                self?.navigationController?.popViewController(animated: true)
+                BLHUDBarManager.showSuccess(msg: "报名成功", seconds: 0.5)
+            }
+        }
+    }
+    
+    
     func handleTapConfirmBtn(vc: ProfessionListController, item: String) {
         professionField.text = item
     }
@@ -196,6 +225,20 @@ class ActivityRegistController: BaseViewController, UINavigationControllerDelega
         imagePicker.dismiss(animated: true) {
             [weak self] in
             self?.businessCardBtn.setImage(images.first!, for: .normal)
+            
+            //上传图片
+            let hud = self?.pleaseWait()
+            let img = images.first?.imageWithMaxSize(maxSize: 1920)
+            let data = UIImageJPEGRepresentation(img!, 0.8)
+            APIManager.shareInstance.uploadFile(data: data!, result: { [weak self](JSON, code, msg) in
+                if code == 0 {
+                    hud?.hide()
+                    self?.prepare.buscard = JSON!["data"]["url"].stringValue
+                }
+                else {
+                    hud?.noticeError(msg)
+                }
+            })
         }
     }
     
@@ -215,6 +258,9 @@ extension ActivityRegistController {
         }
         APIRequest.activityPrepareAPI(id: activity!.id) { [weak self](data) in
             self?.prepare = data as! ActivityPrepare
+            if self!.prepare.sex.contains("null") {
+                self?.prepare.sex = "male"
+            }
             self?.updateUI()
         }
     }
@@ -247,6 +293,7 @@ extension ActivityRegistController {
             maleBtn.layer.borderColor = UIColor.init(hexString: "#bbbbbb")?.cgColor
         }
         else {
+            prepare.sex = "male"
             maleBtn.setTitleColor(themeColor, for: .normal)
             maleBtn.layer.borderColor = themeColor?.cgColor
             femaleBtn.setTitleColor(UIColor.init(hexString: "#bbbbbb"), for: .normal)

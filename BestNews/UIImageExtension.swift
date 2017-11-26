@@ -54,4 +54,35 @@ extension UIImage {
         UIGraphicsEndImageContext()
         return img!
     }
+    
+    
+    //压缩图片到指定尺寸
+    @objc func imageWithMaxSize(maxSize: CGFloat) -> UIImage? {
+        let w = self.size.width
+        let h = self.size.height
+        let originMaxSize = w > h ? w : h
+        if(originMaxSize > maxSize) {
+            
+            var newW = maxSize
+            var newH = newW * h / w;
+            if(newH > maxSize) {
+                newH = maxSize
+                newW = newH * w / h;
+            }
+            let size = CGSize(width: newW, height: newH)
+            let scale = newH / h
+            UIGraphicsBeginImageContext(size)
+            let context = UIGraphicsGetCurrentContext()
+            var transform = CGAffineTransform.identity
+            transform = transform.scaledBy(x: scale, y: scale)
+            context?.ctm.concatenating(transform)
+            self.draw(at: CGPoint(x: 0, y: 0))
+            let newimg = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+            return newimg
+        }
+        else {
+            return self
+        }
+    }
 }

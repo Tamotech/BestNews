@@ -17,7 +17,6 @@ typealias JSONResult = (_ resultObject: Any?) -> ()
 class APIRequest: NSObject {
 
     
-    
     /// 核验手机号
     ///
     /// - Parameters:
@@ -482,6 +481,26 @@ class APIRequest: NSObject {
             if code == 0 {
                 let data = ActivityPrepare.deserialize(from: JSON!["data"]["fillhist"].rawString())
                 result(data)
+            }
+            else {
+                BLHUDBarManager.showError(msg: msg)
+            }
+        }
+    }
+    
+    
+    
+    /// 申请报名
+    ///
+    /// - Parameters:
+    ///   - activity: 报名信息
+    ///   - result: 结果
+    class func applyActivityAPI(activity: ActivityPrepare, result: @escaping JSONResult) {
+        let path = "/activityoperate/apply.htm"
+        let params = activity.toJSON()
+        APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
+            if code == 0 {
+                result(JSON)
             }
             else {
                 BLHUDBarManager.showError(msg: msg)
