@@ -287,11 +287,17 @@
                             <rect key="frame" x="26.5" y="46" width="16" height="16"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="退款说明" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tvo-6A-17k">
-                            <rect key="frame" x="45.5" y="46" width="53.5" height="16"/>
+                            <rect key="frame" x="45.5" y="39" width="53.5" height="30"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ye8-gQ-sCx">
+                            <rect key="frame" x="26.5" y="39" width="72.5" height="30"/>
+                            <connections>
+                                <action selector="handleTappaybackInstruction:" destination="-1" eventType="touchUpInside" id="WEj-g8-vBo"/>
+                            </connections>
+                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ojv-9H-MQN">
                             <rect key="frame" x="195" y="14.5" width="160" height="49"/>
                             <color key="backgroundColor" red="0.0" green="0.59607843140000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -335,11 +341,15 @@
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="Z4v-nc-Phd" firstAttribute="centerX" secondItem="Q0O-kF-PWp" secondAttribute="centerX" id="0eI-hO-Brn"/>
+                        <constraint firstItem="Ye8-gQ-sCx" firstAttribute="trailing" secondItem="tvo-6A-17k" secondAttribute="trailing" id="7cn-4C-cYC"/>
                         <constraint firstItem="Z4v-nc-Phd" firstAttribute="top" secondItem="Q0O-kF-PWp" secondAttribute="top" id="8Th-hG-Bwh"/>
                         <constraint firstItem="ojv-9H-MQN" firstAttribute="centerY" secondItem="Q0O-kF-PWp" secondAttribute="centerY" id="B60-su-lB2"/>
+                        <constraint firstItem="Ye8-gQ-sCx" firstAttribute="top" secondItem="tvo-6A-17k" secondAttribute="top" id="Bde-Oi-3m3"/>
                         <constraint firstItem="Z4v-nc-Phd" firstAttribute="width" secondItem="Q0O-kF-PWp" secondAttribute="width" id="Dgq-SO-fy0"/>
                         <constraint firstItem="KYx-RK-qfw" firstAttribute="leading" secondItem="Q0O-kF-PWp" secondAttribute="leading" constant="26.5" id="Fzl-rl-Jdk"/>
+                        <constraint firstItem="Ye8-gQ-sCx" firstAttribute="leading" secondItem="7WS-cS-xzw" secondAttribute="leading" id="Ge6-zb-qIh"/>
                         <constraint firstItem="7WS-cS-xzw" firstAttribute="leading" secondItem="KYx-RK-qfw" secondAttribute="leading" id="TgJ-MH-o7i"/>
+                        <constraint firstItem="Ye8-gQ-sCx" firstAttribute="bottom" secondItem="tvo-6A-17k" secondAttribute="bottom" id="bxB-ZV-g91"/>
                         <constraint firstItem="KYx-RK-qfw" firstAttribute="top" secondItem="Q0O-kF-PWp" secondAttribute="top" constant="19" id="hSG-jx-X7V"/>
                         <constraint firstAttribute="height" constant="79" id="jFV-L3-zts"/>
                         <constraint firstAttribute="trailing" secondItem="ojv-9H-MQN" secondAttribute="trailing" constant="20" id="joc-Hu-R0W"/>

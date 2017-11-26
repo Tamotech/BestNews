@@ -94,8 +94,27 @@ class ActivityDetailController: BaseViewController, ActivityTicketListController
         }
     }
     
+    
+    ///退款说明
+    @IBAction func handleTappaybackInstruction(_ sender: Any) {
+        
+        
+    }
+    
+    
     @IBAction func handleTapJoinBtn(_ sender: UIButton) {
+        
+        if activity.tickets.count == 0 {
+            BLHUDBarManager.showError(msg: "该活动暂时无票")
+            return
+        }
+        if SessionManager.sharedInstance.loginInfo.isLogin == false {
+            Toolkit.showLoginVC()
+            return
+        }
+        
         let vc = ActivityTicketListController(nibName: "ActivityTicketListController", bundle: nil)
+        vc.tickets = activity.tickets
         vc.delegate = self
         presentr.viewControllerForContext = self
         presentr.shouldIgnoreTapOutsideContext = true
@@ -104,9 +123,11 @@ class ActivityDetailController: BaseViewController, ActivityTicketListController
         }
     }
     
-    func handleTapNextBtn(vc: ActivityTicketListController) {
+    func handleTapNextBtn(vc: ActivityTicketListController, ticket: ActivityTicket) {
         vc.dismiss(animated: true, completion: nil)
         let registVC = ActivityRegistController(nibName: "ActivityRegistController", bundle: nil)
+        registVC.activity = activity
+        registVC.ticket = ticket
         navigationController?.pushViewController(registVC, animated: true)
     }
 
@@ -161,6 +182,7 @@ extension ActivityDetailController {
         addressLb.text = activity.address
         sponsorLb.text = "主办方: \(activity.sponsor)"
         limitNumLb.text = "限额: \(activity.num)"
+        ticketPriceLb.text = activity.priceString()
         let labels = activity.tags.split(separator: ",")
         labelsContainer.updateUI(labels)
         webView.loadHTMLString(activity.contentHtmlString(), baseURL: nil)

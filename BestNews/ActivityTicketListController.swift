@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 
 protocol ActivityTicketListControllerDelgate: class {
-    func handleTapNextBtn(vc: ActivityTicketListController)
+    func handleTapNextBtn(vc: ActivityTicketListController, ticket: ActivityTicket)
 }
 
 class ActivityTicketListController: UIViewController, UITableViewDelegate, UITableViewDataSource {
@@ -18,6 +18,9 @@ class ActivityTicketListController: UIViewController, UITableViewDelegate, UITab
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     weak var delegate: ActivityTicketListControllerDelgate?
+    
+    
+    var tickets: [ActivityTicket] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,20 +53,25 @@ class ActivityTicketListController: UIViewController, UITableViewDelegate, UITab
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return tickets.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ActivityTicketCell
+        cell.updateCell(tickets[indexPath.row])
         return cell
     }
     
-    //MARK: - actions
-    @IBAction func handleTapConfirmBtn(_ sender: UIButton) {
-        if delegate != nil {
-            delegate?.handleTapNextBtn(vc: self)
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let ticket = tickets[indexPath.row]
+        if ticket.num > 0 {
+            if delegate != nil {
+                delegate?.handleTapNextBtn(vc: self, ticket: ticket)
+            }
         }
     }
+    
+    //MARK: - actions
     
     @IBAction func handleTapCancelBtn(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)

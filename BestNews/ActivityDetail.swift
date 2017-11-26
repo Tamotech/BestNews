@@ -72,9 +72,20 @@ class ActivityDetail: HandyJSON {
         return "\(d1) \(d2)-\(d3)"
     }
     
+    ///价格
+    func priceString() -> String {
+        var str = ""
+        for tic in tickets {
+            str = str+String(tic.money)
+            if tic.id != tickets.last!.id {
+                str = str+","
+            }
+        }
+        return str
+    }
     
     func contentHtmlString() -> String {
-        let html = "<html><boty><div><font size=\"26\" color=\"black\">\(content)<br><br><br><br></font></div></body></html>"
+        let html = "<html><boty><div style='margin:25px'><font size=\"26\" color=\"black\">\(content)<br><br><br><br></font></div></body></html>"
         return html
     }
 }
@@ -90,4 +101,9 @@ class ActivityTicket: HandyJSON {
     var num: Int = 0
     var sortid: Int = 0
     var salenum: Int = 0
+    
+    func endDateStr() -> String {
+        let date = Date(timeIntervalSince1970: saleenddate)
+        return date.stringWithFormat("MM月dd日")
+    }
 }

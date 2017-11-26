@@ -43,6 +43,12 @@
 	<string>4</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>为了保障您的用户体验, 我们需要访问您的相机</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>为了保障您的用户体验, 我们需要访问您的位置</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>为了保障您的用户体验, 我们需要访问您的相册</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

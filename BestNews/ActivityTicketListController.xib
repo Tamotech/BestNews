@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -36,7 +36,8 @@
                     <rect key="frame" x="0.0" y="588" width="375" height="79"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VPm-bp-6dP">
-                            <rect key="frame" x="15" y="15" width="165" height="49"/>
+                            <rect key="frame" x="60" y="15" width="255" height="49"/>
+                            <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                             <state key="normal" title="取消">
                                 <color key="titleColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -50,46 +51,14 @@
                                 <action selector="handleTapCancelBtn:" destination="-1" eventType="touchUpInside" id="p5f-ll-A8l"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p83-ed-HJX">
-                            <rect key="frame" x="195" y="15" width="165" height="49"/>
-                            <color key="backgroundColor" red="0.0" green="0.59607843140000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <state key="normal" title="下一步">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                    <real key="value" value="8"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                    <real key="value" value="10"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                    <size key="value" width="0.0" height="5"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                    <real key="value" value="0.29999999999999999"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                    <color key="value" red="0.0" green="0.59607843140000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="handleTapConfirmBtn:" destination="-1" eventType="touchUpInside" id="RqB-9Q-hmp"/>
-                            </connections>
-                        </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="p83-ed-HJX" firstAttribute="leading" secondItem="VPm-bp-6dP" secondAttribute="trailing" constant="15" id="B1L-Rd-lpx"/>
-                        <constraint firstItem="VPm-bp-6dP" firstAttribute="top" secondItem="p83-ed-HJX" secondAttribute="top" id="BnY-pU-go8"/>
-                        <constraint firstItem="VPm-bp-6dP" firstAttribute="width" secondItem="p83-ed-HJX" secondAttribute="width" id="DXm-9w-jwI"/>
-                        <constraint firstItem="VPm-bp-6dP" firstAttribute="leading" secondItem="Cdg-r0-u5s" secondAttribute="leading" constant="15" id="DbH-po-Ozi"/>
-                        <constraint firstAttribute="trailing" secondItem="p83-ed-HJX" secondAttribute="trailing" constant="15" id="Nan-z1-cFo"/>
+                        <constraint firstItem="VPm-bp-6dP" firstAttribute="leading" secondItem="Cdg-r0-u5s" secondAttribute="leading" constant="60" id="DbH-po-Ozi"/>
                         <constraint firstAttribute="height" constant="79" id="SeL-2j-WCL"/>
                         <constraint firstItem="VPm-bp-6dP" firstAttribute="top" secondItem="Cdg-r0-u5s" secondAttribute="top" constant="15" id="V8a-UW-ej3"/>
                         <constraint firstAttribute="bottom" secondItem="VPm-bp-6dP" secondAttribute="bottom" constant="15" id="Xgx-Pa-has"/>
-                        <constraint firstItem="VPm-bp-6dP" firstAttribute="bottom" secondItem="p83-ed-HJX" secondAttribute="bottom" id="jLL-vp-0km"/>
+                        <constraint firstAttribute="trailing" secondItem="VPm-bp-6dP" secondAttribute="trailing" constant="60" id="YGj-fu-ID4"/>
                     </constraints>
                 </view>
             </subviews>

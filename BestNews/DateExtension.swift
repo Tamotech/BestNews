@@ -17,6 +17,13 @@ extension Date {
         return str
     }
     
+    func stringWithFormat(_ format: String) -> String {
+        let formater = DateFormatter()
+        formater.dateFormat = format
+        let str = formater.string(from: self)
+        return str
+    }
+    
     /// 时间戳格式: xx分钟前 xx小时前 xx月xx日
     func newsDateStr() -> String {
         let now = Date()

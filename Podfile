@@ -18,5 +18,6 @@ target 'BestNews' do
    pod 'WechatOpenSDK'
    pod 'IQKeyboardManagerSwift', '5.0.0'
    pod 'CRRefresh'
+   pod 'ImagePicker', '~> 2.0'
 
 end

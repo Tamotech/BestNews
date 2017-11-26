@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0214D8E7CC8C45B6FE9D066D /* Pods_BestNews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEA9997CD925F2C7B1649D76 /* Pods_BestNews.framework */; };
+		5A06DF461FCA4F2C00F225F1 /* ActivityPrepare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A06DF451FCA4F2C00F225F1 /* ActivityPrepare.swift */; };
+		5A06DF491FCAA9A600F225F1 /* ProfessionListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A06DF471FCAA9A600F225F1 /* ProfessionListController.swift */; };
+		5A06DF4E1FCABCE600F225F1 /* WXImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A06DF4C1FCABCE500F225F1 /* WXImagePickerViewController.swift */; };
+		5A06DF4F1FCABCE600F225F1 /* WXImagePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A06DF4D1FCABCE600F225F1 /* WXImagePickerViewController.xib */; };
 		5A0979B71F9F2632004BB0AD /* SwiftyTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0979B51F9F23A8004BB0AD /* SwiftyTextField.swift */; };
 		5A0979B81F9F2632004BB0AD /* SwiftyVerificationCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0979B61F9F23A8004BB0AD /* SwiftyVerificationCodeView.swift */; };
 		5A0A13951F9EB1B400DF57B9 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0A13931F9EB1B400DF57B9 /* LoginViewController.swift */; };
@@ -167,6 +171,10 @@
 /* Begin PBXFileReference section */
 		11340A3AC197F199C7182F7A /* Pods-BestNews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BestNews.release.xcconfig"; path = "Pods/Target Support Files/Pods-BestNews/Pods-BestNews.release.xcconfig"; sourceTree = "<group>"; };
 		49FBDE1023696FAD0FCB9971 /* Pods-BestNews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BestNews.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BestNews/Pods-BestNews.debug.xcconfig"; sourceTree = "<group>"; };
+		5A06DF451FCA4F2C00F225F1 /* ActivityPrepare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityPrepare.swift; sourceTree = "<group>"; };
+		5A06DF471FCAA9A600F225F1 /* ProfessionListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessionListController.swift; sourceTree = "<group>"; };
+		5A06DF4C1FCABCE500F225F1 /* WXImagePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXImagePickerViewController.swift; sourceTree = "<group>"; };
+		5A06DF4D1FCABCE600F225F1 /* WXImagePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WXImagePickerViewController.xib; sourceTree = "<group>"; };
 		5A0979B51F9F23A8004BB0AD /* SwiftyTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyTextField.swift; sourceTree = "<group>"; };
 		5A0979B61F9F23A8004BB0AD /* SwiftyVerificationCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyVerificationCodeView.swift; sourceTree = "<group>"; };
 		5A0A13931F9EB1B400DF57B9 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -338,6 +346,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5A06DF4B1FCABCD700F225F1 /* ImagePicker */ = {
+			isa = PBXGroup;
+			children = (
+				5A06DF4C1FCABCE500F225F1 /* WXImagePickerViewController.swift */,
+				5A06DF4D1FCABCE600F225F1 /* WXImagePickerViewController.xib */,
+			);
+			path = ImagePicker;
+			sourceTree = "<group>";
+		};
 		5A0979B41F9F238B004BB0AD /* SwiftyInputField */ = {
 			isa = PBXGroup;
 			children = (
@@ -393,6 +410,7 @@
 		5A0D23BE1F831F0C00FC9D4D /* Component */ = {
 			isa = PBXGroup;
 			children = (
+				5A06DF4B1FCABCD700F225F1 /* ImagePicker */,
 				5A32A70D1F93352100773884 /* Segment */,
 				5A2341D71F87CA7000BEB06F /* AlertController */,
 				CCDB6D371F79C5790012432E /* TYView */,
@@ -484,6 +502,7 @@
 				CC0170611F6840D00069D38B /* ActivityDetailController.xib */,
 				5A5446011F84A13E0004F192 /* ActivityTicketListController.swift */,
 				5A5446021F84A13E0004F192 /* ActivityTicketListController.xib */,
+				5A06DF471FCAA9A600F225F1 /* ProfessionListController.swift */,
 				5A54460D1F852A1E0004F192 /* ActivityRegistController.swift */,
 				5A54460E1F852A1E0004F192 /* ActivityRegistController.xib */,
 			);
@@ -507,6 +526,7 @@
 			children = (
 				5ABB14D31FBD073E006EEE59 /* ActivityList.swift */,
 				5ABB14D51FBD0F83006EEE59 /* ActivityDetail.swift */,
+				5A06DF451FCA4F2C00F225F1 /* ActivityPrepare.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -931,6 +951,7 @@
 				5A27E72C1F936857007C5D6B /* FinanceProductDetailController.xib in Resources */,
 				CC29070D1F65A334001894DA /* BaseTabBarView.xib in Resources */,
 				CC2906FD1F65A0AB001894DA /* MainController.xib in Resources */,
+				5A06DF4F1FCABCE600F225F1 /* WXImagePickerViewController.xib in Resources */,
 				CCDB6D581F7A526C0012432E /* SinglePhotoNewsCell.xib in Resources */,
 				CC2907091F65A0F0001894DA /* MeController.xib in Resources */,
 				CC0170631F6840D00069D38B /* ActivityDetailController.xib in Resources */,
@@ -964,6 +985,7 @@
 				"${BUILT_PRODUCTS_DIR}/CRRefresh/CRRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/ImagePicker/ImagePicker.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
@@ -979,6 +1001,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CRRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImagePicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
@@ -1072,6 +1095,7 @@
 				5A62A46A1FAE1AEB0087D936 /* HomeNewsDetail.swift in Sources */,
 				5A32A7071F930CC100773884 /* MessageCenterListCell.swift in Sources */,
 				5AC684851F7FFF24006CEB53 /* NoPhotoNewsCell.swift in Sources */,
+				5A06DF491FCAA9A600F225F1 /* ProfessionListController.swift in Sources */,
 				5AF9CADA1FA5C16E0071285D /* MyActivityListController.swift in Sources */,
 				5A62A4661FABE73B0087D936 /* ListManager.swift in Sources */,
 				CC2906EA1F659EBA001894DA /* DateExtension.swift in Sources */,
@@ -1087,6 +1111,7 @@
 				5A0D23C61F832BD000FC9D4D /* NewsDetailController.swift in Sources */,
 				CC2906ED1F659EBA001894DA /* UIImageExtension.swift in Sources */,
 				CC01705E1F6835400069D38B /* ActivityCoverCell.swift in Sources */,
+				5A06DF4E1FCABCE600F225F1 /* WXImagePickerViewController.swift in Sources */,
 				5ABB92D41FA5F715002E3180 /* UserInfo.swift in Sources */,
 				5A573E091FB86D7C006420BA /* RewardManList.swift in Sources */,
 				5A38B6B91F80871100AF4A91 /* FastNewsCell.swift in Sources */,
@@ -1123,6 +1148,7 @@
 				CC2907081F65A0F0001894DA /* MeController.swift in Sources */,
 				5A27E7271F935361007C5D6B /* RecommendColumnCell.swift in Sources */,
 				CC2906EC1F659EBA001894DA /* UIColorExtensions.swift in Sources */,
+				5A06DF461FCA4F2C00F225F1 /* ActivityPrepare.swift in Sources */,
 				5A4A21551FC1E53200648126 /* LabelsContainerView.swift in Sources */,
 				5A573E0B1FB87156006420BA /* FastNewsList.swift in Sources */,
 				5A0D23C31F83225A00FC9D4D /* NewsCommentBar.swift in Sources */,

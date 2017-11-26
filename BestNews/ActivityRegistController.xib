@@ -1,19 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActivityRegistController" customModule="BestNews" customModuleProvider="target">
             <connections>
+                <outlet property="activityDescLb" destination="R1a-Fh-qVE" id="B5V-cE-WNd"/>
+                <outlet property="activityTitleLb" destination="Y4L-7a-rQh" id="ZGE-kn-sfe"/>
+                <outlet property="aliPaySwitch" destination="acE-gL-Uhv" id="xl8-91-KpC"/>
+                <outlet property="businessCardBtn" destination="1wk-lG-20F" id="8e4-ZA-Ton"/>
+                <outlet property="captchaBtn" destination="PKH-oR-Iy8" id="NQa-bg-7Uv"/>
+                <outlet property="captchaField" destination="kgk-q5-nX9" id="acP-BN-ZK1"/>
+                <outlet property="companyField" destination="rBm-58-RQQ" id="prG-8r-MH0"/>
+                <outlet property="coverPhoto" destination="c93-5q-v0G" id="uPi-wp-hzh"/>
+                <outlet property="femaleBtn" destination="kFE-41-JJe" id="WLU-QH-rjd"/>
+                <outlet property="idCardField" destination="ta9-24-n0l" id="xb0-1e-ddl"/>
+                <outlet property="jobField" destination="1la-bV-bwC" id="fGF-5q-X1H"/>
+                <outlet property="maleBtn" destination="YLV-iC-VRh" id="viw-dJ-WC9"/>
+                <outlet property="nameField" destination="Puu-5x-hC4" id="rRF-rZ-hPd"/>
+                <outlet property="phoneField" destination="3gf-ys-kxo" id="7P7-JS-Fn9"/>
+                <outlet property="priceLb" destination="hhi-GB-e5S" id="Ia7-OG-evO"/>
+                <outlet property="professionField" destination="wzS-eA-5CZ" id="fL7-vD-vCv"/>
                 <outlet property="scrollView" destination="nJS-IW-Jh0" id="04m-bS-tx9"/>
+                <outlet property="ticketNumLb" destination="XAC-G0-2nu" id="Z5w-9F-oyN"/>
+                <outlet property="ticketPriceLb" destination="XHI-8c-h3w" id="0QP-52-gmI"/>
+                <outlet property="totalPriceLb" destination="sTQ-CR-VfF" id="SMg-dM-pP3"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+                <outlet property="wechatSwitch" destination="hwz-xx-b8b" id="L2J-yn-R4n"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -134,7 +154,7 @@
                                                     <rect key="frame" x="110" y="11.5" width="155" height="20"/>
                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                                 </textField>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PKH-oR-Iy8">
                                                     <rect key="frame" x="270" y="6.5" width="90" height="30"/>
@@ -152,6 +172,9 @@
                                                             <real key="value" value="4"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="handleTapSendCaptcha:" destination="-1" eventType="touchUpInside" id="lfX-N5-uZe"/>
+                                                    </connections>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1tV-I6-IxN" userLabel="line">
                                                     <rect key="frame" x="14.5" y="43" width="345" height="1"/>
@@ -251,6 +274,9 @@
                                                     <state key="normal" title="男">
                                                         <color key="titleColor" red="0.0" green="0.59607843140000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
+                                                    <state key="selected">
+                                                        <color key="titleColor" red="0.0" green="0.59607843140000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                             <real key="value" value="4"/>
@@ -262,6 +288,9 @@
                                                             <color key="value" red="0.0" green="0.59607843140000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="handleTapMale:" destination="-1" eventType="touchUpInside" id="28z-bQ-tZX"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kFE-41-JJe">
                                                     <rect key="frame" x="170" y="6.5" width="40" height="30"/>
@@ -283,6 +312,9 @@
                                                             <color key="value" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="calibratedRGB"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="handleTapFemale:" destination="-1" eventType="touchUpInside" id="QKq-I5-CrG"/>
+                                                    </connections>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KHe-Vp-3Wa" userLabel="line">
                                                     <rect key="frame" x="14.5" y="43" width="345" height="1"/>
@@ -408,7 +440,7 @@
                                                     </attributedString>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="选择您的行业" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wzS-eA-5CZ">
+                                                <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="选择您的行业" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wzS-eA-5CZ">
                                                     <rect key="frame" x="110" y="11.5" width="265" height="20"/>
                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -426,6 +458,7 @@
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <gestureRecognizers/>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="2b1-qZ-Xfu" secondAttribute="trailing" constant="22" id="0UR-7c-6s3"/>
                                                 <constraint firstItem="c0Y-QM-moC" firstAttribute="centerY" secondItem="G4w-di-z6c" secondAttribute="centerY" id="1pj-Pk-ooC"/>
@@ -439,6 +472,9 @@
                                                 <constraint firstAttribute="height" constant="44" id="ogP-yd-B7e"/>
                                                 <constraint firstItem="wzS-eA-5CZ" firstAttribute="centerY" secondItem="G4w-di-z6c" secondAttribute="centerY" id="sVz-CK-BBH"/>
                                             </constraints>
+                                            <connections>
+                                                <outletCollection property="gestureRecognizers" destination="yHG-4V-o2j" appends="YES" id="hJN-7j-eEU"/>
+                                            </connections>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9f7-E4-Dte">
                                             <rect key="frame" x="0.0" y="357" width="375" height="44"/>
@@ -518,6 +554,9 @@
                                                             <real key="value" value="4"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="handleTapUploadBtn:" destination="-1" eventType="touchUpInside" id="jis-kX-LU2"/>
+                                                    </connections>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gmD-S2-DnA" userLabel="line">
                                                     <rect key="frame" x="14.5" y="122" width="345" height="1"/>
@@ -616,6 +655,11 @@
                                                         <constraint firstAttribute="height" constant="75" id="6Tk-da-XrW"/>
                                                         <constraint firstAttribute="width" constant="75" id="Qbs-qF-x4g"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                            <real key="value" value="6"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="活动标题一行15个字，最多显示两行，其余的用省略号来代替" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y4L-7a-rQh">
                                                     <rect key="frame" x="110" y="15.5" width="245" height="38.5"/>
@@ -761,6 +805,7 @@
                                                 </view>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <gestureRecognizers/>
                                             <constraints>
                                                 <constraint firstItem="Wiv-CH-0eZ" firstAttribute="centerY" secondItem="OTn-Kw-PmC" secondAttribute="centerY" id="DfE-7y-y1w"/>
                                                 <constraint firstItem="t07-Ua-D2S" firstAttribute="centerY" secondItem="OTn-Kw-PmC" secondAttribute="centerY" id="Ff8-BY-tpA"/>
@@ -773,6 +818,9 @@
                                                 <constraint firstItem="Z8S-ek-FwT" firstAttribute="centerX" secondItem="OTn-Kw-PmC" secondAttribute="centerX" id="rfi-en-off"/>
                                                 <constraint firstAttribute="trailing" secondItem="acE-gL-Uhv" secondAttribute="trailing" constant="25" id="vwR-b0-liK"/>
                                             </constraints>
+                                            <connections>
+                                                <outletCollection property="gestureRecognizers" destination="a7g-5n-CQV" appends="YES" id="sHH-m3-vfx"/>
+                                            </connections>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HmA-dB-JL7">
                                             <rect key="frame" x="0.0" y="99" width="375" height="50"/>
@@ -791,6 +839,7 @@
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <gestureRecognizers/>
                                             <constraints>
                                                 <constraint firstItem="lNI-Nk-Y66" firstAttribute="centerY" secondItem="HmA-dB-JL7" secondAttribute="centerY" id="Ed7-kk-oKg"/>
                                                 <constraint firstAttribute="trailing" secondItem="hwz-xx-b8b" secondAttribute="trailing" constant="25" id="TtD-1s-nCN"/>
@@ -800,6 +849,9 @@
                                                 <constraint firstItem="lNI-Nk-Y66" firstAttribute="leading" secondItem="HmA-dB-JL7" secondAttribute="leading" constant="66" id="rVu-ae-vJ9"/>
                                                 <constraint firstAttribute="height" constant="50" id="wG6-U5-lF3"/>
                                             </constraints>
+                                            <connections>
+                                                <outletCollection property="gestureRecognizers" destination="mkd-sy-3jl" appends="YES" id="vJh-XN-j5B"/>
+                                            </connections>
                                         </view>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -913,6 +965,21 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="32.5" y="332.5"/>
         </view>
+        <tapGestureRecognizer id="a7g-5n-CQV">
+            <connections>
+                <action selector="handleTapAliPay:" destination="-1" id="qTf-Mo-eh6"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="mkd-sy-3jl">
+            <connections>
+                <action selector="handleTapWechatPay:" destination="-1" id="wnt-qd-Jk4"/>
+            </connections>
+        </tapGestureRecognizer>
+        <tapGestureRecognizer id="yHG-4V-o2j">
+            <connections>
+                <action selector="handleTapProfessionBtn:" destination="-1" id="vSX-9v-NwQ"/>
+            </connections>
+        </tapGestureRecognizer>
     </objects>
     <resources>
         <image name="Cover1M3-1" width="315" height="230"/>

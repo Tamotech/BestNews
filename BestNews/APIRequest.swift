@@ -470,4 +470,22 @@ class APIRequest: NSObject {
         }
     }
     
+    /// 活动报名准备信息
+    ///
+    /// - Parameters:
+    ///   - id: id
+    ///   - result: 结果
+    class func activityPrepareAPI(id: String, result: @escaping JSONResult) {
+        
+        let path = "/activityoperate/prepare.htm?aid=\(id)"
+        APIManager.shareInstance.postRequest(urlString: path, params: nil) { (JSON, code, msg) in
+            if code == 0 {
+                let data = ActivityPrepare.deserialize(from: JSON!["data"]["fillhist"].rawString())
+                result(data)
+            }
+            else {
+                BLHUDBarManager.showError(msg: msg)
+            }
+        }
+    }
 }
