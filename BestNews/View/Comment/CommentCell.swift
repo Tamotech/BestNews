@@ -114,17 +114,19 @@ class CommentCell: UITableViewCell {
     }
     
     @IBAction func handleTapVote(_ sender: UIButton) {
-        sender.isSelected = !sender.isSelected
-        if sender.isSelected {
+        if comment?.praiseflag == 0 {
             comment?.praiseflag = 1
             comment?.praisenum = comment!.praisenum + 1
             comment?.praiseAPI(praise: true)
+            voteBtn.setImage(#imageLiteral(resourceName: "vote_select"), for: .normal)
         }
         else {
             comment?.praiseflag = 0
             comment?.praisenum = comment!.praisenum - 1
             comment?.praiseAPI(praise: false)
+            voteBtn.setImage(#imageLiteral(resourceName: "vote_light"), for: .normal)
         }
+        voteCountLb.text = "\(comment!.praisenum)"
     }
     
     

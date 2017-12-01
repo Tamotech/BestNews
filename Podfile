@@ -6,8 +6,8 @@ target 'BestNews' do
   use_frameworks!
 
   # Pods for BestNews
-   pod ‘Kingfisher’, ‘~>3.0’
-   pod ‘Alamofire’
+   pod 'Kingfisher', ‘~>3.0’
+   pod 'Alamofire'
    pod 'AlamofireObjectMapper', '~> 4.0'
    pod 'SwiftyJSON'
    pod 'HandyJSON'

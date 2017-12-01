@@ -103,13 +103,16 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
         }
     }
     
+    ///获取用户信息
     func getUserInfo() {
-//        APIRequest.getUserInfoAPI { [weak self](result) in
-//            if result != nil {
-//                self?.userInfo = result as? UserInfo
-//                NotificationCenter.default.post(name: kUserInfoDidUpdateNotify, object: nil)
-//            }
-//        }
+        if loginInfo.isLogin {
+            APIRequest.getUserInfoAPI { [weak self](result) in
+                if result != nil {
+                    self?.userInfo = result as? UserInfo
+                    NotificationCenter.default.post(name: kUserInfoDidUpdateNotify, object: nil)
+                }
+            }
+        }
     }
     
     ///登出

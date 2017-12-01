@@ -147,7 +147,7 @@ extension YLCycleView : UICollectionViewDataSource {
         }
        
         var header : String?
-        if images![indexPath.row % images!.count].characters.count >= 4 {
+        if images![indexPath.row % images!.count].count >= 4 {
             header = (images![indexPath.row % images!.count] as NSString).substring(to: 4)
         }
         if header == "http" {

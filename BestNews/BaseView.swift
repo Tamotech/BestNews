@@ -7,9 +7,18 @@
 //
 
 import UIKit
+import Presentr
 
 class BaseView: UIView {
 
+    lazy var presentr:Presentr = {
+        let pr = Presentr(presentationType: .fullScreen)
+        pr.transitionType = TransitionType.coverVertical
+        pr.dismissOnTap = true
+        pr.dismissAnimated = true
+        return pr
+    }()
+    
     class func instanceFromXib() -> UIView {
         let className = NSStringFromClass( object_getClass(self.classForCoder())).components(separatedBy: ".").last!
         let view = Bundle.main.loadNibNamed(className, owner: nil, options: nil)?.first as! UIView

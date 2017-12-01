@@ -20,6 +20,5 @@ class NewsChannel: HandyJSON {
     //normal：普通   special：专题
     var type: String = ""
     var preimgpath: String = ""
-    
-    var selected: Bool = false
+    var subscribe: Int = 0
 }

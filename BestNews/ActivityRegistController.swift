@@ -62,13 +62,6 @@ class ActivityRegistController: BaseViewController, UINavigationControllerDelega
     var prepare = ActivityPrepare()
     var captcha: String?
     
-    lazy var presentr:Presentr = {
-        let pr = Presentr(presentationType: .fullScreen)
-        pr.transitionType = TransitionType.coverVertical
-        pr.dismissOnTap = true
-        pr.dismissAnimated = true
-        return pr
-    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()

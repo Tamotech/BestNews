@@ -40,14 +40,10 @@ class ActivityDetailController: BaseViewController, ActivityTicketListController
     
     @IBOutlet weak var webParentView: UIView!
     @IBOutlet weak var webViewHeight: NSLayoutConstraint!
+
+    @IBOutlet weak var bottomView: UIView!
     
-    lazy var presentr:Presentr = {
-        let pr = Presentr(presentationType: .fullScreen)
-        pr.transitionType = TransitionType.coverVertical
-        pr.dismissOnTap = true
-        pr.dismissAnimated = true
-       return pr
-    }()
+    var collectionItem: UIBarButtonItem?
     
     lazy var webView: WKWebView = {
        
@@ -66,9 +62,10 @@ class ActivityDetailController: BaseViewController, ActivityTicketListController
         self.shouldClearNavBar = true
         webView.navigationDelegate = self
         
-        let collectionBar = UIBarButtonItem(image: #imageLiteral(resourceName: "iconCollection"), style: .plain, target: self, action: #selector(handleTapCollectionBtn(sender:)))
+        let collectIcon = activity.collect == 1 ? #imageLiteral(resourceName: "iconCollectionOn") : #imageLiteral(resourceName: "iconCollection")
+        collectionItem = UIBarButtonItem(image: collectIcon, style: .plain, target: self, action: #selector(handleTapCollectionBtn(sender:)))
         let repostBar = UIBarButtonItem(image: #imageLiteral(resourceName: "iconShare"), style: .plain, target: self, action: #selector(handleTapRepostBtn(sender:)))
-        navigationItem.rightBarButtonItems = [repostBar, collectionBar]
+        navigationItem.rightBarButtonItems = [repostBar, collectionItem!]
         if #available(iOS 11.0, *) {
             scrollView.contentInsetAdjustmentBehavior = .never
         } else {
@@ -82,11 +79,39 @@ class ActivityDetailController: BaseViewController, ActivityTicketListController
 
     //MARK: - acions
     func handleTapCollectionBtn(sender: Any) {
-        
+        if activity.collect == 0 {
+            APIRequest.collectAPI(id: activity.id, type: "activity", result: { [weak self](success) in
+                if success {
+                    self?.activity.collect = 1
+                    self?.collectionItem?.image = #imageLiteral(resourceName: "iconCollectionOn")
+                }
+                else {
+                    self?.activity.collect = 0
+                    self?.collectionItem?.image = #imageLiteral(resourceName: "iconCollection")
+                }
+            })
+        }
+        else {
+            APIRequest.cancelCollectAPI(id: activity.id, type: "activity", result: { [weak self](success) in
+                if success {
+                    self?.activity.collect = 0
+                    self?.collectionItem?.image = #imageLiteral(resourceName: "iconCollection")
+                }
+                else {
+                    self?.activity.collect = 1
+                    self?.collectionItem?.image = #imageLiteral(resourceName: "iconCollectionOn")
+                }
+            })
+        }
     }
     
     func handleTapRepostBtn(sender: Any) {
         let vc = BaseShareViewController(nibName: "BaseShareViewController", bundle: nil)
+        let share = ShareModel()
+        share.title = activity.title
+        share.msg = ""
+        share.thumb = activity.preimgpath
+        vc.share = share
         presentr.viewControllerForContext = self
         presentr.shouldIgnoreTapOutsideContext = false
         customPresentViewController(presentr, viewController: vc, animated: true) {
@@ -186,6 +211,7 @@ extension ActivityDetailController {
         let labels = activity.tags.split(separator: ",")
         labelsContainer.updateUI(labels)
         webView.loadHTMLString(activity.contentHtmlString(), baseURL: nil)
+        bottomView.isHidden = activity.tickets.count <= 0
         
     }
 }

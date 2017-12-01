@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CRRefresh
 
 class SubscriptionListControllerViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
 
@@ -22,25 +23,49 @@ class SubscriptionListControllerViewController: UIViewController, UITableViewDel
     
     @IBOutlet weak var subscriptMoreView: UIView!
     
+    @IBOutlet weak var scrollview: UIScrollView!
+    
     ///专题列表
     var channels: [NewsChannel] = []
     //机构列表
     var ognizationList = OgnizationList()
     
+    //订阅文章列表
+    var articles = HomeArticleList()
+    var page: Int = 1
+    
+    let cellIdentifiers = ["TopicBannerCell", "SinglePhotoNewsCell", "ThreePhotosNewsCell", "NoPhotoNewsCell", "SingleBigPhotoNewsCell"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setupView()
-        loadNewsChannel()
         reloadOgnizationList()
+        reloadArticleList()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        loadNewsChannel()
     }
     
     func setupView() {
         
-        let nib1 = UINib(nibName: "SinglePhotoNewsCell", bundle: nil)
-        newsTableView.register(nib1, forCellReuseIdentifier: "SinglePhotoNewsCell")
-        newsTableView.rowHeight = 135;
-        
+        for i in 0..<cellIdentifiers.count {
+            let identifier = cellIdentifiers[i]
+            let nib = UINib(nibName: identifier, bundle: nil)
+            newsTableView.register(nib, forCellReuseIdentifier: identifier)
+        }
+        newsTableView.estimatedRowHeight = 135
+        newsTableView.rowHeight = UITableViewAutomaticDimension
+        newsTableView.cr.addHeadRefresh {
+            [weak self] in
+            self?.reloadArticleList()
+        }
+        newsTableView.cr.addFootRefresh {
+            [weak self] in
+            self?.loadMoreArticleList()
+        }
         
         let nib2 = UINib(nibName: "SubscriptListCell", bundle: nil)
         columeTableView.register(nib2, forCellReuseIdentifier: "ColumeCell")
@@ -50,6 +75,11 @@ class SubscriptionListControllerViewController: UIViewController, UITableViewDel
         
         let layout = columeCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
         columeCollectionView.contentInset = UIEdgeInsetsMake(0, 15, 0, 15)
+        
+        scrollview.cr.addHeadRefresh {
+            [weak self] in
+            self?.loadNewsChannel()
+        }
         layout.minimumLineSpacing = 8
         layout.minimumInteritemSpacing = 8
         let w = (screenWidth-15*2-8*2)/3.0
@@ -68,7 +98,7 @@ class SubscriptionListControllerViewController: UIViewController, UITableViewDel
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == self.newsTableView {
-            return 10
+            return articles.list.count
         }
         else {
             return ognizationList.list.count > 3 ? 3 : ognizationList.list.count
@@ -85,10 +115,25 @@ class SubscriptionListControllerViewController: UIViewController, UITableViewDel
 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        var index = 0
         if tableView == self.newsTableView {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SinglePhotoNewsCell", for: indexPath)
-        
+            let article = articles.list[indexPath.row];
+            if article.preimglist.count == 0 {
+                index = 3
+            }
+            else if article.preimglist.count == 1 && article.preimgtype == "big1" {
+                index = 4
+            }
+            else if article.preimglist.count == 1 && article.preimgtype == "small3" {
+                index = 1
+            }
+            else {
+                index = 2
+            }
+            
+            let identifier = cellIdentifiers[index]
+            let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! BaseNewsCell
+            cell.updateCell(article: article)
             return cell
         }
         else {
@@ -102,7 +147,9 @@ class SubscriptionListControllerViewController: UIViewController, UITableViewDel
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         /// WHY?
         if tableView == self.newsTableView {
-            let vc = NewsDetailController.init(nibName: "NewsDetailController", bundle: nil)
+            let article = articles.list[indexPath.row]
+            let vc = NewsDetailController.init(nibName: "NewsDetailController", bundle: nil) as NewsDetailController
+            vc.articleId = article.id
             navigationController?.pushViewController(vc, animated: true)
         }
         else {
@@ -146,6 +193,12 @@ class SubscriptionListControllerViewController: UIViewController, UITableViewDel
     }
     
     @IBAction func handleTapAllOgnization(_ sender: UITapGestureRecognizer) {
+        
+        let vc = OrgnizationListController(nibName: "OrgnizationListController", bundle: nil)
+        vc.type = 0
+        vc.entry = 1
+        vc.showCustomTitle(title: "机构")
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     /// 我的订阅 | 订阅更多
@@ -172,6 +225,7 @@ extension SubscriptionListControllerViewController {
     //专题列表
     func loadNewsChannel() {
         APIRequest.getAllChannelAPI { [weak self](data) in
+            self?.scrollview.cr.endHeaderRefresh()
             self?.channels = data as! [NewsChannel]
             self?.columeCollectionView.reloadData()
         }
@@ -181,8 +235,41 @@ extension SubscriptionListControllerViewController {
     func reloadOgnizationList() {
         ognizationList.page = 1
         APIRequest.ognizationListAPI(page: 1) { [weak self](data) in
+            
             self?.ognizationList = data as! OgnizationList
             self?.columeTableView.reloadData()
+        }
+    }
+    
+    
+    func reloadArticleList() {
+
+        APIRequest.subscribeArticleListAPI(page: 1) { [weak self](data) in
+            self?.newsTableView.cr.endHeaderRefresh()
+            self?.page = 1
+            self?.articles = data as! HomeArticleList
+            self?.newsTableView.reloadData()
+        }
+    }
+    
+    func loadMoreArticleList() {
+        if self.articles.list.count == 0 {
+            self.reloadArticleList()
+            return
+        }
+        if self.articles.list.count >= self.articles.total {
+            newsTableView.cr.noticeNoMoreData()
+            return
+        }
+        
+        page = page + 1
+        APIRequest.subscribeArticleListAPI(page: page) { [weak self](data) in
+            self?.page = 1
+            let list = data as? HomeArticleList
+            if list != nil {
+                self?.articles.list.append(contentsOf: list!.list)
+                self?.newsTableView.cr.endLoadingMore()
+            }
         }
     }
     

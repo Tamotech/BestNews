@@ -9,7 +9,7 @@
 import UIKit
 import CRRefresh
 
-class FastNewsController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class FastNewsController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -39,6 +39,7 @@ class FastNewsController: UIViewController, UITableViewDataSource, UITableViewDe
 
         // Do any additional setup after loading the view.
         setupView()
+        self.shouldClearNavBar = true
         self.loadStockStatus()
         
         tableView.cr.addHeadRefresh(animator: NormalHeaderAnimator()) {
@@ -100,6 +101,23 @@ class FastNewsController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! FastNewsCell
         let news = newsList!.newsIn(section: indexPath.section, row: indexPath.row)
         cell.updateCell(news: news)
+        cell.clickRepostCallback = {
+            [weak self] news in
+            
+            let rootVC = self?.navigationController?.childViewControllers.first as! MainController
+            let vc = BaseShareViewController(nibName: "BaseShareViewController", bundle: nil)
+            let share = ShareModel()
+            share.title = news.content
+            share.msg = ""
+            share.thumb = ""
+            vc.share = share
+            rootVC.presentr.viewControllerForContext = rootVC
+            rootVC.presentr.shouldIgnoreTapOutsideContext = false
+            rootVC.presentr.dismissOnTap = true
+            rootVC.customPresentViewController(self!.presentr, viewController: vc, animated: true) {
+                
+            }
+        }
         return cell
     }
 }
@@ -151,22 +169,22 @@ extension FastNewsController {
             let data = stockStatusArr![0]
             nameLb1.text = data.name
             priceLb1.text = "\(data.price)"
-            updownLb1.text = "\(data.updown)"
-            percentLb1.text = data.percent
+            updownLb1.text = String.init(format: "%.2f",data.updown)
+            percentLb1.text = String.init(format: "%.2f",data.percent)
         }
         if stockStatusArr!.count >= 2 {
             let data = stockStatusArr![1]
             nameLb2.text = data.name
             priceLb2.text = "\(data.price)"
-            updownLb2.text = "\(data.updown)"
-            percentLb2.text = data.percent
+            updownLb2.text = String.init(format: "%.2f",data.updown)
+            percentLb2.text = String.init(format: "%.2f",data.percent)
         }
         if stockStatusArr!.count >= 3 {
             let data = stockStatusArr![2]
             nameLb3.text = data.name
             priceLb3.text = "\(data.price)"
-            updownLb3.text = "\(data.updown)"
-            percentLb3.text = data.percent
+            updownLb3.text = String.init(format: "%.2f",data.updown)
+            percentLb3.text = String.init(format: "%.2f",data.percent)
         }
     }
 }

@@ -27,13 +27,15 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
         //Toolkit.showLoginVC()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.switchToIndex(index: currentIndex)
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        titleView?.pageViewScrollEnd(pageIndex: currentIndex)
+        switchToIndex(index: currentIndex)
     }
     
     func setupChildView() {
-        let titles = ["推荐","快讯","订阅","十九大","直播"]
+        let titles = ["推荐","快讯","订阅","直播"]
         titleView = TYPageTitleView(frame: CGRect.init(x: 0, y: 0, width: screenWidth-49-88, height: 44), titles: titles)
         titleView?.delegate = self
         self.navigationItem.titleView = titleView
@@ -63,7 +65,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
                 scrollView.addSubview(vc.view)
                 continue
             }
-            else if i == 4 {
+            else if i == 3 {
                 let vc = LiveListController()
                 addChildViewController(vc)
                 let x = screenWidth*CGFloat(i)
@@ -171,7 +173,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
     func switchToIndex(index: Int) {
         currentIndex = index
         
-        if index == 1 || index == 2 || index == 4 {
+        if index == 1 || index == 2 || index == 3 {
             self.navBarTurnBg(white: true)
         }
         else {

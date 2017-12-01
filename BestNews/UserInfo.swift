@@ -29,6 +29,22 @@ class UserInfo: HandyJSON {
     var name: String = ""
     var mobile: String = ""
     var wxid: String = ""
+    ///是否实名认证
+    var idproveflag: Bool = false
+    ///是否vip
+    var vipflag: Bool = false
+    ///是否是名人
+    var celebrityflag: Bool = false
+    ///简介
+    var intro: String = ""
+    ///标签
+    var tags: String = ""
+    var wxinfo: String = ""
+    var qqid: String = ""
+    var qqinfo: String = ""
+    /// 微博id
+    var wbid: String = ""
+    var wbinfo: String = ""
     
     func getWeight() -> CGFloat {
         if weight == 0 {

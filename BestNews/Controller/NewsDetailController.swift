@@ -21,7 +21,7 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
     
     @IBOutlet weak var authorNameLb: UILabel!
     
-    @IBOutlet weak var subscriptBtn: UIButton!
+    @IBOutlet weak var subscriptBtn: SubscribeButton!
     
     @IBOutlet weak var dateLb: UILabel!
     
@@ -37,6 +37,10 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
     
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
     
+    
+    ///是否订阅作者 (需要查阅)
+    var authorSubscribe = false
+    
     var articleId: String = ""
     var article: HomeNewsDetail?
     var recommendArticleList: HomeArticleList?
@@ -44,14 +48,6 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
     var commentBar = NewsCommentBar()
     
     var commentList: CommentList?
-    
-    lazy var presentr:Presentr = {
-        let pr = Presentr(presentationType: .fullScreen)
-        pr.transitionType = TransitionType.coverVertical
-        pr.dismissOnTap = true
-        pr.dismissAnimated = true
-        return pr
-    }()
     
     lazy var webView: WKWebView = {
        let config = WKWebViewConfiguration()
@@ -129,7 +125,28 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
     //MARK: - actions
     
     @IBAction func handleTapSubscriptBtn(_ sender: UIButton) {
-        
+        if article != nil {
+            if article!.subseribe == 0 {
+                subscriptBtn.switchStateSub(true)
+                article?.subseribe = 1
+                APIRequest.subscriptChannelAPI(id: article!.userid, type: "user", result: { [weak self](success) in
+                    if !success {
+                        self?.article?.subseribe = 0
+                        self?.subscriptBtn.switchStateSub(false)
+                    }
+                })
+            }
+            else {
+                subscriptBtn.switchStateSub(false)
+                article?.subseribe = 0
+                APIRequest.cancelSubscriptChannelAPI(id: article!.userid, type: "user", result: { [weak self](success) in
+                    if !success {
+                        self?.article?.subseribe = 1
+                        self?.subscriptBtn.switchStateSub(true)
+                    }
+                })
+            }
+        }
     }
     
     @IBAction func handleTapRewardBtn(_ sender: UIButton) {
@@ -154,6 +171,10 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
         
     }
     
+    func postSuccessHandler() {
+        
+    }
+    
     func tapCommentHandler() {
         let vc = CommentListController()
         vc.commentList = commentList
@@ -162,17 +183,46 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
     }
     
     func tapCollectionHandler() {
-        
+        if article?.collect == 0 {
+            APIRequest.collectAPI(id: article!.id, type: "article", result: {[weak self] (success) in
+                if success {
+                    self?.article?.collect = 1
+                    self?.commentBar.collect(true)
+                }
+                else {
+                    self?.article?.collect = 0
+                    self?.commentBar.collect(false)
+                }
+            })
+        }
+        else {
+            APIRequest.cancelCollectAPI(id: article!.id, type: "article", result: { [weak self] (success) in
+                if success {
+                    self?.article?.collect = 0
+                    self?.commentBar.collect(false)
+                }
+                else {
+                    self?.article?.collect = 1
+                    self?.commentBar.collect(true)
+                }
+            })
+        }
     }
     
     func tapRepostHandler() {
         let vc = BaseShareViewController(nibName: "BaseShareViewController", bundle: nil)
+        let share = ShareModel()
+        share.title = article!.title
+        share.msg = ""
+        share.thumb = article!.headimg
+        vc.share = share
         presentr.viewControllerForContext = self
         presentr.shouldIgnoreTapOutsideContext = false
         presentr.dismissOnTap = true
         customPresentViewController(presentr, viewController: vc, animated: true) {
             
         }
+        
     }
     
     
@@ -198,10 +248,10 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
         
 //        webView.sizeToFit()
         print("高度...> \(webView.scrollView.contentSize.height)")
-        webView.evaluateJavaScript("document.body.clientHeight;") { (data, error) in
+        webView.evaluateJavaScript("document.documentElement.scrollHeight;") { (data, error) in
             print("加载完毕...>\(data!)")
-            self.webView.height = data as! CGFloat
-            self.webParentHeight.constant = data as! CGFloat
+            self.webView.height = (data as! CGFloat)/2
+            self.webParentHeight.constant = (data as! CGFloat)/2
         }
     }
     
@@ -247,7 +297,10 @@ extension NewsDetailController {
         titleLb.text = article?.title
         authorNameLb.text = article?.publisher
         dateLb.text = article?.descString()
-        let htmlString = NSString(string: baseHtmlString).replacingOccurrences(of: "${htmlContent}", with: article!.content)
+        subscriptBtn.isHidden = (article?.type != "normal")
+        subscriptBtn.switchStateSub(article!.subseribe == 1)
+        commentBar.collect(article!.collect == 1)
+        let htmlString = NSString(string: baseHtmlString).replacingOccurrences(of: "${contentHtml}", with: article!.content)
         webView.loadHTMLString(htmlString, baseURL: URL(string: htmlString))
     }
     

@@ -21,10 +21,10 @@ class BSLShareManager: NSObject {
     ///   - msg: 描述
     ///   - thumb: 缩略图url
     ///   - type: 类型 0 好友 1 朋友圈
-    /*class func shareToWechat(link: String, title: String, msg: String, thumb: String, type: Int) {
+    class func shareToWechat(link: String, title: String, msg: String, thumb: String, type: Int) {
         
         let message = WXMediaMessage()
-        if thumb.characters.count > 0 {
+        if thumb.count > 0 {
             guard let imgData = try? Data.init(contentsOf: URL(string: thumb)!) else {
                 return
             }
@@ -32,7 +32,7 @@ class BSLShareManager: NSObject {
             message.setThumbImage(img)
         }
         else {
-            message.setThumbImage(UIImage(named:"LogoM1-4"))
+            message.setThumbImage(#imageLiteral(resourceName: "logo"))
         }
         message.title = title
         message.description = msg
@@ -51,5 +51,5 @@ class BSLShareManager: NSObject {
             req.scene = Int32(WXSceneTimeline.rawValue)
         }
         WXApi.send(req)
-    }*/
+    }
 }

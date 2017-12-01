@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActivityDetailController" customModule="BestNews" customModuleProvider="target">
             <connections>
                 <outlet property="addressLb" destination="n0w-Cu-rqE" id="OBj-ur-8f3"/>
+                <outlet property="bottomView" destination="Q0O-kF-PWp" id="ujj-hm-7HV"/>
                 <outlet property="coverPhotov" destination="qS4-n0-aWj" id="ibk-Q5-ApY"/>
                 <outlet property="dateLb" destination="mAY-s5-vPT" id="lqT-w7-lL6"/>
                 <outlet property="labelsContainer" destination="0Ef-KQ-DtH" id="ux5-Es-9Zj"/>

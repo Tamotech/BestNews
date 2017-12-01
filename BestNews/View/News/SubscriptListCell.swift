@@ -46,13 +46,15 @@ class SubscriptListCell: UITableViewCell {
     
     @IBAction func handleTapScriptBtn(_ sender: UIButton) {
         
-        sender.isSelected = !sender.isSelected
-        subscriptState(sender.isSelected)
-        if sender.isSelected {
+        if ognization?.subscribe == 0 {
             ognization?.subscriptIt()
+            ognization?.subscribe = 1
+            subscriptState(true)
         }
         else {
             ognization?.cancelSubsripbeIt()
+            subscriptState(false)
+            ognization?.subscribe = 0
         }
     }
     

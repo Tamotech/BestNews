@@ -14,7 +14,7 @@ class TodayStockStatus: HandyJSON {
 
     required init(){}
     
-    var percent: String = ""
+    var percent: Double = 0
     var price: Double = 0
     var updatetime: Int = 0
     var name: String = ""

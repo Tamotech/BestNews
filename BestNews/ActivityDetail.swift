@@ -33,6 +33,8 @@ class ActivityDetail: HandyJSON {
     var createdate: Double = 0
     var tickets: [ActivityTicket] = []
     
+    ///是否收藏
+    var collect: Int = 0
     
     
     

@@ -25,13 +25,6 @@ class FinanceProductDetailController: BaseViewController, UIScrollViewDelegate {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
-    lazy var presentr:Presentr = {
-        let pr = Presentr(presentationType: .fullScreen)
-        pr.transitionType = TransitionType.coverVertical
-        pr.dismissOnSwipe = true
-        pr.dismissAnimated = true
-        return pr
-    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()

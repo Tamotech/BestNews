@@ -18,6 +18,7 @@ class OgnizationModel: HandyJSON {
     var memo: String = ""
     var headimg: String = ""
     var name: String = ""
+    var url: String = ""
     
     
     /// 订阅

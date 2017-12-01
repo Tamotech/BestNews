@@ -7,7 +7,9 @@
 //
 
 import UIKit
+import CRRefresh
 
+///专题详情
 class HomeContentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, YLCycleViewDelegate {
     
     var specialList: [SpecialChannel] = []
@@ -16,6 +18,13 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
     
     lazy var headerBannerView: YLCycleView = {
        let v = YLCycleView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenWidth*243.0/375.0), images:["banner-default"], titles: [""])
+        //顶部加一个 渐变黑色蒙版
+        let maskLayer = CAGradientLayer()
+        maskLayer.frame = CGRect(x: 0, y: 0, width: screenWidth, height: 64)
+        maskLayer.colors = [UIColor.black.cgColor, UIColor.init(white: 0, alpha: 0).cgColor]
+        maskLayer.startPoint = CGPoint(x: 0.5, y: 0)
+        maskLayer.endPoint = CGPoint(x: 0.5, y: 1)
+        v.layer.addSublayer(maskLayer)
         v.delegate = self
         return v
     }()
@@ -58,6 +67,15 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
             // Fallback on earlier versions
         }
         
+        tableView.cr.addHeadRefresh {
+            [weak self] in
+            self?.reloadArticleList()
+        }
+        tableView.cr.addFootRefresh {
+            [weak self] in
+            self?.loadMoreArticleList()
+        }
+        
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 50))
     }
     
@@ -65,7 +83,12 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
     //MARK: - banner delegate
     
     func clickedCycleView(_ cycleView: YLCycleView, selectedIndex index: Int) {
-        
+        if headerBannerView.banner.count > index {
+            let article = headerBannerView.banner[index]
+            let vc = NewsDetailController.init(nibName: "NewsDetailController", bundle: nil) as NewsDetailController
+            vc.articleId = article.id
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     //MARK: - tableView
@@ -98,6 +121,12 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
             let identifier = cellIdentifiers[index]
             let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! TopicBannerCell
             cell.updateCell(data: specialList)
+            cell.selectOneChannel = {
+                [weak self] (channel) in
+                let vc = SpecialChannelArticleListController()
+                vc.channel = channel
+                self?.navigationController?.pushViewController(vc, animated: true)
+            }
             return cell
         }
         else {
@@ -170,6 +199,7 @@ extension HomeContentViewController {
     
     func reloadArticleList() {
         APIRequest.getHomeArticleListAPI(page: 1, row: 10) { [weak self](data) in
+            self?.tableView.cr.endHeaderRefresh()
             self?.page = 1
             self?.articleList = data as? HomeArticleList
             self?.tableView.reloadData()
@@ -181,6 +211,11 @@ extension HomeContentViewController {
             self.reloadArticleList()
             return
         }
+        if self.articleList?.list.count ?? 0 >= self.articleList?.total ?? 0 {
+            tableView.cr.noticeNoMoreData()
+            return
+        }
+        
         page = page + 1
         APIRequest.getHomeArticleListAPI(page: page, row: 10) { [weak self](data) in
             self?.page = 1
@@ -199,11 +234,6 @@ extension HomeContentViewController {
             self?.tableView.reloadData()
         }
     }
-}
-
-
-//MARK: - update View
-extension HomeContentViewController {
     
     func updateBanner() {
         headerBannerView.reloadData()
@@ -213,3 +243,4 @@ extension HomeContentViewController {
         
     }
 }
+

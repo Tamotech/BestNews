@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ProfileCenterController: BaseViewController {
     @IBOutlet weak var scrollView: UIScrollView!
@@ -37,11 +38,22 @@ class ProfileCenterController: BaseViewController {
             // Fallback on earlier versions
         }
         self.showCustomTitle(title: "我的资料")
+        
+        updateUI()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func updateUI() {
+        
+        if let user = SessionManager.sharedInstance.userInfo {
+            if let url = URL(string: user.headimg) {
+                let rc = ImageResource(downloadURL: url)
+                avatarImg.kf.setImage(with: rc)
+            }
+            nicknameLb.text = user.name
+            descLb.text = user.intro
+            
+        }
+        
     }
     
 

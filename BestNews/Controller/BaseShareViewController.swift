@@ -8,10 +8,17 @@
 
 import UIKit
 
+class ShareModel: NSObject {
+    var title = ""
+    var thumb = ""
+    var msg = ""
+    var link = "www.google.com"
+}
+
 class BaseShareViewController: UIViewController {
 
-    
-    
+    ///分享内容 TEST:
+    var share = ShareModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,9 +29,17 @@ class BaseShareViewController: UIViewController {
     
     @IBAction func handleTapWechatBtn(_ sender: UIButton) {
         
+        dismiss(animated: true) {
+            [weak self] in
+            BSLShareManager.shareToWechat(link: self!.share.link, title: self!.share.title, msg: self!.share.msg, thumb: self!.share.thumb, type: 0)
+        }
     }
     
     @IBAction func handleTapTimelineBtn(_ sender: UIButton) {
+        dismiss(animated: true) {
+            [weak self] in
+            BSLShareManager.shareToWechat(link: self!.share.link, title: self!.share.title, msg: self!.share.msg, thumb: self!.share.thumb, type: 1)
+        }
     }
     
     @IBAction func handleTapWeiboBtn(_ sender: UIButton) {

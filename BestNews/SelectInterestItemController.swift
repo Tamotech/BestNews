@@ -59,7 +59,12 @@ class SelectInterestItemController: BaseViewController, UICollectionViewDelegate
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let data = items[indexPath.row]
-        data.selected = !data.selected
+        if data.subscribe == 0 {
+            data.subscribe = 1
+        }
+        else {
+            data.subscribe = 0
+        }
         let cell = collectionView.cellForItem(at: indexPath) as! InterestColumnCell
         cell.updateCell(data: data)
         
@@ -72,7 +77,7 @@ class SelectInterestItemController: BaseViewController, UICollectionViewDelegate
         
         var ids: [String] = []
         for data in items {
-            if data.selected {
+            if data.subscribe == 1 {
                 ids.append(data.id)
             }
         }

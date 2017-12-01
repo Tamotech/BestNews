@@ -32,13 +32,17 @@ class CircleHomeViewController: BaseViewController, UIScrollViewDelegate, TYPage
     }
     
     func setupChildView() {
-        let titles = ["机构","名人","理财"]
+//        let titles = ["机构","名人","理财"]
+        let titles = ["发现"]
         //titleView = TYPageTitleView(frame: CGRect.init(x: 0, y: 0, width: screenWidth-49-88, height: 44), titles: titles)
         let style = TYPageStyle()
         style.labelLayout = .divide
         titleView = TYPageTitleView(frame: CGRect.init(x: 0, y: 0, width: screenWidth-49-88, height: 44), titles: titles, style: style)
         titleView?.delegate = self
-        self.navigationItem.titleView = titleView
+        ///TEST:
+        titleView?.lineView.isHidden = true
+//        self.navigationItem.titleView = titleView
+        self.showCustomTitle(title: "发现")
         
         
         scrollView.contentSize = CGSize(width: screenWidth*CGFloat(titles.count), height: screenHeight-49)
@@ -56,6 +60,7 @@ class CircleHomeViewController: BaseViewController, UIScrollViewDelegate, TYPage
         for i in 0..<titles.count {
             let vc = OrgnizationListController(nibName: "OrgnizationListController", bundle: nil)
             vc.type = i
+            vc.shouldClearNavBar = true
             addChildViewController(vc)
             let x = screenWidth*CGFloat(i)
             vc.view.frame = CGRect(x: x, y: 64, width: screenWidth, height: screenHeight-49)

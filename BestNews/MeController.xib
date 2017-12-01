@@ -16,6 +16,7 @@
                 <outlet property="avatarView" destination="89a-zd-o0u" id="hDH-Ut-MOT"/>
                 <outlet property="collectionAmountLb" destination="RVU-If-eAP" id="XF1-K8-6cE"/>
                 <outlet property="identityBtn" destination="cXj-ka-FcW" id="rEe-wW-T2g"/>
+                <outlet property="loginView" destination="cgx-zt-E4Y" id="CTb-nZ-YBP"/>
                 <outlet property="nameLb" destination="gsB-4i-2mf" id="Cdp-lX-awd"/>
                 <outlet property="scrollView" destination="XDZ-Dw-WvU" id="Oz2-9B-53C"/>
                 <outlet property="subscriptionAmountLb" destination="kv4-Z3-Awy" id="L5U-lw-ngY"/>
@@ -43,7 +44,7 @@
                                                 <constraint firstAttribute="height" constant="72" id="oth-OK-hwJ"/>
                                                 <constraint firstAttribute="width" constant="72" id="p43-tK-iwZ"/>
                                             </constraints>
-                                            <state key="normal" image="avatar2M5-1"/>
+                                            <state key="normal" image="defaultUser"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                     <real key="value" value="36"/>
@@ -60,7 +61,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cXj-ka-FcW">
-                                            <rect key="frame" x="107" y="121" width="49" height="25"/>
+                                            <rect key="frame" x="106.5" y="121" width="49" height="25"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="49" id="LiA-uq-btP"/>
                                                 <constraint firstAttribute="height" constant="25" id="MUp-Cm-Rtn"/>
@@ -84,6 +85,32 @@
                                                 <action selector="handleTapIdentifyBtn:" destination="-1" eventType="touchUpInside" id="UBF-5X-PsS"/>
                                             </connections>
                                         </button>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cgx-zt-E4Y" userLabel="unlogin">
+                                            <rect key="frame" x="107" y="79" width="200" height="72"/>
+                                            <subviews>
+                                                <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Syn-xc-S3y">
+                                                    <rect key="frame" x="0.0" y="5" width="66" height="32"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <state key="normal" title="点击登录">
+                                                        <color key="titleColor" red="0.0" green="0.59607843140000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="快速登录, 体验更多功能" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3KS-9J-Yvo">
+                                                    <rect key="frame" x="0.0" y="45" width="151" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <color key="textColor" red="0.91764705882352937" green="0.93333333333333335" blue="0.95294117647058818" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstItem="Syn-xc-S3y" firstAttribute="leading" secondItem="cgx-zt-E4Y" secondAttribute="leading" id="Ewd-is-Ldx"/>
+                                                <constraint firstItem="3KS-9J-Yvo" firstAttribute="top" secondItem="Syn-xc-S3y" secondAttribute="bottom" constant="8" id="If7-jZ-nz2"/>
+                                                <constraint firstItem="3KS-9J-Yvo" firstAttribute="leading" secondItem="Syn-xc-S3y" secondAttribute="leading" id="Js4-Mw-BC1"/>
+                                                <constraint firstAttribute="width" constant="200" id="Y7D-tV-jju"/>
+                                                <constraint firstItem="Syn-xc-S3y" firstAttribute="centerY" secondItem="cgx-zt-E4Y" secondAttribute="centerY" constant="-15" id="YlL-YF-Ld2"/>
+                                            </constraints>
+                                        </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NMP-Ob-rYT" userLabel="line">
                                             <rect key="frame" x="0.5" y="176" width="375" height="1"/>
                                             <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
@@ -245,11 +272,13 @@
                                         <constraint firstAttribute="bottom" secondItem="Teo-yu-NoS" secondAttribute="bottom" id="4Uf-Kn-kcN"/>
                                         <constraint firstItem="Esw-yQ-fyg" firstAttribute="top" secondItem="lxx-bt-BvN" secondAttribute="top" id="5mw-ci-T1A"/>
                                         <constraint firstItem="gsB-4i-2mf" firstAttribute="top" secondItem="89a-zd-o0u" secondAttribute="top" constant="11" id="Bmf-lt-c52"/>
+                                        <constraint firstItem="cgx-zt-E4Y" firstAttribute="top" secondItem="89a-zd-o0u" secondAttribute="top" id="E1n-xC-4ST"/>
                                         <constraint firstItem="Esw-yQ-fyg" firstAttribute="width" secondItem="lxx-bt-BvN" secondAttribute="width" id="FRu-ql-CXv"/>
                                         <constraint firstAttribute="trailing" secondItem="Esw-yQ-fyg" secondAttribute="trailing" id="OVk-pn-3oz"/>
                                         <constraint firstItem="lxx-bt-BvN" firstAttribute="bottom" secondItem="7YC-oQ-6Bi" secondAttribute="bottom" id="P3y-BV-Kub"/>
                                         <constraint firstItem="7YC-oQ-6Bi" firstAttribute="width" secondItem="Teo-yu-NoS" secondAttribute="width" id="QBd-7L-1o7"/>
                                         <constraint firstItem="lxx-bt-BvN" firstAttribute="leading" secondItem="7YC-oQ-6Bi" secondAttribute="trailing" id="Ryj-SW-Zm9"/>
+                                        <constraint firstItem="cgx-zt-E4Y" firstAttribute="bottom" secondItem="89a-zd-o0u" secondAttribute="bottom" id="TyN-5T-sw7"/>
                                         <constraint firstItem="NMP-Ob-rYT" firstAttribute="centerX" secondItem="7Sa-kt-Qru" secondAttribute="centerX" id="VHh-Fn-7ce"/>
                                         <constraint firstItem="89a-zd-o0u" firstAttribute="leading" secondItem="7Sa-kt-Qru" secondAttribute="leading" constant="20" id="Wyf-1R-Sma"/>
                                         <constraint firstItem="7YC-oQ-6Bi" firstAttribute="top" secondItem="Teo-yu-NoS" secondAttribute="top" id="YlQ-2p-bNy"/>
@@ -263,6 +292,7 @@
                                         <constraint firstItem="7YC-oQ-6Bi" firstAttribute="bottom" secondItem="Teo-yu-NoS" secondAttribute="bottom" id="r0n-7M-LVm"/>
                                         <constraint firstItem="cXj-ka-FcW" firstAttribute="leading" secondItem="gsB-4i-2mf" secondAttribute="leading" id="s3c-TF-K1l"/>
                                         <constraint firstItem="Teo-yu-NoS" firstAttribute="top" secondItem="NMP-Ob-rYT" secondAttribute="bottom" id="scp-DQ-1CD"/>
+                                        <constraint firstItem="cgx-zt-E4Y" firstAttribute="leading" secondItem="89a-zd-o0u" secondAttribute="trailing" constant="15" id="t2V-tW-dWv"/>
                                         <constraint firstItem="cXj-ka-FcW" firstAttribute="top" secondItem="gsB-4i-2mf" secondAttribute="bottom" constant="10" id="vfK-F2-KGR"/>
                                         <constraint firstItem="89a-zd-o0u" firstAttribute="top" secondItem="7Sa-kt-Qru" secondAttribute="top" constant="79" id="yJA-Q5-Anq"/>
                                         <constraint firstItem="NMP-Ob-rYT" firstAttribute="width" secondItem="7Sa-kt-Qru" secondAttribute="width" id="ykm-wt-mEX"/>
@@ -342,7 +372,7 @@
         </tapGestureRecognizer>
     </objects>
     <resources>
-        <image name="avatar2M5-1" width="72" height="72"/>
+        <image name="defaultUser" width="72" height="72"/>
         <image name="me-article" width="49" height="49"/>
         <image name="me_activity" width="49" height="49"/>
         <image name="me_collection" width="49" height="49"/>

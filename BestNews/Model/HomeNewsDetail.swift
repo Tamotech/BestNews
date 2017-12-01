@@ -42,6 +42,14 @@ class HomeNewsDetail: HandyJSON {
     var publisher: String = ""
     var channelid: String = ""
     
+    ///评论数量
+    var commentNum: Int = 0
+    // 0 未收藏  1 已收藏
+    var collect: Int = 0
+    
+    ///是否订阅
+    var subseribe: Int = 0
+    
     /// 栏目名 日期
     func descString() -> String {
         let date = Date(timeIntervalSince1970: TimeInterval(publishDate)/1000.0)

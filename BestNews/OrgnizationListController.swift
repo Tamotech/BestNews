@@ -9,11 +9,13 @@
 import UIKit
 import CRRefresh
 
-class OrgnizationListController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class OrgnizationListController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
     //// 0 机构  1 名人  2 金融
     var type: Int = 0
+    // 0  圈子  1 机构
+    var entry = 0
     var ognizationList = OgnizationList()
     
     
@@ -41,10 +43,19 @@ class OrgnizationListController: UIViewController, UITableViewDataSource, UITabl
         
         reloadOgnizationList()
         
-        if #available(iOS 11.0, *) {
-            tableView.contentInsetAdjustmentBehavior = .never
-        } else {
-            self.automaticallyAdjustsScrollViewInsets = false
+        if entry == 0 {
+            if #available(iOS 11.0, *) {
+                tableView.contentInsetAdjustmentBehavior = .never
+            } else {
+                self.automaticallyAdjustsScrollViewInsets = false
+            }
+        }
+        else {
+            if #available(iOS 11.0, *) {
+                tableView.contentInsetAdjustmentBehavior = .always
+            } else {
+                self.automaticallyAdjustsScrollViewInsets = true
+            }
         }
     }
     
@@ -78,7 +89,9 @@ class OrgnizationListController: UIViewController, UITableViewDataSource, UITabl
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if type == 0 {
+            let data = ognizationList.list[indexPath.row]
             let vc = OrgnizationController(nibName: "OrgnizationController", bundle: nil)
+            vc.ognization = data
             navigationController?.pushViewController(vc, animated: true)
         }
         else if type == 1 {

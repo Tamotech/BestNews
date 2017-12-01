@@ -16,6 +16,7 @@
                 <outlet property="myScriptionBtn" destination="tUo-6C-jRN" id="xua-CB-4fI"/>
                 <outlet property="newsTableView" destination="6HA-7h-A1h" id="edu-3y-thV"/>
                 <outlet property="scriptionListBtn" destination="3xx-lo-VaX" id="0qa-D8-TMJ"/>
+                <outlet property="scrollview" destination="0m6-m8-UzK" id="4Cc-SP-pew"/>
                 <outlet property="subscriptMoreView" destination="vzg-jz-P16" id="C0i-cr-uw7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

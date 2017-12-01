@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MeController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -27,6 +28,9 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var articleAmountLb: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
+    
+    @IBOutlet weak var loginView: UIView!
+    
     let settingData: [(String, UIImage)] = [("实名认证", #imageLiteral(resourceName: "me_identity")),
                        ("开通VIP", #imageLiteral(resourceName: "me_open_vip")),
                        ("我要投稿", #imageLiteral(resourceName: "me_post_article")),
@@ -39,6 +43,7 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidLoad()
 
         setupView()
+        SessionManager.sharedInstance.getUserInfo()
     }
 
     func setupView() {
@@ -56,8 +61,14 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
             self.automaticallyAdjustsScrollViewInsets = false
         }
         
+        loginView.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapLoginView(_:)))
+        loginView.addGestureRecognizer(tap)
+        
         let messageItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_meassage"), style: .plain, target: self, action: #selector(handleTapMessageBtn(sender:)))
         navigationItem.rightBarButtonItem = messageItem
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didUpdateUserInfo(_:)), name: kUserInfoDidUpdateNotify, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,16 +77,50 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
         self.navigationController?.navigationBar.barTintColor = gray51
     }
     
+    ///更新UI
+    func updateUI() {
+        if SessionManager.sharedInstance.loginInfo.isLogin {
+            if let user = SessionManager.sharedInstance.userInfo {
+                if let url = URL(string: user.headimg) {
+                    let rc = ImageResource(downloadURL: url)
+                    avatarView.kf.setImage(with: rc, for: .normal)
+                }
+                nameLb.text = user.name
+                
+            }
+            loginView.isHidden = true
+        }
+        else {
+            avatarView.setImage(#imageLiteral(resourceName: "defaultUser"), for: .normal)
+            loginView.isHidden = false
+        }
+    }
+    
+    ///通知
+    func didUpdateUserInfo(_ noti: Notification) {
+        self.updateUI()
+    }
+    
+    
     //MARK: - actions
     func handleTapMessageBtn(sender: Any) {
         let vc = MessageCenterController()
         navigationController?.pushViewController(vc, animated: true)
     }
     
+    func handleTapLoginView(_ sender: Any) {
+        Toolkit.showLoginVC()
+    }
     
     @IBAction func handleTapAvatarBtn(_ sender: UIButton) {
-        let vc = ProfileCenterController(nibName: "ProfileCenterController", bundle: nil)
-        navigationController?.pushViewController(vc, animated: true)
+        
+        if SessionManager.sharedInstance.loginInfo.isLogin {
+            let vc = ProfileCenterController(nibName: "ProfileCenterController", bundle: nil)
+            navigationController?.pushViewController(vc, animated: true)
+        }
+        else {
+            Toolkit.showLoginVC()
+        }
     }
     
     ///点击已认证
@@ -154,3 +199,4 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
     }
 
 }
+

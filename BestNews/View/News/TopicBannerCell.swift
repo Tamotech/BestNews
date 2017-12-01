@@ -8,6 +8,9 @@
 
 import UIKit
 
+
+typealias SelectOneChannelCallback = (SpecialChannel)->()
+
 /// 专题列表
 class TopicBannerCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
 
@@ -15,6 +18,8 @@ class TopicBannerCell: UITableViewCell, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var titleLb: UILabel!
     
     @IBOutlet weak var collectionView: UICollectionView!
+    var selectOneChannel: SelectOneChannelCallback?
+    
     
     var specialList: [SpecialChannel] = []
     override func awakeFromNib() {
@@ -52,6 +57,13 @@ class TopicBannerCell: UITableViewCell, UICollectionViewDelegate, UICollectionVi
         let data = specialList[indexPath.row]
         cell.updateCell(data: data)
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let data = specialList[indexPath.row]
+        if selectOneChannel != nil {
+            selectOneChannel!(data)
+        }
     }
     
 }

@@ -23,7 +23,11 @@ class LiveListController: UIViewController, UITableViewDelegate, UITableViewData
     func setupView() {
         let nib = UINib(nibName: "LiveListCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "Cell")
-        
+        if #available(iOS 11.0, *) {
+            tableView.contentInsetAdjustmentBehavior = .always
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = true
+        }
     }
     
     

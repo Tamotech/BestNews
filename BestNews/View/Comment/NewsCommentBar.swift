@@ -15,7 +15,7 @@ protocol CommentBarDelegate: class {
     func tapCollectionHandler()
     func tapRepostHandler()
     func tapReportHandler()
-//    func tapPostHandler()
+    func postSuccessHandler()
     
     
 }
@@ -88,6 +88,7 @@ class NewsCommentBar: UIView, UITextViewDelegate {
         })
         
         let collectionBtn = UIButton()
+        collectionBtn.tag = 222
         collectionBtn.setImage(#imageLiteral(resourceName: "star_dark"), for: .normal)
         collectionBtn.addTarget(self, action: #selector(handleTapCollectionBtn(sender:)), for: .touchUpInside)
         v.addSubview(collectionBtn)
@@ -176,7 +177,15 @@ class NewsCommentBar: UIView, UITextViewDelegate {
         super.init(coder: aDecoder)
     }
     
-    
+    func collect(_ collect: Bool) {
+        let btn = self.viewWithTag(222) as! UIButton
+        if collect {
+            btn.setImage(#imageLiteral(resourceName: "iconCollectionOn"), for: .normal)
+        }
+        else {
+            btn.setImage(#imageLiteral(resourceName: "star_dark"), for: .normal)
+        }
+    }
     
     //MARK: - actions
     func handleTapCommentBtn(sender: UIButton) {
@@ -186,6 +195,7 @@ class NewsCommentBar: UIView, UITextViewDelegate {
     }
     
     func handleTapCollectionBtn(sender: UIButton) {
+        
         if delegate != nil {
             delegate?.tapCollectionHandler()
         }
@@ -237,7 +247,7 @@ class NewsCommentBar: UIView, UITextViewDelegate {
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
-        textField.text = ""
+//        textField.text = ""
         targetCommentId = nil
         sizeToFit()
         switchToEditMode(edit: false)
@@ -304,6 +314,9 @@ extension NewsCommentBar {
             self?.textField.text = ""
             self?.switchToEditMode(edit: false)
             self?.targetCommentId = nil
+            if self?.delegate != nil {
+                self!.delegate!.postSuccessHandler()
+            }
             
         }
     }

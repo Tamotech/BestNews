@@ -7,9 +7,13 @@
 //
 
 import UIKit
+import Kingfisher
 
 class OrgnizationController: BaseViewController,
 UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate {
+    
+    
+    var ognization: OgnizationModel?
     
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var avatarView: UIImageView!
@@ -40,6 +44,10 @@ UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollecti
     
     @IBOutlet weak var navSubscriptBtn: UIButton!
     
+    @IBOutlet weak var backBtn: UIButton!
+    
+    @IBOutlet weak var tableViewTop: NSLayoutConstraint!
+    
     lazy var segment: BaseSegmentControl = {
        let v = BaseSegmentControl(items: ["新闻", "名人"], defaultIndex: 0)
         v.frame = self.segmentView.bounds
@@ -51,7 +59,25 @@ UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollecti
         super.viewDidLoad()
         
         self.setupView()
+        self.updateUI()
+        self.loadData()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.isHidden = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.isHidden = false
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        tableViewTop.constant = headerView.height
+    }
+    
     
     func setupView() {
         
@@ -95,10 +121,10 @@ UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollecti
         
         navView.alpha = 0
         scrollView.delegate = self
-        
+        navigationController?.navigationBar.isUserInteractionEnabled = false
     }
-
     
+
     //MARK: - acrollView
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -108,14 +134,17 @@ UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollecti
                 let alpha = 1-(headerView.height-108-offset.y)/100.0
                 navView.alpha = alpha
                 self.navigationController?.navigationBar.barTintColor = gray51
+                backBtn.setImage(#imageLiteral(resourceName: "back-gray"), for: .normal)
                 navigationController?.navigationBar.tintColor = gray51
             }
             else if offset.y > headerView.height-108 {
                 navView.alpha = 1
                 navigationController?.navigationBar.tintColor = gray51
+                backBtn.setImage(#imageLiteral(resourceName: "back-gray"), for: .normal)
             }
             else {
                 navView.alpha = 0
+                backBtn.setImage(#imageLiteral(resourceName: "back-white"), for: .normal)
                navigationController?.navigationBar.tintColor = UIColor.white
             }
             if offset.y > 0 && offset.y <= headerView.height - 108 {
@@ -174,4 +203,87 @@ UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollecti
         return cell
     }
     
+    
+    //MARK: - actions:
+    
+    @IBAction func handleTapSubscribeBtn(_ sender: UIButton) {
+        
+        if ognization == nil {
+            return
+        }
+        if ognization?.subscribe == 0 {
+            ognization?.subscribe = 1
+            APIRequest.subscriptChannelAPI(id: ognization!.id, type: "organize", result: { [weak self](success) in
+                if !success {
+                    self?.ognization?.subscribe = 0
+                    self?.updateUI()
+                }
+            })
+        }
+        else {
+            ognization?.subscribe = 0
+            APIRequest.cancelSubscriptChannelAPI(id: ognization!.id, type: "organize", result: { [weak self](success) in
+                if !success {
+                    self?.ognization?.subscribe = 1
+                    self?.updateUI()
+                }
+            })
+        }
+        updateUI()
+    }
+    
+    @IBAction func handleTapBackBtn(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
+    
+}
+
+extension OrgnizationController {
+    
+    func loadData() {
+        APIRequest.ognizationDetailAPI(id: ognization!.id) { [weak self](data) in
+            self?.ognization = data as? OgnizationModel
+            self?.updateUI()
+        }
+    }
+    
+    func updateUI() {
+        if ognization == nil {
+            return
+        }
+        nameLb.text = ognization?.name
+        nameSmallLb.text = ognization?.name
+        let para = NSMutableParagraphStyle()
+        para.lineSpacing = 5
+        let memo = NSAttributedString(string: ognization!.memo, attributes:
+            [NSParagraphStyleAttributeName: para,
+             NSForegroundColorAttributeName: UIColor.init(white: 1, alpha: 0.7),
+             NSFontAttributeName: UIFont.systemFont(ofSize: 13)])
+        descLb.attributedText = memo
+        
+        if let url = URL(string: ognization!.headimg) {
+            let rc = ImageResource(downloadURL: url)
+            avatarView.kf.setImage(with: rc)
+            avatarSmallView.kf.setImage(with: rc)
+        }
+        if ognization?.subscribe == 0 {
+            subscripBtn.backgroundColor = themeColor
+            subscripBtn.layer.borderWidth = 0
+            subscripBtn.setTitle("订阅", for: .normal)
+            navSubscriptBtn.layer.borderWidth = 1
+            navSubscriptBtn.borderColor = themeColor!
+            navSubscriptBtn.setTitleColor(themeColor, for: .normal)
+            navSubscriptBtn.setTitle("订阅", for: .normal)
+        }
+        else {
+            subscripBtn.backgroundColor = .clear
+            subscripBtn.layer.borderColor = UIColor.white.cgColor
+            subscripBtn.layer.borderWidth = 1
+            subscripBtn.setTitle("已订阅", for: .normal)
+            navSubscriptBtn.layer.borderWidth = 1
+            navSubscriptBtn.borderColor = gray181!
+            navSubscriptBtn.setTitleColor(gray181, for: .normal)
+            navSubscriptBtn.setTitle("已订阅", for: .normal)
+        }
+    }
 }

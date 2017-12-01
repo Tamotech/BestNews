@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -21,6 +21,10 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Column1M2-3" translatesAutoresizingMaskIntoConstraints="NO" id="gxC-d7-WjG">
                         <rect key="frame" x="-0.5" y="0.0" width="113" height="99"/>
                     </imageView>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PTb-gB-xDd">
+                        <rect key="frame" x="-0.5" y="-0.5" width="113" height="99"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.24895654965753425" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="栏目名称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fc1-HA-IZa">
                         <rect key="frame" x="28" y="31" width="57.5" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -59,14 +63,18 @@
                 </subviews>
             </view>
             <constraints>
+                <constraint firstItem="PTb-gB-xDd" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" id="5Qc-Vy-9j5"/>
                 <constraint firstItem="gxC-d7-WjG" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="6bX-8Z-68E"/>
+                <constraint firstItem="PTb-gB-xDd" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="EkH-Bf-IEa"/>
                 <constraint firstItem="Fc1-HA-IZa" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="NzS-7e-YXY"/>
+                <constraint firstItem="PTb-gB-xDd" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="Sq2-1m-CU6"/>
                 <constraint firstItem="Fc1-HA-IZa" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" constant="-10" id="UqK-IB-Ad4"/>
                 <constraint firstItem="wB5-ou-KPw" firstAttribute="centerX" secondItem="Fc1-HA-IZa" secondAttribute="centerX" id="Xka-Dp-sgQ"/>
                 <constraint firstItem="gxC-d7-WjG" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="jKl-yz-PCv"/>
                 <constraint firstItem="gxC-d7-WjG" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" id="sSL-hl-ZhC"/>
                 <constraint firstItem="gxC-d7-WjG" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="tjQ-JG-EfL"/>
                 <constraint firstItem="wB5-ou-KPw" firstAttribute="top" secondItem="Fc1-HA-IZa" secondAttribute="bottom" constant="10" id="uKc-yb-2ve"/>
+                <constraint firstItem="PTb-gB-xDd" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="v4t-av-3j9"/>
             </constraints>
             <size key="customSize" width="113" height="99"/>
             <userDefinedRuntimeAttributes>

@@ -36,7 +36,7 @@ class FastNewsList: HandyJSON {
                 if contains {
                     var newsList = newsDict[dateStr]
                     newsList?.append(news)
-//                    newsDict[dateStr] = newsList
+                    newsDict[dateStr] = newsList
                 }
                 else {
                     newsDict[dateStr] = [news]
@@ -84,6 +84,7 @@ class FastNews: HandyJSON {
     var content: String = ""
     var id: String = ""
     var createdate: Int = 0
+    var collect: Int = 0
     
     lazy var dateFormmater: DateFormatter = {
         let f = DateFormatter()

@@ -19,14 +19,6 @@ CommentCellDelegate, CommentBarDelegate {
     var commentBar = NewsCommentBar(frame: CGRect(x: 0, y: screenHeight-49, width: screenWidth, height: 49))
 //    var targetCommentId: String?
     
-    lazy var presentr:Presentr = {
-        let pr = Presentr(presentationType: .fullScreen)
-        pr.transitionType = TransitionType.coverVertical
-        pr.dismissOnTap = true
-        pr.dismissAnimated = true
-        return pr
-    }()
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,6 +108,10 @@ CommentCellDelegate, CommentBarDelegate {
         customPresentViewController(presentr, viewController: vc, animated: true) {
             
         }
+    }
+    
+    func postSuccessHandler() {
+        reload()
     }
     
 }

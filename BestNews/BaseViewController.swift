@@ -8,9 +8,18 @@
 
 import UIKit
 import CRRefresh
+import Presentr
 
 class BaseViewController: UIViewController {
     
+    
+    lazy var presentr:Presentr = {
+        let pr = Presentr(presentationType: .fullScreen)
+        pr.transitionType = TransitionType.coverVertical
+        pr.dismissOnTap = true
+        pr.dismissAnimated = true
+        return pr
+    }()
     
     lazy var closeBtn: UIButton = {
         let btn = UIButton(frame: CGRect(x: 10, y: 20, width: 44, height: 44))

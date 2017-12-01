@@ -204,7 +204,7 @@ class APIRequest: NSObject {
     ///   - page: 第几页   1,2,3
     ///   - result: 回调
     class func commentListAPI(articleId: String, commentId: String?, page: Int, result: @escaping JSONResult) {
-        let path = "/articleoperate/commentPage.htm"
+        let path = "/article/commentPage.htm"
         /// TREAT: 回复默认最多加载100条 不做分页
         let rows = commentId == nil ? 20 : 100
         var params = ["articleid": articleId,
@@ -336,7 +336,7 @@ class APIRequest: NSObject {
     ///   - channelIds: channelid, ','分割
     ///   - result: 成功失败
     class func multiSubscriptChannelAPI(channelIds: String, result: @escaping (_: Bool)->()) {
-        let path = "/subseribe/batchSubseribeChannel.htm?channelid=\(channelIds)"
+        let path = "/subseribe/batchSubseribeChannel.htm?channelids=\(channelIds)"
         APIManager.shareInstance.postRequest(urlString: path, params: nil) { (JSON, code, msg) in
             if code == 0 {
                 result(true)
@@ -469,6 +469,24 @@ class APIRequest: NSObject {
         }
     }
     
+    
+    
+    /// 机构详情
+    ///
+    /// - Parameter result: 结果
+    class func ognizationDetailAPI(id: String, result: @escaping JSONResult) {
+        let path = "/organize/organizeDetail.htm?id=\(id)"
+        APIManager.shareInstance.postRequest(urlString: path, params: nil) { (JSON, code, msg) in
+            if code == 0 {
+                let data = OgnizationModel.deserialize(from: JSON!["data"].rawString())
+                result(data)
+            }
+            else {
+                BLHUDBarManager.showError(msg: msg)
+            }
+        }
+    }
+    
     /// 活动报名准备信息
     ///
     /// - Parameters:
@@ -501,6 +519,94 @@ class APIRequest: NSObject {
         APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
             if code == 0 {
                 result(JSON)
+            }
+            else {
+                BLHUDBarManager.showError(msg: msg)
+            }
+        }
+    }
+    
+    
+    
+    /// 收藏文章/快讯/活动
+    ///
+    /// - Parameters:
+    ///   - id: id
+    ///   - type: article:新闻  newsflash:快讯  activity:活动
+    ///   - result: 成功/失败
+    class func collectAPI(id: String, type: String, result: @escaping (_: Bool)->()) {
+        let path = "/collect/collect.htm"
+        let params = ["id": id, "type": type]
+        APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
+            if code == 0 {
+                result(true)
+            }
+            else {
+                result(false)
+                BLHUDBarManager.showError(msg: msg)
+            }
+        }
+    }
+    
+    
+    /// 取消收藏文章/快讯/活动
+    ///
+    /// - Parameters:
+    ///   - id: id
+    ///   - type: article:新闻  newsflash:快讯  activity:活动
+    ///   - result: 成功/失败
+    class func cancelCollectAPI(id: String, type: String, result: @escaping (_: Bool)->()) {
+        let path = "/collect/cancelCollect.htm"
+        let params = ["id": id, "type": type]
+        APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
+            if code == 0 {
+                result(true)
+            }
+            else {
+                result(false)
+                BLHUDBarManager.showError(msg: msg)
+            }
+        }
+    }
+    
+    
+    
+    /// 查询文章列表（机构相关文章，名人发布文章）
+    ///
+    /// - Parameters:
+    ///   - id: id
+    ///   - type: channelid/organizeid/userid
+    ///   - result: 列表
+    class func articleListAPI(id: String, type: String, page:Int, result: @escaping JSONResult) {
+        let path = "/article/getArticlePage.htm"
+        let params = ["page": "\(page)",
+                      type: id,
+                      "rows": "20"]
+        
+        APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
+            if code == 0 {
+                let data = HomeArticleList.deserialize(from: JSON!["data"].rawString())
+                result(data)
+            }
+            else {
+                BLHUDBarManager.showError(msg: msg)
+            }
+        }
+    }
+    
+    /// 查询用户订阅文章
+    ///
+    /// - Parameters:
+    ///   - result: 列表
+    class func subscribeArticleListAPI(page:Int, result: @escaping JSONResult) {
+        let path = "/articleoperate/getSubscribeArticlePage.htm"
+        let params = ["page": "\(page)",
+            "rows": "20"]
+        
+        APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
+            if code == 0 {
+                let data = HomeArticleList.deserialize(from: JSON!["data"].rawString())
+                result(data)
             }
             else {
                 BLHUDBarManager.showError(msg: msg)

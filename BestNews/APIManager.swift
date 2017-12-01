@@ -45,7 +45,7 @@ class APIManager: NSObject {
                 let resultDic = JSON(value)
                 let num = resultDic["num"]
                 let info = resultDic["info"]
-                if num.intValue == -1002 {
+                if num.intValue == -1002 || num.intValue == -1 || num.intValue == -1004 {
                     //token 失效
                     SessionManager.sharedInstance.logoutCurrentUser()
                     Toolkit.showLoginVC()

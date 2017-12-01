@@ -37,7 +37,7 @@ class InterestColumnCell: UICollectionViewCell {
     
     func updateCell(data: NewsChannel) {
         titleLab.text = data.name
-        if data.selected {
+        if data.subscribe == 1 {
             gLayer.isHidden = false
             addImg.image = #imageLiteral(resourceName: "check-white")
         }
