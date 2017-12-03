@@ -32,10 +32,13 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
     
     @IBOutlet weak var rewardBtn: UIButton!
     
-    @IBOutlet weak var rewardViewHeight: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var rewardMenView: UIView!
+    
+    @IBOutlet weak var rewardHeight: NSLayoutConstraint!
     
     
     ///是否订阅作者 (需要查阅)
@@ -44,6 +47,7 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
     var articleId: String = ""
     var article: HomeNewsDetail?
     var recommendArticleList: HomeArticleList?
+    var rewardList = RewardManList()
     
     var commentBar = NewsCommentBar()
     
@@ -90,6 +94,7 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
         self.loadNewsDetail()
         self.loadRecommendArticleList()
         self.loadCommentList()
+        self.loadRewardList()
         
     }
     
@@ -149,7 +154,21 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
         }
     }
     
+    ///赞赏
     @IBAction func handleTapRewardBtn(_ sender: UIButton) {
+        //TODO:
+        
+        let alert = RewardAlertController(nibName: "RewardAlertController", bundle: nil)
+        alert.confirmCallback = { [weak self](price) in
+            APIRequest.articleRewardAPI(articleId: self!.articleId, money: price, payway: "wexin", payaccount: "190213141423", orderno: "1234567988") { [weak self](success) in
+                if success {
+                    self?.loadRewardList()
+                }
+            }
+        }
+        customPresentViewController(presentr, viewController: alert, animated: true) {
+            
+        }
         
     }
  
@@ -250,8 +269,9 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
         print("高度...> \(webView.scrollView.contentSize.height)")
         webView.evaluateJavaScript("document.documentElement.scrollHeight;") { (data, error) in
             print("加载完毕...>\(data!)")
-            self.webView.height = (data as! CGFloat)/2
-            self.webParentHeight.constant = (data as! CGFloat)/2
+            ///TODO: 高度计算cheat
+            self.webView.height = (data as! CGFloat)*37/100
+            self.webParentHeight.constant = (data as! CGFloat)*37/100
         }
     }
     
@@ -282,11 +302,9 @@ extension NewsDetailController {
     }
     
     func loadRewardList() {
-        APIRequest.ArticleReardManListAPI(articleId: articleId) { (data) in
-//            if let rewardList = data as? RewardManList {
-//                
-//            }
-            
+        APIRequest.ArticleReardManListAPI(articleId: articleId) {[weak self] (data) in
+            self?.rewardList = data as! RewardManList
+            self?.updateRewardView()
         }
     }
     
@@ -300,8 +318,64 @@ extension NewsDetailController {
         subscriptBtn.isHidden = (article?.type != "normal")
         subscriptBtn.switchStateSub(article!.subseribe == 1)
         commentBar.collect(article!.collect == 1)
+        rewardBtn.isHidden = article?.type != "normal"
         let htmlString = NSString(string: baseHtmlString).replacingOccurrences(of: "${contentHtml}", with: article!.content)
         webView.loadHTMLString(htmlString, baseURL: URL(string: htmlString))
+    }
+    
+    //赞赏列表
+    func updateRewardView() {
+        let canvW = screenWidth - 40
+        let top: CGFloat = 15
+        let gap: CGFloat = 8
+        let w: CGFloat = 30
+        let colNum = Int((canvW - top*2)/(w+gap))
+        var bottom: CGFloat = 0
+        for v in rewardMenView.subviews {
+            v.removeFromSuperview()
+        }
+        if rewardList.list.count > 0 {
+            
+            let max = rewardList.list.count >= colNum*2 ? colNum*2-1 : rewardList.list.count
+            for i in 0..<max {
+                let man = rewardList.list[i]
+                let x = top + CGFloat(i%colNum)*(w+gap)
+                let y = top + CGFloat(i/colNum)*(w+gap)
+                let v = UIImageView(frame: CGRect(x: x, y: y, width: w, height: w))
+                v.image = #imageLiteral(resourceName: "defaultUser")
+                v.layer.cornerRadius = w/2
+                v.layer.masksToBounds = true
+                rewardMenView.addSubview(v)
+                if let url = URL(string: man.headimg) {
+                    let rc = ImageResource(downloadURL: url)
+                    v.kf.setImage(with: rc)
+                }
+                bottom = v.bottom
+            }
+            ///更多
+            if rewardList.total >= colNum*2 {
+                let x = top + CGFloat(colNum - 1)*(w+gap)
+                let y = top + (w+gap)
+                let v = UIView(frame: CGRect(x: x, y: y, width: w, height: w))
+                v.backgroundColor = .white
+                v.layer.cornerRadius = w/2
+                v.clipsToBounds = true
+                let l = UILabel(frame: v.bounds)
+                l.font = UIFont.boldSystemFont(ofSize: 13)
+                l.textColor = themeColor
+                l.textAlignment = .center
+                l.text = "\(rewardList.total)"
+                v.addSubview(l)
+                rewardMenView.addSubview(v)
+                bottom = v.bottom
+            }
+            rewardMenView.isHidden = false
+            rewardHeight.constant = bottom + top
+        }
+        else {
+            rewardMenView.isHidden = true
+            rewardHeight.constant = 0
+        }
     }
     
     func updateCommentBar() {

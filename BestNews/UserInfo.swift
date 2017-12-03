@@ -104,5 +104,15 @@ class WXUserInfo: HandyJSON {
     var unionid: String = ""
     
     required init() {}
+    
+    
+    func updateUserInfo() {
+        let params = ["name": nickname,
+                      "wxid": openid,
+                      "headimg": headimgurl]
+        APIRequest.updateUserInfo(params: params) { (success) in
+            
+        }
+    }
 }
 

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActivityApplySuccessAlertControllerViewController" customModule="BestNews" customModuleProvider="target">
+            <connections>
+                <outlet property="qrbarView" destination="g3d-ms-Mw9" id="FNT-Ts-SKr"/>
+                <outlet property="ticketNoLabel" destination="nTm-1Y-0E1" id="cjs-6H-mof"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bWY-Hy-xAS">
+                    <rect key="frame" x="20" y="93" width="280" height="362"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BgTicketM3-7" translatesAutoresizingMaskIntoConstraints="NO" id="Dut-V9-77I">
+                            <rect key="frame" x="0.0" y="0.0" width="280" height="362"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您已成功报名此次活动" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lfR-jS-sdM">
+                            <rect key="frame" x="20" y="24" width="240" height="24"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                            <color key="textColor" red="0.0" green="0.59607843140000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请惠存您的如下二维码，在活动入场时需出示" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b65-Bx-wQa">
+                            <rect key="frame" x="25" y="56" width="230" height="33.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="QrcodeTicket" translatesAutoresizingMaskIntoConstraints="NO" id="g3d-ms-Mw9">
+                            <rect key="frame" x="90" y="101.5" width="100" height="100"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="100" id="6FE-H5-iRD"/>
+                                <constraint firstAttribute="width" constant="100" id="QE3-aY-xZE"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017******8972" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nTm-1Y-0E1">
+                            <rect key="frame" x="89" y="205.5" width="102.5" height="17"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imLine" translatesAutoresizingMaskIntoConstraints="NO" id="4pj-3q-dUN">
+                            <rect key="frame" x="10" y="241.5" width="260" height="2"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sdc-gM-Ets">
+                            <rect key="frame" x="30" y="258.5" width="220" height="29"/>
+                            <string key="text">可截屏保存到手机相册，也可在
+个人中心-我的活动中查询你的票券号</string>
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0oi-zX-P3x">
+                            <rect key="frame" x="15" y="305" width="250" height="42"/>
+                            <color key="backgroundColor" red="0.0" green="0.59607843140000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="42" id="UWI-1m-4Ph"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <state key="normal" title="OK">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                    <real key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                    <size key="value" width="0.0" height="2"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                    <real key="value" value="0.29999999999999999"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                    <color key="value" red="0.0" green="0.59607843140000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="handleTapOKBtn:" destination="-1" eventType="touchUpInside" id="pNc-Tr-N1Z"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="Sdc-gM-Ets" secondAttribute="trailing" constant="30" id="2je-sc-U3N"/>
+                        <constraint firstAttribute="trailing" secondItem="b65-Bx-wQa" secondAttribute="trailing" constant="25" id="4W2-HC-rb8"/>
+                        <constraint firstAttribute="width" constant="280" id="5xC-im-qHB"/>
+                        <constraint firstItem="Dut-V9-77I" firstAttribute="top" secondItem="bWY-Hy-xAS" secondAttribute="top" id="88t-PW-ygR"/>
+                        <constraint firstItem="0oi-zX-P3x" firstAttribute="leading" secondItem="bWY-Hy-xAS" secondAttribute="leading" constant="15" id="8Po-ur-RRd"/>
+                        <constraint firstAttribute="trailing" secondItem="0oi-zX-P3x" secondAttribute="trailing" constant="15" id="918-2V-NLn"/>
+                        <constraint firstAttribute="bottom" secondItem="0oi-zX-P3x" secondAttribute="bottom" constant="15" id="CDJ-TH-C4V"/>
+                        <constraint firstItem="Sdc-gM-Ets" firstAttribute="top" secondItem="4pj-3q-dUN" secondAttribute="bottom" constant="15" id="Huz-no-n82"/>
+                        <constraint firstItem="nTm-1Y-0E1" firstAttribute="centerX" secondItem="g3d-ms-Mw9" secondAttribute="centerX" id="KCb-iy-OGV"/>
+                        <constraint firstItem="lfR-jS-sdM" firstAttribute="top" secondItem="bWY-Hy-xAS" secondAttribute="top" constant="24" id="Koz-i6-V1S"/>
+                        <constraint firstItem="Dut-V9-77I" firstAttribute="leading" secondItem="bWY-Hy-xAS" secondAttribute="leading" id="R8g-3K-jDd"/>
+                        <constraint firstItem="Sdc-gM-Ets" firstAttribute="leading" secondItem="bWY-Hy-xAS" secondAttribute="leading" constant="30" id="Yef-ru-3So"/>
+                        <constraint firstItem="lfR-jS-sdM" firstAttribute="leading" secondItem="bWY-Hy-xAS" secondAttribute="leading" constant="20" id="cy1-Wn-L0u"/>
+                        <constraint firstItem="g3d-ms-Mw9" firstAttribute="top" secondItem="b65-Bx-wQa" secondAttribute="bottom" constant="12" id="dBz-zG-07c"/>
+                        <constraint firstItem="4pj-3q-dUN" firstAttribute="top" secondItem="nTm-1Y-0E1" secondAttribute="bottom" constant="19" id="ei1-CU-lc4"/>
+                        <constraint firstItem="g3d-ms-Mw9" firstAttribute="centerX" secondItem="bWY-Hy-xAS" secondAttribute="centerX" id="feY-so-ZXv"/>
+                        <constraint firstItem="b65-Bx-wQa" firstAttribute="leading" secondItem="bWY-Hy-xAS" secondAttribute="leading" constant="25" id="iTR-nM-55b"/>
+                        <constraint firstAttribute="trailing" secondItem="lfR-jS-sdM" secondAttribute="trailing" constant="20" id="jls-Zf-arb"/>
+                        <constraint firstItem="b65-Bx-wQa" firstAttribute="top" secondItem="lfR-jS-sdM" secondAttribute="bottom" constant="8" id="med-2u-25I"/>
+                        <constraint firstItem="nTm-1Y-0E1" firstAttribute="top" secondItem="g3d-ms-Mw9" secondAttribute="bottom" constant="4" id="n2t-H1-GHR"/>
+                        <constraint firstItem="4pj-3q-dUN" firstAttribute="leading" secondItem="bWY-Hy-xAS" secondAttribute="leading" constant="10" id="p6v-Zb-MGf"/>
+                        <constraint firstAttribute="height" constant="362" id="r9o-DR-4GZ"/>
+                        <constraint firstAttribute="trailing" secondItem="Dut-V9-77I" secondAttribute="trailing" id="sk8-sp-h5E"/>
+                        <constraint firstAttribute="trailing" secondItem="4pj-3q-dUN" secondAttribute="trailing" constant="10" id="ulB-sk-tEI"/>
+                        <constraint firstAttribute="bottom" secondItem="Dut-V9-77I" secondAttribute="bottom" id="zM1-nh-WYj"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="bWY-Hy-xAS" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" constant="-20" id="Ucf-jX-232"/>
+                <constraint firstItem="bWY-Hy-xAS" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="aj5-FX-mi6"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="BgTicketM3-7" width="280" height="362"/>
+        <image name="QrcodeTicket" width="100" height="100"/>
+        <image name="imLine" width="261" height="2"/>
+    </resources>
+</document>

@@ -12,6 +12,9 @@ import Presentr
 import Kingfisher
 import ImagePicker
 
+
+typealias ActivityApplySuccessCallback = ()->()
+
 class ActivityRegistController: BaseViewController, UINavigationControllerDelegate, ProfessionListControllerDelegate, ImagePickerDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
@@ -61,6 +64,7 @@ class ActivityRegistController: BaseViewController, UINavigationControllerDelega
     var ticket: ActivityTicket?
     var prepare = ActivityPrepare()
     var captcha: String?
+    var completeApplyCallback: ActivityApplySuccessCallback?
     
     
     override func viewDidLoad() {
@@ -200,7 +204,10 @@ class ActivityRegistController: BaseViewController, UINavigationControllerDelega
         APIRequest.applyActivityAPI(activity: prepare) { [weak self](data) in
             if data != nil {
                 self?.navigationController?.popViewController(animated: true)
-                BLHUDBarManager.showSuccess(msg: "报名成功", seconds: 0.5)
+//                BLHUDBarManager.showSuccess(msg: "报名成功", seconds: 0.5)
+                if self?.completeApplyCallback != nil {
+                    self!.completeApplyCallback!()
+                }
             }
         }
     }

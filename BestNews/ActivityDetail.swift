@@ -87,8 +87,8 @@ class ActivityDetail: HandyJSON {
     }
     
     func contentHtmlString() -> String {
-        let html = "<html><boty><div style='margin:25px'><font size=\"26\" color=\"black\">\(content)<br><br><br><br></font></div></body></html>"
-        return html
+        let htmlString = NSString(string: baseHtmlString).replacingOccurrences(of: "${contentHtml}", with: content)
+        return htmlString
     }
 }
 

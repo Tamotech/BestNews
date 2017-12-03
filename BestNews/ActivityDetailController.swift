@@ -61,6 +61,7 @@ class ActivityDetailController: BaseViewController, ActivityTicketListController
 
         self.shouldClearNavBar = true
         webView.navigationDelegate = self
+        webView.scrollView.isScrollEnabled = false
         
         let collectIcon = activity.collect == 1 ? #imageLiteral(resourceName: "iconCollectionOn") : #imageLiteral(resourceName: "iconCollection")
         collectionItem = UIBarButtonItem(image: collectIcon, style: .plain, target: self, action: #selector(handleTapCollectionBtn(sender:)))
@@ -79,11 +80,16 @@ class ActivityDetailController: BaseViewController, ActivityTicketListController
 
     //MARK: - acions
     func handleTapCollectionBtn(sender: Any) {
+        if !SessionManager.sharedInstance.loginInfo.isLogin {
+            Toolkit.showLoginVC()
+            return
+        }
         if activity.collect == 0 {
             APIRequest.collectAPI(id: activity.id, type: "activity", result: { [weak self](success) in
                 if success {
                     self?.activity.collect = 1
                     self?.collectionItem?.image = #imageLiteral(resourceName: "iconCollectionOn")
+                    self?.view.makeToast(message: "收藏成功")
                 }
                 else {
                     self?.activity.collect = 0
@@ -96,6 +102,7 @@ class ActivityDetailController: BaseViewController, ActivityTicketListController
                 if success {
                     self?.activity.collect = 0
                     self?.collectionItem?.image = #imageLiteral(resourceName: "iconCollection")
+                    self?.view.makeToast(message: "取消收藏成功")
                 }
                 else {
                     self?.activity.collect = 1
@@ -106,6 +113,10 @@ class ActivityDetailController: BaseViewController, ActivityTicketListController
     }
     
     func handleTapRepostBtn(sender: Any) {
+        if !SessionManager.sharedInstance.loginInfo.isLogin {
+            Toolkit.showLoginVC()
+            return
+        }
         let vc = BaseShareViewController(nibName: "BaseShareViewController", bundle: nil)
         let share = ShareModel()
         share.title = activity.title
@@ -128,7 +139,10 @@ class ActivityDetailController: BaseViewController, ActivityTicketListController
     
     
     @IBAction func handleTapJoinBtn(_ sender: UIButton) {
-        
+        if !SessionManager.sharedInstance.loginInfo.isLogin {
+            Toolkit.showLoginVC()
+            return
+        }
         if activity.tickets.count == 0 {
             BLHUDBarManager.showError(msg: "该活动暂时无票")
             return
@@ -149,10 +163,24 @@ class ActivityDetailController: BaseViewController, ActivityTicketListController
     }
     
     func handleTapNextBtn(vc: ActivityTicketListController, ticket: ActivityTicket) {
+        if !SessionManager.sharedInstance.loginInfo.isLogin {
+            Toolkit.showLoginVC()
+            return
+        }
         vc.dismiss(animated: true, completion: nil)
         let registVC = ActivityRegistController(nibName: "ActivityRegistController", bundle: nil)
         registVC.activity = activity
         registVC.ticket = ticket
+        registVC.completeApplyCallback = {
+            [weak self] in
+            
+            DispatchQueue.main.async {
+                let alert = ActivityApplySuccessAlertControllerViewController(nibName: "ActivityApplySuccessAlertControllerViewController", bundle: nil)
+                self?.customPresentViewController((self?.presentr)!, viewController: alert, animated: true, completion: {
+                    
+                })
+            }
+        }
         navigationController?.pushViewController(registVC, animated: true)
     }
 
@@ -181,8 +209,8 @@ class ActivityDetailController: BaseViewController, ActivityTicketListController
         print("高度...> \(webView.scrollView.contentSize.height)")
         webView.evaluateJavaScript("document.body.offsetHeight;") { (data, error) in
             print("加载完毕...>\(data!)")
-//            self.webView.height = data as! CGFloat
-//            self.webViewHeight.constant = data as! CGFloat
+            self.webView.height = (data as! CGFloat)*44/100+100
+            self.webViewHeight.constant = (data as! CGFloat)*44/100+100
         }
     }
 }
@@ -198,7 +226,7 @@ extension ActivityDetailController {
     }
     
     func updateUI() {
-        titleLabel.text = activity.title
+        titleLb.text = activity.title
         if activity.preimgpath.count>0 {
             let rc = ImageResource(downloadURL: URL(string: activity.preimgpath)!)
             coverPhotov.kf.setImage(with: rc)
@@ -210,6 +238,7 @@ extension ActivityDetailController {
         ticketPriceLb.text = activity.priceString()
         let labels = activity.tags.split(separator: ",")
         labelsContainer.updateUI(labels)
+        labelsContainerHeight.constant = labelsContainer.height
         webView.loadHTMLString(activity.contentHtmlString(), baseURL: nil)
         bottomView.isHidden = activity.tickets.count <= 0
         

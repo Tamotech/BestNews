@@ -9,6 +9,7 @@
 import UIKit
 import HandyJSON
 
+///机构/名人
 class OgnizationModel: HandyJSON {
 
     required init(){}
@@ -20,6 +21,7 @@ class OgnizationModel: HandyJSON {
     var name: String = ""
     var url: String = ""
     
+    var organize: OgnizationModel?
     
     /// 订阅
     func subscriptIt() {

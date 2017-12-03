@@ -82,6 +82,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
                         SessionManager.sharedInstance.login(type: 1, results: { [weak self](json, code, msg) in
                             if code == 0 {
                                 //成功
+                                wxInfo?.updateUserInfo()
                                 self?.phoneField.resignFirstResponder()
                                 NotificationCenter.default.post(name: kUserLoginStatusChangeNoti, object: nil)
                                 DispatchQueue.main.async {

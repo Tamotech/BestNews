@@ -12,8 +12,15 @@ import Kingfisher
 class OrgnizationController: BaseViewController,
 UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UIScrollViewDelegate {
     
-    
+    ///外部的org, 同步订阅状态
+    var originOrg: OgnizationModel?
     var ognization: OgnizationModel?
+    var articlePage: Int = 1
+    var famousPage: Int = 1
+    var famousList = OgnizationList()
+    var articleList = HomeArticleList()
+    var interestOrgList = OgnizationList()
+    let cellIdentifiers = ["TopicBannerCell", "SinglePhotoNewsCell", "ThreePhotosNewsCell", "NoPhotoNewsCell", "SingleBigPhotoNewsCell"]
     
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var avatarView: UIImageView!
@@ -61,6 +68,9 @@ UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollecti
         self.setupView()
         self.updateUI()
         self.loadData()
+        self.reloadArticleList()
+        self.reloadFamousList()
+        self.loadInterestOgnizationList()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,6 +81,7 @@ UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollecti
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.navigationBar.isHidden = false
+        originOrg?.subscribe = (ognization?.subscribe)!
     }
     
     override func viewWillLayoutSubviews() {
@@ -82,9 +93,22 @@ UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollecti
     func setupView() {
         
         self.shouldClearNavBar = true
-        let nib1 = UINib(nibName: "SinglePhotoNewsCell", bundle: nil)
-        newsTableView.register(nib1, forCellReuseIdentifier: "SinglePhotoNewsCell")
-        newsTableView.rowHeight = 135
+        originOrg = ognization
+        for i in 0..<cellIdentifiers.count {
+            let identifier = cellIdentifiers[i]
+            let nib = UINib(nibName: identifier, bundle: nil)
+            newsTableView.register(nib, forCellReuseIdentifier: identifier)
+        }
+        newsTableView.estimatedRowHeight = 135
+        newsTableView.rowHeight = UITableViewAutomaticDimension
+        newsTableView.cr.addHeadRefresh {
+            [weak self] in
+            self?.reloadArticleList()
+        }
+        newsTableView.cr.addFootRefresh {
+            [weak self] in
+            self?.loadMoreArticleList()
+        }
         newsTableView.delegate  = self
         newsTableView.dataSource = self
         
@@ -167,7 +191,10 @@ UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollecti
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        if tableView == newsTableView {
+            return articleList.list.count
+        }
+        return famousList.list.count
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -180,11 +207,30 @@ UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollecti
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if tableView == newsTableView {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "SinglePhotoNewsCell", for: indexPath)
+            var index = 0
+            let article = articleList.list[indexPath.row];
+            if article.preimglist.count == 0 {
+                index = 3
+            }
+            else if article.preimglist.count == 1 && article.preimgtype == "big1" {
+                index = 4
+            }
+            else if article.preimglist.count == 1 && article.preimgtype == "small3" {
+                index = 1
+            }
+            else {
+                index = 2
+            }
+            
+            let identifier = cellIdentifiers[index]
+            let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! BaseNewsCell
+            cell.updateCell(article: article)
             return cell
         }
         else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ColumeCell", for: indexPath)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ColumeCell", for: indexPath) as! SubscriptListCell
+            let famous = famousList.list[indexPath.row]
+            cell.updateCell(famous)
             return cell
         }
     }
@@ -195,11 +241,13 @@ UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollecti
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        return interestOrgList.list.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! RecommendColumnCell
+        let org = interestOrgList.list[indexPath.row]
+        cell.updateCell(org)
         return cell
     }
     
@@ -207,7 +255,10 @@ UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollecti
     //MARK: - actions:
     
     @IBAction func handleTapSubscribeBtn(_ sender: UIButton) {
-        
+        if !SessionManager.sharedInstance.loginInfo.isLogin {
+            Toolkit.showLoginVC()
+            return
+        }
         if ognization == nil {
             return
         }
@@ -240,10 +291,81 @@ UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollecti
 
 extension OrgnizationController {
     
+    ///机构详情
     func loadData() {
         APIRequest.ognizationDetailAPI(id: ognization!.id) { [weak self](data) in
             self?.ognization = data as? OgnizationModel
             self?.updateUI()
+        }
+    }
+    
+    func reloadArticleList() {
+        APIRequest.articleListAPI(id: ognization!.id, type: "organizeid", page: 1) { [weak self](data) in
+            self?.newsTableView.cr.endHeaderRefresh()
+            self?.articlePage = 1
+            self?.articleList = data as! HomeArticleList
+            self?.newsTableView.reloadData()
+        }
+    }
+    
+    func loadMoreArticleList() {
+        if self.articleList.list.count == 0 {
+            self.reloadArticleList()
+            return
+        }
+        if self.articleList.list.count >= self.articleList.total {
+            newsTableView.cr.noticeNoMoreData()
+            return
+        }
+        
+        articlePage = articlePage + 1
+        APIRequest.articleListAPI(id: ognization!.id, type: "organizeid", page: articlePage) { [weak self](data) in
+            
+            self?.articlePage = 1
+            let list = data as? HomeArticleList
+            if list != nil {
+                self?.articleList.list.append(contentsOf: list!.list)
+                self?.newsTableView.reloadData()
+            }
+        }
+    }
+    
+    func reloadFamousList() {
+        APIRequest.famousListAPI(id: ognization!.id, type: "organizeid", page: 1) { [weak self](data) in
+            self?.personTableView.cr.endHeaderRefresh()
+            self?.famousPage = 1
+            self?.famousList = data as! OgnizationList
+            self?.personTableView.reloadData()
+        }
+    }
+    
+    func loadMoreFamousList() {
+        if self.famousList.list.count == 0 {
+            self.reloadFamousList()
+            return
+        }
+        if self.famousList.list.count >= self.famousList.total {
+            personTableView.cr.noticeNoMoreData()
+            return
+        }
+        
+        famousPage = famousPage + 1
+        APIRequest.famousListAPI(id: ognization!.id, type: "organizeid", page: famousPage) { [weak self](data) in
+            
+            self?.famousPage = 1
+            let list = data as? OgnizationList
+            if list != nil {
+                self?.famousList.list.append(contentsOf: list!.list)
+                self?.personTableView.reloadData()
+            }
+        }
+    }
+    
+    //感兴趣的机构
+    func loadInterestOgnizationList() {
+        APIRequest.ognizationListAPI(xgorganizeid: ognization!.id, page: 1) { [weak self](data) in
+            self?.interestOrgList = (data as? OgnizationList)!
+            self?.collectionView.reloadData()
         }
     }
     

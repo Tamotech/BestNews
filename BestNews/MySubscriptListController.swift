@@ -59,6 +59,7 @@ class MySubscriptListController: BaseViewController, UIScrollViewDelegate, TYPag
         
         for i in 0..<titles.count {
             let vc = OrgnizationListController(nibName: "OrgnizationListController", bundle: nil)
+            vc.shouldClearNavBar = true
             vc.type = i
             addChildViewController(vc)
             let x = screenWidth*CGFloat(i)

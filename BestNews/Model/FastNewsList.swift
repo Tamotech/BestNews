@@ -19,11 +19,14 @@ class FastNewsList: HandyJSON {
     
     
     var newsDict: [String: [FastNews]] = [:]
+    ///存放日期key
+    var dateKeys: [String] = []
     
     //类似于懒加载 同步字典
     func asynDict() {
         if newsDict.values.count != list.count {
             newsDict.removeAll()
+            dateKeys.removeAll()
             for news in list {
                 let dateStr = news.dayStr()
                 var contains = false
@@ -40,6 +43,7 @@ class FastNewsList: HandyJSON {
                 }
                 else {
                     newsDict[dateStr] = [news]
+                    dateKeys.append(dateStr)
                 }
             }
         }
@@ -47,32 +51,25 @@ class FastNewsList: HandyJSON {
     
     func numberOfSections() -> Int {
         asynDict()
-        return newsDict.keys.count
+        return dateKeys.count
     }
         
     func numberOsRowsInSection(section: Int) -> Int {
         asynDict()
-        let start = newsDict.startIndex
-        let index = newsDict.keys.index(start, offsetBy: section)
-        let key = newsDict.keys[index]
+        let key = dateKeys[section]
         let arr = newsDict[key]
         return arr?.count ?? 0
     }
         
     func titleForSection(_ section: Int) -> String {
         asynDict()
-        let start = newsDict.startIndex
-        let index = newsDict.keys.index(start, offsetBy: section)
-        let key = newsDict.keys[index]
-        return key
+        return dateKeys[section]
         
     }
         
     func newsIn(section: Int, row: Int) -> FastNews {
         asynDict()
-        let start = newsDict.startIndex
-        let index = newsDict.keys.index(start, offsetBy: section)
-        let key = newsDict.keys[index]
+        let key = dateKeys[section]
         let arr = newsDict[key]!
         return arr[row]
     }

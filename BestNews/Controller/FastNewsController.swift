@@ -143,9 +143,8 @@ extension FastNewsController {
             return
         }
         page = page + 1
-        APIRequest.getFastNewsListAPI(page: 1) { [weak self](data) in
+        APIRequest.getFastNewsListAPI(page: page) { [weak self](data) in
             self?.tableView.cr.endLoadingMore()
-            self?.page = 1
             let list = data as? FastNewsList
             if list != nil {
                 self?.newsList?.list.append(contentsOf: list!.list)

@@ -31,6 +31,12 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var loginView: UIView!
     
+    ///订阅 收藏 活动 文章
+    @IBOutlet var meMenuItemViews: [UIView]!
+    
+    @IBOutlet var meMenueItemWidths: [NSLayoutConstraint]!
+    
+    
     let settingData: [(String, UIImage)] = [("实名认证", #imageLiteral(resourceName: "me_identity")),
                        ("开通VIP", #imageLiteral(resourceName: "me_open_vip")),
                        ("我要投稿", #imageLiteral(resourceName: "me_post_article")),
@@ -43,7 +49,6 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
         super.viewDidLoad()
 
         setupView()
-        SessionManager.sharedInstance.getUserInfo()
     }
 
     func setupView() {
@@ -75,6 +80,8 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.tintColor = gray51
         self.navigationController?.navigationBar.barTintColor = gray51
+        SessionManager.sharedInstance.getUserInfo()
+        updateUI()
     }
     
     ///更新UI
@@ -86,13 +93,44 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
                     avatarView.kf.setImage(with: rc, for: .normal)
                 }
                 nameLb.text = user.name
-                
+                if user.idproveflag {
+                    identityBtn.setTitleColor(themeColor, for: .normal)
+                    identityBtn.borderColor = themeColor!
+                    identityBtn.setTitle("已认证", for: .normal)
+                }
+                else {
+                    identityBtn.setTitleColor(gray181, for: .normal)
+                    identityBtn.borderColor = gray181!
+                    identityBtn.setTitle("未认证", for: .normal)
+                }
             }
             loginView.isHidden = true
+            subscriptionAmountLb.isHidden = false
+            collectionAmountLb.isHidden = false
+            activityAmountLb.isHidden = false
+            articleAmountLb.isHidden = false
+            let w = screenWidth/4
+            for i in 0..<meMenueItemWidths.count {
+                let consW = meMenueItemWidths[i]
+                consW.constant = w
+                let v = meMenuItemViews[i]
+                v.isHidden = false
+            }
         }
         else {
             avatarView.setImage(#imageLiteral(resourceName: "defaultUser"), for: .normal)
             loginView.isHidden = false
+            let w = screenWidth/3
+            for i in 0..<meMenueItemWidths.count-1 {
+                let consW = meMenueItemWidths[i]
+                consW.constant = w
+            }
+            meMenueItemWidths.last!.constant = 0
+            meMenuItemViews.last!.isHidden = true
+            subscriptionAmountLb.isHidden = true
+            collectionAmountLb.isHidden = true
+            activityAmountLb.isHidden = true
+            articleAmountLb.isHidden = true
         }
     }
     
@@ -104,6 +142,11 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
     
     //MARK: - actions
     func handleTapMessageBtn(sender: Any) {
+        
+        if !SessionManager.sharedInstance.loginInfo.isLogin {
+            Toolkit.showLoginVC()
+            return
+        }
         let vc = MessageCenterController()
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -125,25 +168,44 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
     
     ///点击已认证
     @IBAction func handleTapIdentifyBtn(_ sender: UIButton) {
-        
+        if !SessionManager.sharedInstance.loginInfo.isLogin {
+            Toolkit.showLoginVC()
+            return
+        }
     }
     
     @IBAction func handleTapSubscripBtn(_ sender: Any) {
+        if !SessionManager.sharedInstance.loginInfo.isLogin {
+            Toolkit.showLoginVC()
+            return
+        }
         let vc = MySubscriptListController()
         navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func handleTapCollection(_ sender: Any) {
+        if !SessionManager.sharedInstance.loginInfo.isLogin {
+            Toolkit.showLoginVC()
+            return
+        }
         let vc = MeCollectionViewController()
         navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func handleTapActivity(_ sender: UITapGestureRecognizer) {
         let vc = MyActivityListController()
+        if !SessionManager.sharedInstance.loginInfo.isLogin {
+            Toolkit.showLoginVC()
+            return
+        }
         navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func handleTapArticle(_ sender: UITapGestureRecognizer) {
+        if !SessionManager.sharedInstance.loginInfo.isLogin {
+            Toolkit.showLoginVC()
+            return
+        }
         let vc = MyArticleListController()
         navigationController?.pushViewController(vc, animated: true)
     }

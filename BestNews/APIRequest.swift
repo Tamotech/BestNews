@@ -92,6 +92,28 @@ class APIRequest: NSObject {
     
     
     
+    /// 更新用户信息
+    ///
+    /// - Parameters:
+    ///   - params: 参数
+    ///   - result: 结果
+    class func updateUserInfo(params: [String: String], result: @escaping (_: Bool)->()) {
+        
+        let path = "/member/updateUserInfo.htm"
+        
+        APIManager.shareInstance.postRequest(urlString: path, params: params) {(JSON, code, msg) in
+            if code == 0 {
+                result(true)
+            }
+            else {
+                BLHUDBarManager.showError(msg: msg)
+                result(false)
+            }
+        }
+    }
+    
+    
+    
     /// 获取微信用户信息
     class func getWXUserInfo(accessToken: String, openId: String, result: @escaping JSONResult) {
         let path = String.init(format: "https://api.weixin.qq.com/sns/userinfo?access_token=%@&openid=%@", accessToken, openId)
@@ -453,11 +475,15 @@ class APIRequest: NSObject {
     
     /// 机构列表
     ///
-    /// - Parameters:
+    ///   - Parameters:
+    ///   - xgorganizeid: 你可能感兴趣组织（组织详情页使用）
     ///   - page: 页
     ///   - result: 结果
-    class func ognizationListAPI(page: Int, result: @escaping JSONResult) {
-        let path = "/organize/getOrganizePage.htm?page=\(page)&rows=\(20)"
+    class func ognizationListAPI(xgorganizeid: String?, page: Int, result: @escaping JSONResult) {
+        var path = "/organize/getOrganizePage.htm?page=\(page)&rows=\(20)"
+        if xgorganizeid != nil {
+            path = path + "&xgorganizeid=\(xgorganizeid!)"
+        }
         APIManager.shareInstance.postRequest(urlString: path, params: nil) { (JSON, code, msg) in
             if code == 0 {
                 let data = OgnizationList.deserialize(from: JSON!["data"].rawString())
@@ -594,6 +620,49 @@ class APIRequest: NSObject {
         }
     }
     
+    
+    
+    /// 名人列表
+    ///
+    /// - Parameters:
+    ///   - id: 组织/可能感兴趣名人
+    ///   - type: organizeid/xguserid
+    ///   - page: 第几页
+    ///   - result: 结果
+    class func famousListAPI(id: String, type: String, page:Int, result: @escaping JSONResult) {
+        let path = "/celebrity/getCelebrityPage.htm"
+        let params = ["page": "\(page)",
+            type: id,
+            "rows": "20"]
+        
+        APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
+            if code == 0 {
+                let data = OgnizationList.deserialize(from: JSON!["data"].rawString())
+                result(data)
+            }
+            else {
+                BLHUDBarManager.showError(msg: msg)
+            }
+        }
+    }
+    
+    /// 名人详情
+    ///
+    /// - Parameter result: 结果
+    class func famousDetailAPI(id: String, result: @escaping JSONResult) {
+        let path = "/celebrity/celebrityDetail.htm?userid=\(id)"
+        APIManager.shareInstance.postRequest(urlString: path, params: nil) { (JSON, code, msg) in
+            if code == 0 {
+                let data = OgnizationModel.deserialize(from: JSON!["data"].rawString())
+                result(data)
+            }
+            else {
+                BLHUDBarManager.showError(msg: msg)
+            }
+        }
+    }
+    
+    
     /// 查询用户订阅文章
     ///
     /// - Parameters:
@@ -610,6 +679,35 @@ class APIRequest: NSObject {
             }
             else {
                 BLHUDBarManager.showError(msg: msg)
+            }
+        }
+    }
+    
+    
+    /// 文章打赏
+    ///
+    /// - Parameters:
+    ///   - articleId: 文章id
+    ///   - money: 金额
+    ///   - payway: zhibubao:支付宝支付 weixin:微信支付
+    ///   - payaccount: 支付帐号
+    ///   - orderno: 支付订单号
+    ///   - result: 成功
+    class func articleRewardAPI(articleId: String, money: Double, payway: String, payaccount: String, orderno: String, success: @escaping (_: Bool)->()) {
+        let path = "/articleoperate/reward.htm"
+        let params = ["articleid": articleId,
+                      "money": "\(money)",
+                      "payway": payway,
+                      "payaccount": payaccount,
+                      "orderno": orderno]
+        APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
+            if code == 0 {
+                BLHUDBarManager.showSuccess(msg: msg, seconds: 0.5)
+                success(true)
+            }
+            else {
+                BLHUDBarManager.showError(msg: msg)
+                success(false)
             }
         }
     }

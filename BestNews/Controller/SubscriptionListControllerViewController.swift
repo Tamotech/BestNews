@@ -47,6 +47,7 @@ class SubscriptionListControllerViewController: UIViewController, UITableViewDel
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadNewsChannel()
+        columeTableView.reloadData()
     }
     
     func setupView() {
@@ -154,6 +155,8 @@ class SubscriptionListControllerViewController: UIViewController, UITableViewDel
         }
         else {
             let vc = OrgnizationController(nibName: "OrgnizationController", bundle: nil)
+            let ognization = ognizationList.list[indexPath.row]
+            vc.ognization = ognization
             navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -234,7 +237,7 @@ extension SubscriptionListControllerViewController {
     //机构
     func reloadOgnizationList() {
         ognizationList.page = 1
-        APIRequest.ognizationListAPI(page: 1) { [weak self](data) in
+        APIRequest.ognizationListAPI(xgorganizeid: nil, page: 1) { [weak self](data) in
             
             self?.ognizationList = data as! OgnizationList
             self?.columeTableView.reloadData()

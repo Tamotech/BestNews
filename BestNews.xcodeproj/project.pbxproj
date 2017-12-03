@@ -82,6 +82,11 @@
 		5A90CFF31F81273900F16869 /* LiveListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A90CFF11F81273900F16869 /* LiveListCell.xib */; };
 		5A90D0031F8138EE00F16869 /* OrgnizationListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A90D0011F8138EE00F16869 /* OrgnizationListController.swift */; };
 		5A90D0041F8138EE00F16869 /* OrgnizationListController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A90D0021F8138EE00F16869 /* OrgnizationListController.xib */; };
+		5AA4E7DC1FD2B083007A04FA /* RewardAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA4E7DA1FD2B083007A04FA /* RewardAlertController.swift */; };
+		5AA4E7DD1FD2B083007A04FA /* RewardAlertController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AA4E7DB1FD2B083007A04FA /* RewardAlertController.xib */; };
+		5AA4E7E01FD385A9007A04FA /* ActivityApplySuccessAlertControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA4E7DE1FD385A9007A04FA /* ActivityApplySuccessAlertControllerViewController.swift */; };
+		5AA4E7E11FD385A9007A04FA /* ActivityApplySuccessAlertControllerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AA4E7DF1FD385A9007A04FA /* ActivityApplySuccessAlertControllerViewController.xib */; };
+		5AA4E7E31FD38CBD007A04FA /* UIView+Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA4E7E21FD38CBD007A04FA /* UIView+Toast.swift */; };
 		5ABB14D41FBD073E006EEE59 /* ActivityList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABB14D31FBD073E006EEE59 /* ActivityList.swift */; };
 		5ABB14D61FBD0F83006EEE59 /* ActivityDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABB14D51FBD0F83006EEE59 /* ActivityDetail.swift */; };
 		5ABB92B51FA5E096002E3180 /* DES3EncryptUtil.h in Sources */ = {isa = PBXBuildFile; fileRef = 5ABB92B21FA5DD79002E3180 /* DES3EncryptUtil.h */; };
@@ -249,6 +254,11 @@
 		5A90CFF11F81273900F16869 /* LiveListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LiveListCell.xib; sourceTree = "<group>"; };
 		5A90D0011F8138EE00F16869 /* OrgnizationListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrgnizationListController.swift; sourceTree = "<group>"; };
 		5A90D0021F8138EE00F16869 /* OrgnizationListController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrgnizationListController.xib; sourceTree = "<group>"; };
+		5AA4E7DA1FD2B083007A04FA /* RewardAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewardAlertController.swift; sourceTree = "<group>"; };
+		5AA4E7DB1FD2B083007A04FA /* RewardAlertController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RewardAlertController.xib; sourceTree = "<group>"; };
+		5AA4E7DE1FD385A9007A04FA /* ActivityApplySuccessAlertControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityApplySuccessAlertControllerViewController.swift; sourceTree = "<group>"; };
+		5AA4E7DF1FD385A9007A04FA /* ActivityApplySuccessAlertControllerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityApplySuccessAlertControllerViewController.xib; sourceTree = "<group>"; };
+		5AA4E7E21FD38CBD007A04FA /* UIView+Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Toast.swift"; sourceTree = "<group>"; };
 		5ABB14D31FBD073E006EEE59 /* ActivityList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityList.swift; sourceTree = "<group>"; };
 		5ABB14D51FBD0F83006EEE59 /* ActivityDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetail.swift; sourceTree = "<group>"; };
 		5ABB92B01FA5DD78002E3180 /* BestNews-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BestNews-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -489,6 +499,8 @@
 				5ABB92C01FA5E59B002E3180 /* ConfirmAlertView.xib */,
 				5ABB92BB1FA5E59A002E3180 /* SimpleHUDController.swift */,
 				5ABB92BC1FA5E59A002E3180 /* SimpleHUDController.xib */,
+				5AA4E7DA1FD2B083007A04FA /* RewardAlertController.swift */,
+				5AA4E7DB1FD2B083007A04FA /* RewardAlertController.xib */,
 			);
 			path = AlertController;
 			sourceTree = "<group>";
@@ -513,6 +525,8 @@
 				5A06DF471FCAA9A600F225F1 /* ProfessionListController.swift */,
 				5A54460D1F852A1E0004F192 /* ActivityRegistController.swift */,
 				5A54460E1F852A1E0004F192 /* ActivityRegistController.xib */,
+				5AA4E7DE1FD385A9007A04FA /* ActivityApplySuccessAlertControllerViewController.swift */,
+				5AA4E7DF1FD385A9007A04FA /* ActivityApplySuccessAlertControllerViewController.xib */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -730,6 +744,7 @@
 				CC2906E81F659EBA001894DA /* UIView+IBInspectable.swift */,
 				CC2906E91F659EBA001894DA /* UIView+Position.swift */,
 				5A0DEBAE1FB7D464007EDF6B /* TableViewCellExtension.swift */,
+				5AA4E7E21FD38CBD007A04FA /* UIView+Toast.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -946,6 +961,7 @@
 				5A0D23C71F832BD000FC9D4D /* NewsDetailController.xib in Resources */,
 				5AC684821F7FFC2E006CEB53 /* ThreePhotosNewsCell.xib in Resources */,
 				5A32A7081F930CC100773884 /* MessageCenterListCell.xib in Resources */,
+				5AA4E7E11FD385A9007A04FA /* ActivityApplySuccessAlertControllerViewController.xib in Resources */,
 				5AC684941F807BBD006CEB53 /* FastNewsController.xib in Resources */,
 				5AC6848A1F8054C1006CEB53 /* SingleBigPhotoNewsCell.xib in Resources */,
 				5A10F58B1FAEF0A900316832 /* SpecialChannelCell.xib in Resources */,
@@ -958,6 +974,7 @@
 				CC2907111F65AC08001894DA /* Main.storyboard in Resources */,
 				5A32A70C1F93299500773884 /* OrgnizationController.xib in Resources */,
 				5A5446101F852A1E0004F192 /* ActivityRegistController.xib in Resources */,
+				5AA4E7DD1FD2B083007A04FA /* RewardAlertController.xib in Resources */,
 				CC2906D21F6599C7001894DA /* Assets.xcassets in Resources */,
 				5A38B6BE1F808FB100AF4A91 /* FastNewsSectionHeaderView.xib in Resources */,
 				5A90CFE71F80F7F900F16869 /* SubscriptListCell.xib in Resources */,
@@ -1125,6 +1142,7 @@
 				5A90CFEE1F8123F500F16869 /* LiveListController.swift in Sources */,
 				5A90CFE31F80F48A00F16869 /* SubscriptSectionHeaderView.swift in Sources */,
 				5A4A21501FC18BB900648126 /* OgnizationModel.swift in Sources */,
+				5AA4E7E31FD38CBD007A04FA /* UIView+Toast.swift in Sources */,
 				5A547EE51FA2157C00FA0C36 /* ProfileCenterController.swift in Sources */,
 				5A0D23C61F832BD000FC9D4D /* NewsDetailController.swift in Sources */,
 				CC2906ED1F659EBA001894DA /* UIImageExtension.swift in Sources */,
@@ -1151,6 +1169,7 @@
 				5A0D23D01F83A07300FC9D4D /* CommentListController.swift in Sources */,
 				5A0A13951F9EB1B400DF57B9 /* LoginViewController.swift in Sources */,
 				5AFE24DA1FCCCACD006353C3 /* SpecialChannelArticleListController.swift in Sources */,
+				5AA4E7E01FD385A9007A04FA /* ActivityApplySuccessAlertControllerViewController.swift in Sources */,
 				CC2906EB1F659EBA001894DA /* StringExtension.swift in Sources */,
 				5A10F58A1FAEF0A900316832 /* SpecialChannelCell.swift in Sources */,
 				5A90D0031F8138EE00F16869 /* OrgnizationListController.swift in Sources */,
@@ -1174,6 +1193,7 @@
 				5A0D23C31F83225A00FC9D4D /* NewsCommentBar.swift in Sources */,
 				5A54460F1F852A1E0004F192 /* ActivityRegistController.swift in Sources */,
 				CCDB6D4F1F7A32B40012432E /* TopicBannerCell.swift in Sources */,
+				5AA4E7DC1FD2B083007A04FA /* RewardAlertController.swift in Sources */,
 				CC2906C91F6599C7001894DA /* AppDelegate.swift in Sources */,
 				CC2906EE1F659EBA001894DA /* UIView+IBInspectable.swift in Sources */,
 				CCDB6D4B1F7A2E7A0012432E /* HomeContentViewController.swift in Sources */,

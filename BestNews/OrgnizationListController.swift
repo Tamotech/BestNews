@@ -17,14 +17,29 @@ class OrgnizationListController: BaseViewController, UITableViewDataSource, UITa
     // 0  圈子  1 机构
     var entry = 0
     var ognizationList = OgnizationList()
+    var ognizationPage = 1
+    var famousPage: Int = 1
+    var famousList = OgnizationList()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        shouldClearNavBar = false
         setupView()
+        if type == 0 {
+            reloadOgnizationList()
+        }
+        else if type == 1 {
+            reloadFamousList()
+        }
     }
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        barView.isHidden = true
+        tableView.reloadData()
+    }
+    
+    
     func setupView() {
         
         let nib = UINib(nibName: "SubscriptListCell", bundle: nil)
@@ -34,14 +49,22 @@ class OrgnizationListController: BaseViewController, UITableViewDataSource, UITa
         tableView.sectionFooterHeight = 0.1
         tableView.cr.addHeadRefresh {
             [weak self] in
-            self?.reloadOgnizationList()
+            if self?.type == 0 {
+                self?.reloadOgnizationList()
+            }
+            else if self?.type == 1 {
+                self?.reloadFamousList()
+            }
         }
         tableView.cr.addFootRefresh {
             [weak self] in
-            self?.loadMoreOgnizationList()
+            if self?.type == 0 {
+                self?.loadMoreOgnizationList()
+            }
+            else if self?.type == 1 {
+                self?.loadMoreFamousList()
+            }
         }
-        
-        reloadOgnizationList()
         
         if entry == 0 {
             if #available(iOS 11.0, *) {
@@ -64,8 +87,17 @@ class OrgnizationListController: BaseViewController, UITableViewDataSource, UITa
         return 1
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.1
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return ognizationList.list.count
+        if type == 0 {
+            return ognizationList.list.count
+        }
+        else {
+            return famousList.list.count
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -75,8 +107,8 @@ class OrgnizationListController: BaseViewController, UITableViewDataSource, UITa
             cell.updateCell(data)
         }
         else if type == 1 {
-            cell.nameLb.text = "名人名称"
-            cell.avtarBtn.setImage(#imageLiteral(resourceName: "avatar2M5-1"), for: .normal)
+            let data = famousList.list[indexPath.row]
+            cell.updateCell(data)
         }
         else {
             cell.nameLb.text = "金融产品"
@@ -95,7 +127,9 @@ class OrgnizationListController: BaseViewController, UITableViewDataSource, UITa
             navigationController?.pushViewController(vc, animated: true)
         }
         else if type == 1 {
+            let data = famousList.list[indexPath.row]
             let vc = OrgnizationController(nibName: "OrgnizationController", bundle: nil)
+            vc.ognization = data
             navigationController?.pushViewController(vc, animated: true)
         }
         else {
@@ -111,7 +145,7 @@ extension OrgnizationListController {
     //机构
     func reloadOgnizationList() {
         ognizationList.page = 1
-        APIRequest.ognizationListAPI(page: 1) { [weak self](data) in
+        APIRequest.ognizationListAPI(xgorganizeid: nil,  page: 1) { [weak self](data) in
             self?.tableView.cr.endHeaderRefresh()
             self?.ognizationList = data as! OgnizationList
             self?.tableView.reloadData()
@@ -124,11 +158,43 @@ extension OrgnizationListController {
             return
         }
         ognizationList.page = ognizationList.page + 1
-        APIRequest.ognizationListAPI(page: ognizationList.page) { [weak self](data) in
+        APIRequest.ognizationListAPI(xgorganizeid: nil,  page: ognizationList.page) { [weak self](data) in
             self?.tableView.cr.endLoadingMore()
             let list = data as! OgnizationList
             self?.ognizationList.list.append(contentsOf: list.list)
             self?.tableView.reloadData()
+        }
+    }
+    
+    //名人
+    func reloadFamousList() {
+        APIRequest.famousListAPI(id: "true", type: "subscribeflag", page: 1) { [weak self](data) in
+            self?.tableView.cr.endHeaderRefresh()
+            self?.famousPage = 1
+            self?.famousList = data as! OgnizationList
+            self?.tableView.reloadData()
+        }
+    }
+    
+    func loadMoreFamousList() {
+        if self.famousList.list.count == 0 {
+            self.reloadFamousList()
+            return
+        }
+        if self.famousList.list.count >= self.famousList.total {
+            tableView.cr.noticeNoMoreData()
+            return
+        }
+        
+        famousPage = famousPage + 1
+        APIRequest.famousListAPI(id: "true", type: "subscribeflag", page: famousPage) { [weak self](data) in
+            
+            self?.famousPage = 1
+            let list = data as? OgnizationList
+            if list != nil {
+                self?.famousList.list.append(contentsOf: list!.list)
+                self?.tableView.reloadData()
+            }
         }
     }
 }

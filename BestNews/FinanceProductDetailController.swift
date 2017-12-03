@@ -84,7 +84,10 @@ class FinanceProductDetailController: BaseViewController, UIScrollViewDelegate {
     //MARK: - actions
     
     func handleTapCollectionBtn(_: UIBarButtonItem) {
-        
+        if !SessionManager.sharedInstance.loginInfo.isLogin {
+            Toolkit.showLoginVC()
+            return
+        }
     }
     
     func handleTapShareItem(_: UIBarButtonItem) {

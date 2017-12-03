@@ -15,8 +15,9 @@
                 <outlet property="avtarBtn" destination="njg-js-NTy" id="7jd-qW-UA9"/>
                 <outlet property="dateLb" destination="R2S-Cw-4bT" id="rPY-J3-O7I"/>
                 <outlet property="rewardBtn" destination="vlN-hw-j7m" id="aWd-yu-G8t"/>
+                <outlet property="rewardHeight" destination="FCq-hw-Ngc" id="I3n-4W-Qr9"/>
+                <outlet property="rewardMenView" destination="Tyf-q9-8Lf" id="Nsv-Ry-Fj8"/>
                 <outlet property="rewardView" destination="sK7-qi-NTZ" id="2Hc-IY-sDt"/>
-                <outlet property="rewardViewHeight" destination="2aG-cF-zmi" id="b8F-jE-eVE"/>
                 <outlet property="scrollView" destination="N3R-rR-IBP" id="rwn-hA-bRO"/>
                 <outlet property="subscriptBtn" destination="6G9-kn-O7X" id="Vr7-pd-nUv"/>
                 <outlet property="tableView" destination="Po8-LX-z2M" id="JCD-Mw-ZFw"/>
@@ -139,12 +140,27 @@
                                                 <action selector="handleTapRewardBtn:" destination="-1" eventType="touchUpInside" id="hBB-Tt-kYB"/>
                                             </connections>
                                         </button>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tyf-q9-8Lf" userLabel="men">
+                                            <rect key="frame" x="20" y="83" width="335" height="100"/>
+                                            <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="100" id="FCq-hw-Ngc"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                    <real key="value" value="4"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </view>
                                     </subviews>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="223" id="2aG-cF-zmi"/>
+                                        <constraint firstAttribute="bottom" secondItem="Tyf-q9-8Lf" secondAttribute="bottom" constant="40" id="DH4-yU-CtH"/>
                                         <constraint firstItem="vlN-hw-j7m" firstAttribute="top" secondItem="sK7-qi-NTZ" secondAttribute="top" id="YJi-4n-7ax"/>
+                                        <constraint firstItem="Tyf-q9-8Lf" firstAttribute="leading" secondItem="sK7-qi-NTZ" secondAttribute="leading" constant="20" id="YiJ-LJ-2E3"/>
                                         <constraint firstItem="vlN-hw-j7m" firstAttribute="centerX" secondItem="sK7-qi-NTZ" secondAttribute="centerX" id="Zk6-Ro-qbh"/>
+                                        <constraint firstAttribute="trailing" secondItem="Tyf-q9-8Lf" secondAttribute="trailing" constant="20" id="dbA-cl-Khc"/>
+                                        <constraint firstItem="Tyf-q9-8Lf" firstAttribute="top" secondItem="vlN-hw-j7m" secondAttribute="bottom" constant="25" id="i3B-uy-GiP"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6tg-FL-Cgo" userLabel="line">

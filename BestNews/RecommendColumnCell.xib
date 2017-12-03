@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,8 +18,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="117" height="140"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jd_login" translatesAutoresizingMaskIntoConstraints="NO" id="ZFX-JM-z9b">
-                        <rect key="frame" x="22.5" y="0.0" width="72" height="72"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jd_login" translatesAutoresizingMaskIntoConstraints="NO" id="ZFX-JM-z9b">
+                        <rect key="frame" x="23" y="0.0" width="72" height="72"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="72" id="ALX-0W-FLC"/>
                             <constraint firstAttribute="width" constant="72" id="z7R-zi-uAj"/>
@@ -30,14 +30,14 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="机构名称" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pQA-vk-kJJ">
-                        <rect key="frame" x="29.5" y="80" width="57.5" height="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="机构名称" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pQA-vk-kJJ">
+                        <rect key="frame" x="10" y="80" width="97" height="17"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                         <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KSS-VA-CR5">
-                        <rect key="frame" x="28" y="105" width="60" height="30"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KSS-VA-CR5" customClass="SubscribeButton" customModule="BestNews" customModuleProvider="target">
+                        <rect key="frame" x="28.5" y="105" width="60" height="30"/>
                         <color key="backgroundColor" red="0.0" green="0.59607843140000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="60" id="afw-lk-Nye"/>
@@ -76,7 +76,8 @@
                 <constraint firstItem="pQA-vk-kJJ" firstAttribute="top" secondItem="ZFX-JM-z9b" secondAttribute="bottom" constant="8" id="YNg-ae-hxE"/>
                 <constraint firstItem="KSS-VA-CR5" firstAttribute="centerX" secondItem="pQA-vk-kJJ" secondAttribute="centerX" id="bfE-HG-BQw"/>
                 <constraint firstItem="KSS-VA-CR5" firstAttribute="top" secondItem="pQA-vk-kJJ" secondAttribute="bottom" constant="8" id="gyb-vz-UG7"/>
-                <constraint firstItem="pQA-vk-kJJ" firstAttribute="centerX" secondItem="ZFX-JM-z9b" secondAttribute="centerX" id="izL-WF-D2x"/>
+                <constraint firstItem="pQA-vk-kJJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="10" id="j6C-Az-uMz"/>
+                <constraint firstAttribute="trailing" secondItem="pQA-vk-kJJ" secondAttribute="trailing" constant="10" id="scA-ae-4ov"/>
             </constraints>
             <size key="customSize" width="117" height="140"/>
             <connections>

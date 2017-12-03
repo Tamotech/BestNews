@@ -38,6 +38,10 @@ class ColumesCollectionViewCell: UICollectionViewCell {
     
     @IBAction func handleTapScriptBtn(_ sender: UIButton) {
         
+        if !SessionManager.sharedInstance.loginInfo.isLogin {
+            Toolkit.showLoginVC()
+            return
+        }
         sender.isSelected = !sender.isSelected
         channel!.subscribe = (channel!.subscribe+1) % 2
         
