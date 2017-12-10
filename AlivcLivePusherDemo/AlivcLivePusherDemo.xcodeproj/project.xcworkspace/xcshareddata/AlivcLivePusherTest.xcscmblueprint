@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "3F00A81BF52C0E04EF9A77F040214D4C1B5E7704",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "3F00A81BF52C0E04EF9A77F040214D4C1B5E7704" : 9223372036854775807,
+    "A2EE5933BFBDC74F80385D93C9FD2B8518784773" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "277A34A2-B1B0-4869-A359-1F1AA401AE8F",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "3F00A81BF52C0E04EF9A77F040214D4C1B5E7704" : "AliyunVideoChatPublisher-Product\/",
+    "A2EE5933BFBDC74F80385D93C9FD2B8518784773" : "AliyunVideoChatPublisher-Product\/sources\/native\/modules\/alivc_framework\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "AlivcLivePusherTest",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "sources\/ios\/AlivcLivePusherTest\/AlivcLivePusherTest.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "gitlab.alibaba-inc.com:AliyunVideoClient\/AliyunVideoChatPublisher-Product.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "3F00A81BF52C0E04EF9A77F040214D4C1B5E7704"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "gitlab.alibaba-inc.com:alivc_component\/alivc_framework.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "A2EE5933BFBDC74F80385D93C9FD2B8518784773"
+    }
+  ]
+}

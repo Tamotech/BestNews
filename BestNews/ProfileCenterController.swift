@@ -28,10 +28,15 @@ class ProfileCenterController: BaseViewController {
     
     @IBOutlet weak var qqLb: UILabel!
     
+    @IBOutlet weak var descView: UIView!
+    
+    @IBOutlet weak var accountView: UIView!
+    
+    @IBOutlet weak var accountTop: NSLayoutConstraint!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         if #available(iOS 11.0, *) {
             scrollView.contentInsetAdjustmentBehavior = .never
         } else {
@@ -52,6 +57,14 @@ class ProfileCenterController: BaseViewController {
             nicknameLb.text = user.name
             descLb.text = user.intro
             
+            if user.celebrityflag {
+                accountTop.constant = descView.height+30
+                descView.isHidden = false
+            }
+            else {
+                accountTop.constant = 15
+                descView.isHidden = true
+            }
         }
         
     }
@@ -61,9 +74,11 @@ class ProfileCenterController: BaseViewController {
     @IBAction func handleTapAvatar(_ sender: Any) {
         
     }
+    
     @IBAction func handleTapPhone(_ sender: Any) {
         
     }
+    
     @IBAction func handleTapWechat(_ sender: Any) {
         
     }

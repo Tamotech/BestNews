@@ -311,12 +311,16 @@ class APIRequest: NSObject {
     /// 快讯列表
     ///
     /// - Parameters:
+    /// - collect 是否仅收藏
     ///   - page: 页
     ///   - result: 结果
-    class func getFastNewsListAPI(page: Int, result: @escaping JSONResult) {
+    class func getFastNewsListAPI(page: Int, collect: Bool, result: @escaping JSONResult) {
         let path = "/article/getNewsFlashPage.htm"
-        let params = ["page": page,
-                      "rows": 20]
+        var params = ["page": page,
+        "rows": 20] as [String: Any]
+        if collect {
+            params["collectflag"] = "true"
+        }
         APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
             if code == 0 {
                 let data = FastNewsList.deserialize(from: JSON!["data"].rawString())
@@ -435,10 +439,14 @@ class APIRequest: NSObject {
     /// 活动列表
     ///
     /// - Parameters:
+    /// - collect: 是否收藏
     ///   - page: 分页
     ///   - result: 结果
-    class func activityListAPI(page: Int, result: @escaping JSONResult) {
-        let path = "/activity/listPage.htm?page=\(page)&rows=\(20)"
+    class func activityListAPI(collect: Bool, page: Int, result: @escaping JSONResult) {
+        var path = "/activity/listPage.htm?page=\(page)&rows=\(20)"
+        if collect {
+            path = path+"&collectflag=true"
+        }
         APIManager.shareInstance.postRequest(urlString: path, params: nil) { (JSON, code, msg) in
             if code == 0 {
                 let data = ActivityList.deserialize(from: JSON!["data"].rawString())
@@ -708,6 +716,94 @@ class APIRequest: NSObject {
             else {
                 BLHUDBarManager.showError(msg: msg)
                 success(false)
+            }
+        }
+    }
+    
+    
+    
+    /// 查询用户订阅收藏活动文章数量
+    ///
+    /// - Parameter result: 结果
+    class func meInfoCountAPI(result: @escaping JSONResult) {
+        let path = "/member/countUserOPNum.htm"
+        APIManager.shareInstance.postRequest(urlString: path, params: nil) { (JSON, code, msg) in
+            if code == 0 {
+                result(JSON!["data"])
+            }
+            else {
+                BLHUDBarManager.showError(msg: msg)
+            }
+        }
+    }
+    
+    
+    /// 申请实名认证
+    ///
+    /// - Parameters:
+    ///   - idname: 姓名
+    ///   - idCode: 身份证号
+    ///   - result: 结果
+    class func applyIdentiify(idname: (String), idCode: (String), result: @escaping (_ success: Bool)->()) {
+        let path = "/certification/certification.htm"
+        let params = ["idname": idname,
+                      "idnumber": idCode]
+        
+        APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
+            if code == 0 {
+                result(true)
+            }
+            else {
+                BLHUDBarManager.showError(msg: msg)
+                
+            }
+        }
+    }
+    
+    
+    
+    /// 分页查询当前用户购买的票卷信息
+    ///
+    /// - Parameters:
+    ///   - page: 第几页
+    ///   - result: 结果
+    class func activityTicketDetailList(page:Int, result: @escaping JSONResult) {
+        let path = "/activityoperate/payedTicketPage.htm"
+        let params = ["page": "\(page)",
+            "rows": "20"]
+        
+        APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
+            if code == 0 {
+                let data = ActivityTicketDetailList.deserialize(from: JSON!["data"].rawString())
+                result(data)
+            }
+            else {
+                BLHUDBarManager.showError(msg: msg)
+            }
+        }
+    }
+    
+    
+    /// 申请名人
+    ///
+    /// - Parameters:
+    ///  - model: 名人model
+    ///   - result: 结果
+    class func applyFamousIdentiify(model: ApplyFamousModel, result: @escaping (_ success: Bool)->()) {
+        let path = "/certification/applyCelebrity.htm"
+        let params = ["company": model.company,
+                      "trade": model.trade,
+                      "position": model.position,
+                      "tags": model.tags,
+                      "businesscard": model.businesscard]
+        
+        APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
+            if code == 0 {
+                result(true)
+            }
+            else {
+                BLHUDBarManager.showError(msg: msg)
+                result(false)
             }
         }
     }

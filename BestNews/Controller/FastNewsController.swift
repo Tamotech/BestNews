@@ -33,6 +33,8 @@ class FastNewsController: BaseViewController, UITableViewDataSource, UITableView
     var newsList: FastNewsList?
     var stockStatusArr: [TodayStockStatus]?
     
+    ///是否加过滤 仅收藏
+    var collectFilter: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,12 +42,13 @@ class FastNewsController: BaseViewController, UITableViewDataSource, UITableView
         // Do any additional setup after loading the view.
         setupView()
         self.shouldClearNavBar = true
-        self.loadStockStatus()
         
         tableView.cr.addHeadRefresh(animator: NormalHeaderAnimator()) {
             [weak self] in
             self?.reloadArticleList()
-            self?.loadStockStatus()
+            if !self!.collectFilter {
+                self?.loadStockStatus()
+            }
         }
         tableView.cr.addFootRefresh(animator: NormalFooterAnimator()) {
             [weak self] in
@@ -67,7 +70,11 @@ class FastNewsController: BaseViewController, UITableViewDataSource, UITableView
         tableView.register(nib, forCellReuseIdentifier: "Cell")
         let nib1 = UINib(nibName: "FastNewsSectionHeaderView", bundle: nil)
         tableView.register(nib1, forHeaderFooterViewReuseIdentifier: "header")
-        tableView.tableHeaderView = headerView
+        
+        if !collectFilter {
+            tableView.tableHeaderView = headerView
+            self.loadStockStatus()
+        }
     }
     
     
@@ -128,7 +135,8 @@ extension FastNewsController {
     
     
     func reloadArticleList() {
-        APIRequest.getFastNewsListAPI(page: 1) { [weak self](data) in
+        
+        APIRequest.getFastNewsListAPI(page: 1, collect: collectFilter) { [weak self](data) in
             self?.tableView.cr.endHeaderRefresh()
             self?.page = 1
             self?.newsList = data as? FastNewsList
@@ -143,7 +151,7 @@ extension FastNewsController {
             return
         }
         page = page + 1
-        APIRequest.getFastNewsListAPI(page: page) { [weak self](data) in
+        APIRequest.getFastNewsListAPI(page: page, collect: collectFilter) { [weak self](data) in
             self?.tableView.cr.endLoadingMore()
             let list = data as? FastNewsList
             if list != nil {

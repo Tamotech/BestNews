@@ -11,9 +11,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileCenterController" customModule="BestNews" customModuleProvider="target">
             <connections>
+                <outlet property="accountTop" destination="tar-JJ-gAX" id="KfW-cF-Ztm"/>
+                <outlet property="accountView" destination="FDQ-41-8Ys" id="kNN-qV-sEs"/>
                 <outlet property="avatarImg" destination="Is3-br-OVR" id="vJt-bz-dbG"/>
                 <outlet property="columnContainerView" destination="HaV-Bp-vHi" id="bty-xK-FlT"/>
                 <outlet property="descLb" destination="cXY-Q0-K6b" id="WBq-pK-deM"/>
+                <outlet property="descView" destination="KE3-lP-YhU" id="thw-yu-6Vo"/>
                 <outlet property="nicknameLb" destination="h8u-Uf-7Sf" id="2tc-wZ-fA6"/>
                 <outlet property="phoneLb" destination="SHC-5F-8Et" id="hIS-iQ-S4d"/>
                 <outlet property="qqLb" destination="tm2-1P-rdy" id="fuD-L9-sIU"/>
@@ -361,7 +364,7 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow-light-gray" translatesAutoresizingMaskIntoConstraints="NO" id="Rmm-QR-ClM">
                                                     <rect key="frame" x="344" y="18" width="7" height="12"/>
                                                 </imageView>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="puU-JH-G9q" userLabel="line">
+                                                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="puU-JH-G9q" userLabel="line">
                                                     <rect key="frame" x="14.5" y="48" width="345" height="1"/>
                                                     <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
@@ -416,8 +419,8 @@
                                 <constraint firstItem="KE3-lP-YhU" firstAttribute="centerX" secondItem="3Ya-23-PfC" secondAttribute="centerX" id="Fgh-eb-Nyv"/>
                                 <constraint firstItem="FDQ-41-8Ys" firstAttribute="centerX" secondItem="3Ya-23-PfC" secondAttribute="centerX" id="PXp-ds-hAD"/>
                                 <constraint firstItem="T1Y-5e-VOg" firstAttribute="width" secondItem="3Ya-23-PfC" secondAttribute="width" id="aqg-Xs-4Ic"/>
-                                <constraint firstItem="FDQ-41-8Ys" firstAttribute="top" secondItem="KE3-lP-YhU" secondAttribute="bottom" constant="15" id="bh8-g3-6g4"/>
                                 <constraint firstItem="KE3-lP-YhU" firstAttribute="width" secondItem="3Ya-23-PfC" secondAttribute="width" id="sdL-Fm-eAj"/>
+                                <constraint firstItem="FDQ-41-8Ys" firstAttribute="top" secondItem="T1Y-5e-VOg" secondAttribute="bottom" constant="250" id="tar-JJ-gAX"/>
                                 <constraint firstItem="T1Y-5e-VOg" firstAttribute="centerX" secondItem="3Ya-23-PfC" secondAttribute="centerX" id="wPa-bG-LSA"/>
                                 <constraint firstItem="T1Y-5e-VOg" firstAttribute="top" secondItem="3Ya-23-PfC" secondAttribute="top" id="wyX-2K-3BJ"/>
                             </constraints>

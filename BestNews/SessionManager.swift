@@ -40,12 +40,21 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
     var currentLocation: CLLocation = CLLocation()        ///定位
     var lock = NSLock()
+    ///行业字典
+    var tradeArr: [String] = []
+    ///名人标签
+    var famousTagArr: [String] = []
+    ///名人申请 行业标签
+    var famousTradeArr: [String] = []
+    
+    
     
     override init() {
         super.init()
         
 //        self.openAndLocation()
         self.readLoginInfo()
+        self.getTags()
     }
     
     
@@ -154,6 +163,43 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
             
             APIManager.shareInstance.headers["token"] = self.token
             self.getUserInfo()
+        }
+    }
+    
+    //获取字典标签
+    func getTags() {
+        let path1 = "/config/getDict.htm?code=FIX_TRADE"
+        APIManager.shareInstance.postRequest(urlString: path1, params: nil) {[weak self] (JSON, code, msg) in
+            if code == 0 {
+                if let arr = JSON!["data"].array {
+                    self?.tradeArr.removeAll()
+                    for a in arr {
+                        self?.tradeArr.append(a["value"].rawString()!)
+                    }
+                }
+            }
+        }
+        let path2 = "/config/getDict.htm?code=FIX_CELEBRITY_TAG"
+        APIManager.shareInstance.postRequest(urlString: path2, params: nil) {[weak self] (JSON, code, msg) in
+            if code == 0 {
+                if let arr = JSON!["data"].array {
+                    self?.famousTagArr.removeAll()
+                    for a in arr {
+                        self?.famousTagArr.append(a["value"].rawString()!)
+                    }
+                }
+            }
+        }
+        let path3 = "/config/getDict.htm?code=FIX_CELEBRITY_TRADE"
+        APIManager.shareInstance.postRequest(urlString: path3, params: nil) {[weak self] (JSON, code, msg) in
+            if code == 0 {
+                if let arr = JSON!["data"].array {
+                    self?.famousTradeArr.removeAll()
+                    for a in arr {
+                        self?.famousTradeArr.append(a["value"].rawString()!)
+                    }
+                }
+            }
         }
     }
     

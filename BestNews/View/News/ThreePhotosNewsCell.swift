@@ -41,10 +41,10 @@ class ThreePhotosNewsCell: BaseNewsCell {
                 if i == 0 {
                     photoView1.kf.setImage(with: rc)
                 }
-                else if i == 2 {
+                else if i == 1 {
                     photoView2.kf.setImage(with: rc)
                 }
-                else if i == 3 {
+                else if i == 2 {
                     photoView3.kf.setImage(with: rc)
                 }
             }

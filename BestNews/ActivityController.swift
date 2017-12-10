@@ -11,7 +11,8 @@ import CRRefresh
 
 class ActivityController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
 
-    
+    ///是否筛选收藏
+    var collectFlag = false
     var activityList = ActivityList()
     let tableView = UITableView(frame: CGRect.init(x: 0, y: 64, width: screenWidth, height: screenHeight-50-64), style: .grouped)
     
@@ -39,6 +40,11 @@ class ActivityController: BaseViewController, UITableViewDelegate, UITableViewDa
             tableView.contentInsetAdjustmentBehavior = .never
         } else {
             self.automaticallyAdjustsScrollViewInsets = false
+        }
+        
+        if collectFlag {
+            self.showCustomTitle(title: "")
+            self.shouldClearNavBar = true
         }
         
         tableView.cr.addHeadRefresh {
@@ -113,7 +119,7 @@ extension ActivityController {
     func reloadData() {
         activityList.total = 0
         activityList.page = 1
-        APIRequest.activityListAPI(page: 1) { [weak self](data) in
+        APIRequest.activityListAPI(collect: collectFlag, page: 1) { [weak self](data) in
             self?.tableView.cr.endHeaderRefresh()
             self?.activityList = data as! ActivityList
             self?.tableView.reloadData()
@@ -126,7 +132,7 @@ extension ActivityController {
             return
         }
         activityList.page = activityList.page+1
-        APIRequest.activityListAPI(page: activityList.page) { [weak self](data) in
+        APIRequest.activityListAPI(collect: collectFlag, page: activityList.page) { [weak self](data) in
             self?.activityList.list.append(contentsOf: (data as! ActivityList).list)
             self?.tableView.cr.endLoadingMore()
             self?.tableView.reloadData()

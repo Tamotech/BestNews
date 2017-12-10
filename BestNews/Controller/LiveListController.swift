@@ -57,6 +57,11 @@ class LiveListController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        let sb = UIStoryboard.init(name: "Main", bundle: nil)
+//        let vc = sb.instantiateViewController(withIdentifier: "AliyunPlayerLivePlayViewController")
+//        navigationController?.pushViewController(vc, animated: true)
         
+        let playerVC = LiveBasePlayerController(nibName: "LiveBasePlayerController", bundle: nil)
+        navigationController?.pushViewController(playerVC, animated: true)
     }
 }

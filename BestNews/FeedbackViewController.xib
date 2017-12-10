@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FeedbackViewController" customModule="BestNews" customModuleProvider="target">
+            <connections>
+                <outlet property="leftWordsLb" destination="Mw8-j4-QDT" id="25c-Ka-SQd"/>
+                <outlet property="submitBt" destination="1ch-r8-5xZ" id="04t-fk-mki"/>
+                <outlet property="tv" destination="2oS-kP-EEA" id="lXz-0h-DJ6"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="2oS-kP-EEA" customClass="IQTextView" customModule="IQKeyboardManagerSwift">
+                    <rect key="frame" x="15" y="35" width="345" height="210"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="210" id="9NL-ij-djL"/>
+                    </constraints>
+                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="请输入您的问题，我们尽快将结果发送至您的消息中心"/>
+                    </userDefinedRuntimeAttributes>
+                </textView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0/200" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mw8-j4-QDT">
+                    <rect key="frame" x="302" y="214" width="42" height="18"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <color key="textColor" red="0.47058823529411764" green="0.52549019607843139" blue="0.59215686274509804" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1ch-r8-5xZ">
+                    <rect key="frame" x="15" y="291" width="345" height="48"/>
+                    <color key="backgroundColor" red="0.86666666670000003" green="0.86666666670000003" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="nC5-C0-uVm"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <state key="normal" title="提交">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                            <real key="value" value="0.29999999999999999"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                            <real key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                            <size key="value" width="0.0" height="6"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                            <color key="value" red="0.0" green="0.59607843140000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="handleTapSubmitBt:" destination="-1" eventType="touchUpInside" id="uzj-0D-e9y"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="1ch-r8-5xZ" firstAttribute="trailing" secondItem="2oS-kP-EEA" secondAttribute="trailing" id="6PB-4G-y2u"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="2oS-kP-EEA" secondAttribute="trailing" constant="15" id="JFB-2A-BMU"/>
+                <constraint firstItem="Mw8-j4-QDT" firstAttribute="bottom" secondItem="2oS-kP-EEA" secondAttribute="bottom" constant="-13" id="KjC-0m-6Z0"/>
+                <constraint firstItem="1ch-r8-5xZ" firstAttribute="top" secondItem="2oS-kP-EEA" secondAttribute="bottom" constant="46" id="P1S-xZ-pha"/>
+                <constraint firstItem="Mw8-j4-QDT" firstAttribute="trailing" secondItem="2oS-kP-EEA" secondAttribute="trailing" constant="-16" id="Rbf-eQ-955"/>
+                <constraint firstItem="1ch-r8-5xZ" firstAttribute="leading" secondItem="2oS-kP-EEA" secondAttribute="leading" id="Tkb-UK-68e"/>
+                <constraint firstItem="2oS-kP-EEA" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="15" id="ZJF-rK-Io3"/>
+                <constraint firstItem="2oS-kP-EEA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="sXd-FA-1O7"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+        </view>
+    </objects>
+</document>

@@ -27,6 +27,7 @@ class MeCollectionViewController: BaseViewController, UIScrollViewDelegate, TYPa
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.switchToIndex(index: currentIndex)
+
     }
     
     func setupChildView() {
@@ -59,11 +60,20 @@ class MeCollectionViewController: BaseViewController, UIScrollViewDelegate, TYPa
         self.automaticallyAdjustsScrollViewInsets = false
         
         for i in 0..<titles.count {
-            if i == 1 {
-                let vc = FastNewsController()
+            if i == 0 {
+                let vc = CollectionNewsListController()
                 addChildViewController(vc)
                 let x = screenWidth*CGFloat(i)
-                vc.view.frame = CGRect(x: x, y: 64, width: screenWidth, height: screenHeight-49-64)
+                vc.view.frame = CGRect(x: x, y: 44, width: screenWidth, height: screenHeight-44-64)
+                scrollView.addSubview(vc.view)
+                continue
+            }
+            else if i == 1 {
+                let vc = FastNewsController()
+                vc.collectFilter = true
+                addChildViewController(vc)
+                let x = screenWidth*CGFloat(i)
+                vc.view.frame = CGRect(x: x, y: 44, width: screenWidth, height: screenHeight-44-64)
                 scrollView.addSubview(vc.view)
                 continue
             }
@@ -71,14 +81,23 @@ class MeCollectionViewController: BaseViewController, UIScrollViewDelegate, TYPa
                 let vc = LiveListController()
                 addChildViewController(vc)
                 let x = screenWidth*CGFloat(i)
-                vc.view.frame = CGRect(x: x, y: 0, width: screenWidth, height: screenHeight)
+                vc.view.frame = CGRect(x: x, y: 44, width: screenWidth, height: screenHeight-44-64)
+                scrollView.addSubview(vc.view)
+                continue
+            }
+            else if i == 4 {
+                let vc = ActivityController(nibName: "ActivityController", bundle: nil)
+                vc.collectFlag = true
+                addChildViewController(vc)
+                let x = screenWidth*CGFloat(i)
+                vc.view.frame = CGRect(x: x, y: -20, width: screenWidth, height: screenHeight)
                 scrollView.addSubview(vc.view)
                 continue
             }
             let vc = HomeContentViewController()
             addChildViewController(vc)
             let x = screenWidth*CGFloat(i)
-            vc.view.frame = CGRect(x: x, y: 0, width: screenWidth, height: screenHeight-49)
+            vc.view.frame = CGRect(x: x, y: 44, width: screenWidth, height: screenHeight-44-64)
             scrollView.addSubview(vc.view)
             
         }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftyJSON
 import Kingfisher
 
 class MeController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
@@ -37,7 +38,7 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet var meMenueItemWidths: [NSLayoutConstraint]!
     
     
-    let settingData: [(String, UIImage)] = [("实名认证", #imageLiteral(resourceName: "me_identity")),
+    var settingData: [(String, UIImage)] = [("实名认证", #imageLiteral(resourceName: "me_identity")),
                        ("开通VIP", #imageLiteral(resourceName: "me_open_vip")),
                        ("我要投稿", #imageLiteral(resourceName: "me_post_article")),
                        ("成为名人", #imageLiteral(resourceName: "me_become_star")),
@@ -47,7 +48,6 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupView()
     }
 
@@ -81,11 +81,15 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
         self.navigationController?.navigationBar.tintColor = gray51
         self.navigationController?.navigationBar.barTintColor = gray51
         SessionManager.sharedInstance.getUserInfo()
+        loadInfoCount()
         updateUI()
     }
     
     ///更新UI
     func updateUI() {
+        
+        ///是否展示文章
+        var showArticle = false
         if SessionManager.sharedInstance.loginInfo.isLogin {
             if let user = SessionManager.sharedInstance.userInfo {
                 if let url = URL(string: user.headimg) {
@@ -93,15 +97,37 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
                     avatarView.kf.setImage(with: rc, for: .normal)
                 }
                 nameLb.text = user.name
-                if user.idproveflag {
+                if user.celebrityflag {
+                    settingData = [("我要投稿", #imageLiteral(resourceName: "me_post_article")),
+                                   ("开通VIP", #imageLiteral(resourceName: "me_open_vip")),
+                                   ("分享APP", #imageLiteral(resourceName: "me_share_app")),
+                                   ("意见反馈", #imageLiteral(resourceName: "me_feed_back")),
+                                   ("退出登录", #imageLiteral(resourceName: "me_logout"))]
+                    showArticle = true
+                }
+                else if user.idproveflag {
                     identityBtn.setTitleColor(themeColor, for: .normal)
                     identityBtn.borderColor = themeColor!
                     identityBtn.setTitle("已认证", for: .normal)
+                    settingData = [("实名认证", #imageLiteral(resourceName: "me_identity")),
+                     ("开通VIP", #imageLiteral(resourceName: "me_open_vip")),
+                     ("我要投稿", #imageLiteral(resourceName: "me_post_article")),
+                     ("成为名人", #imageLiteral(resourceName: "me_become_star")),
+                     ("分享APP", #imageLiteral(resourceName: "me_share_app")),
+                     ("意见反馈", #imageLiteral(resourceName: "me_feed_back")),
+                     ("退出登录", #imageLiteral(resourceName: "me_logout"))]
                 }
                 else {
                     identityBtn.setTitleColor(gray181, for: .normal)
                     identityBtn.borderColor = gray181!
                     identityBtn.setTitle("未认证", for: .normal)
+                    settingData = [("实名认证", #imageLiteral(resourceName: "me_identity")),
+                     ("开通VIP", #imageLiteral(resourceName: "me_open_vip")),
+                     ("我要投稿", #imageLiteral(resourceName: "me_post_article")),
+                     ("成为名人", #imageLiteral(resourceName: "me_become_star")),
+                     ("分享APP", #imageLiteral(resourceName: "me_share_app")),
+                     ("意见反馈", #imageLiteral(resourceName: "me_feed_back")),
+                     ("退出登录", #imageLiteral(resourceName: "me_logout"))]
                 }
             }
             loginView.isHidden = true
@@ -109,6 +135,23 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
             collectionAmountLb.isHidden = false
             activityAmountLb.isHidden = false
             articleAmountLb.isHidden = false
+            
+        }
+        else {
+            avatarView.setImage(#imageLiteral(resourceName: "defaultUser"), for: .normal)
+            loginView.isHidden = false
+            subscriptionAmountLb.isHidden = true
+            collectionAmountLb.isHidden = true
+            activityAmountLb.isHidden = true
+            articleAmountLb.isHidden = true
+            settingData = [
+                ("我要投稿", #imageLiteral(resourceName: "me_post_article")),
+                ("开通VIP", #imageLiteral(resourceName: "me_open_vip")),
+                ("分享APP", #imageLiteral(resourceName: "me_share_app")),
+                ("意见反馈", #imageLiteral(resourceName: "me_feed_back"))]
+        }
+        
+        if showArticle {
             let w = screenWidth/4
             for i in 0..<meMenueItemWidths.count {
                 let consW = meMenueItemWidths[i]
@@ -118,8 +161,6 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
             }
         }
         else {
-            avatarView.setImage(#imageLiteral(resourceName: "defaultUser"), for: .normal)
-            loginView.isHidden = false
             let w = screenWidth/3
             for i in 0..<meMenueItemWidths.count-1 {
                 let consW = meMenueItemWidths[i]
@@ -127,16 +168,15 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
             }
             meMenueItemWidths.last!.constant = 0
             meMenuItemViews.last!.isHidden = true
-            subscriptionAmountLb.isHidden = true
-            collectionAmountLb.isHidden = true
-            activityAmountLb.isHidden = true
-            articleAmountLb.isHidden = true
         }
+        
+        tableView.reloadData()
     }
     
     ///通知
     func didUpdateUserInfo(_ noti: Notification) {
         self.updateUI()
+        loadInfoCount()
     }
     
     
@@ -150,7 +190,6 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
         let vc = MessageCenterController()
         navigationController?.pushViewController(vc, animated: true)
     }
-    
     func handleTapLoginView(_ sender: Any) {
         Toolkit.showLoginVC()
     }
@@ -216,6 +255,14 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
         return 1
     }
     
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0.1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+         return 0.1
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return settingData.count
     }
@@ -229,36 +276,76 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case 0:
+        
+        let name = settingData[indexPath.row].0
+        if name == "分享APP" {
+            let vc = BaseShareViewController(nibName: "BaseShareViewController", bundle: nil)
+            let share = ShareModel()
+            share.title = "锐财经"
+            share.msg = ""
+            share.thumb = ""
+            vc.share = share
+            presentr.viewControllerForContext = self
+            presentr.shouldIgnoreTapOutsideContext = false
+            customPresentViewController(presentr, viewController: vc, animated: true) {
+                
+            }
+            return
+        }
+        if !SessionManager.sharedInstance.loginInfo.isLogin {
+            Toolkit.showLoginVC()
+            return
+        }
+        
+        if name == "实名认证" {
+            let vc = ApplyIdentifyController(nibName: "ApplyIdentifyController", bundle: nil)
+            navigationController?.pushViewController(vc, animated: true)
+        }
+        else if name == "我要投稿" {
+            let vc = SubmitPaperController(nibName: "SubmitPaperController", bundle: nil)
+            navigationController?.pushViewController(vc, animated: true)
+        }
+        else if name == "开通VIP" {
+            let vc = OpenVIPController(nibName: "OpenVIPController", bundle: nil)
+            navigationController?.pushViewController(vc, animated: true)
+        }
+        else if name == "意见反馈" {
+            let vc = FeedbackViewController(nibName: "FeedbackViewController", bundle: nil)
+            navigationController?.pushViewController(vc, animated: true)
+        }
+        else if name == "成为名人" {
             
-            break
-        case 1:
-            
-            break
-            
-        case 2:
-            
-            break
-        case 3:
-            
-            break
-        case 4:
-            
-            break
-        case 5:
-            
-            break
-        case 6:
+            let vc = ApplyFamousConditionController(nibName: "ApplyFamousConditionController", bundle: nil)
+            navigationController?.pushViewController(vc, animated: true)
+        }
+        else if name == "退出登录" {
             SessionManager.sharedInstance.logoutCurrentUser()
             let vc = LoginViewController(nibName: "LoginViewController", bundle: nil)
             let navVC = BaseNavigationController(rootViewController: vc)
-            navigationController?.present(navVC, animated: true, completion: nil)  
-            break
-        default:
-            break
+            navigationController?.present(navVC, animated: true, completion: nil)
         }
     }
 
+}
+
+extension MeController {
+    
+    func loadInfoCount() {
+        if !SessionManager.sharedInstance.loginInfo.isLogin {
+            return
+        }
+        APIRequest.meInfoCountAPI { [weak self](data) in
+            let json = data as! JSON
+            let subscribeNum = json["subscribeNum"].intValue
+            let collectNum = json["collectNum"].intValue
+            let activityNum = json["activityNum"].intValue
+            let articleNum = json["articleNum"].intValue
+            self?.subscriptionAmountLb.text = "\(subscribeNum)"
+            self?.collectionAmountLb.text = "\(collectNum)"
+            self?.activityAmountLb.text = "\(activityNum)"
+            self?.articleAmountLb.text = "\(articleNum)"
+        }
+    }
+    
 }
 

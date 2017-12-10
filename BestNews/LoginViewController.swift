@@ -56,7 +56,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
         let info = JSON(noti.object ?? [])
         let code = info["code"]
         let state = info["state"]
-        
+        self.pleaseWait()
         if state == "wechat_sdk_login_demo" {
             let url = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=\(wxAppId)&secret=\(wxSecretKey)&code=\(code)&grant_type=authorization_code"
             Alamofire.request(url).responseJSON(completionHandler: { (response) in
@@ -80,6 +80,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
                         SessionManager.sharedInstance.loginInfo.avatarUrl = wxInfo!.headimgurl
                         //尝试用 wxid 登录
                         SessionManager.sharedInstance.login(type: 1, results: { [weak self](json, code, msg) in
+                            self?.clearAllNotice()
                             if code == 0 {
                                 //成功
                                 wxInfo?.updateUserInfo()

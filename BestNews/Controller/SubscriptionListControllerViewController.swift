@@ -40,14 +40,27 @@ class SubscriptionListControllerViewController: UIViewController, UITableViewDel
         super.viewDidLoad()
 
         setupView()
-        reloadOgnizationList()
-        reloadArticleList()
+        
+        if SessionManager.sharedInstance.loginInfo.isLogin {
+            reloadOgnizationList()
+            reloadArticleList()
+        }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(loginStatusChangeNiti(noti:)), name: kUserLoginStatusChangeNoti, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         loadNewsChannel()
         columeTableView.reloadData()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if !SessionManager.sharedInstance.loginInfo.isLogin {
+            Toolkit.showLoginVC()
+        }
     }
     
     func setupView() {
@@ -89,6 +102,16 @@ class SubscriptionListControllerViewController: UIViewController, UITableViewDel
         
         selectItem(index: 0)
     }
+    
+    
+    // 登陆成功通知
+    func loginStatusChangeNiti(noti: Notification) {
+        if SessionManager.sharedInstance.loginInfo.isLogin {
+            reloadOgnizationList()
+            reloadArticleList()
+        }
+    }
+    
     
 
     //MARK: - tableView

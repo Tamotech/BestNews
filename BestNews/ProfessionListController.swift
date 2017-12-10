@@ -17,14 +17,28 @@ class ProfessionListController: UIViewController, UITableViewDataSource, UITable
 
     var tableView = UITableView(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: 420), style: .grouped)
     
-    let items = ["公共事业", "服务业", "金融业", "地产建筑业", "能源业", "消费品制造业", "原材料业", "工业制品业"]
-    var selectedItem = "公共事业"
+    var items: [String] = []
+    var selectedItem = ""
+    /// 0 普通, 活动用   1 申请名人
+    var type = 0
     weak var delegate: ProfessionListControllerDelegate?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if type == 0 {
+            if SessionManager.sharedInstance.tradeArr.count > 0 {
+                items = SessionManager.sharedInstance.tradeArr
+                selectedItem = items.first!
+            }
+        }
+        else if type == 1 {
+            if SessionManager.sharedInstance.famousTradeArr.count > 0 {
+                items = SessionManager.sharedInstance.famousTradeArr
+                selectedItem = items.first!
+            }
+        }
         setupUI()
     }
     
@@ -33,9 +47,11 @@ class ProfessionListController: UIViewController, UITableViewDataSource, UITable
         tableView.dataSource = self
         self.view.addSubview(tableView)
         self.view.backgroundColor = .clear
+        
+        let h = 44*CGFloat(items.count)+80+10+50
         tableView.snp.makeConstraints { (make) in
             make.left.right.bottom.equalTo(0)
-            make.height.equalTo(430)
+            make.height.equalTo(h)
         }
         
         let header = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 50))
@@ -60,7 +76,7 @@ class ProfessionListController: UIViewController, UITableViewDataSource, UITable
 
         tableView.tableHeaderView = header
         
-        let footer = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 60))
+        let footer = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 80))
         footer.backgroundColor = .white
         let confirmBtn = UIButton()
         confirmBtn.setTitle("确定", for: .normal)
@@ -90,7 +106,7 @@ class ProfessionListController: UIViewController, UITableViewDataSource, UITable
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 40
+        return 44
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -105,6 +121,7 @@ class ProfessionListController: UIViewController, UITableViewDataSource, UITable
         var cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
         if cell == nil {
             cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
+            cell?.selectionStyle = .none
             cell?.textLabel?.textColor = UIColor(hexString: "#cbcbcb")
             cell?.tintColor = themeColor
         }

@@ -50,6 +50,13 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gQ1-HU-LtP" userLabel="covertip">
+                                <rect key="frame" x="20" y="-5" width="36" height="5"/>
+                                <color key="backgroundColor" red="0.96862745098039216" green="0.98431372549019602" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="5" id="X7P-s1-STQ"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ocy-h2-MnH">
                                 <rect key="frame" x="15" y="92" width="244" height="90.5"/>
                                 <subviews>
@@ -109,9 +116,12 @@
                             <constraint firstItem="2G1-CE-7Uo" firstAttribute="top" secondItem="zh1-rK-Mdd" secondAttribute="top" constant="-3" id="M8y-Md-pHG"/>
                             <constraint firstItem="Ocy-h2-MnH" firstAttribute="leading" secondItem="NwE-MU-FJ9" secondAttribute="leading" id="NEG-4Y-LYh"/>
                             <constraint firstItem="2G1-CE-7Uo" firstAttribute="leading" secondItem="NwE-MU-FJ9" secondAttribute="leading" constant="5" id="Nz3-nX-8mI"/>
+                            <constraint firstItem="gQ1-HU-LtP" firstAttribute="trailing" secondItem="2G1-CE-7Uo" secondAttribute="trailing" id="QUH-zr-HIx"/>
                             <constraint firstItem="NwE-MU-FJ9" firstAttribute="top" secondItem="zh1-rK-Mdd" secondAttribute="top" constant="15" id="Smv-tO-tGU"/>
                             <constraint firstAttribute="trailing" secondItem="NwE-MU-FJ9" secondAttribute="trailing" constant="15" id="WXo-ae-Wvq"/>
+                            <constraint firstItem="gQ1-HU-LtP" firstAttribute="leading" secondItem="2G1-CE-7Uo" secondAttribute="leading" id="cgn-s2-inW"/>
                             <constraint firstItem="Ocy-h2-MnH" firstAttribute="bottom" secondItem="NwE-MU-FJ9" secondAttribute="bottom" id="j2d-4Q-ufp"/>
+                            <constraint firstItem="2G1-CE-7Uo" firstAttribute="top" secondItem="gQ1-HU-LtP" secondAttribute="bottom" constant="-3" id="pfe-Ri-qFi"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">

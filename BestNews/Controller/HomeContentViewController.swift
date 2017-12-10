@@ -70,6 +70,7 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.cr.addHeadRefresh {
             [weak self] in
             self?.reloadArticleList()
+            self?.loadSpecialCannelData()
         }
         tableView.cr.addFootRefresh {
             [weak self] in

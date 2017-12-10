@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -41,6 +41,38 @@
                                 <real key="value" value="9"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pYD-Ko-8sq">
+                        <rect key="frame" x="220" y="25" width="75" height="30"/>
+                        <color key="backgroundColor" red="0.0" green="0.59607843140000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="75" id="b9S-Eb-EWg"/>
+                            <constraint firstAttribute="height" constant="30" id="yck-mj-PWg"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <state key="normal" title=" 开始直播">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="4"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                <real key="value" value="2"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                <size key="value" width="0.0" height="4"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                <real key="value" value="0.29999999999999999"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                <color key="value" red="0.0" green="0.59607843140000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="handleTapStartLiveBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="izQ-F0-SuY"/>
+                        </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="直播标题直播标题直播标题" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYw-qD-JgS">
                         <rect key="frame" x="25" y="180.5" width="285" height="19.5"/>
@@ -116,8 +148,10 @@
                     <constraint firstAttribute="trailing" secondItem="3Rj-fs-ssz" secondAttribute="trailing" constant="15" id="Dir-eG-lDj"/>
                     <constraint firstItem="3Rj-fs-ssz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Eby-Rp-pl9"/>
                     <constraint firstAttribute="trailing" secondItem="UYw-qD-JgS" secondAttribute="trailing" constant="10" id="Xtv-n1-r39"/>
+                    <constraint firstItem="pYD-Ko-8sq" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="YYr-QW-LXv"/>
                     <constraint firstItem="UYw-qD-JgS" firstAttribute="leading" secondItem="V1B-jt-pmK" secondAttribute="leading" constant="10" id="cki-KI-J4o"/>
                     <constraint firstItem="8jx-uv-0Hd" firstAttribute="top" secondItem="V1B-jt-pmK" secondAttribute="top" constant="10" id="iE5-vE-w3W"/>
+                    <constraint firstAttribute="trailing" secondItem="pYD-Ko-8sq" secondAttribute="trailing" constant="25" id="puC-fS-GCg"/>
                     <constraint firstItem="3Rj-fs-ssz" firstAttribute="top" secondItem="V1B-jt-pmK" secondAttribute="bottom" id="qj0-AZ-Ny5"/>
                     <constraint firstAttribute="bottom" secondItem="3Rj-fs-ssz" secondAttribute="bottom" id="sfV-dw-vpo"/>
                     <constraint firstItem="V1B-jt-pmK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="12" id="we7-nS-LOJ"/>
@@ -127,6 +161,7 @@
                 <outlet property="collectionBtn" destination="BMg-U7-R8q" id="nP9-1n-NuG"/>
                 <outlet property="commentBtn" destination="yCo-KV-oY0" id="siB-Gd-0yC"/>
                 <outlet property="liveStatusBtn" destination="8jx-uv-0Hd" id="07c-WU-6f4"/>
+                <outlet property="startLive" destination="pYD-Ko-8sq" id="5eZ-nf-Iku"/>
                 <outlet property="titleLb" destination="UYw-qD-JgS" id="IRI-KS-Fhr"/>
                 <outlet property="voteBtn" destination="BNj-Rf-6AC" id="Zs7-KU-tcs"/>
             </connections>

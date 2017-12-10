@@ -31,6 +31,8 @@ class UserInfo: HandyJSON {
     var wxid: String = ""
     ///是否实名认证
     var idproveflag: Bool = false
+    var idname: String = ""
+    var idnumber: String = ""
     ///是否vip
     var vipflag: Bool = false
     ///是否是名人

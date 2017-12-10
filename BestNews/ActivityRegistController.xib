@@ -92,7 +92,7 @@
                                                         </fragment>
                                                         <fragment content="*">
                                                             <attributes>
-                                                                <color key="NSColor" red="1" green="0.38039215686274508" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <color key="NSColor" red="1" green="0.3803921569" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <font key="NSFont" size="15" name=".PingFangSC-Regular"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
@@ -142,7 +142,7 @@
                                                         </fragment>
                                                         <fragment content="*">
                                                             <attributes>
-                                                                <color key="NSColor" red="1" green="0.38039215686274508" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <color key="NSColor" red="1" green="0.3803921569" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <font key="NSFont" size="15" name=".PingFangSC-Regular"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
@@ -214,7 +214,7 @@
                                                         </fragment>
                                                         <fragment content="*">
                                                             <attributes>
-                                                                <color key="NSColor" red="1" green="0.38039215686274508" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <color key="NSColor" red="1" green="0.3803921569" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <font key="NSFont" size="15" name=".PingFangSC-Regular"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>

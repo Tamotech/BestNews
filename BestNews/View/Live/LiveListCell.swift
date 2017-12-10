@@ -21,6 +21,7 @@ class LiveListCell: UITableViewCell {
     
     @IBOutlet weak var collectionBtn: UIButton!
     
+    @IBOutlet weak var startLive: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -40,4 +41,9 @@ class LiveListCell: UITableViewCell {
         
     }
     
+    @IBAction func handleTapStartLiveBtn(_ sender: UIButton) {
+        
+        let vc = MyLiveViewController()
+        ownerController()?.navigationController?.pushViewController(vc, animated: true)
+    }
 }

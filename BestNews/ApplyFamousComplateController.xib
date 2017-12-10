@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ApplyFamousComplateController" customModule="BestNews" customModuleProvider="target">
+            <connections>
+                <outlet property="msgLb" destination="LMe-P7-vbk" id="bPc-mU-7cq"/>
+                <outlet property="titleLb" destination="Dn0-Ap-hzv" id="A6s-FV-Nzh"/>
+                <outlet property="view" destination="CqE-D4-hI6" id="2SI-Yg-vxG"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="CqE-D4-hI6">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uMP-7h-Yyl">
+                    <rect key="frame" x="48" y="175.5" width="279" height="256"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您的名人申请已提交" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dn0-Ap-hzv">
+                            <rect key="frame" x="56.5" y="46" width="165.5" height="21"/>
+                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我们将审核您的名人申请，并将处理结果发送至您的通知中心，审核需要3-5个工作日，请耐心等待" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LMe-P7-vbk">
+                            <rect key="frame" x="30" y="87" width="219" height="19.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ath-bG-Q53">
+                            <rect key="frame" x="15" y="199" width="249" height="42"/>
+                            <color key="backgroundColor" red="0.0" green="0.59607843140000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="42" id="CfD-QY-krT"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal" title="OK">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                    <real key="value" value="5"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                    <size key="value" width="0.0" height="10"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                    <real key="value" value="0.29999999999999999"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                    <color key="value" red="0.0" green="0.59607843140000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="handleTapOKBt:" destination="-1" eventType="touchUpInside" id="zLR-Ov-1zP"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="Dn0-Ap-hzv" firstAttribute="top" secondItem="uMP-7h-Yyl" secondAttribute="top" constant="46" id="Qmz-eE-nnZ"/>
+                        <constraint firstAttribute="trailing" secondItem="Ath-bG-Q53" secondAttribute="trailing" constant="15" id="TDy-i8-yCl"/>
+                        <constraint firstAttribute="trailing" secondItem="LMe-P7-vbk" secondAttribute="trailing" constant="30" id="TVe-2G-cB6"/>
+                        <constraint firstItem="Ath-bG-Q53" firstAttribute="leading" secondItem="uMP-7h-Yyl" secondAttribute="leading" constant="15" id="buo-9y-13k"/>
+                        <constraint firstItem="LMe-P7-vbk" firstAttribute="leading" secondItem="uMP-7h-Yyl" secondAttribute="leading" constant="30" id="gcG-D7-HP0"/>
+                        <constraint firstItem="Dn0-Ap-hzv" firstAttribute="centerX" secondItem="uMP-7h-Yyl" secondAttribute="centerX" id="jpn-H1-JOn"/>
+                        <constraint firstItem="LMe-P7-vbk" firstAttribute="top" secondItem="Dn0-Ap-hzv" secondAttribute="bottom" constant="20" id="oSN-e0-kmy"/>
+                        <constraint firstAttribute="height" constant="256" id="xtm-Zn-Pdj"/>
+                        <constraint firstAttribute="bottom" secondItem="Ath-bG-Q53" secondAttribute="bottom" constant="15" id="ybo-pt-PoX"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="6ve-dT-i8S" firstAttribute="trailing" secondItem="uMP-7h-Yyl" secondAttribute="trailing" constant="48" id="Nh8-Tj-cb7"/>
+                <constraint firstItem="uMP-7h-Yyl" firstAttribute="centerY" secondItem="6ve-dT-i8S" secondAttribute="centerY" constant="-40" id="grl-nf-J5n"/>
+                <constraint firstItem="uMP-7h-Yyl" firstAttribute="leading" secondItem="6ve-dT-i8S" secondAttribute="leading" constant="48" id="wf1-Bj-N1c"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="6ve-dT-i8S"/>
+        </view>
+    </objects>
+</document>
