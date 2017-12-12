@@ -38,6 +38,9 @@ class APIManager: NSObject {
         }
         
         
+        /// 一部分host 忽略其登录
+        let loginBacknames = ["/member/countUserOPNum.htm", "/articleoperate/getSubscribeArticlePage.htm", "/articleoperate/getCollectArticlePage.htm", "/article/getAllChannnel.htm"]
+        
         Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers).responseJSON { (response) in
             
             if let value = response.result.value {
@@ -45,8 +48,15 @@ class APIManager: NSObject {
                 let resultDic = JSON(value)
                 let num = resultDic["num"]
                 let info = resultDic["info"]
+                
                 if num.intValue == -1002 || num.intValue == -1 || num.intValue == -1004 {
                     //token 失效
+                    for w in loginBacknames {
+                        if url.contains(w) {
+                            result(resultDic, num.intValue, info.stringValue)
+                            break
+                        }
+                    }
                     SessionManager.sharedInstance.logoutCurrentUser()
                     Toolkit.showLoginVC()
                 }

@@ -22,6 +22,9 @@ class HomeArticle: HandyJSON {
     var preimgtype: String = ""
     var publisher: String = ""
     
+    ///是否是推荐新闻
+    var recommendFlag = false
+    
     required init() {}
     
     
@@ -46,6 +49,9 @@ class HomeArticle: HandyJSON {
         
         let date = Date(timeIntervalSince1970: Double(publishdate)/1000)
         let dateStr = date.newsDateStr()
+        if recommendFlag {
+            return "\(publisher)∙\(dateStr)"
+        }
         return "\(publisher)∙\(dateStr)∙\(channelname)"
     }
 }

@@ -15,7 +15,7 @@ CommentCellDelegate, CommentBarDelegate {
     
     var commentList: CommentList?
     var articleId: String = ""
-    var tableView = UITableView(frame: CGRect(x: 0, y: 64, width: screenWidth, height: screenHeight-49-64), style: .grouped)
+    var tableView = UITableView(frame: CGRect(x: 0, y: 64, width: screenWidth, height: screenHeight-49), style: .grouped)
     var commentBar = NewsCommentBar(frame: CGRect(x: 0, y: screenHeight-49, width: screenWidth, height: 49))
 //    var targetCommentId: String?
     
@@ -45,6 +45,14 @@ CommentCellDelegate, CommentBarDelegate {
         view.addSubview(commentBar)
         commentBar.articleId = articleId
         showCustomTitle(title: "评论(\(commentList?.total ?? 0))")
+        
+        if #available(iOS 11.0, *) {
+            tableView.contentInsetAdjustmentBehavior = .never
+        } else {
+            self.automaticallyAdjustsScrollViewInsets = false
+        }
+        
+        self.reload()
     }
 
     //MARK: - tableView

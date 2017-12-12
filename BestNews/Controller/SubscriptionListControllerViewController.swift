@@ -58,9 +58,7 @@ class SubscriptionListControllerViewController: UIViewController, UITableViewDel
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        if !SessionManager.sharedInstance.loginInfo.isLogin {
-            Toolkit.showLoginVC()
-        }
+        
     }
     
     func setupView() {

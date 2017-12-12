@@ -185,6 +185,13 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
                 self.navBarTurnBg(white: false)
             }
         }
+        if index == 2 {
+            ///订阅
+            if !SessionManager.sharedInstance.loginInfo.isLogin {
+                Toolkit.showLoginVC()
+            }
+        }
+        
     }
     
     /// 导航栏颜色变化

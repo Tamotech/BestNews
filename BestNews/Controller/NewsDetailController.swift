@@ -59,7 +59,7 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
         config.preferences.minimumFontSize = 42
         config.preferences.javaScriptEnabled = true
         config.preferences.javaScriptCanOpenWindowsAutomatically = false
-        let web = WKWebView(frame: CGRect.init(x: 20, y: 0, width: screenWidth - 20, height: 100), configuration: config)
+        let web = WKWebView(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: 100), configuration: config)
         web.scrollView.isScrollEnabled = false
         web.autoresizingMask = .flexibleHeight
         web.navigationDelegate = self
@@ -110,6 +110,7 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let article = recommendArticleList!.list[indexPath.row]
+        article.recommendFlag = true
         var identifier = "SinglePhotoNewsCell"
         if article.preimglist.count == 0 {
             identifier = "NoPhotoNewsCell"
