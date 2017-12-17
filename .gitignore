@@ -1,3 +1,6 @@
 Pods/
 BestNews.xcodeproj/project.xcworkspace/xcuserdata/
 BestNews.xcodeproj/xcuserdata/
+BestNews/*.framework
+BestNews/*.bundle
+Framework
