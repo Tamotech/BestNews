@@ -45,14 +45,13 @@ class HomeArticle: HandyJSON {
         return themeColor!
     }
     
-    func descString() -> String {
+    
+    
+    func dateString() -> String {
         
         let date = Date(timeIntervalSince1970: Double(publishdate)/1000)
         let dateStr = date.newsDateStr()
-        if recommendFlag {
-            return "\(publisher)∙\(dateStr)"
-        }
-        return "\(publisher)∙\(dateStr)∙\(channelname)"
+        return dateStr
     }
 }
 

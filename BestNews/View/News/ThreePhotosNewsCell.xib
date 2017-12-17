@@ -20,13 +20,13 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题标题标题标题标题标题标题标题标题标题标题" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bal-5f-ATa">
-                        <rect key="frame" x="15" y="15" width="290" height="52.5"/>
+                        <rect key="frame" x="15" y="15" width="290" height="49.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cover3m2_1_2a" translatesAutoresizingMaskIntoConstraints="NO" id="T8Y-Ax-YOf">
-                        <rect key="frame" x="15" y="77.5" width="91" height="68"/>
+                        <rect key="frame" x="15" y="74.5" width="95" height="71"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="T8Y-Ax-YOf" secondAttribute="height" multiplier="4:3" id="HWj-5N-Ok1"/>
                         </constraints>
@@ -37,7 +37,7 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cover3m2_1_2a" translatesAutoresizingMaskIntoConstraints="NO" id="VTg-Ol-j7i">
-                        <rect key="frame" x="114" y="77.5" width="91.5" height="68"/>
+                        <rect key="frame" x="113" y="74.5" width="94.5" height="71"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                 <real key="value" value="4"/>
@@ -45,17 +45,29 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cover3m2_1_2a" translatesAutoresizingMaskIntoConstraints="NO" id="XQp-NR-szI">
-                        <rect key="frame" x="213.5" y="77.5" width="91.5" height="68"/>
+                        <rect key="frame" x="210.5" y="74.5" width="94.5" height="71"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                 <real key="value" value="4"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="作者.-小时前 - 栏目" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="og7-rY-H42">
-                        <rect key="frame" x="15" y="155.5" width="107.5" height="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="作者." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="og7-rY-H42">
+                        <rect key="frame" x="15" y="155.5" width="28.5" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="17" id="glQ-Dl-XHc"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.70980392160000005" green="0.70980392160000005" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="time-clock" translatesAutoresizingMaskIntoConstraints="NO" id="5R2-DC-bMm">
+                        <rect key="frame" x="49.5" y="158.5" width="11" height="11"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小时前 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="Ar4-Qy-zeZ">
+                        <rect key="frame" x="63.5" y="155.5" width="40.5" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="17" id="epz-Ic-57j"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.70980392160000005" green="0.70980392160000005" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -80,11 +92,14 @@
                     </button>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="5R2-DC-bMm" firstAttribute="centerY" secondItem="og7-rY-H42" secondAttribute="centerY" id="2N5-4d-caw"/>
+                    <constraint firstItem="Ar4-Qy-zeZ" firstAttribute="leading" secondItem="5R2-DC-bMm" secondAttribute="trailing" constant="3" id="4s0-2U-mi8"/>
                     <constraint firstItem="og7-rY-H42" firstAttribute="leading" secondItem="bal-5f-ATa" secondAttribute="leading" id="5gQ-fX-meU"/>
                     <constraint firstItem="HsO-u2-sfR" firstAttribute="centerY" secondItem="og7-rY-H42" secondAttribute="centerY" id="6rJ-s0-xAH"/>
                     <constraint firstAttribute="bottom" secondItem="og7-rY-H42" secondAttribute="bottom" constant="15" id="89x-Mh-HpK"/>
                     <constraint firstItem="VTg-Ol-j7i" firstAttribute="width" secondItem="T8Y-Ax-YOf" secondAttribute="width" id="CUI-BE-1gd"/>
                     <constraint firstItem="XQp-NR-szI" firstAttribute="bottom" secondItem="VTg-Ol-j7i" secondAttribute="bottom" id="Fw8-HM-UBu"/>
+                    <constraint firstItem="5R2-DC-bMm" firstAttribute="leading" secondItem="og7-rY-H42" secondAttribute="trailing" constant="6" id="GUb-rD-MG3"/>
                     <constraint firstItem="T8Y-Ax-YOf" firstAttribute="leading" secondItem="Mez-9Y-Zbz" secondAttribute="leading" constant="15" id="Kd0-fo-hce"/>
                     <constraint firstItem="T8Y-Ax-YOf" firstAttribute="top" secondItem="bal-5f-ATa" secondAttribute="bottom" constant="10" id="LEf-ur-Dho"/>
                     <constraint firstAttribute="trailing" secondItem="HsO-u2-sfR" secondAttribute="trailing" constant="15" id="Le6-y0-zL5"/>
@@ -92,16 +107,19 @@
                     <constraint firstItem="bal-5f-ATa" firstAttribute="top" secondItem="Mez-9Y-Zbz" secondAttribute="top" constant="15" id="Pde-os-OXg"/>
                     <constraint firstItem="XQp-NR-szI" firstAttribute="width" secondItem="VTg-Ol-j7i" secondAttribute="width" id="S2f-Pd-x3K"/>
                     <constraint firstAttribute="trailing" secondItem="bal-5f-ATa" secondAttribute="trailing" constant="15" id="YAx-Ox-gOo"/>
-                    <constraint firstItem="XQp-NR-szI" firstAttribute="leading" secondItem="VTg-Ol-j7i" secondAttribute="trailing" constant="8" id="dqX-hI-JiT"/>
+                    <constraint firstItem="XQp-NR-szI" firstAttribute="leading" secondItem="VTg-Ol-j7i" secondAttribute="trailing" constant="3" id="dqX-hI-JiT"/>
                     <constraint firstItem="XQp-NR-szI" firstAttribute="top" secondItem="VTg-Ol-j7i" secondAttribute="top" id="kzK-kf-t1z"/>
                     <constraint firstItem="VTg-Ol-j7i" firstAttribute="top" secondItem="T8Y-Ax-YOf" secondAttribute="top" id="nMJ-OD-hnv"/>
                     <constraint firstItem="VTg-Ol-j7i" firstAttribute="bottom" secondItem="T8Y-Ax-YOf" secondAttribute="bottom" id="o9P-Pa-uXD"/>
-                    <constraint firstItem="VTg-Ol-j7i" firstAttribute="leading" secondItem="T8Y-Ax-YOf" secondAttribute="trailing" constant="8" id="oYp-FE-Art"/>
+                    <constraint firstItem="Ar4-Qy-zeZ" firstAttribute="centerY" secondItem="5R2-DC-bMm" secondAttribute="centerY" id="oLb-LM-EmM"/>
+                    <constraint firstItem="VTg-Ol-j7i" firstAttribute="leading" secondItem="T8Y-Ax-YOf" secondAttribute="trailing" constant="3" id="oYp-FE-Art"/>
                     <constraint firstAttribute="trailing" secondItem="XQp-NR-szI" secondAttribute="trailing" constant="15" id="sa6-Dn-tGj"/>
                     <constraint firstItem="bal-5f-ATa" firstAttribute="leading" secondItem="Mez-9Y-Zbz" secondAttribute="leading" constant="15" id="vJg-UG-Vjb"/>
                 </constraints>
             </tableViewCellContentView>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
+                <outlet property="dateLb" destination="Ar4-Qy-zeZ" id="JGf-fq-oV7"/>
                 <outlet property="descLb" destination="og7-rY-H42" id="M0q-v0-n5q"/>
                 <outlet property="photoView1" destination="T8Y-Ax-YOf" id="ATF-vq-Z0j"/>
                 <outlet property="photoView2" destination="VTg-Ol-j7i" id="VNd-Rl-mK6"/>
@@ -114,5 +132,6 @@
     </objects>
     <resources>
         <image name="cover3m2_1_2a" width="85" height="85"/>
+        <image name="time-clock" width="11" height="11"/>
     </resources>
 </document>

@@ -17,6 +17,10 @@ class SingleBigPhotoNewsCell: BaseNewsCell {
     @IBOutlet weak var descLb: UILabel!
     
     @IBOutlet weak var tipBtn: UIButton!
+    
+    @IBOutlet weak var dateLb: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -25,7 +29,8 @@ class SingleBigPhotoNewsCell: BaseNewsCell {
     override func updateCell(article: HomeArticle) {
         super.updateCell(article: article)
         titleLb.text = article.title
-        descLb.text = article.descString()
+        descLb.text = article.publisher
+        dateLb.text = article.dateString()
         if article.preimglist.count > 0 {
             let img = article.preimglist[0]
             if img.count > 0 {

@@ -12,7 +12,7 @@
 #import <AliyunPlayerSDK/AliyunPlayerSDK.h>
 #import "Reachability.h"
 
-#define LIVE_URL  @"http://videolive.xhfmedia.com/AppName/StreamName.m3u8?auth_key=1512393968-0-0-eb9eea1bea4d0a8f400d1e0755ab94cb" //m3u8
+#define LIVE_URL  @"rtmp://video-center.alivecdn.com/AppName/StreamName?vhost=videolive.xhfmedia.com&auth_key=1521732321-0-0-cd870a61405989ceae3c4c1a0bbdf0d7" //m3u8
 
 
 

@@ -38,7 +38,7 @@ class HomeNewsDetail: HandyJSON {
     var headimg: String = ""
     var userid: String = ""
     var type: String = ""
-    var publishDate: Int = 0
+    var publishdate: Int = 0
     var publisher: String = ""
     var channelid: String = ""
     
@@ -52,7 +52,7 @@ class HomeNewsDetail: HandyJSON {
     
     /// 栏目名 日期
     func descString() -> String {
-        let date = Date(timeIntervalSince1970: TimeInterval(publishDate)/1000.0)
+        let date = Date(timeIntervalSince1970: TimeInterval(publishdate)/1000.0)
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm"
         let str = formatter.string(from: date)

@@ -31,7 +31,7 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
     
     lazy var tableView: UITableView = {
        let v = UITableView(frame: UIScreen.main.bounds, style: .plain)
-        v.separatorStyle = .none
+        v.separatorStyle = .singleLine
         v.delegate = self
         v.dataSource = self
         v.estimatedRowHeight = 220

@@ -807,4 +807,42 @@ class APIRequest: NSObject {
             }
         }
     }
+    
+    
+    /// 直播列表
+    ///
+    /// - Parameters:
+    ///   - page: 页
+    ///   - collect: 收藏
+    ///   - result: 结果
+    class func getLivePageListAPI(page: Int, collect: Bool, result: @escaping JSONResult) {
+        let path = "/live/getLivePageList.htm"
+        let params = ["page": page,
+                      "collectflag": collect,
+                      "rows": "10"]
+            as [String : Any]
+        APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
+            if code == 0 {
+                let data = LiveModelList.deserialize(from: JSON!["data"].rawString())
+                result(data)
+            }
+            else {
+                BLHUDBarManager.showError(msg: msg)
+            }
+        }
+    }
+    
+    ///直播详情
+    class func liveDetailAPI(id: String, result: @escaping JSONResult) {
+        let path = "/live/liveDetail.htm?id=\(id)"
+        APIManager.shareInstance.postRequest(urlString: path, params: nil) { (JSON, code, msg) in
+            if code == 0 {
+                let data = LiveModel.deserialize(from: JSON!["data"].rawString())
+                result(data)
+            }
+            else {
+                BLHUDBarManager.showError(msg: msg)
+            }
+        }
+    }
 }

@@ -47,6 +47,10 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
     ///名人申请 行业标签
     var famousTradeArr: [String] = []
     
+    ///直播室聊天token
+    var liveToken = ""
+    
+    var initRMFlag = false
     
     
     override init() {
@@ -221,4 +225,39 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
         print("---------->获取最新位置")
     }
     
+    
+    
+    /// 获取直播聊天室token
+    func getChatroomToken(result: @escaping (_: String?, _: String?, _ success: Bool)->()) {
+        let path = "/chatroom/getUserToken.htm"
+        APIManager.shareInstance.postRequest(urlString: path, params: nil) { [weak self](JSON, code, msg) in
+            if code == 0 {
+                self?.liveToken = JSON!["data"]["token"].rawString()!
+                let userid = JSON!["data"]["userid"].rawString()!
+                result(self?.liveToken, userid, true)
+            }
+            else {
+                print("获取融云token失败.."+msg)
+                result(nil, nil, false)
+            }
+        }
+    }
+    
+    /// 创建聊天室
+    func createChatroom(roomid: String, roomname: String,  result: @escaping (_: Bool)->()) {
+        let path = "/chatroom/createChatRoom.htm"
+        let params = ["roomid": roomid,
+                      "roomname": roomname]
+        APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
+            if code == 0 {
+                let roomid = JSON!["data"]["roomid"].rawString()!
+                let roomname = JSON!["data"]["roomname"].rawString()!
+                result(true)
+            }
+            else {
+                print("创建聊天室失败.."+msg)
+                result(false)
+            }
+        }
+    }
 }

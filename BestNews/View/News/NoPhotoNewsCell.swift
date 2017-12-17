@@ -16,6 +16,10 @@ class NoPhotoNewsCell: BaseNewsCell {
     @IBOutlet weak var descLb: UILabel!
     
     @IBOutlet weak var tipBtn: UIButton!
+    
+    @IBOutlet weak var dateLb: UILabel!
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -30,7 +34,8 @@ class NoPhotoNewsCell: BaseNewsCell {
     override func updateCell(article: HomeArticle) {
         super.updateCell(article: article)
         titleLb.text = article.title
-        descLb.text = article.descString()
+        descLb.text = article.publisher
+        dateLb.text = article.dateString()
     }
     
 }

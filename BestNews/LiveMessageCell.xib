@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="Cell" rowHeight="275" id="KGk-i7-Jjw" customClass="LiveMessageCell" customModule="BestNews" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="275"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="274.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Avatar1M2-5-4" translatesAutoresizingMaskIntoConstraints="NO" id="Oad-DG-4ZL">
+                        <rect key="frame" x="15" y="15" width="34" height="34"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="34" id="8Mp-q1-Zh5"/>
+                            <constraint firstAttribute="width" constant="34" id="Tyd-Ca-jc7"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="17"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="主持人" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="piL-b7-G3j">
+                        <rect key="frame" x="61" y="21" width="37" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="16:00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nd0-66-D7b">
+                        <rect key="frame" x="110" y="21" width="32" height="14.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.70980392160000005" green="0.70980392160000005" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="此处是主持人主讲区，可图文结合。此处是主持人主讲区，可图文结合。此处是主持人主讲区，可图文结合。此处是主持人主讲区" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mFY-yw-0pQ">
+                        <rect key="frame" x="61" y="47.5" width="244" height="72"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xho-aF-YLP">
+                        <rect key="frame" x="61" y="136" width="244" height="128"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="128" id="lOG-Qo-8a8"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="xho-aF-YLP" firstAttribute="trailing" secondItem="mFY-yw-0pQ" secondAttribute="trailing" id="7rj-Dp-aaq"/>
+                    <constraint firstItem="mFY-yw-0pQ" firstAttribute="top" secondItem="piL-b7-G3j" secondAttribute="bottom" constant="12" id="DJO-fF-XmW"/>
+                    <constraint firstItem="Oad-DG-4ZL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Gd3-48-H2f"/>
+                    <constraint firstItem="mFY-yw-0pQ" firstAttribute="leading" secondItem="piL-b7-G3j" secondAttribute="leading" id="Lno-my-w03"/>
+                    <constraint firstItem="Oad-DG-4ZL" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="NSV-IA-ktZ"/>
+                    <constraint firstItem="xho-aF-YLP" firstAttribute="top" secondItem="mFY-yw-0pQ" secondAttribute="bottom" constant="16.5" id="Ouc-tg-Fu1"/>
+                    <constraint firstAttribute="bottom" secondItem="xho-aF-YLP" secondAttribute="bottom" constant="10.5" id="W4E-SQ-XSQ"/>
+                    <constraint firstItem="nd0-66-D7b" firstAttribute="leading" secondItem="piL-b7-G3j" secondAttribute="trailing" constant="12" id="XUL-Rt-MZd"/>
+                    <constraint firstAttribute="trailing" secondItem="mFY-yw-0pQ" secondAttribute="trailing" constant="15" id="bUN-Uv-5R5"/>
+                    <constraint firstItem="piL-b7-G3j" firstAttribute="centerY" secondItem="Oad-DG-4ZL" secondAttribute="centerY" constant="-4" id="cl1-cb-dhN"/>
+                    <constraint firstItem="nd0-66-D7b" firstAttribute="centerY" secondItem="piL-b7-G3j" secondAttribute="centerY" id="kby-V6-fsC"/>
+                    <constraint firstItem="piL-b7-G3j" firstAttribute="leading" secondItem="Oad-DG-4ZL" secondAttribute="trailing" constant="12" id="pro-qO-2Kd"/>
+                    <constraint firstItem="xho-aF-YLP" firstAttribute="leading" secondItem="mFY-yw-0pQ" secondAttribute="leading" id="vOa-DY-HrZ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <inset key="separatorInset" minX="60" minY="0.0" maxX="0.0" maxY="0.0"/>
+            <connections>
+                <outlet property="avatarIm" destination="Oad-DG-4ZL" id="C4K-Tf-dEz"/>
+                <outlet property="contentLb" destination="mFY-yw-0pQ" id="sF1-aG-Dwt"/>
+                <outlet property="nameLb" destination="piL-b7-G3j" id="hp5-JI-lvO"/>
+                <outlet property="photoHeight" destination="lOG-Qo-8a8" id="5UL-7T-9AR"/>
+                <outlet property="photoIm" destination="xho-aF-YLP" id="eI6-HN-UiQ"/>
+                <outlet property="timeLb" destination="nd0-66-D7b" id="HBI-VG-OFx"/>
+            </connections>
+            <point key="canvasLocation" x="78" y="220.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="Avatar1M2-5-4" width="35" height="35"/>
+    </resources>
+</document>

@@ -12,15 +12,20 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" indentationWidth="10" reuseIdentifier="SingleBigPhotoNewsCell" rowHeight="278" id="jhT-ff-lbf" customClass="SingleBigPhotoNewsCell" customModule="BestNews" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="278"/>
+        <tableViewCell contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" indentationWidth="10" reuseIdentifier="SingleBigPhotoNewsCell" rowHeight="318" id="jhT-ff-lbf" customClass="SingleBigPhotoNewsCell" customModule="BestNews" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="318"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jhT-ff-lbf" id="xeG-Be-npl">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="277.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="317.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="如何布局未来" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CUO-xm-tkS">
+                        <rect key="frame" x="15" y="15" width="290" height="29.5"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cover6m2_1" translatesAutoresizingMaskIntoConstraints="NO" id="LMT-fG-viR">
-                        <rect key="frame" x="15" y="15" width="290" height="217"/>
+                        <rect key="frame" x="15" y="54.5" width="290" height="217.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="LMT-fG-viR" secondAttribute="height" multiplier="345:258" priority="900" id="FMa-m3-CqL"/>
                         </constraints>
@@ -30,12 +35,12 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </imageView>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j2h-up-ZeG">
-                        <rect key="frame" x="15" y="15" width="290" height="217"/>
+                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j2h-up-ZeG">
+                        <rect key="frame" x="15" y="54.5" width="290" height="217.5"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.25" colorSpace="calibratedRGB"/>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="作者.-小时前 - 栏目" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="YHA-gd-gMq">
-                        <rect key="frame" x="15" y="242" width="107.5" height="20.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="作者" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="YHA-gd-gMq">
+                        <rect key="frame" x="15" y="282" width="25" height="20.5"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20.5" id="imI-f8-Zz7"/>
                         </constraints>
@@ -43,8 +48,20 @@
                         <color key="textColor" red="0.70980392160000005" green="0.70980392160000005" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="time-clock" translatesAutoresizingMaskIntoConstraints="NO" id="vgi-oW-giS">
+                        <rect key="frame" x="46" y="287" width="11" height="11"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="作者" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="nh6-XQ-Ubm">
+                        <rect key="frame" x="60" y="282.5" width="25" height="20.5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="20.5" id="mhW-Cr-31M"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.70980392160000005" green="0.70980392160000005" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pJh-HQ-9qn">
-                        <rect key="frame" x="271" y="243.5" width="34" height="17"/>
+                        <rect key="frame" x="271" y="283.5" width="34" height="17"/>
                         <color key="backgroundColor" red="0.37647058820000001" green="0.67450980390000004" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="34" id="ETs-Ee-Stc"/>
@@ -60,41 +77,42 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="如何布局未来" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CUO-xm-tkS">
-                        <rect key="frame" x="25" y="110.5" width="270" height="26.5"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="CUO-xm-tkS" firstAttribute="leading" secondItem="LMT-fG-viR" secondAttribute="leading" constant="10" id="5ca-6d-Hcp"/>
+                    <constraint firstItem="nh6-XQ-Ubm" firstAttribute="leading" secondItem="vgi-oW-giS" secondAttribute="trailing" constant="3" id="8Zg-Wy-YN1"/>
                     <constraint firstAttribute="trailing" secondItem="LMT-fG-viR" secondAttribute="trailing" constant="15" id="IQy-hW-bwK"/>
                     <constraint firstItem="YHA-gd-gMq" firstAttribute="top" secondItem="LMT-fG-viR" secondAttribute="bottom" constant="10" id="J8v-av-2Qs"/>
-                    <constraint firstItem="LMT-fG-viR" firstAttribute="leading" secondItem="xeG-Be-npl" secondAttribute="leading" constant="15" id="PGO-n8-ppn"/>
+                    <constraint firstItem="LMT-fG-viR" firstAttribute="leading" secondItem="xeG-Be-npl" secondAttribute="leading" constant="15" id="KZp-Sk-KAe"/>
                     <constraint firstItem="YHA-gd-gMq" firstAttribute="leading" secondItem="xeG-Be-npl" secondAttribute="leading" constant="15" id="PTQ-ne-ggl"/>
+                    <constraint firstItem="CUO-xm-tkS" firstAttribute="leading" secondItem="xeG-Be-npl" secondAttribute="leading" constant="15" id="Q5F-6G-IqP"/>
                     <constraint firstItem="j2h-up-ZeG" firstAttribute="top" secondItem="LMT-fG-viR" secondAttribute="top" id="QNF-bO-TiP"/>
-                    <constraint firstItem="LMT-fG-viR" firstAttribute="top" secondItem="xeG-Be-npl" secondAttribute="top" constant="15" id="UvM-eT-Kv1"/>
+                    <constraint firstItem="CUO-xm-tkS" firstAttribute="top" secondItem="xeG-Be-npl" secondAttribute="top" constant="15" id="We2-u0-sTz"/>
+                    <constraint firstItem="vgi-oW-giS" firstAttribute="centerY" secondItem="YHA-gd-gMq" secondAttribute="centerY" id="Zlf-bk-Gf9"/>
                     <constraint firstItem="pJh-HQ-9qn" firstAttribute="centerY" secondItem="YHA-gd-gMq" secondAttribute="centerY" id="aNq-OF-yMc"/>
+                    <constraint firstItem="LMT-fG-viR" firstAttribute="top" secondItem="CUO-xm-tkS" secondAttribute="bottom" constant="10" id="iAJ-B7-Nzg"/>
+                    <constraint firstAttribute="trailing" secondItem="CUO-xm-tkS" secondAttribute="trailing" constant="15" id="jdo-GG-1b3"/>
+                    <constraint firstItem="vgi-oW-giS" firstAttribute="leading" secondItem="YHA-gd-gMq" secondAttribute="trailing" constant="6" id="lbs-ij-tvl"/>
+                    <constraint firstItem="nh6-XQ-Ubm" firstAttribute="centerY" secondItem="vgi-oW-giS" secondAttribute="centerY" id="lt1-KU-8oU"/>
                     <constraint firstItem="j2h-up-ZeG" firstAttribute="bottom" secondItem="LMT-fG-viR" secondAttribute="bottom" id="mDY-td-mLw"/>
                     <constraint firstItem="j2h-up-ZeG" firstAttribute="trailing" secondItem="LMT-fG-viR" secondAttribute="trailing" id="pop-zv-zn5"/>
-                    <constraint firstItem="CUO-xm-tkS" firstAttribute="centerY" secondItem="LMT-fG-viR" secondAttribute="centerY" id="rgP-Ub-DHi"/>
-                    <constraint firstItem="CUO-xm-tkS" firstAttribute="trailing" secondItem="LMT-fG-viR" secondAttribute="trailing" constant="-10" id="rk9-TD-sP9"/>
                     <constraint firstItem="j2h-up-ZeG" firstAttribute="leading" secondItem="LMT-fG-viR" secondAttribute="leading" id="u1v-SI-k5b"/>
                     <constraint firstAttribute="bottom" secondItem="YHA-gd-gMq" secondAttribute="bottom" constant="15" id="xoU-13-P35"/>
                     <constraint firstAttribute="trailing" secondItem="pJh-HQ-9qn" secondAttribute="trailing" constant="15" id="zh7-KK-IaA"/>
                 </constraints>
             </tableViewCellContentView>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
+                <outlet property="dateLb" destination="nh6-XQ-Ubm" id="Xfe-xc-Jga"/>
                 <outlet property="descLb" destination="YHA-gd-gMq" id="UbH-Xs-bL7"/>
                 <outlet property="photoView1" destination="LMT-fG-viR" id="8CI-sg-Bn0"/>
                 <outlet property="tipBtn" destination="pJh-HQ-9qn" id="95X-vQ-giS"/>
                 <outlet property="titleLb" destination="CUO-xm-tkS" id="udy-ag-GQU"/>
             </connections>
-            <point key="canvasLocation" x="51" y="80"/>
+            <point key="canvasLocation" x="51" y="100"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="cover6m2_1" width="345" height="258"/>
+        <image name="time-clock" width="11" height="11"/>
     </resources>
 </document>

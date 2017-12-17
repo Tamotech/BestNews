@@ -15,11 +15,12 @@ class MyLiveViewController: BaseViewController, AlivcLivePusherInfoDelegate, Ali
     
     let pushUrl = "rtmp://video-center.alivecdn.com/AppName/StreamName?vhost=videolive.xhfmedia.com&auth_key=1521133621-0-0-74b312dd2a24a4bd4abacd4404260324"
     var pusher: AlivcLivePusher?
+    var liveModel: LiveModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         shouldClearNavBar = true
-        initPusher()
+        loadLiveDetail()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -69,7 +70,12 @@ class MyLiveViewController: BaseViewController, AlivcLivePusherInfoDelegate, Ali
         
         //开始推流
 //        pusher.startPush(withURL: pushUrl)
-        pusher.startPush(withURLAsync: pushUrl)
+        
+        let path = "/\(liveModel!.livepush_appname)/\(liveModel!.livepush_streamname)"
+        let key = ConversationClientManager.addAuthorKey(url: path)
+        let url = "rtmp://video-center.alivecdn.com\(path)?vhost=videolive.xhfmedia.com&auth_key=\(key)"
+        print("正在推流.....\(url)")
+        pusher.startPush(withURLAsync: url)
     }
     
     func onPreviewStoped(_ pusher: AlivcLivePusher!) {
@@ -115,10 +121,21 @@ class MyLiveViewController: BaseViewController, AlivcLivePusherInfoDelegate, Ali
     func onConnectRecovery(_ pusher: AlivcLivePusher!) {
         
     }
-
     
     deinit {
         pusher?.destory()
         pusher = nil
+    }
+}
+
+extension MyLiveViewController {
+    
+    func loadLiveDetail() {
+        APIRequest.liveDetailAPI(id: liveModel!.id) { [weak self](data) in
+            self?.liveModel = data as? LiveModel
+//            let url = "rtmp://video-center.alivecdn.com/\(self!.liveModel!.livepush_appname)/\(self!.liveModel!.livepush_streamname)"
+            
+            self?.initPusher()
+        }
     }
 }

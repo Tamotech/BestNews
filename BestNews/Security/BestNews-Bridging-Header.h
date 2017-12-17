@@ -5,7 +5,7 @@
 #import "DES3EncryptUtil.h"
 #import "WXApi.h"
 #import "WXApiObject.h"
-#import <AlivcLivePusher/AlivcLivePusherHeader.h>
+//#import <AlivcLivePusher/AlivcLivePusherHeader.h>
 #import <AliyunPlayerSDK/AliyunPlayerSDK.h>
 #import "AliyunPlayerLivePlayViewController.h"
 #import <AliyunPlayerSDK/AliVcPlayerDefine.h>
@@ -14,4 +14,6 @@
 #import <AliyunVodPlayerViewSDK/AliyunVodPlayerViewSDK.h>
 #import <AliyunPlayerSDK/AlivcMediaPlayer.h>
 #import <AlivcLivePusher/AlivcLivePusher.h>
-
+#import <RongIMLib/RongIMLib.h>
+#import <RongIMKit/RongIMKit.h>
+#import <CommonCrypto/CommonCrypto.h>

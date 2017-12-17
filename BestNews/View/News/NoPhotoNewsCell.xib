@@ -24,10 +24,22 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="作者.-小时前 - 栏目" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="gT0-sV-Ijj">
-                        <rect key="frame" x="15" y="71.5" width="107.5" height="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="作者" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="gT0-sV-Ijj">
+                        <rect key="frame" x="15" y="71.5" width="25" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="17" id="OMe-9r-Ftt"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.70980392160000005" green="0.70980392160000005" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="time-clock" translatesAutoresizingMaskIntoConstraints="NO" id="jPa-tT-Emh">
+                        <rect key="frame" x="46" y="74.5" width="11" height="11"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="作者" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="Gma-Cd-H22">
+                        <rect key="frame" x="60" y="71.5" width="25" height="17"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="17" id="r2A-SQ-gdH"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.70980392160000005" green="0.70980392160000005" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -55,14 +67,20 @@
                     <constraint firstItem="w0y-d5-ZRA" firstAttribute="leading" secondItem="Spt-Sg-GZc" secondAttribute="leading" constant="15" id="1NW-ib-XYs"/>
                     <constraint firstItem="w0y-d5-ZRA" firstAttribute="top" secondItem="Spt-Sg-GZc" secondAttribute="top" constant="15" id="1xc-U5-sZU"/>
                     <constraint firstItem="gT0-sV-Ijj" firstAttribute="leading" secondItem="w0y-d5-ZRA" secondAttribute="leading" id="81T-TV-OX0"/>
+                    <constraint firstItem="Gma-Cd-H22" firstAttribute="leading" secondItem="jPa-tT-Emh" secondAttribute="trailing" constant="3" id="EuD-Y2-kc3"/>
+                    <constraint firstItem="Gma-Cd-H22" firstAttribute="centerY" secondItem="jPa-tT-Emh" secondAttribute="centerY" id="Hfu-Ei-Vuw"/>
+                    <constraint firstItem="jPa-tT-Emh" firstAttribute="centerY" secondItem="gT0-sV-Ijj" secondAttribute="centerY" id="N6A-FT-TUt"/>
                     <constraint firstAttribute="bottom" secondItem="gT0-sV-Ijj" secondAttribute="bottom" constant="15" id="PcZ-fi-FzW"/>
+                    <constraint firstItem="jPa-tT-Emh" firstAttribute="leading" secondItem="gT0-sV-Ijj" secondAttribute="trailing" constant="6" id="XC2-IE-Qwb"/>
                     <constraint firstItem="TbC-0L-bB1" firstAttribute="centerY" secondItem="gT0-sV-Ijj" secondAttribute="centerY" id="YmC-kS-kTH"/>
                     <constraint firstAttribute="trailing" secondItem="w0y-d5-ZRA" secondAttribute="trailing" constant="15" id="dSa-EE-MCO"/>
                     <constraint firstItem="gT0-sV-Ijj" firstAttribute="top" secondItem="w0y-d5-ZRA" secondAttribute="bottom" constant="8" id="fyD-6T-iT7"/>
                     <constraint firstAttribute="trailing" secondItem="TbC-0L-bB1" secondAttribute="trailing" constant="15" id="yA2-To-kA5"/>
                 </constraints>
             </tableViewCellContentView>
+            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
+                <outlet property="dateLb" destination="Gma-Cd-H22" id="dAc-rM-bwM"/>
                 <outlet property="descLb" destination="gT0-sV-Ijj" id="bv3-qb-Aeo"/>
                 <outlet property="tipBtn" destination="TbC-0L-bB1" id="87z-sm-GLe"/>
                 <outlet property="titleLb" destination="w0y-d5-ZRA" id="Tyj-xk-JZq"/>
@@ -70,4 +88,7 @@
             <point key="canvasLocation" x="51" y="-7"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="time-clock" width="11" height="11"/>
+    </resources>
 </document>

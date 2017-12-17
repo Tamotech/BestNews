@@ -13,8 +13,6 @@
 		5A04B41B1FD44E0500DE58D2 /* AliyunPlayMessageShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A04B41A1FD44E0500DE58D2 /* AliyunPlayMessageShowView.m */; };
 		5A04B41E1FD44E7900DE58D2 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A04B41C1FD44E7800DE58D2 /* Reachability.m */; };
 		5A04B4211FD44EA100DE58D2 /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A04B4201FD44EA100DE58D2 /* UIView+Layout.m */; };
-		5A04B4241FD4662B00DE58D2 /* LiveBasePlayerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A04B4221FD4662B00DE58D2 /* LiveBasePlayerController.swift */; };
-		5A04B4251FD4662B00DE58D2 /* LiveBasePlayerController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A04B4231FD4662B00DE58D2 /* LiveBasePlayerController.xib */; };
 		5A0612B51FDB85AE00E7F20A /* ApplyIdentifyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0612B31FDB85AE00E7F20A /* ApplyIdentifyController.swift */; };
 		5A0612B61FDB85AE00E7F20A /* ApplyIdentifyController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A0612B41FDB85AE00E7F20A /* ApplyIdentifyController.xib */; };
 		5A0612B91FDBA1D300E7F20A /* ApplyIdentifySuccessAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0612B71FDBA1D300E7F20A /* ApplyIdentifySuccessAlertController.swift */; };
@@ -48,6 +46,11 @@
 		5A0A139A1F9EB7C300DF57B9 /* LoginCaptchaController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A0A13981F9EB7C300DF57B9 /* LoginCaptchaController.xib */; };
 		5A0A139D1F9EBC4100DF57B9 /* LoginSMSCaptchaController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0A139B1F9EBC4100DF57B9 /* LoginSMSCaptchaController.swift */; };
 		5A0A139E1F9EBC4100DF57B9 /* LoginSMSCaptchaController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A0A139C1F9EBC4100DF57B9 /* LoginSMSCaptchaController.xib */; };
+		5A0A6D761FE49ECF0059EDBF /* LiveModelList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0A6D751FE49ECF0059EDBF /* LiveModelList.swift */; };
+		5A0A6D781FE572D30059EDBF /* ChatRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0A6D771FE572D30059EDBF /* ChatRoomViewController.swift */; };
+		5A0A6D7A1FE575A30059EDBF /* ConversationClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0A6D791FE575A30059EDBF /* ConversationClientManager.swift */; };
+		5A0A6D7D1FE58D6E0059EDBF /* ChatroomMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0A6D7B1FE58D6E0059EDBF /* ChatroomMessageCell.swift */; };
+		5A0A6D7E1FE58D6E0059EDBF /* ChatroomMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A0A6D7C1FE58D6E0059EDBF /* ChatroomMessageCell.xib */; };
 		5A0D23C31F83225A00FC9D4D /* NewsCommentBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0D23C21F83225A00FC9D4D /* NewsCommentBar.swift */; };
 		5A0D23C61F832BD000FC9D4D /* NewsDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0D23C41F832BD000FC9D4D /* NewsDetailController.swift */; };
 		5A0D23C71F832BD000FC9D4D /* NewsDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A0D23C51F832BD000FC9D4D /* NewsDetailController.xib */; };
@@ -103,6 +106,19 @@
 		5A62A46A1FAE1AEB0087D936 /* HomeNewsDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A62A4691FAE1AEB0087D936 /* HomeNewsDetail.swift */; };
 		5A7F21611FCB118C00DFC606 /* SwiftNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7F21601FCB118C00DFC606 /* SwiftNotice.swift */; };
 		5A85556C1FD702050070C82B /* MyLiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A85556B1FD702050070C82B /* MyLiveViewController.swift */; };
+		5A8C29CB1FDFC29E00E51095 /* AgoraRtcEngineKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8C29C91FDFC29E00E51095 /* AgoraRtcEngineKit.framework */; };
+		5A8C29CF1FDFC2AA00E51095 /* RongIMLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8C29CC1FDFC2AA00E51095 /* RongIMLib.framework */; };
+		5A8C29D01FDFC2AA00E51095 /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8C29CD1FDFC2AA00E51095 /* libopencore-amrnb.a */; };
+		5A8C29D11FDFC2AA00E51095 /* RCConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A8C29CE1FDFC2AA00E51095 /* RCConfig.plist */; };
+		5A8C29D31FDFD18D00E51095 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8C29D21FDFD17A00E51095 /* VideoToolbox.framework */; };
+		5A8C29D51FDFD31F00E51095 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8C29D41FDFD23E00E51095 /* CoreMedia.framework */; };
+		5A8C29D71FDFD33500E51095 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8C29D61FDFD32800E51095 /* CoreTelephony.framework */; };
+		5A8C29D91FDFD35100E51095 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8C29D81FDFD34800E51095 /* AudioToolbox.framework */; };
+		5A8C29DB1FDFD35E00E51095 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8C29DA1FDFD35E00E51095 /* libc++.tbd */; };
+		5A8C29DD1FDFD38600E51095 /* libresolv.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8C29DC1FDFD38500E51095 /* libresolv.9.tbd */; };
+		5A8C29E01FE032DC00E51095 /* LiveMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8C29DE1FE032DC00E51095 /* LiveMessageCell.swift */; };
+		5A8C29E11FE032DC00E51095 /* LiveMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8C29DF1FE032DC00E51095 /* LiveMessageCell.xib */; };
+		5A8C29E91FE3301400E51095 /* Emoji.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5A8C29E81FE3301400E51095 /* Emoji.plist */; };
 		5A90CFE31F80F48A00F16869 /* SubscriptSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A90CFE21F80F48A00F16869 /* SubscriptSectionHeaderView.swift */; };
 		5A90CFE61F80F7F900F16869 /* SubscriptListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A90CFE41F80F7F900F16869 /* SubscriptListCell.swift */; };
 		5A90CFE71F80F7F900F16869 /* SubscriptListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A90CFE51F80F7F900F16869 /* SubscriptListCell.xib */; };
@@ -214,6 +230,11 @@
 		5AF9CE3E1F814880002AA4A6 /* ProfileCenterCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AF9CE3C1F814880002AA4A6 /* ProfileCenterCell.xib */; };
 		5AFE24DA1FCCCACD006353C3 /* SpecialChannelArticleListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFE24D91FCCCACD006353C3 /* SpecialChannelArticleListController.swift */; };
 		5AFE24DC1FCCD907006353C3 /* SubscribeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFE24DB1FCCD907006353C3 /* SubscribeButton.swift */; };
+		5AFF05EA1FE60F8E00B7FE7D /* ChatRoomViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AFF05E91FE60F8E00B7FE7D /* ChatRoomViewController.xib */; };
+		5AFF05F01FE62E1800B7FE7D /* RongCloud.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5AFF05EB1FE62E1500B7FE7D /* RongCloud.bundle */; };
+		5AFF05F21FE62E1800B7FE7D /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 5AFF05ED1FE62E1600B7FE7D /* en.lproj */; };
+		5AFF05F31FE62E1800B7FE7D /* RongIMKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AFF05EE1FE62E1700B7FE7D /* RongIMKit.framework */; };
+		5AFF05F41FE62E1800B7FE7D /* zh-Hans.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 5AFF05EF1FE62E1800B7FE7D /* zh-Hans.lproj */; };
 		5AFF34A21F93A78600D8115E /* BaseShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF34A01F93A78600D8115E /* BaseShareViewController.swift */; };
 		5AFF34A31F93A78600D8115E /* BaseShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AFF34A11F93A78600D8115E /* BaseShareViewController.xib */; };
 		97116F55FBF85B351A8EEBAC /* Pods_BestNews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0D04124E02EA7B4BED0069 /* Pods_BestNews.framework */; };
@@ -289,8 +310,6 @@
 		5A04B41D1FD44E7800DE58D2 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = AliyunPlayerMediaDemo/AliyunPlayerMediaDemo/Reachability.h; sourceTree = SOURCE_ROOT; };
 		5A04B41F1FD44EA100DE58D2 /* UIView+Layout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIView+Layout.h"; path = "AliyunPlayerMediaDemo/AliyunPlayerMediaDemo/UIView+Layout.h"; sourceTree = SOURCE_ROOT; };
 		5A04B4201FD44EA100DE58D2 /* UIView+Layout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIView+Layout.m"; path = "AliyunPlayerMediaDemo/AliyunPlayerMediaDemo/UIView+Layout.m"; sourceTree = SOURCE_ROOT; };
-		5A04B4221FD4662B00DE58D2 /* LiveBasePlayerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveBasePlayerController.swift; sourceTree = "<group>"; };
-		5A04B4231FD4662B00DE58D2 /* LiveBasePlayerController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LiveBasePlayerController.xib; sourceTree = "<group>"; };
 		5A0612B31FDB85AE00E7F20A /* ApplyIdentifyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyIdentifyController.swift; sourceTree = "<group>"; };
 		5A0612B41FDB85AE00E7F20A /* ApplyIdentifyController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApplyIdentifyController.xib; sourceTree = "<group>"; };
 		5A0612B71FDBA1D300E7F20A /* ApplyIdentifySuccessAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplyIdentifySuccessAlertController.swift; sourceTree = "<group>"; };
@@ -324,6 +343,11 @@
 		5A0A13981F9EB7C300DF57B9 /* LoginCaptchaController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginCaptchaController.xib; sourceTree = "<group>"; };
 		5A0A139B1F9EBC4100DF57B9 /* LoginSMSCaptchaController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSMSCaptchaController.swift; sourceTree = "<group>"; };
 		5A0A139C1F9EBC4100DF57B9 /* LoginSMSCaptchaController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginSMSCaptchaController.xib; sourceTree = "<group>"; };
+		5A0A6D751FE49ECF0059EDBF /* LiveModelList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveModelList.swift; sourceTree = "<group>"; };
+		5A0A6D771FE572D30059EDBF /* ChatRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRoomViewController.swift; sourceTree = "<group>"; };
+		5A0A6D791FE575A30059EDBF /* ConversationClientManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationClientManager.swift; sourceTree = "<group>"; };
+		5A0A6D7B1FE58D6E0059EDBF /* ChatroomMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomMessageCell.swift; sourceTree = "<group>"; };
+		5A0A6D7C1FE58D6E0059EDBF /* ChatroomMessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatroomMessageCell.xib; sourceTree = "<group>"; };
 		5A0D23C21F83225A00FC9D4D /* NewsCommentBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCommentBar.swift; sourceTree = "<group>"; };
 		5A0D23C41F832BD000FC9D4D /* NewsDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailController.swift; sourceTree = "<group>"; };
 		5A0D23C51F832BD000FC9D4D /* NewsDetailController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsDetailController.xib; sourceTree = "<group>"; };
@@ -379,6 +403,19 @@
 		5A690B231FAA0394008FF1EC /* YLCycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YLCycleView.swift; sourceTree = "<group>"; };
 		5A7F21601FCB118C00DFC606 /* SwiftNotice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftNotice.swift; sourceTree = "<group>"; };
 		5A85556B1FD702050070C82B /* MyLiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLiveViewController.swift; sourceTree = "<group>"; };
+		5A8C29C91FDFC29E00E51095 /* AgoraRtcEngineKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AgoraRtcEngineKit.framework; path = Framework/CallLib/AgoraRtcEngineKit.framework; sourceTree = SOURCE_ROOT; };
+		5A8C29CC1FDFC2AA00E51095 /* RongIMLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RongIMLib.framework; path = Framework/IMLib/RongIMLib.framework; sourceTree = SOURCE_ROOT; };
+		5A8C29CD1FDFC2AA00E51095 /* libopencore-amrnb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libopencore-amrnb.a"; path = "Framework/IMLib/libopencore-amrnb.a"; sourceTree = SOURCE_ROOT; };
+		5A8C29CE1FDFC2AA00E51095 /* RCConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = RCConfig.plist; path = Framework/IMLib/RCConfig.plist; sourceTree = SOURCE_ROOT; };
+		5A8C29D21FDFD17A00E51095 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		5A8C29D41FDFD23E00E51095 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		5A8C29D61FDFD32800E51095 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		5A8C29D81FDFD34800E51095 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		5A8C29DA1FDFD35E00E51095 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		5A8C29DC1FDFD38500E51095 /* libresolv.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.9.tbd; path = usr/lib/libresolv.9.tbd; sourceTree = SDKROOT; };
+		5A8C29DE1FE032DC00E51095 /* LiveMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveMessageCell.swift; sourceTree = "<group>"; };
+		5A8C29DF1FE032DC00E51095 /* LiveMessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LiveMessageCell.xib; sourceTree = "<group>"; };
+		5A8C29E81FE3301400E51095 /* Emoji.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Emoji.plist; sourceTree = "<group>"; };
 		5A90CFE21F80F48A00F16869 /* SubscriptSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptSectionHeaderView.swift; sourceTree = "<group>"; };
 		5A90CFE41F80F7F900F16869 /* SubscriptListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptListCell.swift; sourceTree = "<group>"; };
 		5A90CFE51F80F7F900F16869 /* SubscriptListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubscriptListCell.xib; sourceTree = "<group>"; };
@@ -504,6 +541,11 @@
 		5AF9CE3C1F814880002AA4A6 /* ProfileCenterCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileCenterCell.xib; sourceTree = "<group>"; };
 		5AFE24D91FCCCACD006353C3 /* SpecialChannelArticleListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialChannelArticleListController.swift; sourceTree = "<group>"; };
 		5AFE24DB1FCCD907006353C3 /* SubscribeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscribeButton.swift; sourceTree = "<group>"; };
+		5AFF05E91FE60F8E00B7FE7D /* ChatRoomViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatRoomViewController.xib; sourceTree = "<group>"; };
+		5AFF05EB1FE62E1500B7FE7D /* RongCloud.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = RongCloud.bundle; sourceTree = "<group>"; };
+		5AFF05ED1FE62E1600B7FE7D /* en.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = en.lproj; sourceTree = "<group>"; };
+		5AFF05EE1FE62E1700B7FE7D /* RongIMKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RongIMKit.framework; sourceTree = "<group>"; };
+		5AFF05EF1FE62E1800B7FE7D /* zh-Hans.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "zh-Hans.lproj"; sourceTree = "<group>"; };
 		5AFF34A01F93A78600D8115E /* BaseShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseShareViewController.swift; sourceTree = "<group>"; };
 		5AFF34A11F93A78600D8115E /* BaseShareViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseShareViewController.xib; sourceTree = "<group>"; };
 		5C0D04124E02EA7B4BED0069 /* Pods_BestNews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BestNews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -555,8 +597,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5A8C29D91FDFD35100E51095 /* AudioToolbox.framework in Frameworks */,
+				5A8C29D71FDFD33500E51095 /* CoreTelephony.framework in Frameworks */,
+				5A8C29D51FDFD31F00E51095 /* CoreMedia.framework in Frameworks */,
+				5A8C29DB1FDFD35E00E51095 /* libc++.tbd in Frameworks */,
+				5A8C29D31FDFD18D00E51095 /* VideoToolbox.framework in Frameworks */,
+				5A8C29CB1FDFC29E00E51095 /* AgoraRtcEngineKit.framework in Frameworks */,
+				5A8C29D01FDFC2AA00E51095 /* libopencore-amrnb.a in Frameworks */,
 				5ABAD58F1FD5A24200C866C0 /* AliyunVodPlayerViewSDK.framework in Frameworks */,
 				5ABAD58E1FD5A24200C866C0 /* AliyunPlayerSDK.framework in Frameworks */,
+				5A8C29CF1FDFC2AA00E51095 /* RongIMLib.framework in Frameworks */,
+				5A8C29DD1FDFD38600E51095 /* libresolv.9.tbd in Frameworks */,
+				5AFF05F31FE62E1800B7FE7D /* RongIMKit.framework in Frameworks */,
 				5ABAD5941FD5A2B800C866C0 /* AliyunVodPlayerSDK.framework in Frameworks */,
 				97116F55FBF85B351A8EEBAC /* Pods_BestNews.framework in Frameworks */,
 			);
@@ -580,6 +632,11 @@
 			children = (
 				5A04B3FB1FD4486400DE58D2 /* Vod */,
 				5A04B3F71FD4485500DE58D2 /* Live */,
+				5A90CFEC1F8123F500F16869 /* LiveListController.swift */,
+				5A90CFED1F8123F500F16869 /* LiveListController.xib */,
+				5A85556B1FD702050070C82B /* MyLiveViewController.swift */,
+				5A0A6D771FE572D30059EDBF /* ChatRoomViewController.swift */,
+				5AFF05E91FE60F8E00B7FE7D /* ChatRoomViewController.xib */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -590,9 +647,6 @@
 				5A04B4161FD44DE200DE58D2 /* AliyunPlayerLivePlayViewController.h */,
 				5A04B4171FD44DE200DE58D2 /* AliyunPlayerLivePlayViewController.m */,
 				5A04B4081FD44AD300DE58D2 /* BasicFunctionDemoViewController.swift */,
-				5A04B4221FD4662B00DE58D2 /* LiveBasePlayerController.swift */,
-				5A04B4231FD4662B00DE58D2 /* LiveBasePlayerController.xib */,
-				5A85556B1FD702050070C82B /* MyLiveViewController.swift */,
 			);
 			name = Live;
 			sourceTree = "<group>";
@@ -607,7 +661,13 @@
 		5A04B3FF1FD4489200DE58D2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				5A90CFF01F81273900F16869 /* LiveListCell.swift */,
+				5A90CFF11F81273900F16869 /* LiveListCell.xib */,
 				5A04B4031FD448D300DE58D2 /* Base_Vod */,
+				5A8C29DE1FE032DC00E51095 /* LiveMessageCell.swift */,
+				5A8C29DF1FE032DC00E51095 /* LiveMessageCell.xib */,
+				5A0A6D7B1FE58D6E0059EDBF /* ChatroomMessageCell.swift */,
+				5A0A6D7C1FE58D6E0059EDBF /* ChatroomMessageCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -627,6 +687,8 @@
 			children = (
 				5A04B41D1FD44E7800DE58D2 /* Reachability.h */,
 				5A04B41C1FD44E7800DE58D2 /* Reachability.m */,
+				5A0A6D751FE49ECF0059EDBF /* LiveModelList.swift */,
+				5A0A6D791FE575A30059EDBF /* ConversationClientManager.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -739,8 +801,6 @@
 		5A0D23C91F839AE600FC9D4D /* Live */ = {
 			isa = PBXGroup;
 			children = (
-				5A90CFF01F81273900F16869 /* LiveListCell.swift */,
-				5A90CFF11F81273900F16869 /* LiveListCell.xib */,
 			);
 			path = Live;
 			sourceTree = "<group>";
@@ -838,6 +898,22 @@
 				5A7F21601FCB118C00DFC606 /* SwiftNotice.swift */,
 			);
 			path = HUD;
+			sourceTree = "<group>";
+		};
+		5A8C29C71FDFC28300E51095 /* RongyunSDK */ = {
+			isa = PBXGroup;
+			children = (
+				5A8C29E81FE3301400E51095 /* Emoji.plist */,
+				5AFF05ED1FE62E1600B7FE7D /* en.lproj */,
+				5AFF05EB1FE62E1500B7FE7D /* RongCloud.bundle */,
+				5AFF05EE1FE62E1700B7FE7D /* RongIMKit.framework */,
+				5AFF05EF1FE62E1800B7FE7D /* zh-Hans.lproj */,
+				5A8C29CD1FDFC2AA00E51095 /* libopencore-amrnb.a */,
+				5A8C29CE1FDFC2AA00E51095 /* RCConfig.plist */,
+				5A8C29CC1FDFC2AA00E51095 /* RongIMLib.framework */,
+				5A8C29C91FDFC29E00E51095 /* AgoraRtcEngineKit.framework */,
+			);
+			name = RongyunSDK;
 			sourceTree = "<group>";
 		};
 		5A90CFF41F8134F400F16869 /* View */ = {
@@ -1135,6 +1211,7 @@
 		CC2906C71F6599C7001894DA /* BestNews */ = {
 			isa = PBXGroup;
 			children = (
+				5A8C29C71FDFC28300E51095 /* RongyunSDK */,
 				5ABAD5871FD5A22900C866C0 /* AliSDK */,
 				CC2906DC1F6599D5001894DA /* BaseUI */,
 				CC2906DD1F659A89001894DA /* Toolkit */,
@@ -1290,8 +1367,6 @@
 				5AC684921F807BBD006CEB53 /* FastNewsController.xib */,
 				5A38B6BF1F80CC9A00AF4A91 /* SubscriptionListControllerViewController.swift */,
 				5A38B6C01F80CC9A00AF4A91 /* SubscriptionListControllerViewController.xib */,
-				5A90CFEC1F8123F500F16869 /* LiveListController.swift */,
-				5A90CFED1F8123F500F16869 /* LiveListController.xib */,
 				5A0D23C41F832BD000FC9D4D /* NewsDetailController.swift */,
 				5A0D23C51F832BD000FC9D4D /* NewsDetailController.xib */,
 				5A0D23CF1F83A07300FC9D4D /* CommentListController.swift */,
@@ -1334,6 +1409,12 @@
 		DA9A2F6D064F31B78C69EBB6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5A8C29DC1FDFD38500E51095 /* libresolv.9.tbd */,
+				5A8C29DA1FDFD35E00E51095 /* libc++.tbd */,
+				5A8C29D81FDFD34800E51095 /* AudioToolbox.framework */,
+				5A8C29D61FDFD32800E51095 /* CoreTelephony.framework */,
+				5A8C29D41FDFD23E00E51095 /* CoreMedia.framework */,
+				5A8C29D21FDFD17A00E51095 /* VideoToolbox.framework */,
 				5C0D04124E02EA7B4BED0069 /* Pods_BestNews.framework */,
 			);
 			name = Frameworks;
@@ -1418,6 +1499,7 @@
 				5ABB92CF1FA5EB3F002E3180 /* SimpleHUDController.xib in Resources */,
 				5AA4E8551FD43378007A04FA /* camera_flash_on@2x.png in Resources */,
 				5AA4E8561FD43378007A04FA /* QR@2x.png in Resources */,
+				5AFF05F01FE62E1800B7FE7D /* RongCloud.bundle in Resources */,
 				5A5446081F84A6220004F192 /* ActivityTicketCell.xib in Resources */,
 				5AF9CE3E1F814880002AA4A6 /* ProfileCenterCell.xib in Resources */,
 				5A0D23CE1F839B2900FC9D4D /* CommentCell.xib in Resources */,
@@ -1453,19 +1535,24 @@
 				5AA4E8571FD43378007A04FA /* volume_off@3x.png in Resources */,
 				5AA4E85C1FD43378007A04FA /* watermark.png in Resources */,
 				5A0612BA1FDBA1D300E7F20A /* ApplyIdentifySuccessAlertController.xib in Resources */,
+				5A8C29E11FE032DC00E51095 /* LiveMessageCell.xib in Resources */,
 				5A5446101F852A1E0004F192 /* ActivityRegistController.xib in Resources */,
 				5AA4E8281FD42DC1007A04FA /* 版权信息.txt in Resources */,
+				5A8C29D11FDFC2AA00E51095 /* RCConfig.plist in Resources */,
+				5A0A6D7E1FE58D6E0059EDBF /* ChatroomMessageCell.xib in Resources */,
 				5AA4E85E1FD43378007A04FA /* back@2x.png in Resources */,
 				5AA4E7DD1FD2B083007A04FA /* RewardAlertController.xib in Resources */,
 				5AA4E8341FD42E9B007A04FA /* AlivcLiveViewController.xib in Resources */,
 				5AA4E8601FD43378007A04FA /* volume_on@2x.png in Resources */,
 				CC2906D21F6599C7001894DA /* Assets.xcassets in Resources */,
 				5A38B6BE1F808FB100AF4A91 /* FastNewsSectionHeaderView.xib in Resources */,
+				5AFF05EA1FE60F8E00B7FE7D /* ChatRoomViewController.xib in Resources */,
 				5A90CFE71F80F7F900F16869 /* SubscriptListCell.xib in Resources */,
 				5A38B6C21F80CC9A00AF4A91 /* SubscriptionListControllerViewController.xib in Resources */,
 				CC01705F1F6835400069D38B /* ActivityCoverCell.xib in Resources */,
 				5AA4E85B1FD43378007A04FA /* camera_flash_close@2x.png in Resources */,
 				5AC684861F7FFF24006CEB53 /* NoPhotoNewsCell.xib in Resources */,
+				5AFF05F21FE62E1800B7FE7D /* en.lproj in Resources */,
 				5AF9CE371F813F06002AA4A6 /* CircleHomeViewController.xib in Resources */,
 				5A27E72C1F936857007C5D6B /* FinanceProductDetailController.xib in Resources */,
 				CC29070D1F65A334001894DA /* BaseTabBarView.xib in Resources */,
@@ -1481,13 +1568,14 @@
 				5A547EE61FA2157C00FA0C36 /* ProfileCenterController.xib in Resources */,
 				5A38B6C61F80ED1800AF4A91 /* ColumesCollectionViewCell.xib in Resources */,
 				5A5446041F84A13E0004F192 /* ActivityTicketListController.xib in Resources */,
+				5A8C29E91FE3301400E51095 /* Emoji.plist in Resources */,
 				5ABAD58D1FD5A24200C866C0 /* AliyunLanguageSource.bundle in Resources */,
 				5A0612CA1FDCD4E100E7F20A /* SubmitPaperController.xib in Resources */,
 				CCDB6D541F7A39CE0012432E /* TopicImageCell.xib in Resources */,
 				5A90CFF31F81273900F16869 /* LiveListCell.xib in Resources */,
 				5AA4E8581FD43378007A04FA /* watermark_small.png in Resources */,
-				5A04B4251FD4662B00DE58D2 /* LiveBasePlayerController.xib in Resources */,
 				5A0A13961F9EB1B400DF57B9 /* LoginViewController.xib in Resources */,
+				5AFF05F41FE62E1800B7FE7D /* zh-Hans.lproj in Resources */,
 				5A0A139A1F9EB7C300DF57B9 /* LoginCaptchaController.xib in Resources */,
 				CCDB6D4C1F7A2E7A0012432E /* HomeContentViewController.xib in Resources */,
 				5A90CFEF1F8123F500F16869 /* LiveListController.xib in Resources */,
@@ -1635,6 +1723,7 @@
 				5A62A46A1FAE1AEB0087D936 /* HomeNewsDetail.swift in Sources */,
 				5A7F21611FCB118C00DFC606 /* SwiftNotice.swift in Sources */,
 				5A32A7071F930CC100773884 /* MessageCenterListCell.swift in Sources */,
+				5A0A6D781FE572D30059EDBF /* ChatRoomViewController.swift in Sources */,
 				5AC684851F7FFF24006CEB53 /* NoPhotoNewsCell.swift in Sources */,
 				5A06DF491FCAA9A600F225F1 /* ProfessionListController.swift in Sources */,
 				5AF9CADA1FA5C16E0071285D /* MyActivityListController.swift in Sources */,
@@ -1645,8 +1734,10 @@
 				5ABB14D61FBD0F83006EEE59 /* ActivityDetail.swift in Sources */,
 				CCDB6D571F7A526C0012432E /* SinglePhotoNewsCell.swift in Sources */,
 				5A0612BC1FDBD03000E7F20A /* CollectionNewsListController.swift in Sources */,
+				5A8C29E01FE032DC00E51095 /* LiveMessageCell.swift in Sources */,
 				5AFF34A21F93A78600D8115E /* BaseShareViewController.swift in Sources */,
 				5AA4E80B1FD42B86007A04FA /* AlivcWatermarkSettingView.m in Sources */,
+				5A0A6D761FE49ECF0059EDBF /* LiveModelList.swift in Sources */,
 				5A90CFEE1F8123F500F16869 /* LiveListController.swift in Sources */,
 				5A90CFE31F80F48A00F16869 /* SubscriptSectionHeaderView.swift in Sources */,
 				5A4A21501FC18BB900648126 /* OgnizationModel.swift in Sources */,
@@ -1713,16 +1804,17 @@
 				5AA4E8361FD42E9B007A04FA /* AlivcLiveViewController.m in Sources */,
 				5A0612C91FDCD4E100E7F20A /* SubmitPaperController.swift in Sources */,
 				CC2906EC1F659EBA001894DA /* UIColorExtensions.swift in Sources */,
-				5A04B4241FD4662B00DE58D2 /* LiveBasePlayerController.swift in Sources */,
 				5A06DF461FCA4F2C00F225F1 /* ActivityPrepare.swift in Sources */,
 				5A4A21551FC1E53200648126 /* LabelsContainerView.swift in Sources */,
 				5A573E0B1FB87156006420BA /* FastNewsList.swift in Sources */,
 				5AA4E82C1FD42DC1007A04FA /* AlivcRootViewController.m in Sources */,
 				5A0D23C31F83225A00FC9D4D /* NewsCommentBar.swift in Sources */,
 				5A54460F1F852A1E0004F192 /* ActivityRegistController.swift in Sources */,
+				5A0A6D7A1FE575A30059EDBF /* ConversationClientManager.swift in Sources */,
 				5AA4E81D1FD42D0A007A04FA /* AlivcParamModel.m in Sources */,
 				CCDB6D4F1F7A32B40012432E /* TopicBannerCell.swift in Sources */,
 				5AA4E7DC1FD2B083007A04FA /* RewardAlertController.swift in Sources */,
+				5A0A6D7D1FE58D6E0059EDBF /* ChatroomMessageCell.swift in Sources */,
 				CC2906C91F6599C7001894DA /* AppDelegate.swift in Sources */,
 				CC2906EE1F659EBA001894DA /* UIView+IBInspectable.swift in Sources */,
 				5A0612BE1FDBDB2100E7F20A /* ActivityTicketDetail.swift in Sources */,
@@ -1796,6 +1888,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Debug;
 		};
@@ -1839,6 +1932,7 @@
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Release;
 		};
@@ -1858,17 +1952,24 @@
 					"$(PROJECT_DIR)/AlivcLivePusherDemo/AlivcLivePusherDemo/SDK",
 					"$(PROJECT_DIR)/AliyunPlayerMediaDemo/lib",
 					"$(PROJECT_DIR)/BestNews",
+					"$(PROJECT_DIR)/Framework/CallLib",
+					"$(PROJECT_DIR)/Framework/IMLib",
 				);
 				GCC_INPUT_FILETYPE = automatic;
 				INFOPLIST_FILE = BestNews/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Framework/IMLib",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ruicaijing.bestNews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "BestNews/Security/BestNews-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Debug;
 		};
@@ -1888,16 +1989,23 @@
 					"$(PROJECT_DIR)/AlivcLivePusherDemo/AlivcLivePusherDemo/SDK",
 					"$(PROJECT_DIR)/AliyunPlayerMediaDemo/lib",
 					"$(PROJECT_DIR)/BestNews",
+					"$(PROJECT_DIR)/Framework/CallLib",
+					"$(PROJECT_DIR)/Framework/IMLib",
 				);
 				GCC_INPUT_FILETYPE = automatic;
 				INFOPLIST_FILE = BestNews/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Framework/IMLib",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ruicaijing.bestNews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "BestNews/Security/BestNews-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
+				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Release;
 		};

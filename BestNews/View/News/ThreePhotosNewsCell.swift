@@ -23,6 +23,7 @@ class ThreePhotosNewsCell: BaseNewsCell {
     
     @IBOutlet weak var tipBtn: UIButton!
     
+    @IBOutlet weak var dateLb: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -33,7 +34,8 @@ class ThreePhotosNewsCell: BaseNewsCell {
     override func updateCell(article: HomeArticle) {
         super.updateCell(article: article)
         titleLb.text = article.title
-        descLb.text = article.descString()
+        descLb.text = article.publisher
+        dateLb.text = article.dateString()
         for i in 0..<article.preimglist.count {
             let img = article.preimglist[i]
             if img.count > 0 {

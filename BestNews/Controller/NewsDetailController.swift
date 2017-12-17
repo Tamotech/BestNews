@@ -271,8 +271,8 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
         webView.evaluateJavaScript("document.documentElement.scrollHeight;") { (data, error) in
             print("加载完毕...>\(data!)")
             ///TODO: 高度计算cheat
-            self.webView.height = (data as! CGFloat)*37/100
-            self.webParentHeight.constant = (data as! CGFloat)*37/100
+            self.webView.height = (data as! CGFloat)*40/100
+            self.webParentHeight.constant = (data as! CGFloat)*40/100
         }
     }
     
