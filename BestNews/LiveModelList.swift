@@ -21,6 +21,7 @@ class LiveModel: HandyJSON {
     var preimgpath: String = ""
     var collectnum: Int = 0
     var collect: Int = 0
+    var createdate: Int = 0
     ///主持人用户的id
     var compereuserid: String = ""
     ///主播用户id
@@ -46,6 +47,15 @@ class LiveModel: HandyJSON {
             return "   正在直播  "
         }
         return "其他"
+    }
+    
+    
+    ///日期字符串
+    func dateStr() -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "yyyy-MM-dd HH:mm"
+        let date = Date(timeIntervalSince1970: TimeInterval(createdate/1000))
+        return formatter.string(from: date)
     }
 }
 

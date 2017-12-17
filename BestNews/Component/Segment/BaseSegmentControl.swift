@@ -73,10 +73,6 @@ class BaseSegmentControl: UIView {
     
     func handleSelectItem(btn:UIButton) {
         
-        if (self.selectItemAction != nil) {
-            self.selectItemAction!(btn.tag, btn.titleLabel!.text!)
-        }
-        
         currentIndex = btn.tag
         let centerX = (CGFloat(currentIndex)+0.5)*(screenWidth/CGFloat(buttons.count))
         UIView.animate(withDuration: 0.3) {
@@ -87,6 +83,9 @@ class BaseSegmentControl: UIView {
             if (b != btn) {
                 b.setTitleColor(gray155, for: .normal)
             }
+        }
+        if (self.selectItemAction != nil) {
+            self.selectItemAction!(btn.tag, btn.titleLabel!.text!)
         }
     }
 }

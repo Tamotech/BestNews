@@ -62,6 +62,15 @@ class LiveListCell: UITableViewCell {
             let rc = ImageResource(downloadURL: url)
             coverIm.kf.setImage(with: rc)
         }
+        if data.collect == 1 {
+            collectionBtn.setImage(#imageLiteral(resourceName: "star_select"), for: .normal)
+        }
+        else {
+            collectionBtn.setImage(#imageLiteral(resourceName: "star_dark"), for: .normal)
+        }
+        voteBtn.setTitle("\(data.collectnum)", for: .normal)
+        voteBtn.setTitle("\(data.zannum)", for: .normal)
+        titleLb.text = data.title
     }
     
     @IBAction func handleTapCommentBtn(_ sender: UIButton) {
