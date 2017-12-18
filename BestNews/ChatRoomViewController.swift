@@ -9,7 +9,9 @@
 import UIKit
 import ImagePicker
 
-class ChatRoomViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, ConversationDelegate, RCIMClientReceiveMessageDelegate, UITextFieldDelegate, ImagePickerDelegate {
+class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, ConversationDelegate, RCIMClientReceiveMessageDelegate, UITextFieldDelegate, ImagePickerDelegate, AliyunVodPlayerViewDelegate {
+    
+    
 
     
     var token = ""
@@ -70,7 +72,7 @@ class ChatRoomViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        self.shouldClearNavBar = true
         tableView1.delegate = self
         tableView1.dataSource = self
         tableView1.estimatedRowHeight = 120
@@ -88,6 +90,10 @@ class ChatRoomViewController: UIViewController, UITableViewDataSource, UITableVi
         let playerHeight = screenWidth*211/375
         playerV?.frame = CGRect(x: 0, y: 0, width: screenWidth, height: playerHeight)
         playerParentView.addSubview(playerV!)
+        playerV?.isLockPortrait = false
+        playerV?.isLockScreen = false
+        playerV?.setBackHidden(true)
+        playerV?.delegate = self
         
         
         segment.selectItemAction = {[weak self](index, name) in
@@ -109,9 +115,19 @@ class ChatRoomViewController: UIViewController, UITableViewDataSource, UITableVi
         publishBt.isEnabled = false
         commentBarChangeState(false)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         loadLiveDetail()
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        playerV?.frame = playerParentView.bounds
+    }
 
+    
+    func applicationDidEnterForeground() {
+        playerV?.frame = playerParentView.bounds
+    }
     
     //MARK: - actions
     
@@ -133,9 +149,42 @@ class ChatRoomViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     @IBAction func handleTapRepost(_ sender: UIButton) {
+        let vc = BaseShareViewController(nibName: "BaseShareViewController", bundle: nil)
+        let share = ShareModel()
+        share.title = liveModel?.title ?? "直播标题"
+        share.msg = ""
+        share.thumb = ""
+        vc.share = share
+        self.presentr.viewControllerForContext = self
+        self.presentr.shouldIgnoreTapOutsideContext = false
+        self.presentr.dismissOnTap = true
+        self.customPresentViewController(self.presentr, viewController: vc, animated: true) {
+            
+        }
     }
     
     @IBAction func handleTapVote(_ sender: UIButton) {
+        
+        voteBt.setImage(#imageLiteral(resourceName: "vote_select"), for: .normal)
+        let frame = self.view.convert(voteBt.frame, from: voteBt.superview)
+        let icon = UIImageView(frame: frame)
+        self.view.addSubview(icon)
+        UIView.animateKeyframes(withDuration: 1.0, delay: 0, options: UIViewKeyframeAnimationOptions.calculationModePaced, animations: {
+            icon.y = icon.y - 200
+            icon.alpha = 0
+        }) { (success) in
+            icon.removeFromSuperview()
+        }
+        
+        let path = "/zan/zan.htm?id=\(liveModel?.id ?? "")"
+        APIManager.shareInstance.postRequest(urlString: path, params: nil) { (JSON, code, msg) in
+            if code == 0 {
+                
+            }
+            else {
+                BLHUDBarManager.showError(msg: msg)
+            }
+        }
     }
     
     @IBAction func handleTapCollect(_ sender: UIButton) {
@@ -181,7 +230,18 @@ class ChatRoomViewController: UIViewController, UITableViewDataSource, UITableVi
         if segment.currentIndex == 0 {
             ///主持区
             let content = RCTextMessage(content: contentTf.text)
-            RCIMClient.shared().sendMessage(RCConversationType.ConversationType_CHATROOM, targetId: liveModel?.chatroom_id_compere, content: content!, pushContent: contentTf.text!, pushData: "", success: { [weak self](id) in
+            var img = SessionManager.sharedInstance.userInfo?.headimg
+            if img == nil || img == "" {
+                img = "http://"
+            }
+            content?.content = contentTf.text
+            content?.extra = "\(SessionManager.sharedInstance.userInfo?.name ?? "用户");\(img!);\(Int(Date().timeIntervalSince1970*1000))"
+//            let msg = CustomeMessage()
+//            msg.content = contentTf.text
+//            msg.messageType = "compere"
+//            msg.date = Int(Date().timeIntervalSince1970)*1000
+            
+            RCIMClient.shared().sendMessage(RCConversationType.ConversationType_CHATROOM, targetId: liveModel?.chatroom_id_compere, content: content, pushContent: contentTf.text!, pushData: "", success: { [weak self](id) in
                 print("发送消息成功, --- \(id)")
                 DispatchQueue.main.async {
                     self?.contentTf.text =  ""
@@ -196,7 +256,17 @@ class ChatRoomViewController: UIViewController, UITableViewDataSource, UITableVi
         else {
             ///评论区
             let content = RCTextMessage(content: contentTf.text)
-            RCIMClient.shared().sendMessage(RCConversationType.ConversationType_CHATROOM, targetId: liveModel?.chatroom_id_group, content: content!, pushContent: contentTf.text!, pushData: "", success: { [weak self](id) in
+            var img = SessionManager.sharedInstance.userInfo?.headimg
+            if img == nil || img == "" {
+                img = "http://"
+            }
+            content?.extra = "\(SessionManager.sharedInstance.userInfo?.name ?? "用户");\(img!);\(Int(Date().timeIntervalSince1970*1000))"
+//            let msg = CustomeMessage()
+//            msg.content = contentTf.text
+//            msg.messageType = "visitor"
+//            msg.date = Int(Date().timeIntervalSince1970)*1000
+            
+            RCIMClient.shared().sendMessage(RCConversationType.ConversationType_CHATROOM, targetId: liveModel?.chatroom_id_group, content: content, pushContent: contentTf.text!, pushData: "", success: { [weak self](id) in
                 print("发送消息成功, --- \(id)")
                 DispatchQueue.main.async {
                     self?.contentTf.text =  ""
@@ -311,19 +381,71 @@ extension ChatRoomViewController {
             let data = UIImageJPEGRepresentation(im, 0.7)
             let msg = RCImageMessage(imageData: data)
             //图片尺寸已附加字段形式附上
-            msg?.extra = "\(im.size.width);\(im.size.height)"
+            var img = SessionManager.sharedInstance.userInfo?.headimg
+            if img == nil || img == "" {
+                img = "http://"
+            }
+            msg?.extra = "\(SessionManager.sharedInstance.userInfo?.name ?? "用户");\(img!);\(Int(Date().timeIntervalSince1970*1000));\(im.size.width);\(im.size.height)"
+
             let rcmsg = RCMessage(type: RCConversationType.ConversationType_CHATROOM, targetId: self?.liveModel!.chatroom_id_compere, direction: RCMessageDirection.MessageDirection_RECEIVE, messageId: 120000, content: msg)
+            
             self?.onReceived(rcmsg!, left: 0, object: "")
+            
             RCIM.shared().sendMediaMessage(RCConversationType.ConversationType_CHATROOM, targetId: self?.liveModel!.chatroom_id_compere, content: msg, pushContent: "", pushData: "", progress: { (progress, id) in
                 print("上传图片中...\(progress)")
             }, success: { (id) in
                 print("上传图片成功...")
+//                let rcmsg = RCIMClient.shared().getMessage(id)
+//                let cmsg = CustomeMessage()
+//                cmsg.date = Int(Date().timeIntervalSince1970*1000)
+//                cmsg.messageType = "compere"
+//                cmsg.img = (rcmsg?.content as! RCImageMessage).imageUrl
+//                RCIMClient.shared().sendMessage(RCConversationType.ConversationType_CHATROOM, targetId: self!.liveModel!.chatroom_id_compere, content: cmsg, pushContent: "", pushData: "", success: { (id) in
+//                    print("发送消息成功, --- \(id)")
+//                
+//                    
+//                }) { (code, id) in
+//                    print("发送消息失败....\(code)")
+//                }
             }, error: { (errcode, id) in
                 print("上传图片失败...\(errcode)")
             }, cancel: { (id) in
                 
             })
         }
+    }
+    
+    //MARK: - playerViewDelegate
+    func aliyunVodPlayerView(_ playerView: AliyunVodPlayerView!, fullScreen isFullScreen: Bool) {
+        
+    }
+    
+    func aliyunVodPlayerView(_ playerView: AliyunVodPlayerView!, lockScreen isLockScreen: Bool) {
+        
+    }
+    
+    func onBackViewClick(with playerView: AliyunVodPlayerView!) {
+        
+    }
+    
+    func aliyunVodPlayerView(_ playerView: AliyunVodPlayerView!, onStop currentPlayTime: TimeInterval) {
+        
+    }
+    
+    func aliyunVodPlayerView(_ playerView: AliyunVodPlayerView!, onPause currentPlayTime: TimeInterval) {
+        
+    }
+    
+    func aliyunVodPlayerView(_ playerView: AliyunVodPlayerView!, onSeekDone seekDoneTime: TimeInterval) {
+        
+    }
+    
+    func aliyunVodPlayerView(_ playerView: AliyunVodPlayerView!, onResume currentPlayTime: TimeInterval) {
+        
+    }
+    
+    func aliyunVodPlayerView(_ playerView: AliyunVodPlayerView!, onVideoQualityChanged quality: AliyunVodPlayerVideoQuality) {
+        
     }
 }
 
@@ -417,5 +539,7 @@ extension ChatRoomViewController {
                 })
             }
         }
+        
     }
+    
 }

@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-class ChatroomMessageCell: UITableViewCell, RCIMUserInfoDataSource {
+class ChatroomMessageCell: UITableViewCell {
 
     @IBOutlet weak var avatar: UIImageView!
     
@@ -32,16 +32,36 @@ class ChatroomMessageCell: UITableViewCell, RCIMUserInfoDataSource {
         
         if data.content != nil {
             msgLb.text = (data.content as! RCTextMessage).content!
-        }
-        self.getUserInfo(withUserId: data.senderUserId) { [weak self](userInfo) in
-            if userInfo != nil {
-                if let url = URL(string: userInfo!.portraitUri) {
-                    let rc = ImageResource(downloadURL: url)
-                    self!.avatar.kf.setImage(with: rc)
+            let content = data.content as! RCTextMessage
+            if content.extra != nil {
+            let extraArr = content.extra.split(separator: ";")
+                if extraArr.count >= 3 {
+                    let name = String(extraArr[0])
+                    let img = String(extraArr[1])
+                    let dateInt = TimeInterval(extraArr[2])!/1000
+                    usernameLb.text = name
+                    if img != "http://" {
+                        if let url = URL(string: img)  {
+                            let rc = ImageResource(downloadURL: url)
+                            avatar.kf.setImage(with: rc)
+                        }
+                        else {
+                            avatar.image = #imageLiteral(resourceName: "defaultUser")
+                        }
+                    }
+                    else {
+                        avatar.image = #imageLiteral(resourceName: "defaultUser")
+                    }
+                    let date = Date(timeIntervalSince1970: dateInt)
+                    let formatter = DateFormatter()
+                    formatter.dateFormat = "HH:mm"
+                    let dateStr = formatter.string(from: date)
+                    timeLb.text = dateStr
                 }
-                self!.usernameLb.text = userInfo!.name
             }
+            
         }
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -51,7 +71,5 @@ class ChatroomMessageCell: UITableViewCell, RCIMUserInfoDataSource {
     }
     
     
-    func getUserInfo(withUserId userId: String!, completion: ((RCUserInfo?) -> Void)!) {
-        
-    }
+   
 }

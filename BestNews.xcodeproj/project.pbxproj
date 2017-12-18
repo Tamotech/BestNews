@@ -235,6 +235,7 @@
 		5AFF05F21FE62E1800B7FE7D /* en.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 5AFF05ED1FE62E1600B7FE7D /* en.lproj */; };
 		5AFF05F31FE62E1800B7FE7D /* RongIMKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AFF05EE1FE62E1700B7FE7D /* RongIMKit.framework */; };
 		5AFF05F41FE62E1800B7FE7D /* zh-Hans.lproj in Resources */ = {isa = PBXBuildFile; fileRef = 5AFF05EF1FE62E1800B7FE7D /* zh-Hans.lproj */; };
+		5AFF05F61FE68A9300B7FE7D /* CustomeMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF05F51FE68A9300B7FE7D /* CustomeMessage.swift */; };
 		5AFF34A21F93A78600D8115E /* BaseShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF34A01F93A78600D8115E /* BaseShareViewController.swift */; };
 		5AFF34A31F93A78600D8115E /* BaseShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AFF34A11F93A78600D8115E /* BaseShareViewController.xib */; };
 		97116F55FBF85B351A8EEBAC /* Pods_BestNews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0D04124E02EA7B4BED0069 /* Pods_BestNews.framework */; };
@@ -546,6 +547,7 @@
 		5AFF05ED1FE62E1600B7FE7D /* en.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = en.lproj; sourceTree = "<group>"; };
 		5AFF05EE1FE62E1700B7FE7D /* RongIMKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RongIMKit.framework; sourceTree = "<group>"; };
 		5AFF05EF1FE62E1800B7FE7D /* zh-Hans.lproj */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "zh-Hans.lproj"; sourceTree = "<group>"; };
+		5AFF05F51FE68A9300B7FE7D /* CustomeMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomeMessage.swift; sourceTree = "<group>"; };
 		5AFF34A01F93A78600D8115E /* BaseShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseShareViewController.swift; sourceTree = "<group>"; };
 		5AFF34A11F93A78600D8115E /* BaseShareViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseShareViewController.xib; sourceTree = "<group>"; };
 		5C0D04124E02EA7B4BED0069 /* Pods_BestNews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BestNews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -689,6 +691,7 @@
 				5A04B41C1FD44E7800DE58D2 /* Reachability.m */,
 				5A0A6D751FE49ECF0059EDBF /* LiveModelList.swift */,
 				5A0A6D791FE575A30059EDBF /* ConversationClientManager.swift */,
+				5AFF05F51FE68A9300B7FE7D /* CustomeMessage.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1711,6 +1714,7 @@
 				5A90CFF21F81273900F16869 /* LiveListCell.swift in Sources */,
 				5A04B41E1FD44E7900DE58D2 /* Reachability.m in Sources */,
 				5ACCDD2B1F9F75CE004D3809 /* SelectInterestItemController.swift in Sources */,
+				5AFF05F61FE68A9300B7FE7D /* CustomeMessage.swift in Sources */,
 				5A10F5871FAEF06900316832 /* SpecialChannelListController.swift in Sources */,
 				5ABB92D11FA5EC42002E3180 /* Toolkit.swift in Sources */,
 				CC2906E11F659E77001894DA /* BaseNavigationController.swift in Sources */,
@@ -2004,6 +2008,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "BestNews/Security/BestNews-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};

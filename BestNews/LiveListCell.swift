@@ -28,6 +28,11 @@ class LiveListCell: UITableViewCell {
     
     
     @IBOutlet weak var greenDotView: UIView!
+    
+    @IBOutlet weak var labelIm: UIImageView!
+    
+    @IBOutlet weak var labelText: UILabel!
+    
     var model: LiveModel?
     
     override func awakeFromNib() {
@@ -63,26 +68,64 @@ class LiveListCell: UITableViewCell {
             coverIm.kf.setImage(with: rc)
         }
         if data.collect == 1 {
-            collectionBtn.setImage(#imageLiteral(resourceName: "star_select"), for: .normal)
+            collectionBtn.setImage(#imageLiteral(resourceName: "star_select_small"), for: .normal)
         }
         else {
-            collectionBtn.setImage(#imageLiteral(resourceName: "star_dark"), for: .normal)
+            collectionBtn.setImage(#imageLiteral(resourceName: "star_light"), for: .normal)
         }
-        voteBtn.setTitle("\(data.collectnum)", for: .normal)
-        voteBtn.setTitle("\(data.zannum)", for: .normal)
+        voteBtn.setTitle(" \(data.collectnum)", for: .normal)
+        voteBtn.setTitle(" \(data.zannum)", for: .normal)
         titleLb.text = data.title
+        let labelImName = "live-label\(arc4random()%3+1)"
+        labelIm.image = UIImage(named: labelImName)
+        labelText.text = data.marks
     }
     
     @IBAction func handleTapCommentBtn(_ sender: UIButton) {
-        
+        let vc = MyLiveViewController()
+        vc.liveModel = model
+        ownerController()?.navigationController?.pushViewController(vc, animated: true)
     }
     
     @IBAction func handleTapVoteBtn(_ sender: UIButton) {
+        sender.setImage(#imageLiteral(resourceName: "vote_select"), for: .normal)
         
+        let path = "/zan/zan.htm?id=\(model?.id ?? "")"
+        APIManager.shareInstance.postRequest(urlString: path, params: nil) { (JSON, code, msg) in
+            if code == 0 {
+                
+            }
+            else {
+                BLHUDBarManager.showError(msg: msg)
+            }
+        }
     }
     
     @IBAction func handleTapCollectionBtn(_ sender: UIButton) {
-        
+        if model?.collect == 0 {
+            APIRequest.collectAPI(id: model!.id, type: "live", result: {[weak self] (success) in
+                if success {
+                    self?.model?.collect = 1
+                    sender.setImage(#imageLiteral(resourceName: "star_select"), for: .normal)
+                }
+                else {
+                    self?.model?.collect = 0
+                    sender.setImage(#imageLiteral(resourceName: "star_dark"), for: .normal)
+                }
+            })
+        }
+        else {
+            APIRequest.cancelCollectAPI(id: model!.id, type: "live", result: { [weak self] (success) in
+                if !success {
+                    self?.model?.collect = 1
+                    sender.setImage(#imageLiteral(resourceName: "star_select"), for: .normal)
+                }
+                else {
+                    self?.model?.collect = 0
+                    sender.setImage(#imageLiteral(resourceName: "star_dark"), for: .normal)
+                }
+            })
+        }
     }
     
     @IBAction func handleTapStartLiveBtn(_ sender: UIButton) {

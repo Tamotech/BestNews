@@ -36,8 +36,6 @@ class LiveListController: UIViewController, UITableViewDelegate, UITableViewData
         } else {
             self.automaticallyAdjustsScrollViewInsets = true
         }
-        tableView.estimatedRowHeight = 260
-        tableView.rowHeight = UITableViewAutomaticDimension
         tableView.cr.addHeadRefresh {
             self.reloadLiveList()
         }
@@ -64,6 +62,10 @@ class LiveListController: UIViewController, UITableViewDelegate, UITableViewData
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.1
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 260
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
