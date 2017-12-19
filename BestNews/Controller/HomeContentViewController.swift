@@ -173,6 +173,10 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
         {
             autoAjustToNavColor()
         }
+        
+        if scrollView.contentOffset.y < 0 {
+            self.logoTurnRed(true)
+        }
     }
     
     ///根据scrollview的位置自动调节到相应的颜色
@@ -191,6 +195,21 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
         else if offset.y > 50 {
             parent.navBarTurnBg(white: true)
         }
+    }
+    
+    
+    /// 刷新logo变色
+    ///
+    /// - Parameter red: 是否红色
+    func logoTurnRed(_ red: Bool) {
+        guard let vc = self.parent else {
+            return
+        }
+        if !(vc is MainController) {
+            return
+        }
+        let parent = vc as! MainController
+        parent.logoTurnColor(red)
     }
 
 }
