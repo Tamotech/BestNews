@@ -49,8 +49,8 @@ class SpecialChannelListController: BaseViewController, UITableViewDelegate, UIT
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let channel = specialList[indexPath.row]
-        let vc = NewsDetailController.init(nibName: "NewsDetailController", bundle: nil) as NewsDetailController
-        vc.articleId = channel.id
+        let vc = SpecialChannelArticleListController()
+        vc.channel = channel
         navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -12,7 +12,7 @@ class ShareModel: NSObject {
     var title = ""
     var thumb = ""
     var msg = ""
-    var link = "www.google.com"
+    var link = "http://xhfmedia.com/app.htm"
 }
 
 class BaseShareViewController: UIViewController {

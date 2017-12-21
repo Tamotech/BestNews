@@ -71,6 +71,7 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
             [weak self] in
             self?.reloadArticleList()
             self?.loadSpecialCannelData()
+            self?.updateBanner()
         }
         tableView.cr.addFootRefresh {
             [weak self] in
@@ -188,12 +189,12 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
         if !(vc is MainController) {
             return
         }
-        let parent = vc as! MainController
+        weak var parent = vc as? MainController
         if offset.y < 50 {
-            parent.navBarTurnBg(white: false)
+            parent?.navBarTurnBg(white: false)
         }
         else if offset.y > 50 {
-            parent.navBarTurnBg(white: true)
+            parent?.navBarTurnBg(white: true)
         }
     }
     
@@ -208,8 +209,22 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
         if !(vc is MainController) {
             return
         }
-        let parent = vc as! MainController
-        parent.logoTurnColor(red)
+        weak var parent = vc as? MainController
+        parent?.logoTurnColor(red)
+    }
+    
+    
+    /// 刷新标题
+    func updateTitlesView() {
+        guard let vc = self.parent else {
+            return
+        }
+        if !(vc is MainController) {
+            return
+        }
+        weak var parent = vc as? MainController
+        parent?.setupNavTitleView()
+        parent?.setupChildView()
     }
 
 }
@@ -252,6 +267,10 @@ extension HomeContentViewController {
         APIRequest.getSpecialListAPI { [weak self](data) in
             self?.specialList = data as! [SpecialChannel]
             self?.tableView.reloadData()
+            HomeModel.shareInstansce.specilList = data as! [SpecialChannel]
+            DispatchQueue.main.async {
+                self?.updateTitlesView()
+            }
         }
     }
     

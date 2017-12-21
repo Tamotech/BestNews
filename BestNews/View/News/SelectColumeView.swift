@@ -13,22 +13,24 @@ import SnapKit
 class SelectColumeView: UIView {
 
     var buttons: [UIButton] = []
-    
+    weak var mainVC: MainController?
+    var channels: [NewsChannel] = HomeModel.shareInstansce.allChannels
+    let stableChannels = ["推荐", "快讯", "直播", "专题"]
     func show() {
         self.frame = UIScreen.main.bounds
-        self.x = screenWidth
+        self.y = screenHeight
         keyWindow?.addSubview(self)
         
-        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {
-            self.x = 0
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
+            self.y = 0
         }) { (success) in
             
         }
     }
     
     func dismiss() {
-        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {
-            self.x = screenWidth
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: {
+            self.y = screenHeight
         }) { (success) in
             self.removeFromSuperview()
         }
@@ -55,13 +57,13 @@ class SelectColumeView: UIView {
         bgView.layer.shadowOpacity = 0.8
         self.addSubview(bgView)
         
-        let searchView = UIImageView(image: #imageLiteral(resourceName: "icon_search"))
-        bgView.addSubview(searchView)
-        searchView.snp.makeConstraints { (make) in
-            make.left.equalTo(12)
-            make.bottom.equalTo(-12)
-            make.size.equalTo(CGSize(width: 20, height: 20))
-        }
+//        let searchView = UIImageView(image: #imageLiteral(resourceName: "icon_search"))
+//        bgView.addSubview(searchView)
+//        searchView.snp.makeConstraints { (make) in
+//            make.left.equalTo(12)
+//            make.bottom.equalTo(-12)
+//            make.size.equalTo(CGSize(width: 20, height: 20))
+//        }
         
         let titleLb = UILabel()
         titleLb.textColor = UIColor(ri: 85, gi: 85, bi: 85)
@@ -69,8 +71,8 @@ class SelectColumeView: UIView {
         titleLb.text = "切换频道"
         bgView.addSubview(titleLb)
         titleLb.snp.makeConstraints { (make) in
-            make.left.equalTo(searchView.snp.right).offset(15)
-            make.centerY.equalTo(searchView.snp.centerY)
+            make.left.equalTo(15)
+            make.bottom.equalTo(-12)
         }
         
         let closeBtn = UIButton()
@@ -78,17 +80,17 @@ class SelectColumeView: UIView {
         closeBtn.addTarget(self, action: #selector(handleTapCloseBtn), for: .touchUpInside)
         bgView.addSubview(closeBtn)
         closeBtn.snp.makeConstraints { (make) in
-            make.right.equalTo(-15)
-            make.centerY.equalTo(searchView.snp.centerY)
+            make.right.equalTo(0)
+            make.bottom.equalTo(0)
+            make.size.equalTo(CGSize(width: 50, height: 44))
         }
         
         
-        let bs = ["推荐", "快讯", "十九大", "直播", "金融", "股票", "投资", "证券", "金融"]
         let horMargin: CGFloat = 20
         let verMargin: CGFloat = 25
         let bWidth: CGFloat = (screenWidth - 4*horMargin)/3.0
         let bHeight: CGFloat = 32
-        for (i, item) in bs.enumerated() {
+        for (i, item) in stableChannels.enumerated() {
             let x = (CGFloat(i%3)+1)*horMargin + CGFloat(i%3)*bWidth
             let y = 64+(CGFloat(i/3)+1)*verMargin + CGFloat(i/3)*bHeight
             let btn = UIButton(frame: CGRect(x: x, y: y, width: bWidth, height: bHeight))
@@ -96,12 +98,27 @@ class SelectColumeView: UIView {
             btn.backgroundColor = UIColor(ri: 229, gi: 229, bi: 229, alpha: 0.9)
             btn.layer.cornerRadius = bHeight/2
             btn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+            btn.tag = 100+i
             btn.setTitleColor(gray34, for: .normal)
             btn.addTarget(self, action: #selector(handleSelectItemBtn(btn:)), for: .touchUpInside)
             self.buttons.append(btn)
             self.addSubview(btn)
         }
-        buttons.first?.setTitleColor(themeColor, for: .normal)
+        for (j, item) in channels.enumerated() {
+            let i = stableChannels.count+j
+            let x = (CGFloat(i%3)+1)*horMargin + CGFloat(i%3)*bWidth
+            let y = 64+(CGFloat(i/3)+1)*verMargin + CGFloat(i/3)*bHeight
+            let btn = UIButton(frame: CGRect(x: x, y: y, width: bWidth, height: bHeight))
+            btn.setTitle(item.fullname, for: .normal)
+            btn.backgroundColor = UIColor(ri: 229, gi: 229, bi: 229, alpha: 0.9)
+            btn.layer.cornerRadius = bHeight/2
+            btn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+            btn.tag = j
+            btn.setTitleColor(gray34, for: .normal)
+            btn.addTarget(self, action: #selector(handleSelectItemBtn(btn:)), for: .touchUpInside)
+            self.buttons.append(btn)
+            self.addSubview(btn)
+        }
         
     }
     
@@ -111,19 +128,48 @@ class SelectColumeView: UIView {
     
     
     func handleSelectItemBtn(btn: UIButton) {
-        for b in buttons {
-            if b == btn {
-                b.setTitleColor(themeColor, for: .normal)
+        if btn.tag >= 100 {
+            let name = stableChannels[btn.tag-100]
+            if name == "专题" {
+                let vc = SpecialChannelListController()
+                vc.specialList = HomeModel.shareInstansce.specilList
+                dismiss()
+                mainVC?.navigationController?.pushViewController(vc, animated: true)
             }
             else {
-                b.setTitleColor(gray34, for: .normal)
+                mainVC?.switchToVCWithTitle(btn.titleLabel!.text!)
+                dismiss()
             }
         }
-        self.dismiss()
+        else {
+            let vc = SpecialChannelArticleListController()
+            vc.newsChannel = channels[btn.tag]
+            dismiss()
+            mainVC?.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     func handleTapCloseBtn() {
         self.dismiss()
+    }
+    
+    
+    func multiSubscribeChannels() {
+        //批量订阅
+        
+        var ids: [String] = []
+        for data in channels {
+            if data.subscribe == 1 {
+                ids.append(data.id)
+            }
+        }
+        if ids.count == 0 {
+            return
+        }
+        
+        let channelids = ids.joined(separator: ",")
+        APIRequest.multiSubscriptChannelAPI(channelIds: channelids) {(success) in
+        }
     }
 
 }

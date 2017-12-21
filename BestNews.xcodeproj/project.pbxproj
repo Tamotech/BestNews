@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A026D8E1FE8954900B99466 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A026D8D1FE8954900B99466 /* HomeModel.swift */; };
 		5A04B4091FD44AD400DE58D2 /* BasicFunctionDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A04B4081FD44AD300DE58D2 /* BasicFunctionDemoViewController.swift */; };
 		5A04B4151FD44CAA00DE58D2 /* AliyunPlayMessageShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A04B4141FD44CAA00DE58D2 /* AliyunPlayMessageShowView.swift */; };
 		5A04B4181FD44DE300DE58D2 /* AliyunPlayerLivePlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A04B4171FD44DE200DE58D2 /* AliyunPlayerLivePlayViewController.m */; };
@@ -216,6 +217,7 @@
 		5ACCDD2F1F9F7AEA004D3809 /* InterestColumnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACCDD2D1F9F7AEA004D3809 /* InterestColumnCell.swift */; };
 		5ACCDD301F9F7AEA004D3809 /* InterestColumnCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5ACCDD2E1F9F7AEA004D3809 /* InterestColumnCell.xib */; };
 		5ACCDD321F9F809F004D3809 /* InterestColumn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ACCDD311F9F809F004D3809 /* InterestColumn.swift */; };
+		5ADF7ACE1FEA955500D9607A /* start.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5ADF7ACD1FEA955500D9607A /* start.jpg */; };
 		5AF9CAD31FA4C95D0071285D /* MeCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF9CAD21FA4C95D0071285D /* MeCollectionViewController.swift */; };
 		5AF9CAD51FA4CE340071285D /* MySubscriptListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF9CAD41FA4CE340071285D /* MySubscriptListController.swift */; };
 		5AF9CAD71FA5BD340071285D /* MyArticleListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AF9CAD61FA5BD330071285D /* MyArticleListController.swift */; };
@@ -301,6 +303,7 @@
 /* Begin PBXFileReference section */
 		11340A3AC197F199C7182F7A /* Pods-BestNews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BestNews.release.xcconfig"; path = "Pods/Target Support Files/Pods-BestNews/Pods-BestNews.release.xcconfig"; sourceTree = "<group>"; };
 		49FBDE1023696FAD0FCB9971 /* Pods-BestNews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BestNews.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BestNews/Pods-BestNews.debug.xcconfig"; sourceTree = "<group>"; };
+		5A026D8D1FE8954900B99466 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
 		5A04B4081FD44AD300DE58D2 /* BasicFunctionDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicFunctionDemoViewController.swift; path = "AliyunPlayerMediaDemo/AliyunPlayerMediaDemo-Swift/基础功能演示/BasicFunctionDemoViewController.swift"; sourceTree = SOURCE_ROOT; };
 		5A04B4141FD44CAA00DE58D2 /* AliyunPlayMessageShowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AliyunPlayMessageShowView.swift; path = "AliyunPlayerMediaDemo/AliyunPlayerMediaDemo-Swift/基础功能演示/AliyunPlayMessageShowView.swift"; sourceTree = SOURCE_ROOT; };
 		5A04B4161FD44DE200DE58D2 /* AliyunPlayerLivePlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AliyunPlayerLivePlayViewController.h; path = "AliyunPlayerMediaDemo/AliyunPlayerMediaDemo/Basic player/live/AliyunPlayerLivePlayViewController.h"; sourceTree = SOURCE_ROOT; };
@@ -528,6 +531,7 @@
 		5ACCDD2D1F9F7AEA004D3809 /* InterestColumnCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestColumnCell.swift; sourceTree = "<group>"; };
 		5ACCDD2E1F9F7AEA004D3809 /* InterestColumnCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InterestColumnCell.xib; sourceTree = "<group>"; };
 		5ACCDD311F9F809F004D3809 /* InterestColumn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterestColumn.swift; sourceTree = "<group>"; };
+		5ADF7ACD1FEA955500D9607A /* start.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = start.jpg; sourceTree = "<group>"; };
 		5AF9CAD21FA4C95D0071285D /* MeCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeCollectionViewController.swift; sourceTree = "<group>"; };
 		5AF9CAD41FA4CE340071285D /* MySubscriptListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MySubscriptListController.swift; sourceTree = "<group>"; };
 		5AF9CAD61FA5BD330071285D /* MyArticleListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyArticleListController.swift; sourceTree = "<group>"; };
@@ -1130,6 +1134,14 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		5ADF7ACA1FEA952500D9607A /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				5ADF7ACD1FEA955500D9607A /* start.jpg */,
+			);
+			name = Resource;
+			sourceTree = "<group>";
+		};
 		5AF9CE381F814851002AA4A6 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -1283,6 +1295,7 @@
 		CC2906F01F659F10001894DA /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				5ADF7ACA1FEA952500D9607A /* Resource */,
 				CC2906C81F6599C7001894DA /* AppDelegate.swift */,
 				CC2906D11F6599C7001894DA /* Assets.xcassets */,
 				CC2907101F65AC08001894DA /* Main.storyboard */,
@@ -1394,6 +1407,7 @@
 				5A573E0A1FB87156006420BA /* FastNewsList.swift */,
 				5A105B4A1FB9E83E0065ECC7 /* TodayStockStatus.swift */,
 				5A105B4C1FB9F3CB0065ECC7 /* NewsChannel.swift */,
+				5A026D8D1FE8954900B99466 /* HomeModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1558,6 +1572,7 @@
 				5AFF05F21FE62E1800B7FE7D /* en.lproj in Resources */,
 				5AF9CE371F813F06002AA4A6 /* CircleHomeViewController.xib in Resources */,
 				5A27E72C1F936857007C5D6B /* FinanceProductDetailController.xib in Resources */,
+				5ADF7ACE1FEA955500D9607A /* start.jpg in Resources */,
 				CC29070D1F65A334001894DA /* BaseTabBarView.xib in Resources */,
 				CC2906FD1F65A0AB001894DA /* MainController.xib in Resources */,
 				5A06DF4F1FCABCE600F225F1 /* WXImagePickerViewController.xib in Resources */,
@@ -1709,6 +1724,7 @@
 				5A0DEBAF1FB7D464007EDF6B /* TableViewCellExtension.swift in Sources */,
 				5A186C641FAA8C62007216CE /* HomeArticle.swift in Sources */,
 				5A186C661FAA9AA1007216CE /* SpecialChannel.swift in Sources */,
+				5A026D8E1FE8954900B99466 /* HomeModel.swift in Sources */,
 				5A5446031F84A13E0004F192 /* ActivityTicketListController.swift in Sources */,
 				5A0612D71FDD793100E7F20A /* ApplyFamousConditionController.swift in Sources */,
 				5A90CFF21F81273900F16869 /* LiveListCell.swift in Sources */,

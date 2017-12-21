@@ -35,7 +35,9 @@ class OrgnizationListController: BaseViewController, UITableViewDataSource, UITa
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        barView.isHidden = true
+        if entry == 0 {
+            barView.isHidden = true
+        }
         tableView.reloadData()
     }
     

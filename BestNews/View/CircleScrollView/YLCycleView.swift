@@ -37,8 +37,8 @@ class YLCycleView: UIView {
     }()
     lazy var pageControl : UIPageControl = {[weak self] in
 
-        let pageControl = UIPageControl(frame: CGRect(x: self!.bounds.width / 2, y: self!.bounds.height - 20, width: self!.bounds.width / 2, height: 20))
-        pageControl.pageIndicatorTintColor = .orange
+        let pageControl = UIPageControl(frame: CGRect(x: 100, y: self!.bounds.height - 100, width: self!.bounds.width - 200, height: 20))
+        pageControl.pageIndicatorTintColor = UIColor(hexString: "#ffffff", alpha: 0.5)
 
         pageControl.currentPageIndicatorTintColor = .white
         //让pageCotrol居中显示
@@ -73,8 +73,9 @@ class YLCycleView: UIView {
             }
             self?.titles = t
             self?.images = i
+            self?.setupUI()
             self?.pageControl.numberOfPages = self?.images?.count ?? 0
-            self?.collectionView.reloadData()
+            
         }
         
         
@@ -101,19 +102,23 @@ extension YLCycleView {
 
     fileprivate func setupUI() {
 
-        addSubview(collectionView)
+        if collectionView.superview == nil {
+            addSubview(collectionView)
+        }
         //添加定时器。先移除再添加
         collectionView.reloadData()
         removeCycleTimer()
         if (images?.count)! > 1 {//如果只有1个图片就不再滚动
             self.collectionView.isScrollEnabled = true
             addCycleTimer()
-            addSubview(pageControl)
+            if pageControl.superview == nil {
+                addSubview(pageControl)
+            }
         }else {
             self.collectionView.isScrollEnabled = false
         }
         //滚动到该位置（让用户最开始就可以向左滚动）
-        collectionView.setContentOffset(CGPoint(x: collectionView.bounds.width * CGFloat((images?.count)!) * 10, y: 0), animated: true)
+        collectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
 
         //点击事件
         self.isUserInteractionEnabled = true
@@ -126,7 +131,7 @@ extension YLCycleView {
 extension YLCycleView : UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (images?.count ?? 0) * 10000
+        return (images?.count ?? 0)
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -200,12 +205,19 @@ extension YLCycleView {
         RunLoop.main.add(cycleTimer!, forMode: .commonModes)
     }
     func removeCycleTimer() {
+        
+        ///移除定时器的时候  防止滑动到一半的情况
+        var x = collectionView.contentOffset.x
+        if Int(x) % Int(collectionView.bounds.size.width) > 20   {
+            x = x - CGFloat(Int(x) % Int(collectionView.bounds.size.width))
+            collectionView.setContentOffset(CGPoint.init(x: x, y: 0), animated: true)
+        }
         cycleTimer?.invalidate()//移除
         cycleTimer = nil
     }
     @objc fileprivate func scrollToNextPage() {
         let currentOffsetX = collectionView.contentOffset.x
-        let offsetX = currentOffsetX + collectionView.bounds.width
+        let offsetX = Int(currentOffsetX + collectionView.bounds.width) %  Int(collectionView.bounds.width * CGFloat(self.titles?.count ?? 1))
         //滚动到该位置
         collectionView.setContentOffset(CGPoint(x: offsetX, y: 0), animated: true)
     }

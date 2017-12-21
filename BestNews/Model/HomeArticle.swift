@@ -46,9 +46,14 @@ class HomeArticle: HandyJSON {
     }
     
     
+    func cellListPublisher() -> String {
+        if marks == "原创" {
+            return ""
+        }
+        return publisher
+    }
     
     func dateString() -> String {
-        
         let date = Date(timeIntervalSince1970: Double(publishdate)/1000)
         let dateStr = date.newsDateStr()
         return dateStr

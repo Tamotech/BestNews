@@ -12,19 +12,25 @@ import UIKit
 
 class SpecialChannelArticleListController: BaseViewController, UITableViewDelegate, UITableViewDataSource, YLCycleViewDelegate {
     
+    ///专题
     var channel: SpecialChannel?
+    ///频道
+    var newsChannel: NewsChannel?
     var articleList: HomeArticleList?
     var page: Int = 1
     
     lazy var headerBannerView: YLCycleView = {
-        let v = YLCycleView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenWidth*243.0/375.0), images:[self.channel!.preimgpath], titles: [self.channel!.fullname])
+        let imgs = self.channel == nil ? [self.newsChannel!.preimgpath] : [self.channel!.preimgpath]
+        let titles = self.channel == nil ? [self.newsChannel!.fullname] : [self.channel!.fullname]
+        let v = YLCycleView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenWidth*243.0/375.0), images:imgs, titles: titles)
         v.delegate = self
         return v
     }()
     
     lazy var tableView: UITableView = {
         let v = UITableView(frame: CGRect.init(x: 0, y: 64, width: screenWidth, height: screenHeight-64), style: .plain)
-        v.separatorStyle = .none
+        v.separatorStyle = .singleLine
+        v.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
         v.delegate = self
         v.dataSource = self
         v.estimatedRowHeight = 220
@@ -37,7 +43,12 @@ class SpecialChannelArticleListController: BaseViewController, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        showCustomTitle(title: channel!.name)
+        if channel != nil {
+            showCustomTitle(title: channel!.fullname)
+        }
+        else if newsChannel != nil {
+            showCustomTitle(title: newsChannel!.fullname)
+        }
         setupView()
         updateBanner()
         self.reloadArticleList()
@@ -139,12 +150,12 @@ class SpecialChannelArticleListController: BaseViewController, UITableViewDelega
         
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if scrollView.contentOffset.y > -10 && scrollView.contentOffset.y < 100
-        {
-            autoAjustToNavColor()
-        }
-    }
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        if scrollView.contentOffset.y > -10 && scrollView.contentOffset.y < 100
+//        {
+//            autoAjustToNavColor()
+//        }
+//    }
     
     ///根据scrollview的位置自动调节到相应的颜色
     func autoAjustToNavColor() {
@@ -170,7 +181,8 @@ class SpecialChannelArticleListController: BaseViewController, UITableViewDelega
 extension SpecialChannelArticleListController {
     
     func reloadArticleList() {
-        APIRequest.articleListAPI(id: channel!.id, type: "channelid", page: 1) { [weak self](data) in
+        let id = channel == nil ? newsChannel!.id : channel!.id
+        APIRequest.articleListAPI(id: id, type: "channelid", page: 1) { [weak self](data) in
             self?.tableView.cr.endHeaderRefresh()
             self?.page = 1
             self?.articleList = data as? HomeArticleList
@@ -189,7 +201,8 @@ extension SpecialChannelArticleListController {
         }
         
         page = page + 1
-        APIRequest.articleListAPI(id: channel!.id, type: "channelid", page: page) { [weak self](data) in
+        let id = channel == nil ? newsChannel!.id : channel!.id
+        APIRequest.articleListAPI(id: id, type: "channelid", page: page) { [weak self](data) in
             
             self?.page = 1
             let list = data as? HomeArticleList

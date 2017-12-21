@@ -11,7 +11,6 @@ import SnapKit
 
 class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewDelegate {
 
-    let titles = ["推荐","快讯","订阅","直播"]
     var scrollView = UIScrollView(frame: UIScreen.main.bounds)
     var titleView: TYPageTitleView?
     var navBarView: UIView?
@@ -19,6 +18,15 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
     var messageBt: UIButton?
     var menuBt: UIButton?
     var searchButton: UIButton?
+    
+    ///标记childView
+    let kStabelChildTag: Int = 1104
+    let kUnstabelChildTag: Int = 1105
+    
+    ///childViewControllers
+    var cvcs: [UIViewController] = []
+    
+    
     lazy var blackLayer: CAGradientLayer = {
         let layer = CAGradientLayer()
         layer.frame = CGRect(x: 0, y: 0, width: screenWidth, height: 64+44)
@@ -37,6 +45,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
         self.shouldClearNavBar = false
         self.setupChildView()
         self.setupTitleView()
+        self.setupNavTitleView()
 //        self.setupNavigationItems()
         
     
@@ -60,7 +69,15 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
     
     func setupChildView() {
         
-        scrollView.contentSize = CGSize(width: screenWidth*CGFloat(titles.count), height: screenHeight-49)
+        let titles = HomeModel.shareInstansce.navTitles()
+        for childView in scrollView.subviews {
+            if childView.tag == kUnstabelChildTag {
+                childView.removeFromSuperview()
+                cvcs.remove(at: scrollView.subviews.count-2)
+            }
+        }
+        
+        scrollView.contentSize = CGSize(width: screenWidth*CGFloat(HomeModel.shareInstansce.navTitles().count), height: screenHeight-49)
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.isPagingEnabled = true
@@ -68,39 +85,101 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
         self.view.addSubview(scrollView)
         self.automaticallyAdjustsScrollViewInsets = false
         
-        for i in 0..<titles.count {
-            if i == 1 {
-                let vc = FastNewsController()
-                addChildViewController(vc)
-                let x = screenWidth*CGFloat(i)
-                vc.view.frame = CGRect(x: x, y: 64+40, width: screenWidth, height: screenHeight-49-64-40)
-                scrollView.addSubview(vc.view)
-                continue
+        ///首次
+        if scrollView.subviews.count == 0 {
+            for i in 0..<titles.count {
+                if i == 0 {
+                    let vc = HomeContentViewController()
+                    cvcs.append(vc)
+                    addChildViewController(vc)
+                    let x = screenWidth*CGFloat(i)
+                    vc.view.frame = CGRect(x: x, y: 64, width: screenWidth, height: screenHeight-49-64)
+                    scrollView.addSubview(vc.view)
+                    vc.view.tag = kStabelChildTag
+                }
+                else if i == 1 {
+                    let vc = FastNewsController()
+                    cvcs.append(vc)
+                    addChildViewController(vc)
+                    let x = screenWidth*CGFloat(i)
+                    vc.view.frame = CGRect(x: x, y: 64+40, width: screenWidth, height: screenHeight-49-64-40)
+                    scrollView.addSubview(vc.view)
+                    vc.view.tag = kStabelChildTag
+                    continue
+                }
+                else if i == 2 {
+                    let vc = SubscriptionListControllerViewController()
+                    cvcs.append(vc)
+                    addChildViewController(vc)
+                    let x = screenWidth*CGFloat(i)
+                    vc.view.frame = CGRect(x: x, y: 64+40, width: screenWidth, height: screenHeight-64-40)
+                    scrollView.addSubview(vc.view)
+                    vc.view.tag = kStabelChildTag
+                    continue
+                }
+                else if i == HomeModel.shareInstansce.navTitles().count - 1 {
+                    let vc = LiveListController()
+                    cvcs.append(vc)
+                    addChildViewController(vc)
+                    let x = screenWidth*CGFloat(i)
+                    vc.view.frame = CGRect(x: x, y: 64+40, width: screenWidth, height: screenHeight-64-40)
+                    scrollView.addSubview(vc.view)
+                    vc.view.tag = kStabelChildTag
+                    continue
+                }
+                else {
+                    //专题
+                    let title = HomeModel.shareInstansce.navTitles()[i]
+                    let data = HomeModel.shareInstansce.getChannel(title)
+                    let vc = SpecialChannelArticleListController()
+                    vc.channel = data
+                    cvcs.insert(vc, at: cvcs.count-2)
+                    addChildViewController(vc)
+                    let x = screenWidth*CGFloat(i)
+                    vc.view.frame = CGRect(x: x, y: 40, width: screenWidth, height: screenHeight-49-40)
+                    scrollView.addSubview(vc.view)
+                    vc.view.tag = kUnstabelChildTag
+                }
+                
             }
-            else if i == 2 {
-                let vc = SubscriptionListControllerViewController()
-                addChildViewController(vc)
-                let x = screenWidth*CGFloat(i)
-                vc.view.frame = CGRect(x: x, y: 64, width: screenWidth, height: screenHeight-64)
-                scrollView.addSubview(vc.view)
-                continue
-            }
-            else if i == 3 {
-                let vc = LiveListController()
-                addChildViewController(vc)
-                let x = screenWidth*CGFloat(i)
-                vc.view.frame = CGRect(x: x, y: 64+40, width: screenWidth, height: screenHeight-64-40)
-                scrollView.addSubview(vc.view)
-                continue
-            }
-            let vc = HomeContentViewController()
-            addChildViewController(vc)
-            let x = screenWidth*CGFloat(i)
-            vc.view.frame = CGRect(x: x, y: 64, width: screenWidth, height: screenHeight-49-64)
-            scrollView.addSubview(vc.view)
-            
         }
-        
+        else if scrollView.subviews.count == 4 {
+            
+            ///调整固定的frame
+            let v1 = scrollView.subviews[0]
+            let x = screenWidth*CGFloat(0)
+            v1.frame = CGRect(x: x, y: 64, width: screenWidth, height: screenHeight-49-64)
+            
+            let v2 = scrollView.subviews[1]
+            let x2 = screenWidth*CGFloat(1)
+            v2.frame = CGRect(x: x2, y: 64+40, width: screenWidth, height: screenHeight-49-64-40)
+            
+            let v3 = scrollView.subviews[2]
+            let x3 = screenWidth*CGFloat(2)
+            v3.frame = CGRect(x: x3, y: 64+40, width: screenWidth, height: screenHeight-64-40)
+            
+            let v4 = scrollView.subviews[3]
+            let x4 = screenWidth*CGFloat(titles.count-1)
+            v4.frame = CGRect(x: x4, y: 64+40, width: screenWidth, height: screenHeight-64-40)
+            
+            //新加入的专题
+            for i in 3..<titles.count-1 {
+                let data = HomeModel.shareInstansce.specilList[i]
+                let vc = SpecialChannelArticleListController()
+                vc.channel = data
+                vc.showCustomTitle(title: "")
+                cvcs.insert(vc, at: cvcs.count-2)
+                addChildViewController(vc)
+                vc.barView.removeFromSuperview()
+                let x = screenWidth*CGFloat(i)
+                vc.view.frame = CGRect(x: x, y: 40, width: screenWidth, height: screenHeight-49-40)
+                scrollView.addSubview(vc.view)
+                vc.view.tag = kUnstabelChildTag
+            }
+        }
+        if self.navBarView != nil {
+            self.view.bringSubview(toFront: self.navBarView!)
+        }
     }
     
     func setupNavigationItems() {
@@ -113,8 +192,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
     
     func setupTitleView() {
         
-        titleView = TYPageTitleView(frame: CGRect.init(x: 0, y: 0, width: screenWidth-88, height: 44), titles: titles)
-        titleView?.delegate = self
+        
         let barView = UIView(frame: .zero)
         self.view.addSubview(barView)
         barView.snp.makeConstraints { (make) in
@@ -163,21 +241,14 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
             make.size.equalTo(CGSize(width: 50, height: 40))
         }
         
-        barView.addSubview(titleView!)
-        titleView?.snp.makeConstraints({ (make) in
-            make.left.equalTo(10)
-            make.bottom.equalTo(-8)
-            make.height.equalTo(44)
-        })
-        
         let menubt = UIButton(frame: .zero)
         menubt.setImage(#imageLiteral(resourceName: "icon_menu_white"), for: .normal)
         menubt.addTarget(self, action: #selector(handleTapMenuItem(sender:)), for: UIControlEvents.touchUpInside)
         barView.addSubview(menubt)
         menubt.snp.makeConstraints { (make) in
             make.right.equalTo(-4)
-            make.centerY.equalTo(titleView!.snp.centerY)
-            make.left.equalTo(titleView!.snp.right).offset(15)
+            make.bottom.equalTo(-8)
+            make.left.equalTo(messagebt.snp.left).offset(0)
             make.size.equalTo(CGSize(width: 50, height: 40))
         }
         
@@ -187,6 +258,21 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
         self.messageBt = messagebt
         self.menuBt = menubt
         
+    }
+    
+    func setupNavTitleView() {
+        if titleView?.superview != nil {
+            titleView?.removeFromSuperview()
+        }
+        titleView = TYPageTitleView(frame: CGRect.init(x: 0, y: 0, width: screenWidth-64, height: 44), titles: HomeModel.shareInstansce.navTitles())
+        titleView?.delegate = self
+        self.navBarView!.addSubview(titleView!)
+        titleView?.snp.makeConstraints({ (make) in
+            make.left.equalTo(10)
+            make.bottom.equalTo(-8)
+            make.height.equalTo(44)
+            make.right.equalTo(-64)
+        })
     }
     
     //MARK: - scrollView
@@ -242,6 +328,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
         switchToIndex(index: index)
         //让pageView滚动起来
         titleView?.pageViewScrollEnd(pageIndex: index)
+        titleView?.pageViewScroll(nextIndex: index-1, progress: 0)
     }
     
     //MARK: - TYTitleView
@@ -261,6 +348,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
     
     func handleTapMenuItem(sender: Any) {
         let selectColumnView = SelectColumeView(frame: UIScreen.main.bounds)
+        selectColumnView.mainVC = self
         selectColumnView.show()
     }
     
@@ -271,25 +359,23 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
     
     func switchToIndex(index: Int) {
         currentIndex = index
-        
-        if index == 1 || index == 2 || index == 3 {
+        let vc = cvcs[index]
+        if vc is HomeContentViewController {
+            (vc as! HomeContentViewController).autoAjustToNavColor()
+        }
+        else if vc is FastNewsController {
             self.navBarTurnBg(white: true)
         }
-        else {
-            let vc = childViewControllers[index]
-            if vc is HomeContentViewController {
-                (vc as! HomeContentViewController).autoAjustToNavColor()
-            }
-            else {
-                self.navBarTurnBg(white: false)
-            }
-        }
-        if index == 2 || index == 3 {
-            ///订阅
+        else if vc is SubscriptionListControllerViewController || vc is LiveListController {
+            self.navBarTurnBg(white: true)
             if !SessionManager.sharedInstance.loginInfo.isLogin {
                 Toolkit.showLoginVC()
             }
         }
+        else if vc.view.tag == kUnstabelChildTag {
+            self.navBarTurnBg(white: true)
+        }
+    
         
     }
     
@@ -335,4 +421,23 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
         }
     }
 
+    ///导航专题
+    func updateNavTitleUI() {
+        
+    }
+    
+    
+    /// 按标题切换
+    ///
+    /// - Parameter title: 标题
+    func switchToVCWithTitle(_ title: String) {
+        for (i, item) in titleView!.titles.enumerated() {
+            if item == title {
+                titleView?.pageViewScrollEnd(pageIndex: i)
+                scrollView.setContentOffset(CGPoint.init(x: screenWidth*CGFloat(i), y: 0), animated: true)
+                switchToIndex(index: i)
+                return
+            }
+        }
+    }
 }

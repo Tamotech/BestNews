@@ -90,8 +90,9 @@ class BaseViewController: UIViewController {
         if !shouldClearNavBar {
             self.barView.isHidden = false
             self.view.bringSubview(toFront: barView)
-            let nav = navigationController as! BaseNavigationController
-            nav.navigationBar.tintColor = gray51
+            if navigationController != nil {
+                navigationController?.navigationBar.tintColor = gray51
+            }
         }
         else {
             self.barView.isHidden = true

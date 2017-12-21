@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import IQKeyboardManagerSwift
 
 protocol CommentBarDelegate: class {
     
@@ -16,6 +17,7 @@ protocol CommentBarDelegate: class {
     func tapRepostHandler()
     func tapReportHandler()
     func postSuccessHandler()
+    func tapPublishBtnHandler()
     
     
 }
@@ -112,10 +114,11 @@ class NewsCommentBar: UIView, UITextViewDelegate {
         return v
     }()
     
-    lazy var textField:UITextView = {
-       let field = UITextView()
+    lazy var textField:IQTextView = {
+       let field = IQTextView()
         field.layer.cornerRadius = 16
-        field.toolbarPlaceholder = "发表评论..."
+        field.placeholder = "发表评论..."
+        
         field.font = UIFont.systemFont(ofSize: 15)
         field.textContainerInset = UIEdgeInsetsMake(8, 8, 8, 8)
         field.backgroundColor = gray244
@@ -214,10 +217,14 @@ class NewsCommentBar: UIView, UITextViewDelegate {
     }
     
     func handleTapPostBtn(sender: UIButton) {
+        
         postComment()
     }
     
     func handleTapBarView(sender: Any) {
+        if !SessionManager.sharedInstance.loginInfo.isLogin {
+            Toolkit.showLoginVC()
+        }
         self.switchToEditMode(edit: true)
     }
     
@@ -309,6 +316,11 @@ extension NewsCommentBar {
         let content = textField.text
         if content?.count == 0 {
             return
+        }
+        
+        textField.resignFirstResponder()
+        if delegate != nil {
+            delegate!.tapPublishBtnHandler()
         }
         APIRequest.commentAPI(articleId: articleId, commentId: targetCommentId, content: content!) { [weak self](JSON) in
             self?.textField.text = ""

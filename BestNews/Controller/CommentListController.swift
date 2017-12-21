@@ -15,7 +15,7 @@ CommentCellDelegate, CommentBarDelegate {
     
     var commentList: CommentList?
     var articleId: String = ""
-    var tableView = UITableView(frame: CGRect(x: 0, y: 64, width: screenWidth, height: screenHeight-49), style: .grouped)
+    var tableView = UITableView(frame: CGRect(x: 0, y: 40, width: screenWidth, height: screenHeight-49), style: .grouped)
     var commentBar = NewsCommentBar(frame: CGRect(x: 0, y: screenHeight-49, width: screenWidth, height: 49))
 //    var targetCommentId: String?
     
@@ -43,6 +43,7 @@ CommentCellDelegate, CommentBarDelegate {
             tableView.cr.beginHeaderRefresh()
         }
         view.addSubview(commentBar)
+        commentBar.delegate = self
         commentBar.articleId = articleId
         showCustomTitle(title: "评论(\(commentList?.total ?? 0))")
         
@@ -116,6 +117,11 @@ CommentCellDelegate, CommentBarDelegate {
         customPresentViewController(presentr, viewController: vc, animated: true) {
             
         }
+    }
+    
+    
+    func tapPublishBtnHandler() {
+        
     }
     
     func postSuccessHandler() {

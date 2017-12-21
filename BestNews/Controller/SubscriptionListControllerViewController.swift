@@ -252,6 +252,7 @@ extension SubscriptionListControllerViewController {
             self?.scrollview.cr.endHeaderRefresh()
             self?.channels = data as! [NewsChannel]
             self?.columeCollectionView.reloadData()
+            HomeModel.shareInstansce.allChannels = data as! [NewsChannel]
         }
     }
     

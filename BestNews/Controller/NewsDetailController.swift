@@ -12,6 +12,7 @@ import Presentr
 import Kingfisher
 
 class NewsDetailController: BaseViewController, UITableViewDelegate, UITableViewDataSource, CommentBarDelegate, WKNavigationDelegate {
+    
 
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -131,6 +132,10 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
     //MARK: - actions
     
     @IBAction func handleTapSubscriptBtn(_ sender: UIButton) {
+        
+        if !SessionManager.sharedInstance.loginInfo.isLogin {
+            Toolkit.showLoginVC()
+        }
         if article != nil {
             if article!.subseribe == 0 {
                 subscriptBtn.switchStateSub(true)
@@ -188,6 +193,10 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
     }
     
     func tapReportHandler() {
+        
+    }
+    
+    func tapPublishBtnHandler() {
         
     }
     
@@ -320,6 +329,10 @@ extension NewsDetailController {
         subscriptBtn.switchStateSub(article!.subseribe == 1)
         commentBar.collect(article!.collect == 1)
         rewardBtn.isHidden = article?.type != "normal"
+        if let url = URL(string: article!.headimg) {
+            let rc = ImageResource(downloadURL: url)
+            avtarBtn.kf.setImage(with: rc, for: UIControlState.normal)
+        }
         let htmlString = NSString(string: baseHtmlString).replacingOccurrences(of: "${contentHtml}", with: article!.content)
         webView.loadHTMLString(htmlString, baseURL: URL(string: htmlString))
     }

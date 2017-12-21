@@ -17,6 +17,8 @@ class SpecialChannel: HandyJSON {
     var type: String = ""
     var preimgpath: String = ""
     var fullname: String = ""
+    ///是否显示在首页
+    var showinnavflag: Int = 0
     
     required init() {}
 }

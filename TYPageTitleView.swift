@@ -193,6 +193,9 @@ extension TYPageTitleView{
     // MARK: 更新label 更新lineView
     func pageViewScroll(nextIndex:Int,progress:CGFloat){
         
+        if nextIndex < 0 || nextIndex >= titleLabels.count {
+            return
+        }
         let currentLabel = titleLabels[currentIndex]
         let nextLabel = titleLabels[nextIndex]
         

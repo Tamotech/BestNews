@@ -21,6 +21,14 @@ class Toolkit: NSObject {
             let navVC = topVC as! UINavigationController
             return navVC.childViewControllers.last
         }
+        else if topVC!.isKind(of: UITabBarController.self) {
+            let tabVC = topVC as! UITabBarController
+            let firstVC  = tabVC.childViewControllers.first
+            if firstVC is UINavigationController {
+                return firstVC?.childViewControllers.first
+            }
+            return firstVC
+        }
         return topVC
     }
     

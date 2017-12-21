@@ -110,6 +110,7 @@ extension SelectInterestItemController {
         APIRequest.getAllChannelAPI { [weak self](data) in
             self?.items = data as! [NewsChannel]
             self?.collectionView.reloadData()
+            HomeModel.shareInstansce.allChannels = data as! [NewsChannel]
         }
     }
 }

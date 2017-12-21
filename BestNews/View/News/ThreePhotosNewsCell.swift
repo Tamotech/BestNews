@@ -34,8 +34,16 @@ class ThreePhotosNewsCell: BaseNewsCell {
     override func updateCell(article: HomeArticle) {
         super.updateCell(article: article)
         titleLb.text = article.title
-        descLb.text = article.publisher
+        descLb.text = article.cellListPublisher()
         dateLb.text = article.dateString()
+        if article.marks.count > 0 {
+            tipBtn.isHidden = false
+            tipBtn.setTitle(article.marks, for: .normal)
+            tipBtn.backgroundColor = article.markColor()
+        }
+        else {
+            tipBtn.isHidden = true
+        }
         for i in 0..<article.preimglist.count {
             let img = article.preimglist[i]
             if img.count > 0 {

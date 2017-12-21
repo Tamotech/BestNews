@@ -35,7 +35,7 @@ class SinglePhotoNewsCell: BaseNewsCell {
     override func updateCell(article: HomeArticle) {
         super.updateCell(article: article)
         titleLb.text = article.title
-        descLb.text = article.publisher
+        descLb.text = article.cellListPublisher()
         dateLb.text = article.dateString()
         if article.preimglist.count > 0 {
             let img = article.preimglist[0]
