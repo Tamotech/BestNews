@@ -37,7 +37,7 @@ class YLCycleView: UIView {
     }()
     lazy var pageControl : UIPageControl = {[weak self] in
 
-        let pageControl = UIPageControl(frame: CGRect(x: 100, y: self!.bounds.height - 100, width: self!.bounds.width - 200, height: 20))
+        let pageControl = UIPageControl(frame: CGRect(x: self!.bounds.size.width-100, y: self!.bounds.height - 14, width: 100, height: 14))
         pageControl.pageIndicatorTintColor = UIColor(hexString: "#ffffff", alpha: 0.5)
 
         pageControl.currentPageIndicatorTintColor = .white

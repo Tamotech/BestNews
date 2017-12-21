@@ -46,17 +46,17 @@ class ActivityModel: HandyJSON {
     }()
     
     ///标签
-    func stateStr() -> String {
+    func stateStr() -> (String, UIColor) {
         if state == "l3_hot" {
-            return "热门活动"
+            return ("热门活动", UIColor(hexString: "#f75e5e")!)
         }
         else if state == "l2_coming" {
-            return "即将到来"
+            return ("即将到来", themeColor!)
         }
         else if state == "l1_finish" {
-            return "已经结束"
+            return ("已经结束", UIColor(hexString: "#999999")!)
         }
-        return ""
+        return ("", themeColor!)
     }
     
     ///时间

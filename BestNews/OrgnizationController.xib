@@ -123,7 +123,7 @@
                     </constraints>
                 </scrollView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="njs-NP-Woq" userLabel="header">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="371.5"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="327.5"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="orgnization_cover" translatesAutoresizingMaskIntoConstraints="NO" id="MYL-kQ-mQU">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="317.5"/>
@@ -181,11 +181,11 @@
                             <color key="textColor" white="1" alpha="0.7497859589041096" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pav-CD-Rrg">
-                            <rect key="frame" x="0.0" y="327.5" width="375" height="44"/>
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pav-CD-Rrg">
+                            <rect key="frame" x="0.0" y="327.5" width="375" height="0.0"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="44" id="T50-Zc-aMx"/>
+                                <constraint firstAttribute="height" id="T50-Zc-aMx"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
                                 <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
@@ -223,7 +223,7 @@
                         <constraint firstItem="V2j-Lc-xXS" firstAttribute="centerX" secondItem="njs-NP-Woq" secondAttribute="centerX" id="d5r-ck-s3P"/>
                         <constraint firstItem="MYL-kQ-mQU" firstAttribute="top" secondItem="njs-NP-Woq" secondAttribute="top" id="iHM-xg-DxR"/>
                         <constraint firstItem="SDn-80-DM9" firstAttribute="bottom" secondItem="MYL-kQ-mQU" secondAttribute="bottom" constant="-20" id="iu4-Rw-hBb"/>
-                        <constraint firstAttribute="bottom" secondItem="MYL-kQ-mQU" secondAttribute="bottom" constant="54" id="nRr-IY-wKr"/>
+                        <constraint firstAttribute="bottom" secondItem="MYL-kQ-mQU" secondAttribute="bottom" constant="10" id="nRr-IY-wKr"/>
                         <constraint firstAttribute="trailing" secondItem="azO-sQ-FMc" secondAttribute="trailing" constant="20" id="ns1-hT-gSH"/>
                         <constraint firstItem="1Ga-ys-918" firstAttribute="top" secondItem="V2j-Lc-xXS" secondAttribute="bottom" constant="12" id="upF-41-Lg1"/>
                         <constraint firstItem="pav-CD-Rrg" firstAttribute="centerX" secondItem="njs-NP-Woq" secondAttribute="centerX" id="zFa-Qm-t5Q"/>

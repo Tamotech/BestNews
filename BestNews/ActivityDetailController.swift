@@ -209,8 +209,8 @@ class ActivityDetailController: BaseViewController, ActivityTicketListController
         print("高度...> \(webView.scrollView.contentSize.height)")
         webView.evaluateJavaScript("document.body.offsetHeight;") { (data, error) in
             print("加载完毕...>\(data!)")
-            self.webView.height = (data as! CGFloat)*44/100+100
-            self.webViewHeight.constant = (data as! CGFloat)*44/100+100
+            self.webView.height = (data as! CGFloat)*40/100+100
+            self.webViewHeight.constant = (data as! CGFloat)*40/100+100
         }
     }
 }

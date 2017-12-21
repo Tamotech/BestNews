@@ -32,16 +32,16 @@ extension YLCycleCell {
     fileprivate func setupUI() {
 
         iconImageView.frame = self.bounds
-        bottomView.frame = CGRect(x: 0, y: iconImageView.bounds.height - 75, width: iconImageView.bounds.width, height: 75)
-        titleLabel.frame = CGRect(x: 15, y: iconImageView.bounds.height - 75, width: iconImageView.bounds.width - 30, height: 75)
+        bottomView.frame = CGRect(x: 0, y: iconImageView.bounds.height - 45, width: iconImageView.bounds.width, height: 45)
+        titleLabel.frame = CGRect(x: 15, y: iconImageView.bounds.height - 45, width: iconImageView.bounds.width - 30, height: 45)
 
         //设置属性
         bottomView.backgroundColor = .black
         bottomView.alpha = 0.4
         titleLabel.textAlignment = .left
         titleLabel.textColor = .white
-        titleLabel.numberOfLines = 2
-        titleLabel.font = UIFont.systemFont(ofSize: 18)
+        titleLabel.numberOfLines = 1
+        titleLabel.font = UIFont.systemFont(ofSize: 16)
 
         contentView.addSubview(iconImageView)
         contentView.addSubview(bottomView)

@@ -33,6 +33,8 @@ class ActivityCoverCell: UITableViewCell {
         }
         titleLb.text = data.title
         dateLb.text = data.dateStr()
+        tipLabel.text = data.stateStr().0
+        tipView.backgroundColor = data.stateStr().1
         addressLb.text = data.address
     }
     
