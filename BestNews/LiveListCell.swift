@@ -56,11 +56,17 @@ class LiveListCell: UITableViewCell {
             startLive.isHidden = false
         }
         else if data.state == "l3_living" {
-            greenDotView.isHidden = true
+            greenDotView.isHidden = false
             liveStatusBtn.backgroundColor = UIColor(hexString: "#000000", alpha: 0.2)
             liveStatusBtn.layer.borderWidth = 1
             liveStatusBtn.borderColor = UIColor(hexString: "#ffffff", alpha: 1)!
             startLive.isHidden = false
+        }
+        if data.anchoruserid == SessionManager.sharedInstance.userId {
+            startLive.isHidden = false
+        }
+        else {
+            startLive.isHidden = true
         }
         liveStatusBtn.setTitle(data.stateStr(), for: .normal)
         if let url = URL(string: data.preimgpath) {
@@ -73,6 +79,7 @@ class LiveListCell: UITableViewCell {
         else {
             collectionBtn.setImage(#imageLiteral(resourceName: "star_light"), for: .normal)
         }
+        collectionBtn.setTitle(" \(data.collectnum)", for: UIControlState.normal)
         voteBtn.setTitle(" \(data.collectnum)", for: .normal)
         voteBtn.setTitle(" \(data.zannum)", for: .normal)
         titleLb.text = data.title

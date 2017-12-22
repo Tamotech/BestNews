@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 ///专题下的文章列表
 
@@ -17,20 +18,14 @@ class SpecialChannelArticleListController: BaseViewController, UITableViewDelega
     ///频道
     var newsChannel: NewsChannel?
     var articleList: HomeArticleList?
+    var coverArticle: HomeArticle?
     var page: Int = 1
-    
-    lazy var headerBannerView: YLCycleView = {
-        let imgs = self.channel == nil ? [self.newsChannel!.preimgpath] : [self.channel!.preimgpath]
-        let titles = self.channel == nil ? [self.newsChannel!.fullname] : [self.channel!.fullname]
-        let v = YLCycleView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenWidth*243.0/375.0), images:imgs, titles: titles)
-        v.delegate = self
-        return v
-    }()
     
     lazy var tableView: UITableView = {
         let v = UITableView(frame: CGRect.init(x: 0, y: 64, width: screenWidth, height: screenHeight-64), style: .plain)
         v.separatorStyle = .singleLine
-        v.separatorInset = UIEdgeInsetsMake(0, 0, 0, 0)
+        v.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15)
+        v.separatorColor = UIColor(hexString: "f0f0f0")
         v.delegate = self
         v.dataSource = self
         v.estimatedRowHeight = 220
@@ -50,13 +45,12 @@ class SpecialChannelArticleListController: BaseViewController, UITableViewDelega
             showCustomTitle(title: newsChannel!.fullname)
         }
         setupView()
-        updateBanner()
         self.reloadArticleList()
+        self.loadCoverArticle()
     }
     
     func setupView() {
         self.view.addSubview(tableView)
-        tableView.tableHeaderView = headerBannerView
         for i in 0..<cellIdentifiers.count {
             let identifier = cellIdentifiers[i]
             let nib = UINib(nibName: identifier, bundle: nil)
@@ -74,6 +68,7 @@ class SpecialChannelArticleListController: BaseViewController, UITableViewDelega
         tableView.cr.addHeadRefresh {
             [weak self] in
             self?.reloadArticleList()
+            self?.loadCoverArticle()
         }
         tableView.cr.addFootRefresh {
             [weak self] in
@@ -91,7 +86,9 @@ class SpecialChannelArticleListController: BaseViewController, UITableViewDelega
     //MARK: - banner delegate
     
     func clickedCycleView(_ cycleView: YLCycleView, selectedIndex index: Int) {
-        
+        let vc = NewsDetailController.init(nibName: "NewsDetailController", bundle: nil) as NewsDetailController
+        vc.articleId = coverArticle!.id
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     //MARK: - tableView
@@ -210,6 +207,23 @@ extension SpecialChannelArticleListController {
                 self?.articleList?.list.append(contentsOf: list!.list)
                 self?.tableView.reloadData()
             }
+        }
+    }
+    
+    ///封面文章
+    func loadCoverArticle() {
+        let id = channel == nil ? newsChannel!.id : channel!.id
+        APIRequest.channelCoverArticleAPI(id: id) { [weak self](data) in
+            self?.coverArticle = data as? HomeArticle
+            self?.updateCover()
+        }
+    }
+    
+    func updateCover() {
+        if coverArticle != nil {
+            let v = YLCycleView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenWidth*243.0/375.0), images:[coverArticle!.titleimgpath], titles: [coverArticle!.title])
+            v.delegate = self
+            tableView.tableHeaderView = v
         }
     }
     

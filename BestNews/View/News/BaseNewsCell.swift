@@ -15,6 +15,7 @@ class BaseNewsCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        self.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15)
     }
 
     func updateCell(article: HomeArticle) {

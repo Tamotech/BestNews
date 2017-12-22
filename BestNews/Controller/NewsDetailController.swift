@@ -78,7 +78,7 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
         tableView.register(nib, forCellReuseIdentifier: "SinglePhotoNewsCell")
         let nib1 = UINib(nibName: "NoPhotoNewsCell", bundle: nil)
         tableView.register(nib1, forCellReuseIdentifier: "NoPhotoNewsCell")
-        
+        tableView.separatorColor = UIColor(hexString: "f0f0f0")
         tableView.sectionFooterHeight = 0.1
         tableView.sectionHeaderHeight = 0.1
 //        tableView.rowHeight = 108
@@ -280,8 +280,8 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
         webView.evaluateJavaScript("document.documentElement.scrollHeight;") { (data, error) in
             print("加载完毕...>\(data!)")
             ///TODO: 高度计算cheat
-            self.webView.height = (data as! CGFloat)*40/100
-            self.webParentHeight.constant = (data as! CGFloat)*40/100
+            self.webView.height = (data as! CGFloat)*38/100+20
+            self.webParentHeight.constant = (data as! CGFloat)*38/100+20
         }
     }
     

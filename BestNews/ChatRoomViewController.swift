@@ -8,8 +8,10 @@
 
 import UIKit
 import ImagePicker
+import SnapKit
+import Kingfisher
 
-class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, ConversationDelegate, RCIMClientReceiveMessageDelegate, UITextFieldDelegate, ImagePickerDelegate, AliyunVodPlayerViewDelegate {
+class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, ConversationDelegate, RCIMClientReceiveMessageDelegate, UITextFieldDelegate, ImagePickerDelegate, AliyunVodPlayerDelegate {
     
     
 
@@ -17,7 +19,8 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
     var token = ""
     var userId = ""
     var liveModel: LiveModel?
-    let playerV = AliyunVodPlayerView(frame: CGRect.zero)
+
+    
     ///评论区
     var list: [RCMessage] = []
     ///主持区
@@ -62,12 +65,28 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
     
     @IBOutlet weak var anchorHeight: NSLayoutConstraint!
     
+    var backBt: UIButton!
+    
+    var expandBt: UIButton!
+    
+    
+    
     lazy var segment: BaseSegmentControl = {
         let v = BaseSegmentControl(items: ["主持区", "评论区"], defaultIndex: 0)
         v.frame = self.segParentView.bounds
         self.segParentView.addSubview(v)
         return v
     }()
+    
+    lazy var aliyunVodPlayer:AliyunVodPlayer = {
+        //播放器初始化
+        let tempPlayer = AliyunVodPlayer()
+        tempPlayer.delegate = self as AliyunVodPlayerDelegate
+        return tempPlayer
+    }()
+    
+    var coverView = UIImageView()
+    var activity = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,14 +106,8 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
         tableView1.isHidden = false
         tableView2.isHidden = true
         
-        let playerHeight = screenWidth*211/375
-        playerV?.frame = CGRect(x: 0, y: 0, width: screenWidth, height: playerHeight)
-        playerParentView.addSubview(playerV!)
-        playerV?.isLockPortrait = false
-        playerV?.isLockScreen = false
-        playerV?.setBackHidden(true)
-        playerV?.delegate = self
-        
+        setPlayerContentView()
+        setCacheForPlaying()
         
         segment.selectItemAction = {[weak self](index, name) in
             if index == 0 {
@@ -115,19 +128,101 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
         publishBt.isEnabled = false
         commentBarChangeState(false)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         loadLiveDetail()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        playerV?.frame = playerParentView.bounds
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        self.aliyunVodPlayer.playerView.frame  = CGRect(x: 0, y: 0, width: self.playerParentView.bounds.size.width, height: self.playerParentView.bounds.size.height)
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+//        self.aliyunVodPlayer.stop()
+//        if self.aliyunVodPlayer.playerView != nil {
+//            self.aliyunVodPlayer.playerView.removeFromSuperview()
+//        }
+//        self.aliyunVodPlayer.release()
+        
     }
 
-    
-    func applicationDidEnterForeground() {
-        playerV?.frame = playerParentView.bounds
+    //MARK:析构函数
+    deinit {
+        self.aliyunVodPlayer.stop()
+        if self.aliyunVodPlayer.playerView != nil {
+            self.aliyunVodPlayer.playerView.removeFromSuperview()
+        }
+        self.aliyunVodPlayer.release()
+        print("back click")
     }
+   
+    ///设置播放视图
+    private func setPlayerContentView(){
+        
+        let h = screenWidth*211/375
+        let playerView = aliyunVodPlayer.playerView
+        playerView?.frame = CGRect(x: 0, y: 0, width: screenWidth, height: h)
+        keyWindow!.addSubview(playerView!)
+//        let mask = UIImageView(image: #imageLiteral(resourceName: "nav-black-layer"))
+//        playerView?.addSubview(mask)
+//        mask.snp.makeConstraints { (make) in
+//            make.left.right.top.equalTo(0)
+//            make.height.equalTo(64)
+//        }
+        
+        coverView.frame = playerView!.bounds
+        playerView?.addSubview(coverView)
+        if let url = URL(string: liveModel!.preimgpath) {
+            let rc = ImageResource(downloadURL: url)
+            coverView.kf.setImage(with: rc)
+        }
+        coverView.snp.makeConstraints { (make) in
+            make.top.bottom.left.right.equalTo(0)
+        }
+        
+        playerView?.addSubview(activity)
+        activity.snp.makeConstraints { (make) in
+            make.center.equalTo(playerView!.snp.center)
+        }
+        activity.startAnimating()
+        activity.hidesWhenStopped = true
+        
+        backBt = UIButton(frame: CGRect(x: 0, y: 20, width: 50, height: 40))
+        backBt.setImage(#imageLiteral(resourceName: "back-white"), for: UIControlState.normal)
+        backBt.addTarget(self, action: #selector(handleTapBackBt(_:)), for: UIControlEvents.touchUpInside)
+        playerView?.addSubview(backBt)
+        backBt.snp.makeConstraints { (make) in
+            make.left.equalTo(0)
+            make.top.equalTo(20)
+            make.size.equalTo(CGSize(width: 50, height: 40))
+        }
+        
+        expandBt = UIButton(frame: CGRect(x: 0, y: 20, width: 50, height: 40))
+        expandBt.setImage(#imageLiteral(resourceName: "expand_m252"), for: UIControlState.normal)
+        expandBt.addTarget(self, action: #selector(handleTapExpandBt(_:)), for: UIControlEvents.touchUpInside)
+        playerView?.addSubview(expandBt)
+        expandBt.snp.makeConstraints { (make) in
+            make.right.equalTo(0)
+            make.top.equalTo(20)
+            make.size.equalTo(CGSize(width: 50, height: 40))
+        }
+        
+    }
+    
+    //缓存设置
+    private func setCacheForPlaying(){
+        
+        let path = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true)[0]
+        aliyunVodPlayer.setPlayingCache(false, saveDir: path, maxSize: 30, maxDuration: 10000)
+    }
+    
     
     //MARK: - actions
     
@@ -146,6 +241,29 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
     }
     
     @IBAction func handleTapSubbt(_ sender: SubscribeButton) {
+        
+        if self.liveModel?.subscribe == 0 {
+            sender.switchStateSub(true)
+            APIRequest.subscriptChannelAPI(id: liveModel!.anchoruserid, type: "user") { [weak self](success) in
+                if !success {
+                    self?.liveModel?.subscribe = 0
+                }
+                else {
+                    self?.liveModel?.subscribe = 1
+                }
+            }
+        }
+        else {
+            sender.switchStateSub(false)
+            APIRequest.cancelSubscriptChannelAPI(id: liveModel!.anchoruserid, type: "user", result: { [weak self](success) in
+                if !success {
+                    self?.liveModel?.subscribe = 1
+                }
+                else {
+                    self?.liveModel?.subscribe = 0
+                }
+            })
+        }
     }
     
     @IBAction func handleTapRepost(_ sender: UIButton) {
@@ -216,6 +334,7 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
     
     @IBAction func handleTapCamera(_ sender: UIButton) {
         
+        self.aliyunVodPlayer.playerView.isHidden = true
         let picker = ImagePickerController()
         picker.imageLimit = 1
         picker.delegate = self
@@ -305,6 +424,37 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
         }
         
     }
+    
+    @IBAction func handleTapBackBt(_ sender: UIButton) {
+        
+        self.aliyunVodPlayer.stop()
+        if self.aliyunVodPlayer.playerView != nil {
+            self.aliyunVodPlayer.playerView.removeFromSuperview()
+        }
+        self.aliyunVodPlayer.release()
+        navigationController?.popViewController(animated: true)
+    }
+    
+    @IBAction func handleTapExpandBt(_ sender: UIButton) {
+        
+        if sender.tag == 0 {
+            //旋转90
+            sender.tag = 1
+            sender.setImage(#imageLiteral(resourceName: "quit_m258b"), for: UIControlState.normal)
+            let transform = self.aliyunVodPlayer.playerView.transform
+            self.aliyunVodPlayer.playerView.transform = transform.rotated(by: CGFloat(Double.pi/2))
+            self.aliyunVodPlayer.playerView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight)
+        }
+        else {
+            sender.tag = 0
+            sender.setImage(#imageLiteral(resourceName: "expand_m252"), for: UIControlState.normal)
+            let transform = self.aliyunVodPlayer.playerView.transform
+            self.aliyunVodPlayer.playerView.transform = transform.rotated(by: CGFloat(-Double.pi/2))
+            self.aliyunVodPlayer.playerView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: screenWidth*211/375)
+        }
+    }
+    
+    
 }
 
 extension ChatRoomViewController {
@@ -367,6 +517,7 @@ extension ChatRoomViewController {
     //MARK: - imagepicker
     func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
         imagePicker.dismiss(animated: true, completion: nil)
+        self.aliyunVodPlayer.playerView.isHidden = false
     }
     
     func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
@@ -374,6 +525,7 @@ extension ChatRoomViewController {
     }
     
     func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
+        self.aliyunVodPlayer.playerView.isHidden = false
         imagePicker.dismiss(animated: true) {
             [weak self] in
             //发送图片消息
@@ -457,6 +609,17 @@ extension ChatRoomViewController {
             
             self?.titleLb.text = self?.liveModel?.title
             self?.dateLb.text = self?.liveModel?.dateStr()
+            if let url = URL(string: self!.liveModel!.anchorheadimg) {
+                let rc = ImageResource(downloadURL: url)
+                self?.anchorAvatar.kf.setImage(with: rc)
+            }
+            self?.anchorNameLb.text = self?.liveModel?.anchorusername
+            if self?.liveModel?.subscribe == 1 {
+                self?.subBt.switchStateSub(true)
+            }
+            else {
+                self?.subBt.switchStateSub(false)
+            }
             if self?.liveModel?.collect == 1 {
                 self?.collectBt.setImage(#imageLiteral(resourceName: "star_select"), for: .normal)
             }
@@ -465,14 +628,22 @@ extension ChatRoomViewController {
             }
             let path = "/\(self!.liveModel!.livepush_appname)/\(self!.liveModel!.livepush_streamname)"
             let key = ConversationClientManager.addAuthorKey(url: path)
-            let url = "rtmp://videolive.xhfmedia.com\(path)?auth_key=\(key)"
             
-            self?.playerV?.playPrepare(with: URL(string: url)!)
-            self?.playerV?.coverUrl = URL(string: self!.liveModel!.preimgpath)
-            self?.playerV?.setBackHidden(true)
-            self?.playerV?.start()
-            if ConversationClientManager.shareInstanse.finishConnectRMSDK {
-                self?.initRoomView()
+        
+            if self?.liveModel?.state == "l1_finish" {
+                self?.aliyunVodPlayer.prepare(with: URL(string: self!.liveModel!.videopath)!)
+                self?.aliyunVodPlayer.start()
+                if ConversationClientManager.shareInstanse.finishConnectRMSDK {
+                    self?.initRoomView()
+                }
+            }
+            else {
+                let url = "rtmp://videolive.xhfmedia.com\(path)?auth_key=\(key)"
+                self?.aliyunVodPlayer.prepare(with: URL(string: url)!)
+                self?.aliyunVodPlayer.start()
+                if ConversationClientManager.shareInstanse.finishConnectRMSDK {
+                    self?.initRoomView()
+                }
             }
         }
     }
@@ -525,7 +696,6 @@ extension ChatRoomViewController {
                 //滚动到底部
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.5, execute: {
                     self.tableView2.scrollToRow(at: IndexPath.init(row: self.list.count - 1, section: 0), at: UITableViewScrollPosition.bottom, animated: true)
-                    //                self.tableView2.setContentOffset(CGPoint.init(x: 0, y: self.tableView2.contentSize.height), animated: true)
                 })
             }
         }
@@ -541,5 +711,48 @@ extension ChatRoomViewController {
         }
         
     }
+    
+}
+
+
+
+extension ChatRoomViewController {
+    
+    
+    //MARK:播放器代理方法
+    func vodPlayer(_ vodPlayer: AliyunVodPlayer!, onEventCallback event: AliyunVodPlayerEvent) {
+        vodPlayer.playerView.bringSubview(toFront: coverView)
+        vodPlayer.playerView.bringSubview(toFront: backBt)
+        vodPlayer.playerView.bringSubview(toFront: expandBt)
+        if event == AliyunVodPlayerEvent.stop ||
+            event == AliyunVodPlayerEvent.finish {
+            coverView.isHidden = false
+        }
+        else if event == AliyunVodPlayerEvent.firstFrame {
+            coverView.isHidden = true
+            activity.stopAnimating()
+        }
+        
+    }
+    
+    func vodPlayer(_ vodPlayer: AliyunVodPlayer!, playBack errorModel: ALPlayerVideoErrorModel!) {
+        print("播放失败----- \(errorModel.debugDescription)")
+        vodPlayer.playerView.bringSubview(toFront: backBt)
+        vodPlayer.playerView.bringSubview(toFront: expandBt)
+        
+    }
+    
+    func vodPlayer(_ vodPlayer: AliyunVodPlayer!, willSwitchTo quality: AliyunVodPlayerVideoQuality) {
+        
+    }
+    
+    func vodPlayer(_ vodPlayer: AliyunVodPlayer!, didSwitchTo quality: AliyunVodPlayerVideoQuality) {
+        
+    }
+    
+    func vodPlayer(_ vodPlayer: AliyunVodPlayer!, failSwitchTo quality: AliyunVodPlayerVideoQuality) {
+        
+    }
+    
     
 }

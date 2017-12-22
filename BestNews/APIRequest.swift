@@ -845,4 +845,24 @@ class APIRequest: NSObject {
             }
         }
     }
+    
+    
+    /// 查询频道封面文章
+    ///
+    /// - Parameters:
+    ///   - id: id
+    ///   - result: jieguo
+    class func channelCoverArticleAPI(id: String, result: @escaping JSONResult) {
+        let path = "/article/getChannelCoverArticles.htm?channelid=\(id)"
+        APIManager.shareInstance.postRequest(urlString: path, params: nil) { (JSON, code, msg) in
+            if code == 0 {
+                let data = HomeArticle.deserialize(from: JSON!["data"].rawString())
+                result(data)
+            }
+            else {
+                BLHUDBarManager.showError(msg: msg)
+            }
+        }
+        
+    }
 }

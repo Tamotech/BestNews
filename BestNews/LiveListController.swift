@@ -79,6 +79,9 @@ class LiveListController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         let model = liveList.list[indexPath.row]
+        if model.state == "l2_coming" {
+            return
+        }
         let vc = ChatRoomViewController(nibName: "ChatRoomViewController", bundle: nil)
         vc.liveModel = model
         navigationController?.pushViewController(vc, animated: true)

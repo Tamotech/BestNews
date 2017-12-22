@@ -43,6 +43,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         self.shouldClearNavBar = false
+        view.backgroundColor = .white
         self.setupChildView()
         self.setupTitleView()
         self.setupNavTitleView()
@@ -102,7 +103,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
                     cvcs.append(vc)
                     addChildViewController(vc)
                     let x = screenWidth*CGFloat(i)
-                    vc.view.frame = CGRect(x: x, y: 64+40, width: screenWidth, height: screenHeight-49-64-40)
+                    vc.view.frame = CGRect(x: x, y: 64, width: screenWidth, height: screenHeight-49-64)
                     scrollView.addSubview(vc.view)
                     vc.view.tag = kStabelChildTag
                     continue
@@ -112,7 +113,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
                     cvcs.append(vc)
                     addChildViewController(vc)
                     let x = screenWidth*CGFloat(i)
-                    vc.view.frame = CGRect(x: x, y: 64+40, width: screenWidth, height: screenHeight-64-40)
+                    vc.view.frame = CGRect(x: x, y: 64, width: screenWidth, height: screenHeight-64)
                     scrollView.addSubview(vc.view)
                     vc.view.tag = kStabelChildTag
                     continue
@@ -122,7 +123,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
                     cvcs.append(vc)
                     addChildViewController(vc)
                     let x = screenWidth*CGFloat(i)
-                    vc.view.frame = CGRect(x: x, y: 64+40, width: screenWidth, height: screenHeight-64-40)
+                    vc.view.frame = CGRect(x: x, y: 64, width: screenWidth, height: screenHeight-64)
                     scrollView.addSubview(vc.view)
                     vc.view.tag = kStabelChildTag
                     continue
@@ -136,7 +137,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
                     cvcs.insert(vc, at: cvcs.count-2)
                     addChildViewController(vc)
                     let x = screenWidth*CGFloat(i)
-                    vc.view.frame = CGRect(x: x, y: 40, width: screenWidth, height: screenHeight-49-40)
+                    vc.view.frame = CGRect(x: x, y: 0, width: screenWidth, height: screenHeight-49-0)
                     scrollView.addSubview(vc.view)
                     vc.view.tag = kUnstabelChildTag
                 }
@@ -152,15 +153,15 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
             
             let v2 = scrollView.subviews[1]
             let x2 = screenWidth*CGFloat(1)
-            v2.frame = CGRect(x: x2, y: 64+40, width: screenWidth, height: screenHeight-49-64-40)
+            v2.frame = CGRect(x: x2, y: 64+0, width: screenWidth, height: screenHeight-49-64-0)
             
             let v3 = scrollView.subviews[2]
             let x3 = screenWidth*CGFloat(2)
-            v3.frame = CGRect(x: x3, y: 64+40, width: screenWidth, height: screenHeight-64-40)
+            v3.frame = CGRect(x: x3, y: 64+0, width: screenWidth, height: screenHeight-64-0)
             
             let v4 = scrollView.subviews[3]
             let x4 = screenWidth*CGFloat(titles.count-1)
-            v4.frame = CGRect(x: x4, y: 64+40, width: screenWidth, height: screenHeight-64-40)
+            v4.frame = CGRect(x: x4, y: 64+0, width: screenWidth, height: screenHeight-64-0)
             
             //新加入的专题
             for i in 3..<titles.count-1 {
@@ -172,7 +173,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
                 addChildViewController(vc)
                 vc.barView.removeFromSuperview()
                 let x = screenWidth*CGFloat(i)
-                vc.view.frame = CGRect(x: x, y: 40, width: screenWidth, height: screenHeight-49-40)
+                vc.view.frame = CGRect(x: x, y: 0, width: screenWidth, height: screenHeight-49-0)
                 scrollView.addSubview(vc.view)
                 vc.view.tag = kUnstabelChildTag
             }
@@ -190,6 +191,8 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
         navigationItem.rightBarButtonItems = [messageItem, menuItem]
     }
     
+    
+    /*
     func setupTitleView() {
         
         
@@ -258,21 +261,61 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
         self.messageBt = messagebt
         self.menuBt = menubt
         
+    }*/
+    
+    ///V1.0 隐藏 首页搜索
+    func setupTitleView() {
+        
+        let barView = UIView(frame: .zero)
+        barView.backgroundColor = UIColor.white
+        self.view.addSubview(barView)
+        barView.snp.makeConstraints { (make) in
+            make.left.top.right.equalTo(0)
+            make.height.equalTo(64)
+        }
+        
+        let logo = UIImageView(frame: .zero)
+        logo.image = #imageLiteral(resourceName: "xinhua_logo_red")
+        logo.contentMode = .scaleAspectFit
+        barView.addSubview(logo)
+        logo.snp.makeConstraints { (make) in
+            make.left.equalTo(10)
+            make.top.equalTo(20)
+            make.width.equalTo(80)
+            make.height.equalTo(44)
+        }
+        
+        let menubt = UIButton(frame: .zero)
+        menubt.setImage(#imageLiteral(resourceName: "icon_menu_dark"), for: .normal)
+        menubt.addTarget(self, action: #selector(handleTapMenuItem(sender:)), for: UIControlEvents.touchUpInside)
+        barView.addSubview(menubt)
+        menubt.snp.makeConstraints { (make) in
+            make.right.equalTo(-4)
+            make.bottom.equalTo(0)
+            make.size.equalTo(CGSize(width: 50, height: 40))
+        }
+        
+        self.barView.removeFromSuperview()
+        self.navBarView = barView
+        self.logoView = logo
+        self.menuBt = menubt
+        
     }
     
     func setupNavTitleView() {
         if titleView?.superview != nil {
             titleView?.removeFromSuperview()
         }
-        titleView = TYPageTitleView(frame: CGRect.init(x: 0, y: 0, width: screenWidth-64, height: 44), titles: HomeModel.shareInstansce.navTitles())
+        titleView = TYPageTitleView(frame: CGRect.init(x: 100, y: 0, width: screenWidth-64-100, height: 36), titles: HomeModel.shareInstansce.navTitles())
         titleView?.delegate = self
         self.navBarView!.addSubview(titleView!)
         titleView?.snp.makeConstraints({ (make) in
-            make.left.equalTo(10)
+            make.left.equalTo(100)
             make.bottom.equalTo(-8)
-            make.height.equalTo(44)
+            make.height.equalTo(36)
             make.right.equalTo(-64)
         })
+        titleView?.updateTintcolor(currentItemColor: gray51!, unselectItemColor: UIColor(ri: 51, gi: 51, bi: 51, alpha: 0.5)!)
     }
     
     //MARK: - scrollView
@@ -381,6 +424,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
     
     /// 导航栏颜色变化
     func navBarTurnBg(white: Bool) {
+        /*
         if white {
             titleView?.updateTintcolor(currentItemColor: gray51!, unselectItemColor: UIColor(ri: 51, gi: 51, bi: 51, alpha: 0.5)!)
             UIView.animate(withDuration: 0.3, animations: {
@@ -405,6 +449,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
             messageBt?.setImage(#imageLiteral(resourceName: "icon_message_white"), for: UIControlState.normal)
             menuBt?.setImage(#imageLiteral(resourceName: "icon_menu_white"), for: UIControlState.normal)
         }
+ */
     }
     
     
@@ -413,12 +458,13 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
     ///
     /// - Parameter red: 红色 or 白色
     func logoTurnColor(_ red: Bool) {
+        /*
         if red {
             logoView?.image = #imageLiteral(resourceName: "xinhua_logo_red")
         }
         else {
             logoView?.image = #imageLiteral(resourceName: "xinhua_logo_white")
-        }
+        }*/
     }
 
     ///导航专题

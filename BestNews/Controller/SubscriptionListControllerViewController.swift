@@ -69,6 +69,8 @@ class SubscriptionListControllerViewController: UIViewController, UITableViewDel
             newsTableView.register(nib, forCellReuseIdentifier: identifier)
         }
         newsTableView.estimatedRowHeight = 135
+        newsTableView.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15)
+        newsTableView.separatorColor = UIColor(hexString: "f0f0f0")
         newsTableView.rowHeight = UITableViewAutomaticDimension
         newsTableView.cr.addHeadRefresh {
             [weak self] in

@@ -9,6 +9,7 @@
 import UIKit
 import CRRefresh
 import Presentr
+import Kingfisher
 
 class BaseViewController: UIViewController {
     

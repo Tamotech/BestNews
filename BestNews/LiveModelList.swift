@@ -22,10 +22,16 @@ class LiveModel: HandyJSON {
     var collectnum: Int = 0
     var collect: Int = 0
     var createdate: Int = 0
+    /// 直播开始时间
+    var livedatestart: Int = 0
     ///主持人用户的id
     var compereuserid: String = ""
     ///主播用户id
     var anchoruserid: String = ""
+    ///用户名
+    var anchorusername: String = ""
+    ///主播头像
+    var anchorheadimg: String = ""
     /// 主播推流appName
     var livepush_appname: String = ""
     /// 直播推流的StreamName
@@ -34,6 +40,10 @@ class LiveModel: HandyJSON {
     var chatroom_id_compere: String = ""
     /// 融云群聊聊天室房间号
     var chatroom_id_group: String = ""
+    /// 直播/录像视频地址
+    var videopath: String = "http://cloud.video.taobao.com/play/u/2712925557/p/1/e/6/t/1/40050769.mp4"
+    
+    var subscribe: Int = 0
     
     
     func stateStr() -> String {

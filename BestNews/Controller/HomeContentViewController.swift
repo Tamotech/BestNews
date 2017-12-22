@@ -24,7 +24,7 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
         maskLayer.colors = [UIColor.black.cgColor, UIColor.init(white: 0, alpha: 0).cgColor]
         maskLayer.startPoint = CGPoint(x: 0.5, y: 0)
         maskLayer.endPoint = CGPoint(x: 0.5, y: 1)
-        v.layer.addSublayer(maskLayer)
+        //v.layer.addSublayer(maskLayer)
         v.delegate = self
         return v
     }()
@@ -32,6 +32,8 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
     lazy var tableView: UITableView = {
        let v = UITableView(frame: UIScreen.main.bounds, style: .plain)
         v.separatorStyle = .singleLine
+        v.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15)
+        v.separatorColor = UIColor(hexString: "f0f0f0")
         v.delegate = self
         v.dataSource = self
         v.estimatedRowHeight = 220
