@@ -94,6 +94,7 @@ class SubscriptionListControllerViewController: UIViewController, UITableViewDel
             [weak self] in
             self?.loadNewsChannel()
         }
+        scrollview.delegate = self
         layout.minimumLineSpacing = 8
         layout.minimumInteritemSpacing = 8
         let w = (screenWidth-15*2-8*2)/3.0

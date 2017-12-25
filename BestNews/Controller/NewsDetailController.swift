@@ -64,6 +64,17 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
         web.scrollView.isScrollEnabled = false
         web.autoresizingMask = .flexibleHeight
         web.navigationDelegate = self
+        let url = Bundle.main.url(forResource: "clickImg", withExtension: "js")
+        do {
+            let functionStr = try String.init(contentsOf: url!, encoding: String.Encoding.utf8)
+            web.evaluateJavaScript(functionStr, completionHandler: { (response, error) in
+                print(response ?? "")
+                print("error--\(String(describing: error))")
+            })
+        }
+        catch {
+            
+        }
         self.webParentView.addSubview(web)
         return web
     }()
@@ -193,7 +204,12 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
     }
     
     func tapReportHandler() {
-        
+        presentr.viewControllerForContext = self
+        presentr.shouldIgnoreTapOutsideContext = true
+        let vc = ReportArticleController(nibName: "ReportArticleController", bundle: nil)
+        customPresentViewController(presentr, viewController: vc, animated: true) {
+            
+        }
     }
     
     func tapPublishBtnHandler() {
@@ -201,7 +217,15 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
     }
     
     func postSuccessHandler() {
-        
+        self.article!.commentNum = self.article!.commentNum + 1
+        commentBar.commentBtn.setTitle(" \(self.article!.commentNum)", for: UIControlState.normal)
+        DispatchQueue.main.async {
+            let vc = CommentListController()
+            vc.commentList = self.commentList
+            vc.articleId = self.articleId
+            self.navigationController?.pushViewController(vc, animated: true)
+            BLHUDBarManager.showSuccess(msg: "评论成功", seconds: 1)
+        }
     }
     
     func tapCommentHandler() {
@@ -259,6 +283,8 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         print("开始加载...\(webView.scrollView.contentSize.height)")
+        
+        print(webView.url)
     }
     
     func webView(_ webView: WKWebView, didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!) {
@@ -282,6 +308,11 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
             ///TODO: 高度计算cheat
             self.webView.height = (data as! CGFloat)*38/100+20
             self.webParentHeight.constant = (data as! CGFloat)*38/100+20
+        }
+        
+        webView.evaluateJavaScript("setImageClickFunction") { (response, error) in
+            print(response ?? "")
+            print("error--\(String(describing: error))")
         }
     }
     

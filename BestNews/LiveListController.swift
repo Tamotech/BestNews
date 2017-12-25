@@ -23,10 +23,15 @@ class LiveListController: UIViewController, UITableViewDelegate, UITableViewData
         reloadLiveList()
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         reloadLiveList()
     }
+    
+//    override func viewWillLayoutSubviews() {
+//        super.viewWillLayoutSubviews()
+//        reloadLiveList()
+//    }
     
     func setupView() {
         let nib = UINib(nibName: "LiveListCell", bundle: nil)
@@ -80,6 +85,9 @@ class LiveListController: UIViewController, UITableViewDelegate, UITableViewData
 
         let model = liveList.list[indexPath.row]
         if model.state == "l2_coming" {
+            return
+        }
+        if model.state == "l1_finish" && model.videopath.count == 0 {
             return
         }
         let vc = ChatRoomViewController(nibName: "ChatRoomViewController", bundle: nil)

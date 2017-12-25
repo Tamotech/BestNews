@@ -12,6 +12,7 @@ import UIKit
 class SelectInterestItemController: BaseViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var bottomView: UIView!
     
     var items: [NewsChannel] = []
     
@@ -33,6 +34,12 @@ class SelectInterestItemController: BaseViewController, UICollectionViewDelegate
         
         let nib = UINib(nibName: "InterestColumnCell", bundle: nil)
         collectionView.register(nib, forCellWithReuseIdentifier: "Cell")
+        
+        if entry == 1 {
+            bottomView.isHidden = true
+            let item = UIBarButtonItem(image: #imageLiteral(resourceName: "back-gray"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(handleTapStartRead(_:)))
+            navigationItem.leftBarButtonItem = item
+        }
         
         self.loadNewsChannel()
     }

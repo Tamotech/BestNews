@@ -246,10 +246,10 @@ class NewsCommentBar: UIView, UITextViewDelegate {
 
     func textViewDidBeginEditing(_ textView: UITextView) {
         if replySomeone == nil {
-            textField.toolbarPlaceholder = "发表评论..."
+            textField.placeholder = "发表评论..."
         }
         else {
-            textField.toolbarPlaceholder = "回复\(replySomeone!)"
+            textField.placeholder = "回复\(replySomeone!)"
         }
     }
     
@@ -281,6 +281,7 @@ class NewsCommentBar: UIView, UITextViewDelegate {
                 self.barView.alpha = 0
                 _ = self.becomeFirstResponder()
             })
+            
         }
         else {
             UIView.animate(withDuration: 0.3, animations: {
@@ -318,7 +319,6 @@ extension NewsCommentBar {
             return
         }
         
-        textField.resignFirstResponder()
         if delegate != nil {
             delegate!.tapPublishBtnHandler()
         }
@@ -331,5 +331,6 @@ extension NewsCommentBar {
             }
             
         }
+        textField.resignFirstResponder()
     }
 }

@@ -54,7 +54,6 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
     func setupView() {
         
         self.shouldClearNavBar = true
-        self.showCustomTitle(title: "我的")
         let nib = UINib(nibName: "ProfileCenterCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "Cell")
         tableView.rowHeight = 50
@@ -70,8 +69,8 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapLoginView(_:)))
         loginView.addGestureRecognizer(tap)
         
-        let messageItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_meassage"), style: .plain, target: self, action: #selector(handleTapMessageBtn(sender:)))
-        navigationItem.rightBarButtonItem = messageItem
+//        let messageItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_meassage"), style: .plain, target: self, action: #selector(handleTapMessageBtn(sender:)))
+//        navigationItem.rightBarButtonItem = messageItem
         
         NotificationCenter.default.addObserver(self, selector: #selector(didUpdateUserInfo(_:)), name: kUserInfoDidUpdateNotify, object: nil)
     }

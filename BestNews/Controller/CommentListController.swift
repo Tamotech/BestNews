@@ -86,7 +86,7 @@ CommentCellDelegate, CommentBarDelegate {
     
     /// MARK: - commentCellDelegate
     func tapCommentBtn(commentId: String, name: String) {
-
+        commentBar.replySomeone = name
         commentBar.targetCommentId = commentId
         commentBar.switchToEditMode(edit: true)
     }
@@ -157,6 +157,7 @@ extension CommentListController {
                 self?.commentList = list
                 self?.tableView.cr.endHeaderRefresh()
             }
+            self?.showCustomTitle(title: "评论(\(self?.commentList?.total ?? 0))")
             self?.tableView.reloadData()
         }
     }

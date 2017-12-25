@@ -206,7 +206,6 @@ class APIRequest: NSObject {
         }
         APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
             if code == 0 {
-                BLHUDBarManager.showSuccess(msg: "评论成功", seconds: 1)
                 result(JSON!["data"])
             }
             else {

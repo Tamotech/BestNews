@@ -55,6 +55,9 @@ UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollecti
     
     @IBOutlet weak var tableViewTop: NSLayoutConstraint!
     
+    @IBOutlet weak var contentViewHeight: NSLayoutConstraint!
+    
+    
     lazy var segment: BaseSegmentControl = {
        let v = BaseSegmentControl(items: ["新闻", "名人"], defaultIndex: 0)
         v.frame = self.segmentView.bounds
@@ -111,6 +114,7 @@ UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollecti
         }
         newsTableView.delegate  = self
         newsTableView.dataSource = self
+        newsTableView.isScrollEnabled = false
         
         let nib2 = UINib(nibName: "SubscriptListCell", bundle: nil)
         personTableView.register(nib2, forCellReuseIdentifier: "ColumeCell")
@@ -152,16 +156,18 @@ UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollecti
     //MARK: - acrollView
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        let topH: CGFloat = 64
         if scrollView == self.scrollView {
             let offset = scrollView.contentOffset
-            if offset.y > headerView.height-108-100  && offset.y < headerView.height-108 {
-                let alpha = 1-(headerView.height-108-offset.y)/100.0
+            if offset.y > headerView.height-topH-100  && offset.y < headerView.height-topH {
+                let alpha = 1-(headerView.height-topH-offset.y)/100.0
                 navView.alpha = alpha
                 self.navigationController?.navigationBar.barTintColor = gray51
                 backBtn.setImage(#imageLiteral(resourceName: "back-gray"), for: .normal)
                 navigationController?.navigationBar.tintColor = gray51
             }
-            else if offset.y > headerView.height-108 {
+            else if offset.y > headerView.height-topH {
                 navView.alpha = 1
                 navigationController?.navigationBar.tintColor = gray51
                 backBtn.setImage(#imageLiteral(resourceName: "back-gray"), for: .normal)
@@ -171,12 +177,12 @@ UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollecti
                 backBtn.setImage(#imageLiteral(resourceName: "back-white"), for: .normal)
                navigationController?.navigationBar.tintColor = UIColor.white
             }
-            if offset.y > 0 && offset.y <= headerView.height - 108 {
+            if offset.y > 0 && offset.y <= headerView.height - topH {
                 
                 headerTop.constant = -offset.y
             }
-            else if offset.y > headerView.height - 108 {
-                headerTop.constant = -(headerView.height - 108)
+            else if offset.y > headerView.height - topH {
+                headerTop.constant = -(headerView.height - topH)
             }
             else {
                 headerTop.constant = 0
@@ -194,7 +200,10 @@ UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollecti
         if tableView == newsTableView {
             return articleList.list.count
         }
-        return famousList.list.count
+        else {
+            return famousList.list.count
+        }
+        
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -232,6 +241,21 @@ UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollecti
             let famous = famousList.list[indexPath.row]
             cell.updateCell(famous)
             return cell
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if tableView == newsTableView {
+            let article = articleList.list[indexPath.row];
+            let vc = NewsDetailController(nibName: "NewsDetailController", bundle: nil)
+            vc.articleId = article.id
+            navigationController?.pushViewController(vc, animated: true)
+        }
+        else {
+            let famous = famousList.list[indexPath.row]
+            let vc = OrgnizationController(nibName: "OrgnizationController", bundle: nil)
+            vc.ognization = famous
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
     
@@ -305,6 +329,16 @@ extension OrgnizationController {
             self?.articlePage = 1
             self?.articleList = data as! HomeArticleList
             self?.newsTableView.reloadData()
+            if self?.articleList.list.count == 0 {
+                self?.contentViewHeight.constant = 300
+                self?.newsTableView.isHidden = true
+                self?.personTableView.isHidden = true
+            }
+            else {
+                self?.contentViewHeight.constant = (self?.newsTableView.contentSize.height)!*0.95
+                self?.newsTableView.isHidden = false
+
+            }
         }
     }
     

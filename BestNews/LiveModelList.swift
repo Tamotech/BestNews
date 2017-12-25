@@ -41,14 +41,19 @@ class LiveModel: HandyJSON {
     /// 融云群聊聊天室房间号
     var chatroom_id_group: String = ""
     /// 直播/录像视频地址
-    var videopath: String = "http://cloud.video.taobao.com/play/u/2712925557/p/1/e/6/t/1/40050769.mp4"
+    var videopath: String = ""
     
     var subscribe: Int = 0
     
     
     func stateStr() -> String {
         if state == "l1_finish" {
-            return "  视频回放  "
+            if videopath.count > 0 {
+                return "  视频回放  "
+            }
+            else {
+                return "  视频回放处理中  "
+            }
         }
         else if state == "l2_coming" {
             return "  即将到来  "

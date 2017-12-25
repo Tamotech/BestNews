@@ -35,6 +35,8 @@
 		5A0612D81FDD793100E7F20A /* ApplyFamousConditionController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A0612D61FDD793100E7F20A /* ApplyFamousConditionController.xib */; };
 		5A0612DB1FDD88D500E7F20A /* FeedbackViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0612D91FDD88D500E7F20A /* FeedbackViewController.swift */; };
 		5A0612DC1FDD88D500E7F20A /* FeedbackViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A0612DA1FDD88D500E7F20A /* FeedbackViewController.xib */; };
+		5A063F321FF1325800AFAA40 /* ReportArticleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A063F301FF1325800AFAA40 /* ReportArticleController.swift */; };
+		5A063F331FF1325800AFAA40 /* ReportArticleController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A063F311FF1325800AFAA40 /* ReportArticleController.xib */; };
 		5A06DF461FCA4F2C00F225F1 /* ActivityPrepare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A06DF451FCA4F2C00F225F1 /* ActivityPrepare.swift */; };
 		5A06DF491FCAA9A600F225F1 /* ProfessionListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A06DF471FCAA9A600F225F1 /* ProfessionListController.swift */; };
 		5A06DF4E1FCABCE600F225F1 /* WXImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A06DF4C1FCABCE500F225F1 /* WXImagePickerViewController.swift */; };
@@ -52,6 +54,7 @@
 		5A0A6D7A1FE575A30059EDBF /* ConversationClientManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0A6D791FE575A30059EDBF /* ConversationClientManager.swift */; };
 		5A0A6D7D1FE58D6E0059EDBF /* ChatroomMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0A6D7B1FE58D6E0059EDBF /* ChatroomMessageCell.swift */; };
 		5A0A6D7E1FE58D6E0059EDBF /* ChatroomMessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A0A6D7C1FE58D6E0059EDBF /* ChatroomMessageCell.xib */; };
+		5A0B5DA61FF0628B0047F64A /* clickImg.js in Resources */ = {isa = PBXBuildFile; fileRef = 5A0B5DA51FF0628B0047F64A /* clickImg.js */; };
 		5A0D23C31F83225A00FC9D4D /* NewsCommentBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0D23C21F83225A00FC9D4D /* NewsCommentBar.swift */; };
 		5A0D23C61F832BD000FC9D4D /* NewsDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A0D23C41F832BD000FC9D4D /* NewsDetailController.swift */; };
 		5A0D23C71F832BD000FC9D4D /* NewsDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A0D23C51F832BD000FC9D4D /* NewsDetailController.xib */; };
@@ -335,6 +338,8 @@
 		5A0612D61FDD793100E7F20A /* ApplyFamousConditionController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApplyFamousConditionController.xib; sourceTree = "<group>"; };
 		5A0612D91FDD88D500E7F20A /* FeedbackViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackViewController.swift; sourceTree = "<group>"; };
 		5A0612DA1FDD88D500E7F20A /* FeedbackViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedbackViewController.xib; sourceTree = "<group>"; };
+		5A063F301FF1325800AFAA40 /* ReportArticleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReportArticleController.swift; sourceTree = "<group>"; };
+		5A063F311FF1325800AFAA40 /* ReportArticleController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReportArticleController.xib; sourceTree = "<group>"; };
 		5A06DF451FCA4F2C00F225F1 /* ActivityPrepare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityPrepare.swift; sourceTree = "<group>"; };
 		5A06DF471FCAA9A600F225F1 /* ProfessionListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessionListController.swift; sourceTree = "<group>"; };
 		5A06DF4C1FCABCE500F225F1 /* WXImagePickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WXImagePickerViewController.swift; sourceTree = "<group>"; };
@@ -352,6 +357,7 @@
 		5A0A6D791FE575A30059EDBF /* ConversationClientManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationClientManager.swift; sourceTree = "<group>"; };
 		5A0A6D7B1FE58D6E0059EDBF /* ChatroomMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomMessageCell.swift; sourceTree = "<group>"; };
 		5A0A6D7C1FE58D6E0059EDBF /* ChatroomMessageCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatroomMessageCell.xib; sourceTree = "<group>"; };
+		5A0B5DA51FF0628B0047F64A /* clickImg.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = clickImg.js; sourceTree = "<group>"; };
 		5A0D23C21F83225A00FC9D4D /* NewsCommentBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsCommentBar.swift; sourceTree = "<group>"; };
 		5A0D23C41F832BD000FC9D4D /* NewsDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsDetailController.swift; sourceTree = "<group>"; };
 		5A0D23C51F832BD000FC9D4D /* NewsDetailController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsDetailController.xib; sourceTree = "<group>"; };
@@ -1138,6 +1144,7 @@
 			isa = PBXGroup;
 			children = (
 				5ADF7ACD1FEA955500D9607A /* start.jpg */,
+				5A0B5DA51FF0628B0047F64A /* clickImg.js */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
@@ -1257,7 +1264,6 @@
 				5ABB92AF1FA5DD5E002E3180 /* Security */,
 				5A0D23BE1F831F0C00FC9D4D /* Component */,
 				CC2906E31F659EAE001894DA /* Extensions */,
-				CC2906F11F659F58001894DA /* ConstantHelper.swift */,
 				5ABB92D01FA5EC42002E3180 /* Toolkit.swift */,
 			);
 			name = Toolkit;
@@ -1301,6 +1307,7 @@
 				CC2907101F65AC08001894DA /* Main.storyboard */,
 				CC2906D31F6599C7001894DA /* LaunchScreen.storyboard */,
 				CC2906D61F6599C7001894DA /* Info.plist */,
+				CC2906F11F659F58001894DA /* ConstantHelper.swift */,
 				5AA4E80D1FD42BB6007A04FA /* PrefixHeader.pch */,
 			);
 			name = Support;
@@ -1392,6 +1399,8 @@
 				5AFF34A11F93A78600D8115E /* BaseShareViewController.xib */,
 				5A10F5861FAEF06900316832 /* SpecialChannelListController.swift */,
 				5AFE24D91FCCCACD006353C3 /* SpecialChannelArticleListController.swift */,
+				5A063F301FF1325800AFAA40 /* ReportArticleController.swift */,
+				5A063F311FF1325800AFAA40 /* ReportArticleController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1536,6 +1545,7 @@
 				5AA4E8521FD43378007A04FA /* camera_id@2x.png in Resources */,
 				5AC684941F807BBD006CEB53 /* FastNewsController.xib in Resources */,
 				5AC6848A1F8054C1006CEB53 /* SingleBigPhotoNewsCell.xib in Resources */,
+				5A063F331FF1325800AFAA40 /* ReportArticleController.xib in Resources */,
 				5A10F58B1FAEF0A900316832 /* SpecialChannelCell.xib in Resources */,
 				5A0612CE1FDCDFA300E7F20A /* ApplyFamousController.xib in Resources */,
 				5AA4E84E1FD43378007A04FA /* back@3x.png in Resources */,
@@ -1552,6 +1562,7 @@
 				5AA4E8571FD43378007A04FA /* volume_off@3x.png in Resources */,
 				5AA4E85C1FD43378007A04FA /* watermark.png in Resources */,
 				5A0612BA1FDBA1D300E7F20A /* ApplyIdentifySuccessAlertController.xib in Resources */,
+				5A0B5DA61FF0628B0047F64A /* clickImg.js in Resources */,
 				5A8C29E11FE032DC00E51095 /* LiveMessageCell.xib in Resources */,
 				5A5446101F852A1E0004F192 /* ActivityRegistController.xib in Resources */,
 				5AA4E8281FD42DC1007A04FA /* 版权信息.txt in Resources */,
@@ -1761,6 +1772,7 @@
 				5A90CFEE1F8123F500F16869 /* LiveListController.swift in Sources */,
 				5A90CFE31F80F48A00F16869 /* SubscriptSectionHeaderView.swift in Sources */,
 				5A4A21501FC18BB900648126 /* OgnizationModel.swift in Sources */,
+				5A063F321FF1325800AFAA40 /* ReportArticleController.swift in Sources */,
 				5AA4E7E31FD38CBD007A04FA /* UIView+Toast.swift in Sources */,
 				5A547EE51FA2157C00FA0C36 /* ProfileCenterController.swift in Sources */,
 				5A0D23C61F832BD000FC9D4D /* NewsDetailController.swift in Sources */,

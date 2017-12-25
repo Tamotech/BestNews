@@ -16,6 +16,7 @@
                 <outlet property="avatarView" destination="V2j-Lc-xXS" id="jOP-kI-hob"/>
                 <outlet property="backBtn" destination="C9C-i8-Wio" id="Zrl-Ne-ZfT"/>
                 <outlet property="collectionView" destination="evQ-W7-hvG" id="1bU-qO-nyQ"/>
+                <outlet property="contentViewHeight" destination="hh1-Tm-F84" id="GiJ-Pt-VSt"/>
                 <outlet property="descLb" destination="SDn-80-DM9" id="Tqa-uf-YET"/>
                 <outlet property="headerTop" destination="pvU-60-3JP" id="bRV-7Q-dGZ"/>
                 <outlet property="headerView" destination="njs-NP-Woq" id="dP1-NV-G6C"/>
@@ -46,6 +47,15 @@
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xls-9P-t0D" userLabel="content">
                                     <rect key="frame" x="-0.5" y="389" width="375" height="600"/>
                                     <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no-data-person" translatesAutoresizingMaskIntoConstraints="NO" id="Mve-rT-kIf">
+                                            <rect key="frame" x="141" y="36" width="93" height="170"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="还没有新闻~" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rbR-wb-aZg">
+                                            <rect key="frame" x="148" y="226" width="80.5" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                            <color key="textColor" red="0.70980392156862748" green="0.70980392156862748" blue="0.70980392156862748" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fXu-nv-hc8">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="600"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -59,9 +69,13 @@
                                     <constraints>
                                         <constraint firstItem="b4q-2F-T1E" firstAttribute="leading" secondItem="fXu-nv-hc8" secondAttribute="leading" id="2ed-cM-WcG"/>
                                         <constraint firstItem="fXu-nv-hc8" firstAttribute="centerX" secondItem="xls-9P-t0D" secondAttribute="centerX" id="6BP-15-8HM"/>
+                                        <constraint firstItem="Mve-rT-kIf" firstAttribute="top" secondItem="xls-9P-t0D" secondAttribute="top" constant="36" id="Bbl-5e-4yh"/>
                                         <constraint firstItem="fXu-nv-hc8" firstAttribute="width" secondItem="xls-9P-t0D" secondAttribute="width" id="F3q-oN-PPK"/>
                                         <constraint firstItem="b4q-2F-T1E" firstAttribute="bottom" secondItem="fXu-nv-hc8" secondAttribute="bottom" id="S1k-yd-o5v"/>
+                                        <constraint firstItem="Mve-rT-kIf" firstAttribute="centerX" secondItem="xls-9P-t0D" secondAttribute="centerX" id="V58-Aq-52v"/>
+                                        <constraint firstItem="rbR-wb-aZg" firstAttribute="top" secondItem="Mve-rT-kIf" secondAttribute="bottom" constant="20" id="VPe-sh-bwe"/>
                                         <constraint firstItem="fXu-nv-hc8" firstAttribute="top" secondItem="xls-9P-t0D" secondAttribute="top" id="bbx-iQ-nZw"/>
+                                        <constraint firstItem="rbR-wb-aZg" firstAttribute="centerX" secondItem="Mve-rT-kIf" secondAttribute="centerX" id="fuE-zK-D9f"/>
                                         <constraint firstItem="b4q-2F-T1E" firstAttribute="top" secondItem="fXu-nv-hc8" secondAttribute="top" id="fyo-iD-XpG"/>
                                         <constraint firstAttribute="height" constant="600" id="hh1-Tm-F84"/>
                                         <constraint firstAttribute="bottom" secondItem="fXu-nv-hc8" secondAttribute="bottom" id="koe-LY-cmo"/>
@@ -326,6 +340,7 @@
     </objects>
     <resources>
         <image name="back-white" width="20" height="20"/>
+        <image name="no-data-person" width="93" height="170"/>
         <image name="orgnization_avatar" width="72" height="68"/>
         <image name="orgnization_cover" width="375" height="305"/>
     </resources>

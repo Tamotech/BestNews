@@ -93,6 +93,20 @@ class UserInfo: HandyJSON {
             }
         }
     }
+    
+    ///更新用户信息
+    func updateUserInfoWithParams(params: [String: String], result: @escaping (_ success: Bool, _ msg: String) -> ()) {
+        let path = "/member/updateUserInfo.htm"
+        APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
+            if code == 0 {
+                NotificationCenter.default.post(name: kUserInfoDidUpdateNotify, object: nil)
+                result(true, msg)
+            }
+            else {
+                result(false, msg)
+            }
+        }
+    }
 }
 
 class WXUserInfo: HandyJSON {

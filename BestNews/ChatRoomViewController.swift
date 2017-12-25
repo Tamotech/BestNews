@@ -108,15 +108,25 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
         
         setPlayerContentView()
         setCacheForPlaying()
+        if liveModel != nil && SessionManager.sharedInstance.userId != liveModel!.anchoruserid {
+            commentBar.isHidden = true
+        }
         
         segment.selectItemAction = {[weak self](index, name) in
             if index == 0 {
                 self?.tableView1.isHidden = false
                 self?.tableView2.isHidden = true
+                if self?.liveModel != nil && SessionManager.sharedInstance.userId != self?.liveModel!.anchoruserid {
+                    self?.commentBar.isHidden = true
+                }
+                else {
+                    self?.commentBar.isHidden = false
+                }
             }
             else {
                 self?.tableView1.isHidden = true
                 self?.tableView2.isHidden = false
+                self?.commentBar.isHidden = false
             }
             self?.commentBarChangeState(false)
         }
@@ -631,7 +641,15 @@ extension ChatRoomViewController {
             
         
             if self?.liveModel?.state == "l1_finish" {
-                self?.aliyunVodPlayer.prepare(with: URL(string: self!.liveModel!.videopath)!)
+                if self?.liveModel?.videopath == "" {
+                    self?.liveModel?.videopath = "http://cloud.video.taobao.com/play/u/2712925557/p/1/e/6/t/1/40050769.mp4"
+                }
+                var videoPath = self?.liveModel?.videopath
+                if (self?.liveModel?.videopath.contains(","))! {
+                    videoPath = self?.liveModel?.videopath.components(separatedBy: ",").first
+                }
+                
+                self?.aliyunVodPlayer.prepare(with: URL(string: videoPath!)!)
                 self?.aliyunVodPlayer.start()
                 if ConversationClientManager.shareInstanse.finishConnectRMSDK {
                     self?.initRoomView()
