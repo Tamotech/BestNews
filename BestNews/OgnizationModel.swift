@@ -20,6 +20,8 @@ class OgnizationModel: HandyJSON {
     var headimg: String = ""
     var name: String = ""
     var url: String = ""
+    //机构标签
+    var tags: String = ""
     
     var organize: OgnizationModel?
     

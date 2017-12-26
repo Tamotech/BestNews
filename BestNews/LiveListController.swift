@@ -15,6 +15,7 @@ class LiveListController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var tableView: UITableView!
     var collect = false
     var liveList = LiveModelList()
+    var entry = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,7 +88,11 @@ class LiveListController: UIViewController, UITableViewDelegate, UITableViewData
         if model.state == "l2_coming" {
             return
         }
-        if model.state == "l1_finish" && model.videopath.count == 0 {
+//        if model.state == "l1_finish" {
+//            return
+//        }
+        if !SessionManager.sharedInstance.loginInfo.isLogin {
+            Toolkit.showLoginVC()
             return
         }
         let vc = ChatRoomViewController(nibName: "ChatRoomViewController", bundle: nil)

@@ -10,7 +10,7 @@ import UIKit
 
 class MySubscriptListController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewDelegate {
     
-    var scrollView = UIScrollView(frame: CGRect(x: 0, y: 64, width: screenWidth, height: screenHeight-44))
+    var scrollView = UIScrollView(frame: CGRect(x: 0, y: 20, width: screenWidth, height: screenHeight-20))
     var titleView: TYPageTitleView?
     fileprivate var startOffsetX:CGFloat = 0  //按下瞬间的offsetX
     fileprivate var isForbideScroll:Bool = false
@@ -60,13 +60,14 @@ class MySubscriptListController: BaseViewController, UIScrollViewDelegate, TYPag
         for i in 0..<titles.count {
             let vc = OrgnizationListController(nibName: "OrgnizationListController", bundle: nil)
             vc.shouldClearNavBar = true
+            vc.subscribe = 1
             vc.type = i
             addChildViewController(vc)
             let x = screenWidth*CGFloat(i)
-            vc.view.frame = CGRect(x: x, y: 44, width: screenWidth, height: screenHeight-64-44)
+            vc.view.frame = CGRect(x: x, y: 44, width: screenWidth, height: screenHeight-64)
             scrollView.addSubview(vc.view)
         }
-        view.addSubview(titleView!)
+//        view.addSubview(titleView!)
     }
     
     

@@ -10,7 +10,7 @@ import UIKit
 
 class CollectionNewsListController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
 
-    
+    var entry = 0
     var articleList = HomeArticleList()
     var page: Int = 1
     
@@ -30,7 +30,7 @@ class CollectionNewsListController: BaseViewController, UITableViewDataSource, U
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.shouldClearNavBar = true
+        self.shouldClearNavBar = entry == 0
         self.setupView()
         reloadArticleList()
     }
@@ -41,6 +41,9 @@ class CollectionNewsListController: BaseViewController, UITableViewDataSource, U
             let identifier = cellIdentifiers[i]
             let nib = UINib(nibName: identifier, bundle: nil)
             tableView.register(nib, forCellReuseIdentifier: identifier)
+        }
+        if entry == 1 {
+            barView.removeFromSuperview()
         }
         tableView.delegate = self
         tableView.dataSource = self
@@ -118,7 +121,7 @@ class CollectionNewsListController: BaseViewController, UITableViewDataSource, U
     
     func reloadArticleList() {
         
-        APIRequest.subscribeArticleListAPI(page: 1) { [weak self](data) in
+        APIRequest.collectedArticleListAPI(page: 1) { [weak self](data) in
             self?.tableView.cr.endHeaderRefresh()
             self?.page = 1
             self?.articleList = data as! HomeArticleList
@@ -137,7 +140,7 @@ class CollectionNewsListController: BaseViewController, UITableViewDataSource, U
         }
         
         page = page + 1
-        APIRequest.subscribeArticleListAPI(page: page) { [weak self](data) in
+        APIRequest.collectedArticleListAPI(page: page) { [weak self](data) in
             self?.page = 1
             let list = data as? HomeArticleList
             if list != nil {

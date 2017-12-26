@@ -27,11 +27,11 @@ class MeCollectionViewController: BaseViewController, UIScrollViewDelegate, TYPa
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.switchToIndex(index: currentIndex)
-
+        self.navigationController?.navigationBar.tintColor = gray51
     }
     
     func setupChildView() {
-        let titles = ["新闻","快讯","直播","产品","活动"]
+        let titles = ["新闻","快讯","直播","活动"]
         scrollView.alwaysBounceHorizontal = false
         let style = TYPageStyle()
         style.normalColor = UIColor(hexString: "#333333", alpha: 0.5)!
@@ -63,6 +63,7 @@ class MeCollectionViewController: BaseViewController, UIScrollViewDelegate, TYPa
             if i == 0 {
                 let vc = CollectionNewsListController()
                 addChildViewController(vc)
+                vc.entry = 1
                 let x = screenWidth*CGFloat(i)
                 vc.view.frame = CGRect(x: x, y: 44, width: screenWidth, height: screenHeight-44-64)
                 scrollView.addSubview(vc.view)
@@ -70,6 +71,7 @@ class MeCollectionViewController: BaseViewController, UIScrollViewDelegate, TYPa
             }
             else if i == 1 {
                 let vc = FastNewsController()
+                vc.entry = 1
                 vc.collectFilter = true
                 addChildViewController(vc)
                 let x = screenWidth*CGFloat(i)
@@ -79,14 +81,17 @@ class MeCollectionViewController: BaseViewController, UIScrollViewDelegate, TYPa
             }
             else if i == 2 {
                 let vc = LiveListController()
+                vc.collect = true
+                vc.entry = 1
                 addChildViewController(vc)
                 let x = screenWidth*CGFloat(i)
-                vc.view.frame = CGRect(x: x, y: 44, width: screenWidth, height: screenHeight-44-64)
+                vc.view.frame = CGRect(x: x, y: 44, width: screenWidth, height: screenHeight-44)
                 scrollView.addSubview(vc.view)
                 continue
             }
-            else if i == 4 {
+            else if i == 3 {
                 let vc = ActivityController(nibName: "ActivityController", bundle: nil)
+                vc.entry = 1
                 vc.collectFlag = true
                 addChildViewController(vc)
                 let x = screenWidth*CGFloat(i)
@@ -94,11 +99,11 @@ class MeCollectionViewController: BaseViewController, UIScrollViewDelegate, TYPa
                 scrollView.addSubview(vc.view)
                 continue
             }
-            let vc = HomeContentViewController()
-            addChildViewController(vc)
-            let x = screenWidth*CGFloat(i)
-            vc.view.frame = CGRect(x: x, y: 44, width: screenWidth, height: screenHeight-44-64)
-            scrollView.addSubview(vc.view)
+//            let vc = HomeContentViewController()
+//            addChildViewController(vc)
+//            let x = screenWidth*CGFloat(i)
+//            vc.view.frame = CGRect(x: x, y: 44, width: screenWidth, height: screenHeight-44-64)
+//            scrollView.addSubview(vc.view)
             
         }
     }

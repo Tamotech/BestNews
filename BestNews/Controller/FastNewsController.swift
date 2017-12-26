@@ -35,14 +35,17 @@ class FastNewsController: BaseViewController, UITableViewDataSource, UITableView
     
     ///是否加过滤 仅收藏
     var collectFilter: Bool = false
+    var entry = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         setupView()
-        self.shouldClearNavBar = true
-        
+        self.shouldClearNavBar = entry == 0
+        if entry == 1 {
+            barView.removeFromSuperview()
+        }
         tableView.cr.addHeadRefresh(animator: NormalHeaderAnimator()) {
             [weak self] in
             self?.reloadArticleList()

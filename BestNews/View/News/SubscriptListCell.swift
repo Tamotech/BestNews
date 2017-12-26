@@ -19,12 +19,21 @@ class SubscriptListCell: UITableViewCell {
     
     @IBOutlet weak var subscriptBtn: UIButton!
     
+    @IBOutlet weak var labelsContainer: LabelsContainerView!
+    
+    @IBOutlet weak var labelsContainerHeight: NSLayoutConstraint!
+    
+    
     var ognization: OgnizationModel?
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        labelsContainer.lheight = 22
+        labelsContainer.lcorner = 4
+        labelsContainer.lBgColor = UIColor(hexString: "#c1c1c1")!
+        labelsContainer.lTitleColor = UIColor.white
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -42,6 +51,16 @@ class SubscriptListCell: UITableViewCell {
         nameLb.text = data.name
         descLb.text = data.memo
         subscriptState(data.subscribe == 1)
+        if data.tags.count > 0 {
+            labelsContainer.isHidden = false
+            labelsContainer.updateUI(data.tags.split(separator: ","))
+            labelsContainerHeight.constant = labelsContainer.height
+        }
+        else {
+            labelsContainer.isHidden = true
+            labelsContainerHeight.constant = 15
+        }
+        
     }
     
     @IBAction func handleTapScriptBtn(_ sender: UIButton) {

@@ -43,6 +43,9 @@ class ActivityDetailController: BaseViewController, ActivityTicketListController
 
     @IBOutlet weak var bottomView: UIView!
     
+    @IBOutlet weak var sponsorHeight: NSLayoutConstraint!
+    
+    
     var collectionItem: UIBarButtonItem?
     
     lazy var webView: WKWebView = {
@@ -234,6 +237,8 @@ extension ActivityDetailController {
         dateLb.text = activity.dateStr()
         addressLb.text = activity.address
         sponsorLb.text = "主办方: \(activity.sponsor)"
+//        let sh = activity.sponsor.getLabHeigh(font: sponsorLb.font, width: screenWidth-55)
+//        sponsorHeight.constant = 18.0+sh
         limitNumLb.text = "限额: \(activity.num)"
         ticketPriceLb.text = activity.priceString()
         let labels = activity.tags.split(separator: ",")
@@ -242,5 +247,10 @@ extension ActivityDetailController {
         webView.loadHTMLString(activity.contentHtmlString(), baseURL: nil)
         bottomView.isHidden = activity.tickets.count <= 0
         
+        if activity.collect == 1 {
+            collectionItem?.image = #imageLiteral(resourceName: "iconCollectionOn")
+        } else {
+            collectionItem?.image = #imageLiteral(resourceName: "iconCollection")
+        }
     }
 }

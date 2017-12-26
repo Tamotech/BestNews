@@ -62,7 +62,7 @@ class LiveListCell: UITableViewCell {
             liveStatusBtn.borderColor = UIColor(hexString: "#ffffff", alpha: 1)!
             startLive.isHidden = false
         }
-        if data.anchoruserid == SessionManager.sharedInstance.userId {
+        if data.state == "l2_coming" && data.anchoruserid == SessionManager.sharedInstance.userId {
             startLive.isHidden = false
         }
         else {
@@ -95,41 +95,51 @@ class LiveListCell: UITableViewCell {
     }
     
     @IBAction func handleTapVoteBtn(_ sender: UIButton) {
-        sender.setImage(#imageLiteral(resourceName: "vote_select"), for: .normal)
         
-        let path = "/zan/zan.htm?id=\(model?.id ?? "")"
-        APIManager.shareInstance.postRequest(urlString: path, params: nil) { (JSON, code, msg) in
-            if code == 0 {
-                
+        
+            let path = "/zan/zan.htm?id=\(model?.id ?? "")"
+            APIManager.shareInstance.postRequest(urlString: path, params: nil) { (JSON, code, msg) in
+                if code == 0 {
+                    sender.setImage(#imageLiteral(resourceName: "vote_select"), for: .normal)
+                }
+                else {
+                    BLHUDBarManager.showError(msg: msg)
+                }
             }
-            else {
-                BLHUDBarManager.showError(msg: msg)
-            }
-        }
+        
     }
     
     @IBAction func handleTapCollectionBtn(_ sender: UIButton) {
+        
+        if !SessionManager.sharedInstance.loginInfo.isLogin {
+            Toolkit.showLoginVC()
+            return
+        }
         if model?.collect == 0 {
             APIRequest.collectAPI(id: model!.id, type: "live", result: {[weak self] (success) in
                 if success {
                     self?.model?.collect = 1
-                    sender.setImage(#imageLiteral(resourceName: "star_select"), for: .normal)
+                    self!.model!.collectnum = self!.model!.collectnum+1
+                    sender.setImage(#imageLiteral(resourceName: "star_select_small"), for: .normal)
+                    sender.setTitle(" \(self!.model!.collectnum)", for: UIControlState.normal)
                 }
                 else {
                     self?.model?.collect = 0
-                    sender.setImage(#imageLiteral(resourceName: "star_dark"), for: .normal)
+                    sender.setImage(#imageLiteral(resourceName: "star_light"), for: .normal)
+                    sender.setTitle(" \(self!.model!.collectnum)", for: UIControlState.normal)
                 }
             })
         }
         else {
             APIRequest.cancelCollectAPI(id: model!.id, type: "live", result: { [weak self] (success) in
-                if !success {
-                    self?.model?.collect = 1
-                    sender.setImage(#imageLiteral(resourceName: "star_select"), for: .normal)
+                if success {
+                    self?.model?.collect = 0
+                    self!.model!.collectnum = self!.model!.collectnum-1
+                    sender.setImage(#imageLiteral(resourceName: "star_light"), for: .normal)
                 }
                 else {
-                    self?.model?.collect = 0
-                    sender.setImage(#imageLiteral(resourceName: "star_dark"), for: .normal)
+                    self?.model?.collect = 1
+                    sender.setImage(#imageLiteral(resourceName: "star_select_small"), for: .normal)
                 }
             })
         }

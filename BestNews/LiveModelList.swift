@@ -48,12 +48,7 @@ class LiveModel: HandyJSON {
     
     func stateStr() -> String {
         if state == "l1_finish" {
-            if videopath.count > 0 {
-                return "  视频回放  "
-            }
-            else {
-                return "  视频回放处理中  "
-            }
+            return "  视频回放  "
         }
         else if state == "l2_coming" {
             return "  即将到来  "

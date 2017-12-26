@@ -10,12 +10,12 @@ import UIKit
 import Kingfisher
 import ImagePicker
 
-class ProfileCenterController: BaseViewController, ImagePickerDelegate {
+class ProfileCenterController: BaseViewController, ImagePickerDelegate, UITextFieldDelegate {
     @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var avatarImg: UIImageView!
     
-    @IBOutlet weak var nicknameLb: UILabel!
+    @IBOutlet weak var nicknameTf: UITextField!
     
     @IBOutlet weak var descLb: UILabel!
     
@@ -34,6 +34,8 @@ class ProfileCenterController: BaseViewController, ImagePickerDelegate {
     @IBOutlet weak var accountView: UIView!
     
     @IBOutlet weak var accountTop: NSLayoutConstraint!
+    
+    var avatarUrl: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +57,7 @@ class ProfileCenterController: BaseViewController, ImagePickerDelegate {
                 let rc = ImageResource(downloadURL: url)
                 avatarImg.kf.setImage(with: rc)
             }
-            nicknameLb.text = user.name
+            nicknameTf.text = user.name
             descLb.text = user.intro
             
             if user.celebrityflag {
@@ -90,12 +92,42 @@ class ProfileCenterController: BaseViewController, ImagePickerDelegate {
             else {
                 qqLb.text = "未绑定"
             }
+            nicknameTf.delegate = self
         }
+        
+        let save = UIBarButtonItem(title: "保存", style: UIBarButtonItemStyle.plain, target: self, action: #selector(handleTapSave(_:)))
+        navigationItem.rightBarButtonItem = save
         
     }
     
 
     //MARK: - actions
+    
+    func handleTapSave(_ : Any) {
+        let nickname = nicknameTf.text
+        if nickname != SessionManager.sharedInstance.userInfo?.name {
+            view.tag = 2
+        }
+        if nickname?.count == 0 || view.tag == 0 {
+            return
+        }
+        var params = ["name": nickname!]
+        if avatarUrl != nil {
+            params["headimg"] = avatarUrl!
+        }
+        SessionManager.sharedInstance.userInfo?.updateUserInfoWithParams(params: params, result: { (success, msg) in
+            if !success {
+                BLHUDBarManager.showError(msg: msg)
+            }
+            else {
+                DispatchQueue.main.async {
+                   BLHUDBarManager.showSuccess(msg: "更新成功!", seconds: 1)
+                    self.navigationController?.popViewController(animated: true)
+                }
+            }
+        })
+    }
+    
     @IBAction func handleTapAvatar(_ sender: Any) {
         let picker = ImagePickerController()
         picker.imageLimit = 1
@@ -139,13 +171,11 @@ class ProfileCenterController: BaseViewController, ImagePickerDelegate {
                 hud?.hide()
                 if code == 0 {
                     hud?.hide()
+                    self?.view.tag = 1
                     SessionManager.sharedInstance.userInfo?.headimg = JSON!["data"]["url"].stringValue
-                    let params = ["headimg": JSON!["data"]["url"].stringValue]
-                    SessionManager.sharedInstance.userInfo?.updateUserInfoWithParams(params: params, result: { (success, msg) in
-                        if !success {
-                            BLHUDBarManager.showError(msg: msg)
-                        }
-                    })
+                    let url = JSON!["data"]["url"].stringValue
+                    self?.avatarUrl = url
+                    
                 }
                 else {
                     hud?.noticeError(msg)

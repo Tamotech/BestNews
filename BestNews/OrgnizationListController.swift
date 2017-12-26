@@ -16,6 +16,7 @@ class OrgnizationListController: BaseViewController, UITableViewDataSource, UITa
     var type: Int = 0
     // 0  圈子  1 机构
     var entry = 0
+    var subscribe = 0
     var ognizationList = OgnizationList()
     var ognizationPage = 1
     var famousPage: Int = 1
@@ -46,7 +47,8 @@ class OrgnizationListController: BaseViewController, UITableViewDataSource, UITa
         
         let nib = UINib(nibName: "SubscriptListCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "ColumeCell")
-        tableView.rowHeight = 95
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 125
         tableView.sectionHeaderHeight = 0.1
         tableView.sectionFooterHeight = 0.1
         tableView.cr.addHeadRefresh {

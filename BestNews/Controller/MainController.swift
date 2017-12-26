@@ -48,7 +48,6 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
         self.setupTitleView()
         self.setupNavTitleView()
 //        self.setupNavigationItems()
-        
     
     }
     

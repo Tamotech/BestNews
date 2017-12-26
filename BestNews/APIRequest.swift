@@ -690,6 +690,26 @@ class APIRequest: NSObject {
         }
     }
     
+    /// 查询用户收藏文章
+    ///
+    /// - Parameters:
+    ///   - result: 列表
+    class func collectedArticleListAPI(page:Int, result: @escaping JSONResult) {
+        let path = "/articleoperate/getCollectArticlePage.htm"
+        let params = ["page": "\(page)",
+            "rows": "20"]
+        
+        APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
+            if code == 0 {
+                let data = HomeArticleList.deserialize(from: JSON!["data"].rawString())
+                result(data)
+            }
+            else {
+                BLHUDBarManager.showError(msg: msg)
+            }
+        }
+    }
+    
     
     /// 文章打赏
     ///

@@ -98,14 +98,14 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
         tableView1.rowHeight = UITableViewAutomaticDimension
         let nib1 = UINib.init(nibName: "LiveMessageCell", bundle: nil)
         tableView1.register(nib1, forCellReuseIdentifier: "Cell")
-        
+        //tableView1.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 1))
         tableView2.delegate = self
         tableView2.dataSource = self
         let nib2 = UINib.init(nibName: "ChatroomMessageCell", bundle: nil)
         tableView2.register(nib2, forCellReuseIdentifier: "Cell")
         tableView1.isHidden = false
         tableView2.isHidden = true
-        
+        //tableView2.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 1))
         setPlayerContentView()
         setCacheForPlaying()
         if liveModel != nil && SessionManager.sharedInstance.userId != liveModel!.anchoruserid {
@@ -126,7 +126,12 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
             else {
                 self?.tableView1.isHidden = true
                 self?.tableView2.isHidden = false
-                self?.commentBar.isHidden = false
+                if self?.liveModel != nil && SessionManager.sharedInstance.userId != self?.liveModel!.anchoruserid {
+                    self?.commentBar.isHidden = false
+                }
+                else {
+                    self?.commentBar.isHidden = true
+                }
             }
             self?.commentBarChangeState(false)
         }
@@ -355,7 +360,10 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
     
     @IBAction func handleTapPublish(_ sender: UIButton) {
         
-        
+        let content = contentTf.text
+        if content?.count == 0 {
+            return
+        }
         if segment.currentIndex == 0 {
             ///主持区
             let content = RCTextMessage(content: contentTf.text)
@@ -481,6 +489,10 @@ extension ChatRoomViewController {
         else {
             return list.count
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 44
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -15,6 +15,7 @@ class ActivityController: BaseViewController, UITableViewDelegate, UITableViewDa
     var collectFlag = false
     var activityList = ActivityList()
     let tableView = UITableView(frame: CGRect.init(x: 0, y: 64, width: screenWidth, height: screenHeight-50-64), style: .grouped)
+    var entry = 0
     
     
     override func viewDidLoad() {
@@ -22,7 +23,9 @@ class ActivityController: BaseViewController, UITableViewDelegate, UITableViewDa
 
         // Do any additional setup after loading the view.
         self.showCustomTitle(title: "活动")
-        
+        if entry == 1 {
+            barView.removeFromSuperview()
+        }
         tableView.delegate = self
         tableView.dataSource = self
         self.view.addSubview(tableView)
@@ -44,7 +47,6 @@ class ActivityController: BaseViewController, UITableViewDelegate, UITableViewDa
         
         if collectFlag {
             self.showCustomTitle(title: "")
-            self.shouldClearNavBar = true
         }
         
         tableView.cr.addHeadRefresh {

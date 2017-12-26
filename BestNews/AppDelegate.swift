@@ -9,6 +9,9 @@
 import UIKit
 import IQKeyboardManagerSwift
 
+
+let kFirstLoadApp = "firstLoadAppKey"
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
 
@@ -17,8 +20,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
-        window?.rootViewController = BestTabbarViewController()
-        
+        if !UserDefaults.standard.bool(forKey: kFirstLoadApp) {
+             UserDefaults.standard.set(true, forKey: kFirstLoadApp)
+            window?.rootViewController = GuideViewController()
+        }
         WXApi.registerApp(wxAppId)
         IQKeyboardManager.sharedManager().enable = true
         

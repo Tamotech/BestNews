@@ -17,6 +17,11 @@ class LabelsContainerView: UIView {
     var style: Int = 0
     var selectCallback: SelectLabelItemCallback?
     
+    var lcorner: CGFloat = 15
+    var lheight: CGFloat = 30
+    var lBgColor: UIColor = UIColor(hexString: "#eeeeee")!
+    var lTitleColor: UIColor = UIColor(hexString: "#999999")!
+    
     func updateUI(_ labels: [Any]) {
         
         self.labels = labels
@@ -35,18 +40,18 @@ class LabelsContainerView: UIView {
             
             let label = String(describing: labels[i])
             let w = label.getLabWidth(font: UIFont.systemFont(ofSize: 12), height: 18) + 20
-            let h: CGFloat = 30
+            let h: CGFloat = lheight
             if x + w > self.width {
                 x = 0
-                y = y + 40
+                y = y + lheight+10
             }
             let v = UIButton(frame: CGRect(x: x, y: y, width: w, height: h))
             
             v.titleLabel?.font = UIFont.systemFont(ofSize: 12)
             if style == 0 {
-                v.setTitleColor(UIColor(hexString: "999999"), for: .normal)
+                v.setTitleColor(lTitleColor, for: .normal)
                 v.borderWidth = 0
-                v.backgroundColor = UIColor(hexString: "eeeeee")
+                v.backgroundColor = lBgColor
                 v.isEnabled = false
             }
             else {
@@ -59,13 +64,13 @@ class LabelsContainerView: UIView {
                 
             }
             v.setTitle(label, for: .normal)
-            v.layer.cornerRadius = 15
+            v.layer.cornerRadius = lcorner
             v.clipsToBounds = true
             self.addSubview(v)
             
             x = x + w + 10
         }
-        y = y + 40
+        y = y + lheight+10
         self.height = y
     }
     
@@ -80,16 +85,16 @@ class LabelsContainerView: UIView {
             let v = self.subviews[i] as! UIButton
             let label = String(describing: labels[i])
             let w = label.getLabWidth(font: UIFont.systemFont(ofSize: 12), height: 18) + 20
-            let h: CGFloat = 30
+            let h: CGFloat = lheight
             if x + w > self.width {
                 x = 0
-                y = y + 40
+                y = y + lheight+10
             }
             
             v.frame = CGRect(x: x, y: y, width: w, height: h)
             x = x + w + 10
         }
-        y = y + 40
+        y = y + lheight+10
         self.height = y
         
     }
