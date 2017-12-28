@@ -16,7 +16,7 @@ class ActivityController: BaseViewController, UITableViewDelegate, UITableViewDa
     var activityList = ActivityList()
     let tableView = UITableView(frame: CGRect.init(x: 0, y: 64, width: screenWidth, height: screenHeight-50-64), style: .grouped)
     var entry = 0
-    
+    var emptyView = BaseEmptyView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,6 +59,8 @@ class ActivityController: BaseViewController, UITableViewDelegate, UITableViewDa
             self?.loadMoreData()
         }
         reloadData()
+        emptyView.emptyString = "还没有活动~"
+        self.view.addSubview(emptyView)
     }
     
     
@@ -69,6 +71,7 @@ class ActivityController: BaseViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        emptyView.isHidden = activityList.list.count > 0
         return activityList.list.count
     }
     

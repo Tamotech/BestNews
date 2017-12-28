@@ -68,8 +68,8 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
     var backBt: UIButton!
     
     var expandBt: UIButton!
-    
-    
+    var emptyView1 = BaseEmptyView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 200))
+    var emptyView2 = BaseEmptyView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 200))
     
     lazy var segment: BaseSegmentControl = {
         let v = BaseSegmentControl(items: ["主持区", "评论区"], defaultIndex: 0)
@@ -110,6 +110,17 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
         setCacheForPlaying()
         if liveModel != nil && SessionManager.sharedInstance.userId != liveModel!.anchoruserid {
             commentBar.isHidden = true
+        }
+        
+        tableView1.addSubview(emptyView1)
+        tableView2.addSubview(emptyView2)
+        emptyView1.emptyString = "还没有主持图文~"
+        emptyView2.emptyString = "还没有评论~"
+        emptyView1.snp.makeConstraints { (make) in
+            make.left.top.right.bottom.equalTo(0)
+        }
+        emptyView2.snp.makeConstraints { (make) in
+            make.left.top.right.bottom.equalTo(0)
         }
         
         segment.selectItemAction = {[weak self](index, name) in
@@ -481,9 +492,11 @@ extension ChatRoomViewController {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == tableView1 {
+            emptyView1.isHidden = anchorList.count > 0
             return anchorList.count
         }
         else {
+            emptyView2.isHidden = list.count > 0
             return list.count
         }
     }
@@ -766,7 +779,7 @@ extension ChatRoomViewController {
         print("播放失败----- \(errorModel.debugDescription)")
         vodPlayer.playerView.bringSubview(toFront: backBt)
         vodPlayer.playerView.bringSubview(toFront: expandBt)
-        
+        coverView.isHidden = false
     }
     
     func vodPlayer(_ vodPlayer: AliyunVodPlayer!, willSwitchTo quality: AliyunVodPlayerVideoQuality) {

@@ -36,6 +36,7 @@ class FastNewsController: BaseViewController, UITableViewDataSource, UITableView
     ///是否加过滤 仅收藏
     var collectFilter: Bool = false
     var entry = 0
+    var emptyView = BaseEmptyView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,6 +58,9 @@ class FastNewsController: BaseViewController, UITableViewDataSource, UITableView
             [weak self] in
             self?.loadMoreArticleList()
         }
+        
+        self.view.addSubview(emptyView)
+        emptyView.emptyString = "还没有快讯~"
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -88,7 +92,7 @@ class FastNewsController: BaseViewController, UITableViewDataSource, UITableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+        emptyView.isHidden = (newsList?.numberOsRowsInSection(section: section) ?? 0) > 0
         return newsList?.numberOsRowsInSection(section: section) ?? 0
     }
     

@@ -24,6 +24,9 @@ class CollectionNewsListController: BaseViewController, UITableViewDataSource, U
         return v
     }()
     
+    var emptyView = BaseEmptyView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
+    
+    
     let cellIdentifiers = ["TopicBannerCell", "SinglePhotoNewsCell", "ThreePhotosNewsCell", "NoPhotoNewsCell", "SingleBigPhotoNewsCell"]
     
     
@@ -36,6 +39,7 @@ class CollectionNewsListController: BaseViewController, UITableViewDataSource, U
     }
     
     func setupView() {
+    
         self.view.addSubview(tableView)
         for i in 0..<cellIdentifiers.count {
             let identifier = cellIdentifiers[i]
@@ -64,6 +68,9 @@ class CollectionNewsListController: BaseViewController, UITableViewDataSource, U
         }
         
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 50))
+        
+        self.view.addSubview(emptyView)
+        emptyView.emptyString = "还没有收藏的新闻~"
     }
     
     
@@ -74,6 +81,7 @@ class CollectionNewsListController: BaseViewController, UITableViewDataSource, U
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        emptyView.isHidden = articleList.list.count != 0
         return articleList.list.count
     }
     

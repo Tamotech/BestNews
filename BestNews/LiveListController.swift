@@ -16,6 +16,7 @@ class LiveListController: UIViewController, UITableViewDelegate, UITableViewData
     var collect = false
     var liveList = LiveModelList()
     var entry = 0
+    var emptyView = BaseEmptyView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +50,9 @@ class LiveListController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.cr.addFootRefresh {
             self.loadMoreLiveList()
         }
+        
+        self.view.addSubview(emptyView)
+        emptyView.emptyString = "还没有直播~"
     }
     
     
@@ -59,6 +63,7 @@ class LiveListController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        emptyView.isHidden = liveList.list.count > 0
         return liveList.list.count
     }
     
