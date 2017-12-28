@@ -160,7 +160,7 @@
                                 </view>
                             </subviews>
                             <constraints>
-                                <constraint firstAttribute="bottom" secondItem="DoH-S6-nFa" secondAttribute="bottom" constant="-13" id="9gh-gc-JGj"/>
+                                <constraint firstAttribute="bottom" secondItem="DoH-S6-nFa" secondAttribute="bottom" constant="30" id="9gh-gc-JGj"/>
                                 <constraint firstItem="DoH-S6-nFa" firstAttribute="centerX" secondItem="0m6-m8-UzK" secondAttribute="centerX" id="DkY-xn-KiL"/>
                                 <constraint firstItem="DoH-S6-nFa" firstAttribute="width" secondItem="0m6-m8-UzK" secondAttribute="width" id="OuQ-cD-B2N"/>
                                 <constraint firstItem="DoH-S6-nFa" firstAttribute="top" secondItem="0m6-m8-UzK" secondAttribute="top" id="jPp-hQ-UnV"/>

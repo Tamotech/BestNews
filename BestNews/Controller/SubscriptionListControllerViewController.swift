@@ -84,7 +84,10 @@ class SubscriptionListControllerViewController: UIViewController, UITableViewDel
         let nib2 = UINib(nibName: "SubscriptListCell", bundle: nil)
         columeTableView.register(nib2, forCellReuseIdentifier: "ColumeCell")
         let nib3 = UINib(nibName: "ColumesCollectionViewCell", bundle: nil)
-        columeTableView.rowHeight = 96;
+        columeTableView.rowHeight = UITableViewAutomaticDimension
+        columeTableView.estimatedRowHeight = 125
+        columeTableView.sectionHeaderHeight = 0.1
+        columeTableView.sectionFooterHeight = 0.1
         columeCollectionView.register(nib3, forCellWithReuseIdentifier: "Cell")
         
         let layout = columeCollectionView.collectionViewLayout as! UICollectionViewFlowLayout

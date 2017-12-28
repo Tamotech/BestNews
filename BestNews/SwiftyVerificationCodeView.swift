@@ -33,6 +33,9 @@ class SwiftyVerificationCodeView: UIView {
     
     /// 框框个数
     var numOfRect = 4
+    
+    // 0 默认(字母 数字)  1 数字
+    var type: Int = 0
 
     /// 构造函数
     ///
@@ -66,8 +69,8 @@ class SwiftyVerificationCodeView: UIView {
     
     func setText(text: String) {
         var len = numOfRect
-        if text.characters.count < len {
-            len = text.characters.count
+        if text.count < len {
+            len = text.count
         }
         for i in 0..<len {
             let start = text.index(text.startIndex, offsetBy: i)
@@ -120,7 +123,7 @@ extension SwiftyVerificationCodeView{
         tv.delegate = self
         tv.deleteDelegate = self
         addSubview(tv)
-//        tv.keyboardType = .numbersAndPunctuation
+        tv.keyboardType = .default
         return tv
         
     }
@@ -132,7 +135,12 @@ extension SwiftyVerificationCodeView{
 extension SwiftyVerificationCodeView:UITextFieldDelegate,SwiftyTextFieldDeleteDelegate{
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-         textField.keyboardType = .default
+        if type == 1 {
+            textField.keyboardType = .numberPad
+        }
+        else {
+            textField.keyboardType = .default
+        }
         return true
     }
     

@@ -35,7 +35,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Ya-23-PfC" userLabel="contentView">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="582"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="530"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T1Y-5e-VOg" userLabel="头像">
                                     <rect key="frame" x="-0.5" y="0.0" width="375" height="212"/>
@@ -184,7 +184,7 @@
                                     </constraints>
                                 </view>
                                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FDQ-41-8Ys" userLabel="账号">
-                                    <rect key="frame" x="-0.5" y="462" width="375" height="100"/>
+                                    <rect key="frame" x="-0.5" y="462" width="375" height="48"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TJV-1K-H9q" userLabel="手机号">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
@@ -405,7 +405,7 @@
                                         <constraint firstItem="FPU-mj-zoM" firstAttribute="top" secondItem="iB9-d2-dxL" secondAttribute="bottom" id="Fw6-XR-Rsv"/>
                                         <constraint firstItem="Gvn-Fk-XIk" firstAttribute="centerX" secondItem="FDQ-41-8Ys" secondAttribute="centerX" id="L4b-GS-Efo"/>
                                         <constraint firstItem="FPU-mj-zoM" firstAttribute="width" secondItem="FDQ-41-8Ys" secondAttribute="width" id="PeR-jM-7Z8"/>
-                                        <constraint firstAttribute="height" constant="100" id="UNp-aq-2QX"/>
+                                        <constraint firstAttribute="height" constant="48" id="UNp-aq-2QX"/>
                                         <constraint firstItem="TJV-1K-H9q" firstAttribute="top" secondItem="FDQ-41-8Ys" secondAttribute="top" id="dBZ-vc-kg6"/>
                                         <constraint firstItem="Gvn-Fk-XIk" firstAttribute="top" secondItem="FPU-mj-zoM" secondAttribute="bottom" id="gvD-3m-CR4"/>
                                         <constraint firstItem="FPU-mj-zoM" firstAttribute="centerX" secondItem="FDQ-41-8Ys" secondAttribute="centerX" id="ktJ-rG-fFk"/>

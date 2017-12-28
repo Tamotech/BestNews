@@ -22,6 +22,7 @@ class LoginSMSCaptchaController: BaseViewController, SwiftyVerificationCodeViewD
     lazy var codeView: SwiftyVerificationCodeView = {
         let wid = (self.captchaView.width-16*5)/4
         let v = SwiftyVerificationCodeView(frame: self.captchaView.bounds, num: 4, margin: 16, wid: wid, hei: 40)
+        v.type = 1
         self.captchaView.addSubview(v)
         return v
     }()
@@ -88,6 +89,10 @@ class LoginSMSCaptchaController: BaseViewController, SwiftyVerificationCodeViewD
             SessionManager.sharedInstance.loginInfo.captcha = code
             loginBtnEnable(enable: true)
         }
+        else {
+            verificationCodeView.cleanVerificationCodeView()
+            BLHUDBarManager.showError(msg: "验证码错误")
+        }
     }
     
     //MARK: - actions
@@ -125,6 +130,7 @@ class LoginSMSCaptchaController: BaseViewController, SwiftyVerificationCodeViewD
     @IBAction func handleTapResend(_ sender: Any) {
         sendSMSCode()
         BLHUDBarManager.showSuccess(msg: "验证码已发送", seconds: 1)
+        codeView.cleanVerificationCodeView()
     }
     
     @IBAction func handleTapProtocol(_ sender: Any) {

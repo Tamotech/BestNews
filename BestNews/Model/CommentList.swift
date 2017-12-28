@@ -67,7 +67,7 @@ class CommentObject: HandyJSON {
     
     /// 以下内容为cell提供
     let commentOriginWidth: CGFloat = screenWidth - 63 - 15
-    let replyOriginWidth: CGFloat = screenWidth - 63 - 15 - 30
+    let replyOriginWidth: CGFloat = screenWidth - 63 - 15 - 35
     ///是否显示所有的回复
     var showReply: Bool = false
     var replyContent: NSAttributedString?
@@ -102,7 +102,7 @@ class CommentObject: HandyJSON {
     }
     
     func replyContentHeight() -> CGFloat {
-        return replyContent!.string.getLabHeigh(font: UIFont.systemFont(ofSize: 12), width: commentOriginWidth)
+        return replyContent!.string.getLabHeigh(font: UIFont.systemFont(ofSize: 12), width: replyOriginWidth)+12
     }
     
     //点赞 取消
