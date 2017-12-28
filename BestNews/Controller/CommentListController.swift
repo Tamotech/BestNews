@@ -156,6 +156,7 @@ extension CommentListController {
             else {
                 self?.commentList = list
                 self?.tableView.cr.endHeaderRefresh()
+                self?.tableView.cr.resetNoMore()
             }
             self?.showCustomTitle(title: "评论(\(self?.commentList?.total ?? 0))")
             self?.tableView.reloadData()

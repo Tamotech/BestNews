@@ -78,5 +78,10 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>wexin</string>
+		<string>wechat</string>
+	</array>
 </dict>
 </plist>

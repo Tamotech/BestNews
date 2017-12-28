@@ -265,9 +265,9 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
     func tapRepostHandler() {
         let vc = BaseShareViewController(nibName: "BaseShareViewController", bundle: nil)
         let share = ShareModel()
-        share.title = article!.title
-        share.msg = ""
-        share.thumb = article!.headimg
+//        share.title = article!.title
+//        share.msg = ""
+//        share.thumb = article!.headimg
         vc.share = share
         presentr.viewControllerForContext = self
         presentr.shouldIgnoreTapOutsideContext = false
@@ -359,7 +359,11 @@ extension NewsDetailController {
         subscriptBtn.isHidden = (article?.type != "normal")
         subscriptBtn.switchStateSub(article!.subseribe == 1)
         commentBar.collect(article!.collect == 1)
-        rewardBtn.isHidden = article?.type != "normal"
+        
+        //TODO 关闭赞赏入口
+        //rewardBtn.isHidden = article?.type != "normal"
+        rewardBtn.isHidden = true
+        
         if let url = URL(string: article!.headimg) {
             let rc = ImageResource(downloadURL: url)
             avtarBtn.kf.setImage(with: rc, for: UIControlState.normal)
@@ -379,7 +383,9 @@ extension NewsDetailController {
         for v in rewardMenView.subviews {
             v.removeFromSuperview()
         }
-        if rewardList.list.count > 0 {
+        
+        //TODO: 暂时都关闭入口
+        if rewardList.list.count < 0 {
             
             let max = rewardList.list.count >= colNum*2 ? colNum*2-1 : rewardList.list.count
             for i in 0..<max {

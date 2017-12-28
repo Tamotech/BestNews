@@ -284,9 +284,6 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
     @IBAction func handleTapRepost(_ sender: UIButton) {
         let vc = BaseShareViewController(nibName: "BaseShareViewController", bundle: nil)
         let share = ShareModel()
-        share.title = liveModel?.title ?? "直播标题"
-        share.msg = ""
-        share.thumb = ""
         vc.share = share
         self.presentr.viewControllerForContext = self
         self.presentr.shouldIgnoreTapOutsideContext = false
@@ -708,8 +705,8 @@ extension ChatRoomViewController {
             print("加入主持人聊天室失败----\(errCode)")
         }
         
-        list = RCIMClient.shared().getHistoryMessages(RCConversationType.ConversationType_CHATROOM, targetId: liveModel?.chatroom_id_group, oldestMessageId: 120000, count: 20) as! [RCMessage]
-        anchorList = RCIMClient.shared().getHistoryMessages(RCConversationType.ConversationType_CHATROOM, targetId: liveModel?.chatroom_id_compere, oldestMessageId: 120000, count: 20) as! [RCMessage]
+//        list = RCIMClient.shared().getHistoryMessages(RCConversationType.ConversationType_CHATROOM, targetId: liveModel?.chatroom_id_group, oldestMessageId: 120000, count: 20) as! [RCMessage]
+//        anchorList = RCIMClient.shared().getHistoryMessages(RCConversationType.ConversationType_CHATROOM, targetId: liveModel?.chatroom_id_compere, oldestMessageId: 120000, count: 20) as! [RCMessage]
         RCIMClient.shared().setReceiveMessageDelegate(self, object: "comment")
         RCIMClient.shared().setReceiveMessageDelegate(self, object: "comment")
         

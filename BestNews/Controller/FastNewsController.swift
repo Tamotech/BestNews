@@ -117,9 +117,6 @@ class FastNewsController: BaseViewController, UITableViewDataSource, UITableView
             let rootVC = self?.navigationController?.childViewControllers.first as! MainController
             let vc = BaseShareViewController(nibName: "BaseShareViewController", bundle: nil)
             let share = ShareModel()
-            share.title = news.content
-            share.msg = ""
-            share.thumb = ""
             vc.share = share
             rootVC.presentr.viewControllerForContext = rootVC
             rootVC.presentr.shouldIgnoreTapOutsideContext = false
@@ -141,6 +138,7 @@ extension FastNewsController {
         
         APIRequest.getFastNewsListAPI(page: 1, collect: collectFilter) { [weak self](data) in
             self?.tableView.cr.endHeaderRefresh()
+            self?.tableView.cr.resetNoMore()
             self?.page = 1
             self?.newsList = data as? FastNewsList
             self?.tableView.reloadData()

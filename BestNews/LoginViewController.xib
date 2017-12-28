@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -45,7 +45,7 @@
                             </userDefinedRuntimeAttributes>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="欢迎你" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZgS-Z4-6Xa">
-                            <rect key="frame" x="104.00000000000001" y="12" width="61.333333333333357" height="24"/>
+                            <rect key="frame" x="103.99999999999999" y="12" width="61.333333333333329" height="24"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -70,13 +70,13 @@
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入手机号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ih-cd-XOs">
-                    <rect key="frame" x="25" y="178.33333333333334" width="98" height="19.333333333333314"/>
+                    <rect key="frame" x="25" y="178.33333333333334" width="98" height="19.333333333333343"/>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                     <color key="textColor" red="0.80784313725490198" green="0.82352941176470584" blue="0.84705882352941175" alpha="0.79901541095890416" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="79n-BB-Lwi">
-                    <rect key="frame" x="25" y="217.66666666666669" width="364" height="40.000000000000057"/>
+                    <rect key="frame" x="25" y="217.66666666666666" width="364" height="39.999999999999972"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="QxE-yC-sKI"/>
                     </constraints>
@@ -98,7 +98,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="16" height="16"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入正确的11位手机号码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ttx-mf-Qex">
-                            <rect key="frame" x="24" y="1" width="146.66666666666666" height="14.333333333333314"/>
+                            <rect key="frame" x="24" y="1.0000000000000009" width="146.66666666666666" height="14.333333333333336"/>
                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                             <color key="textColor" red="0.99607843137254903" green="0.32549019607843138" blue="0.34509803921568627" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -124,7 +124,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="微信登录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LMp-9U-u0c">
-                            <rect key="frame" x="36.333333333333343" y="60" width="49.666666666666657" height="14.666666666666686"/>
+                            <rect key="frame" x="36.333333333333343" y="59.999999999999993" width="49.666666666666657" height="14.666666666666664"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="0.73725490196078436" green="0.74901960784313726" blue="0.76862745098039209" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -137,7 +137,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="QQ登录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KXU-6T-kbw">
-                            <rect key="frame" x="159.66666666666666" y="60" width="43.666666666666686" height="14.666666666666686"/>
+                            <rect key="frame" x="159.66666666666666" y="59.999999999999993" width="43.666666666666657" height="14.666666666666664"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="0.73725490199999999" green="0.74901960779999999" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -150,16 +150,23 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="微博登录" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kQa-ne-sSL">
-                            <rect key="frame" x="279" y="60" width="49.666666666666686" height="14.666666666666686"/>
+                            <rect key="frame" x="279" y="59.999999999999993" width="49.666666666666686" height="14.666666666666664"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="0.73725490199999999" green="0.74901960779999999" blue="0.76862745099999996" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hx4-AE-J5U">
+                            <rect key="frame" x="99" y="0.0" width="265" height="80"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="agh-Yg-wgO" firstAttribute="top" secondItem="sHp-ps-iFf" secondAttribute="top" id="08y-ha-bIM"/>
+                        <constraint firstAttribute="bottom" secondItem="Hx4-AE-J5U" secondAttribute="bottom" id="0a6-2a-g3Q"/>
                         <constraint firstItem="agh-Yg-wgO" firstAttribute="centerX" secondItem="sHp-ps-iFf" secondAttribute="centerX" multiplier="1:3" id="2Fk-0g-vEL"/>
+                        <constraint firstItem="Hx4-AE-J5U" firstAttribute="top" secondItem="sHp-ps-iFf" secondAttribute="top" id="F21-7c-7Zf"/>
+                        <constraint firstAttribute="trailing" secondItem="Hx4-AE-J5U" secondAttribute="trailing" id="HCa-Zk-3Jh"/>
                         <constraint firstItem="hLN-b3-yqa" firstAttribute="centerX" secondItem="sHp-ps-iFf" secondAttribute="centerX" multiplier="5:3" id="MSF-DO-ujM"/>
                         <constraint firstItem="ybj-rI-cns" firstAttribute="top" secondItem="sHp-ps-iFf" secondAttribute="top" id="Moh-iZ-OIZ"/>
                         <constraint firstItem="LMp-9U-u0c" firstAttribute="centerX" secondItem="agh-Yg-wgO" secondAttribute="centerX" id="QZS-GB-ubm"/>
@@ -170,6 +177,7 @@
                         <constraint firstItem="KXU-6T-kbw" firstAttribute="centerY" secondItem="LMp-9U-u0c" secondAttribute="centerY" id="ljJ-kb-4zu"/>
                         <constraint firstItem="kQa-ne-sSL" firstAttribute="centerY" secondItem="KXU-6T-kbw" secondAttribute="centerY" id="m8S-rS-SeZ"/>
                         <constraint firstItem="KXU-6T-kbw" firstAttribute="centerX" secondItem="ybj-rI-cns" secondAttribute="centerX" id="n7m-1N-rew"/>
+                        <constraint firstItem="Hx4-AE-J5U" firstAttribute="leading" secondItem="agh-Yg-wgO" secondAttribute="trailing" constant="10" id="pb5-4J-dXa"/>
                         <constraint firstItem="ybj-rI-cns" firstAttribute="centerX" secondItem="sHp-ps-iFf" secondAttribute="centerX" id="zqE-xB-yTn"/>
                     </constraints>
                 </view>

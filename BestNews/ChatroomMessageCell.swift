@@ -29,8 +29,7 @@ class ChatroomMessageCell: UITableViewCell {
     }
     
     func updateCell(_ data: RCMessage) {
-        
-        if data.content != nil {
+        if data.content != nil && data.content! is RCTextMessage {
             msgLb.text = (data.content as! RCTextMessage).content!
             let content = data.content as! RCTextMessage
             if content.extra != nil {
@@ -60,6 +59,11 @@ class ChatroomMessageCell: UITableViewCell {
                 }
             }
             
+        }
+        else {
+            avatar.image = #imageLiteral(resourceName: "defaultUser")
+            usernameLb.text = ""
+            msgLb.text = ""
         }
         
     }

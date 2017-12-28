@@ -96,6 +96,7 @@ extension MyActivityListController {
         ticketList.page = 1
         APIRequest.activityTicketDetailList(page: 1) { [weak self](data) in
             self?.tableView.cr.endHeaderRefresh()
+            self?.tableView.cr.resetNoMore()
             self?.ticketList = data as! ActivityTicketDetailList
             self?.tableView.reloadData()
         }

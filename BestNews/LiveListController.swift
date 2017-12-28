@@ -107,6 +107,7 @@ extension LiveListController {
         
         APIRequest.getLivePageListAPI(page: 1, collect: collect) { [weak self](data) in
             self?.tableView.cr.endHeaderRefresh()
+            self?.tableView.cr.resetNoMore()
             self?.liveList.page = 1
             self?.liveList = data as! LiveModelList
             self?.tableView.reloadData()

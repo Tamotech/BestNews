@@ -9,9 +9,9 @@
 import UIKit
 
 class ShareModel: NSObject {
-    var title = ""
+    var title = "新华日报财经"
     var thumb = ""
-    var msg = ""
+    var msg = "专注财经新闻资讯，与财经现场、金融机构、大咖名人零距离！"
     var link = "http://xhfmedia.com/app.htm"
 }
 

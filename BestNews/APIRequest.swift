@@ -837,7 +837,7 @@ class APIRequest: NSObject {
     class func getLivePageListAPI(page: Int, collect: Bool, result: @escaping JSONResult) {
         let path = "/live/getLivePageList.htm"
         let params = ["page": page,
-                      "collectflag": collect,
+                      "collectflag": (collect ? "true": "false"),
                       "rows": "10"]
             as [String : Any]
         APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in

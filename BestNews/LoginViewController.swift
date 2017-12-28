@@ -10,6 +10,7 @@ import UIKit
 import SwiftyJSON
 import Alamofire
 import Kingfisher
+import WatchKit
 
 class LoginViewController: BaseViewController, UITextFieldDelegate {
 
@@ -30,7 +31,13 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
 
         shouldClearNavBar = true
         avartarInfoView.isHidden = true
-        thirdLoginView.isHidden = false
+        
+        if !UIApplication.shared.canOpenURL(URL(string:"wechat://")!) {
+            thirdLoginView.isHidden = true
+        }
+        else {
+            thirdLoginView.isHidden = false
+        }
         phoneField.delegate = self
         tipView.isHidden = true
         let close = UIBarButtonItem(image: #imageLiteral(resourceName: "close-light-gray"), style: .plain, target: self, action: #selector(handleTapClose(_:)))
@@ -94,7 +101,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
                                     
                                 }
                             }
-                            else if code == -130 {
+                            else if code == -132 || code == -133 || code == -134 {
                                 //去绑定手机号登录
                                 self?.avartarInfoView.isHidden = false
                                 self?.thirdLoginView.isHidden = true

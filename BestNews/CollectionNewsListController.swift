@@ -123,6 +123,7 @@ class CollectionNewsListController: BaseViewController, UITableViewDataSource, U
         
         APIRequest.collectedArticleListAPI(page: 1) { [weak self](data) in
             self?.tableView.cr.endHeaderRefresh()
+            self?.tableView.cr.resetNoMore()
             self?.page = 1
             self?.articleList = data as! HomeArticleList
             self?.tableView.reloadData()

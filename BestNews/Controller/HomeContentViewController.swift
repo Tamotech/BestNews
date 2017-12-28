@@ -30,7 +30,7 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
     }()
     
     lazy var tableView: UITableView = {
-       let v = UITableView(frame: UIScreen.main.bounds, style: .plain)
+       let v = UITableView(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: self.view.height-49), style: .plain)
         v.separatorStyle = .singleLine
         v.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15)
         v.separatorColor = UIColor(hexString: "f0f0f0")
@@ -237,6 +237,7 @@ extension HomeContentViewController {
     func reloadArticleList() {
         APIRequest.getHomeArticleListAPI(page: 1, row: 10) { [weak self](data) in
             self?.tableView.cr.endHeaderRefresh()
+            self?.tableView.cr.resetNoMore()
             self?.page = 1
             self?.articleList = data as? HomeArticleList
             self?.tableView.reloadData()
@@ -256,6 +257,7 @@ extension HomeContentViewController {
         page = page + 1
         APIRequest.getHomeArticleListAPI(page: page, row: 10) { [weak self](data) in
             self?.page = 1
+            self?.tableView.cr.endLoadingMore()
             let list = data as? HomeArticleList
             if list != nil {
                 self?.articleList?.list.append(contentsOf: list!.list)

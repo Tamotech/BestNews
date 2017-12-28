@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -132,6 +132,10 @@
                             <color key="textColor" red="0.20392156859999999" green="0.20392156859999999" blue="0.20392156859999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tCn-X2-ayk">
+                            <rect key="frame" x="157.5" y="40" width="217.5" height="93"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
@@ -151,12 +155,16 @@
                         <constraint firstItem="OuH-hF-8kg" firstAttribute="centerY" secondItem="eg4-RO-6sg" secondAttribute="centerY" id="U1Z-Ot-pls"/>
                         <constraint firstItem="2N2-ml-fzg" firstAttribute="top" secondItem="jxK-pP-Lxj" secondAttribute="top" constant="40" id="Uq6-Dj-fvN"/>
                         <constraint firstItem="V9E-lw-fso" firstAttribute="centerX" secondItem="jxK-pP-Lxj" secondAttribute="centerX" multiplier="9:5" constant="-10" id="Zkl-9c-ttX"/>
+                        <constraint firstItem="tCn-X2-ayk" firstAttribute="top" secondItem="jxK-pP-Lxj" secondAttribute="top" constant="40" id="ckb-PH-KR4"/>
+                        <constraint firstItem="tCn-X2-ayk" firstAttribute="leading" secondItem="Q0d-YY-HSk" secondAttribute="trailing" constant="15" id="dzQ-Nr-7BN"/>
                         <constraint firstItem="ohx-p3-evN" firstAttribute="centerX" secondItem="V9E-lw-fso" secondAttribute="centerX" id="eWf-d0-6uS"/>
                         <constraint firstItem="Yvt-za-z0f" firstAttribute="centerY" secondItem="Tcg-ka-dR4" secondAttribute="centerY" id="fqT-cw-Md9"/>
                         <constraint firstItem="6QO-Ud-DGY" firstAttribute="centerY" secondItem="OuH-hF-8kg" secondAttribute="centerY" id="jQZ-CH-3yN"/>
                         <constraint firstItem="Tcg-ka-dR4" firstAttribute="centerX" secondItem="jxK-pP-Lxj" secondAttribute="centerX" id="lbg-jl-2V5"/>
+                        <constraint firstAttribute="trailing" secondItem="tCn-X2-ayk" secondAttribute="trailing" id="qlz-87-2hd"/>
                         <constraint firstItem="Yvt-za-z0f" firstAttribute="centerX" secondItem="jxK-pP-Lxj" secondAttribute="centerX" multiplier="7:5" constant="-5" id="roR-1Q-YRA"/>
                         <constraint firstItem="eg4-RO-6sg" firstAttribute="top" secondItem="Q0d-YY-HSk" secondAttribute="bottom" constant="10" id="sEP-Z6-shP"/>
+                        <constraint firstAttribute="bottom" secondItem="tCn-X2-ayk" secondAttribute="bottom" constant="76" id="tWL-sx-ocf"/>
                         <constraint firstItem="rAh-ve-R6S" firstAttribute="centerX" secondItem="Yvt-za-z0f" secondAttribute="centerX" id="yd0-oO-Bxg"/>
                         <constraint firstItem="ohx-p3-evN" firstAttribute="centerY" secondItem="rAh-ve-R6S" secondAttribute="centerY" id="zFg-QU-ug9"/>
                     </constraints>

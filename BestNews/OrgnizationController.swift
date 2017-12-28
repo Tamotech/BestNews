@@ -326,6 +326,7 @@ extension OrgnizationController {
     func reloadArticleList() {
         APIRequest.articleListAPI(id: ognization!.id, type: "organizeid", page: 1) { [weak self](data) in
             self?.newsTableView.cr.endHeaderRefresh()
+            self?.newsTableView.cr.resetNoMore()
             self?.articlePage = 1
             self?.articleList = data as! HomeArticleList
             self?.newsTableView.reloadData()
@@ -335,7 +336,7 @@ extension OrgnizationController {
                 self?.personTableView.isHidden = true
             }
             else {
-                self?.contentViewHeight.constant = (self?.newsTableView.contentSize.height)!*0.95
+                self?.contentViewHeight.constant = (self?.newsTableView.contentSize.height)!
                 self?.newsTableView.isHidden = false
 
             }
@@ -361,12 +362,15 @@ extension OrgnizationController {
                 self?.articleList.list.append(contentsOf: list!.list)
                 self?.newsTableView.reloadData()
             }
+            self?.contentViewHeight.constant = (self?.newsTableView.contentSize.height)!
+            self?.newsTableView.isHidden = false
         }
     }
     
     func reloadFamousList() {
         APIRequest.famousListAPI(id: ognization!.id, type: "organizeid", page: 1) { [weak self](data) in
             self?.personTableView.cr.endHeaderRefresh()
+            self?.personTableView.cr.resetNoMore()
             self?.famousPage = 1
             self?.famousList = data as! OgnizationList
             self?.personTableView.reloadData()

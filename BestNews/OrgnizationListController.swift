@@ -151,6 +151,7 @@ extension OrgnizationListController {
         ognizationList.page = 1
         APIRequest.ognizationListAPI(xgorganizeid: nil,  page: 1) { [weak self](data) in
             self?.tableView.cr.endHeaderRefresh()
+            self?.tableView.cr.resetNoMore()
             self?.ognizationList = data as! OgnizationList
             self?.tableView.reloadData()
         }
@@ -174,6 +175,7 @@ extension OrgnizationListController {
     func reloadFamousList() {
         APIRequest.famousListAPI(id: "true", type: "subscribeflag", page: 1) { [weak self](data) in
             self?.tableView.cr.endHeaderRefresh()
+            self?.tableView.cr.resetNoMore()
             self?.famousPage = 1
             self?.famousList = data as! OgnizationList
             self?.tableView.reloadData()

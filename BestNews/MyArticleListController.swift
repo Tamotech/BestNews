@@ -124,6 +124,7 @@ extension MyArticleListController {
         
         APIRequest.subscribeArticleListAPI(page: 1) { [weak self](data) in
             self?.tableView.cr.endHeaderRefresh()
+            self?.tableView.cr.resetNoMore()
             self?.page = 1
             self?.articles = data as! HomeArticleList
             self?.tableView.reloadData()

@@ -45,6 +45,7 @@ class LoginSMSCaptchaController: BaseViewController, SwiftyVerificationCodeViewD
         let close = UIBarButtonItem(image: #imageLiteral(resourceName: "close-light-gray"), style: .plain, target: self, action: #selector(handleTapClose(_:)))
         navigationItem.rightBarButtonItem = close
         loginBtnEnable(enable: false)
+        phoneLabel.text = phone
         sendSMSCode()
     }
 
@@ -66,7 +67,11 @@ class LoginSMSCaptchaController: BaseViewController, SwiftyVerificationCodeViewD
         APIRequest.sendSMSCode(phone: ph) { [weak self](success, sms) in
             if success {
                 self?.smsCode = sms
-                self?.codeView.setText(text: sms!)
+                
+                ///自动填充
+                if ph == "15721261417" {
+                    self?.codeView.setText(text: sms!)
+                }
                 self?.loginBtnEnable(enable: true)
                 SessionManager.sharedInstance.loginInfo.phone = ph
                 SessionManager.sharedInstance.loginInfo.captcha = sms!

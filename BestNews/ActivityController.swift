@@ -123,6 +123,7 @@ extension ActivityController {
         activityList.page = 1
         APIRequest.activityListAPI(collect: collectFlag, page: 1) { [weak self](data) in
             self?.tableView.cr.endHeaderRefresh()
+            self?.tableView.cr.resetNoMore()
             self?.activityList = data as! ActivityList
             self?.tableView.reloadData()
         }
