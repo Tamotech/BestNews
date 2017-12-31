@@ -185,10 +185,8 @@
 		5AA4E8601FD43378007A04FA /* volume_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA4E84B1FD43377007A04FA /* volume_on@2x.png */; };
 		5AA4E8611FD43378007A04FA /* volume_on@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA4E84C1FD43378007A04FA /* volume_on@3x.png */; };
 		5AA4E8621FD43378007A04FA /* camera_flash_close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA4E84D1FD43378007A04FA /* camera_flash_close@3x.png */; };
-		5ABAD58D1FD5A24200C866C0 /* AliyunLanguageSource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5ABAD5881FD5A23F00C866C0 /* AliyunLanguageSource.bundle */; };
 		5ABAD58E1FD5A24200C866C0 /* AliyunPlayerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ABAD5891FD5A24000C866C0 /* AliyunPlayerSDK.framework */; };
 		5ABAD58F1FD5A24200C866C0 /* AliyunVodPlayerViewSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ABAD58A1FD5A24100C866C0 /* AliyunVodPlayerViewSDK.framework */; };
-		5ABAD5901FD5A24200C866C0 /* AliyunImageSource.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5ABAD58B1FD5A24100C866C0 /* AliyunImageSource.bundle */; };
 		5ABAD5931FD5A2B800C866C0 /* AliyunPlayerSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5ABAD5891FD5A24000C866C0 /* AliyunPlayerSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		5ABAD5941FD5A2B800C866C0 /* AliyunVodPlayerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5ABAD58C1FD5A24200C866C0 /* AliyunVodPlayerSDK.framework */; };
 		5ABAD5951FD5A2B800C866C0 /* AliyunVodPlayerSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 5ABAD58C1FD5A24200C866C0 /* AliyunVodPlayerSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -510,10 +508,8 @@
 		5AA4E84B1FD43377007A04FA /* volume_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "volume_on@2x.png"; path = "AlivcLivePusherDemo/AlivcLivePusherDemo/Resources/volume_on@2x.png"; sourceTree = SOURCE_ROOT; };
 		5AA4E84C1FD43378007A04FA /* volume_on@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "volume_on@3x.png"; path = "AlivcLivePusherDemo/AlivcLivePusherDemo/Resources/volume_on@3x.png"; sourceTree = SOURCE_ROOT; };
 		5AA4E84D1FD43378007A04FA /* camera_flash_close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "camera_flash_close@3x.png"; path = "AlivcLivePusherDemo/AlivcLivePusherDemo/Resources/camera_flash_close@3x.png"; sourceTree = SOURCE_ROOT; };
-		5ABAD5881FD5A23F00C866C0 /* AliyunLanguageSource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AliyunLanguageSource.bundle; sourceTree = "<group>"; };
 		5ABAD5891FD5A24000C866C0 /* AliyunPlayerSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AliyunPlayerSDK.framework; sourceTree = "<group>"; };
 		5ABAD58A1FD5A24100C866C0 /* AliyunVodPlayerViewSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AliyunVodPlayerViewSDK.framework; sourceTree = "<group>"; };
-		5ABAD58B1FD5A24100C866C0 /* AliyunImageSource.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AliyunImageSource.bundle; sourceTree = "<group>"; };
 		5ABAD58C1FD5A24200C866C0 /* AliyunVodPlayerSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AliyunVodPlayerSDK.framework; sourceTree = "<group>"; };
 		5ABAD5981FD5A36900C866C0 /* AlivcLivePusher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlivcLivePusher.framework; sourceTree = "<group>"; };
 		5ABAD5991FD5A36900C866C0 /* AlivcLibRtmp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlivcLibRtmp.framework; sourceTree = "<group>"; };
@@ -1119,8 +1115,6 @@
 		5ABAD5871FD5A22900C866C0 /* AliSDK */ = {
 			isa = PBXGroup;
 			children = (
-				5ABAD58B1FD5A24100C866C0 /* AliyunImageSource.bundle */,
-				5ABAD5881FD5A23F00C866C0 /* AliyunLanguageSource.bundle */,
 				5ABAD5891FD5A24000C866C0 /* AliyunPlayerSDK.framework */,
 				5ABAD58C1FD5A24200C866C0 /* AliyunVodPlayerSDK.framework */,
 				5ABAD58A1FD5A24100C866C0 /* AliyunVodPlayerViewSDK.framework */,
@@ -1546,7 +1540,6 @@
 				5A0D23CE1F839B2900FC9D4D /* CommentCell.xib in Resources */,
 				5AA4E8501FD43378007A04FA /* record_beauty_on@3x.png in Resources */,
 				5ACCDD301F9F7AEA004D3809 /* InterestColumnCell.xib in Resources */,
-				5ABAD5901FD5A24200C866C0 /* AliyunImageSource.bundle in Resources */,
 				5A32A7001F92FDF300773884 /* HomeSearchController.xib in Resources */,
 				5AA4E85A1FD43378007A04FA /* Line@3x.png in Resources */,
 				5ACCDD2C1F9F75CE004D3809 /* SelectInterestItemController.xib in Resources */,
@@ -1614,7 +1607,6 @@
 				5A38B6C61F80ED1800AF4A91 /* ColumesCollectionViewCell.xib in Resources */,
 				5A5446041F84A13E0004F192 /* ActivityTicketListController.xib in Resources */,
 				5A8C29E91FE3301400E51095 /* Emoji.plist in Resources */,
-				5ABAD58D1FD5A24200C866C0 /* AliyunLanguageSource.bundle in Resources */,
 				5A0612CA1FDCD4E100E7F20A /* SubmitPaperController.xib in Resources */,
 				5A063F3F1FF1D12400AFAA40 /* startLaunch.png in Resources */,
 				CCDB6D541F7A39CE0012432E /* TopicImageCell.xib in Resources */,

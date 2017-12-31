@@ -68,8 +68,8 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
     var backBt: UIButton!
     
     var expandBt: UIButton!
-    var emptyView1 = BaseEmptyView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 200))
-    var emptyView2 = BaseEmptyView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 200))
+    var emptyView1 = BaseEmptyView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 400))
+    var emptyView2 = BaseEmptyView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 400))
     
     lazy var segment: BaseSegmentControl = {
         let v = BaseSegmentControl(items: ["主持区", "评论区"], defaultIndex: 0)
@@ -116,12 +116,18 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
         tableView2.addSubview(emptyView2)
         emptyView1.emptyString = "还没有主持图文~"
         emptyView2.emptyString = "还没有评论~"
-        emptyView1.snp.makeConstraints { (make) in
-            make.left.top.right.bottom.equalTo(0)
-        }
-        emptyView2.snp.makeConstraints { (make) in
-            make.left.top.right.bottom.equalTo(0)
-        }
+//        emptyView1.snp.makeConstraints { (make) in
+//            make.left.equalTo(self.tableView1.snp.left)
+//            make.right.equalTo(self.tableView1.snp.right)
+//            make.top.equalTo(self.tableView1.snp.top)
+//            make.bottom.equalTo(self.tableView1.snp.bottom)
+//        }
+//        emptyView2.snp.makeConstraints { (make) in
+//            make.left.equalTo(self.tableView2.snp.left)
+//            make.right.equalTo(self.tableView2.snp.right)
+//            make.top.equalTo(self.tableView2.snp.top)
+//            make.bottom.equalTo(self.tableView2.snp.bottom)
+//        }
         
         segment.selectItemAction = {[weak self](index, name) in
             if index == 0 {

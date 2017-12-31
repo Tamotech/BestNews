@@ -40,7 +40,12 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>5</string>
+	<string>4</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>wexin</string>
+		<string>wechat</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -77,11 +82,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-	</array>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>wexin</string>
-		<string>wechat</string>
 	</array>
 </dict>
 </plist>

@@ -60,6 +60,12 @@ class ChatroomMessageCell: UITableViewCell {
             }
             
         }
+        else if data.content != nil && data.content! is RCInformationNotificationMessage {
+            let content = data.content as! RCInformationNotificationMessage
+            avatar.image = #imageLiteral(resourceName: "defaultUser")
+            msgLb.text = content.message
+            usernameLb.text = "用户"
+        }
         else {
             avatar.image = #imageLiteral(resourceName: "defaultUser")
             usernameLb.text = ""
