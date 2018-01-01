@@ -33,10 +33,21 @@
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
+			<key>CFBundleURLName</key>
+			<string>tencent</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>tencent1106335273</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>App-Prefs</string>
 				<string>xinhuacaijing</string>
+				<string>xhfm1234</string>
 			</array>
 		</dict>
 	</array>
@@ -46,6 +57,10 @@
 	<array>
 		<string>wexin</string>
 		<string>wechat</string>
+		<string>qq</string>
+		<string>mqqopensdkapiv2</string>
+		<string>mqqopensdkapi</string>
+		<string>mqq</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>

@@ -76,7 +76,11 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
              "captcha": self.loginInfo.captcha]
         if type == 1 {
             params["wxid"] = wxUserInfo?.openid ?? ""
-            params["wxinfo"] = wxUserInfo?.unionid ?? ""
+            params["wxinfo"] = wxUserInfo?.nickname ?? ""
+        }
+        else if type == 3 {
+            params["qqid"] = userInfo?.qqid ?? ""
+            params["qqinfo"] = userInfo?.qqinfo ?? ""
         }
         
         APIManager.shareInstance.postRequest(urlString: "/login/login.htm", params: params, result: { [weak self](result, code, msg) in

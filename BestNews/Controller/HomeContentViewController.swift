@@ -17,7 +17,7 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
     var page: Int = 1
     
     lazy var headerBannerView: YLCycleView = {
-       let v = YLCycleView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenWidth*243.0/375.0), images:["banner-default"], titles: [""])
+       let v = YLCycleView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenWidth*243.0/375.0), images:["m24_default"], titles: [""])
         //顶部加一个 渐变黑色蒙版
         let maskLayer = CAGradientLayer()
         maskLayer.frame = CGRect(x: 0, y: 0, width: screenWidth, height: 64)
@@ -256,7 +256,6 @@ extension HomeContentViewController {
         
         page = page + 1
         APIRequest.getHomeArticleListAPI(page: page, row: 10) { [weak self](data) in
-            self?.page = 1
             self?.tableView.cr.endLoadingMore()
             let list = data as? HomeArticleList
             if list != nil {

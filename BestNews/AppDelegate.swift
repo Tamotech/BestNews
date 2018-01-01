@@ -79,6 +79,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
                 }
             })
         }
+        else if url.description.contains("tencent") {
+            return TencentOAuth.handleOpen(url)
+        }
         return WXApi.handleOpen(url, delegate: self)
     }
     

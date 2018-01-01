@@ -67,6 +67,8 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
     
     var backBt: UIButton!
     
+    var timer: Timer?
+    
     var expandBt: UIButton!
     var emptyView1 = BaseEmptyView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 400))
     var emptyView2 = BaseEmptyView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 400))
@@ -87,6 +89,13 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
     
     var coverView = UIImageView()
     var activity = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.whiteLarge)
+    
+    lazy var controlBar: VideoPlayControlBar = {
+        let bar = VideoPlayControlBar.instanceFromXib() as! VideoPlayControlBar
+        return bar
+    }()
+    
+    var playerBtn: UIButton?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -187,6 +196,11 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
 
     //MARK:析构函数
     deinit {
+        if timer != nil {
+            timer?.invalidate()
+            self.timer = nil
+        }
+        self.aliyunVodPlayer.removeObserver(self, forKeyPath: "currentTime")
         self.aliyunVodPlayer.stop()
         if self.aliyunVodPlayer.playerView != nil {
             self.aliyunVodPlayer.playerView.removeFromSuperview()
@@ -202,12 +216,7 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
         let playerView = aliyunVodPlayer.playerView
         playerView?.frame = CGRect(x: 0, y: 0, width: screenWidth, height: h)
         keyWindow!.addSubview(playerView!)
-//        let mask = UIImageView(image: #imageLiteral(resourceName: "nav-black-layer"))
-//        playerView?.addSubview(mask)
-//        mask.snp.makeConstraints { (make) in
-//            make.left.right.top.equalTo(0)
-//            make.height.equalTo(64)
-//        }
+    
         
         coverView.frame = playerView!.bounds
         playerView?.addSubview(coverView)
@@ -246,7 +255,37 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
             make.size.equalTo(CGSize(width: 50, height: 40))
         }
         
+        playerBtn = UIButton()
+        playerBtn?.setImage(#imageLiteral(resourceName: "iconPlayM2-5"), for: UIControlState.normal)
+        playerBtn?.addTarget(self, action: #selector(handleTapPlayerBtn(_:)), for: UIControlEvents.touchUpInside)
+        playerView?.addSubview(playerBtn!)
+        playerBtn?.snp.makeConstraints({ (make) in
+            make.size.equalTo(CGSize(width: 50, height: 50))
+            make.center.equalTo(playerView!.snp.center)
+        })
+        playerBtn?.isHidden = true
+        
+        playerView?.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapPlayerBtn(_:)))
+        playerView?.addGestureRecognizer(tap)
+        
+        playerView?.addSubview(controlBar)
+        controlBar.snp.makeConstraints { (make) in
+            make.left.right.bottom.equalTo(0)
+            make.height.equalTo(40)
+        }
+        controlBar.isHidden = true
+        controlBar.videoProgress = {
+            [weak self](progress) in
+            let ctime = self!.aliyunVodPlayer.duration * TimeInterval(progress)
+            self?.aliyunVodPlayer.seek(toTime: ctime)
+            self?.aliyunVodPlayer.resume()
+            
+        }
+        
     }
+    
+    
     
     //缓存设置
     private func setCacheForPlaying(){
@@ -257,6 +296,18 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
     
     
     //MARK: - actions
+    
+    
+    func handleTapPlayerBtn(_ sender: UIButton) {
+        if self.aliyunVodPlayer.playerState() == AliyunVodPlayerState.play {
+            self.aliyunVodPlayer.pause()
+            self.playerBtn?.isHidden = false
+        }
+        else if self.aliyunVodPlayer.playerState() == AliyunVodPlayerState.pause {
+            self.aliyunVodPlayer.resume()
+            self.playerBtn?.isHidden = true
+        }
+    }
     
     @IBAction func handleTapArrow(_ sender: UIButton) {
         
@@ -669,6 +720,7 @@ extension ChatRoomViewController {
             
         
             if self?.liveModel?.state == "l1_finish" {
+                self?.controlBar.isHidden = false
                 if self?.liveModel?.videopath == "" {
                     self?.liveModel?.videopath = "http://cloud.video.taobao.com/play/u/2712925557/p/1/e/6/t/1/40050769.mp4"
                 }
@@ -684,12 +736,55 @@ extension ChatRoomViewController {
                 }
             }
             else {
+                self?.controlBar.isHidden = true
                 let url = "rtmp://videolive.xhfmedia.com\(path)?auth_key=\(key)"
                 self?.aliyunVodPlayer.prepare(with: URL(string: url)!)
                 self?.aliyunVodPlayer.start()
                 if ConversationClientManager.shareInstanse.finishConnectRMSDK {
                     self?.initRoomView()
                 }
+            }
+            DispatchQueue.main.async {
+                self?.activity.startAnimating()
+            }
+            self?.timer = Timer(timeInterval: 1, target: self!, selector: #selector(self?.timerEvent(_:)), userInfo: nil, repeats: true)
+            RunLoop.main.add(self!.timer!, forMode: RunLoopMode.commonModes)
+            self?.timer?.fire()
+        }
+    }
+    
+    func timerEvent(_ sender: Timer) {
+        
+        if self.aliyunVodPlayer.duration > 0 {
+            let progress = self.aliyunVodPlayer.currentTime/self.aliyunVodPlayer.duration
+            controlBar.slider.setValue(Float(progress), animated: true)
+            let duration = self.aliyunVodPlayer.duration
+            let currentT = self.aliyunVodPlayer.currentTime
+            let m1 = Int(duration)/60
+            let s1 = Int(duration)%60
+            let m2 = Int(currentT)/60
+            let s2 = Int(currentT)%60
+            let t1 = String.init(format: "%.2d:%.2d/%.2d:%.2d", m1, s1, m2, s2)
+            self.controlBar.timeLb.text = t1
+        }
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "currentTime" {
+            
+            if self.aliyunVodPlayer.duration > 0 {
+                let progress = self.aliyunVodPlayer.currentTime/self.aliyunVodPlayer.duration
+                controlBar.slider.setValue(Float(progress), animated: true)
+                
+                let duration = self.aliyunVodPlayer.duration
+                let currentT = self.aliyunVodPlayer.currentTime
+                let m1 = Int(duration)/60
+                let s1 = Int(duration)%60
+                let m2 = Int(currentT)/60
+                let s2 = Int(currentT)%60
+                let t1 = String.init(format: "%.2d:%.2d/%.2d:%.2d", m1, s1, m2, s2)
+                self.controlBar.timeLb.text = t1
+
             }
         }
     }
@@ -799,6 +894,8 @@ extension ChatRoomViewController {
     func vodPlayer(_ vodPlayer: AliyunVodPlayer!, failSwitchTo quality: AliyunVodPlayerVideoQuality) {
         
     }
+    
+    
     
     
 }

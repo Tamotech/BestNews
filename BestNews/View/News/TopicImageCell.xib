@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="148" height="77"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cover1M2-4" translatesAutoresizingMaskIntoConstraints="NO" id="eIW-wq-hgm">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="m24_default" translatesAutoresizingMaskIntoConstraints="NO" id="eIW-wq-hgm">
                         <rect key="frame" x="0.0" y="0.0" width="148" height="77"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -61,6 +61,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="Cover1M2-4" width="375" height="211"/>
+        <image name="m24_default" width="375" height="211"/>
     </resources>
 </document>

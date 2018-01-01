@@ -86,6 +86,7 @@ class LiveListCell: UITableViewCell {
         let labelImName = "live-label\(arc4random()%3+1)"
         labelIm.image = UIImage(named: labelImName)
         labelText.text = data.marks
+        
     }
     
     @IBAction func handleTapCommentBtn(_ sender: UIButton) {

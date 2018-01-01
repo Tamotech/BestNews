@@ -18,8 +18,10 @@ class SpecialChannelArticleListController: BaseViewController, UITableViewDelega
     ///频道
     var newsChannel: NewsChannel?
     var articleList: HomeArticleList?
-    var coverArticle: HomeArticle?
+    var coverArticles: [HomeArticle] = []
     var page: Int = 1
+    
+    var emptyView = BaseEmptyView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
     
     lazy var tableView: UITableView = {
         let v = UITableView(frame: CGRect.init(x: 0, y: 64, width: screenWidth, height: screenHeight-64), style: .plain)
@@ -77,6 +79,9 @@ class SpecialChannelArticleListController: BaseViewController, UITableViewDelega
         
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 50))
         
+        tableView.addSubview(emptyView)
+        emptyView.emptyString = "还没有新闻~"
+        
         if channel != nil {
             
         }
@@ -87,7 +92,7 @@ class SpecialChannelArticleListController: BaseViewController, UITableViewDelega
     
     func clickedCycleView(_ cycleView: YLCycleView, selectedIndex index: Int) {
         let vc = NewsDetailController.init(nibName: "NewsDetailController", bundle: nil) as NewsDetailController
-        vc.articleId = coverArticle!.id
+        vc.articleId = coverArticles[index].id
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -99,8 +104,10 @@ class SpecialChannelArticleListController: BaseViewController, UITableViewDelega
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if articleList == nil {
+            emptyView.isHidden = false
             return 0
         }
+        emptyView.isHidden = articleList!.list.count > 0
         return articleList!.list.count
     }
     
@@ -215,14 +222,20 @@ extension SpecialChannelArticleListController {
     func loadCoverArticle() {
         let id = channel == nil ? newsChannel!.id : channel!.id
         APIRequest.channelCoverArticleAPI(id: id) { [weak self](data) in
-            self?.coverArticle = data as? HomeArticle
+            self?.coverArticles = data as! [HomeArticle]
             self?.updateCover()
         }
     }
     
     func updateCover() {
-        if coverArticle != nil {
-            let v = YLCycleView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenWidth*243.0/375.0), images:[coverArticle!.titleimgpath], titles: [coverArticle!.title])
+        if coverArticles.count > 0 {
+            var titles: [String] = []
+            var imgs: [String] = []
+            for article in coverArticles {
+                titles.append(article.title)
+                imgs.append(article.titleimgpath)
+            }
+            let v = YLCycleView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenWidth*243.0/375.0), images:imgs, titles: titles)
             v.delegate = self
             tableView.tableHeaderView = v
         }

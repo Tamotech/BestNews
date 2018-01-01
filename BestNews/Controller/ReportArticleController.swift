@@ -82,7 +82,7 @@ class ReportArticleController: UIViewController, UITableViewDataSource, UITableV
     @IBAction func tapSubmit(_ sender: Any) {
         
         dismiss(animated: true) {
-            BLHUDBarManager.showSuccess(msg: "感谢您的反馈, 小编将擦亮眼睛重新审核！", seconds: 1)
+            BLHUDBarManager.showSuccess(msg: "感谢您的反馈,小编将擦亮眼睛重新审核！", seconds: 1)
         }
         
     }

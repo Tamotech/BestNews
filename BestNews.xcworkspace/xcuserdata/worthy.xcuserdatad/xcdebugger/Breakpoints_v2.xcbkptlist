@@ -66,59 +66,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BestNews/ActivityRegistController.swift"
-            timestampString = "536459866.403468"
+            timestampString = "536516189.143361"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "239"
-            endingLineNumber = "239"
-            landmarkName = "zhifubaoPaySuccess(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "BestNews.ActivityRegistController.zhifubaoPaySuccess(Swift.Optional&lt;Any&gt;) -&gt; ()"
-                  moduleName = "BestNews"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/worthy/code/workspace/BestNews/BestNews/ActivityRegistController.swift"
-                  timestampString = "536459798.878435"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "237"
-                  endingLineNumber = "237"
-                  offsetFromSymbolStart = "60">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in BestNews.ActivityRegistController.zhifubaoPaySuccess(Swift.Optional&lt;Any&gt;) -&gt; ()"
-                  moduleName = "BestNews"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/worthy/code/workspace/BestNews/BestNews/ActivityRegistController.swift"
-                  timestampString = "536459798.883299"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "238"
-                  endingLineNumber = "238"
-                  offsetFromSymbolStart = "20">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BestNews/ActivityRegistController.swift"
-            timestampString = "536459866.404382"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "248"
-            endingLineNumber = "248"
+            startingLineNumber = "259"
+            endingLineNumber = "259"
             landmarkName = "zhifubaoPayFail(_:)"
             landmarkType = "7">
          </BreakpointContent>

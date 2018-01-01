@@ -24,7 +24,7 @@
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cover6m2_1" translatesAutoresizingMaskIntoConstraints="NO" id="LMT-fG-viR">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="m24_default" translatesAutoresizingMaskIntoConstraints="NO" id="LMT-fG-viR">
                         <rect key="frame" x="15" y="54.5" width="290" height="217.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="LMT-fG-viR" secondAttribute="height" multiplier="345:258" priority="900" id="FMa-m3-CqL"/>
@@ -112,7 +112,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="cover6m2_1" width="345" height="258"/>
+        <image name="m24_default" width="375" height="211"/>
         <image name="time-clock" width="11" height="11"/>
     </resources>
 </document>

@@ -20,8 +20,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="91.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="cover3m2_1_2a" translatesAutoresizingMaskIntoConstraints="NO" id="erA-gT-yhv">
-                        <rect key="frame" x="15" y="15" width="85" height="64"/>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="m231_default" translatesAutoresizingMaskIntoConstraints="NO" id="erA-gT-yhv">
+                        <rect key="frame" x="15" y="15" width="60" height="45"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="erA-gT-yhv" secondAttribute="height" multiplier="4:3" id="tkQ-N9-6n5"/>
                         </constraints>
@@ -32,28 +32,28 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题标题标题标题标题标题标题标题标题标题标题" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gLg-0L-BP3">
-                        <rect key="frame" x="115" y="15" width="190" height="21"/>
+                        <rect key="frame" x="90" y="15" width="215" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="作者" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="Utr-5Z-uwc">
-                        <rect key="frame" x="115" y="61.5" width="25" height="17.5"/>
+                        <rect key="frame" x="90" y="42.5" width="25" height="17.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.70980392160000005" green="0.70980392160000005" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="time-clock" translatesAutoresizingMaskIntoConstraints="NO" id="AD5-Of-iVI">
-                        <rect key="frame" x="144" y="65.5" width="11" height="11"/>
+                        <rect key="frame" x="119" y="46.5" width="11" height="11"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="-小时前" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="96c-Uy-2cg">
-                        <rect key="frame" x="158" y="63.5" width="42.5" height="14.5"/>
+                        <rect key="frame" x="133" y="44.5" width="42.5" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.70980392160000005" green="0.70980392160000005" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fR1-48-6Fy">
-                        <rect key="frame" x="271" y="62" width="34" height="17"/>
+                        <rect key="frame" x="271" y="43" width="34" height="17"/>
                         <color key="backgroundColor" red="0.37647058820000001" green="0.67450980390000004" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="34" id="TTL-92-5uC"/>
@@ -101,7 +101,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="cover3m2_1_2a" width="85" height="85"/>
+        <image name="m231_default" width="60" height="60"/>
         <image name="time-clock" width="11" height="11"/>
     </resources>
 </document>

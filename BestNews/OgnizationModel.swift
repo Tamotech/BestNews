@@ -22,6 +22,8 @@ class OgnizationModel: HandyJSON {
     var url: String = ""
     //机构标签
     var tags: String = ""
+    //机构类型
+    var type = ""
     
     var organize: OgnizationModel?
     

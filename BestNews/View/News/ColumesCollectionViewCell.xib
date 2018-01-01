@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="113" height="99"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Column1M2-3" translatesAutoresizingMaskIntoConstraints="NO" id="gxC-d7-WjG">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="m231_default" translatesAutoresizingMaskIntoConstraints="NO" id="gxC-d7-WjG">
                         <rect key="frame" x="-0.5" y="0.0" width="113" height="99"/>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PTb-gB-xDd">
@@ -91,6 +91,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="Column1M2-3" width="110" height="108"/>
+        <image name="m231_default" width="60" height="60"/>
     </resources>
 </document>

@@ -15,12 +15,19 @@ class MyLiveViewController: BaseViewController, AlivcLivePusherInfoDelegate, Ali
     
     let pushUrl = "rtmp://video-center.alivecdn.com/AppName/StreamName?vhost=videolive.xhfmedia.com&auth_key=1521133621-0-0-74b312dd2a24a4bd4abacd4404260324"
     var pusher: AlivcLivePusher?
+    var config: AlivcLivePushConfig?
     var liveModel: LiveModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         shouldClearNavBar = true
         loadLiveDetail()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.barView.removeFromSuperview()
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -34,15 +41,76 @@ class MyLiveViewController: BaseViewController, AlivcLivePusherInfoDelegate, Ali
         config?.targetVideoBitrate = 1200
         config?.minVideoBitrate = 400
         config?.orientation = .portrait
+        config?.cameraType = AlivcLivePushCameraType.back
+        self.config = config
         pusher = AlivcLivePusher(config: config)
         pusher?.setInfoDelegate(self)
         pusher?.setErrorDelegate(self)
         pusher?.setNetworkDelegate(self)
         pusher?.startPreview(self.view)
         
+        let maskLayer  = UIImageView(image: #imageLiteral(resourceName: "nav-black-layer"))
+        self.view.addSubview(maskLayer)
+        maskLayer.isUserInteractionEnabled = true
+        maskLayer.snp.makeConstraints { (make) in
+            make.left.right.top.equalTo(0)
+            make.height.equalTo(64)
+        }
+        let moreBtn = UIButton(type: UIButtonType.custom)
+        moreBtn.setImage(#imageLiteral(resourceName: "more-dot"), for: UIControlState.normal)
+        moreBtn.addTarget(self, action: #selector(handleTapMoreBtn(_:)), for: UIControlEvents.touchUpInside)
+        maskLayer.addSubview(moreBtn)
+        moreBtn.snp.makeConstraints { (make) in
+            make.right.bottom.equalTo(0)
+            make.width.equalTo(60)
+            make.height.equalTo(40)
+        }
+        
+        let backBtn = UIButton(type: UIButtonType.custom)
+        backBtn.setImage(#imageLiteral(resourceName: "back-white"), for: UIControlState.normal)
+        backBtn.addTarget(self, action: #selector(handleTapBackBtn(_:)), for: UIControlEvents.touchUpInside)
+        maskLayer.addSubview(backBtn)
+        backBtn.snp.makeConstraints { (make) in
+            make.left.bottom.equalTo(0)
+            make.width.equalTo(60)
+            make.height.equalTo(40)
+        }
         
     }
     
+    func handleTapMoreBtn(_ sender: UIButton) {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let change = UIAlertAction(title: "切换摄像头", style: UIAlertActionStyle.default) { (action) in
+            self.pusher?.switchCamera() 
+            
+        }
+        let end = UIAlertAction(title: "结束直播", style: UIAlertActionStyle.default) { (action) in
+            self.pusher?.stopPush()
+            self.pusher?.destory()
+            self.pusher = nil
+            DispatchQueue.main.async {
+                self.navigationController?.popViewController(animated: true)
+            }
+        }
+        let cancel = UIAlertAction(title: "取消", style: UIAlertActionStyle.cancel) { (action) in
+            
+        }
+        alert.addAction(change)
+        alert.addAction(end)
+        alert.addAction(cancel)
+        self.present(alert, animated: true) {
+            
+        }
+    }
+    
+    func handleTapBackBtn(_ sender: UIButton) {
+        self.pusher?.stopPush()
+        self.pusher?.destory()
+        self.pusher = nil
+        DispatchQueue.main.async {
+            self.navigationController?.popViewController(animated: true)
+        }
+    }
     
     //MARK: - delegate
     
@@ -123,6 +191,7 @@ class MyLiveViewController: BaseViewController, AlivcLivePusherInfoDelegate, Ali
     }
     
     deinit {
+        pusher?.stopPush()
         pusher?.destory()
         pusher = nil
     }

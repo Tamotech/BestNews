@@ -12,7 +12,9 @@ import Alamofire
 import Kingfisher
 import WatchKit
 
-class LoginViewController: BaseViewController, UITextFieldDelegate {
+class LoginViewController: BaseViewController, UITextFieldDelegate, TencentSessionDelegate {
+    
+    
 
     @IBOutlet weak var phoneField: UITextField!
 
@@ -25,6 +27,8 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
     @IBOutlet weak var avatarImg: UIImageView!
     
     @IBOutlet weak var nickNameLb: UILabel!
+    
+    var tencentOth: TencentOAuth?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -163,10 +167,89 @@ class LoginViewController: BaseViewController, UITextFieldDelegate {
     }
     
     @IBAction func handleTapQQ(_ sender: Any) {
-        
+        tencentOth = TencentOAuth(appId: qqAppId, andDelegate: self)
+        let permission = [kOPEN_PERMISSION_GET_INFO, kOPEN_PERMISSION_GET_USER_INFO, kOPEN_PERMISSION_GET_SIMPLE_USER_INFO]
+        tencentOth?.authorize(permission, inSafari: false)
     }
     
     @IBAction func handleTapWeibo(_ sender: Any) {
         
+    }
+    
+    
+    //MARK: - Tencent session
+    
+    func tencentDidLogin() {
+//        let acessToken = tencentOth!.accessToken
+        let openid = tencentOth!.openId
+        tencentOth?.getUserInfo()
+        SessionManager.sharedInstance.userInfo = UserInfo()
+        SessionManager.sharedInstance.userInfo?.qqid = openid!
+        SessionManager.sharedInstance.userInfo?.qqinfo = (tencentOth?.getUserOpenID())!
+        
+    }
+    
+    func tencentDidNotLogin(_ cancelled: Bool) {
+        
+    }
+    
+    func tencentDidNotNetWork() {
+        
+    }
+    
+    func tencentFailedUpdate(_ reason: UpdateFailType) {
+        
+    }
+    
+    func tencentDidUpdate(_ tencentOAuth: TencentOAuth!) {
+        
+    }
+    
+    func getUserInfoResponse(_ response: APIResponse!) {
+        if response.retCode == URLREQUEST_SUCCEED.rawValue {
+
+            print("qq用户信息获取完毕...>")
+            print(response.jsonResponse)
+            let user = JSON(response.jsonResponse)
+            let nickname = user["nickname"].rawString()
+            let url = user["figureurl_qq_2"].rawString()
+            if url != nil {
+                let rc = ImageResource(downloadURL: URL(string: url!)!)
+                SessionManager.sharedInstance.userInfo?.headimg = url!
+                SessionManager.sharedInstance.userInfo?.name = nickname!
+                self.avatarImg.kf.setImage(with: rc)
+            }
+            self.nickNameLb.text = nickname
+            
+            //尝试用 qq 登录
+            SessionManager.sharedInstance.userInfo?.qqinfo = nickname!
+            self.pleaseWait()
+            SessionManager.sharedInstance.login(type: 3, results: { [weak self](json, code, msg) in
+                self?.clearAllNotice()
+                if code == 0 {
+                    //成功
+                    SessionManager.sharedInstance.userInfo?.updateUserInfo(result: { (success, msg) in
+                        
+                    })
+                    self?.phoneField.resignFirstResponder()
+                    NotificationCenter.default.post(name: kUserLoginStatusChangeNoti, object: nil)
+                    DispatchQueue.main.async {
+                        //自动到下一步
+                        
+                        self?.navigationController?.dismiss(animated: true, completion: {})
+                        
+                        
+                    }
+                }
+                else if code == -114 || code == -130 || code == -132 || code == -133 || code == -134 {
+                    //去绑定手机号登录
+                    self?.avartarInfoView.isHidden = false
+                    self?.thirdLoginView.isHidden = true
+                    
+                    
+                }
+                
+            })
+        }
     }
 }

@@ -22,7 +22,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zh1-rK-Mdd">
                         <rect key="frame" x="23" y="19" width="274" height="197"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Cover1M3-1" translatesAutoresizingMaskIntoConstraints="NO" id="NwE-MU-FJ9">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="m24_default" translatesAutoresizingMaskIntoConstraints="NO" id="NwE-MU-FJ9">
                                 <rect key="frame" x="15" y="15" width="244" height="167"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2G1-CE-7Uo" userLabel="tip">
@@ -162,8 +162,8 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Cover1M3-1" width="315" height="230"/>
         <image name="icon_location_off" width="13" height="14"/>
         <image name="icon_record_off" width="13" height="14"/>
+        <image name="m24_default" width="375" height="211"/>
     </resources>
 </document>

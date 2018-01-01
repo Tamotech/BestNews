@@ -211,7 +211,18 @@ class ActivityRegistController: BaseViewController, UINavigationControllerDelega
         APIRequest.applyActivityAPI(activity: prepare) { [weak self](data) in
             
             //支付结果
-            self?.pay(result: data as! ActivityPayResult)
+            if (data as! ActivityPayResult).needpaymoney > 0 {
+                self?.pay(result: data as! ActivityPayResult)
+            }
+            else {
+                //成功
+                DispatchQueue.main.async {
+                    self?.navigationController?.popViewController(animated: false)
+                    if self?.completeApplyCallback != nil {
+                        self?.completeApplyCallback!((self?.payResult)!)
+                    }
+                }
+            }
         }
     }
     

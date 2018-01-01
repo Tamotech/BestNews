@@ -114,7 +114,12 @@
 		5A68C3601FF3DEBF00C300F9 /* M01-1-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A68C35D1FF3DEBF00C300F9 /* M01-1-3.png */; };
 		5A68C3611FF3DEBF00C300F9 /* M0-1-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A68C35E1FF3DEBF00C300F9 /* M0-1-1.png */; };
 		5A68C3631FF4B8B600C300F9 /* BaseEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68C3621FF4B8B600C300F9 /* BaseEmptyView.swift */; };
+		5A6E61F41FF9BEDD0056E679 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A6E61F31FF9BEDD0056E679 /* libsqlite3.tbd */; };
+		5A6E61F61FF9BEED0056E679 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A6E61F51FF9BEED0056E679 /* libiconv.tbd */; };
 		5A7F21611FCB118C00DFC606 /* SwiftNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7F21601FCB118C00DFC606 /* SwiftNotice.swift */; };
+		5A8364C61FF9C0C8001AD740 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8364C51FF9C0C8001AD740 /* TencentOpenAPI.framework */; };
+		5A8364C81FF9CFA6001AD740 /* VideoPlayControlBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8364C71FF9CFA6001AD740 /* VideoPlayControlBar.swift */; };
+		5A8364CA1FF9CFB6001AD740 /* VideoPlayControlBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8364C91FF9CFB6001AD740 /* VideoPlayControlBar.xib */; };
 		5A85556C1FD702050070C82B /* MyLiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A85556B1FD702050070C82B /* MyLiveViewController.swift */; };
 		5A8BFC061FF88A51004145AC /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5A8BFC041FF88A51004145AC /* AlipaySDK.bundle */; };
 		5A8BFC071FF88A51004145AC /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8BFC051FF88A51004145AC /* AlipaySDK.framework */; };
@@ -426,7 +431,12 @@
 		5A68C3621FF4B8B600C300F9 /* BaseEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseEmptyView.swift; sourceTree = "<group>"; };
 		5A690B221FAA0394008FF1EC /* YLCycleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YLCycleCell.swift; sourceTree = "<group>"; };
 		5A690B231FAA0394008FF1EC /* YLCycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YLCycleView.swift; sourceTree = "<group>"; };
+		5A6E61F31FF9BEDD0056E679 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		5A6E61F51FF9BEED0056E679 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		5A7F21601FCB118C00DFC606 /* SwiftNotice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftNotice.swift; sourceTree = "<group>"; };
+		5A8364C51FF9C0C8001AD740 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TencentOpenAPI.framework; path = ../../../../Downloads/TencentOpenAPI.framework; sourceTree = "<group>"; };
+		5A8364C71FF9CFA6001AD740 /* VideoPlayControlBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayControlBar.swift; sourceTree = "<group>"; };
+		5A8364C91FF9CFB6001AD740 /* VideoPlayControlBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoPlayControlBar.xib; sourceTree = "<group>"; };
 		5A85556B1FD702050070C82B /* MyLiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLiveViewController.swift; sourceTree = "<group>"; };
 		5A8BFC041FF88A51004145AC /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
 		5A8BFC051FF88A51004145AC /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
@@ -633,8 +643,10 @@
 			files = (
 				5A8BFC0E1FF88FD7004145AC /* CoreMotion.framework in Frameworks */,
 				5A8C29D91FDFD35100E51095 /* AudioToolbox.framework in Frameworks */,
+				5A6E61F41FF9BEDD0056E679 /* libsqlite3.tbd in Frameworks */,
 				5A8BFC0A1FF88A7B004145AC /* libz.tbd in Frameworks */,
 				5A8C29D71FDFD33500E51095 /* CoreTelephony.framework in Frameworks */,
+				5A8364C61FF9C0C8001AD740 /* TencentOpenAPI.framework in Frameworks */,
 				5A8C29D51FDFD31F00E51095 /* CoreMedia.framework in Frameworks */,
 				5A8C29DB1FDFD35E00E51095 /* libc++.tbd in Frameworks */,
 				5A8C29D31FDFD18D00E51095 /* VideoToolbox.framework in Frameworks */,
@@ -643,6 +655,7 @@
 				5ABAD58F1FD5A24200C866C0 /* AliyunVodPlayerViewSDK.framework in Frameworks */,
 				5ABAD58E1FD5A24200C866C0 /* AliyunPlayerSDK.framework in Frameworks */,
 				5A8C29CF1FDFC2AA00E51095 /* RongIMLib.framework in Frameworks */,
+				5A6E61F61FF9BEED0056E679 /* libiconv.tbd in Frameworks */,
 				5A8C29DD1FDFD38600E51095 /* libresolv.9.tbd in Frameworks */,
 				5A8BFC071FF88A51004145AC /* AlipaySDK.framework in Frameworks */,
 				5AFF05F31FE62E1800B7FE7D /* RongIMKit.framework in Frameworks */,
@@ -705,6 +718,8 @@
 				5A8C29DF1FE032DC00E51095 /* LiveMessageCell.xib */,
 				5A0A6D7B1FE58D6E0059EDBF /* ChatroomMessageCell.swift */,
 				5A0A6D7C1FE58D6E0059EDBF /* ChatroomMessageCell.xib */,
+				5A8364C71FF9CFA6001AD740 /* VideoPlayControlBar.swift */,
+				5A8364C91FF9CFB6001AD740 /* VideoPlayControlBar.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -932,6 +947,14 @@
 				5A690B231FAA0394008FF1EC /* YLCycleView.swift */,
 			);
 			path = CircleScrollView;
+			sourceTree = "<group>";
+		};
+		5A6E61F01FF9BE6F0056E679 /* TencentOpenSDK */ = {
+			isa = PBXGroup;
+			children = (
+				5A8364C51FF9C0C8001AD740 /* TencentOpenAPI.framework */,
+			);
+			name = TencentOpenSDK;
 			sourceTree = "<group>";
 		};
 		5A7F215F1FCB117C00DFC606 /* HUD */ = {
@@ -1265,6 +1288,7 @@
 		CC2906C71F6599C7001894DA /* BestNews */ = {
 			isa = PBXGroup;
 			children = (
+				5A6E61F01FF9BE6F0056E679 /* TencentOpenSDK */,
 				5A8C29C71FDFC28300E51095 /* RongyunSDK */,
 				5ABAD5871FD5A22900C866C0 /* AliSDK */,
 				CC2906DC1F6599D5001894DA /* BaseUI */,
@@ -1468,6 +1492,8 @@
 		DA9A2F6D064F31B78C69EBB6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				5A6E61F51FF9BEED0056E679 /* libiconv.tbd */,
+				5A6E61F31FF9BEDD0056E679 /* libsqlite3.tbd */,
 				5A8BFC0D1FF88AA8004145AC /* CoreMotion.framework */,
 				5A8BFC0C1FF88A95004145AC /* QuartzCore.framework */,
 				5A8BFC0B1FF88A85004145AC /* SystemConfiguration.framework */,
@@ -1593,6 +1619,7 @@
 				5A0612DC1FDD88D500E7F20A /* FeedbackViewController.xib in Resources */,
 				5AFF34A31F93A78600D8115E /* BaseShareViewController.xib in Resources */,
 				CC2906D51F6599C7001894DA /* LaunchScreen.storyboard in Resources */,
+				5A8364CA1FF9CFB6001AD740 /* VideoPlayControlBar.xib in Resources */,
 				5A38B6BA1F80871100AF4A91 /* FastNewsCell.xib in Resources */,
 				CC2907111F65AC08001894DA /* Main.storyboard in Resources */,
 				5A0612C21FDBE1BA00E7F20A /* ActivityTicketDetailCell.xib in Resources */,
@@ -1876,6 +1903,7 @@
 				5AA4E8191FD42C81007A04FA /* AlivcSweepCodeView.m in Sources */,
 				CC0170621F6840D00069D38B /* ActivityDetailController.swift in Sources */,
 				CC2907081F65A0F0001894DA /* MeController.swift in Sources */,
+				5A8364C81FF9CFA6001AD740 /* VideoPlayControlBar.swift in Sources */,
 				5A27E7271F935361007C5D6B /* RecommendColumnCell.swift in Sources */,
 				5AA4E8361FD42E9B007A04FA /* AlivcLiveViewController.m in Sources */,
 				5A0612C91FDCD4E100E7F20A /* SubmitPaperController.swift in Sources */,

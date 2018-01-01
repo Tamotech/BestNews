@@ -873,7 +873,7 @@ class APIRequest: NSObject {
         let path = "/article/getChannelCoverArticles.htm?channelid=\(id)"
         APIManager.shareInstance.postRequest(urlString: path, params: nil) { (JSON, code, msg) in
             if code == 0 {
-                let data = HomeArticle.deserialize(from: JSON!["data"].rawString())
+                let data = [HomeArticle].deserialize(from: JSON!["data"].rawString())
                 result(data)
             }
             else {

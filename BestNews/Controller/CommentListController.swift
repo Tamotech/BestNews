@@ -19,6 +19,7 @@ CommentCellDelegate, CommentBarDelegate {
     var commentBar = NewsCommentBar(frame: CGRect(x: 0, y: screenHeight-49, width: screenWidth, height: 49))
 //    var targetCommentId: String?
     
+    var emptyView = BaseEmptyView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +55,10 @@ CommentCellDelegate, CommentBarDelegate {
         }
         
         self.reload()
+        tableView.addSubview(emptyView)
+        emptyView.emptyString = "还没有评论~"
+        
+        
     }
 
     //MARK: - tableView
@@ -62,6 +67,7 @@ CommentCellDelegate, CommentBarDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        emptyView.isHidden = (commentList?.list.count ?? 0) > 0
         return commentList?.list.count ?? 0
     }
     

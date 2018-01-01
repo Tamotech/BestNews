@@ -53,7 +53,10 @@ class SubscriptListCell: UITableViewCell {
         subscriptState(data.subscribe == 1)
         if data.tags.count > 0 {
             labelsContainer.isHidden = false
-            labelsContainer.updateUI(data.tags.split(separator: ","))
+            var tags: [Any] = [data.type]
+            let tagsNew = data.tags.split(separator: ",")
+            tags = tags+tagsNew
+            labelsContainer.updateUI(tags)
             labelsContainerHeight.constant = labelsContainer.height
         }
         else {

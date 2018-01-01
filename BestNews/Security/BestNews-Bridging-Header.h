@@ -19,3 +19,4 @@
 #import <CommonCrypto/CommonCrypto.h>
 #import <AliPaySDK/AliPaySDK.h>
 #import "APOrderInfo.h"
+#import <TencentOpenAPI/TencentOAuth.h>
