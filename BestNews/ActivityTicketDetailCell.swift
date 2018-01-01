@@ -55,6 +55,18 @@ class ActivityTicketDetailCell: UITableViewCell {
         nameLb.text = ticket.username
         phoneLb.text = ticket.mobile
         ticketTypeLb.text = ticket.tname
+        var newOrder = ""
+        for (i, w) in ticket.ano.enumerated() {
+            if i < 4 || i >= ticket.ano.count - 4 {
+                newOrder.append(w)
+            }
+            else {
+                newOrder.append("*")
+            }
+        }
+        qrNoLb.text = newOrder
+        let qrImg = ticket.ano.createQRForString(qrImageName: nil)
+        qrCodeImg.image = qrImg
         
     }
     

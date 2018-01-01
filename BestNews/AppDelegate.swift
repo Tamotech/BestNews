@@ -8,6 +8,7 @@
 
 import UIKit
 import IQKeyboardManagerSwift
+import SwiftyJSON
 
 
 let kFirstLoadApp = "firstLoadAppKey"
@@ -55,6 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
     
     //MARK: - Wechat
     
+    
     func application(_ application: UIApplication, handleOpen url: URL) -> Bool {
         return WXApi.handleOpen(url, delegate: self)
     }
@@ -64,6 +66,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        if url.host!.contains("safepay") {
+            AlipaySDK.defaultService().processOrder(withPaymentResult: url, standbyCallback: { (resultDic) in
+                print("支付宝支付结果.....> \(resultDic!)")
+                let dic = JSON(resultDic!)
+                if dic["resultStatus"].rawString() == "9000" {
+                    NotificationCenter.default.post(name: kZhifubaoPaySuccessNotify, object: nil)
+                }
+                else {
+                    NotificationCenter.default.post(name: kZhifubaoPayFailNotify, object: nil)
+                }
+            })
+        }
         return WXApi.handleOpen(url, delegate: self)
     }
     
@@ -80,6 +95,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
                         "country": send.country,
                         "lang": send.lang]
             NotificationCenter.default.post(name: kLoginWechatSuccessNotifi, object: info)
+        }
+        else if resp is PayResp {
+            if resp.errCode == 0 {
+                NotificationCenter.default.post(name: kWexinPaySuccessNotify, object: nil)
+            }
+            else if resp.errCode == -1 {
+                NotificationCenter.default.post(name: kWexinPayFailNotify, object: nil)
+            }
         }
     }
 

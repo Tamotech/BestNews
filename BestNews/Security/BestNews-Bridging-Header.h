@@ -17,3 +17,5 @@
 #import <RongIMLib/RongIMLib.h>
 #import <RongIMKit/RongIMKit.h>
 #import <CommonCrypto/CommonCrypto.h>
+#import <AliPaySDK/AliPaySDK.h>
+#import "APOrderInfo.h"

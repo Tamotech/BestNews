@@ -24,11 +24,11 @@ class ActivityPrepare: HandyJSON {
     ///外面赋值
     var aid: String = ""
     var tid: String = ""
+    var payway = "zhifubao"
     
     
     func isCompleteFill() -> Bool {
-        if sex == "" || idnum == "" || name == "" || trade == ""
-            || company == "" || mobile == "" || profession == "" {
+        if name == "" || mobile == "" {
             return false
         }
         return true

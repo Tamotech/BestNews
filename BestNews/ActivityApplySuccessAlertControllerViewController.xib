@@ -40,24 +40,24 @@
                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="QrcodeTicket" translatesAutoresizingMaskIntoConstraints="NO" id="g3d-ms-Mw9">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="g3d-ms-Mw9">
                             <rect key="frame" x="90" y="101.5" width="100" height="100"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="100" id="6FE-H5-iRD"/>
                                 <constraint firstAttribute="width" constant="100" id="QE3-aY-xZE"/>
                             </constraints>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2017******8972" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nTm-1Y-0E1">
-                            <rect key="frame" x="89" y="205.5" width="102.5" height="17"/>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nTm-1Y-0E1">
+                            <rect key="frame" x="140.5" y="205.5" width="0.0" height="0.0"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imLine" translatesAutoresizingMaskIntoConstraints="NO" id="4pj-3q-dUN">
-                            <rect key="frame" x="10" y="241.5" width="260" height="2"/>
+                            <rect key="frame" x="10" y="224.5" width="260" height="2"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sdc-gM-Ets">
-                            <rect key="frame" x="30" y="258.5" width="220" height="29"/>
+                            <rect key="frame" x="30" y="241.5" width="220" height="29"/>
                             <string key="text">可截屏保存到手机相册，也可在
 个人中心-我的活动中查询你的票券号</string>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
@@ -136,7 +136,6 @@
     </objects>
     <resources>
         <image name="BgTicketM3-7" width="280" height="362"/>
-        <image name="QrcodeTicket" width="100" height="100"/>
         <image name="imLine" width="261" height="2"/>
     </resources>
 </document>

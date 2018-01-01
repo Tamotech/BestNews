@@ -10,6 +10,11 @@ import UIKit
 
 let wxAppId = "wx3b03f4dfa9d44785"
 let wxSecretKey = "3bd9585d9accda261e9b85276ba0c866"
+let qqAppId = "1106506886"
+let qqKey = "x0Sb91LBlbKBkYum"
+let weiboAppid = "2973921044"
+let weiboKey = "3b47f9bec148972d0dc4e0e31afbea58"
+let aliPayAppid = "2017122000999924"
 let jPushKey = "1c5b0bf1379cf38b6a436146"
 let jPushSecret = "02348df4cadd5293af3e7c0a"
 
@@ -21,6 +26,10 @@ let kLoginWechatSuccessNotifi = Notification.Name(rawValue:"Login_Wechat_Success
 let kUserLoginStatusChangeNoti = Notification.Name("user_login_status_change_key")
 let kAppDidBecomeActiveNotify = Notification.Name("App_did_become_active_key")
 let kUserInfoDidUpdateNotify = Notification.Name("user_info_did_update_noti_key")
+let kZhifubaoPaySuccessNotify = Notification.Name("zhifubao_pay_success_noti_key")
+let kZhifubaoPayFailNotify = Notification.Name("zhifubao_pay_fail_noti_key")
+let kWexinPaySuccessNotify = Notification.Name("wexin_pay_success_noti_key")
+let kWexinPayFailNotify = Notification.Name("wexin_pay_fail_noti_key")
 
 let screenWidth = UIScreen.main.bounds.size.width
 let screenHeight = UIScreen.main.bounds.size.height

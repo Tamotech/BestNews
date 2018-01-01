@@ -16,7 +16,6 @@
                 <outlet property="activityTitleLb" destination="Y4L-7a-rQh" id="ZGE-kn-sfe"/>
                 <outlet property="aliPaySwitch" destination="acE-gL-Uhv" id="xl8-91-KpC"/>
                 <outlet property="businessCardBtn" destination="1wk-lG-20F" id="8e4-ZA-Ton"/>
-                <outlet property="captchaBtn" destination="PKH-oR-Iy8" id="NQa-bg-7Uv"/>
                 <outlet property="captchaField" destination="kgk-q5-nX9" id="acP-BN-ZK1"/>
                 <outlet property="companyField" destination="rBm-58-RQQ" id="prG-8r-MH0"/>
                 <outlet property="coverPhoto" destination="c93-5q-v0G" id="uPi-wp-hzh"/>
@@ -151,31 +150,11 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3gf-ys-kxo">
-                                                    <rect key="frame" x="110" y="11.5" width="155" height="20"/>
+                                                    <rect key="frame" x="110" y="11.5" width="245" height="20"/>
                                                     <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                                 </textField>
-                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PKH-oR-Iy8">
-                                                    <rect key="frame" x="270" y="6.5" width="90" height="30"/>
-                                                    <color key="backgroundColor" red="0.0" green="0.59607843140000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="0bM-to-zRZ"/>
-                                                        <constraint firstAttribute="width" constant="90" id="7oV-Vy-vBU"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <state key="normal" title="获取验证码">
-                                                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </state>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="4"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                    <connections>
-                                                        <action selector="handleTapSendCaptcha:" destination="-1" eventType="touchUpInside" id="lfX-N5-uZe"/>
-                                                    </connections>
-                                                </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1tV-I6-IxN" userLabel="line">
                                                     <rect key="frame" x="14.5" y="43" width="345" height="1"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -187,11 +166,9 @@
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstItem="exp-kJ-CUF" firstAttribute="leading" secondItem="o47-0s-L79" secondAttribute="leading" constant="20" id="Bdc-Rb-QSV"/>
-                                                <constraint firstAttribute="trailing" secondItem="PKH-oR-Iy8" secondAttribute="trailing" constant="15" id="IRb-ok-Ony"/>
                                                 <constraint firstItem="1tV-I6-IxN" firstAttribute="width" secondItem="o47-0s-L79" secondAttribute="width" constant="-30" id="U1C-a2-mhk"/>
                                                 <constraint firstAttribute="height" constant="44" id="bTU-Wk-J50"/>
-                                                <constraint firstAttribute="trailing" secondItem="3gf-ys-kxo" secondAttribute="trailing" constant="110" id="cKh-so-5xl"/>
-                                                <constraint firstItem="PKH-oR-Iy8" firstAttribute="centerY" secondItem="o47-0s-L79" secondAttribute="centerY" id="gOn-Xv-KEA"/>
+                                                <constraint firstAttribute="trailing" secondItem="3gf-ys-kxo" secondAttribute="trailing" constant="20" id="cKh-so-5xl"/>
                                                 <constraint firstItem="3gf-ys-kxo" firstAttribute="centerY" secondItem="o47-0s-L79" secondAttribute="centerY" id="hGz-vN-0bd"/>
                                                 <constraint firstItem="3gf-ys-kxo" firstAttribute="leading" secondItem="o47-0s-L79" secondAttribute="leading" constant="110" id="iAJ-Qz-cMV"/>
                                                 <constraint firstItem="exp-kJ-CUF" firstAttribute="centerY" secondItem="o47-0s-L79" secondAttribute="centerY" id="ukc-UL-8RO"/>

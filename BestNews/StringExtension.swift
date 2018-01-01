@@ -13,10 +13,10 @@ extension String {
     func validPhoneNum() -> Bool {
         
         let str = self.replacingOccurrences(of: " ", with: "")
-        if str.characters.count != 11 {
+        if str.count != 11 {
             return false
         }
-        if !str.characters.starts(with: ["1"]) {
+        if !str.starts(with: ["1"]) {
             return false
         }
         return true
@@ -95,6 +95,52 @@ extension String {
         }
         free(buffer)
         return md5String as String
+    }
+    
+    
+    
+    /// 生成二维码
+    ///
+    /// - Parameter qrImageName: 中间图片
+    /// - Returns: 二维码
+    func createQRForString(qrImageName: String?) -> UIImage?{
+        
+        let stringData = self.data(using: String.Encoding.utf8, allowLossyConversion: false)
+        //创建一个二维码的滤镜
+        let qrFilter = CIFilter(name: "CIQRCodeGenerator")
+        qrFilter?.setValue(stringData, forKey: "inputMessage")
+        qrFilter?.setValue("H", forKey: "inputCorrectionLevel")
+        let qrCIImage = qrFilter?.outputImage
+        
+        // 创建一个颜色滤镜,黑白色
+        let colorFilter = CIFilter(name: "CIFalseColor")!
+        colorFilter.setDefaults()
+        colorFilter.setValue(qrCIImage, forKey: "inputImage")
+        colorFilter.setValue(CIColor(red: 0, green: 0, blue: 0), forKey: "inputColor0")
+        colorFilter.setValue(CIColor(red: 1, green: 1, blue: 1), forKey: "inputColor1")
+        // 返回二维码image
+        let codeImage = UIImage(ciImage: (colorFilter.outputImage!.applying(CGAffineTransform(scaleX: 5, y: 5))))
+        
+        // 中间一般放logo
+        if qrImageName != nil {
+            let iconImage = UIImage(named: qrImageName!)
+            let rect = CGRect(x: 0, y: 0, width: codeImage.size.width, height: codeImage.size.height)
+            
+            UIGraphicsBeginImageContext(rect.size)
+            codeImage.draw(in: rect)
+            let avatarSize = CGSize(width: rect.size.width*0.25, height: rect.size.height*0.25)
+            
+            let x = (rect.width - avatarSize.width) * 0.5
+            let y = (rect.height - avatarSize.height) * 0.5
+            iconImage?.draw(in: CGRect(x: x, y: y, width: avatarSize.width, height: avatarSize.height))
+            
+            let resultImage = UIGraphicsGetImageFromCurrentImageContext()
+            
+            UIGraphicsEndImageContext()
+            return resultImage
+        }
+        return codeImage
+       
     }
 }
 

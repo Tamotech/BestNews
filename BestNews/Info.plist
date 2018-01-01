@@ -36,6 +36,7 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>App-Prefs</string>
+				<string>xinhuacaijing</string>
 			</array>
 		</dict>
 	</array>

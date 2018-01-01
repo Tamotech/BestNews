@@ -22,7 +22,7 @@ class MyActivityListController: BaseViewController, UITableViewDelegate, UITable
         v.rowHeight = UITableViewAutomaticDimension
         return v
     }()
-    
+    var emptyView = BaseEmptyView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,6 +54,9 @@ class MyActivityListController: BaseViewController, UITableViewDelegate, UITable
             [weak self] in
             self?.loadMoreData()
         }
+        
+        self.view.addSubview(emptyView)
+        emptyView.emptyString = "还没有票券~"
     }
 
     
@@ -65,6 +68,7 @@ class MyActivityListController: BaseViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        emptyView.isHidden = ticketList.list.count > 0
         return ticketList.list.count
     }
     

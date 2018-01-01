@@ -551,7 +551,8 @@ class APIRequest: NSObject {
         let params = activity.toJSON()
         APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
             if code == 0 {
-                result(JSON)
+                let data = ActivityPayResult.deserialize(from: JSON!["data"].rawString())
+                result(data)
             }
             else {
                 BLHUDBarManager.showError(msg: msg)
@@ -720,21 +721,18 @@ class APIRequest: NSObject {
     ///   - payaccount: 支付帐号
     ///   - orderno: 支付订单号
     ///   - result: 成功
-    class func articleRewardAPI(articleId: String, money: Double, payway: String, payaccount: String, orderno: String, success: @escaping (_: Bool)->()) {
+    class func articleRewardAPI(articleId: String, money: Double, payway: String, result: @escaping JSONResult) {
         let path = "/articleoperate/reward.htm"
         let params = ["articleid": articleId,
                       "money": "\(money)",
-                      "payway": payway,
-                      "payaccount": payaccount,
-                      "orderno": orderno]
+                      "payway": payway]
         APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
             if code == 0 {
-                BLHUDBarManager.showSuccess(msg: msg, seconds: 0.5)
-                success(true)
+                let data = ActivityPayResult.deserialize(from: JSON!["data"].rawString())
+                result(data)
             }
             else {
                 BLHUDBarManager.showError(msg: msg)
-                success(false)
             }
         }
     }

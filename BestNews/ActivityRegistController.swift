@@ -13,7 +13,7 @@ import Kingfisher
 import ImagePicker
 
 
-typealias ActivityApplySuccessCallback = ()->()
+typealias ActivityApplySuccessCallback = (ActivityPayResult)->()
 
 class ActivityRegistController: BaseViewController, UINavigationControllerDelegate, ProfessionListControllerDelegate, ImagePickerDelegate {
 
@@ -59,13 +59,14 @@ class ActivityRegistController: BaseViewController, UINavigationControllerDelega
     
     @IBOutlet weak var priceLb: UILabel!
     
-    
+
     var activity: ActivityDetail?
     var ticket: ActivityTicket?
     var prepare = ActivityPrepare()
     var captcha: String?
     var completeApplyCallback: ActivityApplySuccessCallback?
-    
+    var payType = "zhifubao"        //weixin/zhifubao
+    var payResult = ActivityPayResult()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,6 +83,11 @@ class ActivityRegistController: BaseViewController, UINavigationControllerDelega
         
         updateUI()
         loadPrepareInfo()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(zhifubaoPaySuccess(_:)), name: kZhifubaoPaySuccessNotify, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(zhifubaoPayFail(_:)), name: kZhifubaoPayFailNotify, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(zhifubaoPaySuccess(_:)), name: kWexinPaySuccessNotify, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(zhifubaoPayFail(_:)), name: kWexinPayFailNotify, object: nil)
     }
 
     // MARK: - Navigation
@@ -113,11 +119,13 @@ class ActivityRegistController: BaseViewController, UINavigationControllerDelega
     @IBAction func handleTapAliPay(_ sender: UITapGestureRecognizer) {
         aliPaySwitch.image = #imageLiteral(resourceName: "TickOnM3-3b")
         wechatSwitch.image = #imageLiteral(resourceName: "TickOffM3-3b")
+        payType = "zhifubao"
     }
     
     @IBAction func handleTapWechatPay(_ sender: UITapGestureRecognizer) {
         aliPaySwitch.image = #imageLiteral(resourceName: "TickOffM3-3b")
         wechatSwitch.image = #imageLiteral(resourceName: "TickOnM3-3b")
+        payType = "weixin"
     }
     
     @IBAction func handleTapMale(_ sender: UIButton) {
@@ -125,6 +133,7 @@ class ActivityRegistController: BaseViewController, UINavigationControllerDelega
         maleBtn.layer.borderColor = themeColor?.cgColor
         femaleBtn.setTitleColor(UIColor.init(hexString: "#bbbbbb"), for: .normal)
         femaleBtn.layer.borderColor = UIColor.init(hexString: "#bbbbbb")?.cgColor
+        prepare.sex = "male"
     }
     
     @IBAction func handleTapFemale(_ sender: UIButton) {
@@ -132,6 +141,7 @@ class ActivityRegistController: BaseViewController, UINavigationControllerDelega
         femaleBtn.layer.borderColor = themeColor?.cgColor
         maleBtn.setTitleColor(UIColor.init(hexString: "#bbbbbb"), for: .normal)
         maleBtn.layer.borderColor = UIColor.init(hexString: "#bbbbbb")?.cgColor
+        prepare.sex = "female"
     }
     
     @IBAction func handleTapSendCaptcha(_ sender: UIButton) {
@@ -184,10 +194,6 @@ class ActivityRegistController: BaseViewController, UINavigationControllerDelega
     ///参加报名
     @IBAction func handleTapApplyBtn(_ sender: UIButton) {
         
-        if captcha != captchaField.text {
-            BLHUDBarManager.showError(msg: "验证码不正确")
-            return
-        }
         prepare.name = nameField.text ?? ""
         prepare.mobile = phoneField.text ?? ""
         prepare.idnum = idCardField.text ?? ""
@@ -196,19 +202,52 @@ class ActivityRegistController: BaseViewController, UINavigationControllerDelega
         prepare.profession = jobField.text ?? ""
         prepare.aid = activity?.id ?? ""
         prepare.tid = ticket?.id ?? ""
+        prepare.payway = payType
         if !prepare.isCompleteFill() {
             BLHUDBarManager.showError(msg: "请填写完整")
             return
         }
         
         APIRequest.applyActivityAPI(activity: prepare) { [weak self](data) in
-            if data != nil {
-                self?.navigationController?.popViewController(animated: true)
-//                BLHUDBarManager.showSuccess(msg: "报名成功", seconds: 0.5)
-                if self?.completeApplyCallback != nil {
-                    self!.completeApplyCallback!()
-                }
+            
+            //支付结果
+            self?.pay(result: data as! ActivityPayResult)
+        }
+    }
+    
+    func pay(result: ActivityPayResult) {
+        payResult = result
+        if payType == "zhifubao" {
+            //支付宝
+            AlipaySDK.defaultService().payOrder(result.zhifubao, fromScheme: "xinhuacaijing", callback: { (resultDic) in
+                
+            })
+        }
+        else {
+            let req = PayReq()
+            req.partnerId = result.weixin.partnerid
+            req.prepayId = result.weixin.prepayid
+            req.package = result.weixin.package
+            req.nonceStr = result.weixin.noncestr
+            req.timeStamp = UInt32(result.weixin.timestamp)!
+            req.sign = result.weixin.sign
+            WXApi.send(req)
+        }
+    }
+    
+    func zhifubaoPaySuccess(_: Any?) {
+        DispatchQueue.main.async {
+            self.navigationController?.popViewController(animated: false)
+            if self.completeApplyCallback != nil {
+                self.completeApplyCallback!(self.payResult)
             }
+        }
+        
+    }
+    
+    func zhifubaoPayFail(_: Any?) {
+        DispatchQueue.main.async {
+            BLHUDBarManager.showError(msg: "支付失败")
         }
     }
     
@@ -267,6 +306,7 @@ extension ActivityRegistController {
     
     func updateUI() {
         
+        phoneField.text = SessionManager.sharedInstance.userInfo?.mobile
         if activity == nil {
             return
         }

@@ -175,10 +175,12 @@ class ActivityDetailController: BaseViewController, ActivityTicketListController
         registVC.activity = activity
         registVC.ticket = ticket
         registVC.completeApplyCallback = {
-            [weak self] in
+            [weak self](result) in
             
             DispatchQueue.main.async {
                 let alert = ActivityApplySuccessAlertControllerViewController(nibName: "ActivityApplySuccessAlertControllerViewController", bundle: nil)
+                alert.aaid = result.aaid
+                alert.orderNo = result.orderno
                 self?.customPresentViewController((self?.presentr)!, viewController: alert, animated: true, completion: {
                     
                 })

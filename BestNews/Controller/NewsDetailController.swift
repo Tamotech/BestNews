@@ -176,16 +176,20 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
         //TODO:
         
         let alert = RewardAlertController(nibName: "RewardAlertController", bundle: nil)
+        alert.articleId = articleId
         alert.confirmCallback = { [weak self](price) in
-            APIRequest.articleRewardAPI(articleId: self!.articleId, money: price, payway: "wexin", payaccount: "190213141423", orderno: "1234567988") { [weak self](success) in
-                if success {
-                    self?.loadRewardList()
-                }
-            }
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.3, execute: {
+                BLHUDBarManager.showSuccess(msg: "成功打赏", seconds: 1)
+            })
+            self?.loadRewardList()
         }
         customPresentViewController(presentr, viewController: alert, animated: true) {
             
         }
+        
+    }
+    
+    func pay(result: ActivityPayResult) {
         
     }
  
@@ -284,7 +288,7 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         print("开始加载...\(webView.scrollView.contentSize.height)")
         
-        print(webView.url)
+//        print(webView.url)
     }
     
     func webView(_ webView: WKWebView, didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!) {
@@ -361,8 +365,7 @@ extension NewsDetailController {
         commentBar.collect(article!.collect == 1)
         
         //TODO 关闭赞赏入口
-        //rewardBtn.isHidden = article?.type != "normal"
-        rewardBtn.isHidden = true
+        rewardBtn.isHidden = article?.type != "normal"
         
         if let url = URL(string: article!.headimg) {
             let rc = ImageResource(downloadURL: url)
@@ -385,7 +388,7 @@ extension NewsDetailController {
         }
         
         //TODO: 暂时都关闭入口
-        if rewardList.list.count < 0 {
+        if rewardList.list.count > 0 {
             
             let max = rewardList.list.count >= colNum*2 ? colNum*2-1 : rewardList.list.count
             for i in 0..<max {
