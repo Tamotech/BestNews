@@ -149,7 +149,7 @@ extension OrgnizationListController {
     //机构
     func reloadOgnizationList() {
         ognizationList.page = 1
-        APIRequest.ognizationListAPI(xgorganizeid: nil,  page: 1) { [weak self](data) in
+        APIRequest.ognizationListAPI(xgorganizeid: nil, subscribe: subscribe == 1,  page: 1) { [weak self](data) in
             self?.tableView.cr.endHeaderRefresh()
             self?.tableView.cr.resetNoMore()
             self?.ognizationList = data as! OgnizationList
@@ -163,7 +163,7 @@ extension OrgnizationListController {
             return
         }
         ognizationList.page = ognizationList.page + 1
-        APIRequest.ognizationListAPI(xgorganizeid: nil,  page: ognizationList.page) { [weak self](data) in
+        APIRequest.ognizationListAPI(xgorganizeid: nil, subscribe: subscribe == 1,  page: ognizationList.page) { [weak self](data) in
             self?.tableView.cr.endLoadingMore()
             let list = data as! OgnizationList
             self?.ognizationList.list.append(contentsOf: list.list)

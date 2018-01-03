@@ -99,7 +99,8 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
                 }
                 nameLb.text = user.name
                 if user.celebrityflag {
-                    settingData = [("我要投稿", #imageLiteral(resourceName: "me_post_article")),
+                    settingData = [
+                                    //("我要投稿", #imageLiteral(resourceName: "me_post_article")),
                                    //("开通VIP", #imageLiteral(resourceName: "me_open_vip")),
                                    ("分享APP", #imageLiteral(resourceName: "me_share_app")),
                                    ("意见反馈", #imageLiteral(resourceName: "me_feed_back")),
@@ -113,8 +114,8 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
                     settingData = [
                      //("实名认证", #imageLiteral(resourceName: "me_identity")),
                      //("开通VIP", #imageLiteral(resourceName: "me_open_vip")),
-                     ("我要投稿", #imageLiteral(resourceName: "me_post_article")),
-                     ("成为名人", #imageLiteral(resourceName: "me_become_star")),
+                     //("我要投稿", #imageLiteral(resourceName: "me_post_article")),
+                     //("成为名人", #imageLiteral(resourceName: "me_become_star")),
                      ("分享APP", #imageLiteral(resourceName: "me_share_app")),
                      ("意见反馈", #imageLiteral(resourceName: "me_feed_back")),
                      ("退出登录", #imageLiteral(resourceName: "me_logout"))]
@@ -126,8 +127,8 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
                     settingData = [
                      //("实名认证", #imageLiteral(resourceName: "me_identity")),
                      //("开通VIP", #imageLiteral(resourceName: "me_open_vip")),
-                     ("我要投稿", #imageLiteral(resourceName: "me_post_article")),
-                     ("成为名人", #imageLiteral(resourceName: "me_become_star")),
+                    // ("我要投稿", #imageLiteral(resourceName: "me_post_article")),
+                     //("成为名人", #imageLiteral(resourceName: "me_become_star")),
                      ("分享APP", #imageLiteral(resourceName: "me_share_app")),
                      ("意见反馈", #imageLiteral(resourceName: "me_feed_back")),
                      ("退出登录", #imageLiteral(resourceName: "me_logout"))]
@@ -148,7 +149,7 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
             activityAmountLb.isHidden = true
             articleAmountLb.isHidden = true
             settingData = [
-                ("我要投稿", #imageLiteral(resourceName: "me_post_article")),
+               // ("我要投稿", #imageLiteral(resourceName: "me_post_article")),
                 //("开通VIP", #imageLiteral(resourceName: "me_open_vip")),
                 ("分享APP", #imageLiteral(resourceName: "me_share_app")),
                 ("意见反馈", #imageLiteral(resourceName: "me_feed_back"))]

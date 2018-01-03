@@ -271,7 +271,7 @@ extension SubscriptionListControllerViewController {
     //机构
     func reloadOgnizationList() {
         ognizationList.page = 1
-        APIRequest.ognizationListAPI(xgorganizeid: nil, page: 1) { [weak self](data) in
+        APIRequest.ognizationListAPI(xgorganizeid: nil, subscribe: false, page: 1) { [weak self](data) in
             
             self?.ognizationList = data as! OgnizationList
             self?.columeTableView.reloadData()

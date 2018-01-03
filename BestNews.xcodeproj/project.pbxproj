@@ -110,9 +110,6 @@
 		5A62A4661FABE73B0087D936 /* ListManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A62A4651FABE73B0087D936 /* ListManager.swift */; };
 		5A62A4681FAE039B0087D936 /* BaseNewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A62A4671FAE039B0087D936 /* BaseNewsCell.swift */; };
 		5A62A46A1FAE1AEB0087D936 /* HomeNewsDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A62A4691FAE1AEB0087D936 /* HomeNewsDetail.swift */; };
-		5A68C35F1FF3DEBF00C300F9 /* M0-1-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A68C35C1FF3DEBE00C300F9 /* M0-1-2.png */; };
-		5A68C3601FF3DEBF00C300F9 /* M01-1-3.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A68C35D1FF3DEBF00C300F9 /* M01-1-3.png */; };
-		5A68C3611FF3DEBF00C300F9 /* M0-1-1.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A68C35E1FF3DEBF00C300F9 /* M0-1-1.png */; };
 		5A68C3631FF4B8B600C300F9 /* BaseEmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A68C3621FF4B8B600C300F9 /* BaseEmptyView.swift */; };
 		5A6E61F41FF9BEDD0056E679 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A6E61F31FF9BEDD0056E679 /* libsqlite3.tbd */; };
 		5A6E61F61FF9BEED0056E679 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A6E61F51FF9BEED0056E679 /* libiconv.tbd */; };
@@ -127,6 +124,9 @@
 		5A84B6421FFC503C006DC3AA /* EndLiveAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A84B6411FFC503C006DC3AA /* EndLiveAlertView.swift */; };
 		5A84B6451FFC5B32006DC3AA /* RefundAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A84B6431FFC5B32006DC3AA /* RefundAlertController.swift */; };
 		5A84B6461FFC5B32006DC3AA /* RefundAlertController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A84B6441FFC5B32006DC3AA /* RefundAlertController.xib */; };
+		5A84B6481FFD1F8B006DC3AA /* bg1_guide@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A84B6471FFD1F8B006DC3AA /* bg1_guide@3x.png */; };
+		5A84B64A1FFD1F97006DC3AA /* bg2_guide@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A84B6491FFD1F96006DC3AA /* bg2_guide@3x.png */; };
+		5A84B64C1FFD1F9F006DC3AA /* bg3_guide@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A84B64B1FFD1F9F006DC3AA /* bg3_guide@3x.png */; };
 		5A85556C1FD702050070C82B /* MyLiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A85556B1FD702050070C82B /* MyLiveViewController.swift */; };
 		5A8BFC061FF88A51004145AC /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5A8BFC041FF88A51004145AC /* AlipaySDK.bundle */; };
 		5A8BFC071FF88A51004145AC /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8BFC051FF88A51004145AC /* AlipaySDK.framework */; };
@@ -432,9 +432,6 @@
 		5A62A4651FABE73B0087D936 /* ListManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListManager.swift; sourceTree = "<group>"; };
 		5A62A4671FAE039B0087D936 /* BaseNewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseNewsCell.swift; sourceTree = "<group>"; };
 		5A62A4691FAE1AEB0087D936 /* HomeNewsDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNewsDetail.swift; sourceTree = "<group>"; };
-		5A68C35C1FF3DEBE00C300F9 /* M0-1-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "M0-1-2.png"; path = "../../../../Downloads/ios 引导页静态图/M0-1-2.png"; sourceTree = "<group>"; };
-		5A68C35D1FF3DEBF00C300F9 /* M01-1-3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "M01-1-3.png"; path = "../../../../Downloads/ios 引导页静态图/M01-1-3.png"; sourceTree = "<group>"; };
-		5A68C35E1FF3DEBF00C300F9 /* M0-1-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "M0-1-1.png"; path = "../../../../Downloads/ios 引导页静态图/M0-1-1.png"; sourceTree = "<group>"; };
 		5A68C3621FF4B8B600C300F9 /* BaseEmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseEmptyView.swift; sourceTree = "<group>"; };
 		5A690B221FAA0394008FF1EC /* YLCycleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YLCycleCell.swift; sourceTree = "<group>"; };
 		5A690B231FAA0394008FF1EC /* YLCycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YLCycleView.swift; sourceTree = "<group>"; };
@@ -451,6 +448,9 @@
 		5A84B6411FFC503C006DC3AA /* EndLiveAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndLiveAlertView.swift; sourceTree = "<group>"; };
 		5A84B6431FFC5B32006DC3AA /* RefundAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefundAlertController.swift; sourceTree = "<group>"; };
 		5A84B6441FFC5B32006DC3AA /* RefundAlertController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RefundAlertController.xib; sourceTree = "<group>"; };
+		5A84B6471FFD1F8B006DC3AA /* bg1_guide@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg1_guide@3x.png"; sourceTree = "<group>"; };
+		5A84B6491FFD1F96006DC3AA /* bg2_guide@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg2_guide@3x.png"; sourceTree = "<group>"; };
+		5A84B64B1FFD1F9F006DC3AA /* bg3_guide@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg3_guide@3x.png"; sourceTree = "<group>"; };
 		5A85556B1FD702050070C82B /* MyLiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLiveViewController.swift; sourceTree = "<group>"; };
 		5A8BFC041FF88A51004145AC /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
 		5A8BFC051FF88A51004145AC /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
@@ -1216,9 +1216,9 @@
 		5ADF7ACA1FEA952500D9607A /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				5A68C35E1FF3DEBF00C300F9 /* M0-1-1.png */,
-				5A68C35C1FF3DEBE00C300F9 /* M0-1-2.png */,
-				5A68C35D1FF3DEBF00C300F9 /* M01-1-3.png */,
+				5A84B6471FFD1F8B006DC3AA /* bg1_guide@3x.png */,
+				5A84B6491FFD1F96006DC3AA /* bg2_guide@3x.png */,
+				5A84B64B1FFD1F9F006DC3AA /* bg3_guide@3x.png */,
 				5A063F3E1FF1D12400AFAA40 /* startLaunch.png */,
 				5A0B5DA51FF0628B0047F64A /* clickImg.js */,
 			);
@@ -1620,9 +1620,11 @@
 				5AA4E85A1FD43378007A04FA /* Line@3x.png in Resources */,
 				5ACCDD2C1F9F75CE004D3809 /* SelectInterestItemController.xib in Resources */,
 				5AA4E8531FD43378007A04FA /* volume_off@2x.png in Resources */,
+				5A84B64A1FFD1F97006DC3AA /* bg2_guide@3x.png in Resources */,
 				5A0D23C71F832BD000FC9D4D /* NewsDetailController.xib in Resources */,
 				5AC684821F7FFC2E006CEB53 /* ThreePhotosNewsCell.xib in Resources */,
 				5A84B6461FFC5B32006DC3AA /* RefundAlertController.xib in Resources */,
+				5A84B64C1FFD1F9F006DC3AA /* bg3_guide@3x.png in Resources */,
 				5A32A7081F930CC100773884 /* MessageCenterListCell.xib in Resources */,
 				5AA4E7E11FD385A9007A04FA /* ActivityApplySuccessAlertControllerViewController.xib in Resources */,
 				5A0612D41FDD69AC00E7F20A /* ApplyFamousComplateController.xib in Resources */,
@@ -1677,11 +1679,9 @@
 				CCDB6D581F7A526C0012432E /* SinglePhotoNewsCell.xib in Resources */,
 				CC2907091F65A0F0001894DA /* MeController.xib in Resources */,
 				5AA4E85D1FD43378007A04FA /* record_beauty_on@2x.png in Resources */,
-				5A68C35F1FF3DEBF00C300F9 /* M0-1-2.png in Resources */,
 				5AA4E8621FD43378007A04FA /* camera_flash_close@3x.png in Resources */,
 				CC0170631F6840D00069D38B /* ActivityDetailController.xib in Resources */,
 				5A27E7281F935361007C5D6B /* RecommendColumnCell.xib in Resources */,
-				5A68C3601FF3DEBF00C300F9 /* M01-1-3.png in Resources */,
 				5A0612B61FDB85AE00E7F20A /* ApplyIdentifyController.xib in Resources */,
 				5A547EE61FA2157C00FA0C36 /* ProfileCenterController.xib in Resources */,
 				5A38B6C61F80ED1800AF4A91 /* ColumesCollectionViewCell.xib in Resources */,
@@ -1698,8 +1698,8 @@
 				5A0A139A1F9EB7C300DF57B9 /* LoginCaptchaController.xib in Resources */,
 				CCDB6D4C1F7A2E7A0012432E /* HomeContentViewController.xib in Resources */,
 				5A90CFEF1F8123F500F16869 /* LiveListController.xib in Resources */,
-				5A68C3611FF3DEBF00C300F9 /* M0-1-1.png in Resources */,
 				5A90D0041F8138EE00F16869 /* OrgnizationListController.xib in Resources */,
+				5A84B6481FFD1F8B006DC3AA /* bg1_guide@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

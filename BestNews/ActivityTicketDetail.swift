@@ -14,7 +14,8 @@ class ActivityTicketDetail: HandyJSON {
 
     required init(){}
     
-    var aid: String = ""
+    var aid: String = ""        //活动id
+    var aaid: String = ""       //报名id
     var title: String = ""
     var preimgpath: String = ""
     var address: String = ""

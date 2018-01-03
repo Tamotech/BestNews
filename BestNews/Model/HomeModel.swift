@@ -23,10 +23,10 @@ class HomeModel: NSObject {
         
         var titles = ["推荐","快讯","订阅"]
         for data in specilList {
-            if data.showinnavflag == 1 {
+        //    if data.showinnavflag == 1 {
                 titles.append(data.name)
             }
-        }
+        //}
         titles.append("直播")
         return titles
     }

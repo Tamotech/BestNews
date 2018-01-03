@@ -60,7 +60,7 @@ class ActivityController: BaseViewController, UITableViewDelegate, UITableViewDa
         }
         reloadData()
         emptyView.emptyString = "还没有活动~"
-        self.view.addSubview(emptyView)
+        tableView.addSubview(emptyView)
     }
     
     

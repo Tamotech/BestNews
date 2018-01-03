@@ -401,7 +401,7 @@ extension OrgnizationController {
     
     //感兴趣的机构
     func loadInterestOgnizationList() {
-        APIRequest.ognizationListAPI(xgorganizeid: ognization!.id, page: 1) { [weak self](data) in
+        APIRequest.ognizationListAPI(xgorganizeid: ognization!.id, subscribe: false, page: 1) { [weak self](data) in
             self?.interestOrgList = (data as? OgnizationList)!
             self?.collectionView.reloadData()
         }

@@ -13,8 +13,6 @@ import WebKit
 import SnapKit
 
 class ActivityDetailController: BaseViewController, ActivityTicketListControllerDelgate, WKNavigationDelegate {
-
-    
     
     var activityId: String?
     var activity = ActivityDetail()
@@ -144,7 +142,7 @@ class ActivityDetailController: BaseViewController, ActivityTicketListController
             alert.msg = "如需申请退款请于活动开始前24小时申请。平台将统一收取原票价的10%作为退票手续费，请知悉。"
         }
         else {
-            alert.title = "本活动不接受退款"
+            alert.tit = "本活动不接受退款"
             alert.msg = "本活动票券一旦售出，恕不退还。无法参加活动，请将票券转让给其他人。"
         }
         self.customPresentViewController(self.presentr, viewController: alert, animated: true, completion: {
@@ -272,7 +270,7 @@ extension ActivityDetailController {
         }
         else {
             let currentT = Int(Date().timeIntervalSince1970*1000)
-            if currentT > activity.startdate && currentT < activity.enddate {
+            if currentT < activity.enddate {
                 applyBtn.backgroundColor = themeColor!
                 applyBtn.isEnabled = true
                 applyBtn.setTitleColor(UIColor.white, for: UIControlState.normal)

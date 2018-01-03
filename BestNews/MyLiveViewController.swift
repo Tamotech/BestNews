@@ -22,6 +22,15 @@ class MyLiveViewController: BaseViewController, AlivcLivePusherInfoDelegate, Ali
         super.viewDidLoad()
         shouldClearNavBar = true
         loadLiveDetail()
+        
+        
+        //开始直播
+        let path = "/live/liveStart.htm?id=\(liveModel?.id ?? "")"
+        APIManager.shareInstance.postRequest(urlString: path, params: nil) { (JSON, code, msg) in
+            if code != 0 {
+                BLHUDBarManager.showError(msg: msg)
+            }
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,6 +75,17 @@ class MyLiveViewController: BaseViewController, AlivcLivePusherInfoDelegate, Ali
             make.height.equalTo(40)
         }
         
+        let switchBtn = UIButton(type: UIButtonType.custom)
+        switchBtn.setImage(#imageLiteral(resourceName: "switchCamera"), for: UIControlState.normal)
+        switchBtn.addTarget(self, action: #selector(handleSwitchCamerabtn(_:)), for: UIControlEvents.touchUpInside)
+        maskLayer.addSubview(switchBtn)
+        switchBtn.snp.makeConstraints { (make) in
+            make.right.equalTo(moreBtn.snp.left).offset(-5)
+            make.centerY.equalTo(moreBtn.snp.centerY)
+            make.width.equalTo(60)
+            make.height.equalTo(40)
+        }
+        
         let backBtn = UIButton(type: UIButtonType.custom)
         backBtn.setImage(#imageLiteral(resourceName: "back-white"), for: UIControlState.normal)
         backBtn.addTarget(self, action: #selector(handleTapBackBtn(_:)), for: UIControlEvents.touchUpInside)
@@ -86,9 +106,7 @@ class MyLiveViewController: BaseViewController, AlivcLivePusherInfoDelegate, Ali
         sheet.actionCallback = {
             [weak self](type) in
             if type == "End" {
-                self?.pusher?.stopPush()
-                self?.pusher?.destory()
-                self?.pusher = nil
+                
                 DispatchQueue.main.async {
                     let alert = XHAlertController()
                     alert.modalPresentationStyle = .overCurrentContext
@@ -98,7 +116,19 @@ class MyLiveViewController: BaseViewController, AlivcLivePusherInfoDelegate, Ali
                     alert.callback = {
                         [weak self](buttonType)in
                         if buttonType == 0 {
-                            self?.navigationController?.popViewController(animated: true)
+                            let path = "/live/liveFinish.htm?id=\(self?.liveModel?.id ?? "")"
+                            APIManager.shareInstance.postRequest(urlString: path, params: nil) { (JSON, code, msg) in
+                                if code != 0 {
+                                    BLHUDBarManager.showError(msg: msg)
+                                }
+                                else {
+                                    self?.pusher?.stopPush()
+                                    self?.pusher?.destory()
+                                    self?.pusher = nil
+                                    self?.navigationController?.popViewController(animated: true)
+                                }
+                            }
+                            
                         }
                     }
                     self?.present(alert, animated: false, completion: nil)
@@ -107,6 +137,11 @@ class MyLiveViewController: BaseViewController, AlivcLivePusherInfoDelegate, Ali
             }
         }
         
+    }
+    
+    
+    func handleSwitchCamerabtn(_ sender: Any) {
+        self.pusher?.switchCamera()
     }
     
     func handleTapBackBtn(_ sender: UIButton) {

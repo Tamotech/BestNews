@@ -25,15 +25,15 @@ class GuideViewController: UIViewController {
         }
         
         let im1 = UIImageView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
-        im1.image = #imageLiteral(resourceName: "M0-1-1.png")
+        im1.image = #imageLiteral(resourceName: "bg1_guide.png")
         scrollView.addSubview(im1)
         
         let im2 = UIImageView(frame: CGRect(x: screenWidth, y: 0, width: screenWidth, height: screenHeight))
-        im2.image = #imageLiteral(resourceName: "M0-1-2.png")
+        im2.image = #imageLiteral(resourceName: "bg2_guide.png")
         scrollView.addSubview(im2)
         
         let im3 = UIImageView(frame: CGRect(x: screenWidth*2, y: 0, width: screenWidth, height: screenHeight))
-        im3.image = #imageLiteral(resourceName: "M01-1-3.png")
+        im3.image = #imageLiteral(resourceName: "bg3_guide.png")
         scrollView.addSubview(im3)
         
         navigationController?.setNavigationBarHidden(true, animated: false)

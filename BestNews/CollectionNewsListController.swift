@@ -70,7 +70,7 @@ class CollectionNewsListController: BaseViewController, UITableViewDataSource, U
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 50))
         
         self.view.addSubview(emptyView)
-        emptyView.emptyString = "还没有收藏的新闻~"
+        emptyView.emptyString = "还没有新闻~"
     }
     
     

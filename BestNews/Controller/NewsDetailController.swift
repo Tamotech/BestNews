@@ -41,6 +41,10 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
     
     @IBOutlet weak var rewardHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var rewardBottom: NSLayoutConstraint!
+    
+    
+    let htmlModelString = "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><title></title><style>body {font:42px/1.5 tahoma,arial,sans-serif;color:#55555;text-align:justify;text-align-last:justify;line-height:66px}hr {height:1px;border:none;border-top:1px solid #e8e8e8;} img {width:100%;height:auto}</style></head><body><div style='margin:35px' id=\"content\">${contentHtml}${author}</div></body></html>"
     
     ///是否订阅作者 (需要查阅)
     var authorSubscribe = false
@@ -310,8 +314,14 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
         webView.evaluateJavaScript("document.documentElement.scrollHeight;") { (data, error) in
             print("加载完毕...>\(data!)")
             ///TODO: 高度计算cheat
-            self.webView.height = (data as! CGFloat)*38/100+20
-            self.webParentHeight.constant = (data as! CGFloat)*38/100+20
+            if screenWidth < 350 {
+                self.webView.height = (data as! CGFloat)*35/100+20
+                self.webParentHeight.constant = (data as! CGFloat)*35/100+20
+            }
+            else {
+                self.webView.height = (data as! CGFloat)*38/100+20
+                self.webParentHeight.constant = (data as! CGFloat)*38/100+20
+            }
         }
         
         webView.evaluateJavaScript("setImageClickFunction") { (response, error) in
@@ -371,7 +381,14 @@ extension NewsDetailController {
             let rc = ImageResource(downloadURL: url)
             avtarBtn.kf.setImage(with: rc, for: UIControlState.normal)
         }
-        let htmlString = NSString(string: baseHtmlString).replacingOccurrences(of: "${contentHtml}", with: article!.content)
+        var htmlString = NSString(string: htmlModelString).replacingOccurrences(of: "${contentHtml}", with: article!.content)
+        if article!.author.count > 0 {
+            let authorTag = "<p color:#999999>编辑: \(article!.author)</p>"
+            htmlString = NSString(string: htmlString).replacingOccurrences(of: "${author}", with: authorTag)
+        }
+        else {
+            htmlString = NSString(string: htmlString).replacingOccurrences(of: "${author}", with: "")
+        }
         webView.loadHTMLString(htmlString, baseURL: URL(string: htmlString))
     }
     
@@ -425,10 +442,12 @@ extension NewsDetailController {
             }
             rewardMenView.isHidden = false
             rewardHeight.constant = bottom + top
+            rewardBottom.constant = 40
         }
         else {
             rewardMenView.isHidden = true
             rewardHeight.constant = 0
+            rewardBottom.constant = 0
         }
     }
     

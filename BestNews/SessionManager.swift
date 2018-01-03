@@ -47,6 +47,9 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
     ///名人申请 行业标签
     var famousTradeArr: [String] = []
     
+    ///所有敏感词
+    var sensitiveWords: [String] = []
+    
     ///直播室聊天token
     var liveToken = ""
     
@@ -59,6 +62,7 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
 //        self.openAndLocation()
         self.readLoginInfo()
         self.getTags()
+        self.getAllSensitiveWords()
     }
     
     
@@ -254,13 +258,27 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
                       "roomname": roomname]
         APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
             if code == 0 {
-                let roomid = JSON!["data"]["roomid"].rawString()!
-                let roomname = JSON!["data"]["roomname"].rawString()!
+//                let roomid = JSON!["data"]["roomid"].rawString()!
+//                let roomname = JSON!["data"]["roomname"].rawString()!
                 result(true)
             }
             else {
                 print("创建聊天室失败.."+msg)
                 result(false)
+            }
+        }
+    }
+    
+    //所有敏感词
+    func getAllSensitiveWords() {
+        let path  = "/config/getSensitiveWrod.htm"
+        APIManager.shareInstance.postRequest(urlString: path, params: nil) { [weak self](JSON, code, msg) in
+            if code == 0 {
+                let words = JSON!["data"].rawValue as! [String]
+                self?.sensitiveWords = words
+            }
+            else {
+                self?.getAllSensitiveWords()
             }
         }
     }

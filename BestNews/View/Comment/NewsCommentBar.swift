@@ -319,6 +319,15 @@ extension NewsCommentBar {
             return
         }
         
+        //敏感词过滤
+        for w in SessionManager.sharedInstance.sensitiveWords {
+            if content!.contains(w) {
+                BLHUDBarManager.showError(msg: "包含敏感词汇~")
+                return
+            }
+        }
+        
+        
         if delegate != nil {
             delegate!.tapPublishBtnHandler()
         }

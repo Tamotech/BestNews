@@ -452,6 +452,15 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
         if content?.count == 0 {
             return
         }
+        
+        //敏感词过滤
+        for w in SessionManager.sharedInstance.sensitiveWords {
+            if content!.contains(w) {
+                BLHUDBarManager.showError(msg: "包含敏感词汇~")
+                return
+            }
+        }
+        
         if segment.currentIndex == 0 {
             ///主持区
             let content = RCTextMessage(content: contentTf.text)
@@ -732,7 +741,7 @@ extension ChatRoomViewController {
                 }
                 var videoPath = self?.liveModel?.videopath
                 if (self?.liveModel?.videopath.contains(","))! {
-                    videoPath = self?.liveModel?.videopath.components(separatedBy: ",").first
+                    videoPath = self?.liveModel?.videopath.components(separatedBy: ",").last
                 }
                 
                 self?.aliyunVodPlayer.prepare(with: URL(string: videoPath!)!)

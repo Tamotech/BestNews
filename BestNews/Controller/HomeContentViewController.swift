@@ -50,6 +50,7 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
         updateBanner()
         self.reloadArticleList()
         self.loadSpecialCannelData()
+        self.loadNavChannel()
     }
     
     func setupView() {
@@ -73,6 +74,7 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
             [weak self] in
             self?.reloadArticleList()
             self?.loadSpecialCannelData()
+            self?.loadNavChannel()
             self?.updateBanner()
         }
         tableView.cr.addFootRefresh {
@@ -270,6 +272,19 @@ extension HomeContentViewController {
         APIRequest.getSpecialListAPI { [weak self](data) in
             self?.specialList = data as! [SpecialChannel]
             self?.tableView.reloadData()
+            //HomeModel.shareInstansce.specilList = data as! [SpecialChannel]
+            DispatchQueue.main.async {
+                self?.updateTitlesView()
+            }
+        }
+        
+        
+    }
+    
+    ///首页导航栏频道
+    func loadNavChannel() {
+        APIRequest.getNavChannelListAPI { [weak self](data) in
+            
             HomeModel.shareInstansce.specilList = data as! [SpecialChannel]
             DispatchQueue.main.async {
                 self?.updateTitlesView()

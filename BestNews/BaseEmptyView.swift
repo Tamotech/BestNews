@@ -18,6 +18,7 @@ class BaseEmptyView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
+        backgroundColor = .white
         let img = UIImageView(image: UIImage(named: "no-data-person"))
         self.addSubview(img)
         img.contentMode = .scaleAspectFit

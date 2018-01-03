@@ -153,6 +153,18 @@ class APIRequest: NSObject {
         }
     }
     
+    /// 首页导航栏栏目
+    class func getNavChannelListAPI(result: @escaping JSONResult) {
+        let path = "/article/getNavChannel.htm"
+        APIManager.shareInstance.postRequest(urlString: path, params: nil) { (JSON, code, msg) in
+            if code == 0 {
+                let data = [SpecialChannel].deserialize(from: JSON!["data"].rawString())
+                result(data)
+            }
+            
+        }
+    }
+    
     ///首页文章列表
     class func getHomeArticleListAPI(page: Int, row: Int, result: @escaping JSONResult) {
         let path = "/article/getIdxRecommendArticles.htm?page=\(page)&rows=\(row)"
@@ -486,10 +498,16 @@ class APIRequest: NSObject {
     ///   - xgorganizeid: 你可能感兴趣组织（组织详情页使用）
     ///   - page: 页
     ///   - result: 结果
-    class func ognizationListAPI(xgorganizeid: String?, page: Int, result: @escaping JSONResult) {
+    class func ognizationListAPI(xgorganizeid: String?, subscribe: Bool, page: Int, result: @escaping JSONResult) {
         var path = "/organize/getOrganizePage.htm?page=\(page)&rows=\(20)"
         if xgorganizeid != nil {
             path = path + "&xgorganizeid=\(xgorganizeid!)"
+        }
+        if subscribe {
+            path = path + "&subscribeflag=true"
+        }
+        else {
+            path = path + "&subscribeflag=false"
         }
         APIManager.shareInstance.postRequest(urlString: path, params: nil) { (JSON, code, msg) in
             if code == 0 {
