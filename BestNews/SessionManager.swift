@@ -182,7 +182,7 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
                 if let arr = JSON!["data"].array {
                     self?.tradeArr.removeAll()
                     for a in arr {
-                        self?.tradeArr.append(a["value"].rawString()!)
+                        self?.tradeArr.append(a["name"].rawString()!)
                     }
                 }
             }
@@ -193,7 +193,7 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
                 if let arr = JSON!["data"].array {
                     self?.famousTagArr.removeAll()
                     for a in arr {
-                        self?.famousTagArr.append(a["value"].rawString()!)
+                        self?.famousTagArr.append(a["name"].rawString()!)
                     }
                 }
             }
@@ -204,7 +204,7 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
                 if let arr = JSON!["data"].array {
                     self?.famousTradeArr.removeAll()
                     for a in arr {
-                        self?.famousTradeArr.append(a["value"].rawString()!)
+                        self?.famousTradeArr.append(a["name"].rawString()!)
                     }
                 }
             }

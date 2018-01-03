@@ -7,11 +7,10 @@
 //
 
 import UIKit
-import ImagePicker
 import SnapKit
 import Kingfisher
 
-class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, ConversationDelegate, RCIMClientReceiveMessageDelegate, UITextFieldDelegate, ImagePickerDelegate, AliyunVodPlayerDelegate {
+class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, ConversationDelegate, RCIMClientReceiveMessageDelegate, UITextFieldDelegate, AliyunVodPlayerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     
 
@@ -200,7 +199,7 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
             timer?.invalidate()
             self.timer = nil
         }
-        self.aliyunVodPlayer.removeObserver(self, forKeyPath: "currentTime")
+
         self.aliyunVodPlayer.stop()
         if self.aliyunVodPlayer.playerView != nil {
             self.aliyunVodPlayer.playerView.removeFromSuperview()
@@ -414,13 +413,37 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
     
     @IBAction func handleTapCamera(_ sender: UIButton) {
         
-        self.aliyunVodPlayer.playerView.isHidden = true
-        let picker = ImagePickerController()
-        picker.imageLimit = 1
-        picker.delegate = self
-        self.present(picker, animated: true) {
-            
+        let picker = ImageSelectSheetView.instanceFromXib() as! ImageSelectSheetView
+        picker.actionCallback = {
+            [weak self](type) in
+            DispatchQueue.main.async {
+                if type == "Camera" {
+                    let picker = UIImagePickerController()
+                    picker.allowsEditing = true
+                    picker.sourceType = .camera
+                    picker.delegate = self
+                    picker.modalPresentationStyle = .overCurrentContext
+                    self?.modalPresentationStyle = .currentContext
+                    self?.present(picker, animated: true, completion: nil)
+                    self?.aliyunVodPlayer.playerView.isHidden = true
+                }
+                else if type == "Album" {
+                    let picker = UIImagePickerController()
+                    picker.allowsEditing = true
+                    picker.sourceType = .photoLibrary
+                    picker.delegate = self
+                    picker.modalPresentationStyle = .overCurrentContext
+                    self?.modalPresentationStyle = .currentContext
+                    self?.present(picker, animated: true, completion: nil)
+                    self?.aliyunVodPlayer.playerView.isHidden = true
+                }
+                else if type == "Cancel" {
+                    self?.aliyunVodPlayer.playerView.isHidden = false
+                }
+            }
         }
+        picker.show()
+        
     }
     
     @IBAction func handleTapPublish(_ sender: UIButton) {
@@ -604,21 +627,14 @@ extension ChatRoomViewController {
     
     
     //MARK: - imagepicker
-    func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
-        imagePicker.dismiss(animated: true, completion: nil)
-        self.aliyunVodPlayer.playerView.isHidden = false
-    }
     
-    func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
-    }
-    
-    func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
-        self.aliyunVodPlayer.playerView.isHidden = false
-        imagePicker.dismiss(animated: true) {
+        picker.dismiss(animated: true) {
             [weak self] in
+            self?.aliyunVodPlayer.playerView.isHidden = false
             //发送图片消息
-            let im = images.first!
+            let im = info[UIImagePickerControllerEditedImage] as! UIImage
             let data = UIImageJPEGRepresentation(im, 0.7)
             let msg = RCImageMessage(imageData: data)
             //图片尺寸已附加字段形式附上
@@ -627,7 +643,7 @@ extension ChatRoomViewController {
                 img = "http://"
             }
             msg?.extra = "\(SessionManager.sharedInstance.userInfo?.name ?? "用户");\(img!);\(Int(Date().timeIntervalSince1970*1000));\(im.size.width);\(im.size.height)"
-
+            
             let rcmsg = RCMessage(type: RCConversationType.ConversationType_CHATROOM, targetId: self?.liveModel!.chatroom_id_compere, direction: RCMessageDirection.MessageDirection_RECEIVE, messageId: 120000, content: msg)
             
             self?.onReceived(rcmsg!, left: 0, object: "")
@@ -636,25 +652,15 @@ extension ChatRoomViewController {
                 print("上传图片中...\(progress)")
             }, success: { (id) in
                 print("上传图片成功...")
-//                let rcmsg = RCIMClient.shared().getMessage(id)
-//                let cmsg = CustomeMessage()
-//                cmsg.date = Int(Date().timeIntervalSince1970*1000)
-//                cmsg.messageType = "compere"
-//                cmsg.img = (rcmsg?.content as! RCImageMessage).imageUrl
-//                RCIMClient.shared().sendMessage(RCConversationType.ConversationType_CHATROOM, targetId: self!.liveModel!.chatroom_id_compere, content: cmsg, pushContent: "", pushData: "", success: { (id) in
-//                    print("发送消息成功, --- \(id)")
-//                
-//                    
-//                }) { (code, id) in
-//                    print("发送消息失败....\(code)")
-//                }
             }, error: { (errcode, id) in
                 print("上传图片失败...\(errcode)")
             }, cancel: { (id) in
                 
             })
         }
+        
     }
+    
     
     //MARK: - playerViewDelegate
     func aliyunVodPlayerView(_ playerView: AliyunVodPlayerView!, fullScreen isFullScreen: Bool) {

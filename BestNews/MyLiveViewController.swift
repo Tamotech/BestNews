@@ -79,28 +79,34 @@ class MyLiveViewController: BaseViewController, AlivcLivePusherInfoDelegate, Ali
     }
     
     func handleTapMoreBtn(_ sender: UIButton) {
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
-        let change = UIAlertAction(title: "切换摄像头", style: UIAlertActionStyle.default) { (action) in
-            self.pusher?.switchCamera() 
-            
-        }
-        let end = UIAlertAction(title: "结束直播", style: UIAlertActionStyle.default) { (action) in
-            self.pusher?.stopPush()
-            self.pusher?.destory()
-            self.pusher = nil
-            DispatchQueue.main.async {
-                self.navigationController?.popViewController(animated: true)
+        
+        
+        let sheet = EndLiveAlertView.instanceFromXib() as! EndLiveAlertView
+        sheet.show()
+        sheet.actionCallback = {
+            [weak self](type) in
+            if type == "End" {
+                self?.pusher?.stopPush()
+                self?.pusher?.destory()
+                self?.pusher = nil
+                DispatchQueue.main.async {
+                    let alert = XHAlertController()
+                    alert.modalPresentationStyle = .overCurrentContext
+                    self?.modalPresentationStyle = .currentContext
+                    alert.tit = "确认结束直播?"
+                    alert.msg = "确认结束后, 直播将会就此停止,\n切不可继续直播"
+                    alert.callback = {
+                        [weak self](buttonType)in
+                        if buttonType == 0 {
+                            self?.navigationController?.popViewController(animated: true)
+                        }
+                    }
+                    self?.present(alert, animated: false, completion: nil)
+                    
+                }
             }
         }
-        let cancel = UIAlertAction(title: "取消", style: UIAlertActionStyle.cancel) { (action) in
-            
-        }
-        alert.addAction(change)
-        alert.addAction(end)
-        alert.addAction(cancel)
-        self.present(alert, animated: true) {
-            
-        }
+        
     }
     
     func handleTapBackBtn(_ sender: UIButton) {

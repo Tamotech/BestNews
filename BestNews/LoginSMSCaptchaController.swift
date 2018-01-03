@@ -21,7 +21,7 @@ class LoginSMSCaptchaController: BaseViewController, SwiftyVerificationCodeViewD
     @IBOutlet weak var loginBtn: UIButton!
     lazy var codeView: SwiftyVerificationCodeView = {
         let wid = (self.captchaView.width-16*5)/4
-        let v = SwiftyVerificationCodeView(frame: self.captchaView.bounds, num: 4, margin: 16, wid: wid, hei: 40)
+        let v = SwiftyVerificationCodeView(frame: CGRect.init(x: 20, y: 0, width: screenWidth-40, height: 40), num: 4, margin: 16, wid: wid, hei: 40)
         v.type = 1
         self.captchaView.addSubview(v)
         return v
@@ -30,7 +30,7 @@ class LoginSMSCaptchaController: BaseViewController, SwiftyVerificationCodeViewD
     //渐变层
     lazy var gLayer: CAGradientLayer = {
         let layer = CAGradientLayer()
-        layer.frame = self.loginBtn.bounds
+        layer.frame = CGRect.init(x: 0, y: 0, width: screenWidth-40, height: 49)
         layer.colors = [UIColor.init(ri: 22, gi: 198, bi: 255, alpha: 1)!.cgColor, UIColor.init(ri: 0, gi: 114, bi: 255, alpha: 1)!.cgColor]
         layer.startPoint = CGPoint(x: 0, y: 0.5)
         layer.endPoint = CGPoint(x: 1, y: 0.5)

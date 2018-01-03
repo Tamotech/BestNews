@@ -23,10 +23,24 @@ class ActivityApplySuccessAlertControllerViewController: UIViewController {
 
         // Do any additional setup after loading the view.
         
+        loadData()
+        
+    }
+    
+    func loadData() {
         APIManager.shareInstance.postRequest(urlString: "/activityoperate/queryEwm.htm", params: ["aaid": aaid]) { [weak self](JSON, code, msg) in
             if code == 0 {
                 let ano = JSON!["data"]["ano"].rawString()
                 let qrImg =  ano?.createQRForString(qrImageName: nil)
+                
+                if ano?.count == 0 || ano!.contains("null") {
+                    //还未刷新成功
+                    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.5, execute: {
+                        self?.loadData()
+                    })
+                    return
+                }
+                
                 self?.qrbarView.image = qrImg
                 var newOrder = ""
                 for (i, w) in ano!.enumerated() {
@@ -44,7 +58,6 @@ class ActivityApplySuccessAlertControllerViewController: UIViewController {
                 BLHUDBarManager.showError(msg: msg)
             }
         }
-        
     }
     
     @IBAction func handleTapOKBtn(_ sender: Any) {

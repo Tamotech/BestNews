@@ -120,6 +120,13 @@
 		5A8364C61FF9C0C8001AD740 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8364C51FF9C0C8001AD740 /* TencentOpenAPI.framework */; };
 		5A8364C81FF9CFA6001AD740 /* VideoPlayControlBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8364C71FF9CFA6001AD740 /* VideoPlayControlBar.swift */; };
 		5A8364CA1FF9CFB6001AD740 /* VideoPlayControlBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8364C91FF9CFB6001AD740 /* VideoPlayControlBar.xib */; };
+		5A8364CC1FFB0005001AD740 /* ImageSelectSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8364CB1FFB0005001AD740 /* ImageSelectSheetView.swift */; };
+		5A8364D01FFB0024001AD740 /* ImageSelectSheetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8364CF1FFB0024001AD740 /* ImageSelectSheetView.xib */; };
+		5A84B63C1FFC3F9D006DC3AA /* XHAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A84B63B1FFC3F9D006DC3AA /* XHAlertController.swift */; };
+		5A84B6401FFC4EF4006DC3AA /* EndLiveAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A84B63E1FFC4EF4006DC3AA /* EndLiveAlertView.xib */; };
+		5A84B6421FFC503C006DC3AA /* EndLiveAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A84B6411FFC503C006DC3AA /* EndLiveAlertView.swift */; };
+		5A84B6451FFC5B32006DC3AA /* RefundAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A84B6431FFC5B32006DC3AA /* RefundAlertController.swift */; };
+		5A84B6461FFC5B32006DC3AA /* RefundAlertController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A84B6441FFC5B32006DC3AA /* RefundAlertController.xib */; };
 		5A85556C1FD702050070C82B /* MyLiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A85556B1FD702050070C82B /* MyLiveViewController.swift */; };
 		5A8BFC061FF88A51004145AC /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5A8BFC041FF88A51004145AC /* AlipaySDK.bundle */; };
 		5A8BFC071FF88A51004145AC /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8BFC051FF88A51004145AC /* AlipaySDK.framework */; };
@@ -437,6 +444,13 @@
 		5A8364C51FF9C0C8001AD740 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TencentOpenAPI.framework; path = ../../../../Downloads/TencentOpenAPI.framework; sourceTree = "<group>"; };
 		5A8364C71FF9CFA6001AD740 /* VideoPlayControlBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayControlBar.swift; sourceTree = "<group>"; };
 		5A8364C91FF9CFB6001AD740 /* VideoPlayControlBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoPlayControlBar.xib; sourceTree = "<group>"; };
+		5A8364CB1FFB0005001AD740 /* ImageSelectSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectSheetView.swift; sourceTree = "<group>"; };
+		5A8364CF1FFB0024001AD740 /* ImageSelectSheetView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageSelectSheetView.xib; sourceTree = "<group>"; };
+		5A84B63B1FFC3F9D006DC3AA /* XHAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XHAlertController.swift; sourceTree = "<group>"; };
+		5A84B63E1FFC4EF4006DC3AA /* EndLiveAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EndLiveAlertView.xib; sourceTree = "<group>"; };
+		5A84B6411FFC503C006DC3AA /* EndLiveAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndLiveAlertView.swift; sourceTree = "<group>"; };
+		5A84B6431FFC5B32006DC3AA /* RefundAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefundAlertController.swift; sourceTree = "<group>"; };
+		5A84B6441FFC5B32006DC3AA /* RefundAlertController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RefundAlertController.xib; sourceTree = "<group>"; };
 		5A85556B1FD702050070C82B /* MyLiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLiveViewController.swift; sourceTree = "<group>"; };
 		5A8BFC041FF88A51004145AC /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
 		5A8BFC051FF88A51004145AC /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
@@ -687,6 +701,8 @@
 				5A85556B1FD702050070C82B /* MyLiveViewController.swift */,
 				5A0A6D771FE572D30059EDBF /* ChatRoomViewController.swift */,
 				5AFF05E91FE60F8E00B7FE7D /* ChatRoomViewController.xib */,
+				5A84B6411FFC503C006DC3AA /* EndLiveAlertView.swift */,
+				5A84B63E1FFC4EF4006DC3AA /* EndLiveAlertView.xib */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -751,6 +767,8 @@
 			children = (
 				5A06DF4C1FCABCE500F225F1 /* WXImagePickerViewController.swift */,
 				5A06DF4D1FCABCE600F225F1 /* WXImagePickerViewController.xib */,
+				5A8364CB1FFB0005001AD740 /* ImageSelectSheetView.swift */,
+				5A8364CF1FFB0024001AD740 /* ImageSelectSheetView.xib */,
 			);
 			path = ImagePicker;
 			sourceTree = "<group>";
@@ -884,6 +902,7 @@
 				5ABB92BC1FA5E59A002E3180 /* SimpleHUDController.xib */,
 				5AA4E7DA1FD2B083007A04FA /* RewardAlertController.swift */,
 				5AA4E7DB1FD2B083007A04FA /* RewardAlertController.xib */,
+				5A84B63B1FFC3F9D006DC3AA /* XHAlertController.swift */,
 			);
 			path = AlertController;
 			sourceTree = "<group>";
@@ -910,6 +929,8 @@
 				5A54460E1F852A1E0004F192 /* ActivityRegistController.xib */,
 				5AA4E7DE1FD385A9007A04FA /* ActivityApplySuccessAlertControllerViewController.swift */,
 				5AA4E7DF1FD385A9007A04FA /* ActivityApplySuccessAlertControllerViewController.xib */,
+				5A84B6431FFC5B32006DC3AA /* RefundAlertController.swift */,
+				5A84B6441FFC5B32006DC3AA /* RefundAlertController.xib */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -1601,6 +1622,7 @@
 				5AA4E8531FD43378007A04FA /* volume_off@2x.png in Resources */,
 				5A0D23C71F832BD000FC9D4D /* NewsDetailController.xib in Resources */,
 				5AC684821F7FFC2E006CEB53 /* ThreePhotosNewsCell.xib in Resources */,
+				5A84B6461FFC5B32006DC3AA /* RefundAlertController.xib in Resources */,
 				5A32A7081F930CC100773884 /* MessageCenterListCell.xib in Resources */,
 				5AA4E7E11FD385A9007A04FA /* ActivityApplySuccessAlertControllerViewController.xib in Resources */,
 				5A0612D41FDD69AC00E7F20A /* ApplyFamousComplateController.xib in Resources */,
@@ -1629,6 +1651,7 @@
 				5A0612BA1FDBA1D300E7F20A /* ApplyIdentifySuccessAlertController.xib in Resources */,
 				5A0B5DA61FF0628B0047F64A /* clickImg.js in Resources */,
 				5A8C29E11FE032DC00E51095 /* LiveMessageCell.xib in Resources */,
+				5A8364D01FFB0024001AD740 /* ImageSelectSheetView.xib in Resources */,
 				5A5446101F852A1E0004F192 /* ActivityRegistController.xib in Resources */,
 				5AA4E8281FD42DC1007A04FA /* 版权信息.txt in Resources */,
 				5A8C29D11FDFC2AA00E51095 /* RCConfig.plist in Resources */,
@@ -1668,6 +1691,7 @@
 				5A063F3F1FF1D12400AFAA40 /* startLaunch.png in Resources */,
 				CCDB6D541F7A39CE0012432E /* TopicImageCell.xib in Resources */,
 				5A90CFF31F81273900F16869 /* LiveListCell.xib in Resources */,
+				5A84B6401FFC4EF4006DC3AA /* EndLiveAlertView.xib in Resources */,
 				5AA4E8581FD43378007A04FA /* watermark_small.png in Resources */,
 				5A0A13961F9EB1B400DF57B9 /* LoginViewController.xib in Resources */,
 				5AFF05F41FE62E1800B7FE7D /* zh-Hans.lproj in Resources */,
@@ -1855,6 +1879,7 @@
 				5A573E091FB86D7C006420BA /* RewardManList.swift in Sources */,
 				5A38B6B91F80871100AF4A91 /* FastNewsCell.swift in Sources */,
 				5A0612C11FDBE1BA00E7F20A /* ActivityTicketDetailCell.swift in Sources */,
+				5A84B6421FFC503C006DC3AA /* EndLiveAlertView.swift in Sources */,
 				5AF9CE361F813F06002AA4A6 /* CircleHomeViewController.swift in Sources */,
 				5A38B6BC1F808BA600AF4A91 /* FastNewsSectionHeaderView.swift in Sources */,
 				5A62A4681FAE039B0087D936 /* BaseNewsCell.swift in Sources */,
@@ -1873,6 +1898,7 @@
 				CC2906FC1F65A0AB001894DA /* MainController.swift in Sources */,
 				CC2906F41F65A028001894DA /* BestTabbarViewController.swift in Sources */,
 				5A0A139D1F9EBC4100DF57B9 /* LoginSMSCaptchaController.swift in Sources */,
+				5A84B6451FFC5B32006DC3AA /* RefundAlertController.swift in Sources */,
 				5A0D23D01F83A07300FC9D4D /* CommentListController.swift in Sources */,
 				5A0612D01FDD4AF700E7F20A /* ApplyFamousModel.swift in Sources */,
 				5A0A13951F9EB1B400DF57B9 /* LoginViewController.swift in Sources */,
@@ -1889,6 +1915,7 @@
 				5AC684811F7FFC2E006CEB53 /* ThreePhotosNewsCell.swift in Sources */,
 				CCDB6D461F7A28A20012432E /* BaseWKWebViewController.swift in Sources */,
 				5A32A70F1F93353700773884 /* BaseSegmentControl.swift in Sources */,
+				5A8364CC1FFB0005001AD740 /* ImageSelectSheetView.swift in Sources */,
 				CC2906F21F659F58001894DA /* ConstantHelper.swift in Sources */,
 				5AF9CE3D1F814880002AA4A6 /* ProfileCenterCell.swift in Sources */,
 				5ACCDD2F1F9F7AEA004D3809 /* InterestColumnCell.swift in Sources */,
@@ -1923,6 +1950,7 @@
 				CC2906EE1F659EBA001894DA /* UIView+IBInspectable.swift in Sources */,
 				5A0612BE1FDBDB2100E7F20A /* ActivityTicketDetail.swift in Sources */,
 				CCDB6D4B1F7A2E7A0012432E /* HomeContentViewController.swift in Sources */,
+				5A84B63C1FFC3F9D006DC3AA /* XHAlertController.swift in Sources */,
 				CC2907001F65A0C3001894DA /* ActivityController.swift in Sources */,
 				CC2906E21F659E77001894DA /* BaseViewController.swift in Sources */,
 				5AF9CAD31FA4C95D0071285D /* MeCollectionViewController.swift in Sources */,

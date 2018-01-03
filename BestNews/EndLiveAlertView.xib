@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="2rV-tS-hnH" customClass="EndLiveAlertView" customModule="BestNews" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NXx-8G-u0h">
+                    <rect key="frame" x="0.0" y="667" width="375" height="150"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zad-MD-8TI">
+                            <rect key="frame" x="15" y="21" width="345" height="48"/>
+                            <color key="backgroundColor" red="0.0" green="0.59607843140000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="48" id="CIb-5t-OOn"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal" title="结束直播">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="6"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="0.0"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                    <real key="value" value="0.29999999999999999"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                    <real key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                    <size key="value" width="0.0" height="4"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                    <color key="value" red="0.0" green="0.59607843140000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="tapend:" destination="2rV-tS-hnH" eventType="touchUpInside" id="0Zu-Qn-52H"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R9K-uh-eOx">
+                            <rect key="frame" x="14.5" y="87" width="345" height="48"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="48" id="Dx0-oO-uK3"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal" title="取消">
+                                <color key="titleColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="6"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="tapcancel:" destination="2rV-tS-hnH" eventType="touchUpInside" id="Zwb-qY-9zu"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="R9K-uh-eOx" firstAttribute="centerX" secondItem="NXx-8G-u0h" secondAttribute="centerX" id="4tD-wd-Jch"/>
+                        <constraint firstItem="R9K-uh-eOx" firstAttribute="width" secondItem="NXx-8G-u0h" secondAttribute="width" constant="-30" id="7Yz-sa-sf5"/>
+                        <constraint firstAttribute="bottom" secondItem="R9K-uh-eOx" secondAttribute="bottom" constant="15" id="AGj-1y-ata"/>
+                        <constraint firstAttribute="height" constant="150" id="EMz-nh-AQm"/>
+                        <constraint firstItem="R9K-uh-eOx" firstAttribute="top" secondItem="zad-MD-8TI" secondAttribute="bottom" constant="18" id="XaG-Jx-0mf"/>
+                        <constraint firstItem="zad-MD-8TI" firstAttribute="trailing" secondItem="R9K-uh-eOx" secondAttribute="trailing" id="aYe-Rm-WvF"/>
+                        <constraint firstItem="zad-MD-8TI" firstAttribute="leading" secondItem="R9K-uh-eOx" secondAttribute="leading" id="mUA-z6-Zd9"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.2031785103" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="NXx-8G-u0h" firstAttribute="width" secondItem="2rV-tS-hnH" secondAttribute="width" id="6XY-I7-a0M"/>
+                <constraint firstItem="DbW-ZA-boa" firstAttribute="bottom" secondItem="NXx-8G-u0h" secondAttribute="bottom" constant="-150" id="FmE-1k-gnf"/>
+                <constraint firstItem="NXx-8G-u0h" firstAttribute="centerX" secondItem="DbW-ZA-boa" secondAttribute="centerX" id="lGn-BY-hyX"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="DbW-ZA-boa"/>
+            <connections>
+                <outlet property="containerBottom" destination="FmE-1k-gnf" id="rTL-8j-ass"/>
+            </connections>
+        </view>
+    </objects>
+</document>

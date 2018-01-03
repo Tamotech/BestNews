@@ -89,6 +89,7 @@ class ProfessionListController: UIViewController, UITableViewDataSource, UITable
             make.left.equalTo(15)
             make.right.equalTo(-15)
             make.bottom.equalTo(-20)
+            make.height.equalTo(44)
         }
         tableView.tableFooterView = footer
         

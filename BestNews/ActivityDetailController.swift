@@ -45,6 +45,7 @@ class ActivityDetailController: BaseViewController, ActivityTicketListController
     
     @IBOutlet weak var sponsorHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var applyBtn: UIButton!
     
     var collectionItem: UIBarButtonItem?
     
@@ -136,6 +137,19 @@ class ActivityDetailController: BaseViewController, ActivityTicketListController
     
     ///退款说明
     @IBAction func handleTappaybackInstruction(_ sender: Any) {
+        
+        let alert = RefundAlertController(nibName: "RefundAlertController", bundle: nil)
+        if activity.refundflag {
+            alert.tit = "本活动接受退款"
+            alert.msg = "如需申请退款请于活动开始前24小时申请。平台将统一收取原票价的10%作为退票手续费，请知悉。"
+        }
+        else {
+            alert.title = "本活动不接受退款"
+            alert.msg = "本活动票券一旦售出，恕不退还。无法参加活动，请将票券转让给其他人。"
+        }
+        self.customPresentViewController(self.presentr, viewController: alert, animated: true, completion: {
+            
+        })
         
         
     }
@@ -248,6 +262,31 @@ extension ActivityDetailController {
         labelsContainerHeight.constant = labelsContainer.height
         webView.loadHTMLString(activity.contentHtmlString(), baseURL: nil)
         bottomView.isHidden = activity.tickets.count <= 0
+        
+        if activity.appledflag == 1 {
+            applyBtn.backgroundColor = UIColor(hexString: "#eaeaea")
+            applyBtn.isEnabled = false
+            applyBtn.setTitleColor(UIColor.init(hexString: "#999999"), for: UIControlState.normal)
+            applyBtn.shadowOpacity = 0
+            applyBtn.setTitle("已报名", for: UIControlState.normal)
+        }
+        else {
+            let currentT = Int(Date().timeIntervalSince1970*1000)
+            if currentT > activity.startdate && currentT < activity.enddate {
+                applyBtn.backgroundColor = themeColor!
+                applyBtn.isEnabled = true
+                applyBtn.setTitleColor(UIColor.white, for: UIControlState.normal)
+                applyBtn.setTitle("我要报名", for: UIControlState.normal)
+                applyBtn.shadowOpacity = 0.3
+            }
+            else {
+                applyBtn.backgroundColor = UIColor(hexString: "#eaeaea")
+                applyBtn.isEnabled = false
+                applyBtn.setTitleColor(UIColor.init(hexString: "#999999"), for: UIControlState.normal)
+                applyBtn.shadowOpacity = 0
+                applyBtn.setTitle("下次吧", for: UIControlState.normal)
+            }
+        }
         
         if activity.collect == 1 {
             collectionItem?.image = #imageLiteral(resourceName: "iconCollectionOn")

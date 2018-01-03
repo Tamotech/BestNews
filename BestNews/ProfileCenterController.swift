@@ -8,9 +8,8 @@
 
 import UIKit
 import Kingfisher
-import ImagePicker
 
-class ProfileCenterController: BaseViewController, ImagePickerDelegate, UITextFieldDelegate {
+class ProfileCenterController: BaseViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate  {
     @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var avatarImg: UIImageView!
@@ -129,12 +128,34 @@ class ProfileCenterController: BaseViewController, ImagePickerDelegate, UITextFi
     }
     
     @IBAction func handleTapAvatar(_ sender: Any) {
-        let picker = ImagePickerController()
-        picker.imageLimit = 1
-        picker.delegate = self
-        self.present(picker, animated: true) {
-            
+        let picker = ImageSelectSheetView.instanceFromXib() as! ImageSelectSheetView
+        picker.actionCallback = {
+            [weak self](type) in
+            DispatchQueue.main.async {
+                if type == "Camera" {
+                    let picker = UIImagePickerController()
+                    picker.allowsEditing = true
+                    picker.sourceType = .camera
+                    picker.delegate = self
+                    picker.modalPresentationStyle = .overCurrentContext
+                    self?.modalPresentationStyle = .currentContext
+                    self?.present(picker, animated: true, completion: nil)
+                }
+                else if type == "Album" {
+                    let picker = UIImagePickerController()
+                    picker.allowsEditing = true
+                    picker.sourceType = .photoLibrary
+                    picker.delegate = self
+                    picker.modalPresentationStyle = .overCurrentContext
+                    self?.modalPresentationStyle = .currentContext
+                    self?.present(picker, animated: true, completion: nil)
+                }
+                else if type == "Cancel" {
+                    
+                }
+            }
         }
+        picker.show()
     }
     
     @IBAction func handleTapPhone(_ sender: Any) {
@@ -154,18 +175,21 @@ class ProfileCenterController: BaseViewController, ImagePickerDelegate, UITextFi
     }
     
     
-    func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
-        imagePicker.dismiss(animated: true, completion: nil)
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true) {
+            
+        }
     }
     
-    func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
-        imagePicker.dismiss(animated: true) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        picker.dismiss(animated: true) {
             [weak self] in
-            self?.avatarImg.image = images.first
+            let im = info[UIImagePickerControllerEditedImage] as! UIImage
+            self?.avatarImg.image = im
             
             //上传图片
             let hud = self?.pleaseWait()
-            let img = images.first?.imageWithMaxSize(maxSize: 1920)
+            let img = im.imageWithMaxSize(maxSize: 1920)
             let data = UIImageJPEGRepresentation(img!, 0.8)
             APIManager.shareInstance.uploadFile(data: data!, result: { (JSON, code, msg) in
                 hud?.hide()
@@ -182,10 +206,8 @@ class ProfileCenterController: BaseViewController, ImagePickerDelegate, UITextFi
                 }
             })
         }
-    }
-    
-    func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
-        imagePicker.dismiss(animated: true, completion: nil)
+        
+        
     }
 
 }

@@ -43,7 +43,12 @@ class WXImagePickerViewController: UIViewController {
     }
     
     @IBAction func handleTapCancel(_ sender: Any) {
-        dismiss(animated: true, completion: nil)
+        
+        dismiss(animated: true) {
+            if self.actionCallback != nil {
+                self.actionCallback!("Cancel")
+            }
+        }
     }
     
     

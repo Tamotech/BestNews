@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ImageSelectSheetView" customModule="BestNews" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tEd-MC-WT2">
+                    <rect key="frame" x="0.0" y="667" width="375" height="210"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QZp-kM-uyF">
+                            <rect key="frame" x="78.5" y="25" width="68" height="68"/>
+                            <state key="normal" image="icon-camera">
+                                <color key="titleColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="tapCamera:" destination="iN0-l3-epB" eventType="touchUpInside" id="Xbw-bv-oUH"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="相机" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L9Q-UB-Rtb">
+                            <rect key="frame" x="96" y="108" width="33" height="19.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kvA-hi-5PA">
+                            <rect key="frame" x="228.5" y="25" width="68" height="68"/>
+                            <state key="normal" image="icon-photo">
+                                <color key="titleColor" red="0.28235294119999998" green="0.28235294119999998" blue="0.28235294119999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="tapAlbum:" destination="iN0-l3-epB" eventType="touchUpInside" id="jg1-Tn-fHu"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="相册" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cz7-lc-83G">
+                            <rect key="frame" x="246" y="108" width="33" height="19.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uCI-HE-lVZ">
+                            <rect key="frame" x="14.5" y="147" width="345" height="48"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="48" id="bHY-bp-jcO"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <state key="normal" title="取消">
+                                <color key="titleColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="6"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                    <real key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                    <color key="value" red="0.94117647059999998" green="0.94117647059999998" blue="0.94117647059999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="tapCancel:" destination="iN0-l3-epB" eventType="touchUpInside" id="Ruw-zs-wbF"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="uCI-HE-lVZ" firstAttribute="width" secondItem="tEd-MC-WT2" secondAttribute="width" constant="-30" id="2gz-Yz-BlK"/>
+                        <constraint firstItem="L9Q-UB-Rtb" firstAttribute="top" secondItem="QZp-kM-uyF" secondAttribute="bottom" constant="15" id="7Ki-j5-AyY"/>
+                        <constraint firstAttribute="bottom" secondItem="uCI-HE-lVZ" secondAttribute="bottom" constant="15" id="8hI-cY-mAd"/>
+                        <constraint firstItem="kvA-hi-5PA" firstAttribute="centerX" secondItem="tEd-MC-WT2" secondAttribute="centerX" multiplier="1.4" id="B84-xS-vm5"/>
+                        <constraint firstItem="Cz7-lc-83G" firstAttribute="centerY" secondItem="L9Q-UB-Rtb" secondAttribute="centerY" id="F5s-kZ-bFY"/>
+                        <constraint firstItem="L9Q-UB-Rtb" firstAttribute="centerX" secondItem="QZp-kM-uyF" secondAttribute="centerX" id="GcJ-8L-zTe"/>
+                        <constraint firstItem="QZp-kM-uyF" firstAttribute="centerX" secondItem="tEd-MC-WT2" secondAttribute="centerX" multiplier="0.6" id="PJA-81-qCG"/>
+                        <constraint firstItem="kvA-hi-5PA" firstAttribute="centerY" secondItem="QZp-kM-uyF" secondAttribute="centerY" id="QXb-yu-ILQ"/>
+                        <constraint firstItem="uCI-HE-lVZ" firstAttribute="centerX" secondItem="tEd-MC-WT2" secondAttribute="centerX" id="WDN-aj-laO"/>
+                        <constraint firstItem="QZp-kM-uyF" firstAttribute="top" secondItem="tEd-MC-WT2" secondAttribute="top" constant="25" id="YP0-Fk-EKq"/>
+                        <constraint firstItem="Cz7-lc-83G" firstAttribute="centerX" secondItem="kvA-hi-5PA" secondAttribute="centerX" id="voO-Fh-uWz"/>
+                        <constraint firstAttribute="height" constant="210" id="wAL-gq-Jzj"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.2031785102739726" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="tEd-MC-WT2" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="36X-dZ-6a5"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="tEd-MC-WT2" secondAttribute="bottom" constant="-210" id="UWd-KL-OEl"/>
+                <constraint firstItem="tEd-MC-WT2" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="uuF-if-AOf"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="containerBottom" destination="UWd-KL-OEl" id="h44-fW-Icr"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="icon-camera" width="68" height="68"/>
+        <image name="icon-photo" width="68" height="68"/>
+    </resources>
+</document>

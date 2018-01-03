@@ -93,7 +93,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
                     cvcs.append(vc)
                     addChildViewController(vc)
                     let x = screenWidth*CGFloat(i)
-                    vc.view.frame = CGRect(x: x, y: 64, width: screenWidth, height: screenHeight-49-64)
+                    vc.view.frame = CGRect(x: x, y: 64, width: screenWidth, height: screenHeight-64)
                     scrollView.addSubview(vc.view)
                     vc.view.tag = kStabelChildTag
                 }
@@ -133,7 +133,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
                     let data = HomeModel.shareInstansce.getChannel(title)
                     let vc = SpecialChannelArticleListController()
                     vc.channel = data
-                    cvcs.insert(vc, at: cvcs.count-2)
+                    cvcs.insert(vc, at: cvcs.count-1)
                     addChildViewController(vc)
                     let x = screenWidth*CGFloat(i)
                     vc.view.frame = CGRect(x: x, y: 0, width: screenWidth, height: screenHeight-49-0)
@@ -164,11 +164,11 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
             
             //新加入的专题
             for i in 3..<titles.count-1 {
-                let data = HomeModel.shareInstansce.specilList[i]
+                let data = HomeModel.shareInstansce.specilList[i-3]
                 let vc = SpecialChannelArticleListController()
                 vc.channel = data
                 vc.showCustomTitle(title: "")
-                cvcs.insert(vc, at: cvcs.count-2)
+                cvcs.insert(vc, at: cvcs.count-1)
                 addChildViewController(vc)
                 vc.barView.removeFromSuperview()
                 let x = screenWidth*CGFloat(i)

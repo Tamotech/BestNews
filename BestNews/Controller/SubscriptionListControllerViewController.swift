@@ -25,6 +25,8 @@ class SubscriptionListControllerViewController: UIViewController, UITableViewDel
     
     @IBOutlet weak var scrollview: UIScrollView!
     
+    var emptyView = BaseEmptyView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
+    
     ///专题列表
     var channels: [NewsChannel] = []
     //机构列表
@@ -81,6 +83,9 @@ class SubscriptionListControllerViewController: UIViewController, UITableViewDel
             self?.loadMoreArticleList()
         }
         
+        newsTableView.addSubview(emptyView)
+        emptyView.emptyString = "还没有订阅~"
+        
         let nib2 = UINib(nibName: "SubscriptListCell", bundle: nil)
         columeTableView.register(nib2, forCellReuseIdentifier: "ColumeCell")
         let nib3 = UINib(nibName: "ColumesCollectionViewCell", bundle: nil)
@@ -126,6 +131,7 @@ class SubscriptionListControllerViewController: UIViewController, UITableViewDel
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == self.newsTableView {
+            emptyView.isHidden = articles.list.count > 0
             return articles.list.count
         }
         else {

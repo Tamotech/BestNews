@@ -87,6 +87,9 @@ class LiveListCell: UITableViewCell {
         labelIm.image = UIImage(named: labelImName)
         labelText.text = data.marks
         
+        ///TEST:
+        //startLive.isHidden = false
+        
     }
     
     @IBAction func handleTapCommentBtn(_ sender: UIButton) {

@@ -33,6 +33,12 @@ class ActivityDetail: HandyJSON {
     var createdate: Double = 0
     var tickets: [ActivityTicket] = []
     
+    ///是否报名
+    var appledflag = 0
+    
+    //服务器时间戳
+    var currenttimemillis: Int = 0
+    
     ///是否收藏
     var collect: Int = 0
     

@@ -8,10 +8,9 @@
 
 import UIKit
 import PopupDialog
-import ImagePicker
 
 ///申请名人
-class ApplyFamousController: BaseViewController, ImagePickerDelegate, ProfessionListControllerDelegate {
+class ApplyFamousController: BaseViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ProfessionListControllerDelegate {
 
     @IBOutlet weak var nicknameLb: UITextField!
     
@@ -103,18 +102,21 @@ class ApplyFamousController: BaseViewController, ImagePickerDelegate, Profession
 
     //MARK: - image picker
     
-    func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
-        imagePicker.dismiss(animated: true, completion: nil)
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true) {
+            
+        }
     }
     
-    func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
-        imagePicker.dismiss(animated: true) {
-            [weak self] in
-            self?.businessCardBtn.setImage(images.first!, for: .normal)
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        picker.dismiss(animated: true) {
+            [weak self]in
+            let im = info[UIImagePickerControllerEditedImage] as! UIImage
+            self?.businessCardBtn.setImage(im, for: .normal)
             
             //上传图片
             let hud = self?.pleaseWait()
-            let img = images.first?.imageWithMaxSize(maxSize: 1920)
+            let img = im.imageWithMaxSize(maxSize: 1920)
             let data = UIImageJPEGRepresentation(img!, 0.8)
             APIManager.shareInstance.uploadFile(data: data!, result: { [weak self](JSON, code, msg) in
                 if code == 0 {
@@ -127,10 +129,6 @@ class ApplyFamousController: BaseViewController, ImagePickerDelegate, Profession
                 }
             })
         }
-    }
-    
-    func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
-        imagePicker.dismiss(animated: true, completion: nil)
     }
     
     //MARK: - actions
@@ -165,12 +163,34 @@ class ApplyFamousController: BaseViewController, ImagePickerDelegate, Profession
     }
     
     @IBAction func handleTapBusinessCard(_ sender: UIButton) {
-        let picker = ImagePickerController()
-        picker.imageLimit = 1
-        picker.delegate = self
-        self.present(picker, animated: true) {
-            
+        let picker = ImageSelectSheetView.instanceFromXib() as! ImageSelectSheetView
+        picker.actionCallback = {
+            [weak self](type) in
+            DispatchQueue.main.async {
+                if type == "Camera" {
+                    let picker = UIImagePickerController()
+                    picker.allowsEditing = true
+                    picker.sourceType = .camera
+                    picker.delegate = self
+                    picker.modalPresentationStyle = .overCurrentContext
+                    self?.modalPresentationStyle = .currentContext
+                    self?.present(picker, animated: true, completion: nil)
+                }
+                else if type == "Album" {
+                    let picker = UIImagePickerController()
+                    picker.allowsEditing = true
+                    picker.sourceType = .photoLibrary
+                    picker.delegate = self
+                    picker.modalPresentationStyle = .overCurrentContext
+                    self?.modalPresentationStyle = .currentContext
+                    self?.present(picker, animated: true, completion: nil)
+                }
+                else if type == "Cancel" {
+                    
+                }
+            }
         }
+        picker.show()
     }
     
     @IBAction func handleTapSubmitBt(_ sender: UIButton) {

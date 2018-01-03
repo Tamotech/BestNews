@@ -10,12 +10,11 @@ import UIKit
 import PopupDialog
 import Presentr
 import Kingfisher
-import ImagePicker
 
 
 typealias ActivityApplySuccessCallback = (ActivityPayResult)->()
 
-class ActivityRegistController: BaseViewController, UINavigationControllerDelegate, ProfessionListControllerDelegate, ImagePickerDelegate {
+class ActivityRegistController: BaseViewController, UINavigationControllerDelegate, ProfessionListControllerDelegate, UIImagePickerControllerDelegate {
 
     @IBOutlet weak var scrollView: UIScrollView!
     
@@ -93,19 +92,19 @@ class ActivityRegistController: BaseViewController, UINavigationControllerDelega
     // MARK: - Navigation
     
     func handleTapBackButton(_:Any) {
-        let dialog = PopupDialog(title: "确认要离开本页?", message: "离开后已填写的信息将不再保存", image: nil, buttonAlignment: .horizontal, transitionStyle: .zoomIn, gestureDismissal: false) {
-            
+        
+        let alert = XHAlertController()
+        alert.modalPresentationStyle = .overCurrentContext
+        self.modalPresentationStyle = .currentContext
+        alert.tit = "确认离开本页?"
+        alert.msg = "离开后已填写的信息将不再保存"
+        alert.callback = {
+            [weak self](buttonType)in
+            if buttonType == 0 {
+                self?.navigationController?.popViewController(animated: true)
+            }
         }
-            //PopupDialog(title: "确认要离开本页?", message: "离开后已填写的信息将不再保存")
-        dialog.addButton(PopupDialogButton(title: "取消", action: {
-            
-        }))
-        dialog.addButton(PopupDialogButton(title: "确认", action: {
-            self.navigationController?.popViewController(animated: true)
-        }))
-        self.present(dialog, animated: true, completion: {
-            
-        })
+        self.present(alert, animated: false, completion: nil)
         
     }
 
@@ -169,12 +168,34 @@ class ActivityRegistController: BaseViewController, UINavigationControllerDelega
     
     @IBAction func handleTapUploadBtn(_ sender: UIButton) {
         
-        let picker = ImagePickerController()
-        picker.imageLimit = 1
-        picker.delegate = self
-        self.present(picker, animated: true) {
-            
+        let picker = ImageSelectSheetView.instanceFromXib() as! ImageSelectSheetView
+        picker.actionCallback = {
+            [weak self](type) in
+            DispatchQueue.main.async {
+                if type == "Camera" {
+                    let picker = UIImagePickerController()
+                    picker.allowsEditing = true
+                    picker.sourceType = .camera
+                    picker.delegate = self
+                    picker.modalPresentationStyle = .overCurrentContext
+                    self?.modalPresentationStyle = .currentContext
+                    self?.present(picker, animated: true, completion: nil)
+                }
+                else if type == "Album" {
+                    let picker = UIImagePickerController()
+                    picker.allowsEditing = true
+                    picker.sourceType = .photoLibrary
+                    picker.delegate = self
+                    picker.modalPresentationStyle = .overCurrentContext
+                    self?.modalPresentationStyle = .currentContext
+                    self?.present(picker, animated: true, completion: nil)
+                }
+                else if type == "Cancel" {
+
+                }
+            }
         }
+        picker.show()
         
     }
     
@@ -267,18 +288,16 @@ class ActivityRegistController: BaseViewController, UINavigationControllerDelega
         professionField.text = item
     }
     
-    func cancelButtonDidPress(_ imagePicker: ImagePickerController) {
-        imagePicker.dismiss(animated: true, completion: nil)
-    }
-    
-    func doneButtonDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
-        imagePicker.dismiss(animated: true) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        
+        picker.dismiss(animated: true) {
             [weak self] in
-            self?.businessCardBtn.setImage(images.first!, for: .normal)
+            let im = info[UIImagePickerControllerEditedImage] as! UIImage
+            self?.businessCardBtn.setImage(im, for: .normal)
             
             //上传图片
             let hud = self?.pleaseWait()
-            let img = images.first?.imageWithMaxSize(maxSize: 1920)
+            let img = im.imageWithMaxSize(maxSize: 1920)
             let data = UIImageJPEGRepresentation(img!, 0.8)
             APIManager.shareInstance.uploadFile(data: data!, result: { [weak self](JSON, code, msg) in
                 if code == 0 {
@@ -290,11 +309,15 @@ class ActivityRegistController: BaseViewController, UINavigationControllerDelega
                 }
             })
         }
+        
     }
     
-    func wrapperDidPress(_ imagePicker: ImagePickerController, images: [UIImage]) {
-        imagePicker.dismiss(animated: true, completion: nil)
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true) {
+            
+        }
     }
+    
 }
 
 

@@ -53,7 +53,8 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
 
     func setupView() {
         
-        self.shouldClearNavBar = true
+        self.shouldClearNavBar = false
+        self.showCustomTitle(title: "我的")
         let nib = UINib(nibName: "ProfileCenterCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "Cell")
         tableView.rowHeight = 50
@@ -82,6 +83,7 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
         SessionManager.sharedInstance.getUserInfo()
         loadInfoCount()
         updateUI()
+        self.barView.shadowOpacity = 0
     }
     
     ///更新UI
