@@ -94,6 +94,9 @@
 		5A38B6C21F80CC9A00AF4A91 /* SubscriptionListControllerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A38B6C01F80CC9A00AF4A91 /* SubscriptionListControllerViewController.xib */; };
 		5A38B6C51F80ED1800AF4A91 /* ColumesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A38B6C31F80ED1800AF4A91 /* ColumesCollectionViewCell.swift */; };
 		5A38B6C61F80ED1800AF4A91 /* ColumesCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A38B6C41F80ED1800AF4A91 /* ColumesCollectionViewCell.xib */; };
+		5A3DD4411FFE922C00AADE12 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A3DD4401FFE922C00AADE12 /* TencentOpenAPI.framework */; };
+		5A3DD44C1FFE939800AADE12 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A3DD44A1FFE939800AADE12 /* AlipaySDK.framework */; };
+		5A3DD44D1FFE939800AADE12 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5A3DD44B1FFE939800AADE12 /* AlipaySDK.bundle */; };
 		5A47F2E71F92EA0700C483C1 /* SelectColumeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A47F2E61F92EA0700C483C1 /* SelectColumeView.swift */; };
 		5A4A21501FC18BB900648126 /* OgnizationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4A214F1FC18BB900648126 /* OgnizationModel.swift */; };
 		5A4A21551FC1E53200648126 /* LabelsContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A4A21541FC1E53200648126 /* LabelsContainerView.swift */; };
@@ -114,7 +117,6 @@
 		5A6E61F41FF9BEDD0056E679 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A6E61F31FF9BEDD0056E679 /* libsqlite3.tbd */; };
 		5A6E61F61FF9BEED0056E679 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A6E61F51FF9BEED0056E679 /* libiconv.tbd */; };
 		5A7F21611FCB118C00DFC606 /* SwiftNotice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A7F21601FCB118C00DFC606 /* SwiftNotice.swift */; };
-		5A8364C61FF9C0C8001AD740 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8364C51FF9C0C8001AD740 /* TencentOpenAPI.framework */; };
 		5A8364C81FF9CFA6001AD740 /* VideoPlayControlBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8364C71FF9CFA6001AD740 /* VideoPlayControlBar.swift */; };
 		5A8364CA1FF9CFB6001AD740 /* VideoPlayControlBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8364C91FF9CFB6001AD740 /* VideoPlayControlBar.xib */; };
 		5A8364CC1FFB0005001AD740 /* ImageSelectSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8364CB1FFB0005001AD740 /* ImageSelectSheetView.swift */; };
@@ -128,8 +130,6 @@
 		5A84B64A1FFD1F97006DC3AA /* bg2_guide@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A84B6491FFD1F96006DC3AA /* bg2_guide@3x.png */; };
 		5A84B64C1FFD1F9F006DC3AA /* bg3_guide@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A84B64B1FFD1F9F006DC3AA /* bg3_guide@3x.png */; };
 		5A85556C1FD702050070C82B /* MyLiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A85556B1FD702050070C82B /* MyLiveViewController.swift */; };
-		5A8BFC061FF88A51004145AC /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5A8BFC041FF88A51004145AC /* AlipaySDK.bundle */; };
-		5A8BFC071FF88A51004145AC /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8BFC051FF88A51004145AC /* AlipaySDK.framework */; };
 		5A8BFC0A1FF88A7B004145AC /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8BFC091FF88A7A004145AC /* libz.tbd */; };
 		5A8BFC0E1FF88FD7004145AC /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8BFC0D1FF88AA8004145AC /* CoreMotion.framework */; };
 		5A8BFC111FF8AF40004145AC /* APOrderInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BFC0F1FF8AF40004145AC /* APOrderInfo.m */; };
@@ -416,6 +416,9 @@
 		5A38B6C01F80CC9A00AF4A91 /* SubscriptionListControllerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubscriptionListControllerViewController.xib; sourceTree = "<group>"; };
 		5A38B6C31F80ED1800AF4A91 /* ColumesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColumesCollectionViewCell.swift; sourceTree = "<group>"; };
 		5A38B6C41F80ED1800AF4A91 /* ColumesCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ColumesCollectionViewCell.xib; sourceTree = "<group>"; };
+		5A3DD4401FFE922C00AADE12 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
+		5A3DD44A1FFE939800AADE12 /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlipaySDK.framework; path = Framework/AlipaySDK.framework; sourceTree = SOURCE_ROOT; };
+		5A3DD44B1FFE939800AADE12 /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = AlipaySDK.bundle; path = Framework/AlipaySDK.bundle; sourceTree = SOURCE_ROOT; };
 		5A47F2E61F92EA0700C483C1 /* SelectColumeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectColumeView.swift; sourceTree = "<group>"; };
 		5A4A214F1FC18BB900648126 /* OgnizationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OgnizationModel.swift; sourceTree = "<group>"; };
 		5A4A21541FC1E53200648126 /* LabelsContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelsContainerView.swift; sourceTree = "<group>"; };
@@ -438,7 +441,6 @@
 		5A6E61F31FF9BEDD0056E679 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		5A6E61F51FF9BEED0056E679 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
 		5A7F21601FCB118C00DFC606 /* SwiftNotice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftNotice.swift; sourceTree = "<group>"; };
-		5A8364C51FF9C0C8001AD740 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TencentOpenAPI.framework; path = ../../../../Downloads/TencentOpenAPI.framework; sourceTree = "<group>"; };
 		5A8364C71FF9CFA6001AD740 /* VideoPlayControlBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayControlBar.swift; sourceTree = "<group>"; };
 		5A8364C91FF9CFB6001AD740 /* VideoPlayControlBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoPlayControlBar.xib; sourceTree = "<group>"; };
 		5A8364CB1FFB0005001AD740 /* ImageSelectSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectSheetView.swift; sourceTree = "<group>"; };
@@ -452,8 +454,6 @@
 		5A84B6491FFD1F96006DC3AA /* bg2_guide@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg2_guide@3x.png"; sourceTree = "<group>"; };
 		5A84B64B1FFD1F9F006DC3AA /* bg3_guide@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg3_guide@3x.png"; sourceTree = "<group>"; };
 		5A85556B1FD702050070C82B /* MyLiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLiveViewController.swift; sourceTree = "<group>"; };
-		5A8BFC041FF88A51004145AC /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
-		5A8BFC051FF88A51004145AC /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AlipaySDK.framework; sourceTree = "<group>"; };
 		5A8BFC081FF88A66004145AC /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		5A8BFC091FF88A7A004145AC /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		5A8BFC0B1FF88A85004145AC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -656,11 +656,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A8BFC0E1FF88FD7004145AC /* CoreMotion.framework in Frameworks */,
+				5A3DD44C1FFE939800AADE12 /* AlipaySDK.framework in Frameworks */,
 				5A8C29D91FDFD35100E51095 /* AudioToolbox.framework in Frameworks */,
 				5A6E61F41FF9BEDD0056E679 /* libsqlite3.tbd in Frameworks */,
 				5A8BFC0A1FF88A7B004145AC /* libz.tbd in Frameworks */,
 				5A8C29D71FDFD33500E51095 /* CoreTelephony.framework in Frameworks */,
-				5A8364C61FF9C0C8001AD740 /* TencentOpenAPI.framework in Frameworks */,
+				5A3DD4411FFE922C00AADE12 /* TencentOpenAPI.framework in Frameworks */,
 				5A8C29D51FDFD31F00E51095 /* CoreMedia.framework in Frameworks */,
 				5A8C29DB1FDFD35E00E51095 /* libc++.tbd in Frameworks */,
 				5A8C29D31FDFD18D00E51095 /* VideoToolbox.framework in Frameworks */,
@@ -671,7 +672,6 @@
 				5A8C29CF1FDFC2AA00E51095 /* RongIMLib.framework in Frameworks */,
 				5A6E61F61FF9BEED0056E679 /* libiconv.tbd in Frameworks */,
 				5A8C29DD1FDFD38600E51095 /* libresolv.9.tbd in Frameworks */,
-				5A8BFC071FF88A51004145AC /* AlipaySDK.framework in Frameworks */,
 				5AFF05F31FE62E1800B7FE7D /* RongIMKit.framework in Frameworks */,
 				5ABAD5941FD5A2B800C866C0 /* AliyunVodPlayerSDK.framework in Frameworks */,
 				97116F55FBF85B351A8EEBAC /* Pods_BestNews.framework in Frameworks */,
@@ -973,7 +973,7 @@
 		5A6E61F01FF9BE6F0056E679 /* TencentOpenSDK */ = {
 			isa = PBXGroup;
 			children = (
-				5A8364C51FF9C0C8001AD740 /* TencentOpenAPI.framework */,
+				5A3DD4401FFE922C00AADE12 /* TencentOpenAPI.framework */,
 			);
 			name = TencentOpenSDK;
 			sourceTree = "<group>";
@@ -1032,13 +1032,6 @@
 				5A27E72A1F936857007C5D6B /* FinanceProductDetailController.xib */,
 			);
 			name = Controller;
-			sourceTree = "<group>";
-		};
-		5AA4E7E81FD4251F007A04FA /* Live */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Live;
 			sourceTree = "<group>";
 		};
 		5AA4E7F41FD42B20007A04FA /* LivePusher */ = {
@@ -1181,8 +1174,8 @@
 		5ABAD5871FD5A22900C866C0 /* AliSDK */ = {
 			isa = PBXGroup;
 			children = (
-				5A8BFC041FF88A51004145AC /* AlipaySDK.bundle */,
-				5A8BFC051FF88A51004145AC /* AlipaySDK.framework */,
+				5A3DD44B1FFE939800AADE12 /* AlipaySDK.bundle */,
+				5A3DD44A1FFE939800AADE12 /* AlipaySDK.framework */,
 				5ABAD5891FD5A24000C866C0 /* AliyunPlayerSDK.framework */,
 				5ABAD58C1FD5A24200C866C0 /* AliyunVodPlayerSDK.framework */,
 				5ABAD58A1FD5A24100C866C0 /* AliyunVodPlayerViewSDK.framework */,
@@ -1459,7 +1452,6 @@
 		CCDB6D421F7A26400012432E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				5AA4E7E81FD4251F007A04FA /* Live */,
 				CC2906FA1F65A0AB001894DA /* MainController.swift */,
 				CC2906FB1F65A0AB001894DA /* MainController.xib */,
 				CCDB6D491F7A2E7A0012432E /* HomeContentViewController.swift */,
@@ -1629,7 +1621,6 @@
 				5AA4E7E11FD385A9007A04FA /* ActivityApplySuccessAlertControllerViewController.xib in Resources */,
 				5A0612D41FDD69AC00E7F20A /* ApplyFamousComplateController.xib in Resources */,
 				5A0612D81FDD793100E7F20A /* ApplyFamousConditionController.xib in Resources */,
-				5A8BFC061FF88A51004145AC /* AlipaySDK.bundle in Resources */,
 				5AA4E8521FD43378007A04FA /* camera_id@2x.png in Resources */,
 				5AC684941F807BBD006CEB53 /* FastNewsController.xib in Resources */,
 				5AC6848A1F8054C1006CEB53 /* SingleBigPhotoNewsCell.xib in Resources */,
@@ -1639,6 +1630,7 @@
 				5AA4E84E1FD43378007A04FA /* back@3x.png in Resources */,
 				5A0A139E1F9EBC4100DF57B9 /* LoginSMSCaptchaController.xib in Resources */,
 				CCDB6D501F7A32B40012432E /* TopicBannerCell.xib in Resources */,
+				5A3DD44D1FFE939800AADE12 /* AlipaySDK.bundle in Resources */,
 				CC2907011F65A0C3001894DA /* ActivityController.xib in Resources */,
 				5A0612DC1FDD88D500E7F20A /* FeedbackViewController.xib in Resources */,
 				5AFF34A31F93A78600D8115E /* BaseShareViewController.xib in Resources */,

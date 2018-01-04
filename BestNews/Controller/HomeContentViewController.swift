@@ -30,7 +30,7 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
     }()
     
     lazy var tableView: UITableView = {
-       let v = UITableView(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: self.view.height-49), style: .plain)
+       let v = UITableView(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: screenHeight-49), style: .plain)
         v.separatorStyle = .singleLine
         v.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15)
         v.separatorColor = UIColor(hexString: "f0f0f0")

@@ -315,16 +315,16 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
             print("加载完毕...>\(data!)")
             ///TODO: 高度计算cheat
             if screenWidth < 350 {
-                self.webView.height = (data as! CGFloat)*35/100+20
-                self.webParentHeight.constant = (data as! CGFloat)*35/100+20
+                self.webView.height = (data as! CGFloat)*32/100+30
+                self.webParentHeight.constant = (data as! CGFloat)*32/100+30
             }
             else if screenWidth < 400 {
                 self.webView.height = (data as! CGFloat)*38/100+20
                 self.webParentHeight.constant = (data as! CGFloat)*38/100+20
             }
             else {
-                self.webView.height = (data as! CGFloat)*41/100+20
-                self.webParentHeight.constant = (data as! CGFloat)*41/100+20
+                self.webView.height = (data as! CGFloat)*42/100+10
+                self.webParentHeight.constant = (data as! CGFloat)*42/100+10
             }
         }
         
