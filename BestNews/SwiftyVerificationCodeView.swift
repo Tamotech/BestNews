@@ -89,7 +89,7 @@ extension SwiftyVerificationCodeView{
     fileprivate func setupUI(){
         
         // 不允许用户直接操作验证码框
-        self.isUserInteractionEnabled = false
+//        self.isUserInteractionEnabled = false
      
         // 计算左间距
         let leftmargin = margin

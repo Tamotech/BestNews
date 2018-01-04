@@ -180,7 +180,9 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        self.aliyunVodPlayer.playerView.frame  = CGRect(x: 0, y: 0, width: self.playerParentView.bounds.size.width, height: self.playerParentView.bounds.size.height)
+        if self.aliyunVodPlayer.playerView != nil {
+            self.aliyunVodPlayer.playerView.frame  = CGRect(x: 0, y: 0, width: self.playerParentView.bounds.size.width, height: self.playerParentView.bounds.size.height)
+        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {

@@ -318,9 +318,13 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
                 self.webView.height = (data as! CGFloat)*35/100+20
                 self.webParentHeight.constant = (data as! CGFloat)*35/100+20
             }
-            else {
+            else if screenWidth < 400 {
                 self.webView.height = (data as! CGFloat)*38/100+20
                 self.webParentHeight.constant = (data as! CGFloat)*38/100+20
+            }
+            else {
+                self.webView.height = (data as! CGFloat)*41/100+20
+                self.webParentHeight.constant = (data as! CGFloat)*41/100+20
             }
         }
         
