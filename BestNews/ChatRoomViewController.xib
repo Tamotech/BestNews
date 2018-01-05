@@ -25,6 +25,7 @@
                 <outlet property="dateLb" destination="ebN-2U-vbm" id="JFj-RB-bDr"/>
                 <outlet property="pencilIcon" destination="86h-j2-IOx" id="dtm-te-99o"/>
                 <outlet property="playerParentView" destination="6pX-Ol-Zz0" id="kq0-Bm-i29"/>
+                <outlet property="playerTop" destination="FmU-qZ-LaH" id="zNM-69-Kjt"/>
                 <outlet property="publishBt" destination="LIX-vc-fbZ" id="sWf-87-6uK"/>
                 <outlet property="repostBt" destination="cfR-Na-7LS" id="4pu-Rv-cL9"/>
                 <outlet property="segParentView" destination="sKS-Ne-KPX" id="TYk-5e-HpS"/>

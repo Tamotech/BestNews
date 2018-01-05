@@ -64,6 +64,10 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
     
     @IBOutlet weak var anchorHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var playerTop: NSLayoutConstraint!
+    
+    
+    
     var backBt: UIButton!
     
     var timer: Timer?
@@ -120,22 +124,18 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
             commentBar.isHidden = true
         }
         
+        let swipeup = UISwipeGestureRecognizer(target: self, action: #selector(swipeSegment(_:)))
+        swipeup.direction = .up
+        segment.addGestureRecognizer(swipeup)
+        let swipedown = UISwipeGestureRecognizer(target: self, action: #selector(swipeSegment(_:)))
+        swipedown.direction = .down
+        segment.addGestureRecognizer(swipedown)
+        
         tableView1.addSubview(emptyView1)
         tableView2.addSubview(emptyView2)
         emptyView1.emptyString = "还没有主持图文~"
         emptyView2.emptyString = "还没有评论~"
-//        emptyView1.snp.makeConstraints { (make) in
-//            make.left.equalTo(self.tableView1.snp.left)
-//            make.right.equalTo(self.tableView1.snp.right)
-//            make.top.equalTo(self.tableView1.snp.top)
-//            make.bottom.equalTo(self.tableView1.snp.bottom)
-//        }
-//        emptyView2.snp.makeConstraints { (make) in
-//            make.left.equalTo(self.tableView2.snp.left)
-//            make.right.equalTo(self.tableView2.snp.right)
-//            make.top.equalTo(self.tableView2.snp.top)
-//            make.bottom.equalTo(self.tableView2.snp.bottom)
-//        }
+
         
         segment.selectItemAction = {[weak self](index, name) in
             if index == 0 {
@@ -180,9 +180,9 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        if self.aliyunVodPlayer.playerView != nil {
-            self.aliyunVodPlayer.playerView.frame  = CGRect(x: 0, y: 0, width: self.playerParentView.bounds.size.width, height: self.playerParentView.bounds.size.height)
-        }
+//        if self.aliyunVodPlayer.playerView != nil {
+//            self.aliyunVodPlayer.playerView.frame  = CGRect(x: 0, y: 0, width: self.playerParentView.bounds.size.width, height: self.playerParentView.bounds.size.height)
+//        }
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -572,6 +572,24 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
     }
     
     
+    ///滑动评论/主持一栏
+    func swipeSegment(_ sender: UISwipeGestureRecognizer) {
+        if sender.direction == .up {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.playerTop.constant = -self.playerParentView.height
+                self.aliyunVodPlayer.playerView.y = -self.aliyunVodPlayer.playerView.height
+//                self.view.layoutIfNeeded()
+            })
+        }
+        else {
+            UIView.animate(withDuration: 0.3, animations: {
+                self.playerTop.constant = 0
+                self.aliyunVodPlayer.playerView.y = 0
+//                self.view.layoutIfNeeded()
+            })
+        }
+    }
+    
 }
 
 extension ChatRoomViewController {
@@ -611,6 +629,7 @@ extension ChatRoomViewController {
             return cell
         }
     }
+    
     
     //MARK: - textfield
     
