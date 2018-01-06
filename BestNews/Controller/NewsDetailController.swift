@@ -289,6 +289,47 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
     
     //MARK: - wkNavigation
     
+    
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        guard let path = navigationAction.request.url?.absoluteString else {
+            decisionHandler(WKNavigationActionPolicy.allow)
+            return
+        }
+        if path.hasSuffix("jpg") || path.hasSuffix("jpge") || path.hasSuffix("png") || path.hasSuffix("PNG") || path.hasSuffix("JPG") || path.hasSuffix("JPEG") {
+            let v = UIImageView(frame: UIScreen.main.bounds)
+            let rc = ImageResource(downloadURL: URL(string: path)!)
+            v.kf.setImage(with: rc)
+            keyWindow?.addSubview(v)
+            v.contentMode = .scaleAspectFit
+            v.isUserInteractionEnabled = true
+            v.backgroundColor = .white
+            let tap = UITapGestureRecognizer(target: self, action: #selector(dismissPhoto(_:)))
+            v.addGestureRecognizer(tap)
+            v.center = CGPoint(x: screenWidth/2, y: screenHeight/2)
+            v.alpha = 0
+            UIView.animate(withDuration: 0.1, animations: {
+                v.alpha = 1
+            }, completion: { (success) in
+                
+            })
+            decisionHandler(WKNavigationActionPolicy.cancel)
+            
+        }
+        else {
+            decisionHandler(WKNavigationActionPolicy.allow)
+        }
+        
+    }
+    
+    func dismissPhoto(_ sender: UIGestureRecognizer) {
+        let v = sender.view!
+        UIView.animate(withDuration: 0.3, animations: {
+            v.alpha = 0
+        }, completion: { (success) in
+            v.removeFromSuperview()
+        })
+    }
+    
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
         print("开始加载...\(webView.scrollView.contentSize.height)")
         
@@ -308,15 +349,32 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+    
+        //点击查看大图
+        let clickImgJS = "function registerImageClickAction(){ var imgs = document.getElementsByTagName('img');for(var i=0;i<imgs.length;i++){imgs[i].customIndex = i;imgs[i].onclick=function(){window.location.href=''+this.src;}}}"
+        webView.evaluateJavaScript(clickImgJS) { (data, error) in
+            if error != nil {
+                print(error!)
+            }
+        }
         
-//        webView.sizeToFit()
+        webView.evaluateJavaScript("registerImageClickAction();") { (data, error) in
+            if error != nil {
+                print(error!)
+            }
+        }
+        
+        
+        
+        //高度适配 cheat
+        
         print("高度...> \(webView.scrollView.contentSize.height)")
         webView.evaluateJavaScript("document.documentElement.scrollHeight;") { (data, error) in
             print("加载完毕...>\(data!)")
             ///TODO: 高度计算cheat
             if screenWidth < 350 {
-                self.webView.height = (data as! CGFloat)*32/100+30
-                self.webParentHeight.constant = (data as! CGFloat)*32/100+30
+                self.webView.height = (data as! CGFloat)*32/100+50
+                self.webParentHeight.constant = (data as! CGFloat)*32/100+50
             }
             else if screenWidth < 400 {
                 self.webView.height = (data as! CGFloat)*38/100+20
@@ -328,10 +386,6 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
             }
         }
         
-        webView.evaluateJavaScript("setImageClickFunction") { (response, error) in
-            print(response ?? "")
-            print("error--\(String(describing: error))")
-        }
     }
     
 }

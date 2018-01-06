@@ -86,6 +86,7 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
     lazy var aliyunVodPlayer:AliyunVodPlayer = {
         //播放器初始化
         let tempPlayer = AliyunVodPlayer()
+        tempPlayer.displayMode = AliyunVodPlayerDisplayMode.fitWithCropping
         tempPlayer.delegate = self as AliyunVodPlayerDelegate
         return tempPlayer
     }()

@@ -21,9 +21,11 @@ class SubscriptionListControllerViewController: UIViewController, UITableViewDel
     
     @IBOutlet weak var columeTableView: UITableView!
     
+    @IBOutlet weak var columTableViewHeight: NSLayoutConstraint!
     @IBOutlet weak var subscriptMoreView: UIView!
     
     @IBOutlet weak var scrollview: UIScrollView!
+    
     
     var emptyView = BaseEmptyView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
     
@@ -171,6 +173,7 @@ class SubscriptionListControllerViewController: UIViewController, UITableViewDel
             return cell
         }
         else {
+            columTableViewHeight.constant = columeTableView.contentSize.height+30
             let cell = tableView.dequeueReusableCell(withIdentifier: "ColumeCell", for: indexPath) as! SubscriptListCell
             let ognization = ognizationList.list[indexPath.row]
             cell.updateCell(ognization)

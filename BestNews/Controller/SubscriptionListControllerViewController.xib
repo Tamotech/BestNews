@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SubscriptionListControllerViewController" customModule="BestNews" customModuleProvider="target">
             <connections>
+                <outlet property="columTableViewHeight" destination="pSe-3P-r2X" id="FSd-3l-PrN"/>
                 <outlet property="columeCollectionView" destination="SZr-oE-rb9" id="2wD-7j-4Bm"/>
                 <outlet property="columeTableView" destination="QOF-jz-WeP" id="GJY-rS-OQk"/>
                 <outlet property="myScriptionBtn" destination="tUo-6C-jRN" id="xua-CB-4fI"/>
@@ -41,7 +42,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="574"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DoH-S6-nFa" userLabel="contentView">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="842"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="882"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="70l-pA-seS" userLabel="header">
                                             <rect key="frame" x="0.0" y="4" width="375" height="44"/>
@@ -129,10 +130,10 @@
                                             </connections>
                                         </view>
                                         <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QOF-jz-WeP">
-                                            <rect key="frame" x="0.0" y="502" width="375" height="340"/>
+                                            <rect key="frame" x="0.0" y="502" width="375" height="380"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="340" id="pSe-3P-r2X"/>
+                                                <constraint firstAttribute="height" constant="380" id="pSe-3P-r2X"/>
                                             </constraints>
                                             <inset key="separatorInset" minX="93" minY="0.0" maxX="0.0" maxY="0.0"/>
                                             <connections>

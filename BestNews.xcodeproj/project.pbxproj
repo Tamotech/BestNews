@@ -870,13 +870,6 @@
 			path = News;
 			sourceTree = "<group>";
 		};
-		5A0D23C91F839AE600FC9D4D /* Live */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Live;
-			sourceTree = "<group>";
-		};
 		5A0D23CA1F839AFA00FC9D4D /* Comment */ = {
 			isa = PBXGroup;
 			children = (
@@ -1496,7 +1489,6 @@
 			children = (
 				5A690B211FAA0379008FF1EC /* CircleScrollView */,
 				5A0D23C81F839AC300FC9D4D /* News */,
-				5A0D23C91F839AE600FC9D4D /* Live */,
 				5A0D23CA1F839AFA00FC9D4D /* Comment */,
 			);
 			path = View;

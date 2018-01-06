@@ -26,6 +26,11 @@ class LiveMessageCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        super.awakeFromNib()
+        photoIm.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapPhoto(_:)))
+        photoIm.addGestureRecognizer(tap)
     }
 
     func updateCell(_ data: RCMessage) {
@@ -115,6 +120,31 @@ class LiveMessageCell: UITableViewCell {
             }
             contentLb.text = ""
             
+        }
+    }
+    
+    
+    func handleTapPhoto(_ sender : Any) {
+        let v = UIImageView(image: photoIm.image)
+        let frame = keyWindow!.convert(photoIm.frame, from: photoIm.superview)
+        v.frame = frame
+        v.contentMode = .scaleAspectFit
+        v.backgroundColor = .white
+        v.isUserInteractionEnabled = true
+        keyWindow?.addSubview(v)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(photodismiss(_:)))
+        v.addGestureRecognizer(tap)
+        UIView.animate(withDuration: 0.3) {
+            v.frame = UIScreen.main.bounds
+        }
+    }
+    
+    func photodismiss(_ sender: UIGestureRecognizer) {
+        let frame = keyWindow!.convert(photoIm.frame, from: photoIm.superview)
+        UIView.animate(withDuration: 0.3, animations: {
+            sender.view?.frame = frame
+        }) { (success) in
+            sender.view?.removeFromSuperview()
         }
     }
 }

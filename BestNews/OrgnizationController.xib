@@ -42,7 +42,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="1169"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k2S-F2-mjO" userLabel="contentView">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="1226"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="1224"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xls-9P-t0D" userLabel="content">
                                     <rect key="frame" x="-0.5" y="389" width="375" height="600"/>
@@ -82,8 +82,15 @@
                                         <constraint firstItem="b4q-2F-T1E" firstAttribute="trailing" secondItem="fXu-nv-hc8" secondAttribute="trailing" id="v8H-BO-TMR"/>
                                     </constraints>
                                 </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zDz-86-Exh" userLabel="line">
+                                    <rect key="frame" x="-0.5" y="989" width="375" height="15"/>
+                                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="15" id="oOy-7w-Eek"/>
+                                    </constraints>
+                                </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LyW-2m-3UT">
-                                    <rect key="frame" x="-0.5" y="1006" width="375" height="220"/>
+                                    <rect key="frame" x="-0.5" y="1004" width="375" height="220"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="你可能还感兴趣" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qjQ-BP-RYw">
                                             <rect key="frame" x="15" y="15" width="114.5" height="19.5"/>
@@ -117,12 +124,15 @@
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstItem="LyW-2m-3UT" firstAttribute="centerX" secondItem="k2S-F2-mjO" secondAttribute="centerX" id="E0C-Q2-pdf"/>
+                                <constraint firstItem="zDz-86-Exh" firstAttribute="trailing" secondItem="LyW-2m-3UT" secondAttribute="trailing" id="FWZ-Bo-43A"/>
                                 <constraint firstItem="LyW-2m-3UT" firstAttribute="width" secondItem="k2S-F2-mjO" secondAttribute="width" id="XeK-pV-13w"/>
                                 <constraint firstItem="xls-9P-t0D" firstAttribute="centerX" secondItem="k2S-F2-mjO" secondAttribute="centerX" id="aa1-1m-tCh"/>
+                                <constraint firstItem="LyW-2m-3UT" firstAttribute="top" secondItem="zDz-86-Exh" secondAttribute="bottom" id="bbu-ra-hKc"/>
+                                <constraint firstItem="zDz-86-Exh" firstAttribute="leading" secondItem="LyW-2m-3UT" secondAttribute="leading" id="iZh-af-ZZT"/>
                                 <constraint firstAttribute="bottom" secondItem="LyW-2m-3UT" secondAttribute="bottom" id="lw0-Cm-PnV"/>
                                 <constraint firstItem="xls-9P-t0D" firstAttribute="width" secondItem="k2S-F2-mjO" secondAttribute="width" id="oaE-Um-g3R"/>
                                 <constraint firstItem="xls-9P-t0D" firstAttribute="top" secondItem="k2S-F2-mjO" secondAttribute="top" constant="389" id="tGB-sj-uwP"/>
-                                <constraint firstItem="LyW-2m-3UT" firstAttribute="top" secondItem="xls-9P-t0D" secondAttribute="bottom" constant="17" id="xzN-IJ-ozK"/>
+                                <constraint firstItem="LyW-2m-3UT" firstAttribute="top" secondItem="xls-9P-t0D" secondAttribute="bottom" constant="15" id="xzN-IJ-ozK"/>
                             </constraints>
                         </view>
                     </subviews>
