@@ -72,6 +72,17 @@ class ChatroomMessageCell: UITableViewCell {
             }
             
         }
+        else if data.content is RCInformationNotificationMessage {
+            let msg = data.content as! RCInformationNotificationMessage
+            usernameLb.text = msg.senderUserInfo.name
+            if let urlstring = msg.senderUserInfo.portraitUri {
+                if let url = URL(string: urlstring) {
+                    let rc = ImageResource(downloadURL: url)
+                    avatar.kf.setImage(with: rc)
+                }
+            }
+            msgLb.text = msg.message
+        }
         else {
             avatar.image = #imageLiteral(resourceName: "defaultUser")
             usernameLb.text = ""

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -38,19 +37,18 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="gMh-p6-FRi" secondAttribute="trailing" constant="100" id="Adu-GU-NEG"/>
-                <constraint firstItem="CAa-6F-HUV" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="J91-vI-MgY"/>
-                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="CAa-6F-HUV" secondAttribute="trailing" constant="15" id="MUk-ni-xNt"/>
+                <constraint firstAttribute="trailing" secondItem="gMh-p6-FRi" secondAttribute="trailing" constant="100" id="Adu-GU-NEG"/>
+                <constraint firstItem="CAa-6F-HUV" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="J91-vI-MgY"/>
+                <constraint firstAttribute="trailing" secondItem="CAa-6F-HUV" secondAttribute="trailing" constant="15" id="MUk-ni-xNt"/>
                 <constraint firstItem="yWT-OT-gtT" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="ZU0-Qc-3e8"/>
-                <constraint firstItem="gMh-p6-FRi" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="aH8-jF-Uo9"/>
-                <constraint firstItem="gMh-p6-FRi" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="15" id="c5I-fT-KGd"/>
-                <constraint firstItem="yWT-OT-gtT" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="jFO-b2-oqU"/>
+                <constraint firstItem="gMh-p6-FRi" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="aH8-jF-Uo9"/>
+                <constraint firstItem="gMh-p6-FRi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="c5I-fT-KGd"/>
+                <constraint firstItem="yWT-OT-gtT" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="jFO-b2-oqU"/>
                 <constraint firstItem="yWT-OT-gtT" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="jLL-pv-zEZ"/>
-                <constraint firstItem="yWT-OT-gtT" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="nba-jc-1HT"/>
+                <constraint firstItem="yWT-OT-gtT" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="nba-jc-1HT"/>
                 <constraint firstItem="CAa-6F-HUV" firstAttribute="leading" secondItem="gMh-p6-FRi" secondAttribute="trailing" constant="10" id="nig-4n-tuQ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="slider" destination="gMh-p6-FRi" id="APh-KJ-Vuf"/>
                 <outlet property="timeLb" destination="CAa-6F-HUV" id="ugW-4Y-REp"/>

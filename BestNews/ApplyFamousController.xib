@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -33,7 +32,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="v81-cM-xeQ">
-                    <rect key="frame" x="0.0" y="10" width="375" height="952"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="952"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Lc-9k-rH8" userLabel="contentView">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="804"/>
@@ -534,12 +533,11 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="v81-cM-xeQ" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="Tgg-Hc-jtw"/>
-                <constraint firstItem="v81-cM-xeQ" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="Zjw-bc-4Iw"/>
-                <constraint firstItem="v81-cM-xeQ" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="nAj-GV-HE7"/>
+                <constraint firstItem="v81-cM-xeQ" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="Zjw-bc-4Iw"/>
+                <constraint firstItem="v81-cM-xeQ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="nAj-GV-HE7"/>
                 <constraint firstItem="v81-cM-xeQ" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="uHy-iq-DRz"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="25.5" y="195"/>
         </view>
         <tapGestureRecognizer id="PBH-C0-2pZ">

@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -38,7 +37,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ecN-4l-WIU">
-                    <rect key="frame" x="40" y="157" width="295" height="245"/>
+                    <rect key="frame" x="40" y="147" width="295" height="245"/>
                     <subviews>
                         <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VeM-EL-gG0" userLabel="stableMoney">
                             <rect key="frame" x="0.0" y="0.0" width="295" height="160"/>
@@ -393,10 +392,9 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="ecN-4l-WIU" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="Gtw-m6-0Kc"/>
-                <constraint firstItem="ecN-4l-WIU" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" constant="-64" id="ef2-KU-Oqm"/>
+                <constraint firstItem="ecN-4l-WIU" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Gtw-m6-0Kc"/>
+                <constraint firstItem="ecN-4l-WIU" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-64" id="ef2-KU-Oqm"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="33.5" y="89.5"/>
         </view>
     </objects>

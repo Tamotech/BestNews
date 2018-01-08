@@ -214,13 +214,13 @@ class SwiftNotice: NSObject {
         let window = UIWindow()
         window.backgroundColor = UIColor.clear
         let mainView = UIView()
-        mainView.layer.cornerRadius = 12
-        mainView.backgroundColor = UIColor(red:0, green:0, blue:0, alpha: 0.8)
+        mainView.layer.cornerRadius = 10
+        mainView.backgroundColor = UIColor(red:0, green:152, blue:255, alpha: 0.8)
         
         let label = UILabel()
         label.text = text
         label.numberOfLines = 0
-        label.font = UIFont.systemFont(ofSize: 13)
+        label.font = UIFont.systemFont(ofSize: 15)
         label.textAlignment = NSTextAlignment.center
         label.textColor = UIColor.white
         let size = label.sizeThatFits(CGSize(width: UIScreen.main.bounds.width-82, height: CGFloat.greatestFiniteMagnitude))
@@ -260,7 +260,7 @@ class SwiftNotice: NSObject {
         window.backgroundColor = UIColor.clear
         let mainView = UIView()
         mainView.layer.cornerRadius = 10
-        mainView.backgroundColor = UIColor(red:0, green:0, blue:0, alpha: 0.7)
+        mainView.backgroundColor = UIColor(red:0, green:152, blue:255, alpha: 0.7)
         
         var image = UIImage()
         switch type {

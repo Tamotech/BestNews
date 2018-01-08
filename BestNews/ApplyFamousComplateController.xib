@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -23,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uMP-7h-Yyl">
-                    <rect key="frame" x="48" y="175.5" width="279" height="256"/>
+                    <rect key="frame" x="48" y="165.5" width="279" height="256"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="您的名人申请已提交" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dn0-Ap-hzv">
                             <rect key="frame" x="56.5" y="46" width="165.5" height="21"/>
@@ -90,11 +89,10 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="6ve-dT-i8S" firstAttribute="trailing" secondItem="uMP-7h-Yyl" secondAttribute="trailing" constant="48" id="Nh8-Tj-cb7"/>
-                <constraint firstItem="uMP-7h-Yyl" firstAttribute="centerY" secondItem="6ve-dT-i8S" secondAttribute="centerY" constant="-40" id="grl-nf-J5n"/>
-                <constraint firstItem="uMP-7h-Yyl" firstAttribute="leading" secondItem="6ve-dT-i8S" secondAttribute="leading" constant="48" id="wf1-Bj-N1c"/>
+                <constraint firstAttribute="trailing" secondItem="uMP-7h-Yyl" secondAttribute="trailing" constant="48" id="Nh8-Tj-cb7"/>
+                <constraint firstItem="uMP-7h-Yyl" firstAttribute="centerY" secondItem="CqE-D4-hI6" secondAttribute="centerY" constant="-40" id="grl-nf-J5n"/>
+                <constraint firstItem="uMP-7h-Yyl" firstAttribute="leading" secondItem="CqE-D4-hI6" secondAttribute="leading" constant="48" id="wf1-Bj-N1c"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="6ve-dT-i8S"/>
         </view>
     </objects>
 </document>

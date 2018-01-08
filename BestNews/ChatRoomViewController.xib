@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -165,7 +164,6 @@
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="1Kz-dm-PZ3"/>
                     </constraints>
-                    <viewLayoutGuide key="safeArea" id="50w-ri-C67"/>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
                             <real key="value" value="5"/>
@@ -325,12 +323,11 @@
                 <constraint firstAttribute="bottom" secondItem="PQF-bv-5Pd" secondAttribute="bottom" id="euj-HW-724"/>
                 <constraint firstAttribute="bottom" secondItem="PKw-EE-dta" secondAttribute="bottom" id="hlJ-GS-Xot"/>
                 <constraint firstItem="OJR-gv-f9u" firstAttribute="trailing" secondItem="6pX-Ol-Zz0" secondAttribute="trailing" id="iYo-Dl-wst"/>
-                <constraint firstItem="bh4-yz-7An" firstAttribute="centerX" secondItem="PSv-4F-UFL" secondAttribute="centerX" id="ofQ-kZ-d3v"/>
+                <constraint firstItem="bh4-yz-7An" firstAttribute="centerX" secondItem="2HR-G3-oWl" secondAttribute="centerX" id="ofQ-kZ-d3v"/>
                 <constraint firstItem="bh4-yz-7An" firstAttribute="top" secondItem="OJR-gv-f9u" secondAttribute="bottom" id="p4y-hB-thi"/>
                 <constraint firstItem="PKw-EE-dta" firstAttribute="centerX" secondItem="2HR-G3-oWl" secondAttribute="centerX" id="wI1-rb-TNA"/>
                 <constraint firstItem="PQF-bv-5Pd" firstAttribute="width" secondItem="2HR-G3-oWl" secondAttribute="width" id="xY5-iw-xfo"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="PSv-4F-UFL"/>
             <point key="canvasLocation" x="61.5" y="107.5"/>
         </view>
     </objects>

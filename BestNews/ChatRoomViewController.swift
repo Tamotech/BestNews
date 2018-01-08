@@ -696,6 +696,13 @@ extension ChatRoomViewController {
         }
     }
     
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true) {
+            [weak self] in
+            self?.aliyunVodPlayer.playerView.isHidden = false
+        }
+    }
+    
     
     //MARK: - playerViewDelegate
     func aliyunVodPlayerView(_ playerView: AliyunVodPlayerView!, fullScreen isFullScreen: Bool) {

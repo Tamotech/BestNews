@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -26,7 +25,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="idi-d4-h61">
-                    <rect key="frame" x="0.0" y="10" width="375" height="671"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="671"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qbp-Xu-b9h" userLabel="contentView">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="634"/>
@@ -364,12 +363,11 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="idi-d4-h61" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="WXm-u7-YdB"/>
-                <constraint firstItem="idi-d4-h61" firstAttribute="centerX" secondItem="fnl-2z-Ty3" secondAttribute="centerX" id="bJp-Hp-a4X"/>
+                <constraint firstItem="idi-d4-h61" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="bJp-Hp-a4X"/>
                 <constraint firstItem="idi-d4-h61" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="izc-Ri-jgF"/>
-                <constraint firstItem="idi-d4-h61" firstAttribute="centerY" secondItem="fnl-2z-Ty3" secondAttribute="centerY" id="l9o-BD-mlE"/>
+                <constraint firstItem="idi-d4-h61" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="l9o-BD-mlE"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="79.5" y="56.5"/>
         </view>
     </objects>

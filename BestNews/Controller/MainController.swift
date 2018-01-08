@@ -98,7 +98,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
                     vc.view.tag = kStabelChildTag
                 }
                 else if i == 1 {
-                    let vc = FastNewsController()
+                    let vc = FastNewsController(nibName: "FastNewsController", bundle: nil)
                     cvcs.append(vc)
                     addChildViewController(vc)
                     let x = screenWidth*CGFloat(i)
@@ -108,7 +108,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
                     continue
                 }
                 else if i == 2 {
-                    let vc = SubscriptionListControllerViewController()
+                    let vc = SubscriptionListControllerViewController(nibName: "SubscriptionListControllerViewController", bundle: nil)
                     cvcs.append(vc)
                     addChildViewController(vc)
                     let x = screenWidth*CGFloat(i)
@@ -118,7 +118,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
                     continue
                 }
                 else if i == HomeModel.shareInstansce.navTitles().count - 1 {
-                    let vc = LiveListController()
+                    let vc = LiveListController(nibName: "LiveListController", bundle: nil)
                     cvcs.append(vc)
                     addChildViewController(vc)
                     let x = screenWidth*CGFloat(i)

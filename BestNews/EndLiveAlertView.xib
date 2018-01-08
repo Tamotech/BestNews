@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -94,10 +93,9 @@
             <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.2031785103" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="NXx-8G-u0h" firstAttribute="width" secondItem="2rV-tS-hnH" secondAttribute="width" id="6XY-I7-a0M"/>
-                <constraint firstItem="DbW-ZA-boa" firstAttribute="bottom" secondItem="NXx-8G-u0h" secondAttribute="bottom" constant="-150" id="FmE-1k-gnf"/>
-                <constraint firstItem="NXx-8G-u0h" firstAttribute="centerX" secondItem="DbW-ZA-boa" secondAttribute="centerX" id="lGn-BY-hyX"/>
+                <constraint firstAttribute="bottom" secondItem="NXx-8G-u0h" secondAttribute="bottom" constant="-150" id="FmE-1k-gnf"/>
+                <constraint firstItem="NXx-8G-u0h" firstAttribute="centerX" secondItem="2rV-tS-hnH" secondAttribute="centerX" id="lGn-BY-hyX"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="DbW-ZA-boa"/>
             <connections>
                 <outlet property="containerBottom" destination="FmE-1k-gnf" id="rTL-8j-ass"/>
             </connections>

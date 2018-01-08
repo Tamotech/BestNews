@@ -91,7 +91,7 @@ class ActivityDetailController: BaseViewController, ActivityTicketListController
                 if success {
                     self?.activity.collect = 1
                     self?.collectionItem?.image = #imageLiteral(resourceName: "iconCollectionOn")
-                    self?.view.makeToast(message: "收藏成功")
+                    self?.noticeOnlyText("收藏成功")
                 }
                 else {
                     self?.activity.collect = 0
@@ -104,7 +104,7 @@ class ActivityDetailController: BaseViewController, ActivityTicketListController
                 if success {
                     self?.activity.collect = 0
                     self?.collectionItem?.image = #imageLiteral(resourceName: "iconCollection")
-                    self?.view.makeToast(message: "取消收藏成功")
+                    self?.noticeOnlyText("取消收藏成功")
                 }
                 else {
                     self?.activity.collect = 1

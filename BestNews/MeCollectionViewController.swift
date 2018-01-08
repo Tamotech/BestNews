@@ -70,7 +70,7 @@ class MeCollectionViewController: BaseViewController, UIScrollViewDelegate, TYPa
                 continue
             }
             else if i == 1 {
-                let vc = FastNewsController()
+                let vc = FastNewsController(nibName: "FastNewsController", bundle: nil)
                 vc.entry = 1
                 vc.collectFilter = true
                 addChildViewController(vc)
@@ -80,7 +80,7 @@ class MeCollectionViewController: BaseViewController, UIScrollViewDelegate, TYPa
                 continue
             }
             else if i == 2 {
-                let vc = LiveListController()
+                let vc = LiveListController(nibName: "LiveListController", bundle: nil)
                 vc.collect = true
                 vc.entry = 1
                 addChildViewController(vc)

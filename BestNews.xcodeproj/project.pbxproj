@@ -160,7 +160,6 @@
 		5AA4E7DD1FD2B083007A04FA /* RewardAlertController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AA4E7DB1FD2B083007A04FA /* RewardAlertController.xib */; };
 		5AA4E7E01FD385A9007A04FA /* ActivityApplySuccessAlertControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA4E7DE1FD385A9007A04FA /* ActivityApplySuccessAlertControllerViewController.swift */; };
 		5AA4E7E11FD385A9007A04FA /* ActivityApplySuccessAlertControllerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AA4E7DF1FD385A9007A04FA /* ActivityApplySuccessAlertControllerViewController.xib */; };
-		5AA4E7E31FD38CBD007A04FA /* UIView+Toast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA4E7E21FD38CBD007A04FA /* UIView+Toast.swift */; };
 		5AA4E7FC1FD42B4E007A04FA /* AlivcLivePusherViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5AA4E7F81FD42B4D007A04FA /* AlivcLivePusherViewController.mm */; };
 		5AA4E7FD1FD42B4E007A04FA /* AlivcLivePushConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA4E7FB1FD42B4D007A04FA /* AlivcLivePushConfigViewController.m */; };
 		5AA4E8081FD42B86007A04FA /* AlivcPublisherView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA4E7FE1FD42B84007A04FA /* AlivcPublisherView.m */; };
@@ -488,7 +487,6 @@
 		5AA4E7DB1FD2B083007A04FA /* RewardAlertController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RewardAlertController.xib; sourceTree = "<group>"; };
 		5AA4E7DE1FD385A9007A04FA /* ActivityApplySuccessAlertControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityApplySuccessAlertControllerViewController.swift; sourceTree = "<group>"; };
 		5AA4E7DF1FD385A9007A04FA /* ActivityApplySuccessAlertControllerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityApplySuccessAlertControllerViewController.xib; sourceTree = "<group>"; };
-		5AA4E7E21FD38CBD007A04FA /* UIView+Toast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Toast.swift"; sourceTree = "<group>"; };
 		5AA4E7F81FD42B4D007A04FA /* AlivcLivePusherViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AlivcLivePusherViewController.mm; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Controllers/AlivcLivePusher/AlivcLivePusherViewController.mm; sourceTree = SOURCE_ROOT; };
 		5AA4E7F91FD42B4D007A04FA /* AlivcLivePusherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlivcLivePusherViewController.h; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Controllers/AlivcLivePusher/AlivcLivePusherViewController.h; sourceTree = SOURCE_ROOT; };
 		5AA4E7FA1FD42B4D007A04FA /* AlivcLivePushConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlivcLivePushConfigViewController.h; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Controllers/AlivcLivePusher/AlivcLivePushConfigViewController.h; sourceTree = SOURCE_ROOT; };
@@ -1355,7 +1353,6 @@
 				CC2906E81F659EBA001894DA /* UIView+IBInspectable.swift */,
 				CC2906E91F659EBA001894DA /* UIView+Position.swift */,
 				5A0DEBAE1FB7D464007EDF6B /* TableViewCellExtension.swift */,
-				5AA4E7E21FD38CBD007A04FA /* UIView+Toast.swift */,
 				5A04B41F1FD44EA100DE58D2 /* UIView+Layout.h */,
 				5A04B4201FD44EA100DE58D2 /* UIView+Layout.m */,
 			);
@@ -1851,7 +1848,6 @@
 				5A90CFE31F80F48A00F16869 /* SubscriptSectionHeaderView.swift in Sources */,
 				5A4A21501FC18BB900648126 /* OgnizationModel.swift in Sources */,
 				5A063F321FF1325800AFAA40 /* ReportArticleController.swift in Sources */,
-				5AA4E7E31FD38CBD007A04FA /* UIView+Toast.swift in Sources */,
 				5A547EE51FA2157C00FA0C36 /* ProfileCenterController.swift in Sources */,
 				5A0D23C61F832BD000FC9D4D /* NewsDetailController.swift in Sources */,
 				CC2906ED1F659EBA001894DA /* UIImageExtension.swift in Sources */,
@@ -2073,7 +2069,7 @@
 				);
 				GCC_INPUT_FILETYPE = automatic;
 				INFOPLIST_FILE = BestNews/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2110,7 +2106,7 @@
 				);
 				GCC_INPUT_FILETYPE = automatic;
 				INFOPLIST_FILE = BestNews/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
