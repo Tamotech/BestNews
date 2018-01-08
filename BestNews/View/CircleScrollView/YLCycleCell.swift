@@ -32,6 +32,7 @@ extension YLCycleCell {
     fileprivate func setupUI() {
 
         iconImageView.frame = self.bounds
+        iconImageView.clipsToBounds = true
         iconImageView.contentMode = UIViewContentMode.scaleAspectFill
         bottomView.frame = CGRect(x: 0, y: iconImageView.bounds.height - 45, width: iconImageView.bounds.width, height: 45)
         titleLabel.frame = CGRect(x: 15, y: iconImageView.bounds.height - 45, width: iconImageView.bounds.width - 30, height: 45)
