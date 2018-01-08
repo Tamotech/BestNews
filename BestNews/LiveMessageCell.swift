@@ -39,11 +39,26 @@ class LiveMessageCell: UITableViewCell {
             let msg = content as! CustomeMessage
             if let user = content?.senderUserInfo {
                 nameLb.text = user.name
+                if let url = URL(string: user.portraitUri) {
+                    let rc = ImageResource(downloadURL: url)
+                    avatarIm.kf.setImage(with: rc)
+                }
             }
             timeLb.text = msg.timeStr()
             if let url = URL(string: msg.img ?? "") {
                 let rc = ImageResource(downloadURL: url)
-                avatarIm.kf.setImage(with: rc)
+                photoIm.kf.setImage(with: rc)
+            }
+            contentLb.text = msg.content
+            if msg.extra?.count ?? 0 > 0 {
+                let extraArr = msg.extra!.split(separator: ";")
+                let w = String(extraArr[0]).getFloatFromString()
+                let h = String(extraArr[1]).getFloatFromString()
+                let imgH = photoIm.width*h/w
+                photoHeight.constant = imgH
+            }
+            else {
+                photoHeight.constant = 0
             }
         }
         else if content is RCTextMessage {

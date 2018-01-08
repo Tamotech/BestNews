@@ -29,7 +29,19 @@ class ChatroomMessageCell: UITableViewCell {
     }
     
     func updateCell(_ data: RCMessage) {
-        if data.content != nil && data.content! is RCTextMessage {
+        if data.content != nil && data.content! is CustomeMessage {
+            let msg = data.content as! CustomeMessage
+            if let user = data.content?.senderUserInfo {
+                usernameLb.text = user.name
+                if let url = URL(string: user.portraitUri) {
+                    let rc = ImageResource(downloadURL: url)
+                    avatar.kf.setImage(with: rc)
+                }
+            }
+            timeLb.text = msg.timeStr()
+            msgLb.text = msg.content
+        }
+        else if data.content != nil && data.content! is RCTextMessage {
             msgLb.text = (data.content as! RCTextMessage).content!
             let content = data.content as! RCTextMessage
             if content.extra != nil {
@@ -59,12 +71,6 @@ class ChatroomMessageCell: UITableViewCell {
                 }
             }
             
-        }
-        else if data.content != nil && data.content! is RCInformationNotificationMessage {
-            let content = data.content as! RCInformationNotificationMessage
-            avatar.image = #imageLiteral(resourceName: "defaultUser")
-            msgLb.text = content.message
-            usernameLb.text = "用户"
         }
         else {
             avatar.image = #imageLiteral(resourceName: "defaultUser")

@@ -152,7 +152,7 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
             else {
                 self?.tableView1.isHidden = true
                 self?.tableView2.isHidden = false
-                if self?.liveModel != nil && SessionManager.sharedInstance.userId != self?.liveModel!.anchoruserid {
+                if self?.liveModel != nil && SessionManager.sharedInstance.userId != self?.liveModel!.compereuserid {
                     self?.commentBar.isHidden = false
                 }
                 else {
@@ -466,54 +466,47 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
         
         if segment.currentIndex == 0 {
             ///主持区
-            let content = RCTextMessage(content: contentTf.text)
-            var img = SessionManager.sharedInstance.userInfo?.headimg
-            if img == nil || img == "" {
-                img = "http://"
-            }
-            content?.content = contentTf.text
-            content?.extra = "\(SessionManager.sharedInstance.userInfo?.name ?? "用户");\(img!);\(Int(Date().timeIntervalSince1970*1000))"
-//            let msg = CustomeMessage()
-//            msg.content = contentTf.text
-//            msg.messageType = "compere"
-//            msg.date = Int(Date().timeIntervalSince1970)*1000
             
-            RCIMClient.shared().sendMessage(RCConversationType.ConversationType_CHATROOM, targetId: liveModel?.chatroom_id_compere, content: content, pushContent: contentTf.text!, pushData: "", success: { [weak self](id) in
+            let msg = CustomeMessage()
+            msg.content = contentTf.text
+            msg.messageType = "compere"
+            msg.date = Int(Date().timeIntervalSince1970)*1000
+            
+            
+            RCIMClient.shared().sendMessage(RCConversationType.ConversationType_CHATROOM, targetId: liveModel?.chatroom_id_compere, content: msg, pushContent: contentTf.text, pushData: "", success: { [weak self](id) in
                 print("发送消息成功, --- \(id)")
                 DispatchQueue.main.async {
                     self?.contentTf.text =  ""
-                    let msg = RCMessage(type: RCConversationType.ConversationType_CHATROOM, targetId: self?.liveModel?.chatroom_id_compere, direction: RCMessageDirection.MessageDirection_RECEIVE, messageId: id, content: content!)
-                    self?.onReceived(msg, left: 0, object: nil)
+                    let msgP = RCMessage(type: RCConversationType.ConversationType_CHATROOM, targetId: self!.liveModel!.chatroom_id_compere, direction: RCMessageDirection.MessageDirection_SEND, messageId: id, content: msg)
+                    self?.onReceived(msgP, left: 0, object: nil)
+                    
                 }
-                
-            }) { (code, id) in
-                print("发送消息失败....\(code)")
-            }
+            }, error: { (errorCode, id) in
+                print("发送消息失败....\(errorCode)")
+            })
+            
+
         }
         else {
             ///评论区
-            let content = RCTextMessage(content: contentTf.text)
-            var img = SessionManager.sharedInstance.userInfo?.headimg
-            if img == nil || img == "" {
-                img = "http://"
-            }
-            content?.extra = "\(SessionManager.sharedInstance.userInfo?.name ?? "用户");\(img!);\(Int(Date().timeIntervalSince1970*1000))"
-//            let msg = CustomeMessage()
-//            msg.content = contentTf.text
-//            msg.messageType = "visitor"
-//            msg.date = Int(Date().timeIntervalSince1970)*1000
+            let msg = CustomeMessage()
+            msg.content = contentTf.text
+            msg.messageType = "visitor"
+            msg.date = Int(Date().timeIntervalSince1970)*1000
             
-            RCIMClient.shared().sendMessage(RCConversationType.ConversationType_CHATROOM, targetId: liveModel?.chatroom_id_group, content: content, pushContent: contentTf.text!, pushData: "", success: { [weak self](id) in
+            
+            RCIMClient.shared().sendMessage(RCConversationType.ConversationType_CHATROOM, targetId: liveModel?.chatroom_id_group, content: msg, pushContent: contentTf.text, pushData: "", success: { [weak self](id) in
                 print("发送消息成功, --- \(id)")
                 DispatchQueue.main.async {
                     self?.contentTf.text =  ""
-                    let msg = RCMessage(type: RCConversationType.ConversationType_CHATROOM, targetId: self?.liveModel?.chatroom_id_group, direction: RCMessageDirection.MessageDirection_RECEIVE, messageId: id, content: content!)
-                    self?.onReceived(msg, left: 0, object: nil)
+                    let msgP = RCMessage(type: RCConversationType.ConversationType_CHATROOM, targetId: self!.liveModel!.chatroom_id_group, direction: RCMessageDirection.MessageDirection_SEND, messageId: id, content: msg)
+                    self?.onReceived(msgP, left: 0, object: nil)
+                    
                 }
-                
-            }) { (code, id) in
-                print("发送消息失败....\(code)")
-            }
+                }, error: { (errorCode, id) in
+                    print("发送消息失败....\(errorCode)")
+            })
+            
         }
     }
     
@@ -664,32 +657,43 @@ extension ChatRoomViewController {
         picker.dismiss(animated: true) {
             [weak self] in
             self?.aliyunVodPlayer.playerView.isHidden = false
+            
+            
+            
             //发送图片消息
             let im = info[UIImagePickerControllerEditedImage] as! UIImage
             let data = UIImageJPEGRepresentation(im, 0.7)
-            let msg = RCImageMessage(imageData: data)
-            //图片尺寸已附加字段形式附上
-            var img = SessionManager.sharedInstance.userInfo?.headimg
-            if img == nil || img == "" {
-                img = "http://"
-            }
-            msg?.extra = "\(SessionManager.sharedInstance.userInfo?.name ?? "用户");\(img!);\(Int(Date().timeIntervalSince1970*1000));\(im.size.width);\(im.size.height)"
-            
-            let rcmsg = RCMessage(type: RCConversationType.ConversationType_CHATROOM, targetId: self?.liveModel!.chatroom_id_compere, direction: RCMessageDirection.MessageDirection_RECEIVE, messageId: 120000, content: msg)
-            
-            self?.onReceived(rcmsg!, left: 0, object: "")
-            
-            RCIM.shared().sendMediaMessage(RCConversationType.ConversationType_CHATROOM, targetId: self?.liveModel!.chatroom_id_compere, content: msg, pushContent: "", pushData: "", progress: { (progress, id) in
-                print("上传图片中...\(progress)")
-            }, success: { (id) in
-                print("上传图片成功...")
-            }, error: { (errcode, id) in
-                print("上传图片失败...\(errcode)")
-            }, cancel: { (id) in
-                
+            //上传图片
+            let hud = self?.pleaseWait()
+            APIManager.shareInstance.uploadFile(data: data!, result: { [weak self](JSON, code, msg) in
+                hud?.hide()
+                if code == 0 {
+                    hud?.hide()
+                    self?.view.tag = 1
+                    let url = JSON!["data"]["url"].stringValue
+                    let msg = CustomeMessage()
+                    msg.messageType = "compere"
+                    msg.date = Int(Date().timeIntervalSince1970)*1000
+                    msg.img = url
+                    msg.extra = "\(im.size.width);\(im.size.height)"
+                    RCIMClient.shared().sendMessage(RCConversationType.ConversationType_CHATROOM, targetId: self!.liveModel!.chatroom_id_compere, content: msg, pushContent: "", pushData: "", success: { [weak self](id) in
+                        print("发送消息成功, --- \(id)")
+                        DispatchQueue.main.async {
+                            self?.contentTf.text =  ""
+                            let msgP = RCMessage(type: RCConversationType.ConversationType_CHATROOM, targetId: self!.liveModel!.chatroom_id_compere, direction: RCMessageDirection.MessageDirection_SEND, messageId: id, content: msg)
+                            self?.onReceived(msgP, left: 0, object: nil)
+                            
+                        }
+                        }, error: { (errorCode, id) in
+                            print("发送消息失败....\(errorCode)")
+                    })
+                    
+                }
+                else {
+                    hud?.noticeError(msg)
+                }
             })
         }
-        
     }
     
     
@@ -855,6 +859,7 @@ extension ChatRoomViewController {
         }) { (errCode) in
             print("加入主持人聊天室失败----\(errCode)")
         }
+        RCIMClient.shared().registerMessageType(CustomeMessage.classForCoder())
         
 //        list = RCIMClient.shared().getHistoryMessages(RCConversationType.ConversationType_CHATROOM, targetId: liveModel?.chatroom_id_group, oldestMessageId: 120000, count: 20) as! [RCMessage]
 //        anchorList = RCIMClient.shared().getHistoryMessages(RCConversationType.ConversationType_CHATROOM, targetId: liveModel?.chatroom_id_compere, oldestMessageId: 120000, count: 20) as! [RCMessage]

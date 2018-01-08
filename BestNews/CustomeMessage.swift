@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 
 ///自定义消息类
-class CustomeMessage: RCMessageContent, NSCoding {
+class CustomeMessage: RCMessageContent {
     
     var content: String?
     var img: String?
