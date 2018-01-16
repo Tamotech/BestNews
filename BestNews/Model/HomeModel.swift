@@ -15,6 +15,9 @@ class HomeModel: NSObject {
     ///首页专题列表
     var specilList: [SpecialChannel] = []
     
+    ///专题列表(非导航)
+    var specilList1: [SpecialChannel] = []
+    
     //首页所有频道
     var allChannels: [NewsChannel] = []
     
@@ -27,7 +30,7 @@ class HomeModel: NSObject {
                 titles.append(data.name)
             }
         //}
-        titles.append("直播")
+        titles.append("视频")
         return titles
     }
     

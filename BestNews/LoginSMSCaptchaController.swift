@@ -10,6 +10,7 @@ import UIKit
 
 class LoginSMSCaptchaController: BaseViewController, SwiftyVerificationCodeViewDelegate {
 
+    let showSelectChannelKey = "showSelectChannelBoolKey"
     
     @IBOutlet weak var phoneLabel: UILabel!
     
@@ -106,9 +107,17 @@ class LoginSMSCaptchaController: BaseViewController, SwiftyVerificationCodeViewD
         let type = SessionManager.sharedInstance.loginInfo.type
         SessionManager.sharedInstance.login(type: type) { [weak self](JSON, code, msg) in
             if code == 0 {
-                let vc = SelectInterestItemController(nibName: "SelectInterestItemController", bundle: nil)
-                self?.navigationController?.pushViewController(vc, animated: true)
-                BLHUDBarManager.showSuccess(msg: "登录成功", seconds: 2)
+                
+                if !UserDefaults.standard.bool(forKey: self!.showSelectChannelKey) {
+                    let vc = SelectInterestItemController(nibName: "SelectInterestItemController", bundle: nil)
+                    self?.navigationController?.pushViewController(vc, animated: true)
+                    BLHUDBarManager.showSuccess(msg: "登录成功", seconds: 2)
+                    UserDefaults.standard.set(true, forKey: self!.showSelectChannelKey)
+                    UserDefaults.standard.synchronize()
+                }
+                else {
+                    self?.navigationController?.dismiss(animated: true, completion: nil)
+                }
             }
             else if code == -114{
                 //未注册

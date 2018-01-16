@@ -110,7 +110,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate, TencentSessi
                                 self?.avartarInfoView.isHidden = false
                                 self?.thirdLoginView.isHidden = true
                                 let rc = ImageResource(downloadURL: URL(string: wxInfo!.headimgurl)!)
-                                self?.avatarImg.kf.setImage(with: rc)
+                                self?.avatarImg.kf.setImage(with: rc, placeholder: #imageLiteral(resourceName: "defaultUser"), options: nil, progressBlock: nil, completionHandler: nil)
                                 self?.nickNameLb.text = wxInfo?.nickname
                                 
                             }
@@ -217,7 +217,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate, TencentSessi
                 let rc = ImageResource(downloadURL: URL(string: url!)!)
                 SessionManager.sharedInstance.userInfo?.headimg = url!
                 SessionManager.sharedInstance.userInfo?.name = nickname!
-                self.avatarImg.kf.setImage(with: rc)
+                self.avatarImg.kf.setImage(with: rc, placeholder: #imageLiteral(resourceName: "defaultUser"), options: nil, progressBlock: nil, completionHandler: nil)
             }
             self.nickNameLb.text = nickname
             

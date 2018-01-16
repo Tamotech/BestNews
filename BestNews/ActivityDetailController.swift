@@ -256,7 +256,7 @@ extension ActivityDetailController {
         titleLb.text = activity.title
         if activity.preimgpath.count>0 {
             let rc = ImageResource(downloadURL: URL(string: activity.preimgpath)!)
-            coverPhotov.kf.setImage(with: rc)
+            coverPhotov.kf.setImage(with: rc, placeholder: #imageLiteral(resourceName: "m252_default2"), options: nil, progressBlock: nil, completionHandler: nil)
         }
         dateLb.text = activity.dateStr()
         addressLb.text = activity.address

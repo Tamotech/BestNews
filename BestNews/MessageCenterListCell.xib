@@ -24,7 +24,7 @@
                             <constraint firstAttribute="width" constant="48" id="78r-le-T03"/>
                             <constraint firstAttribute="height" constant="48" id="MoJ-yq-8id"/>
                         </constraints>
-                        <state key="normal" image="Avatar1M5-3"/>
+                        <state key="normal" image="defaultUser"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                 <real key="value" value="24"/>
@@ -74,6 +74,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Avatar1M5-3" width="54" height="54"/>
+        <image name="defaultUser" width="72" height="72"/>
     </resources>
 </document>

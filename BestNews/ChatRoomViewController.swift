@@ -25,6 +25,9 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
     ///主持区
     var anchorList: [RCMessage] = []
     
+    //如果有多段视频 按顺序播放
+    var videoIndex = 0
+    
     @IBOutlet weak var segParentView: UIView!
     
     @IBOutlet weak var playerParentView: UIView!
@@ -121,7 +124,7 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
         //tableView2.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 1))
         setPlayerContentView()
         setCacheForPlaying()
-        if liveModel != nil && SessionManager.sharedInstance.userId != liveModel!.anchoruserid {
+        if liveModel != nil && SessionManager.sharedInstance.userId != liveModel!.compereuserid {
             commentBar.isHidden = true
         }
         
@@ -142,7 +145,7 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
             if index == 0 {
                 self?.tableView1.isHidden = false
                 self?.tableView2.isHidden = true
-                if self?.liveModel != nil && SessionManager.sharedInstance.userId != self?.liveModel!.anchoruserid {
+                if self?.liveModel != nil && SessionManager.sharedInstance.userId != self?.liveModel!.compereuserid {
                     self?.commentBar.isHidden = true
                 }
                 else {
@@ -224,7 +227,7 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
         playerView?.addSubview(coverView)
         if let url = URL(string: liveModel!.preimgpath) {
             let rc = ImageResource(downloadURL: url)
-            coverView.kf.setImage(with: rc)
+            coverView.kf.setImage(with: rc, placeholder: #imageLiteral(resourceName: "m252_default2"), options: nil, progressBlock: nil, completionHandler: nil)
         }
         coverView.snp.makeConstraints { (make) in
             make.top.bottom.left.right.equalTo(0)
@@ -467,11 +470,14 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
         if segment.currentIndex == 0 {
             ///主持区
             
-            let msg = CustomeMessage()
-            msg.content = contentTf.text
-            msg.messageType = "compere"
-            msg.date = Int(Date().timeIntervalSince1970)*1000
-            
+            let msg = RCTextMessage(content: contentTf.text)
+            let senderUserInfo = RCUserInfo()
+            let username = SessionManager.sharedInstance.userInfo?.name ?? ""
+            let headimg = SessionManager.sharedInstance.userInfo?.headimg ?? ""
+            senderUserInfo.name = username
+            senderUserInfo.portraitUri = headimg
+            msg?.senderUserInfo = senderUserInfo
+            msg?.extra = "{\"messageType\":\"compere\",\"date\":\(Int(Date().timeIntervalSince1970)*1000),\"img\":\"\",\"userName\":\"\(username)\",\"userImg\":\"\(headimg)\"}"
             
             RCIMClient.shared().sendMessage(RCConversationType.ConversationType_CHATROOM, targetId: liveModel?.chatroom_id_compere, content: msg, pushContent: contentTf.text, pushData: "", success: { [weak self](id) in
                 print("发送消息成功, --- \(id)")
@@ -489,11 +495,16 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
         }
         else {
             ///评论区
-            let msg = CustomeMessage()
-            msg.content = contentTf.text
-            msg.messageType = "visitor"
-            msg.date = Int(Date().timeIntervalSince1970)*1000
-            
+            let msg = RCTextMessage(content: contentTf.text)
+            let senderUserInfo = RCUserInfo()
+//            senderUserInfo.name = SessionManager.sharedInstance.userInfo?.name ?? ""
+//            senderUserInfo.portraitUri = SessionManager.sharedInstance.userInfo?.headimg ?? ""
+            let username = SessionManager.sharedInstance.userInfo?.name ?? ""
+            let headimg = SessionManager.sharedInstance.userInfo?.headimg ?? ""
+            senderUserInfo.name = username
+            senderUserInfo.portraitUri = headimg
+            msg?.senderUserInfo = senderUserInfo
+            msg?.extra = "{\"messageType\":\"visitor\",\"date\":\(Int(Date().timeIntervalSince1970)*1000),\"img\":\"\",\"userName\":\"\(username)\",\"userImg\":\"\(headimg)\"}"
             
             RCIMClient.shared().sendMessage(RCConversationType.ConversationType_CHATROOM, targetId: liveModel?.chatroom_id_group, content: msg, pushContent: contentTf.text, pushData: "", success: { [weak self](id) in
                 print("发送消息成功, --- \(id)")
@@ -665,18 +676,21 @@ extension ChatRoomViewController {
             let data = UIImageJPEGRepresentation(im, 0.7)
             //上传图片
             let hud = self?.pleaseWait()
-            APIManager.shareInstance.uploadFile(data: data!, result: { [weak self](JSON, code, msg) in
+            APIManager.shareInstance.uploadFile(data: data!, result: { [weak self](JSON, code, msgs) in
                 hud?.hide()
                 if code == 0 {
                     hud?.hide()
                     self?.view.tag = 1
                     let url = JSON!["data"]["url"].stringValue
-                    let msg = CustomeMessage()
-                    msg.messageType = "compere"
-                    msg.date = Int(Date().timeIntervalSince1970)*1000
-                    msg.img = url
-                    msg.extra = "\(im.size.width);\(im.size.height)"
-                    RCIMClient.shared().sendMessage(RCConversationType.ConversationType_CHATROOM, targetId: self!.liveModel!.chatroom_id_compere, content: msg, pushContent: "", pushData: "", success: { [weak self](id) in
+                    let msg = RCTextMessage(content: "")
+                    let senderUserInfo = RCUserInfo()
+                    let username = SessionManager.sharedInstance.userInfo?.name ?? ""
+                    let headimg = SessionManager.sharedInstance.userInfo?.headimg ?? ""
+                    senderUserInfo.name = username
+                    senderUserInfo.portraitUri = headimg
+                    msg?.senderUserInfo = senderUserInfo
+                    msg?.extra = "{\"messageType\":\"compere\",\"date\":\(Int(Date().timeIntervalSince1970)*1000),\"img\":\"\(url)\",\"width\":\(im.size.width),\"height\":\(im.size.height),\"userName\":\"\(username)\",\"userImg\":\"\(headimg)\"}"
+                    RCIMClient.shared().sendMessage(RCConversationType.ConversationType_CHATROOM, targetId: self!.liveModel!.chatroom_id_compere, content: msg, pushContent: "图片消息", pushData: "", success: { [weak self](id) in
                         print("发送消息成功, --- \(id)")
                         DispatchQueue.main.async {
                             self?.contentTf.text =  ""
@@ -687,10 +701,6 @@ extension ChatRoomViewController {
                         }, error: { (errorCode, id) in
                             print("发送消息失败....\(errorCode)")
                     })
-                    
-                }
-                else {
-                    hud?.noticeError(msg)
                 }
             })
         }
@@ -703,39 +713,6 @@ extension ChatRoomViewController {
         }
     }
     
-    
-    //MARK: - playerViewDelegate
-    func aliyunVodPlayerView(_ playerView: AliyunVodPlayerView!, fullScreen isFullScreen: Bool) {
-        
-    }
-    
-    func aliyunVodPlayerView(_ playerView: AliyunVodPlayerView!, lockScreen isLockScreen: Bool) {
-        
-    }
-    
-    func onBackViewClick(with playerView: AliyunVodPlayerView!) {
-        
-    }
-    
-    func aliyunVodPlayerView(_ playerView: AliyunVodPlayerView!, onStop currentPlayTime: TimeInterval) {
-        
-    }
-    
-    func aliyunVodPlayerView(_ playerView: AliyunVodPlayerView!, onPause currentPlayTime: TimeInterval) {
-        
-    }
-    
-    func aliyunVodPlayerView(_ playerView: AliyunVodPlayerView!, onSeekDone seekDoneTime: TimeInterval) {
-        
-    }
-    
-    func aliyunVodPlayerView(_ playerView: AliyunVodPlayerView!, onResume currentPlayTime: TimeInterval) {
-        
-    }
-    
-    func aliyunVodPlayerView(_ playerView: AliyunVodPlayerView!, onVideoQualityChanged quality: AliyunVodPlayerVideoQuality) {
-        
-    }
 }
 
 extension ChatRoomViewController {
@@ -748,7 +725,7 @@ extension ChatRoomViewController {
             self?.dateLb.text = self?.liveModel?.dateStr()
             if let url = URL(string: self!.liveModel!.anchorheadimg) {
                 let rc = ImageResource(downloadURL: url)
-                self?.anchorAvatar.kf.setImage(with: rc)
+                self?.anchorAvatar.kf.setImage(with: rc, placeholder: #imageLiteral(resourceName: "defaultUser"), options: nil, progressBlock: nil, completionHandler: nil)
             }
             self?.anchorNameLb.text = self?.liveModel?.anchorusername
             if self?.liveModel?.subscribe == 1 {
@@ -774,7 +751,7 @@ extension ChatRoomViewController {
                 }
                 var videoPath = self?.liveModel?.videopath
                 if (self?.liveModel?.videopath.contains(","))! {
-                    videoPath = self?.liveModel?.videopath.components(separatedBy: ",").last
+                    videoPath = self?.liveModel?.videopath.components(separatedBy: ",").first
                 }
                 
                 self?.aliyunVodPlayer.prepare(with: URL(string: videoPath!)!)
@@ -917,6 +894,17 @@ extension ChatRoomViewController {
         if event == AliyunVodPlayerEvent.stop ||
             event == AliyunVodPlayerEvent.finish {
             coverView.isHidden = false
+            if event == AliyunVodPlayerEvent.finish {
+                videoIndex = videoIndex + 1
+                if self.liveModel?.state == "l1_finish" && (self.liveModel?.videopath.contains(","))! {
+                    let arr = self.liveModel!.videopath.components(separatedBy: ",")
+                    if videoIndex < arr.count {
+                        let videoPath = arr[videoIndex]
+                        self.aliyunVodPlayer.prepare(with: URL(string: videoPath)!)
+                        self.aliyunVodPlayer.start()
+                    }
+                }
+            }
         }
         else if event == AliyunVodPlayerEvent.firstFrame {
             coverView.isHidden = true

@@ -107,7 +107,7 @@ class SubscriptionListControllerViewController: UIViewController, UITableViewDel
         scrollview.delegate = self
         layout.minimumLineSpacing = 8
         layout.minimumInteritemSpacing = 8
-        let w = (screenWidth-15*2-8*2)/3.0
+        let w = (screenWidth-15*2-8*2)/3.0-1
         let h:CGFloat = 108
         layout.itemSize = CGSize(width: w, height: h)
         

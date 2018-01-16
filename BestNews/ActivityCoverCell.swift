@@ -29,7 +29,7 @@ class ActivityCoverCell: UITableViewCell {
     func updateCell(_ data: ActivityModel) {
         if data.preimgpath.count > 0 {
             let rc = ImageResource(downloadURL: URL(string: data.preimgpath)!)
-            coverBg.kf.setImage(with: rc)
+            coverBg.kf.setImage(with: rc, placeholder: #imageLiteral(resourceName: "m252_default2"), options: nil, progressBlock: nil, completionHandler: nil)
         }
         titleLb.text = data.title
         dateLb.text = data.dateStr()

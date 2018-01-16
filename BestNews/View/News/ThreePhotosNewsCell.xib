@@ -25,7 +25,7 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cover3m2_1_2a" translatesAutoresizingMaskIntoConstraints="NO" id="T8Y-Ax-YOf">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="m231_default" translatesAutoresizingMaskIntoConstraints="NO" id="T8Y-Ax-YOf">
                         <rect key="frame" x="15" y="74.5" width="95" height="71"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="T8Y-Ax-YOf" secondAttribute="height" multiplier="4:3" id="HWj-5N-Ok1"/>
@@ -36,7 +36,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </imageView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cover3m2_1_2a" translatesAutoresizingMaskIntoConstraints="NO" id="VTg-Ol-j7i">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="m231_default" translatesAutoresizingMaskIntoConstraints="NO" id="VTg-Ol-j7i">
                         <rect key="frame" x="113" y="74.5" width="94.5" height="71"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -44,7 +44,7 @@
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </imageView>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cover3m2_1_2a" translatesAutoresizingMaskIntoConstraints="NO" id="XQp-NR-szI">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="m231_default" translatesAutoresizingMaskIntoConstraints="NO" id="XQp-NR-szI">
                         <rect key="frame" x="210.5" y="74.5" width="94.5" height="71"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -131,7 +131,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="cover3m2_1_2a" width="85" height="85"/>
+        <image name="m231_default" width="60" height="60"/>
         <image name="time-clock" width="11" height="11"/>
     </resources>
 </document>

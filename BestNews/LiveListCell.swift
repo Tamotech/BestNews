@@ -71,7 +71,7 @@ class LiveListCell: UITableViewCell {
         liveStatusBtn.setTitle(data.stateStr(), for: .normal)
         if let url = URL(string: data.preimgpath) {
             let rc = ImageResource(downloadURL: url)
-            coverIm.kf.setImage(with: rc)
+            coverIm.kf.setImage(with: rc, placeholder: #imageLiteral(resourceName: "m252_default2"), options: nil, progressBlock: nil, completionHandler: nil)
         }
         if data.collect == 1 {
             collectionBtn.setImage(#imageLiteral(resourceName: "star_select_small"), for: .normal)

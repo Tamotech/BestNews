@@ -35,7 +35,7 @@ class SingleBigPhotoNewsCell: BaseNewsCell {
             let img = article.preimglist[0]
             if img.count > 0 {
                 let rc = ImageResource(downloadURL: URL(string: img)!)
-                photoView1.kf.setImage(with: rc)
+                photoView1.kf.setImage(with: rc, placeholder: #imageLiteral(resourceName: "m231_default"), options: nil, progressBlock: nil, completionHandler: nil)
             }
         }
         if article.marks.count > 0 {

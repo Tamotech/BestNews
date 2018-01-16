@@ -32,6 +32,7 @@ class FastNewsController: BaseViewController, UITableViewDataSource, UITableView
     var page: Int = 1
     var newsList: FastNewsList?
     var stockStatusArr: [TodayStockStatus]?
+    var t: Timer?
     
     ///是否加过滤 仅收藏
     var collectFilter: Bool = false
@@ -66,6 +67,15 @@ class FastNewsController: BaseViewController, UITableViewDataSource, UITableView
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.reloadArticleList()
+        self.loadStockStatus()
+        t?.fire()
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        t?.fire()
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -82,8 +92,16 @@ class FastNewsController: BaseViewController, UITableViewDataSource, UITableView
             tableView.tableHeaderView = headerView
             self.loadStockStatus()
         }
+        
+        t = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(timerEvent(_:)), userInfo: nil, repeats: true)
+        RunLoop.main.add(t!, forMode: RunLoopMode.commonModes)
+        t?.fire()
     }
     
+    
+    func timerEvent(_ sender: Timer) {
+        self.loadStockStatus()
+    }
     
     //MARK: - tableView
     

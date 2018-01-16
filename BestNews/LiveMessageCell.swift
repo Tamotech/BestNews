@@ -8,6 +8,7 @@
 
 import UIKit
 import Kingfisher
+import SwiftyJSON
 
 class LiveMessageCell: UITableViewCell {
 
@@ -41,13 +42,13 @@ class LiveMessageCell: UITableViewCell {
                 nameLb.text = user.name
                 if let url = URL(string: user.portraitUri) {
                     let rc = ImageResource(downloadURL: url)
-                    avatarIm.kf.setImage(with: rc)
+                    avatarIm.kf.setImage(with: rc, placeholder: #imageLiteral(resourceName: "defaultUser"), options: nil, progressBlock: nil, completionHandler: nil)
                 }
             }
             timeLb.text = msg.timeStr()
             if let url = URL(string: msg.img ?? "") {
                 let rc = ImageResource(downloadURL: url)
-                photoIm.kf.setImage(with: rc)
+                photoIm.kf.setImage(with: rc, placeholder: #imageLiteral(resourceName: "m252_default2"), options: nil, progressBlock: nil, completionHandler: nil)
             }
             contentLb.text = msg.content
             if msg.extra?.count ?? 0 > 0 {
@@ -65,7 +66,7 @@ class LiveMessageCell: UITableViewCell {
             let text = (content as! RCTextMessage)
             contentLb.text = text.content
             photoHeight.constant = 0
-            if text.extra != nil {
+            if text.extra != nil && text.extra.contains(";") {
                 let extraArr = text.extra.split(separator: ";")
                 if extraArr.count >= 3 {
                     let name = String(extraArr[0])
@@ -75,7 +76,7 @@ class LiveMessageCell: UITableViewCell {
                     if img != "http://" {
                         if let url = URL(string: img)  {
                             let rc = ImageResource(downloadURL: url)
-                            avatarIm.kf.setImage(with: rc)
+                            avatarIm.kf.setImage(with: rc, placeholder: #imageLiteral(resourceName: "defaultUser"), options: nil, progressBlock: nil, completionHandler: nil)
                         }
                         else {
                             avatarIm.image = #imageLiteral(resourceName: "defaultUser")
@@ -90,6 +91,45 @@ class LiveMessageCell: UITableViewCell {
                     let dateStr = formatter.string(from: date)
                     timeLb.text = dateStr
                 }
+            }       ///最新版的需求
+            else if text.extra != nil && text.extra.contains("{") {
+                let json = JSON.init(parseJSON: text.extra!)
+                contentLb.text = text.content
+                if let user = text.senderUserInfo {
+                    nameLb.text = user.name
+                    if user.portraitUri != nil && user.portraitUri.count > 0 {
+                        let url = URL(string: user.portraitUri)
+                        let rc = ImageResource(downloadURL: url!)
+                        avatarIm.kf.setImage(with: rc, placeholder: #imageLiteral(resourceName: "defaultUser"), options: nil, progressBlock: nil, completionHandler: nil)
+                    }
+                }
+                let dateInt = json["date"].doubleValue/1000
+                let date = Date(timeIntervalSince1970: dateInt)
+                let formatter = DateFormatter()
+                formatter.dateFormat = "HH:mm"
+                let dateStr = formatter.string(from: date)
+                timeLb.text = dateStr
+                if json["img"] != JSON.null {
+                    if let url = URL(string: json["img"].stringValue) {
+                        let rc = ImageResource(downloadURL: url)
+                        photoIm.kf.setImage(with: rc, placeholder: #imageLiteral(resourceName: "m252_default2"), options: nil, progressBlock: nil, completionHandler: nil)
+                        if json["width"] != JSON.null {
+                            let w = json["width"].doubleValue
+                            let h = json["height"].doubleValue
+                            let imgH = photoIm.width*CGFloat(h/w)
+                            photoHeight.constant = imgH
+                        }
+                        else {
+                            photoHeight.constant = photoIm.width
+                        }
+                    }
+                    else {
+                        photoHeight.constant = 0
+                    }
+                }
+                else {
+                    photoHeight.constant = 0
+                }
             }
         }
         else if content is RCImageMessage {
@@ -100,7 +140,7 @@ class LiveMessageCell: UITableViewCell {
             else if im.imageUrl != nil {
                 if let url = URL(string: im.imageUrl) {
                     let rc = ImageResource(downloadURL: url)
-                    photoIm.kf.setImage(with: rc)
+                    photoIm.kf.setImage(with: rc, placeholder: #imageLiteral(resourceName: "m252_default2"), options: nil, progressBlock: nil, completionHandler: nil)
                 }
             }
             else if im.localPath != nil {
@@ -124,7 +164,7 @@ class LiveMessageCell: UITableViewCell {
                     nameLb.text = name
                     if let url = URL(string: img) {
                         let rc = ImageResource(downloadURL: url)
-                        avatarIm.kf.setImage(with: rc)
+                        avatarIm.kf.setImage(with: rc, placeholder: #imageLiteral(resourceName: "defaultUser"), options: nil, progressBlock: nil, completionHandler: nil)
                     }
                     let date = Date(timeIntervalSince1970: dateInt)
                     let formatter = DateFormatter()

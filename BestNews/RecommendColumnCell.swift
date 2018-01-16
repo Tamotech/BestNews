@@ -30,7 +30,7 @@ class RecommendColumnCell: UICollectionViewCell {
         org = data
         if let url = URL(string: data.headimg) {
             let rc = ImageResource(downloadURL: url)
-            avatarView.kf.setImage(with: rc)
+            avatarView.kf.setImage(with: rc, placeholder: #imageLiteral(resourceName: "defaultUser"), options: nil, progressBlock: nil, completionHandler: nil)
         }
         nameLb.text = data.name
         scriptBtn.switchStateSub(data.subscribe == 1)

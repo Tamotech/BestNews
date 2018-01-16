@@ -191,20 +191,20 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
     }
     
     
-    /*
+    
     func setupTitleView() {
-        
-        
+     
+     
         let barView = UIView(frame: .zero)
         self.view.addSubview(barView)
         barView.snp.makeConstraints { (make) in
             make.left.top.right.equalTo(0)
             make.height.equalTo(64+40)
-            
+     
         }
-        
+     
         barView.layer.addSublayer(blackLayer)
-        
+     
         let logo = UIImageView(frame: .zero)
         logo.image = #imageLiteral(resourceName: "xinhua_logo_white")
         logo.contentMode = .scaleAspectFit
@@ -215,7 +215,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
             make.width.equalTo(100)
             make.height.equalTo(44)
         }
-        
+     
         self.searchButton = UIButton(frame: .zero)
         searchButton?.setImage(#imageLiteral(resourceName: "icon_search_white"), for: UIControlState.normal)
         searchButton?.setTitle("     搜搜看", for: UIControlState.normal)
@@ -231,7 +231,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
             make.centerY.equalTo(logo.snp.centerY).offset(0)
             make.height.equalTo(30)
         }
-        
+     
         let messagebt = UIButton(frame: .zero)
         messagebt.setImage(#imageLiteral(resourceName: "icon_message_white"), for: .normal)
         messagebt.addTarget(self, action: #selector(handleTapMessageItem(sender:)), for: UIControlEvents.touchUpInside)
@@ -242,7 +242,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
             make.centerY.equalTo(logo.snp.centerY)
             make.size.equalTo(CGSize(width: 50, height: 40))
         }
-        
+     
         let menubt = UIButton(frame: .zero)
         menubt.setImage(#imageLiteral(resourceName: "icon_menu_white"), for: .normal)
         menubt.addTarget(self, action: #selector(handleTapMenuItem(sender:)), for: UIControlEvents.touchUpInside)
@@ -253,17 +253,17 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
             make.left.equalTo(messagebt.snp.left).offset(0)
             make.size.equalTo(CGSize(width: 50, height: 40))
         }
-        
+     
         self.barView.removeFromSuperview()
         self.navBarView = barView
         self.logoView = logo
         self.messageBt = messagebt
         self.menuBt = menubt
-        
-    }*/
+     
+    }
     
     ///V1.0 隐藏 首页搜索
-    func setupTitleView() {
+    /*func setupTitleView() {
         
         let barView = UIView(frame: .zero)
         barView.backgroundColor = UIColor.white
@@ -299,17 +299,17 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
         self.logoView = logo
         self.menuBt = menubt
         
-    }
+    }*/
     
     func setupNavTitleView() {
         if titleView?.superview != nil {
             titleView?.removeFromSuperview()
         }
-        titleView = TYPageTitleView(frame: CGRect.init(x: 100, y: 0, width: screenWidth-64-100, height: 36), titles: HomeModel.shareInstansce.navTitles())
+        titleView = TYPageTitleView(frame: CGRect.init(x: 10, y: 0, width: screenWidth-64-10, height: 36), titles: HomeModel.shareInstansce.navTitles())
         titleView?.delegate = self
         self.navBarView!.addSubview(titleView!)
         titleView?.snp.makeConstraints({ (make) in
-            make.left.equalTo(100)
+            make.left.equalTo(10)
             make.bottom.equalTo(-8)
             make.height.equalTo(36)
             make.right.equalTo(-64)
@@ -423,7 +423,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
     
     /// 导航栏颜色变化
     func navBarTurnBg(white: Bool) {
-        /*
+        
         if white {
             titleView?.updateTintcolor(currentItemColor: gray51!, unselectItemColor: UIColor(ri: 51, gi: 51, bi: 51, alpha: 0.5)!)
             UIView.animate(withDuration: 0.3, animations: {
@@ -448,7 +448,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
             messageBt?.setImage(#imageLiteral(resourceName: "icon_message_white"), for: UIControlState.normal)
             menuBt?.setImage(#imageLiteral(resourceName: "icon_menu_white"), for: UIControlState.normal)
         }
- */
+ 
     }
     
     
@@ -457,13 +457,13 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
     ///
     /// - Parameter red: 红色 or 白色
     func logoTurnColor(_ red: Bool) {
-        /*
+        
         if red {
             logoView?.image = #imageLiteral(resourceName: "xinhua_logo_red")
         }
         else {
             logoView?.image = #imageLiteral(resourceName: "xinhua_logo_white")
-        }*/
+        }
     }
 
     ///导航专题

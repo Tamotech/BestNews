@@ -49,13 +49,13 @@ class ThreePhotosNewsCell: BaseNewsCell {
             if img.count > 0 {
                 let rc = ImageResource(downloadURL: URL(string: img)!)
                 if i == 0 {
-                    photoView1.kf.setImage(with: rc)
+                    photoView1.kf.setImage(with: rc, placeholder: #imageLiteral(resourceName: "m231_default"), options: nil, progressBlock: nil, completionHandler: nil)
                 }
                 else if i == 1 {
-                    photoView2.kf.setImage(with: rc)
+                    photoView2.kf.setImage(with: rc, placeholder: #imageLiteral(resourceName: "m231_default"), options: nil, progressBlock: nil, completionHandler: nil)
                 }
                 else if i == 2 {
-                    photoView3.kf.setImage(with: rc)
+                    photoView3.kf.setImage(with: rc, placeholder: #imageLiteral(resourceName: "m231_default"), options: nil, progressBlock: nil, completionHandler: nil)
                 }
             }
         }

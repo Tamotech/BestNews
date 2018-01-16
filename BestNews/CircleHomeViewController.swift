@@ -33,7 +33,7 @@ class CircleHomeViewController: BaseViewController, UIScrollViewDelegate, TYPage
     
     func setupChildView() {
 //        let titles = ["机构","名人","理财"]
-        let titles = ["发现"]
+        let titles = ["财经号"]
         //titleView = TYPageTitleView(frame: CGRect.init(x: 0, y: 0, width: screenWidth-49-88, height: 44), titles: titles)
         let style = TYPageStyle()
         style.labelLayout = .divide
@@ -42,7 +42,7 @@ class CircleHomeViewController: BaseViewController, UIScrollViewDelegate, TYPage
         ///TEST:
         titleView?.lineView.isHidden = true
 //        self.navigationItem.titleView = titleView
-        self.showCustomTitle(title: "发现")
+        self.showCustomTitle(title: "财经号")
         
         
         scrollView.contentSize = CGSize(width: screenWidth*CGFloat(titles.count), height: screenHeight-49)

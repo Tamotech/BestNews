@@ -95,7 +95,7 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
             if let user = SessionManager.sharedInstance.userInfo {
                 if let url = URL(string: user.headimg) {
                     let rc = ImageResource(downloadURL: url)
-                    avatarView.kf.setImage(with: rc, for: .normal)
+                    avatarView.kf.setImage(with: rc, for: UIControlState.normal, placeholder: #imageLiteral(resourceName: "defaultUser"), options: nil, progressBlock: nil, completionHandler: nil)
                 }
                 nameLb.text = user.name
                 if user.celebrityflag {

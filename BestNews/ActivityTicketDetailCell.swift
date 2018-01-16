@@ -47,7 +47,8 @@ class ActivityTicketDetailCell: UITableViewCell {
         self.ticket = ticket
         if let url = URL(string: ticket.preimgpath) {
             let rc = ImageResource(downloadURL: url)
-            coverPhoto.kf.setImage(with: rc)
+            coverPhoto.kf.setImage(with: rc, placeholder: #imageLiteral(resourceName: "m252_default2"), options: nil, progressBlock: nil, completionHandler: nil)
+
         }
         titleLb.text = ticket.title
         dateLb.text = ticket.dateStr()

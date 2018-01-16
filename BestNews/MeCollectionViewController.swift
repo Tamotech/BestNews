@@ -31,7 +31,7 @@ class MeCollectionViewController: BaseViewController, UIScrollViewDelegate, TYPa
     }
     
     func setupChildView() {
-        let titles = ["新闻","快讯","直播","活动"]
+        let titles = ["新闻","快讯","视频","活动"]
         scrollView.alwaysBounceHorizontal = false
         let style = TYPageStyle()
         style.normalColor = UIColor(hexString: "#333333", alpha: 0.5)!

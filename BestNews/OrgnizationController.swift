@@ -423,8 +423,9 @@ extension OrgnizationController {
         
         if let url = URL(string: ognization!.headimg) {
             let rc = ImageResource(downloadURL: url)
-            avatarView.kf.setImage(with: rc)
-            avatarSmallView.kf.setImage(with: rc)
+            avatarView.kf.setImage(with: rc, placeholder: #imageLiteral(resourceName: "defaultUser"), options: nil, progressBlock: nil, completionHandler: nil)
+            avatarSmallView.kf.setImage(with: rc, placeholder: #imageLiteral(resourceName: "defaultUser"), options: nil, progressBlock: nil, completionHandler: nil)
+
         }
         if ognization?.subscribe == 0 {
             subscripBtn.backgroundColor = themeColor

@@ -9,17 +9,32 @@
 import UIKit
 import CRRefresh
 
-class LiveListController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class LiveListController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
 
     
     @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var tableViewTop: NSLayoutConstraint!
+    
+    
     var collect = false
     var liveList = LiveModelList()
+    // 0: 首页 1: 收藏  2: 视频
     var entry = 0
     var emptyView = BaseEmptyView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if entry == 2 {
+            self.showCustomTitle(title: "视频")
+            self.shouldClearNavBar = false
+            tableViewTop.constant = 64
+        }
+        else {
+            self.shouldClearNavBar = true
+            tableViewTop.constant = 0
+        }
 
         setupView()
         reloadLiveList()
@@ -28,6 +43,11 @@ class LiveListController: UIViewController, UITableViewDelegate, UITableViewData
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         reloadLiveList()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        //self.tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 44))
     }
     
 //    override func viewWillLayoutSubviews() {
@@ -39,9 +59,9 @@ class LiveListController: UIViewController, UITableViewDelegate, UITableViewData
         let nib = UINib(nibName: "LiveListCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "Cell")
         if #available(iOS 11.0, *) {
-            tableView.contentInsetAdjustmentBehavior = .always
+            tableView.contentInsetAdjustmentBehavior = .never
         } else {
-            self.automaticallyAdjustsScrollViewInsets = true
+            self.automaticallyAdjustsScrollViewInsets = false
         }
         tableView.cr.addHeadRefresh {
             self.reloadLiveList()
@@ -93,9 +113,9 @@ class LiveListController: UIViewController, UITableViewDelegate, UITableViewData
         if model.state == "l2_coming" {
             return
         }
-//        if model.state == "l1_finish" {
-//            return
-//        }
+        if model.state == "l1_finish" && model.videopath.count == 0{
+            return
+        }
         if !SessionManager.sharedInstance.loginInfo.isLogin {
             Toolkit.showLoginVC()
             return
@@ -135,6 +155,7 @@ extension LiveListController {
             if list != nil {
                 self?.liveList.list.append(contentsOf: list!.list)
                 self?.tableView.cr.endLoadingMore()
+                self?.tableView.reloadData()
             }
         }
     }

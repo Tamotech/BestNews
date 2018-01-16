@@ -46,7 +46,7 @@ class SubscriptListCell: UITableViewCell {
         ognization = data
         if data.headimg.count > 0 {
             let rc = ImageResource(downloadURL: URL(string: data.headimg)!)
-            avtarBtn.kf.setImage(with: rc, for: .normal)
+            avtarBtn.kf.setImage(with: rc, for: UIControlState.normal, placeholder: #imageLiteral(resourceName: "defaultUser"), options: nil, progressBlock: nil, completionHandler: nil)
         }
         nameLb.text = data.name
         descLb.text = data.memo

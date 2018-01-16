@@ -65,7 +65,7 @@ class CommentCell: UITableViewCell {
         self.comment = comment
         if comment.headimg.count > 0 {
             let rc = ImageResource(downloadURL: URL.init(string: comment.headimg)!)
-            avatarBtn.kf.setImage(with: rc, for: .normal)
+            avatarBtn.kf.setImage(with: rc, for: UIControlState.normal, placeholder: #imageLiteral(resourceName: "defaultUser"), options: nil, progressBlock: nil, completionHandler: nil)
         }
         voteCountLb.text = "\(comment.praisenum)"
         commentLb.text = comment.content

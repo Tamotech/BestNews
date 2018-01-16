@@ -44,6 +44,7 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var rewardBottom: NSLayoutConstraint!
     
     
+    
     let htmlModelString = "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><title></title><style>body {font:48px/1.5 tahoma,arial,sans-serif;color:#55555;text-align:justify;text-align-last:justify;line-height:70px}hr {height:1px;border:none;border-top:1px solid #e8e8e8;} img {width:100%;height:auto}</style></head><body><div style='margin:35px' id=\"content\">${contentHtml}${author}</div></body></html>"
     
     ///是否订阅作者 (需要查阅)
@@ -111,7 +112,6 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
         self.loadRecommendArticleList()
         self.loadCommentList()
         self.loadRewardList()
-        
     }
     
     //MARK: - tableView
@@ -273,9 +273,9 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
     func tapRepostHandler() {
         let vc = BaseShareViewController(nibName: "BaseShareViewController", bundle: nil)
         let share = ShareModel()
-//        share.title = article!.title
-//        share.msg = ""
-//        share.thumb = article!.headimg
+        share.title = article!.title
+        share.thumb = article!.headimg
+        share.link = "http://xhfmedia.com/newsdetail.htm?id=\(articleId)"
         vc.share = share
         presentr.viewControllerForContext = self
         presentr.shouldIgnoreTapOutsideContext = false
@@ -298,7 +298,7 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
         if path.hasSuffix("jpg") || path.hasSuffix("jpge") || path.hasSuffix("png") || path.hasSuffix("PNG") || path.hasSuffix("JPG") || path.hasSuffix("JPEG") {
             let v = UIImageView(frame: UIScreen.main.bounds)
             let rc = ImageResource(downloadURL: URL(string: path)!)
-            v.kf.setImage(with: rc)
+            v.kf.setImage(with: rc, placeholder: #imageLiteral(resourceName: "m252_default2"), options: nil, progressBlock: nil, completionHandler: nil)
             keyWindow?.addSubview(v)
             v.contentMode = .scaleAspectFit
             v.isUserInteractionEnabled = true
@@ -437,7 +437,7 @@ extension NewsDetailController {
         
         if let url = URL(string: article!.headimg) {
             let rc = ImageResource(downloadURL: url)
-            avtarBtn.kf.setImage(with: rc, for: UIControlState.normal)
+            avtarBtn.kf.setImage(with: rc, for: UIControlState.normal, placeholder: #imageLiteral(resourceName: "defaultUser"), options: nil, progressBlock: nil, completionHandler: nil)
         }
         var htmlString = NSString(string: htmlModelString).replacingOccurrences(of: "${contentHtml}", with: article!.content)
         if article!.author.count > 0 {
@@ -512,4 +512,5 @@ extension NewsDetailController {
     func updateCommentBar() {
         commentBar.commentBtn.setTitle(" \(commentList?.total ?? 0)", for: .normal)
     }
+    
 }

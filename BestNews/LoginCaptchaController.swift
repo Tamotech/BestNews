@@ -56,6 +56,7 @@ class LoginCaptchaController: BaseViewController, SwiftyVerificationCodeViewDele
                 self?.captchaCode = captchaCode
                 let rc = ImageResource(downloadURL: URL(string: imgUrl!)!)
                 self?.captchaImgView.kf.setImage(with: rc)
+                
             }
         }
     }

@@ -25,7 +25,7 @@ class SpecialChannelCell: UITableViewCell {
     func updateCell(data: SpecialChannel) {
         if data.preimgpath.count > 0 {
             let rc = ImageResource(downloadURL: URL(string: data.preimgpath)!)
-            coverImg.kf.setImage(with: rc)
+            coverImg.kf.setImage(with: rc, placeholder: #imageLiteral(resourceName: "m252_default2"), options: nil, progressBlock: nil, completionHandler: nil)
         }
         titleLb.text = data.name
     }

@@ -54,7 +54,8 @@ class ProfileCenterController: BaseViewController, UINavigationControllerDelegat
         if let user = SessionManager.sharedInstance.userInfo {
             if let url = URL(string: user.headimg) {
                 let rc = ImageResource(downloadURL: url)
-                avatarImg.kf.setImage(with: rc)
+                avatarImg.kf.setImage(with: rc, placeholder: #imageLiteral(resourceName: "defaultUser"), options: nil, progressBlock: nil, completionHandler: nil)
+
             }
             nicknameTf.text = user.name
             descLb.text = user.intro

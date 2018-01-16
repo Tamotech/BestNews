@@ -272,7 +272,7 @@ extension HomeContentViewController {
         APIRequest.getSpecialListAPI { [weak self](data) in
             self?.specialList = data as! [SpecialChannel]
             self?.tableView.reloadData()
-            //HomeModel.shareInstansce.specilList = data as! [SpecialChannel]
+            HomeModel.shareInstansce.specilList1 = data as! [SpecialChannel]
             DispatchQueue.main.async {
                 self?.updateTitlesView()
             }

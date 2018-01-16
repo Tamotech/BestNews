@@ -52,8 +52,7 @@ class InterestColumnCell: UICollectionViewCell {
             return
         }
         let rc = ImageResource(downloadURL: url)
-        coverImg.kf.setImage(with: rc)
-
+        coverImg.kf.setImage(with: rc, placeholder: #imageLiteral(resourceName: "m231_default"), options: nil, progressBlock: nil, completionHandler: nil)
         
     }
     

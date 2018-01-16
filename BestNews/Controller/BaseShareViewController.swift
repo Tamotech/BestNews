@@ -11,7 +11,7 @@ import UIKit
 class ShareModel: NSObject {
     var title = "新华日报财经"
     var thumb = ""
-    var msg = "专注财经新闻资讯，与财经现场、金融机构、大咖名人零距离！"
+    var msg = "新华日报财经"
     var link = "http://xhfmedia.com/app.htm"
 }
 
@@ -46,6 +46,9 @@ class BaseShareViewController: UIViewController {
     }
     
     @IBAction func handleTapQQBtn(_ sender: UIButton) {
+        //let obj = QQApiNewsObject.objectWithURL(share.link, title: share.title, description: share.description, previewImageURL: URL(string: share.thumb)!)
+        
+//        :(NSURL*)url title:(NSString*)title description:(NSString*)description previewImageURL:(NSURL*)previewURL;
     }
     
     @IBAction func handleTapQQZornBtn(_ sender: UIButton) {

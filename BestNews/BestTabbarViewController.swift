@@ -16,6 +16,7 @@ class BestTabbarViewController: UIViewController, UINavigationControllerDelegate
 
     let timelineVC = CircleHomeViewController.init(nibName: "CircleHomeViewController", bundle: nil)
     let meVC = MeController.init(nibName: "MeController", bundle: nil)
+    let videoVC = LiveListController.init(nibName: "LiveListController", bundle: nil)
     
     let tabbarView = BaseTabBarView.instanceFromXib() as! BaseTabBarView
     
@@ -32,6 +33,13 @@ class BestTabbarViewController: UIViewController, UINavigationControllerDelegate
         self.view.addSubview(navVC2.view)
         navVC2.view.isHidden = true
         navVC2.delegate = self
+        
+        let navVC5 = BaseNavigationController(rootViewController: videoVC)
+        videoVC.entry = 2
+        self.addChildViewController(navVC5)
+        self.view.addSubview(navVC5.view)
+        navVC5.view.isHidden = true
+        navVC5.delegate = self
 
         let navVC3 = BaseNavigationController(rootViewController: timelineVC)
         self.addChildViewController(navVC3)
@@ -44,6 +52,7 @@ class BestTabbarViewController: UIViewController, UINavigationControllerDelegate
         self.view.addSubview(navVC4.view)
         navVC4.view.isHidden = true
         navVC4.delegate = self
+        
     }
     
     override func viewDidLoad() {

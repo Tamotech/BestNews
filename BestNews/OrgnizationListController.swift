@@ -22,6 +22,8 @@ class OrgnizationListController: BaseViewController, UITableViewDataSource, UITa
     var famousPage: Int = 1
     var famousList = OgnizationList()
     
+    var emptyView = BaseEmptyView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,6 +86,9 @@ class OrgnizationListController: BaseViewController, UITableViewDataSource, UITa
                 self.automaticallyAdjustsScrollViewInsets = true
             }
         }
+        emptyView.emptyString = "还没有订阅~"
+        self.tableView.addSubview(emptyView)
+        
     }
     
     //MARK: - tableView
@@ -97,9 +102,11 @@ class OrgnizationListController: BaseViewController, UITableViewDataSource, UITa
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if type == 0 {
+            emptyView.isHidden = ognizationList.list.count>0
             return ognizationList.list.count
         }
         else {
+            emptyView.isHidden = famousList.list.count>0
             return famousList.list.count
         }
     }

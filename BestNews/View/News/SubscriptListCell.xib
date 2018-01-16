@@ -18,13 +18,13 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="112.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RQm-9E-Mjc">
+                    <button opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RQm-9E-Mjc">
                         <rect key="frame" x="16" y="15" width="60" height="60"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="60" id="VhC-1n-eeu"/>
                             <constraint firstAttribute="width" constant="60" id="sN9-jC-wba"/>
                         </constraints>
-                        <state key="normal" image="Column3M2-3"/>
+                        <state key="normal" image="m231_default"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                 <real key="value" value="30"/>
@@ -116,6 +116,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Column3M2-3" width="110" height="108"/>
+        <image name="m231_default" width="60" height="60"/>
     </resources>
 </document>

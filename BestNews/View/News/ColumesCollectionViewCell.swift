@@ -30,7 +30,7 @@ class ColumesCollectionViewCell: UICollectionViewCell {
         self.channel = channel
         if channel.preimgpath.count > 0 {
             let rc = ImageResource(downloadURL: URL(string: channel.preimgpath)!)
-            coverPhotoView.kf.setImage(with: rc)
+            coverPhotoView.kf.setImage(with: rc, placeholder: #imageLiteral(resourceName: "m231_default"), options: nil, progressBlock: nil, completionHandler: nil)
         }
         columeNameLb.text = channel.name
         subscripBtn.isSelected = channel.subscribe == 1

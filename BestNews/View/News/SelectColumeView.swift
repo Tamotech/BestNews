@@ -15,7 +15,7 @@ class SelectColumeView: UIView {
     var buttons: [UIButton] = []
     weak var mainVC: MainController?
     var channels: [NewsChannel] = HomeModel.shareInstansce.allChannels
-    let stableChannels = ["推荐", "快讯", "直播", "专题"]
+    let stableChannels = ["推荐", "快讯", "视频", "专题"]
     func show() {
         self.frame = UIScreen.main.bounds
         self.y = screenHeight
@@ -132,7 +132,7 @@ class SelectColumeView: UIView {
             let name = stableChannels[btn.tag-100]
             if name == "专题" {
                 let vc = SpecialChannelListController()
-                vc.specialList = HomeModel.shareInstansce.specilList
+                vc.specialList = HomeModel.shareInstansce.specilList1
                 dismiss()
                 mainVC?.navigationController?.pushViewController(vc, animated: true)
             }

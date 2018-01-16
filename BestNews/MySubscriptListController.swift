@@ -68,6 +68,7 @@ class MySubscriptListController: BaseViewController, UIScrollViewDelegate, TYPag
             scrollView.addSubview(vc.view)
         }
 //        view.addSubview(titleView!)
+        
     }
     
     

@@ -347,7 +347,7 @@ extension ActivityRegistController {
         activityTitleLb.text = activity?.title
         if let url = URL(string: activity!.preimgpath) {
             let rc = ImageResource(downloadURL: url)
-            coverPhoto.kf.setImage(with: rc)
+            coverPhoto.kf.setImage(with: rc, placeholder: #imageLiteral(resourceName: "m231_default"), options: nil, progressBlock: nil, completionHandler: nil)
         }
         activityDescLb.text = "时间: \(activity!.dateStr())\n地点: \(activity!.address)"
         ticketPriceLb.text = "¥\(ticket!.money)"
@@ -379,7 +379,7 @@ extension ActivityRegistController {
         jobField.text = prepare.profession
         if let url = URL(string: prepare.buscard) {
             let rc = ImageResource(downloadURL: url)
-            businessCardBtn.kf.setImage(with: rc, for: .normal)
+            businessCardBtn.kf.setImage(with: rc, for: UIControlState.normal, placeholder: #imageLiteral(resourceName: "m231_default"), options: nil, progressBlock: nil, completionHandler: nil)
         }
         
     }
