@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import Kingfisher
 
 class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewDelegate {
 
@@ -25,6 +26,11 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
     
     ///childViewControllers
     var cvcs: [UIViewController] = []
+    
+    var ad: AdvertiseModel?    //广告
+    var adSeconds: Int = 5
+    var adView: UIView?
+    var skipADBtn: UIButton?
     
     
     lazy var blackLayer: CAGradientLayer = {
@@ -48,6 +54,9 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
         self.setupTitleView()
         self.setupNavTitleView()
 //        self.setupNavigationItems()
+        
+        self.loadHomeAD()
+        self.readADModel()
     
     }
     
@@ -102,7 +111,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
                     cvcs.append(vc)
                     addChildViewController(vc)
                     let x = screenWidth*CGFloat(i)
-                    vc.view.frame = CGRect(x: x, y: 64, width: screenWidth, height: screenHeight-49-64)
+                    vc.view.frame = CGRect(x: x, y: 64+44, width: screenWidth, height: screenHeight-49-64-44)
                     scrollView.addSubview(vc.view)
                     vc.view.tag = kStabelChildTag
                     continue
@@ -112,7 +121,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
                     cvcs.append(vc)
                     addChildViewController(vc)
                     let x = screenWidth*CGFloat(i)
-                    vc.view.frame = CGRect(x: x, y: 64, width: screenWidth, height: screenHeight-64)
+                    vc.view.frame = CGRect(x: x, y: 64+44, width: screenWidth, height: screenHeight-64-44)
                     scrollView.addSubview(vc.view)
                     vc.view.tag = kStabelChildTag
                     continue
@@ -122,7 +131,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
                     cvcs.append(vc)
                     addChildViewController(vc)
                     let x = screenWidth*CGFloat(i)
-                    vc.view.frame = CGRect(x: x, y: 64, width: screenWidth, height: screenHeight-64)
+                    vc.view.frame = CGRect(x: x, y: 64+44, width: screenWidth, height: screenHeight-64-44)
                     scrollView.addSubview(vc.view)
                     vc.view.tag = kStabelChildTag
                     continue
@@ -136,7 +145,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
                     cvcs.insert(vc, at: cvcs.count-1)
                     addChildViewController(vc)
                     let x = screenWidth*CGFloat(i)
-                    vc.view.frame = CGRect(x: x, y: 0, width: screenWidth, height: screenHeight-49-0)
+                    vc.view.frame = CGRect(x: x, y: 44, width: screenWidth, height: screenHeight-49-44)
                     scrollView.addSubview(vc.view)
                     vc.view.tag = kUnstabelChildTag
                 }
@@ -148,19 +157,19 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
             ///调整固定的frame
             let v1 = scrollView.subviews[0]
             let x = screenWidth*CGFloat(0)
-            v1.frame = CGRect(x: x, y: 64, width: screenWidth, height: screenHeight-49-64)
+            v1.frame = CGRect(x: x, y: 64+44, width: screenWidth, height: screenHeight-49-64-44)
             
             let v2 = scrollView.subviews[1]
             let x2 = screenWidth*CGFloat(1)
-            v2.frame = CGRect(x: x2, y: 64+0, width: screenWidth, height: screenHeight-49-64-0)
+            v2.frame = CGRect(x: x2, y: 64+44, width: screenWidth, height: screenHeight-49-64-44)
             
             let v3 = scrollView.subviews[2]
             let x3 = screenWidth*CGFloat(2)
-            v3.frame = CGRect(x: x3, y: 64+0, width: screenWidth, height: screenHeight-64-0)
+            v3.frame = CGRect(x: x3, y: 64+44, width: screenWidth, height: screenHeight-64-44)
             
             let v4 = scrollView.subviews[3]
             let x4 = screenWidth*CGFloat(titles.count-1)
-            v4.frame = CGRect(x: x4, y: 64+0, width: screenWidth, height: screenHeight-64-0)
+            v4.frame = CGRect(x: x4, y: 64+44, width: screenWidth, height: screenHeight-64-44)
             
             //新加入的专题
             for i in 3..<titles.count-1 {
@@ -172,7 +181,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
                 addChildViewController(vc)
                 vc.barView.removeFromSuperview()
                 let x = screenWidth*CGFloat(i)
-                vc.view.frame = CGRect(x: x, y: 0, width: screenWidth, height: screenHeight-49-0)
+                vc.view.frame = CGRect(x: x, y: 44, width: screenWidth, height: screenHeight-49-44)
                 scrollView.addSubview(vc.view)
                 vc.view.tag = kUnstabelChildTag
             }
@@ -486,4 +495,99 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
             }
         }
     }
+    
+    
+    //从本地读广告  防止空白页
+    func readADModel() {
+        let dic = UserDefaults.standard.object(forKey: "start_ad_key001") as? [String: Any]
+        if dic != nil {
+            let ad = AdvertiseModel()
+            ad.path = dic!["path"] as! String
+            ad.outlink = dic!["link"] as! String
+            ad.imgData = dic!["data"] as? Data
+            self.ad = ad
+            self.showHomeAD(ad)
+        }
+        
+    }
+    
+    //获取广告 保存本地
+    func loadHomeAD() {
+        APIRequest.advertisementAPI { (data) in
+            if data != nil {
+                let ad = data as! AdvertiseModel
+                do {
+                    let data = try Data(contentsOf: URL(string: ad.path)!)
+                    //保存本地
+                    let dic: [String: Any] = [
+                        "path": ad.path,
+                        "link": ad.outlink,
+                        "data": data,
+                    ]
+                    UserDefaults.standard.set(dic, forKey: "start_ad_key001")
+                }
+                catch {
+                    
+                }
+               
+            }
+        }
+    }
+    
+    //展现广告
+    func showHomeAD(_ ad: AdvertiseModel) {
+        let im = UIImageView(frame: UIScreen.main.bounds)
+        im.backgroundColor = .white
+        if ad.imgData != nil {
+            im.image = UIImage(data: ad.imgData!)
+        }
+//        if let url = URL(string: ad.path) {
+//            let rc = ImageResource(downloadURL: url)
+//            im.kf.setImage(with: rc)
+//        }
+        im.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer(target: self, action: #selector(tapAD(_:)))
+        im.addGestureRecognizer(tap)
+        
+        let btn = UIButton(frame: CGRect(x: screenWidth-120, y: 20, width: 100, height: 40))
+        btn.backgroundColor = UIColor(hexString: "#000000", alpha: 0.5)
+        btn.layer.cornerRadius = 20
+        btn.setTitle("5   跳过", for: UIControlState.normal)
+        btn.addTarget(self, action: #selector(tapSkip(_:)), for: UIControlEvents.touchUpInside)
+        im.addSubview(btn)
+        keyWindow?.addSubview(im)
+        self.ad = ad
+        adView = im
+        skipADBtn = btn
+        
+        let t = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(handleADTimerEvent(_:)), userInfo: nil, repeats: true)
+        RunLoop.main.add(t, forMode: RunLoopMode.commonModes)
+        t.fire()
+    }
+    
+    func handleADTimerEvent(_ t: Timer) {
+        adSeconds = adSeconds - 1
+        if adSeconds <= 0 {
+            t.invalidate()
+            adView?.removeFromSuperview()
+        }
+        
+        skipADBtn?.setTitle("\(adSeconds)    跳过", for: UIControlState.normal)
+    }
+    
+    
+    func tapSkip(_ sender: UIButton) {
+        let adView = sender.superview
+        adView?.removeFromSuperview()
+    }
+    
+    @objc
+    func tapAD(_ sender: Any) {
+        adView?.removeFromSuperview()
+        if let url = URL(string: ad!.outlink) {
+            //打开外部链接
+            UIApplication.shared.openURL(url)
+        }
+    }
+    
 }

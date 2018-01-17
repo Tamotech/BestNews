@@ -932,6 +932,14 @@ class APIRequest: NSObject {
         }
     }
     
+    
+    /// 消息列表
+    ///
+    /// - Parameters:
+    ///   - category: 分类  system:系统消息  normal:普通消息  |  为空就是全部消息
+    ///   - page: 页
+    ///   - row: 行
+    ///   - result: 结果
     class func messageListAPI(category: String?,  page: Int, row: Int, result: @escaping JSONResult) {
         let path = "/notice/getNoticePage.htm"
         var params: [String: Any] = ["page": page,
@@ -947,6 +955,24 @@ class APIRequest: NSObject {
             }
             else {
                 BLHUDBarManager.showError(msg: msg)
+            }
+        }
+    }
+    
+    
+    
+    /// 首页开平广告
+    ///
+    /// - Parameter result: 结果
+    class func advertisementAPI(result: @escaping JSONResult) {
+        let path = "/config/getAdv.htm?code=startPageAdv"
+        APIManager.shareInstance.postRequest(urlString: path, params: nil) { (JSON, code, msg) in
+            if code == 0 {
+                let data = [AdvertiseModel].deserialize(from: JSON!["data"].rawString()) as! [AdvertiseModel]
+                result(data.first)
+            }
+            else {
+                
             }
         }
     }

@@ -21,6 +21,7 @@ class HomeArticle: HandyJSON {
     var titleimgpath: String = ""
     var preimgtype: String = ""
     var publisher: String = ""
+    var linkurl = ""
     
     ///是否是推荐新闻
     var recommendFlag = false

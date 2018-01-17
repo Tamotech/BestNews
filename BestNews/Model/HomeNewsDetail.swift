@@ -41,6 +41,7 @@ class HomeNewsDetail: HandyJSON {
     var publishdate: Int = 0
     var publisher: String = ""
     var channelid: String = ""
+    var linkurl = ""
     
     ///评论数量
     var commentNum: Int = 0

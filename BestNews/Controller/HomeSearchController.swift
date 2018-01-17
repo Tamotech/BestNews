@@ -379,6 +379,7 @@ class HomeSearchController: UIViewController, UITableViewDelegate, UITableViewDa
                 let model = searchResult!.model(section: indexPath.section, row: indexPath.row) as! HomeArticle
                 let vc = NewsDetailController(nibName: "NewsDetailController", bundle: nil)
                 vc.articleId = model.id
+                vc.articleHome = model
                 navigationController?.pushViewController(vc, animated: true)
             }
             else if indexPath.section == 1 {
@@ -388,6 +389,7 @@ class HomeSearchController: UIViewController, UITableViewDelegate, UITableViewDa
                 let model = searchResult!.model(section: indexPath.section, row: indexPath.row) as! HomeArticle
                 let vc = NewsDetailController(nibName: "NewsDetailController", bundle: nil)
                 vc.articleId = model.id
+                vc.articleHome = model
                 navigationController?.pushViewController(vc, animated: true)
             }
             else if indexPath.section == 3 {

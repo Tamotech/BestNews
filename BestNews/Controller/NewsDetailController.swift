@@ -52,6 +52,7 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
     
     var articleId: String = ""
     var article: HomeNewsDetail?
+    var articleHome: HomeArticle?
     var recommendArticleList: HomeArticleList?
     var rewardList = RewardManList()
     
@@ -274,8 +275,10 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
         let vc = BaseShareViewController(nibName: "BaseShareViewController", bundle: nil)
         let share = ShareModel()
         share.title = article!.title
-        share.thumb = article!.headimg
         share.link = "http://xhfmedia.com/newsdetail.htm?id=\(articleId)"
+        if articleHome != nil && articleHome!.preimglist.count > 0 {
+            share.thumb = articleHome!.preimglist.first!
+        }
         vc.share = share
         presentr.viewControllerForContext = self
         presentr.shouldIgnoreTapOutsideContext = false
@@ -378,11 +381,11 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
             }
             else if screenWidth < 400 {
                 self.webView.height = (data as! CGFloat)*38/100+20
-                self.webParentHeight.constant = (data as! CGFloat)*38/100+20
+                self.webParentHeight.constant = (data as! CGFloat)*38/100+30
             }
             else {
                 self.webView.height = (data as! CGFloat)*42/100+10
-                self.webParentHeight.constant = (data as! CGFloat)*42/100+10
+                self.webParentHeight.constant = (data as! CGFloat)*42/100+20
             }
         }
         

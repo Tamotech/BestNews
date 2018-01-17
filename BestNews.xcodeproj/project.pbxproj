@@ -134,6 +134,7 @@
 		5A8B864A200EAFED0023F584 /* SearchArticleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8B8648200EAFED0023F584 /* SearchArticleCell.xib */; };
 		5A8B864C200EB6980023F584 /* HomeSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8B864B200EB6980023F584 /* HomeSearchModel.swift */; };
 		5A8B864E200ED1BD0023F584 /* MessageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8B864D200ED1BD0023F584 /* MessageList.swift */; };
+		5A8B8691200F728D0023F584 /* AdvertiseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8B8690200F728D0023F584 /* AdvertiseModel.swift */; };
 		5A8BFC0A1FF88A7B004145AC /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8BFC091FF88A7A004145AC /* libz.tbd */; };
 		5A8BFC0E1FF88FD7004145AC /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8BFC0D1FF88AA8004145AC /* CoreMotion.framework */; };
 		5A8BFC111FF8AF40004145AC /* APOrderInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BFC0F1FF8AF40004145AC /* APOrderInfo.m */; };
@@ -461,6 +462,7 @@
 		5A8B8648200EAFED0023F584 /* SearchArticleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchArticleCell.xib; sourceTree = "<group>"; };
 		5A8B864B200EB6980023F584 /* HomeSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSearchModel.swift; sourceTree = "<group>"; };
 		5A8B864D200ED1BD0023F584 /* MessageList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageList.swift; sourceTree = "<group>"; };
+		5A8B8690200F728D0023F584 /* AdvertiseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvertiseModel.swift; sourceTree = "<group>"; };
 		5A8BFC081FF88A66004145AC /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		5A8BFC091FF88A7A004145AC /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		5A8BFC0B1FF88A85004145AC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -1496,6 +1498,7 @@
 				5A105B4C1FB9F3CB0065ECC7 /* NewsChannel.swift */,
 				5A026D8D1FE8954900B99466 /* HomeModel.swift */,
 				5A8B864B200EB6980023F584 /* HomeSearchModel.swift */,
+				5A8B8690200F728D0023F584 /* AdvertiseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1919,6 +1922,7 @@
 				5AC684811F7FFC2E006CEB53 /* ThreePhotosNewsCell.swift in Sources */,
 				CCDB6D461F7A28A20012432E /* BaseWKWebViewController.swift in Sources */,
 				5A32A70F1F93353700773884 /* BaseSegmentControl.swift in Sources */,
+				5A8B8691200F728D0023F584 /* AdvertiseModel.swift in Sources */,
 				5A8364CC1FFB0005001AD740 /* ImageSelectSheetView.swift in Sources */,
 				CC2906F21F659F58001894DA /* ConstantHelper.swift in Sources */,
 				5AF9CE3D1F814880002AA4A6 /* ProfileCenterCell.swift in Sources */,

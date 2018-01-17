@@ -93,6 +93,7 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
             let article = headerBannerView.banner[index]
             let vc = NewsDetailController.init(nibName: "NewsDetailController", bundle: nil) as NewsDetailController
             vc.articleId = article.id
+            vc.articleHome = article
             navigationController?.pushViewController(vc, animated: true)
         }
     }
@@ -166,9 +167,17 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
         }
         else {
             let article = articleList?.list[indexPath.row - 1]
-            let vc = NewsDetailController.init(nibName: "NewsDetailController", bundle: nil) as NewsDetailController
-            vc.articleId = article!.id
-            navigationController?.pushViewController(vc, animated: true)
+            if article!.linkurl.count > 0 && !article!.linkurl.contains("null") {
+                let wkvc = BaseWKWebViewController()
+                wkvc.urlString = article!.linkurl
+                navigationController?.pushViewController(wkvc, animated: true)
+            }
+            else {
+                let vc = NewsDetailController.init(nibName: "NewsDetailController", bundle: nil) as NewsDetailController
+                vc.articleId = article!.id
+                vc.articleHome = article
+                navigationController?.pushViewController(vc, animated: true)
+            }
         }
         
     }

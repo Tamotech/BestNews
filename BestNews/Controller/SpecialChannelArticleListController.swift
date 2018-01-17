@@ -93,6 +93,9 @@ class SpecialChannelArticleListController: BaseViewController, UITableViewDelega
     func clickedCycleView(_ cycleView: YLCycleView, selectedIndex index: Int) {
         let vc = NewsDetailController.init(nibName: "NewsDetailController", bundle: nil) as NewsDetailController
         vc.articleId = coverArticles[index].id
+        if articleList != nil {
+            vc.articleHome = articleList!.list[index]
+        }
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -149,6 +152,7 @@ class SpecialChannelArticleListController: BaseViewController, UITableViewDelega
         let article = articleList?.list[indexPath.row]
         let vc = NewsDetailController.init(nibName: "NewsDetailController", bundle: nil) as NewsDetailController
         vc.articleId = article!.id
+        vc.articleHome = article
         navigationController?.pushViewController(vc, animated: true)
         
         

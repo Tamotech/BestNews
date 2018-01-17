@@ -121,6 +121,7 @@ class CollectionNewsListController: BaseViewController, UITableViewDataSource, U
         let article = articleList.list[indexPath.row]
         let vc = NewsDetailController.init(nibName: "NewsDetailController", bundle: nil) as NewsDetailController
         vc.articleId = article.id
+        vc.articleHome = article
         navigationController?.pushViewController(vc, animated: true)
         
         

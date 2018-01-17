@@ -249,6 +249,7 @@ UITableViewDataSource, UITableViewDelegate, UICollectionViewDelegate, UICollecti
             let article = articleList.list[indexPath.row];
             let vc = NewsDetailController(nibName: "NewsDetailController", bundle: nil)
             vc.articleId = article.id
+            vc.articleHome = article
             navigationController?.pushViewController(vc, animated: true)
         }
         else {
