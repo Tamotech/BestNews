@@ -133,6 +133,7 @@
 		5A8B8649200EAFED0023F584 /* SearchArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8B8647200EAFED0023F584 /* SearchArticleCell.swift */; };
 		5A8B864A200EAFED0023F584 /* SearchArticleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8B8648200EAFED0023F584 /* SearchArticleCell.xib */; };
 		5A8B864C200EB6980023F584 /* HomeSearchModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8B864B200EB6980023F584 /* HomeSearchModel.swift */; };
+		5A8B864E200ED1BD0023F584 /* MessageList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8B864D200ED1BD0023F584 /* MessageList.swift */; };
 		5A8BFC0A1FF88A7B004145AC /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8BFC091FF88A7A004145AC /* libz.tbd */; };
 		5A8BFC0E1FF88FD7004145AC /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8BFC0D1FF88AA8004145AC /* CoreMotion.framework */; };
 		5A8BFC111FF8AF40004145AC /* APOrderInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A8BFC0F1FF8AF40004145AC /* APOrderInfo.m */; };
@@ -459,6 +460,7 @@
 		5A8B8647200EAFED0023F584 /* SearchArticleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchArticleCell.swift; sourceTree = "<group>"; };
 		5A8B8648200EAFED0023F584 /* SearchArticleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchArticleCell.xib; sourceTree = "<group>"; };
 		5A8B864B200EB6980023F584 /* HomeSearchModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeSearchModel.swift; sourceTree = "<group>"; };
+		5A8B864D200ED1BD0023F584 /* MessageList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageList.swift; sourceTree = "<group>"; };
 		5A8BFC081FF88A66004145AC /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
 		5A8BFC091FF88A7A004145AC /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		5A8BFC0B1FF88A85004145AC /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -1273,6 +1275,7 @@
 		5AF9CE3A1F81485C002AA4A6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				5A8B864D200ED1BD0023F584 /* MessageList.swift */,
 				5A0612CF1FDD4AF700E7F20A /* ApplyFamousModel.swift */,
 			);
 			name = Model;
@@ -1802,6 +1805,7 @@
 				5A04B4211FD44EA100DE58D2 /* UIView+Layout.m in Sources */,
 				5ABB92CA1FA5EB1A002E3180 /* SimpleHUDController.swift in Sources */,
 				5ABB92B51FA5E096002E3180 /* DES3EncryptUtil.h in Sources */,
+				5A8B864E200ED1BD0023F584 /* MessageList.swift in Sources */,
 				5ABB92B61FA5E096002E3180 /* DES3EncryptUtil.m in Sources */,
 				5AA4E82B1FD42DC1007A04FA /* AlivcQRCodeViewController.m in Sources */,
 				5ABB92B71FA5E096002E3180 /* MyBase64.h in Sources */,

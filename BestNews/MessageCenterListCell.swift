@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class MessageCenterListCell: UITableViewCell {
 
@@ -28,4 +29,15 @@ class MessageCenterListCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
+    
+    func updateCell(_ message: MessageModel) {
+        let url = URL(string: message.img)
+        if url != nil {
+            let rc = ImageResource(downloadURL: url!)
+            avatarBtn.kf.setImage(with: rc, for: UIControlState.normal, placeholder: #imageLiteral(resourceName: "defaultUser"), options: nil, progressBlock: nil, completionHandler: nil)
+        }
+        nameLb.text = message.title
+        contentLb.text = message.description
+        dateLb.text = message.dateStr()
+    }
 }

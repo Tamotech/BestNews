@@ -433,7 +433,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
             })
             logoView?.image = #imageLiteral(resourceName: "xinhua_logo_red")
             searchButton?.setTitleColor(gray181, for: UIControlState.normal)
-            searchButton?.setImage(#imageLiteral(resourceName: "icon_search"), for: UIControlState.normal)
+            searchButton?.setImage(#imageLiteral(resourceName: "m221_search_black"), for: UIControlState.normal)
             messageBt?.setImage(#imageLiteral(resourceName: "icon_meassage"), for: UIControlState.normal)
             menuBt?.setImage(#imageLiteral(resourceName: "icon_menu_dark"), for: UIControlState.normal)
         }
@@ -445,7 +445,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
             })
             logoView?.image = #imageLiteral(resourceName: "xinhua_logo_white")
             searchButton?.setTitleColor(.white, for: UIControlState.normal)
-            searchButton?.setImage(#imageLiteral(resourceName: "icon_search_white"), for: UIControlState.normal)
+            searchButton?.setImage(#imageLiteral(resourceName: "m221_search_white"), for: UIControlState.normal)
             messageBt?.setImage(#imageLiteral(resourceName: "icon_message_white"), for: UIControlState.normal)
             menuBt?.setImage(#imageLiteral(resourceName: "icon_menu_white"), for: UIControlState.normal)
         }

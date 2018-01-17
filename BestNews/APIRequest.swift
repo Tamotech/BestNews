@@ -931,4 +931,23 @@ class APIRequest: NSObject {
             }
         }
     }
+    
+    class func messageListAPI(category: String?,  page: Int, row: Int, result: @escaping JSONResult) {
+        let path = "/notice/getNoticePage.htm"
+        var params: [String: Any] = ["page": page,
+                                     "row": row]
+        if category != nil {
+            params["category"] = category!
+        }
+        
+        APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
+            if code == 0 {
+                let data = MessageList.deserialize(from: JSON!["data"].rawString())
+                result(data)
+            }
+            else {
+                BLHUDBarManager.showError(msg: msg)
+            }
+        }
+    }
 }

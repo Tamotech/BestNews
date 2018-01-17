@@ -59,6 +59,10 @@ class HomeSearchController: UIViewController, UITableViewDelegate, UITableViewDa
             l.textColor = gray51
             l.text = self.hotwords[i]
             v.addSubview(l)
+            let btn = UIButton(frame: l.frame)
+            btn.tag = i
+            btn.addTarget(self, action: #selector(handleTapHotwords(_:)), for: UIControlEvents.touchUpInside)
+            v.addSubview(btn)
             if i%2 == 0 {
                 let line2 = UIView(frame: CGRect(x: screenWidth/2, y: y, width: 1, height: h-20))
                 line2.backgroundColor = UIColor.groupTableViewBackground
