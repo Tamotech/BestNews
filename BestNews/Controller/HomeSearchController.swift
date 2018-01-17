@@ -29,6 +29,7 @@ class HomeSearchController: UIViewController, UITableViewDelegate, UITableViewDa
         }
         return []
     }()
+    let hotwords = SessionManager.sharedInstance.hotwords
     
     lazy var hotwordView: UIView = {
         
@@ -50,14 +51,13 @@ class HomeSearchController: UIViewController, UITableViewDelegate, UITableViewDa
         header.addSubview(line1)
         v.addSubview(header)
         
-        let hotwords = SessionManager.sharedInstance.hotwords
-        for i in 0..<hotwords.count {
+        for i in 0..<self.hotwords.count {
             let x: CGFloat = 15 + CGFloat(i%2)*screenWidth/2
             let y = 40+CGFloat(i/2)*h+10
             let l = UILabel(frame: CGRect(x: x, y: y, width: screenWidth/2-20, height: 20))
             l.font = UIFont.systemFont(ofSize: 15)
             l.textColor = gray51
-            l.text = hotwords[i]
+            l.text = self.hotwords[i]
             v.addSubview(l)
             if i%2 == 0 {
                 let line2 = UIView(frame: CGRect(x: screenWidth/2, y: y, width: 1, height: h-20))
@@ -70,7 +70,7 @@ class HomeSearchController: UIViewController, UITableViewDelegate, UITableViewDa
                 v.addSubview(line2)
             }
         }
-        v.height = CGFloat(hotwords.count/2)*h+h
+        v.height = CGFloat(self.hotwords.count/2)*h+h
         v.backgroundColor = .white
         return v
     }()
@@ -171,6 +171,13 @@ class HomeSearchController: UIViewController, UITableViewDelegate, UITableViewDa
         self.dismiss(animated: false) {
             
         }
+    }
+    
+    func handleTapHotwords(_ sender: UIButton) {
+        let hotword = self.hotwords[sender.tag]
+        searchBar.text = hotword
+        switchToMode(mode: 2)
+        loadSearchResult(hotword)
     }
    
     //MARK: - tableView
@@ -359,6 +366,7 @@ class HomeSearchController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if tableView == hostoryTableView {
             let word = historyKeywords[indexPath.row]
+            searchBar.text = word
             switchToMode(mode: 2)
             loadSearchResult(word)
         }
