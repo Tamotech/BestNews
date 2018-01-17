@@ -900,4 +900,35 @@ class APIRequest: NSObject {
         }
         
     }
+    
+    
+    /// 首页搜索
+    ///
+    /// - Parameters:
+    ///   - keyword: 关键词
+    ///   - type: 类型 normalArticle：普通文章
+    
+    ///     newsflash：快讯 |specialArticle：专题 | activity：活动 | organize：机构 | celebrityuser：名人
+    ///   - page: 页
+    ///   - row: 行数
+    ///   - result: 结果
+    class func homeSearchAPI(keyword: String, type: String?, page: Int, row: Int, result: @escaping JSONResult) {
+        let path = "/search/doSearch.htm"
+        var params: [String: Any] = ["keyword": keyword,
+                      "page": page,
+                      "row": row]
+        if type != nil {
+            params["type"] = type!
+        }
+        
+        APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
+            if code == 0 {
+                let data = HomeSearchModel.deserialize(from: JSON!["data"].rawString())
+                result(data)
+            }
+            else {
+                BLHUDBarManager.showError(msg: msg)
+            }
+        }
+    }
 }

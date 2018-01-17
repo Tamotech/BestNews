@@ -66,6 +66,7 @@
             <connections>
                 <outlet property="collectBtn" destination="APK-O0-6A6" id="FSf-NI-1Sx"/>
                 <outlet property="contentLb" destination="bQG-y0-7Jx" id="tPQ-OA-6LM"/>
+                <outlet property="repostBtn" destination="mGy-du-22I" id="MBJ-Y4-cHn"/>
                 <outlet property="timeLb" destination="d9j-mU-hF0" id="Enq-X9-d0p"/>
             </connections>
             <point key="canvasLocation" x="53" y="108.5"/>

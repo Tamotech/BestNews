@@ -385,7 +385,8 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
     
     func handleTapSearchItem(sender: Any) {
         let vc = HomeSearchController(nibName: "HomeSearchController", bundle: nil)
-        navigationController?.present(vc, animated: false, completion: nil)
+        let navVC = BaseNavigationController(rootViewController: vc)
+        navigationController?.present(navVC, animated: false, completion: nil)
     }
     
     func handleTapMenuItem(sender: Any) {

@@ -19,6 +19,9 @@ class FastNewsCell: UITableViewCell {
     
     @IBOutlet weak var collectBtn: UIButton!
     
+    @IBOutlet weak var repostBtn: UIButton!
+    
+    
     var clickRepostCallback: RepostFastNewsCallback?
     
     var news = FastNews()

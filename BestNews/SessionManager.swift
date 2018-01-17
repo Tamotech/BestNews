@@ -50,6 +50,9 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
     ///所有敏感词
     var sensitiveWords: [String] = []
     
+    ///所有搜索热词
+    var hotwords: [String] = []
+    
     ///直播室聊天token
     var liveToken = ""
     
@@ -63,6 +66,7 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
         self.readLoginInfo()
         self.getTags()
         self.getAllSensitiveWords()
+        self.getHotWords()
     }
     
     
@@ -282,4 +286,19 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
             }
         }
     }
+    
+    //搜索热词
+    func getHotWords() {
+        let path = "/search/getHotKeyword.htm"
+        APIManager.shareInstance.postRequest(urlString: path, params: nil) { [weak self](JSON, code, msg) in
+            if code == 0 {
+                let words = JSON!["data"].rawValue as! [String]
+                self?.hotwords = words
+            }
+            else {
+                self?.getHotWords()
+            }
+        }
+    }
+    
 }
