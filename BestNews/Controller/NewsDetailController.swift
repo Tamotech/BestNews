@@ -43,6 +43,8 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
     
     @IBOutlet weak var rewardBottom: NSLayoutConstraint!
     
+    @IBOutlet weak var rewardParentHeight: NSLayoutConstraint!
+    
     
     
     let htmlModelString = "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><title></title><style>body {font:48px/1.5 tahoma,arial,sans-serif;color:#55555;text-align:justify;text-align-last:justify;line-height:70px}hr {height:1px;border:none;border-top:1px solid #e8e8e8;} img {width:100%;height:auto}</style></head><body><div style='margin:35px' id=\"content\">${contentHtml}${author}</div></body></html>"
@@ -376,16 +378,16 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
             print("加载完毕...>\(data!)")
             ///TODO: 高度计算cheat
             if screenWidth < 350 {
-                self.webView.height = (data as! CGFloat)*32/100+50
-                self.webParentHeight.constant = (data as! CGFloat)*32/100+50
+                self.webView.height = (data as! CGFloat)*32/100+80
+                self.webParentHeight.constant = (data as! CGFloat)*32/100+80
             }
             else if screenWidth < 400 {
-                self.webView.height = (data as! CGFloat)*38/100+20
-                self.webParentHeight.constant = (data as! CGFloat)*38/100+30
+                self.webView.height = (data as! CGFloat)*38/100+60
+                self.webParentHeight.constant = (data as! CGFloat)*38/100+60
             }
             else {
-                self.webView.height = (data as! CGFloat)*42/100+10
-                self.webParentHeight.constant = (data as! CGFloat)*42/100+20
+                self.webView.height = (data as! CGFloat)*43/100+50
+                self.webParentHeight.constant = (data as! CGFloat)*42/100+50
             }
         }
         
@@ -466,7 +468,7 @@ extension NewsDetailController {
         }
         
         //TODO: 暂时都关闭入口
-        if rewardList.list.count > 0 {
+        /*if rewardList.list.count > 0 {
             
             let max = rewardList.list.count >= colNum*2 ? colNum*2-1 : rewardList.list.count
             for i in 0..<max {
@@ -509,7 +511,15 @@ extension NewsDetailController {
             rewardMenView.isHidden = true
             rewardHeight.constant = 0
             rewardBottom.constant = 0
-        }
+        }*/
+        
+        
+        ///v1.1 打赏隐藏
+        rewardMenView.isHidden = true
+        rewardHeight.constant = 0
+        rewardBottom.constant = 0
+        rewardView.isHidden = true
+        rewardParentHeight.constant = 0
     }
     
     func updateCommentBar() {

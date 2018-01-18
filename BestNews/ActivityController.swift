@@ -35,10 +35,10 @@ class ActivityController: BaseViewController, UITableViewDelegate, UITableViewDa
         tableView.separatorStyle = .none
         tableView.sectionHeaderHeight = 0.1
         
-//        let searchItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_search"), landscapeImagePhone: #imageLiteral(resourceName: "icon_search"), style: .plain, target: self, action: #selector(handleTapSearch(_:)))
-//        let messageItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_meassage"), style: .plain, target: self, action: #selector(handleTapMessage(_:)))
-//        self.navigationItem.leftBarButtonItem = searchItem
-//        self.navigationItem.rightBarButtonItem = messageItem
+        let searchItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_search"), landscapeImagePhone: #imageLiteral(resourceName: "icon_search"), style: .plain, target: self, action: #selector(handleTapSearch(_:)))
+        let messageItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_meassage"), style: .plain, target: self, action: #selector(handleTapMessage(_:)))
+        self.navigationItem.leftBarButtonItem = searchItem
+        self.navigationItem.rightBarButtonItem = messageItem
         if #available(iOS 11.0, *) {
             tableView.contentInsetAdjustmentBehavior = .never
         } else {

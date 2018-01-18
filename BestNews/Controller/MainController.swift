@@ -256,7 +256,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
         menubt.setImage(#imageLiteral(resourceName: "icon_menu_white"), for: .normal)
         menubt.addTarget(self, action: #selector(handleTapMenuItem(sender:)), for: UIControlEvents.touchUpInside)
         barView.addSubview(menubt)
-        menubt.snp.makeConstraints { (make) in
+        menubt.snp.makeConstraints { (make) in  
             make.right.equalTo(-4)
             make.bottom.equalTo(-8)
             make.left.equalTo(messagebt.snp.left).offset(0)
@@ -268,7 +268,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
         self.logoView = logo
         self.messageBt = messagebt
         self.menuBt = menubt
-     
+        self.navBarTurnBg(white: true)
     }
     
     ///V1.0 隐藏 首页搜索
@@ -447,7 +447,8 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
             menuBt?.setImage(#imageLiteral(resourceName: "icon_menu_dark"), for: UIControlState.normal)
         }
         else {
-            titleView?.updateTintcolor(currentItemColor: UIColor.init(white: 1, alpha: 1), unselectItemColor: UIColor.init(white: 1, alpha: 0.5))
+            //始终显示白色
+            /*titleView?.updateTintcolor(currentItemColor: UIColor.init(white: 1, alpha: 1), unselectItemColor: UIColor.init(white: 1, alpha: 0.5))
             UIView.animate(withDuration: 0.3, animations: {
                 self.navBarView?.backgroundColor = .clear
                 self.blackLayer.opacity = 1
@@ -456,7 +457,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
             searchButton?.setTitleColor(.white, for: UIControlState.normal)
             searchButton?.setImage(#imageLiteral(resourceName: "m221_search_white"), for: UIControlState.normal)
             messageBt?.setImage(#imageLiteral(resourceName: "icon_message_white"), for: UIControlState.normal)
-            menuBt?.setImage(#imageLiteral(resourceName: "icon_menu_white"), for: UIControlState.normal)
+            menuBt?.setImage(#imageLiteral(resourceName: "icon_menu_white"), for: UIControlState.normal)*/
         }
  
     }

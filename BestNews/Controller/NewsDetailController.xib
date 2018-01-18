@@ -18,6 +18,7 @@
                 <outlet property="rewardBtn" destination="vlN-hw-j7m" id="aWd-yu-G8t"/>
                 <outlet property="rewardHeight" destination="FCq-hw-Ngc" id="I3n-4W-Qr9"/>
                 <outlet property="rewardMenView" destination="Tyf-q9-8Lf" id="Nsv-Ry-Fj8"/>
+                <outlet property="rewardParentHeight" destination="GGe-YT-vPr" id="dX0-hT-BUa"/>
                 <outlet property="rewardView" destination="sK7-qi-NTZ" id="2Hc-IY-sDt"/>
                 <outlet property="scrollView" destination="N3R-rR-IBP" id="rwn-hA-bRO"/>
                 <outlet property="subscriptBtn" destination="6G9-kn-O7X" id="Vr7-pd-nUv"/>
@@ -157,6 +158,7 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="bottom" secondItem="Tyf-q9-8Lf" secondAttribute="bottom" constant="40" id="DH4-yU-CtH"/>
+                                        <constraint firstAttribute="height" constant="223" id="GGe-YT-vPr"/>
                                         <constraint firstItem="vlN-hw-j7m" firstAttribute="top" secondItem="sK7-qi-NTZ" secondAttribute="top" id="YJi-4n-7ax"/>
                                         <constraint firstItem="Tyf-q9-8Lf" firstAttribute="leading" secondItem="sK7-qi-NTZ" secondAttribute="leading" constant="20" id="YiJ-LJ-2E3"/>
                                         <constraint firstItem="vlN-hw-j7m" firstAttribute="centerX" secondItem="sK7-qi-NTZ" secondAttribute="centerX" id="Zk6-Ro-qbh"/>

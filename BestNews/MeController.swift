@@ -70,8 +70,8 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
         let tap = UITapGestureRecognizer(target: self, action: #selector(handleTapLoginView(_:)))
         loginView.addGestureRecognizer(tap)
         
-//        let messageItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_meassage"), style: .plain, target: self, action: #selector(handleTapMessageBtn(sender:)))
-//        navigationItem.rightBarButtonItem = messageItem
+        let messageItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_meassage"), style: .plain, target: self, action: #selector(handleTapMessageBtn(sender:)))
+        navigationItem.rightBarButtonItem = messageItem
         
         NotificationCenter.default.addObserver(self, selector: #selector(didUpdateUserInfo(_:)), name: kUserInfoDidUpdateNotify, object: nil)
     }

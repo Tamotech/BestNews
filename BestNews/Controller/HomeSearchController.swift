@@ -253,6 +253,52 @@ class HomeSearchController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if tableView == hostoryTableView {
+            return 0.1
+        }
+        else {
+            
+            if section == 0 {
+                if searchResult!.normalArticle.list.count == 0 {
+                    return 0.1
+                }
+                return 10
+            }
+            else if section == 1 {
+                if searchResult!.newsflash.list.count == 0 {
+                    return 0.1
+                }
+                return 10
+            }
+            else if section == 2 {
+                if searchResult!.specialArticle.list.count == 0 {
+                    return 0.1
+                }
+                return 10
+            }
+            else if section == 3 {
+                if searchResult!.activity.list.count == 0 {
+                    return 0.1
+                }
+                return 10
+            }
+            else if section == 4 {
+                if searchResult!.organize.list.count == 0 {
+                    return 0.1
+                }
+                return 10
+            }
+            else if section == 5 {
+                if searchResult!.celebrityuser.list.count == 0 {
+                    return 0.1
+                }
+                return 10
+            }
+            return 10
+        }
+    }
+    
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
@@ -299,7 +345,7 @@ class HomeSearchController: UIViewController, UITableViewDelegate, UITableViewDa
             if searchResult!.organize.list.count == 0 {
                 return nil
             }
-            l.text = "机构"
+            l.text = "财经号"
             return v
         }
         else if section == 5 {
@@ -458,6 +504,7 @@ class HomeSearchController: UIViewController, UITableViewDelegate, UITableViewDa
             
             self?.searchResult = data as? HomeSearchModel
             self?.resultTableView.reloadData()
+            self?.searchBar.resignFirstResponder()
         }
     }
 

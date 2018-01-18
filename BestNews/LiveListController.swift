@@ -42,7 +42,7 @@ class LiveListController: BaseViewController, UITableViewDelegate, UITableViewDa
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        reloadLiveList()
+//        reloadLiveList()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -73,6 +73,9 @@ class LiveListController: BaseViewController, UITableViewDelegate, UITableViewDa
         
         self.view.addSubview(emptyView)
         emptyView.emptyString = "还没有直播~"
+        
+        let messageItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_message_white"), style: .plain, target: self, action: #selector(handleTapMessageItem(sender:)))
+        navigationItem.rightBarButtonItem = messageItem
     }
     
     
@@ -122,6 +125,11 @@ class LiveListController: BaseViewController, UITableViewDelegate, UITableViewDa
         }
         let vc = ChatRoomViewController(nibName: "ChatRoomViewController", bundle: nil)
         vc.liveModel = model
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func handleTapMessageItem(sender: Any) {
+        let vc = MessageCenterController()
         navigationController?.pushViewController(vc, animated: true)
     }
 }
