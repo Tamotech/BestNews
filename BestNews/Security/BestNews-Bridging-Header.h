@@ -20,3 +20,7 @@
 #import <AliPaySDK/AliPaySDK.h>
 #import "APOrderInfo.h"
 #import <TencentOpenAPI/TencentOAuth.h>
+#import <TencentOpenAPI/QQApiInterfaceObject.h>
+#import <TencentOpenAPI/QQApiInterface.h>
+#import "OpenInstallSDK.h"
+#import <JPUSHService.h>

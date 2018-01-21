@@ -119,11 +119,17 @@ class CollectionNewsListController: BaseViewController, UITableViewDataSource, U
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
       
         let article = articleList.list[indexPath.row]
-        let vc = NewsDetailController.init(nibName: "NewsDetailController", bundle: nil) as NewsDetailController
-        vc.articleId = article.id
-        vc.articleHome = article
-        navigationController?.pushViewController(vc, animated: true)
-        
+        if article.linkurl.count > 0 && !article.linkurl.contains("null") {
+            let wkvc = BaseWKWebViewController()
+            wkvc.urlString = article.linkurl
+            navigationController?.pushViewController(wkvc, animated: true)
+        }
+        else {
+            let vc = NewsDetailController.init(nibName: "NewsDetailController", bundle: nil) as NewsDetailController
+            vc.articleId = article.id
+            vc.articleHome = article
+            navigationController?.pushViewController(vc, animated: true)
+        }
         
     }
     

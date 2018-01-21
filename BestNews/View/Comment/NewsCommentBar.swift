@@ -224,6 +224,27 @@ class NewsCommentBar: UIView, UITextViewDelegate {
     func handleTapBarView(sender: Any) {
         if !SessionManager.sharedInstance.loginInfo.isLogin {
             Toolkit.showLoginVC()
+            return
+        }
+        else if !SessionManager.sharedInstance.userInfo!.idproveflag {
+            //实名认证
+            
+            let ownerVC = self.viewController() as! BaseViewController
+            let vc = ApplyIdentifyController(nibName: "ApplyIdentifyController", bundle: nil)
+            let alert = XHAlertController()
+            alert.modalPresentationStyle = .overCurrentContext
+            ownerVC.modalPresentationStyle = .currentContext
+            alert.tit = "很抱歉, 您暂时未实名认证"
+            alert.msg = "需要进行先认证后再评论"
+            alert.callback = {
+                (buttonType)in
+                if buttonType == 0 {
+                    ownerVC.navigationController?.pushViewController(vc, animated: true)
+
+                }
+            }
+            ownerVC.present(alert, animated: false, completion: nil)
+            return
         }
         self.switchToEditMode(edit: true)
     }

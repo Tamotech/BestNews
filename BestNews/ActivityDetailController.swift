@@ -121,9 +121,9 @@ class ActivityDetailController: BaseViewController, ActivityTicketListController
         }
         let vc = BaseShareViewController(nibName: "BaseShareViewController", bundle: nil)
         let share = ShareModel()
-//        share.title = activity.title
-//        share.msg = ""
-//        share.thumb = activity.preimgpath
+        share.title = activity.title
+        share.msg = "新华财经日报"
+        share.thumb = activity.preimgpath
         vc.share = share
         presentr.viewControllerForContext = self
         presentr.shouldIgnoreTapOutsideContext = false

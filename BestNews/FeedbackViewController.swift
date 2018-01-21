@@ -47,17 +47,35 @@ class FeedbackViewController: BaseViewController, UITextViewDelegate {
             //截断
            
         }
+        
     }
     
     @IBAction func handleTapSubmitBt(_ sender: UIButton) {
         
-        let vc = ApplyFamousComplateController(nibName: "ApplyFamousComplateController", bundle: nil)
-        vc.data = ("您的意见反馈已提交", "收到您的反馈后，我们会将处理结果发送至您的通知中心，处理需要3-5个工作日，请耐心等待")
-        customPresentViewController(self.presentr, viewController: vc, animated: false, completion: nil)
-        vc.complete = {
-            [weak self] in
-            self?.navigationController?.popToRootViewController(animated: true)
+        let words = tv.text!
+        if words.count == 0 || words.count > 200 {
+            return
         }
+        let path = "/member/suggest.htm"
+        let params = ["content": words]
+        APIManager.shareInstance.postRequest(urlString: path, params: params) { [weak self](JSON, code, msg) in
+            if code == 0 {
+                DispatchQueue.main.async {
+                    let vc = ApplyFamousComplateController(nibName: "ApplyFamousComplateController", bundle: nil)
+                    vc.data = ("您的意见反馈已提交", "收到您的反馈后，我们会将处理结果发送至您的通知中心，处理需要3-5个工作日，请耐心等待")
+                    self!.customPresentViewController(self!.presentr, viewController: vc, animated: false, completion: nil)
+                    vc.complete = {
+                        [weak self] in
+                        self?.navigationController?.popToRootViewController(animated: true)
+                    }
+                }
+            }
+            else {
+                BLHUDBarManager.showError(msg: msg)
+            }
+        }
+        
+        
     }
     
 }

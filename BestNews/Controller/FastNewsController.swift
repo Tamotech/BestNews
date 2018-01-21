@@ -106,6 +106,7 @@ class FastNewsController: BaseViewController, UITableViewDataSource, UITableView
     //MARK: - tableView
     
     func numberOfSections(in tableView: UITableView) -> Int {
+        emptyView.isHidden = (newsList?.numberOfSections() ?? 0) > 0
         return newsList?.numberOfSections() ?? 0
     }
     
@@ -139,6 +140,8 @@ class FastNewsController: BaseViewController, UITableViewDataSource, UITableView
             let rootVC = self?.navigationController?.childViewControllers.first as! MainController
             let vc = BaseShareViewController(nibName: "BaseShareViewController", bundle: nil)
             let share = ShareModel()
+            share.title = "新华日报财经快讯"
+            share.msg = news.content
             vc.share = share
             rootVC.presentr.viewControllerForContext = rootVC
             rootVC.presentr.shouldIgnoreTapOutsideContext = false

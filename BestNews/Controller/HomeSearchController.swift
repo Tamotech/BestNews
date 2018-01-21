@@ -423,10 +423,17 @@ class HomeSearchController: UIViewController, UITableViewDelegate, UITableViewDa
         else {
             if indexPath.section == 0 {
                 let model = searchResult!.model(section: indexPath.section, row: indexPath.row) as! HomeArticle
-                let vc = NewsDetailController(nibName: "NewsDetailController", bundle: nil)
-                vc.articleId = model.id
-                vc.articleHome = model
-                navigationController?.pushViewController(vc, animated: true)
+                if model.linkurl.count > 0 && !model.linkurl.contains("null") {
+                    let wkvc = BaseWKWebViewController()
+                    wkvc.urlString = model.linkurl
+                    navigationController?.pushViewController(wkvc, animated: true)
+                }
+                else {
+                    let vc = NewsDetailController(nibName: "NewsDetailController", bundle: nil)
+                    vc.articleId = model.id
+                    vc.articleHome = model
+                    navigationController?.pushViewController(vc, animated: true)
+                }
             }
             else if indexPath.section == 1 {
                 

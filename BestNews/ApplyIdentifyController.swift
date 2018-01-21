@@ -41,6 +41,7 @@ class ApplyIdentifyController: BaseViewController {
         let idcode = idCodeField.text!
         APIRequest.applyIdentiify(idname: name, idCode: idcode) { [weak self](success) in
             if success {
+                SessionManager.sharedInstance.getUserInfo()
                 DispatchQueue.main.async {
                     let alert = ApplyIdentifySuccessAlertController(nibName: "ApplyIdentifySuccessAlertController", bundle: nil)
                     self?.customPresentViewController(self!.presentr, viewController: alert, animated: false, completion: {

@@ -32,7 +32,8 @@ class BaseWKWebViewController: BaseViewController, WKNavigationDelegate {
             webView.load(URLRequest(url: url))
         }
         webView.snp.makeConstraints { (make) in
-            make.top.bottom.left.right.equalTo(0)
+            make.bottom.left.right.equalTo(0)
+            make.top.equalTo(64)
         }
         
     }

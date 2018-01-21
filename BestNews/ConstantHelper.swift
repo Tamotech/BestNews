@@ -15,8 +15,8 @@ let qqKey = "VkRdgEBjxTriHGiE"
 let weiboAppid = "2973921044"
 let weiboKey = "3b47f9bec148972d0dc4e0e31afbea58"
 let aliPayAppid = "2017122000999924"
-let jPushKey = "1c5b0bf1379cf38b6a436146"
-let jPushSecret = "02348df4cadd5293af3e7c0a"
+let jPushKey = "d5db367eb1abec4c03a051dc"
+let jPushSecret = "8be34e6163e6b1a40f6df5f9"
 
 
 let kLoginWechatSuccessNotifi = Notification.Name(rawValue:"Login_Wechat_Success_Notify_key")

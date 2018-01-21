@@ -46,12 +46,39 @@ class BaseShareViewController: UIViewController {
     }
     
     @IBAction func handleTapQQBtn(_ sender: UIButton) {
-        //let obj = QQApiNewsObject.objectWithURL(share.link, title: share.title, description: share.description, previewImageURL: URL(string: share.thumb)!)
         
-//        :(NSURL*)url title:(NSString*)title description:(NSString*)description previewImageURL:(NSURL*)previewURL;
+        var data = UIImageJPEGRepresentation(#imageLiteral(resourceName: "logo"), 1)
+        if share.thumb.count>0 {
+            do {
+                data = try Data(contentsOf: URL(string: share.thumb)!)
+            }
+            catch {
+                
+            }
+        }
+        let obj = QQApiNewsObject(url: URL(string: share.link)!, title: share.title, description: share.msg, previewImageData: data!, targetContentType: QQApiURLTargetTypeNews)
+        
+        let send = SendMessageToQQReq(content: obj!)
+        let sent = QQApiInterface.send(send)
+        print(sent)
+        
     }
     
     @IBAction func handleTapQQZornBtn(_ sender: UIButton) {
+        var data = UIImageJPEGRepresentation(#imageLiteral(resourceName: "logo"), 1)
+        if share.thumb.count>0 {
+            do {
+                data = try Data(contentsOf: URL(string: share.thumb)!)
+            }
+            catch {
+                
+            }
+        }
+        let obj = QQApiNewsObject(url: URL(string: share.link)!, title: share.title, description: share.msg, previewImageData: data!, targetContentType: QQApiURLTargetTypeNews)
+        
+        let send = SendMessageToQQReq(content: obj!)
+        let sent = QQApiInterface.sendReq(toQZone: send)
+        print(sent)
     }
     
     @IBAction func handleTapCancelBtn(_ sender: UIButton) {

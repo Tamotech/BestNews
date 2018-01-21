@@ -268,6 +268,7 @@
 		5AFF05F61FE68A9300B7FE7D /* CustomeMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF05F51FE68A9300B7FE7D /* CustomeMessage.swift */; };
 		5AFF34A21F93A78600D8115E /* BaseShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AFF34A01F93A78600D8115E /* BaseShareViewController.swift */; };
 		5AFF34A31F93A78600D8115E /* BaseShareViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AFF34A11F93A78600D8115E /* BaseShareViewController.xib */; };
+		5AFF34B32014361400D78A65 /* libOpenInstallSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AFF34B22014361400D78A65 /* libOpenInstallSDK.a */; };
 		97116F55FBF85B351A8EEBAC /* Pods_BestNews.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C0D04124E02EA7B4BED0069 /* Pods_BestNews.framework */; };
 		CC01705E1F6835400069D38B /* ActivityCoverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC01705C1F6835400069D38B /* ActivityCoverCell.swift */; };
 		CC01705F1F6835400069D38B /* ActivityCoverCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC01705D1F6835400069D38B /* ActivityCoverCell.xib */; };
@@ -614,6 +615,9 @@
 		5AFF05F51FE68A9300B7FE7D /* CustomeMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomeMessage.swift; sourceTree = "<group>"; };
 		5AFF34A01F93A78600D8115E /* BaseShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseShareViewController.swift; sourceTree = "<group>"; };
 		5AFF34A11F93A78600D8115E /* BaseShareViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BaseShareViewController.xib; sourceTree = "<group>"; };
+		5AFF34B12014361300D78A65 /* OpenInstallSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenInstallSDK.h; sourceTree = "<group>"; };
+		5AFF34B22014361400D78A65 /* libOpenInstallSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libOpenInstallSDK.a; sourceTree = "<group>"; };
+		5AFF34B4201438ED00D78A65 /* BestNews.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = BestNews.entitlements; sourceTree = "<group>"; };
 		5C0D04124E02EA7B4BED0069 /* Pods_BestNews.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BestNews.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC01705C1F6835400069D38B /* ActivityCoverCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityCoverCell.swift; sourceTree = "<group>"; };
 		CC01705D1F6835400069D38B /* ActivityCoverCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityCoverCell.xib; sourceTree = "<group>"; };
@@ -671,6 +675,7 @@
 				5A8C29D71FDFD33500E51095 /* CoreTelephony.framework in Frameworks */,
 				5A3DD4411FFE922C00AADE12 /* TencentOpenAPI.framework in Frameworks */,
 				5A8C29D51FDFD31F00E51095 /* CoreMedia.framework in Frameworks */,
+				5AFF34B32014361400D78A65 /* libOpenInstallSDK.a in Frameworks */,
 				5A8C29DB1FDFD35E00E51095 /* libc++.tbd in Frameworks */,
 				5A8C29D31FDFD18D00E51095 /* VideoToolbox.framework in Frameworks */,
 				5A8C29CB1FDFC29E00E51095 /* AgoraRtcEngineKit.framework in Frameworks */,
@@ -1283,6 +1288,15 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		5AFF34B02014360600D78A65 /* OpenInstall */ = {
+			isa = PBXGroup;
+			children = (
+				5AFF34B22014361400D78A65 /* libOpenInstallSDK.a */,
+				5AFF34B12014361300D78A65 /* OpenInstallSDK.h */,
+			);
+			name = OpenInstall;
+			sourceTree = "<group>";
+		};
 		85AE75980DD2A6FE905ED4F0 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1313,6 +1327,8 @@
 		CC2906C71F6599C7001894DA /* BestNews */ = {
 			isa = PBXGroup;
 			children = (
+				5AFF34B4201438ED00D78A65 /* BestNews.entitlements */,
+				5AFF34B02014360600D78A65 /* OpenInstall */,
 				5A6E61F01FF9BE6F0056E679 /* TencentOpenSDK */,
 				5A8C29C71FDFC28300E51095 /* RongyunSDK */,
 				5ABAD5871FD5A22900C866C0 /* AliSDK */,
@@ -1574,6 +1590,14 @@
 						DevelopmentTeam = R6A6PP7495;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+							com.apple.SafariKeychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -2082,6 +2106,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = BestNews/BestNews.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R6A6PP7495;
@@ -2102,6 +2127,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Framework/IMLib",
+					"$(PROJECT_DIR)/BestNews",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ruicaijing.bestNews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2119,6 +2145,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = BestNews/BestNews.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = R6A6PP7495;
@@ -2139,6 +2166,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Framework/IMLib",
+					"$(PROJECT_DIR)/BestNews",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ruicaijing.bestNews;
 				PRODUCT_NAME = "$(TARGET_NAME)";

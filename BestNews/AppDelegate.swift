@@ -9,12 +9,13 @@
 import UIKit
 import IQKeyboardManagerSwift
 import SwiftyJSON
+import UserNotifications
 
 
 let kFirstLoadApp = "firstLoadAppKey"
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, TencentSessionDelegate, OpenInstallDelegate, JPUSHRegisterDelegate {
 
     var window: UIWindow?
 
@@ -26,7 +27,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
             window?.rootViewController = GuideViewController()
         }
         WXApi.registerApp(wxAppId)
+        let tencent = TencentOAuth(appId: qqAppId, andDelegate: self)
+        let permission = [kOPEN_PERMISSION_GET_INFO, kOPEN_PERMISSION_GET_USER_INFO, kOPEN_PERMISSION_GET_SIMPLE_USER_INFO]
+        tencent?.incrAuth(withPermissions:permission)
+        
+        
+        OpenInstallSDK.setAppKey("v2t7d4", withDelegate: self)
+        OpenInstallSDK.reportRegister()
+        
         IQKeyboardManager.sharedManager().enable = true
+        
+        
+        //注册推送
+        if #available(iOS 10.0, *){
+            let entiity = JPUSHRegisterEntity()
+            entiity.types = Int(UNAuthorizationOptions.alert.rawValue |
+                UNAuthorizationOptions.badge.rawValue |
+                UNAuthorizationOptions.sound.rawValue)
+            JPUSHService.register(forRemoteNotificationConfig: entiity, delegate: self)
+        } else if #available(iOS 8.0, *) {
+            let types = UIUserNotificationType.badge.rawValue |
+                UIUserNotificationType.sound.rawValue |
+                UIUserNotificationType.alert.rawValue
+            JPUSHService.register(forRemoteNotificationTypes: types, categories: nil)
+        }else {
+            let type = UIRemoteNotificationType.badge.rawValue |
+                UIRemoteNotificationType.sound.rawValue |
+                UIRemoteNotificationType.alert.rawValue
+            JPUSHService.register(forRemoteNotificationTypes: type, categories: nil)
+        }
+        
+        JPUSHService.setup(withOption: launchOptions, appKey: jPushKey, channel: "app store", apsForProduction: true)
         
         return true
     }
@@ -107,6 +138,134 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate {
                 NotificationCenter.default.post(name: kWexinPayFailNotify, object: nil)
             }
         }
+    }
+    
+    //tencent 增量授权
+    func tencentDidLogin() {
+        
+    }
+    
+    func tencentDidNotLogin(_ cancelled: Bool) {
+        
+    }
+    
+    func tencentDidNotNetWork() {
+        
+    }
+    
+    func tencentNeedPerformReAuth(_ tencentOAuth: TencentOAuth!) -> Bool {
+        return true
+    }
+    
+    func tencentNeedPerformIncrAuth(_ tencentOAuth: TencentOAuth!, withPermissions permissions: [Any]!) -> Bool {
+        return true
+    }
+    
+    
+    //遵守OpenInstallDelegate协议
+    //通过OpenInstall 获取自定义参数，数据为空时也会回调此方法。渠道统计返回参数名称为openinstallChannelCode
+    func getInstallParams(fromOpenInstall params: [AnyHashable : Any]!, withError error: Error!) {
+        if error == nil {
+            print("OpenInstall 自定义数据：\(params.description)")
+            if !params.isEmpty {
+                let paramsStr = "\(params)"
+                let alert = UIAlertController(title: "我是来自那个集成了openinstall JS SDK页面的安装参数，请根据你的需求，将我计入统计数据或是根据贵公司App的业务流程处理（如免填邀请码建立邀请关系、自动加好友、自动进入某个群组或房间等）", message: paramsStr, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "确定", style: .default, handler: {(action: UIAlertAction) -> Void in
+                }))
+                //弹出提示框(便于调试，调试完成后删除此代码)
+                self.window!.rootViewController!.present(alert, animated: true){}
+                //获取到参数后可保存到本地，等到需要使用时再从本地获取。
+                UserDefaults.standard.set(params, forKey: "openinstallParams")
+            }
+            else {
+                print("OpenInstall error \(error)")
+            }
+        }
+    }
+
+    func getWakeUpParams(fromOpenInstall params: [AnyHashable : Any]!, withError error: Error!) {
+        print("OpenInstall 唤醒参数：\(params)")
+        if error == nil {
+            if !params.isEmpty {
+                let paramsStr = "\(params)"
+                let alert = UIAlertController(title: "唤醒参数", message: paramsStr, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "确定", style: .default, handler: {(action: UIAlertAction) -> Void in
+                }))
+                //弹出提示框(便于调试，调试完成后删除此代码)
+                self.window!.rootViewController!.present(alert, animated: true){  }
+            }
+        }
+    }
+    
+    
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([Any]?) -> Void) -> Bool{
+        //判断是否通过OpenInstall生成的universal link唤起App
+        if OpenInstallSDK.continue(userActivity){
+            return true
+        }
+        else {
+            //其他第三方唤醒回调；
+            return true
+        }
+    }
+    
+    
+    //MARK: - JPUSH Delegate
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        JPUSHService.registerDeviceToken(deviceToken)
+        if (SessionManager.sharedInstance.userId.count > 0) {
+            //绑定别名
+            JPUSHService.setAlias(SessionManager.sharedInstance.userId, completion: { (code, msg, i) in
+                
+            }, seq: 0)
+            JPUSHService.setTags(Set.init(SessionManager.sharedInstance.pushTags), completion: { (code, set, i) in
+                
+            }, seq: 0)
+            
+        }
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("did Fail To Register For Remote Notifications With Error = \(error)")
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        JPUSHService.handleRemoteNotification(userInfo)
+        completionHandler(UIBackgroundFetchResult.newData)
+    }
+    
+    @available(iOS 10.0, *)
+    func jpushNotificationCenter(_ center: UNUserNotificationCenter!, willPresent notification: UNNotification!, withCompletionHandler completionHandler: ((Int) -> Void)!) {
+        print(">JPUSHRegisterDelegate jpushNotificationCenter willPresent");
+        let userInfo = notification.request.content.userInfo
+        if (notification.request.trigger?.isKind(of: UNPushNotificationTrigger.self))!{
+            JPUSHService.handleRemoteNotification(userInfo)
+        }
+        completionHandler(Int(UNAuthorizationOptions.alert.rawValue))// 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以选择设置
+    }
+    
+    @available(iOS 10.0, *)
+    func jpushNotificationCenter(_ center: UNUserNotificationCenter!, didReceive response: UNNotificationResponse!, withCompletionHandler completionHandler: (() -> Void)!) {
+        
+        // 取得 APNs 标准信息内容
+        let userInfo = response.notification.request.content.userInfo
+        let aps = userInfo["aps"] as! [String:Any?]
+        let content = aps["alert"] ?? ""
+        let badge = aps["badge"] ?? ""
+        
+        //extra 信息
+        
+        
+        print("content: \(String(describing: content)), badge: \(String(describing: badge))")
+        
+        
+        print(">JPUSHRegisterDelegate jpushNotificationCenter didReceive");
+        
+        if (response.notification.request.trigger?.isKind(of: UNPushNotificationTrigger.self))!{
+            JPUSHService.handleRemoteNotification(userInfo)
+        }
+        completionHandler()
     }
 
 }
