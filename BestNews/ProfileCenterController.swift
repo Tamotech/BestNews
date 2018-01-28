@@ -34,7 +34,22 @@ class ProfileCenterController: BaseViewController, UINavigationControllerDelegat
     
     @IBOutlet weak var accountTop: NSLayoutConstraint!
     
+    @IBOutlet weak var bindInfoHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var wxInfoView: UIView!
+    
+    @IBOutlet weak var wbInfoView: UIView!
+    
     var avatarUrl: String?
+    
+    @IBOutlet weak var qqInfoView: UIView!
+    
+    @IBOutlet weak var wxInfoHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var weiboInfoHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var qqInfoHeight: NSLayoutConstraint!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,31 +83,50 @@ class ProfileCenterController: BaseViewController, UINavigationControllerDelegat
                 accountTop.constant = 15
                 descView.isHidden = true
             }
+            
+            var bindCount = 0
             if user.mobile.count > 0 && user.mobile != "<null>" {
                 phoneLb.text = user.mobile
+                bindCount = bindCount + 1
             }
             else {
                 phoneLb.text = "未绑定"
             }
             if user.wxinfo.count > 0 && user.wxinfo != "<null>" {
-                wechatLb.text = user.wxinfo
+                wechatLb.text = "已绑定"
+                wxInfoView.isHidden = false
+                wxInfoHeight.constant = 48
+                bindCount = bindCount + 1
             }
             else {
                 wechatLb.text = "未绑定"
+                wxInfoView.isHidden = true
+                wxInfoHeight.constant = 0
             }
             if user.wbinfo.count > 0 && user.wbinfo != "<null>" {
-                weiboLb.text = user.wbinfo
+                weiboLb.text = "已绑定"
+                bindCount = bindCount + 1
+                wbInfoView.isHidden = false
+                weiboInfoHeight.constant = 48
             }
             else {
                 weiboLb.text = "未绑定"
+                wbInfoView.isHidden = true
+                weiboInfoHeight.constant = 0
             }
             if user.qqinfo.count > 0 && user.qqinfo != "<null>" {
-                qqLb.text = user.qqinfo
+                qqLb.text = "已绑定"
+                bindCount = bindCount + 1
+                qqInfoView.isHidden = false
+                qqInfoHeight.constant = 48
             }
             else {
                 qqLb.text = "未绑定"
+                qqInfoView.isHidden = true
+                qqInfoHeight.constant = 0
             }
             nicknameTf.delegate = self
+            bindInfoHeight.constant = 48*CGFloat(bindCount)
         }
         
         let save = UIBarButtonItem(title: "保存", style: UIBarButtonItemStyle.plain, target: self, action: #selector(handleTapSave(_:)))

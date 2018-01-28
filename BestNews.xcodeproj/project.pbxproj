@@ -121,6 +121,8 @@
 		5A8364CA1FF9CFB6001AD740 /* VideoPlayControlBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8364C91FF9CFB6001AD740 /* VideoPlayControlBar.xib */; };
 		5A8364CC1FFB0005001AD740 /* ImageSelectSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8364CB1FFB0005001AD740 /* ImageSelectSheetView.swift */; };
 		5A8364D01FFB0024001AD740 /* ImageSelectSheetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8364CF1FFB0024001AD740 /* ImageSelectSheetView.xib */; };
+		5A83C845201CC389002E883D /* UMCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A83C844201CC389002E883D /* UMCommon.framework */; };
+		5A83C847201CC394002E883D /* UMErrorCatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A83C846201CC394002E883D /* UMErrorCatch.framework */; };
 		5A84B63C1FFC3F9D006DC3AA /* XHAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A84B63B1FFC3F9D006DC3AA /* XHAlertController.swift */; };
 		5A84B6401FFC4EF4006DC3AA /* EndLiveAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A84B63E1FFC4EF4006DC3AA /* EndLiveAlertView.xib */; };
 		5A84B6421FFC503C006DC3AA /* EndLiveAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A84B6411FFC503C006DC3AA /* EndLiveAlertView.swift */; };
@@ -450,6 +452,8 @@
 		5A8364C91FF9CFB6001AD740 /* VideoPlayControlBar.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoPlayControlBar.xib; sourceTree = "<group>"; };
 		5A8364CB1FFB0005001AD740 /* ImageSelectSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSelectSheetView.swift; sourceTree = "<group>"; };
 		5A8364CF1FFB0024001AD740 /* ImageSelectSheetView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageSelectSheetView.xib; sourceTree = "<group>"; };
+		5A83C844201CC389002E883D /* UMCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMCommon.framework; sourceTree = "<group>"; };
+		5A83C846201CC394002E883D /* UMErrorCatch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMErrorCatch.framework; sourceTree = "<group>"; };
 		5A84B63B1FFC3F9D006DC3AA /* XHAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XHAlertController.swift; sourceTree = "<group>"; };
 		5A84B63E1FFC4EF4006DC3AA /* EndLiveAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EndLiveAlertView.xib; sourceTree = "<group>"; };
 		5A84B6411FFC503C006DC3AA /* EndLiveAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndLiveAlertView.swift; sourceTree = "<group>"; };
@@ -670,6 +674,7 @@
 				5A8BFC0E1FF88FD7004145AC /* CoreMotion.framework in Frameworks */,
 				5A3DD44C1FFE939800AADE12 /* AlipaySDK.framework in Frameworks */,
 				5A8C29D91FDFD35100E51095 /* AudioToolbox.framework in Frameworks */,
+				5A83C847201CC394002E883D /* UMErrorCatch.framework in Frameworks */,
 				5A6E61F41FF9BEDD0056E679 /* libsqlite3.tbd in Frameworks */,
 				5A8BFC0A1FF88A7B004145AC /* libz.tbd in Frameworks */,
 				5A8C29D71FDFD33500E51095 /* CoreTelephony.framework in Frameworks */,
@@ -686,6 +691,7 @@
 				5A6E61F61FF9BEED0056E679 /* libiconv.tbd in Frameworks */,
 				5A8C29DD1FDFD38600E51095 /* libresolv.9.tbd in Frameworks */,
 				5AFF05F31FE62E1800B7FE7D /* RongIMKit.framework in Frameworks */,
+				5A83C845201CC389002E883D /* UMCommon.framework in Frameworks */,
 				5ABAD5941FD5A2B800C866C0 /* AliyunVodPlayerSDK.framework in Frameworks */,
 				97116F55FBF85B351A8EEBAC /* Pods_BestNews.framework in Frameworks */,
 			);
@@ -990,6 +996,15 @@
 				5A7F21601FCB118C00DFC606 /* SwiftNotice.swift */,
 			);
 			path = HUD;
+			sourceTree = "<group>";
+		};
+		5A83C843201CC370002E883D /* Umeng */ = {
+			isa = PBXGroup;
+			children = (
+				5A83C846201CC394002E883D /* UMErrorCatch.framework */,
+				5A83C844201CC389002E883D /* UMCommon.framework */,
+			);
+			name = Umeng;
 			sourceTree = "<group>";
 		};
 		5A8B8646200EAFB60023F584 /* Search */ = {
@@ -1327,6 +1342,7 @@
 		CC2906C71F6599C7001894DA /* BestNews */ = {
 			isa = PBXGroup;
 			children = (
+				5A83C843201CC370002E883D /* Umeng */,
 				5AFF34B4201438ED00D78A65 /* BestNews.entitlements */,
 				5AFF34B02014360600D78A65 /* OpenInstall */,
 				5A6E61F01FF9BE6F0056E679 /* TencentOpenSDK */,

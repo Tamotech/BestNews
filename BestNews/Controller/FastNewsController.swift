@@ -140,8 +140,8 @@ class FastNewsController: BaseViewController, UITableViewDataSource, UITableView
             let rootVC = self?.navigationController?.childViewControllers.first as! MainController
             let vc = BaseShareViewController(nibName: "BaseShareViewController", bundle: nil)
             let share = ShareModel()
-            share.title = "新华日报财经快讯"
-            share.msg = news.content
+            share.title = news.content
+            share.msg = "新华日报财经"
             vc.share = share
             rootVC.presentr.viewControllerForContext = rootVC
             rootVC.presentr.shouldIgnoreTapOutsideContext = false

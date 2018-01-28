@@ -123,7 +123,7 @@ class ActivityDetailController: BaseViewController, ActivityTicketListController
         let share = ShareModel()
         share.title = activity.title
         share.msg = "新华财经日报"
-        share.thumb = activity.preimgpath
+//        share.thumb = activity.preimgpath
         vc.share = share
         presentr.viewControllerForContext = self
         presentr.shouldIgnoreTapOutsideContext = false

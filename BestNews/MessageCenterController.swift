@@ -25,8 +25,8 @@ class MessageCenterController: BaseViewController, UITableViewDelegate, UITableV
     func setupView() {
         
         self.showCustomTitle(title: "消息中心")
-        let moreItem = UIBarButtonItem(image: #imageLiteral(resourceName: "iconoval"), style: .plain, target: self, action: #selector(handleTapHandleMoreItem(_:)))
-        navigationItem.rightBarButtonItem = moreItem
+//        let moreItem = UIBarButtonItem(image: #imageLiteral(resourceName: "iconoval"), style: .plain, target: self, action: #selector(handleTapHandleMoreItem(_:)))
+//        navigationItem.rightBarButtonItem = moreItem
         
         let nib = UINib(nibName: "MessageCenterListCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "Cell")

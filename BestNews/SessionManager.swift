@@ -60,6 +60,9 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
     ///直播室聊天token
     var liveToken = ""
     
+    /// 邀请者ID
+    var invitorUid: String?
+    
     var initRMFlag = false
     
     
@@ -120,8 +123,18 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
                       "name": loginInfo.name,
                       "sex": loginInfo.gender,
                       "headimg": loginInfo.avatarUrl]
-        if loginInfo.wxid.count > 0 {
+        if loginInfo.type == 1 {
             params["wxid"] = loginInfo.wxid
+            params["wxinfo"] = wxUserInfo?.nickname ?? ""
+        }
+        else if loginInfo.type == 3 {
+            params["qqid"] = userInfo?.qqid ?? ""
+            params["wxinfo"] = userInfo?.qqinfo ?? ""
+        }
+        //邀请人id
+        if self.invitorUid != nil {
+            params["uid"] = invitorUid!
+            params["channelCode"] = "1"
         }
         APIManager.shareInstance.postRequest(urlString: "/regist/mobileregist.htm", params: params) { [weak self](JSON, code, msg) in
             let token = JSON?["memo"].string!

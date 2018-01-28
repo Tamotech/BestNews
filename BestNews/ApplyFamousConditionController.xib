@@ -28,10 +28,10 @@
                     <rect key="frame" x="0.0" y="0.0" width="375" height="671"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qbp-Xu-b9h" userLabel="contentView">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="634"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="684"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EFC-Yo-8mB" userLabel="条件">
-                                    <rect key="frame" x="19.5" y="50" width="335" height="210"/>
+                                    <rect key="frame" x="19.5" y="100" width="335" height="210"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="申请条件" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WGx-fT-X54">
                                             <rect key="frame" x="137" y="15" width="61.5" height="18"/>
@@ -164,7 +164,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6V8-HN-A0O" userLabel="认证特权">
-                                    <rect key="frame" x="0.0" y="285" width="375" height="349"/>
+                                    <rect key="frame" x="0.0" y="335" width="375" height="349"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xkj-8l-y0G">
                                             <rect key="frame" x="-0.5" y="0.0" width="375" height="49"/>
@@ -339,7 +339,7 @@
                             </subviews>
                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                             <constraints>
-                                <constraint firstItem="EFC-Yo-8mB" firstAttribute="top" secondItem="qbp-Xu-b9h" secondAttribute="top" constant="50" id="3l2-mm-c8c"/>
+                                <constraint firstItem="EFC-Yo-8mB" firstAttribute="top" secondItem="qbp-Xu-b9h" secondAttribute="top" constant="100" id="3l2-mm-c8c"/>
                                 <constraint firstItem="6V8-HN-A0O" firstAttribute="width" secondItem="qbp-Xu-b9h" secondAttribute="width" id="5w2-OV-6XZ"/>
                                 <constraint firstItem="6V8-HN-A0O" firstAttribute="top" secondItem="EFC-Yo-8mB" secondAttribute="bottom" constant="25" id="HTx-uf-2wX"/>
                                 <constraint firstItem="EFC-Yo-8mB" firstAttribute="centerX" secondItem="qbp-Xu-b9h" secondAttribute="centerX" id="alB-a2-gjb"/>

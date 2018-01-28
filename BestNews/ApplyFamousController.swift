@@ -169,7 +169,7 @@ class ApplyFamousController: BaseViewController, UIImagePickerControllerDelegate
             DispatchQueue.main.async {
                 if type == "Camera" {
                     let picker = UIImagePickerController()
-                    picker.allowsEditing = true
+                    picker.allowsEditing = false
                     picker.sourceType = .camera
                     picker.delegate = self
                     picker.modalPresentationStyle = .overCurrentContext
@@ -178,7 +178,7 @@ class ApplyFamousController: BaseViewController, UIImagePickerControllerDelegate
                 }
                 else if type == "Album" {
                     let picker = UIImagePickerController()
-                    picker.allowsEditing = true
+                    picker.allowsEditing = false
                     picker.sourceType = .photoLibrary
                     picker.delegate = self
                     picker.modalPresentationStyle = .overCurrentContext

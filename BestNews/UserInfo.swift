@@ -21,6 +21,7 @@ class UserInfo: HandyJSON {
      "name": "John",
      "mobile": "13123456789"*/
     
+    var id: String = ""
     var birthday: String = ""
     var sex: String = ""
     var height: CGFloat = 0

@@ -50,6 +50,7 @@ class BSLShareManager: NSObject {
         else {
             req.scene = Int32(WXSceneTimeline.rawValue)
         }
-        WXApi.send(req)
+        let r = WXApi.send(req)
+        print("分享结果...>\(r)")
     }
 }

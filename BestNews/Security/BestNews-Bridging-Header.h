@@ -24,3 +24,5 @@
 #import <TencentOpenAPI/QQApiInterface.h>
 #import "OpenInstallSDK.h"
 #import <JPUSHService.h>
+#import <UMCommon/UMCommon.h>
+#import <UMErrorCatch/UMErrorCatch.h>

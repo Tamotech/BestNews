@@ -10,13 +10,15 @@ import UIKit
 import SnapKit
 import Kingfisher
 
+
+let kSaveInvitorID = "save_invitor_id_key"
+
 class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewDelegate {
 
     var scrollView = UIScrollView(frame: UIScreen.main.bounds)
     var titleView: TYPageTitleView?
     var navBarView: UIView?
     var logoView: UIImageView?
-    var messageBt: UIButton?
     var menuBt: UIButton?
     var searchButton: UIButton?
     
@@ -70,6 +72,8 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
+        saveInvitorID()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -227,7 +231,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
      
         self.searchButton = UIButton(frame: .zero)
         searchButton?.setImage(#imageLiteral(resourceName: "icon_search_white"), for: UIControlState.normal)
-        searchButton?.setTitle("     搜搜看", for: UIControlState.normal)
+        searchButton?.setTitle("     输入您要搜索的内容", for: UIControlState.normal)
         searchButton?.backgroundColor = UIColor(hexString: "#e5e5e5", alpha: 0.5)
         searchButton?.layer.cornerRadius = 15
         searchButton?.titleLabel?.font = UIFont.systemFont(ofSize: 14)
@@ -239,34 +243,33 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
             make.left.equalTo(logo.snp.right).offset(10)
             make.centerY.equalTo(logo.snp.centerY).offset(0)
             make.height.equalTo(30)
+            make.right.equalTo(-10)
         }
      
-        let messagebt = UIButton(frame: .zero)
-        messagebt.setImage(#imageLiteral(resourceName: "icon_message_white"), for: .normal)
-        messagebt.addTarget(self, action: #selector(handleTapMessageItem(sender:)), for: UIControlEvents.touchUpInside)
-        barView.addSubview(messagebt)
-        messagebt.snp.makeConstraints { (make) in
-            make.right.equalTo(-4)
-            make.left.equalTo(self.searchButton!.snp.right).offset(4)
-            make.centerY.equalTo(logo.snp.centerY)
-            make.size.equalTo(CGSize(width: 50, height: 40))
-        }
+//        let messagebt = UIButton(frame: .zero)
+//        messagebt.setImage(#imageLiteral(resourceName: "icon_message_white"), for: .normal)
+//        messagebt.addTarget(self, action: #selector(handleTapMessageItem(sender:)), for: UIControlEvents.touchUpInside)
+//        barView.addSubview(messagebt)
+//        messagebt.snp.makeConstraints { (make) in
+//            make.right.equalTo(-4)
+//            make.left.equalTo(self.searchButton!.snp.right).offset(4)
+//            make.centerY.equalTo(logo.snp.centerY)
+//            make.size.equalTo(CGSize(width: 50, height: 40))
+//        }
      
         let menubt = UIButton(frame: .zero)
         menubt.setImage(#imageLiteral(resourceName: "icon_menu_white"), for: .normal)
         menubt.addTarget(self, action: #selector(handleTapMenuItem(sender:)), for: UIControlEvents.touchUpInside)
         barView.addSubview(menubt)
         menubt.snp.makeConstraints { (make) in  
-            make.right.equalTo(-4)
-            make.bottom.equalTo(-8)
-            make.left.equalTo(messagebt.snp.left).offset(0)
-            make.size.equalTo(CGSize(width: 50, height: 40))
+            make.right.equalTo(-10)
+            make.bottom.equalTo(-4)
+            make.size.equalTo(CGSize(width: 40, height: 40))
         }
      
         self.barView.removeFromSuperview()
         self.navBarView = barView
         self.logoView = logo
-        self.messageBt = messagebt
         self.menuBt = menubt
         self.navBarTurnBg(white: true)
     }
@@ -399,7 +402,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
     }
     
     func handleTapMenuItem(sender: Any) {
-        let selectColumnView = SelectColumeView(frame: UIScreen.main.bounds)
+        let selectColumnView = SelectColumeView(frame: CGRect(x: 0, y: 64, width: screenWidth, height: screenHeight-64))
         selectColumnView.mainVC = self
         selectColumnView.show()
     }
@@ -443,7 +446,6 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
             logoView?.image = #imageLiteral(resourceName: "xinhua_logo_red")
             searchButton?.setTitleColor(gray181, for: UIControlState.normal)
             searchButton?.setImage(#imageLiteral(resourceName: "m221_search_black"), for: UIControlState.normal)
-            messageBt?.setImage(#imageLiteral(resourceName: "icon_meassage"), for: UIControlState.normal)
             menuBt?.setImage(#imageLiteral(resourceName: "icon_menu_dark"), for: UIControlState.normal)
         }
         else {
@@ -550,12 +552,21 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
         let tap = UITapGestureRecognizer(target: self, action: #selector(tapAD(_:)))
         im.addGestureRecognizer(tap)
         
-        let btn = UIButton(frame: CGRect(x: screenWidth-120, y: 20, width: 100, height: 40))
+        let btn = UIButton(frame: CGRect(x: screenWidth-100, y: 20, width: 70, height: 28))
         btn.backgroundColor = UIColor(hexString: "#000000", alpha: 0.5)
-        btn.layer.cornerRadius = 20
-        btn.setTitle("5   跳过", for: UIControlState.normal)
+        btn.contentHorizontalAlignment = .left
+        btn.contentEdgeInsets = UIEdgeInsetsMake(0, 8, 0, 10)
+        btn.layer.cornerRadius = 14
+        btn.setTitle(" 5         ", for: UIControlState.normal)
+        btn.setTitleColor(UIColor.init(hexString: "#0098FF"), for: UIControlState.normal)
         btn.addTarget(self, action: #selector(tapSkip(_:)), for: UIControlEvents.touchUpInside)
         im.addSubview(btn)
+        let lb = UILabel(frame: CGRect(x: 26, y: 0, width: 40, height: 28))
+        lb.textColor = .white
+        lb.font = UIFont.systemFont(ofSize: 14)
+        lb.text = "跳过"
+        btn.addSubview(lb)
+        
         keyWindow?.addSubview(im)
         self.ad = ad
         adView = im
@@ -572,8 +583,9 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
             t.invalidate()
             adView?.removeFromSuperview()
         }
-        
-        skipADBtn?.setTitle("\(adSeconds)    跳过", for: UIControlState.normal)
+        DispatchQueue.main.async {
+            self.skipADBtn?.setTitle("\(self.adSeconds)", for: UIControlState.normal)
+        }
     }
     
     
@@ -588,6 +600,31 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
         if let url = URL(string: ad!.outlink) {
             //打开外部链接
             UIApplication.shared.openURL(url)
+        }
+    }
+    
+    
+    /// 保存邀请者id
+    func saveInvitorID() {
+        
+        if UserDefaults.standard.bool(forKey: kSaveInvitorID) {
+            return
+        }
+        if SessionManager.sharedInstance.invitorUid != nil && SessionManager.sharedInstance.userInfo != nil {
+//            let alert = UIAlertController(title: "被邀请", message: "被邀请msg", preferredStyle: .alert)
+//            alert.addAction(UIAlertAction(title: "确定", style: .default, handler: {(action: UIAlertAction) -> Void in
+//            }))
+//            //弹出提示框(便于调试，调试完成后删除此代码)
+//            self.navigationController?.present(alert, animated: true){  }
+            
+            let path = "/config/recordInstall.htm"
+            let p = ["uid": SessionManager.sharedInstance.invitorUid!,
+                     "channelCode": "1"]
+            APIManager.shareInstance.postRequest(urlString: path, params: p, result: { (JSON, code, msg) in
+                if code == 0 {
+                    UserDefaults.standard.set(true, forKey: kSaveInvitorID)
+                }
+            })
         }
     }
     

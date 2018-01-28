@@ -180,6 +180,7 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.aliyunVodPlayer.playerView.isHidden = false
     }
     
     override func viewWillLayoutSubviews() {
@@ -456,6 +457,28 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
     }
     
     @IBAction func handleTapPublish(_ sender: UIButton) {
+        
+        if SessionManager.sharedInstance.userInfo!.idproveflag {
+            //实名认证
+            let vc = ApplyIdentifyController(nibName: "ApplyIdentifyController", bundle: nil)
+            let alert = XHAlertController()
+            alert.modalPresentationStyle = .overCurrentContext
+            self.modalPresentationStyle = .currentContext
+            alert.tit = "很抱歉, 您暂时未实名认证"
+            alert.msg = "需要进行先认证后再评论"
+            alert.callback = {
+                [weak self](buttonType)in
+                if buttonType == 0 {
+                    self?.aliyunVodPlayer.playerView.isHidden = true
+                    self?.navigationController?.setNavigationBarHidden(false, animated: false)
+                    self?.navigationController?.pushViewController(vc, animated: true)
+                    
+                }
+            }
+            self.present(alert, animated: false, completion: nil)
+            return
+        }
+        
         
         let content = contentTf.text
         if content?.count == 0 {

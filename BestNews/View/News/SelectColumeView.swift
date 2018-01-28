@@ -15,14 +15,14 @@ class SelectColumeView: UIView {
     var buttons: [UIButton] = []
     weak var mainVC: MainController?
     var channels: [NewsChannel] = HomeModel.shareInstansce.allChannels
-    let stableChannels = ["推荐", "快讯", "视频", "专题"]
+    let stableChannels = ["头条", "快讯", "视频", "专题"]
     func show() {
-        self.frame = UIScreen.main.bounds
+        self.frame = CGRect(x: 0, y: 64, width: screenWidth, height: screenHeight-64)
         self.y = screenHeight
         keyWindow?.addSubview(self)
         
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseIn, animations: {
-            self.y = 0
+            self.y = 64
         }) { (success) in
             
         }
@@ -49,12 +49,12 @@ class SelectColumeView: UIView {
         //添加模糊视图到页面view上（模糊视图下方都会有模糊效果）
         self.addSubview(blurView)
         
-        let bgView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 64))
+        let bgView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 40))
         bgView.backgroundColor = UIColor(white: 1, alpha: 0.93)
         bgView.layer.shadowColor = gray146?.cgColor
         bgView.layer.shadowOffset = CGSize(width: 0, height: 2)
         bgView.layer.shadowRadius = 4
-        bgView.layer.shadowOpacity = 0.8
+        bgView.layer.shadowOpacity = 0.0
         self.addSubview(bgView)
         
 //        let searchView = UIImageView(image: #imageLiteral(resourceName: "icon_search"))
@@ -72,7 +72,7 @@ class SelectColumeView: UIView {
         bgView.addSubview(titleLb)
         titleLb.snp.makeConstraints { (make) in
             make.left.equalTo(15)
-            make.bottom.equalTo(-12)
+            make.bottom.equalTo(-10)
         }
         
         let closeBtn = UIButton()
@@ -82,7 +82,7 @@ class SelectColumeView: UIView {
         closeBtn.snp.makeConstraints { (make) in
             make.right.equalTo(0)
             make.bottom.equalTo(0)
-            make.size.equalTo(CGSize(width: 50, height: 44))
+            make.size.equalTo(CGSize(width: 50, height: 40))
         }
         
         
@@ -92,7 +92,7 @@ class SelectColumeView: UIView {
         let bHeight: CGFloat = 32
         for (i, item) in stableChannels.enumerated() {
             let x = (CGFloat(i%3)+1)*horMargin + CGFloat(i%3)*bWidth
-            let y = 64+(CGFloat(i/3)+1)*verMargin + CGFloat(i/3)*bHeight
+            let y = 40+(CGFloat(i/3)+1)*verMargin + CGFloat(i/3)*bHeight
             let btn = UIButton(frame: CGRect(x: x, y: y, width: bWidth, height: bHeight))
             btn.setTitle(item, for: .normal)
             btn.backgroundColor = UIColor(ri: 229, gi: 229, bi: 229, alpha: 0.9)
@@ -107,7 +107,7 @@ class SelectColumeView: UIView {
         for (j, item) in channels.enumerated() {
             let i = stableChannels.count+j
             let x = (CGFloat(i%3)+1)*horMargin + CGFloat(i%3)*bWidth
-            let y = 64+(CGFloat(i/3)+1)*verMargin + CGFloat(i/3)*bHeight
+            let y = 40+(CGFloat(i/3)+1)*verMargin + CGFloat(i/3)*bHeight
             let btn = UIButton(frame: CGRect(x: x, y: y, width: bWidth, height: bHeight))
             btn.setTitle(item.fullname, for: .normal)
             btn.backgroundColor = UIColor(ri: 229, gi: 229, bi: 229, alpha: 0.9)

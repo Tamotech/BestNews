@@ -24,7 +24,7 @@ class HomeModel: NSObject {
     ///首页导航栏栏目
     func navTitles() -> [String] {
         
-        var titles = ["推荐","快讯","订阅"]
+        var titles = ["头条","快讯","订阅"]
         for data in specilList {
         //    if data.showinnavflag == 1 {
                 titles.append(data.name)

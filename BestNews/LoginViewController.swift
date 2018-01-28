@@ -184,8 +184,9 @@ class LoginViewController: BaseViewController, UITextFieldDelegate, TencentSessi
         let openid = tencentOth!.openId
         tencentOth?.getUserInfo()
         SessionManager.sharedInstance.userInfo = UserInfo()
+        SessionManager.sharedInstance.loginInfo.type = 3
         SessionManager.sharedInstance.userInfo?.qqid = openid!
-        SessionManager.sharedInstance.userInfo?.qqinfo = (tencentOth?.getUserOpenID())!
+        SessionManager.sharedInstance.userInfo?.qqinfo = tencentOth?.getUserOpenID() ?? ""
         
     }
     

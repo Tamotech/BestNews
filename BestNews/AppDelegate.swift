@@ -13,6 +13,7 @@ import UserNotifications
 
 
 let kFirstLoadApp = "firstLoadAppKey"
+let umengAppKey = "5a6b6592b27b0a1c6200049d"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, TencentSessionDelegate, OpenInstallDelegate, JPUSHRegisterDelegate {
@@ -37,6 +38,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, TencentSes
         
         IQKeyboardManager.sharedManager().enable = true
         
+        UMConfigure.initWithAppkey(umengAppKey, channel: "App Store")
+        UMErrorCatch.initErrorCatch()
         
         //注册推送
         if #available(iOS 10.0, *){
@@ -166,16 +169,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, TencentSes
     //通过OpenInstall 获取自定义参数，数据为空时也会回调此方法。渠道统计返回参数名称为openinstallChannelCode
     func getInstallParams(fromOpenInstall params: [AnyHashable : Any]!, withError error: Error!) {
         if error == nil {
-            print("OpenInstall 自定义数据：\(params.description)")
-            if !params.isEmpty {
-                let paramsStr = "\(params)"
-                let alert = UIAlertController(title: "我是来自那个集成了openinstall JS SDK页面的安装参数，请根据你的需求，将我计入统计数据或是根据贵公司App的业务流程处理（如免填邀请码建立邀请关系、自动加好友、自动进入某个群组或房间等）", message: paramsStr, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "确定", style: .default, handler: {(action: UIAlertAction) -> Void in
-                }))
-                //弹出提示框(便于调试，调试完成后删除此代码)
-                self.window!.rootViewController!.present(alert, animated: true){}
-                //获取到参数后可保存到本地，等到需要使用时再从本地获取。
-                UserDefaults.standard.set(params, forKey: "openinstallParams")
+//            print("OpenInstall 自定义数据：\(params.description)")
+            if params != nil && !params.isEmpty {
+                if let uid = params["uid"] {
+                    SessionManager.sharedInstance.invitorUid = uid as? String
+                }
             }
             else {
                 print("OpenInstall error \(error)")
@@ -184,17 +182,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, TencentSes
     }
 
     func getWakeUpParams(fromOpenInstall params: [AnyHashable : Any]!, withError error: Error!) {
-        print("OpenInstall 唤醒参数：\(params)")
-        if error == nil {
-            if !params.isEmpty {
-                let paramsStr = "\(params)"
-                let alert = UIAlertController(title: "唤醒参数", message: paramsStr, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "确定", style: .default, handler: {(action: UIAlertAction) -> Void in
-                }))
-                //弹出提示框(便于调试，调试完成后删除此代码)
-                self.window!.rootViewController!.present(alert, animated: true){  }
-            }
-        }
+       
     }
     
     
