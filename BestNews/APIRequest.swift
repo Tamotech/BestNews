@@ -789,8 +789,17 @@ class APIRequest: NSObject {
                 result(true)
             }
             else {
-                BLHUDBarManager.showError(msg: msg)
-                
+                let ownerVC = Toolkit.getCurrentViewController()
+                let alert = XHAlertController()
+                alert.style = 1
+                alert.modalPresentationStyle = .overCurrentContext
+                ownerVC?.modalPresentationStyle = .currentContext
+                alert.tit = msg
+                alert.msg = ""
+                alert.callback = {
+                    (buttonType)in
+                    }
+                ownerVC?.present(alert, animated: false, completion: nil)
             }
         }
     }

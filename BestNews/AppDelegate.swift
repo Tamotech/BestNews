@@ -169,10 +169,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, TencentSes
     //通过OpenInstall 获取自定义参数，数据为空时也会回调此方法。渠道统计返回参数名称为openinstallChannelCode
     func getInstallParams(fromOpenInstall params: [AnyHashable : Any]!, withError error: Error!) {
         if error == nil {
-//            print("OpenInstall 自定义数据：\(params.description)")
+            print("OpenInstall 自定义数据：\(params)")
             if params != nil && !params.isEmpty {
                 if let uid = params["uid"] {
-                    SessionManager.sharedInstance.invitorUid = uid as? String
+                    if UserDefaults.standard.bool(forKey: kSaveInvitorID) {
+                        return
+                    }
+                    let path = "/config/recordInstall.htm"
+                    let p = ["uid": uid as! String,
+                             "channelCode": "1"]
+                    APIManager.shareInstance.postRequest(urlString: path, params: p, result: { (JSON, code, msg) in
+                        if code == 0 {
+                            UserDefaults.standard.set(true, forKey: kSaveInvitorID)
+                        }
+                    })
                 }
             }
             else {
@@ -182,7 +192,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, TencentSes
     }
 
     func getWakeUpParams(fromOpenInstall params: [AnyHashable : Any]!, withError error: Error!) {
-       
+       print("OpenInstall 自定义数据：\(params)")
     }
     
     
@@ -246,7 +256,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, TencentSes
         
         
         print("content: \(String(describing: content)), badge: \(String(describing: badge))")
-        
         
         print(">JPUSHRegisterDelegate jpushNotificationCenter didReceive");
         

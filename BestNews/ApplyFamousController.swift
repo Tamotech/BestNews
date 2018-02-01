@@ -70,9 +70,9 @@ class ApplyFamousController: BaseViewController, UIImagePickerControllerDelegate
         
         if let user = SessionManager.sharedInstance.userInfo {
             phonetf.text = user.mobile
-            nicknameLb.text = user.name
-            nameField.text = user.idname
-            icodetf.text = user.idnumber
+            nicknameLb.text = user.name.contains("null") ? "" : user.name
+            nameField.text = user.idname.contains("null") ? "" : user.idname
+            icodetf.text = user.idnumber.contains("null") ? "" : user.idnumber
         }
         if SessionManager.sharedInstance.famousTagArr.count > 0 {
            labelsContainerView.style = 1
@@ -111,7 +111,7 @@ class ApplyFamousController: BaseViewController, UIImagePickerControllerDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         picker.dismiss(animated: true) {
             [weak self]in
-            let im = info[UIImagePickerControllerEditedImage] as! UIImage
+            let im = info[UIImagePickerControllerOriginalImage] as! UIImage
             self?.businessCardBtn.setImage(im, for: .normal)
             
             //上传图片

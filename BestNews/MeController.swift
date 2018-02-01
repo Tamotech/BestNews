@@ -83,7 +83,6 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
         SessionManager.sharedInstance.getUserInfo()
         loadInfoCount()
         updateUI()
-        self.barView.shadowOpacity = 0
     }
     
     ///更新UI

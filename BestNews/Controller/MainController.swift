@@ -72,8 +72,6 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
-        
-        saveInvitorID()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -600,31 +598,6 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
         if let url = URL(string: ad!.outlink) {
             //打开外部链接
             UIApplication.shared.openURL(url)
-        }
-    }
-    
-    
-    /// 保存邀请者id
-    func saveInvitorID() {
-        
-        if UserDefaults.standard.bool(forKey: kSaveInvitorID) {
-            return
-        }
-        if SessionManager.sharedInstance.invitorUid != nil && SessionManager.sharedInstance.userInfo != nil {
-//            let alert = UIAlertController(title: "被邀请", message: "被邀请msg", preferredStyle: .alert)
-//            alert.addAction(UIAlertAction(title: "确定", style: .default, handler: {(action: UIAlertAction) -> Void in
-//            }))
-//            //弹出提示框(便于调试，调试完成后删除此代码)
-//            self.navigationController?.present(alert, animated: true){  }
-            
-            let path = "/config/recordInstall.htm"
-            let p = ["uid": SessionManager.sharedInstance.invitorUid!,
-                     "channelCode": "1"]
-            APIManager.shareInstance.postRequest(urlString: path, params: p, result: { (JSON, code, msg) in
-                if code == 0 {
-                    UserDefaults.standard.set(true, forKey: kSaveInvitorID)
-                }
-            })
         }
     }
     

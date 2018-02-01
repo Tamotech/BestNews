@@ -88,6 +88,19 @@ class MessageCenterController: BaseViewController, UITableViewDelegate, UITableV
         cell.updateCell(msg)
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let msg = messageList.list[indexPath.row]
+        if ["articlecommentzan", "articlecomment", "articlereply", "articlecommentzan"].contains(msg.type) {
+            if let articleid = msg.param!["articleid"] as? String {
+                let vc = CommentListController()
+                vc.articleId = articleid
+                navigationController?.pushViewController(vc, animated: true)
+            }
+        }
+        
+    }
 }
 
 extension MessageCenterController {

@@ -29,6 +29,8 @@ class NewsCommentBar: UIView, UITextViewDelegate {
     var replySomeone: String?
     var targetCommentId: String?
     var articleId: String = ""
+    /// 0 文章   1  评论
+    var entry: Int = 0
     
     lazy var commentBtn: UIButton = {
         let commentBtn = UIButton()
@@ -192,6 +194,30 @@ class NewsCommentBar: UIView, UITextViewDelegate {
     
     //MARK: - actions
     func handleTapCommentBtn(sender: UIButton) {
+        if !SessionManager.sharedInstance.loginInfo.isLogin {
+            Toolkit.showLoginVC()
+            return
+        }
+        else if !SessionManager.sharedInstance.userInfo!.idproveflag {
+            //实名认证
+            
+            let ownerVC = self.viewController() as! BaseViewController
+            let vc = ApplyIdentifyController(nibName: "ApplyIdentifyController", bundle: nil)
+            let alert = XHAlertController()
+            alert.modalPresentationStyle = .overCurrentContext
+            ownerVC.modalPresentationStyle = .currentContext
+            alert.tit = "很抱歉, 您暂时未实名认证"
+            alert.msg = "需要进行先认证后再评论"
+            alert.callback = {
+                (buttonType)in
+                if buttonType == 0 {
+                    ownerVC.navigationController?.pushViewController(vc, animated: true)
+                    
+                }
+            }
+            ownerVC.present(alert, animated: false, completion: nil)
+            return
+        }
         if delegate != nil {
             delegate?.tapCommentHandler()
         }
@@ -278,7 +304,9 @@ class NewsCommentBar: UIView, UITextViewDelegate {
 //        textField.text = ""
         targetCommentId = nil
         sizeToFit()
-        switchToEditMode(edit: false)
+        if entry != 1 {
+            switchToEditMode(edit: false)
+        }
     }
     
     func textViewDidChange(_ textView: UITextView) {
@@ -354,7 +382,9 @@ extension NewsCommentBar {
         }
         APIRequest.commentAPI(articleId: articleId, commentId: targetCommentId, content: content!) { [weak self](JSON) in
             self?.textField.text = ""
-            self?.switchToEditMode(edit: false)
+            if self?.entry != 1 {
+                self?.switchToEditMode(edit: false)
+            }
             self?.targetCommentId = nil
             if self?.delegate != nil {
                 self!.delegate!.postSuccessHandler()

@@ -16,7 +16,7 @@ class APIManager: NSObject {
     
     static let shareInstance:APIManager = APIManager()
 
-    let baseUrl:String = "http://116.62.167.116"
+    let baseUrl:String = "http://xhfmedia.com"
     var headers: HTTPHeaders = [
         "device": "app",
         "X-Requested-With":"XMLHttpRequest"

@@ -46,6 +46,9 @@ CommentCellDelegate, CommentBarDelegate {
         view.addSubview(commentBar)
         commentBar.delegate = self
         commentBar.articleId = articleId
+        commentBar.entry = 1
+        commentBar.textView.alpha = 1
+        commentBar.barView.alpha = 0
         showCustomTitle(title: "评论(\(commentList?.total ?? 0))")
         
         if #available(iOS 11.0, *) {
@@ -54,7 +57,7 @@ CommentCellDelegate, CommentBarDelegate {
             self.automaticallyAdjustsScrollViewInsets = false
         }
         
-        self.reload()
+//        self.reload()
         tableView.addSubview(emptyView)
         emptyView.emptyString = "还没有评论~"
         

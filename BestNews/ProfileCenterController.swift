@@ -219,7 +219,7 @@ class ProfileCenterController: BaseViewController, UINavigationControllerDelegat
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         picker.dismiss(animated: true) {
             [weak self] in
-            let im = info[UIImagePickerControllerEditedImage] as! UIImage
+            let im = info[UIImagePickerControllerOriginalImage] as! UIImage
             self?.avatarImg.image = im
             
             //上传图片

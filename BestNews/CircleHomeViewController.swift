@@ -69,11 +69,11 @@ class CircleHomeViewController: BaseViewController, UIScrollViewDelegate, TYPage
     }
     
     func setupNavigationItems() {
-        let searchItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_search_white"), style: .plain, target: self, action: #selector(handleTapSearchItem(sender:)))
-        let messageItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_message_white"), style: .plain, target: self, action: #selector(handleTapMessageItem(sender:)))
-    
-        navigationItem.leftBarButtonItem = searchItem
-        navigationItem.rightBarButtonItem = messageItem
+//        let searchItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_search_white"), style: .plain, target: self, action: #selector(handleTapSearchItem(sender:)))
+//        let messageItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_message_white"), style: .plain, target: self, action: #selector(handleTapMessageItem(sender:)))
+//    
+//        navigationItem.leftBarButtonItem = searchItem
+//        navigationItem.rightBarButtonItem = messageItem
     }
     
     //MARK: - scrollView

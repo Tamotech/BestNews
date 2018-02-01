@@ -20,6 +20,8 @@ class XHAlertController: UIViewController {
     var msg = ""
     var callback: XHAlertActionCallback?
     
+    var style: Int = 0          //0  确认 取消   1  确认
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -69,10 +71,19 @@ class XHAlertController: UIViewController {
         cancelBtn.titleLabel?.font = UIFont.systemFont(ofSize: 17)
         contentView.addSubview(cancelBtn)
         cancelBtn.snp.makeConstraints { (make) in
-            make.left.equalTo(15)
-            make.height.equalTo(42)
-            make.top.equalTo(msgLb.snp.bottom).offset(15)
-            make.bottom.equalTo(-15)
+            if (self.style == 0) {
+                make.left.equalTo(15)
+                make.height.equalTo(42)
+                make.top.equalTo(msgLb.snp.bottom).offset(15)
+                make.bottom.equalTo(-15)
+            }
+            else {
+                make.left.equalTo(15)
+                make.height.equalTo(42)
+                make.width.equalTo(0)
+                make.top.equalTo(msgLb.snp.bottom).offset(15)
+                make.bottom.equalTo(-15)
+            }
         }
         
         let confirmBtn = UIButton(type: UIButtonType.custom)
@@ -87,11 +98,19 @@ class XHAlertController: UIViewController {
         confirmBtn.shadowOpacity = 0.3
         contentView.addSubview(confirmBtn)
         confirmBtn.snp.makeConstraints { (make) in
-            make.right.equalTo(-15)
-            make.height.equalTo(42)
-            make.bottom.equalTo(-15)
-            make.left.equalTo(cancelBtn.snp.right).offset(15)
-            make.width.equalTo(cancelBtn.snp.width)
+            if self.style == 0 {
+                make.right.equalTo(-15)
+                make.height.equalTo(42)
+                make.bottom.equalTo(-15)
+                make.left.equalTo(cancelBtn.snp.right).offset(15)
+                make.width.equalTo(cancelBtn.snp.width)
+            }
+            else {
+                make.right.equalTo(-15)
+                make.height.equalTo(42)
+                make.bottom.equalTo(-15)
+                make.left.equalTo(cancelBtn.snp.right).offset(0)
+            }
         }
         
         cancelBtn.addTarget(self, action: #selector(tapCancel(_:)), for: UIControlEvents.touchUpInside)

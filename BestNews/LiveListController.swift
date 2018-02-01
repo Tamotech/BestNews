@@ -74,8 +74,8 @@ class LiveListController: BaseViewController, UITableViewDelegate, UITableViewDa
         self.view.addSubview(emptyView)
         emptyView.emptyString = "还没有直播~"
         
-        let messageItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_message_white"), style: .plain, target: self, action: #selector(handleTapMessageItem(sender:)))
-        navigationItem.rightBarButtonItem = messageItem
+//        let messageItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_message_white"), style: .plain, target: self, action: #selector(handleTapMessageItem(sender:)))
+//        navigationItem.rightBarButtonItem = messageItem
     }
     
     
