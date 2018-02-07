@@ -129,9 +129,11 @@ class LoginViewController: BaseViewController, UITextFieldDelegate, TencentSessi
         if newText.validPhoneNum() {
             
             //验证手机号
+            self.view.pleaseWait()
             APIRequest.checkMobile(phone: newText, result: { [weak self](success) in
                 if success {
                     DispatchQueue.main.async {
+                        self?.view.clearAllNotice()
                         //自动到下一步
                         self?.tipView.isHidden = true
                         let vc = LoginCaptchaController(nibName: "LoginCaptchaController", bundle: nil)

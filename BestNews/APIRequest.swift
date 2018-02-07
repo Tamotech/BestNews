@@ -779,10 +779,11 @@ class APIRequest: NSObject {
     ///   - idname: 姓名
     ///   - idCode: 身份证号
     ///   - result: 结果
-    class func applyIdentiify(idname: (String), idCode: (String), result: @escaping (_ success: Bool)->()) {
+    class func applyIdentiify(idname: (String), idCode: (String), captcha: (String), result: @escaping (_ success: Bool)->()) {
         let path = "/certification/certification.htm"
         let params = ["idname": idname,
-                      "idnumber": idCode]
+                      "idnumber": idCode,
+                      "captcha": captcha]
         
         APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
             if code == 0 {

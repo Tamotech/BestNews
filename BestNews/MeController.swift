@@ -287,7 +287,7 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
             share.msg = "专注财经新闻资讯, 与财经现场, 金融机构, 大咖名人零距离!"
             vc.share = share
             if SessionManager.sharedInstance.userInfo != nil {
-                share.link = "http://xhfmedia.com/app2.htm?channelCode=1&uid=\(SessionManager.sharedInstance.userInfo!.id)"
+                share.link = "http://xhfmedia.com/app.htm?channelCode=1&uid=\(SessionManager.sharedInstance.userInfo!.id)"
             }
             presentr.viewControllerForContext = self
             presentr.shouldIgnoreTapOutsideContext = false

@@ -103,7 +103,7 @@ class ApplyIdentifyController: BaseViewController {
             BLHUDBarManager.showError(msg: "验证码错误")
             return
         }
-        APIRequest.applyIdentiify(idname: name, idCode: idcode) { [weak self](success) in
+        APIRequest.applyIdentiify(idname: name, idCode: idcode, captcha: vrcode) { [weak self](success) in
             if success {
                 SessionManager.sharedInstance.getUserInfo()
                 DispatchQueue.main.async {

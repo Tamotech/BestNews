@@ -73,7 +73,9 @@ class ProfileCenterController: BaseViewController, UINavigationControllerDelegat
 
             }
             nicknameTf.text = user.name
-            descLb.text = user.intro
+            if !user.intro.contains("null") {
+                descLb.text = user.intro
+            }
             
             if user.celebrityflag {
                 accountTop.constant = descView.height+30

@@ -11,7 +11,6 @@ import IQKeyboardManagerSwift
 import SwiftyJSON
 import UserNotifications
 
-
 let kFirstLoadApp = "firstLoadAppKey"
 let umengAppKey = "5a6b6592b27b0a1c6200049d"
 
@@ -38,8 +37,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, TencentSes
         
         IQKeyboardManager.sharedManager().enable = true
         
-        UMConfigure.initWithAppkey(umengAppKey, channel: "App Store")
-        UMErrorCatch.initErrorCatch()
+        let umConfig = UMAnalyticsConfig()
+        umConfig.appKey = umengAppKey
+        MobClick.start(withConfigure: umConfig)
+        MobClick.startSession(nil)
+        
         
         //注册推送
         if #available(iOS 10.0, *){
