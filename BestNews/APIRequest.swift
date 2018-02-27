@@ -986,4 +986,21 @@ class APIRequest: NSObject {
             }
         }
     }
+    
+    /// 读取用户配置
+    ///
+    /// - Parameters:
+    ///   - codes: 编码
+    /// http://www.blueskylab.cn/wiki/index.do?wikiid=wiki&navid=8fe3da70-3ffa-4cef-bcd0-1068719e701f
+    ///   - result: data
+    class func getUserConfig(codes: String, result: @escaping JSONResult) {
+        let path = "/config/getCfgByCodes.htm"
+        let params = ["codes": codes]
+        APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
+            if code == 0 {
+                let list = JSON?["data"]
+                result(list)
+            }
+        }
+    }
 }

@@ -64,6 +64,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, TencentSes
         
         JPUSHService.setup(withOption: launchOptions, appKey: jPushKey, channel: "app store", apsForProduction: true)
         
+        
+        checkAppUpdate()
         return true
     }
 
@@ -265,6 +267,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, TencentSes
             JPUSHService.handleRemoteNotification(userInfo)
         }
         completionHandler()
+    }
+    
+    
+    
+    ///检查版本更新
+    func checkAppUpdate() {
+        
+        APIRequest.getUserConfig(codes: "s_app_version_no_ios,u_app_download_ios,s_app_version_no_desc_ios") { (JSONData) in
+            let data = JSONData as! JSON
+            let version = data["s_app_version_no_ios"]["v"].stringValue
+            let urlStr = data["u_app_download_ios"]["v"].stringValue
+            let desc = data["s_app_version_no_desc_ios"]["v"].stringValue
+            let localVer = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
+            if localVer.compare(version) == ComparisonResult.orderedAscending {
+                //升级
+                DispatchQueue.main.async {
+                    let simpleHUD = UpdateVersionController(nibName: "UpdateVersionController", bundle: nil)
+                    guard let vc = Toolkit.getCurrentViewController() else {
+                        return
+                    }
+                    simpleHUD.modalPresentationStyle = .overCurrentContext
+                    vc.present(simpleHUD, animated: false) {
+                        simpleHUD.updateLabel.text = desc
+                    }
+                    simpleHUD.dismissHandler = {
+                        if let url = URL(string: urlStr) {
+                            UIApplication.shared.openURL(url)
+                        }
+                        
+                    }
+                }
+            }
+            
+        }
+        
     }
 
 }

@@ -34,6 +34,7 @@ class ActivityTicketDetailCell: UITableViewCell {
     
     @IBOutlet weak var labelLb: UILabel!
     
+    @IBOutlet weak var refundBtn: UIButton!
     
     var ticket: ActivityTicketDetail?
     
@@ -68,11 +69,31 @@ class ActivityTicketDetailCell: UITableViewCell {
         qrNoLb.text = newOrder
         let qrImg = ticket.ano.createQRForString(qrImageName: nil)
         qrCodeImg.image = qrImg
+        if ticket.refundflag == 1 {
+            refundBtn.isHidden = false
+        }
+        else {
+            refundBtn.isHidden = true
+        }
         
     }
     
     @IBAction func handleTapReturnBtn(_ sender: UIButton) {
-        let path = "/activityoperate/refund.htm?aaid=\(ticket?.aid)"
+        let path = "/activityoperate/refund.htm?aaid=\(ticket!.aaid)"
+        APIManager.shareInstance.postRequest(urlString: path, params: nil) { (JSON, code, msg) in
+            if code == 0 {
+                DispatchQueue.main.async {
+                    BLHUDBarManager.showSuccess(msg: msg, seconds: 1)
+                    NotificationCenter.default.post(name: kActivityRefundSuccessNotify, object: nil)
+                }
+                
+            }
+            else {
+                DispatchQueue.main.async {
+                    BLHUDBarManager.showError(msg: msg)
+                }
+            }
+        }
     }
     
 }

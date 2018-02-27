@@ -74,6 +74,8 @@
 		5A186C621FAA8B0B007216CE /* YLCycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A690B231FAA0394008FF1EC /* YLCycleView.swift */; };
 		5A186C641FAA8C62007216CE /* HomeArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A186C631FAA8C62007216CE /* HomeArticle.swift */; };
 		5A186C661FAA9AA1007216CE /* SpecialChannel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A186C651FAA9AA1007216CE /* SpecialChannel.swift */; };
+		5A27D4EE2042C8730020BA29 /* UpdateVersionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A27D4ED2042C8730020BA29 /* UpdateVersionController.swift */; };
+		5A27D4F02042C87D0020BA29 /* UpdateVersionController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A27D4EF2042C87D0020BA29 /* UpdateVersionController.xib */; };
 		5A27E7271F935361007C5D6B /* RecommendColumnCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A27E7251F935361007C5D6B /* RecommendColumnCell.swift */; };
 		5A27E7281F935361007C5D6B /* RecommendColumnCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A27E7261F935361007C5D6B /* RecommendColumnCell.xib */; };
 		5A27E72B1F936857007C5D6B /* FinanceProductDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A27E7291F936857007C5D6B /* FinanceProductDetailController.swift */; };
@@ -401,6 +403,8 @@
 		5A10F5891FAEF0A900316832 /* SpecialChannelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SpecialChannelCell.xib; sourceTree = "<group>"; };
 		5A186C631FAA8C62007216CE /* HomeArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeArticle.swift; sourceTree = "<group>"; };
 		5A186C651FAA9AA1007216CE /* SpecialChannel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpecialChannel.swift; sourceTree = "<group>"; };
+		5A27D4ED2042C8730020BA29 /* UpdateVersionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateVersionController.swift; sourceTree = "<group>"; };
+		5A27D4EF2042C87D0020BA29 /* UpdateVersionController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpdateVersionController.xib; sourceTree = "<group>"; };
 		5A27E7251F935361007C5D6B /* RecommendColumnCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendColumnCell.swift; sourceTree = "<group>"; };
 		5A27E7261F935361007C5D6B /* RecommendColumnCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecommendColumnCell.xib; sourceTree = "<group>"; };
 		5A27E7291F936857007C5D6B /* FinanceProductDetailController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinanceProductDetailController.swift; sourceTree = "<group>"; };
@@ -1262,6 +1266,8 @@
 				5A0612D21FDD69AC00E7F20A /* ApplyFamousComplateController.xib */,
 				5A0612D91FDD88D500E7F20A /* FeedbackViewController.swift */,
 				5A0612DA1FDD88D500E7F20A /* FeedbackViewController.xib */,
+				5A27D4ED2042C8730020BA29 /* UpdateVersionController.swift */,
+				5A27D4EF2042C87D0020BA29 /* UpdateVersionController.xib */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -1641,6 +1647,7 @@
 				5AFF05F01FE62E1800B7FE7D /* RongCloud.bundle in Resources */,
 				5A5446081F84A6220004F192 /* ActivityTicketCell.xib in Resources */,
 				5AF9CE3E1F814880002AA4A6 /* ProfileCenterCell.xib in Resources */,
+				5A27D4F02042C87D0020BA29 /* UpdateVersionController.xib in Resources */,
 				5A0D23CE1F839B2900FC9D4D /* CommentCell.xib in Resources */,
 				5AA4E8501FD43378007A04FA /* record_beauty_on@3x.png in Resources */,
 				5ACCDD301F9F7AEA004D3809 /* InterestColumnCell.xib in Resources */,
@@ -1870,6 +1877,7 @@
 				5A10F5871FAEF06900316832 /* SpecialChannelListController.swift in Sources */,
 				5ABB92D11FA5EC42002E3180 /* Toolkit.swift in Sources */,
 				CC2906E11F659E77001894DA /* BaseNavigationController.swift in Sources */,
+				5A27D4EE2042C8730020BA29 /* UpdateVersionController.swift in Sources */,
 				CC29070B1F65A323001894DA /* BaseTabBarView.swift in Sources */,
 				CC2906EF1F659EBA001894DA /* UIView+Position.swift in Sources */,
 				5AA4E80C1FD42B86007A04FA /* AlivcDebugTextView.m in Sources */,

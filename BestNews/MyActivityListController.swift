@@ -29,6 +29,8 @@ class MyActivityListController: BaseViewController, UITableViewDelegate, UITable
 
         self.setupView()
         reloadData()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(refundTicketSuccessNoti(_:)), name: kActivityRefundSuccessNotify, object: nil)
     }
     
     func setupView() {
@@ -60,6 +62,9 @@ class MyActivityListController: BaseViewController, UITableViewDelegate, UITable
     }
 
     
+    func refundTicketSuccessNoti(_ sender: Notification) {
+        self.reloadData()
+    }
     
     //MARK: - tableView
     

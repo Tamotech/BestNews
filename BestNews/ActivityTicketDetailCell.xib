@@ -391,6 +391,7 @@ Cg
                 <outlet property="phoneLb" destination="57O-bu-SJD" id="21O-zZ-dgQ"/>
                 <outlet property="qrCodeImg" destination="F5K-Cu-jYr" id="gZh-x8-fqN"/>
                 <outlet property="qrNoLb" destination="AiX-cB-WPY" id="zkl-Mx-ELo"/>
+                <outlet property="refundBtn" destination="1c2-e1-PGT" id="5qp-SY-FzX"/>
                 <outlet property="ticketTypeLb" destination="CGV-2S-g9H" id="3x8-F1-sXN"/>
                 <outlet property="titleLb" destination="YNh-iT-ey0" id="noP-6a-Cgx"/>
                 <outlet property="useInstructionLb" destination="tE1-FH-V66" id="eVY-rJ-oaz"/>

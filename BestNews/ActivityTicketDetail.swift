@@ -31,6 +31,7 @@ class ActivityTicketDetail: HandyJSON {
     var mobile: String = ""
     //二维码编码
     var ano: String = ""
+    var refundflag = 0      //是否可以退款
     
     
     lazy var dateformatter: DateFormatter = {
