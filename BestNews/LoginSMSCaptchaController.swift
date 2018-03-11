@@ -123,7 +123,19 @@ class LoginSMSCaptchaController: BaseViewController, SwiftyVerificationCodeViewD
                 //未注册
                 SessionManager.sharedInstance.regist(results: { (JSON1, code1, msg1) in
                     if code1 == 0 {
-                        self?.handleTapLogin(nil)
+//                        self?.handleTapLogin(nil)
+                        
+                        if !UserDefaults.standard.bool(forKey: self!.showSelectChannelKey) {
+                            let vc = SelectInterestItemController(nibName: "SelectInterestItemController", bundle: nil)
+                            self?.navigationController?.pushViewController(vc, animated: true)
+                            BLHUDBarManager.showSuccess(msg: "登录成功", seconds: 2)
+                            UserDefaults.standard.set(true, forKey: self!.showSelectChannelKey)
+                            UserDefaults.standard.synchronize()
+                        }
+                        else {
+                            self?.navigationController?.dismiss(animated: true, completion: nil)
+                        }
+                        
                     }
                     else {
                         BLHUDBarManager.showError(msg: msg1)

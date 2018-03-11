@@ -140,8 +140,10 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
             let token = JSON?["memo"].string!
             self?.token = token!
             self?.loginInfo.isLogin = true
-            results(JSON, code, msg)
+            self?.userId = JSON?["id"].string ?? ""
+            self?.saveLoginInfo()
             self?.getUserInfo()
+            results(JSON, code, msg)
         }
     }
     

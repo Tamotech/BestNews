@@ -24,6 +24,9 @@
                             <constraint firstAttribute="height" constant="144" id="Wj6-Wy-Jc9"/>
                         </constraints>
                     </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow_right_gray" translatesAutoresizingMaskIntoConstraints="NO" id="Nmb-3I-a0u">
+                        <rect key="frame" x="289" y="70" width="6" height="14"/>
+                    </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fmY-dX-Acj">
                         <rect key="frame" x="15" y="150" width="290" height="326.5"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -352,6 +355,7 @@ Cg
                     <constraint firstItem="6Lk-zp-ySn" firstAttribute="top" secondItem="Qe6-tj-S4p" secondAttribute="top" constant="-3" id="Mqs-gf-soC"/>
                     <constraint firstItem="kNS-0A-x7n" firstAttribute="leading" secondItem="ISf-b4-T06" secondAttribute="leading" id="N9R-kB-CG7"/>
                     <constraint firstItem="6Lk-zp-ySn" firstAttribute="leading" secondItem="Qe6-tj-S4p" secondAttribute="leading" constant="6" id="Nk7-ty-WXE"/>
+                    <constraint firstAttribute="trailing" secondItem="Nmb-3I-a0u" secondAttribute="trailing" constant="25" id="PL5-aX-I8k"/>
                     <constraint firstItem="tJ8-Cu-Jsb" firstAttribute="top" secondItem="F5K-Cu-jYr" secondAttribute="top" constant="-6" id="RxP-oO-LHz"/>
                     <constraint firstItem="tE1-FH-V66" firstAttribute="top" secondItem="KYu-j4-hXa" secondAttribute="bottom" constant="8" id="TSw-Qg-F7a"/>
                     <constraint firstItem="Qe6-tj-S4p" firstAttribute="top" secondItem="3bu-uT-n8C" secondAttribute="top" constant="15" id="VOE-ai-oKO"/>
@@ -368,6 +372,7 @@ Cg
                     <constraint firstItem="KYu-j4-hXa" firstAttribute="leading" secondItem="AiX-cB-WPY" secondAttribute="leading" id="cbE-zD-nsw"/>
                     <constraint firstItem="F5K-Cu-jYr" firstAttribute="top" secondItem="zYT-Po-tZa" secondAttribute="bottom" constant="12" id="fWZ-jp-qZD"/>
                     <constraint firstItem="F5K-Cu-jYr" firstAttribute="leading" secondItem="zYT-Po-tZa" secondAttribute="leading" id="iN4-UY-aMu"/>
+                    <constraint firstItem="Nmb-3I-a0u" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="70" id="kaO-TN-uhr"/>
                     <constraint firstItem="3bu-uT-n8C" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="kae-rk-zb4"/>
                     <constraint firstItem="YNh-iT-ey0" firstAttribute="trailing" secondItem="3bu-uT-n8C" secondAttribute="trailing" constant="-26" id="okW-2d-ZOm"/>
                     <constraint firstItem="fmY-dX-Acj" firstAttribute="trailing" secondItem="3bu-uT-n8C" secondAttribute="trailing" id="oua-ux-Rag"/>
@@ -402,6 +407,7 @@ Cg
     <resources>
         <image name="Cover1M3-1" width="315" height="230"/>
         <image name="QrcodeTicket" width="100" height="100"/>
+        <image name="arrow_right_gray" width="6" height="14"/>
         <image name="icon_location_on" width="13" height="14"/>
         <image name="icon_record_on" width="13" height="14"/>
         <image name="ticket-bg-1" width="345" height="144"/>

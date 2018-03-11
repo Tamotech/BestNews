@@ -424,7 +424,17 @@ class HomeSearchController: UIViewController, UITableViewDelegate, UITableViewDa
             if indexPath.section == 0 {
                 let model = searchResult!.model(section: indexPath.section, row: indexPath.row) as! HomeArticle
                 if model.linkurl.count > 0 && !model.linkurl.contains("null") {
+                    
                     let wkvc = BaseWKWebViewController()
+                    wkvc.shareEnable = true
+                    let share = ShareModel()
+                    share.title = model.title
+                    share.msg = "新华财经日报"
+                    if model.preimglist.count > 0 {
+                        share.thumb = model.preimglist.first!
+                    }
+                    share.link = model.linkurl
+                    wkvc.share = share
                     wkvc.urlString = model.linkurl
                     navigationController?.pushViewController(wkvc, animated: true)
                 }

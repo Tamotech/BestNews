@@ -176,6 +176,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, TencentSes
             print("OpenInstall 自定义数据：\(params)")
             if params != nil && !params.isEmpty {
                 if let uid = params["uid"] {
+                    SessionManager.sharedInstance.invitorUid = uid as? String
                     if UserDefaults.standard.bool(forKey: kSaveInvitorID) {
                         return
                     }

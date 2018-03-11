@@ -12,14 +12,31 @@ import SnapKit
 
 class BaseWKWebViewController: BaseViewController, WKNavigationDelegate {
 
-    let webView = WKWebView()
+    lazy var webView: WKWebView = {
+        let config = WKWebViewConfiguration()
+        config.allowsInlineMediaPlayback = true
+        if #available(iOS 10.0, *) {
+            config.mediaTypesRequiringUserActionForPlayback = WKAudiovisualMediaTypes.video
+        } else {
+            config.mediaPlaybackRequiresUserAction = false
+        }
+        
+        let v = WKWebView(frame: CGRect.zero, configuration: config)
+        return v
+    }()
     var urlString: String?
     var htmlString: String?
+    var shareEnable = false
+    var share: ShareModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.view.addSubview(webView)
+        if shareEnable {
+            let item = UIBarButtonItem(image: #imageLiteral(resourceName: "iconShare"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(handleTapShare(_:)))
+            navigationItem.rightBarButtonItem = item
+        }
         webView.navigationDelegate = self
         if htmlString != nil {
             webView.loadHTMLString(htmlString!, baseURL: nil)
@@ -36,6 +53,18 @@ class BaseWKWebViewController: BaseViewController, WKNavigationDelegate {
             make.top.equalTo(64)
         }
         
+    }
+    
+    //分享
+    func handleTapShare(_ sender: Any) {
+        let vc = BaseShareViewController(nibName: "BaseShareViewController", bundle: nil)
+        vc.share = share!
+        self.presentr.viewControllerForContext = self
+        self.presentr.shouldIgnoreTapOutsideContext = false
+        self.presentr.dismissOnTap = true
+        self.customPresentViewController(self.presentr, viewController: vc, animated: true) {
+            
+        }
     }
 
 

@@ -169,6 +169,15 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
             let article = articleList?.list[indexPath.row - 1]
             if article!.linkurl.count > 0 && !article!.linkurl.contains("null") {
                 let wkvc = BaseWKWebViewController()
+                wkvc.shareEnable = true
+                let share = ShareModel()
+                share.title = article?.title ?? ""
+                share.msg = "新华财经日报"
+                if article!.preimglist.count > 0 {
+                    share.thumb = article!.preimglist.first!
+                }
+                article?.linkurl = article!.linkurl
+                wkvc.share = share
                 wkvc.urlString = article!.linkurl
                 navigationController?.pushViewController(wkvc, animated: true)
             }

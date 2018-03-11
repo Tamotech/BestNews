@@ -94,7 +94,10 @@ class MyActivityListController: BaseViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        let vc = ActivityDetailController(nibName: "ActivityDetailController", bundle: nil)
+        let ticket = ticketList.list[indexPath.row]
+        vc.activityId = ticket.aid
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }

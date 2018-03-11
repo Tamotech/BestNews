@@ -191,6 +191,9 @@ class ActivityDetailController: BaseViewController, ActivityTicketListController
             [weak self](result) in
             
             DispatchQueue.main.async {
+                //刷新报名状态
+                self?.activity.appledflag = 1
+                self?.updateUI()
                 let alert = ActivityApplySuccessAlertControllerViewController(nibName: "ActivityApplySuccessAlertControllerViewController", bundle: nil)
                 alert.aaid = result.aaid
                 alert.orderNo = result.orderno
