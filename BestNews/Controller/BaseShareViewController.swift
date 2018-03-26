@@ -13,6 +13,7 @@ class ShareModel: NSObject {
     var thumb = ""
     var msg = "新华日报财经"
     var link = "http://xhfmedia.com/app.htm"
+    var img: UIImage?
 }
 
 class BaseShareViewController: UIViewController {
@@ -31,54 +32,41 @@ class BaseShareViewController: UIViewController {
         
         dismiss(animated: true) {
             [weak self] in
-            BSLShareManager.shareToWechat(link: self!.share.link, title: self!.share.title, msg: self!.share.msg, thumb: self!.share.thumb, type: 0)
+            
+            if self?.share.img != nil {
+                BSLShareManager.shareToWechatWithImage(title: self!.share.title, msg: self!.share.msg, thumb: self!.share.thumb, img: self!.share.img!, type: 0)
+            }
+            else {
+                BSLShareManager.shareToWechat(link: self!.share.link, title: self!.share.title, msg: self!.share.msg, thumb: self!.share.thumb, type: 0)
+            }
         }
     }
     
     @IBAction func handleTapTimelineBtn(_ sender: UIButton) {
         dismiss(animated: true) {
             [weak self] in
-            BSLShareManager.shareToWechat(link: self!.share.link, title: self!.share.title, msg: self!.share.msg, thumb: self!.share.thumb, type: 1)
+            if self?.share.img != nil {
+                BSLShareManager.shareToWechatWithImage(title: self!.share.title, msg: self!.share.msg, thumb: self!.share.thumb, img: self!.share.img!, type: 1)
+            }
+            else {
+                BSLShareManager.shareToWechat(link: self!.share.link, title: self!.share.title, msg: self!.share.msg, thumb: self!.share.thumb, type: 1)
+            }
         }
     }
     
     @IBAction func handleTapWeiboBtn(_ sender: UIButton) {
+        
     }
     
     @IBAction func handleTapQQBtn(_ sender: UIButton) {
         
-        var data = UIImageJPEGRepresentation(#imageLiteral(resourceName: "logo"), 1)
-        if share.thumb.count>0 {
-            do {
-                data = try Data(contentsOf: URL(string: share.thumb)!)
-            }
-            catch {
-                
-            }
-        }
-        let obj = QQApiNewsObject(url: URL(string: share.link)!, title: share.title, description: share.msg, previewImageData: data!, targetContentType: QQApiURLTargetTypeNews)
-        
-        let send = SendMessageToQQReq(content: obj!)
-        let sent = QQApiInterface.send(send)
-        print(sent)
-        
+        BSLShareManager.shareToQQ(title: share.title, msg: share.msg, qqOrZorn: 0, link: share.link, thumb: share.thumb, img: share.img)
     }
     
     @IBAction func handleTapQQZornBtn(_ sender: UIButton) {
-        var data = UIImageJPEGRepresentation(#imageLiteral(resourceName: "logo"), 1)
-        if share.thumb.count>0 {
-            do {
-                data = try Data(contentsOf: URL(string: share.thumb)!)
-            }
-            catch {
-                
-            }
-        }
-        let obj = QQApiNewsObject(url: URL(string: share.link)!, title: share.title, description: share.msg, previewImageData: data!, targetContentType: QQApiURLTargetTypeNews)
         
-        let send = SendMessageToQQReq(content: obj!)
-        let sent = QQApiInterface.sendReq(toQZone: send)
-        print(sent)
+        
+        BSLShareManager.shareToQQ(title: share.title, msg: share.msg, qqOrZorn: 1, link: share.link, thumb: share.thumb, img: share.img)
     }
     
     @IBAction func handleTapCancelBtn(_ sender: UIButton) {

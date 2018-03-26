@@ -281,6 +281,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, TencentSes
             let urlStr = data["u_app_download_ios"]["v"].stringValue
             let desc = data["s_app_version_no_desc_ios"]["v"].stringValue
             let localVer = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
+            SessionManager.sharedInstance.downloadURL = urlStr
             if localVer.compare(version) == ComparisonResult.orderedAscending {
                 //升级
                 DispatchQueue.main.async {

@@ -276,6 +276,8 @@
 		CC01705F1F6835400069D38B /* ActivityCoverCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC01705D1F6835400069D38B /* ActivityCoverCell.xib */; };
 		CC0170621F6840D00069D38B /* ActivityDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0170601F6840D00069D38B /* ActivityDetailController.swift */; };
 		CC0170631F6840D00069D38B /* ActivityDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC0170611F6840D00069D38B /* ActivityDetailController.xib */; };
+		CC0BFA96206746D10024252B /* ShareAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0BFA94206746D10024252B /* ShareAppViewController.swift */; };
+		CC0BFA97206746D10024252B /* ShareAppViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC0BFA95206746D10024252B /* ShareAppViewController.xib */; };
 		CC2906C91F6599C7001894DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2906C81F6599C7001894DA /* AppDelegate.swift */; };
 		CC2906D21F6599C7001894DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC2906D11F6599C7001894DA /* Assets.xcassets */; };
 		CC2906D51F6599C7001894DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC2906D31F6599C7001894DA /* LaunchScreen.storyboard */; };
@@ -627,6 +629,8 @@
 		CC01705D1F6835400069D38B /* ActivityCoverCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityCoverCell.xib; sourceTree = "<group>"; };
 		CC0170601F6840D00069D38B /* ActivityDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityDetailController.swift; sourceTree = "<group>"; };
 		CC0170611F6840D00069D38B /* ActivityDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityDetailController.xib; sourceTree = "<group>"; };
+		CC0BFA94206746D10024252B /* ShareAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareAppViewController.swift; sourceTree = "<group>"; };
+		CC0BFA95206746D10024252B /* ShareAppViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShareAppViewController.xib; sourceTree = "<group>"; };
 		CC2906C51F6599C7001894DA /* BestNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BestNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC2906C81F6599C7001894DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC2906D11F6599C7001894DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -1268,6 +1272,8 @@
 				5A0612DA1FDD88D500E7F20A /* FeedbackViewController.xib */,
 				5A27D4ED2042C8730020BA29 /* UpdateVersionController.swift */,
 				5A27D4EF2042C87D0020BA29 /* UpdateVersionController.xib */,
+				CC0BFA94206746D10024252B /* ShareAppViewController.swift */,
+				CC0BFA95206746D10024252B /* ShareAppViewController.xib */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -1631,6 +1637,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5AA4E84F1FD43378007A04FA /* record_beauty@2x.png in Resources */,
+				CC0BFA97206746D10024252B /* ShareAppViewController.xib in Resources */,
 				5ABB92CC1FA5EB3F002E3180 /* BaseAlertView.xib in Resources */,
 				5AA4E8511FD43378007A04FA /* Line@2x.png in Resources */,
 				5A0612C61FDCBE6B00E7F20A /* OpenVIPController.xib in Resources */,
@@ -1966,6 +1973,7 @@
 				CCDB6D411F79D6C30012432E /* TYPageView.swift in Sources */,
 				5A0612CD1FDCDFA300E7F20A /* ApplyFamousController.swift in Sources */,
 				5ABB14D41FBD073E006EEE59 /* ActivityList.swift in Sources */,
+				CC0BFA96206746D10024252B /* ShareAppViewController.swift in Sources */,
 				5AA4E81A1FD42C81007A04FA /* AlivcGuidePageView.m in Sources */,
 				5AA4E8191FD42C81007A04FA /* AlivcSweepCodeView.m in Sources */,
 				CC0170621F6840D00069D38B /* ActivityDetailController.swift in Sources */,

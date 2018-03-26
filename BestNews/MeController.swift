@@ -282,18 +282,13 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
         
         let name = settingData[indexPath.row].0
         if name == "分享APP" {
-            let vc = BaseShareViewController(nibName: "BaseShareViewController", bundle: nil)
-            let share = ShareModel()
-            share.msg = "专注财经新闻资讯, 与财经现场, 金融机构, 大咖名人零距离!"
-            vc.share = share
-            if SessionManager.sharedInstance.userInfo != nil {
-                share.link = "http://xhfmedia.com/app.htm?channelCode=1&uid=\(SessionManager.sharedInstance.userInfo!.id)"
+            
+            if SessionManager.sharedInstance.loginInfo.isLogin == false {
+                Toolkit.showLoginVC()
+                return
             }
-            presentr.viewControllerForContext = self
-            presentr.shouldIgnoreTapOutsideContext = false
-            customPresentViewController(presentr, viewController: vc, animated: true) {
-                
-            }
+            let vc = ShareAppViewController(nibName: "ShareAppViewController", bundle: nil)
+            navigationController?.pushViewController(vc, animated: true)
             return
         }
         if !SessionManager.sharedInstance.loginInfo.isLogin {

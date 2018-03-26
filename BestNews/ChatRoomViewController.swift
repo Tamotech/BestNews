@@ -174,6 +174,9 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
         
 //        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         loadLiveDetail()
+        
+        //禁止屏
+        UIApplication.shared.isIdleTimerDisabled = true
     }
     
     
@@ -197,7 +200,7 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
 //            self.aliyunVodPlayer.playerView.removeFromSuperview()
 //        }
 //        self.aliyunVodPlayer.release()
-        
+            UIApplication.shared.isIdleTimerDisabled = false
     }
 
     //MARK:析构函数

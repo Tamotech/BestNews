@@ -21,5 +21,4 @@ target 'BestNews' do
    pod 'ImagePicker', '~> 2.0'
    pod 'UMengAnalytics'
    pod 'JPush'
-
 end

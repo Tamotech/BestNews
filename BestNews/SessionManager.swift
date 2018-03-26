@@ -42,6 +42,8 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
     ///推送tags
     var pushTags = ["system", "articlecomment", "articlereply", "articlecommentzan"]
     
+    ///下载链接
+    var downloadURL: String?
     
     var lock = NSLock()
     ///行业字典
@@ -317,6 +319,17 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
             else {
                 self?.getHotWords()
             }
+        }
+    }
+    
+    
+    //获取下载地址
+    func getDownloadURL() {
+        APIRequest.getUserConfig(codes: "u_app_download_ios") { [weak self](JSONData) in
+            let data = JSONData as! JSON
+            let urlStr = data["u_app_download_ios"]["v"].stringValue
+            self?.downloadURL = urlStr
+            
         }
     }
     
