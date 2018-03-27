@@ -219,6 +219,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, TencentSes
         JPUSHService.registerDeviceToken(deviceToken)
         if (SessionManager.sharedInstance.userId.count > 0) {
             //绑定别名
+            print("绑定别名.....\(SessionManager.sharedInstance.userId)")
             JPUSHService.setAlias(SessionManager.sharedInstance.userId, completion: { (code, msg, i) in
                 
             }, seq: 0)
@@ -248,6 +249,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, TencentSes
         completionHandler(Int(UNAuthorizationOptions.alert.rawValue))// 需要执行这个方法，选择是否提醒用户，有Badge、Sound、Alert三种类型可以选择设置
     }
     
+    
+    
+    //"ios":{"sound":"","extras":{"pushdate":"1522118162000","type":"article","articleid":"1803270037"},"badge":"+1","alert":"继上一日人民币市场汇率大幅升值后，3月27日，人民币兑美元中间价跟进调升377个基点，最新设于6.2816元，再创2015年8月11日以来新高。市场人士指出，美元超预期的疲弱激发了人民币做多热情，如果美元延续弱势，人民币短期升值还没到头。"},
     @available(iOS 10.0, *)
     func jpushNotificationCenter(_ center: UNUserNotificationCenter!, didReceive response: UNNotificationResponse!, withCompletionHandler completionHandler: (() -> Void)!) {
         
@@ -256,14 +260,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, TencentSes
         
         // 取得 APNs 标准信息内容
         let userInfo = response.notification.request.content.userInfo
-        let aps = userInfo["aps"] as! [String:Any?]
-        let content = aps["alert"] ?? ""
-        let badge = aps["badge"] ?? ""
-        
+        //let aps = userInfo["aps"] as! [String:Any]
+//        let content = aps["alert"] ?? ""
+//        let badge = aps["badge"] ?? ""
         //extra 信息
-        
-        
-        print("content: \(String(describing: content)), badge: \(String(describing: badge))")
+        if let type = userInfo["type"] as? String {
+            if type == "article" {
+                let id = userInfo["articleid"] as! String
+                let vc = NewsDetailController.init(nibName: "NewsDetailController", bundle: nil) as NewsDetailController
+                vc.articleId = id
+                let rootVc = Toolkit.getCurrentViewController()
+                if rootVc is BestTabbarViewController {
+                    let navVC = (rootVc as! BestTabbarViewController).childViewControllers.first as? UINavigationController
+                    navVC?.pushViewController(vc, animated: true)
+                }
+            }
+        }
+//        print("content: \(String(describing: content)), badge: \(String(describing: badge))")
         
         print(">JPUSHRegisterDelegate jpushNotificationCenter didReceive");
         
