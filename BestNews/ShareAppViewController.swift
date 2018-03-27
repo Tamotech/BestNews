@@ -51,19 +51,24 @@ class ShareAppViewController: BaseViewController {
     @IBAction func handleTapShareBtn(_ sender: UIButton) {
         
         //截图
-        UIGraphicsBeginImageContext(CGSize(width: self.view.width, height: 480))
+        
+        UIGraphicsBeginImageContext(CGSize(width: self.view.width, height: msgLb.y+20))
         let ctx = UIGraphicsGetCurrentContext()!
         self.view.layer.render(in: ctx)
         let img = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
+        //裁剪
+        let tem = img?.cgImage!
+        let cgimg = tem?.cropping(to: CGRect(x: 0, y: 64, width: screenWidth, height: msgLb.y+20-64))
+        let newImg = UIImage(cgImage: cgimg!)
         
         let vc = BaseShareViewController(nibName: "BaseShareViewController", bundle: nil)
         let share = ShareModel()
 
         share.msg = "专注财经新闻资讯, 与财经现场, 金融机构, 大咖名人零距离!"
-        share.img = img
+        share.img = newImg
         vc.share = share
-       if SessionManager.sharedInstance.userInfo != nil {
+        if SessionManager.sharedInstance.userInfo != nil {
             share.link = "http://xhfmedia.com/app.htm?channelCode=1&uid=\(SessionManager.sharedInstance.userInfo!.id)"
         }
         presentr.viewControllerForContext = self

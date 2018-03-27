@@ -251,6 +251,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, TencentSes
     @available(iOS 10.0, *)
     func jpushNotificationCenter(_ center: UNUserNotificationCenter!, didReceive response: UNNotificationResponse!, withCompletionHandler completionHandler: (() -> Void)!) {
         
+        //清除角标
+        UIApplication.shared.applicationIconBadgeNumber = 0
+        
         // 取得 APNs 标准信息内容
         let userInfo = response.notification.request.content.userInfo
         let aps = userInfo["aps"] as! [String:Any?]
