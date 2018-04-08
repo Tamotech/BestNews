@@ -66,6 +66,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, TencentSes
         
         
         checkAppUpdate()
+        //清除角标
+        UIApplication.shared.applicationIconBadgeNumber = 0
         return true
     }
 
