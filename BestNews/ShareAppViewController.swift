@@ -52,14 +52,14 @@ class ShareAppViewController: BaseViewController {
         
         //截图
         
-        UIGraphicsBeginImageContext(CGSize(width: self.view.width, height: msgLb.y+20))
+        UIGraphicsBeginImageContext(CGSize(width: self.view.width, height: msgLb.bottom+20))
         let ctx = UIGraphicsGetCurrentContext()!
         self.view.layer.render(in: ctx)
         let img = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         //裁剪
         let tem = img?.cgImage!
-        let cgimg = tem?.cropping(to: CGRect(x: 0, y: 64, width: screenWidth, height: msgLb.y+20-64))
+        let cgimg = tem?.cropping(to: CGRect(x: 0, y: 64, width: screenWidth, height: msgLb.bottom+20-64))
         let newImg = UIImage(cgImage: cgimg!)
         
         let vc = BaseShareViewController(nibName: "BaseShareViewController", bundle: nil)

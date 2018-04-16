@@ -321,6 +321,22 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
             
         }
         else {
+            if path.contains("newsdetail.htm?id=") {
+                let vc = NewsDetailController.init(nibName: "NewsDetailController", bundle: nil) as NewsDetailController
+                let pattern = "newsdetail.htm?id="
+                let location = path.positionOf(sub: pattern)
+                if location > 0 {
+                    let index = path.index(path.startIndex, offsetBy: location+pattern.count)
+                    let id = path.substring(from: index)
+                    vc.articleId = id
+                    navigationController?.pushViewController(vc, animated: true)
+                }
+            }
+            else if path.hasPrefix("http") {
+                let vc = BaseWKWebViewController()
+                vc.urlString = path
+                navigationController?.pushViewController(vc, animated: true)
+            }
             decisionHandler(WKNavigationActionPolicy.allow)
         }
         
