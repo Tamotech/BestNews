@@ -38,7 +38,8 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet var meMenueItemWidths: [NSLayoutConstraint]!
     
     
-    var settingData: [(String, UIImage)] = [("实名认证", #imageLiteral(resourceName: "me_identity")),
+    var settingData: [(String, UIImage)] = [
+//                     ("实名认证", #imageLiteral(resourceName: "me_identity")),
                        ("开通VIP", #imageLiteral(resourceName: "me_open_vip")),
                        ("我要投稿", #imageLiteral(resourceName: "me_post_article")),
                        ("成为名人", #imageLiteral(resourceName: "me_become_star")),
@@ -124,7 +125,7 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
                     identityBtn.borderColor = gray181!
                     identityBtn.setTitle("未认证", for: .normal)
                     settingData = [
-                     ("实名认证", #imageLiteral(resourceName: "me_identity")),
+//                     ("实名认证", #imageLiteral(resourceName: "me_identity")),
                      //("开通VIP", #imageLiteral(resourceName: "me_open_vip")),
                      ("我要投稿", #imageLiteral(resourceName: "me_post_article")),
                      //("成为名人", #imageLiteral(resourceName: "me_become_star")),
@@ -174,6 +175,10 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
         }
         
         tableView.reloadData()
+        
+        
+        //新需求 2018-04-17 已认证按钮隐藏
+        identityBtn.isHidden = true
     }
     
     ///通知

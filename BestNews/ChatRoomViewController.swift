@@ -463,7 +463,7 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
         
         if SessionManager.sharedInstance.userInfo!.idproveflag {
             //实名认证
-            let vc = ApplyIdentifyController(nibName: "ApplyIdentifyController", bundle: nil)
+            /*let vc = ApplyIdentifyController(nibName: "ApplyIdentifyController", bundle: nil)
             let alert = XHAlertController()
             alert.modalPresentationStyle = .overCurrentContext
             self.modalPresentationStyle = .currentContext
@@ -479,7 +479,7 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
                 }
             }
             self.present(alert, animated: false, completion: nil)
-            return
+            return*/
         }
         
         

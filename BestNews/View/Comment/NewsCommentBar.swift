@@ -200,7 +200,7 @@ class NewsCommentBar: UIView, UITextViewDelegate {
         }
         else if !SessionManager.sharedInstance.userInfo!.idproveflag {
             //实名认证
-            
+            /*//暂时去掉实名认证
             let ownerVC = self.viewController() as! BaseViewController
             let vc = ApplyIdentifyController(nibName: "ApplyIdentifyController", bundle: nil)
             let alert = XHAlertController()
@@ -217,6 +217,7 @@ class NewsCommentBar: UIView, UITextViewDelegate {
             }
             ownerVC.present(alert, animated: false, completion: nil)
             return
+ */
         }
         if delegate != nil {
             delegate?.tapCommentHandler()
@@ -254,7 +255,7 @@ class NewsCommentBar: UIView, UITextViewDelegate {
         }
         else if !SessionManager.sharedInstance.userInfo!.idproveflag {
             //实名认证
-            
+            /*
             let ownerVC = self.viewController() as! BaseViewController
             let vc = ApplyIdentifyController(nibName: "ApplyIdentifyController", bundle: nil)
             let alert = XHAlertController()
@@ -270,7 +271,7 @@ class NewsCommentBar: UIView, UITextViewDelegate {
                 }
             }
             ownerVC.present(alert, animated: false, completion: nil)
-            return
+            return*/
         }
         self.switchToEditMode(edit: true)
     }

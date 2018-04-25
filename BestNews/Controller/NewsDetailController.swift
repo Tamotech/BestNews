@@ -10,6 +10,7 @@ import UIKit
 import WebKit
 import Presentr
 import Kingfisher
+import SnapKit
 
 class NewsDetailController: BaseViewController, UITableViewDelegate, UITableViewDataSource, CommentBarDelegate, WKNavigationDelegate {
     
@@ -84,6 +85,9 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
             
         }
         self.webParentView.addSubview(web)
+        web.snp.makeConstraints({ (make) in
+            make.top.left.right.bottom.equalTo(0)
+        })
         return web
     }()
     
@@ -394,15 +398,12 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
             print("加载完毕...>\(data!)")
             ///TODO: 高度计算cheat
             if screenWidth < 350 {
-                self.webView.height = (data as! CGFloat)*32/100+80
                 self.webParentHeight.constant = (data as! CGFloat)*32/100+80
             }
             else if screenWidth < 400 {
-                self.webView.height = (data as! CGFloat)*38/100+60
                 self.webParentHeight.constant = (data as! CGFloat)*38/100+60
             }
             else {
-                self.webView.height = (data as! CGFloat)*43/100+50
                 self.webParentHeight.constant = (data as! CGFloat)*42/100+50
             }
         }
