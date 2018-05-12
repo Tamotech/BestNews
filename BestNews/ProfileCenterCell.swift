@@ -13,6 +13,7 @@ class ProfileCenterCell: UITableViewCell {
     @IBOutlet weak var iconView: UIImageView!
     
     @IBOutlet weak var titleLb: UILabel!
+    @IBOutlet weak var detailLb: UILabel!
     
     
     override func awakeFromNib() {

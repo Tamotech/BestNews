@@ -45,6 +45,8 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
                        ("成为名人", #imageLiteral(resourceName: "me_become_star")),
                        ("分享APP", #imageLiteral(resourceName: "me_share_app")),
                        ("意见反馈", #imageLiteral(resourceName: "me_feed_back")),
+                       ("关于我们", #imageLiteral(resourceName: "icon_about")),
+                       ("清除缓存", #imageLiteral(resourceName: "clear_icon")),
                        ("退出登录", #imageLiteral(resourceName: "me_logout"))]
     
     override func viewDidLoad() {
@@ -104,6 +106,8 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
                                    //("开通VIP", #imageLiteral(resourceName: "me_open_vip")),
                                    ("分享APP", #imageLiteral(resourceName: "me_share_app")),
                                    ("意见反馈", #imageLiteral(resourceName: "me_feed_back")),
+                                   ("关于我们", #imageLiteral(resourceName: "icon_about")),
+                                   ("清除缓存", #imageLiteral(resourceName: "clear_icon")),
                                    ("退出登录", #imageLiteral(resourceName: "me_logout"))]
                     showArticle = true
                 }
@@ -118,6 +122,8 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
                      //("成为名人", #imageLiteral(resourceName: "me_become_star")),
                      ("分享APP", #imageLiteral(resourceName: "me_share_app")),
                      ("意见反馈", #imageLiteral(resourceName: "me_feed_back")),
+                     ("关于我们", #imageLiteral(resourceName: "icon_about")),
+                     ("清除缓存", #imageLiteral(resourceName: "clear_icon")),
                      ("退出登录", #imageLiteral(resourceName: "me_logout"))]
                 }
                 else {
@@ -131,6 +137,8 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
                      //("成为名人", #imageLiteral(resourceName: "me_become_star")),
                      ("分享APP", #imageLiteral(resourceName: "me_share_app")),
                      ("意见反馈", #imageLiteral(resourceName: "me_feed_back")),
+                     ("关于我们", #imageLiteral(resourceName: "icon_about")),
+                     ("清除缓存", #imageLiteral(resourceName: "clear_icon")),
                      ("退出登录", #imageLiteral(resourceName: "me_logout"))]
                 }
             }
@@ -152,7 +160,9 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
                 ("我要投稿", #imageLiteral(resourceName: "me_post_article")),
                 //("开通VIP", #imageLiteral(resourceName: "me_open_vip")),
                 ("分享APP", #imageLiteral(resourceName: "me_share_app")),
-                ("意见反馈", #imageLiteral(resourceName: "me_feed_back"))]
+                ("意见反馈", #imageLiteral(resourceName: "me_feed_back")),
+                ("关于我们", #imageLiteral(resourceName: "icon_about")),
+                ("清除缓存", #imageLiteral(resourceName: "clear_icon"))]
         }
         
         if showArticle {
@@ -280,6 +290,17 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
         let data = settingData[indexPath.row]
         cell.iconView.image = data.1
         cell.titleLb.text = data.0
+        if data.0 == "清除缓存" {
+            cell.detailTextLabel?.isHidden = false
+            //计算缓存
+            ImageCache.default.calculateDiskCacheSize { (size) in
+                let msize = size/1024/1024
+                cell.detailLb.text = "\(msize)MB"
+            }
+        }
+        else {
+            cell.detailTextLabel?.isHidden = true
+        }
         return cell
     }
     
@@ -323,10 +344,47 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
             navigationController?.pushViewController(vc, animated: true)
         }
         else if name == "退出登录" {
-            SessionManager.sharedInstance.logoutCurrentUser()
-            let vc = LoginViewController(nibName: "LoginViewController", bundle: nil)
-            let navVC = BaseNavigationController(rootViewController: vc)
-            navigationController?.present(navVC, animated: true, completion: nil)
+            let alert = XHAlertController()
+            alert.modalPresentationStyle = .overCurrentContext
+            self.modalPresentationStyle = .currentContext
+            alert.tit = "确认退出登录?"
+            alert.callback = {
+                [weak self](buttonType) in
+                if buttonType == 0 {
+                    DispatchQueue.main.async {
+                        SessionManager.sharedInstance.logoutCurrentUser()
+                        let vc = LoginViewController(nibName: "LoginViewController", bundle: nil)
+                        let navVC = BaseNavigationController(rootViewController: vc)
+                        self?.navigationController?.present(navVC, animated: true, completion: nil)
+                    }
+                }
+            }
+            alert.style = 0
+            present(alert, animated: false, completion: nil)
+            
+        }
+        else if name == "关于我们" {
+            let vc = AboutUsViewController()
+            navigationController?.pushViewController(vc, animated: true)
+        }
+        else if name == "清除缓存" {
+            let alert = XHAlertController()
+            alert.modalPresentationStyle = .overCurrentContext
+            self.modalPresentationStyle = .currentContext
+            alert.tit = "确认清除缓存?"
+            alert.msg = ""
+            alert.callback = {
+                [weak self](buttonType) in
+                if buttonType == 0 {
+                    DispatchQueue.main.async {
+                        ImageCache.default.clearDiskCache()
+                        BLHUDBarManager.showSuccess(msg: "缓存清除成功", seconds: 1)
+                        self?.tableView.reloadData()
+                    }
+                }
+            }
+            alert.style = 0
+            present(alert, animated: false, completion: nil)
         }
     }
 

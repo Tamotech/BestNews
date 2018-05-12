@@ -288,6 +288,9 @@
 		CC29070D1F65A334001894DA /* BaseTabBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC29070C1F65A334001894DA /* BaseTabBarView.xib */; };
 		CC29070F1F65A8B5001894DA /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC29070E1F65A8B5001894DA /* BaseView.swift */; };
 		CC2907111F65AC08001894DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC2907101F65AC08001894DA /* Main.storyboard */; };
+		CC70F5F920A69D4800E52A46 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC70F5F720A69D4800E52A46 /* AboutUsViewController.swift */; };
+		CC70F60120A6C27500E52A46 /* ContactUsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC70F5FF20A6C27500E52A46 /* ContactUsController.swift */; };
+		CC70F60220A6C27500E52A46 /* ContactUsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC70F60020A6C27500E52A46 /* ContactUsController.xib */; };
 		CCC8E6C320863804004CF6B3 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCC8E6C220863804004CF6B3 /* TencentOpenAPI.framework */; };
 		CCC8E6C62086382D004CF6B3 /* RongIMKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCC8E6C42086382C004CF6B3 /* RongIMKit.framework */; };
 		CCC8E6C72086382D004CF6B3 /* RongCloud.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CCC8E6C52086382D004CF6B3 /* RongCloud.bundle */; };
@@ -656,6 +659,9 @@
 		CC29070C1F65A334001894DA /* BaseTabBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaseTabBarView.xib; sourceTree = "<group>"; };
 		CC29070E1F65A8B5001894DA /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		CC2907101F65AC08001894DA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		CC70F5F720A69D4800E52A46 /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
+		CC70F5FF20A6C27500E52A46 /* ContactUsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsController.swift; sourceTree = "<group>"; };
+		CC70F60020A6C27500E52A46 /* ContactUsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactUsController.xib; sourceTree = "<group>"; };
 		CCC8E6C220863804004CF6B3 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TencentOpenAPI.framework; path = Framework/TencentOpenAPI.framework; sourceTree = SOURCE_ROOT; };
 		CCC8E6C42086382C004CF6B3 /* RongIMKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RongIMKit.framework; path = Framework/RongIMKit.framework; sourceTree = SOURCE_ROOT; };
 		CCC8E6C52086382D004CF6B3 /* RongCloud.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = RongCloud.bundle; path = Framework/RongCloud.bundle; sourceTree = SOURCE_ROOT; };
@@ -1295,6 +1301,9 @@
 				5A27D4EF2042C87D0020BA29 /* UpdateVersionController.xib */,
 				CC0BFA94206746D10024252B /* ShareAppViewController.swift */,
 				CC0BFA95206746D10024252B /* ShareAppViewController.xib */,
+				CC70F5F720A69D4800E52A46 /* AboutUsViewController.swift */,
+				CC70F5FF20A6C27500E52A46 /* ContactUsController.swift */,
+				CC70F60020A6C27500E52A46 /* ContactUsController.xib */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -1662,6 +1671,7 @@
 				5ABB92CC1FA5EB3F002E3180 /* BaseAlertView.xib in Resources */,
 				5AA4E8511FD43378007A04FA /* Line@2x.png in Resources */,
 				5A0612C61FDCBE6B00E7F20A /* OpenVIPController.xib in Resources */,
+				CC70F60220A6C27500E52A46 /* ContactUsController.xib in Resources */,
 				5AA4E8611FD43378007A04FA /* volume_on@3x.png in Resources */,
 				5AA4E8591FD43378007A04FA /* camera_flash_on@3x.png in Resources */,
 				5ABB92CD1FA5EB3F002E3180 /* BottomWechatShareView.xib in Resources */,
@@ -1906,6 +1916,7 @@
 				5A10F5871FAEF06900316832 /* SpecialChannelListController.swift in Sources */,
 				5ABB92D11FA5EC42002E3180 /* Toolkit.swift in Sources */,
 				CC2906E11F659E77001894DA /* BaseNavigationController.swift in Sources */,
+				CC70F60120A6C27500E52A46 /* ContactUsController.swift in Sources */,
 				5A27D4EE2042C8730020BA29 /* UpdateVersionController.swift in Sources */,
 				CC29070B1F65A323001894DA /* BaseTabBarView.swift in Sources */,
 				CC2906EF1F659EBA001894DA /* UIView+Position.swift in Sources */,
@@ -1929,6 +1940,7 @@
 				CCDB6D571F7A526C0012432E /* SinglePhotoNewsCell.swift in Sources */,
 				5A0612BC1FDBD03000E7F20A /* CollectionNewsListController.swift in Sources */,
 				5A8C29E01FE032DC00E51095 /* LiveMessageCell.swift in Sources */,
+				CC70F5F920A69D4800E52A46 /* AboutUsViewController.swift in Sources */,
 				5AFF34A21F93A78600D8115E /* BaseShareViewController.swift in Sources */,
 				5AA4E80B1FD42B86007A04FA /* AlivcWatermarkSettingView.m in Sources */,
 				5A0A6D761FE49ECF0059EDBF /* LiveModelList.swift in Sources */,

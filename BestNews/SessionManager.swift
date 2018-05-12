@@ -67,7 +67,6 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
     
     var initRMFlag = false
     
-    
     override init() {
         super.init()
         

@@ -20,7 +20,8 @@ class XHAlertController: UIViewController {
     var msg = ""
     var callback: XHAlertActionCallback?
     
-    var style: Int = 0          //0  确认 取消   1  确认
+    /// 0  确认 取消   1  确认
+    var style: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -119,7 +120,7 @@ class XHAlertController: UIViewController {
     }
 
     func tapConfirm(_ sender: Any) {
-        dismiss(animated: true) {
+        dismiss(animated: false) {
             if self.callback != nil {
                 self.callback!(0)
             }
@@ -127,7 +128,7 @@ class XHAlertController: UIViewController {
     }
     
     func tapCancel(_ sender: Any) {
-        dismiss(animated: true) {
+        dismiss(animated: false) {
             if self.callback != nil {
                 self.callback!(1)
             }

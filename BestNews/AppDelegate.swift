@@ -83,6 +83,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, TencentSes
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        
+        ///清除角标和通知
+        application.applicationIconBadgeNumber = 0
+        UIApplication.shared.cancelAllLocalNotifications()
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
