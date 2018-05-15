@@ -48,7 +48,7 @@ class CollectionNewsListController: BaseViewController, UITableViewDataSource, U
             let nib = UINib(nibName: identifier, bundle: nil)
             tableView.register(nib, forCellReuseIdentifier: identifier)
         }
-        if entry == 1 {
+        if entry == 1 || entry == 2 {
             barView.removeFromSuperview()
         }
         tableView.delegate = self

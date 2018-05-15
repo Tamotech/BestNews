@@ -47,6 +47,17 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var rewardParentHeight: NSLayoutConstraint!
     
     
+    /// 夜间模式 日间模式
+    let nightModeBtns: [UIBarButtonItem] = {
+        //夜间模式
+        let nightModeBar = UIBarButtonItem(image: #imageLiteral(resourceName: "mode_night"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(clickChangeNightMode(_:)))
+        nightModeBar.tag = 0
+        let dayModeBar = UIBarButtonItem(image: #imageLiteral(resourceName: "mode_day"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(clickChangeNightMode(_:)))
+        dayModeBar.tag = 1
+        return [nightModeBar, dayModeBar]
+        
+    } ()
+    
     
     let htmlModelString = "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><title></title><style>body {font:48px/1.5 tahoma,arial,sans-serif;color:#55555;text-align:justify;text-align-last:justify;line-height:70px}hr {height:1px;border:none;border-top:1px solid #e8e8e8;} img {width:100%;height:auto}</style></head><body><div style='margin:35px' id=\"content\">${contentHtml}${author}</div></body></html>"
     
@@ -119,6 +130,9 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
         self.loadRecommendArticleList()
         self.loadCommentList()
         self.loadRewardList()
+        
+        
+        self.navigationItem.rightBarButtonItem = nightModeBtns[0]
     }
     
     //MARK: - tableView
@@ -179,6 +193,17 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
                     }
                 })
             }
+        }
+    }
+    
+    
+    //夜间模式切换
+    @objc func clickChangeNightMode(_ sender: UIBarButtonItem) {
+        if sender.tag == 0 {
+            self.navigationItem.rightBarButtonItem = nightModeBtns[1]
+        }
+        else {
+            self.navigationItem.rightBarButtonItem = nightModeBtns[0]
         }
     }
     
@@ -552,6 +577,20 @@ extension NewsDetailController {
     
     func updateCommentBar() {
         commentBar.commentBtn.setTitle(" \(commentList?.total ?? 0)", for: .normal)
+    }
+    
+    
+    
+    /// 切换夜间模式
+    ///
+    /// - Parameter night: 夜间or日间
+    func changeReadBGMode(night: Bool) {
+        if night {
+            
+        }
+        else {
+            
+        }
     }
     
 }

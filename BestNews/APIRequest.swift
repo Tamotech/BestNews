@@ -1036,5 +1036,22 @@ class APIRequest: NSObject {
                 result(list)
             }
         }
-    }   
+    }
+    
+    
+    
+    /// 记录多个浏览历史
+    ///
+    /// - Parameters:
+    ///   - ids: 浏览对象的编号 逗号隔开
+    ///   - type: article:新闻  newsflash:快讯  activity:活动  live:直播
+    ///   - result: 结果
+    class func recordViewHistoryAPI(ids: String, type: String, result: @escaping JSONResult) {
+        let path = "/viewhist/record.htm?ids=\(ids)&type=\(type)"
+        APIManager.shareInstance.postRequest(urlString: path, params: nil) { (JSON, code, msg) in
+            if code == 0 {
+                result(JSON)
+            }
+        }
+    }
 }

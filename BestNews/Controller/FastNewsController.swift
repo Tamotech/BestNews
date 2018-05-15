@@ -47,7 +47,7 @@ class FastNewsController: BaseViewController, UITableViewDataSource, UITableView
         // Do any additional setup after loading the view.
         setupView()
         self.shouldClearNavBar = entry == 0
-        if entry == 1 {
+        if entry == 1 || entry == 2{
             barView.removeFromSuperview()
         }
         tableView.cr.addHeadRefresh(animator: NormalHeaderAnimator()) {
@@ -140,6 +140,10 @@ class FastNewsController: BaseViewController, UITableViewDataSource, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! FastNewsCell
         let news = newsList!.newsIn(section: indexPath.section, row: indexPath.row)
+        //记录仪浏览历史
+        APIRequest.recordViewHistoryAPI(ids: news.id, type: "newsflash") { (data) in
+            
+        }
         cell.updateCell(news: news)
         cell.clickRepostCallback = {
             [weak self] news in

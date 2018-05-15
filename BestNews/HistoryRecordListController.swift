@@ -74,7 +74,7 @@ class HistoryRecordListController: BaseViewController, UIScrollViewDelegate, TYP
             else if i == 1 {
                 let vc = FastNewsController(nibName: "FastNewsController", bundle: nil)
                 vc.entry = 2
-                vc.collectFilter = true
+                vc.collectFilter = false
                 addChildViewController(vc)
                 let x = screenWidth*CGFloat(i)
                 vc.view.frame = CGRect(x: x, y: 44, width: screenWidth, height: screenHeight-44-64)
@@ -83,7 +83,7 @@ class HistoryRecordListController: BaseViewController, UIScrollViewDelegate, TYP
             }
             else if i == 2 {
                 let vc = LiveListController(nibName: "LiveListController", bundle: nil)
-                vc.collect = true
+                vc.collect = false
                 vc.entry = 3
                 addChildViewController(vc)
                 let x = screenWidth*CGFloat(i)
@@ -94,7 +94,7 @@ class HistoryRecordListController: BaseViewController, UIScrollViewDelegate, TYP
             else if i == 3 {
                 let vc = ActivityController(nibName: "ActivityController", bundle: nil)
                 vc.entry = 2
-                vc.collectFlag = true
+                vc.collectFlag = false
                 addChildViewController(vc)
                 let x = screenWidth*CGFloat(i)
                 vc.view.frame = CGRect(x: x, y: -20, width: screenWidth, height: screenHeight)
