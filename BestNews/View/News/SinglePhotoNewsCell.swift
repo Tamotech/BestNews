@@ -54,4 +54,21 @@ class SinglePhotoNewsCell: BaseNewsCell {
         }
     }
     
+    /// 切换夜间模式
+    ///
+    /// - Parameter night: 夜间or日间
+    override func changeReadBGMode(night: Bool) {
+        if night {
+            titleLb.textColor = UIColor(hexString: "#9b9b9b")
+            self.backgroundColor = UIColor(hexString: "#222222")
+            descLb.textColor = UIColor(hexString: "#b5b5b5")
+            
+        }
+        else {
+            titleLb.textColor = UIColor(hexString: "#9b9b9b")
+            self.backgroundColor = UIColor.white
+            descLb.textColor = UIColor(hexString: "#484848")
+        }
+    }
+    
 }

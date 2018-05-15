@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewsDetailController" customModule="BestNews" customModuleProvider="target">
             <connections>
                 <outlet property="authorNameLb" destination="0eh-vz-HGI" id="sN4-8P-o20"/>
+                <outlet property="avatarInfoView" destination="O0i-rY-gLk" id="uWK-Rq-yGP"/>
                 <outlet property="avtarBtn" destination="njg-js-NTy" id="7jd-qW-UA9"/>
                 <outlet property="dateLb" destination="R2S-Cw-4bT" id="rPY-J3-O7I"/>
                 <outlet property="rewardBottom" destination="DH4-yU-CtH" id="gLI-iJ-0Zl"/>
@@ -22,6 +23,7 @@
                 <outlet property="rewardView" destination="sK7-qi-NTZ" id="2Hc-IY-sDt"/>
                 <outlet property="scrollView" destination="N3R-rR-IBP" id="rwn-hA-bRO"/>
                 <outlet property="subscriptBtn" destination="6G9-kn-O7X" id="Vr7-pd-nUv"/>
+                <outlet property="tableHeaderView" destination="rqp-J2-BHz" id="JVd-lJ-5Ll"/>
                 <outlet property="tableView" destination="Po8-LX-z2M" id="JCD-Mw-ZFw"/>
                 <outlet property="tableViewHeight" destination="2pI-fb-4ir" id="D90-RK-vPO"/>
                 <outlet property="titleLb" destination="rZ6-Ai-PIe" id="zhE-37-mUL"/>

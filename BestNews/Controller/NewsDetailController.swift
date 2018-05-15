@@ -46,9 +46,11 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
     
     @IBOutlet weak var rewardParentHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var avatarInfoView: UIView!
     
+    @IBOutlet weak var tableHeaderView: UIView!
     /// 夜间模式 日间模式
-    let nightModeBtns: [UIBarButtonItem] = {
+    lazy var nightModeBtns: [UIBarButtonItem] = {
         //夜间模式
         let nightModeBar = UIBarButtonItem(image: #imageLiteral(resourceName: "mode_night"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(clickChangeNightMode(_:)))
         nightModeBar.tag = 0
@@ -131,8 +133,7 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
         self.loadCommentList()
         self.loadRewardList()
         
-        
-        self.navigationItem.rightBarButtonItem = nightModeBtns[0]
+        //self.navigationItem.rightBarButtonItem = nightModeBtns[0]
     }
     
     //MARK: - tableView
@@ -154,6 +155,7 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! BaseNewsCell
         cell.updateCell(article: article)
+        cell.changeReadBGMode(night: tableView.tag == 1)
         tableViewHeight.constant = tableView.contentSize.height
         return cell
     }
@@ -201,10 +203,13 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
     @objc func clickChangeNightMode(_ sender: UIBarButtonItem) {
         if sender.tag == 0 {
             self.navigationItem.rightBarButtonItem = nightModeBtns[1]
+            self.changeReadBGMode(night: true)
         }
         else {
             self.navigationItem.rightBarButtonItem = nightModeBtns[0]
+            self.changeReadBGMode(night: false)
         }
+        self.tableView.reloadData()
     }
     
     ///赞赏
@@ -586,10 +591,28 @@ extension NewsDetailController {
     /// - Parameter night: 夜间or日间
     func changeReadBGMode(night: Bool) {
         if night {
-            
+            titleLb.textColor = UIColor(hexString: "#9b9b9b")
+            self.view.backgroundColor = UIColor(hexString: "#222222")
+            self.barView.backgroundColor = UIColor(hexString: "#222222")
+            self.scrollView.subviews.first!.backgroundColor = UIColor(hexString: "#222222")
+            self.tableView.backgroundColor = UIColor(hexString: "#222222")
+            self.tableHeaderView.backgroundColor = UIColor(hexString: "#222222")
+            self.webParentView.backgroundColor = UIColor(hexString: "#222222")
+            self.webView.backgroundColor = UIColor(hexString: "#222222")
+            self.tableView.tag = 1
+            commentBar.changeReadBGMode(night: true)
         }
         else {
-            
+            titleLb.textColor = UIColor(hexString: "#000000")
+            self.view.backgroundColor = UIColor(hexString: "#000000")
+            self.barView.backgroundColor = UIColor(hexString: "#000000")
+            self.scrollView.subviews.first!.backgroundColor = UIColor.white
+            self.tableView.backgroundColor = UIColor.white
+            self.tableHeaderView.backgroundColor = UIColor.white
+            self.webView.backgroundColor = UIColor.white
+            self.webParentView.backgroundColor = .white
+            self.tableView.tag = 0
+            commentBar.changeReadBGMode(night: false)
         }
     }
     

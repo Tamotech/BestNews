@@ -39,6 +39,10 @@ class AboutUsViewController: BaseWKWebViewController {
         self.getTouchWay()
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.webView.bottom = self.view.bottom-48
+    }
 
     //获取联系方式
     func getTouchWay() {
@@ -48,7 +52,8 @@ class AboutUsViewController: BaseWKWebViewController {
             self?.touchWay["s_contact_email"] = data["s_contact_email"]["v"].stringValue
             self?.touchWay["s_contact_address"] = data["s_contact_address"]["v"].stringValue
             self?.touchWay["u_contact_map"] = data["u_contact_map"]["v"].stringValue
-            self?.htmlString = data["f_aboutus_introduce"]["v"].stringValue
+//            self?.htmlString = data["f_aboutus_introduce"]["v"].stringValue
+            self?.htmlString = "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><title></title><style>body {font:48px/1.5 tahoma,arial,sans-serif;color:#55555;text-align:justify;text-align-last:justify;line-height:70px}hr {height:1px;border:none;border-top:1px solid #e8e8e8;} img {width:100%;height:auto}</style></head><body><div style='margin:35px' id=\"content\">\(data["f_aboutus_introduce"]["v"].stringValue)</div></body></html>"
             self?.webView.loadHTMLString(self?.htmlString ?? "", baseURL: nil)
         }
     }

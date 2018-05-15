@@ -394,4 +394,18 @@ extension NewsCommentBar {
         }
         textField.resignFirstResponder()
     }
+    
+    /// 切换夜间模式
+    ///
+    /// - Parameter night: 夜间or日间
+    func changeReadBGMode(night: Bool) {
+        if night {
+            self.backgroundColor = UIColor(hexString: "#353535")
+            self.barView.backgroundColor = UIColor(hexString: "#353535")
+        }
+        else {
+            self.backgroundColor = UIColor(hexString: "#ffffff")
+            self.barView.backgroundColor = UIColor(hexString: "#ffffff")
+        }
+    }
 }
