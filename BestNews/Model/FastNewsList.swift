@@ -83,6 +83,10 @@ class FastNews: HandyJSON {
     var createdate: Int = 0
     var collect: Int = 0
     
+    
+    /// 0 默认状态 不足三行  1 展开: 显示三行  2 收起 展示全部
+    var cellType: Int = 0
+    
     lazy var dateFormmater: DateFormatter = {
         let f = DateFormatter()
         f.dateFormat = "HH:mm"
@@ -122,6 +126,32 @@ class FastNews: HandyJSON {
         else {
             return dateFormmater1.string(from: date)
         }
+    }
+    
+    
+    
+    /// cell高度计算
+    ///
+    /// - Returns: float
+    func cellHeight() -> CGFloat {
+        let w = screenWidth - (320-236)
+        let h = content.getLabHeigh(font: UIFont.systemFont(ofSize: 14), width: w) + (125 - 62.5)
+        if cellType == 0 {
+            //默认分配类型
+            if h > 125 {
+                cellType = 1
+            }
+        }
+        if h < 125 {
+            return h
+        }
+        else if cellType == 1 {
+            return 125
+        }
+        else if cellType == 2 {
+            return h
+        }
+        return 125
     }
     
 }

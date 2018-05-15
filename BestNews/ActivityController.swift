@@ -15,6 +15,8 @@ class ActivityController: BaseViewController, UITableViewDelegate, UITableViewDa
     var collectFlag = false
     var activityList = ActivityList()
     let tableView = UITableView(frame: CGRect.init(x: 0, y: 64, width: screenWidth, height: screenHeight-50-64), style: .grouped)
+    
+    /// 1 收藏  2 历史
     var entry = 0
     var emptyView = BaseEmptyView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
     
@@ -124,7 +126,7 @@ extension ActivityController {
     func reloadData() {
         activityList.total = 0
         activityList.page = 1
-        APIRequest.activityListAPI(collect: collectFlag, page: 1) { [weak self](data) in
+        APIRequest.activityListAPI(collect: collectFlag, history: (entry == 2), page: 1) { [weak self](data) in
             self?.tableView.cr.endHeaderRefresh()
             self?.tableView.cr.resetNoMore()
             self?.activityList = data as! ActivityList
@@ -138,7 +140,7 @@ extension ActivityController {
             return
         }
         activityList.page = activityList.page+1
-        APIRequest.activityListAPI(collect: collectFlag, page: activityList.page) { [weak self](data) in
+        APIRequest.activityListAPI(collect: collectFlag, history: (entry == 2), page: activityList.page) { [weak self](data) in
             self?.activityList.list.append(contentsOf: (data as! ActivityList).list)
             self?.tableView.cr.endLoadingMore()
             self?.tableView.reloadData()

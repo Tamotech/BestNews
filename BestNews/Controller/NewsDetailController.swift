@@ -394,18 +394,23 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
         //高度适配 cheat
         
         print("高度...> \(webView.scrollView.contentSize.height)")
-        webView.evaluateJavaScript("document.documentElement.scrollHeight;") { (data, error) in
+        webView.evaluateJavaScript("document.documentElement.scrollHeight;") { [weak self](data, error) in
             print("加载完毕...>\(data!)")
             ///TODO: 高度计算cheat
+            var h: CGFloat = 0
             if screenWidth < 350 {
-                self.webParentHeight.constant = (data as! CGFloat)*32/100+80
+                h = (data as! CGFloat)*32/100+80
             }
             else if screenWidth < 400 {
-                self.webParentHeight.constant = (data as! CGFloat)*38/100+60
+                h = (data as! CGFloat)*38/100+60
             }
             else {
-                self.webParentHeight.constant = (data as! CGFloat)*42/100+50
+                h = (data as! CGFloat)*42/100+50
             }
+            if self!.article!.proofread.count > 0 {
+                h = h + 20
+            }
+            self!.webParentHeight.constant = h
         }
         
     }
@@ -448,7 +453,10 @@ extension NewsDetailController {
             return
         }
         titleLb.text = article?.title
-        authorNameLb.text = article?.publisher
+        if (article?.reporter.contains("null"))! {
+            article?.reporter = ""
+        }
+        authorNameLb.text = "\(article?.publisher ?? "")  \(article?.reporter ?? "")"
         dateLb.text = article?.descString()
         subscriptBtn.isHidden = (article?.type != "normal")
         subscriptBtn.switchStateSub(article!.subseribe == 1)
@@ -463,7 +471,10 @@ extension NewsDetailController {
         }
         var htmlString = NSString(string: htmlModelString).replacingOccurrences(of: "${contentHtml}", with: article!.content)
         if article!.author.count > 0 {
-            let authorTag = "<p color:#999999>编辑: \(article!.author)</p>"
+            var authorTag = "<p color:#999999>编辑: \(article!.author)</p>"
+            if article!.proofread.count > 0 {
+                authorTag = authorTag + "<p color:#999999>审校: \(article!.proofread)</p>"
+            }
             htmlString = NSString(string: htmlString).replacingOccurrences(of: "${author}", with: authorTag)
         }
         else {
@@ -474,12 +485,12 @@ extension NewsDetailController {
     
     //赞赏列表
     func updateRewardView() {
-        let canvW = screenWidth - 40
-        let top: CGFloat = 15
-        let gap: CGFloat = 8
-        let w: CGFloat = 30
-        let colNum = Int((canvW - top*2)/(w+gap))
-        var bottom: CGFloat = 0
+//        let canvW = screenWidth - 40
+//        let top: CGFloat = 15
+//        let gap: CGFloat = 8
+//        let w: CGFloat = 30
+//        let colNum = Int((canvW - top*2)/(w+gap))
+//        var bottom: CGFloat = 0
         for v in rewardMenView.subviews {
             v.removeFromSuperview()
         }

@@ -30,7 +30,7 @@ class HomeNewsDetail: HandyJSON {
     required init() {}
     var id: String = ""
     var content: String = ""
-    var author: String = ""
+    var author: String = ""     //编辑人
     var title: String = ""
     var channeltype: String = ""
     var channelname: String = ""
@@ -42,6 +42,8 @@ class HomeNewsDetail: HandyJSON {
     var publisher: String = ""
     var channelid: String = ""
     var linkurl = ""
+    var proofread = ""      //申校
+    var reporter = ""       //记者
     
     ///评论数量
     var commentNum: Int = 0

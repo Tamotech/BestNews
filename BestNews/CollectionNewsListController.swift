@@ -10,6 +10,8 @@ import UIKit
 
 class CollectionNewsListController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
 
+    
+    /// 1 收藏 2 历史
     var entry = 0
     var articleList = HomeArticleList()
     var page: Int = 1
@@ -136,12 +138,23 @@ class CollectionNewsListController: BaseViewController, UITableViewDataSource, U
     
     func reloadArticleList() {
         
-        APIRequest.collectedArticleListAPI(page: 1) { [weak self](data) in
-            self?.tableView.cr.endHeaderRefresh()
-            self?.tableView.cr.resetNoMore()
-            self?.page = 1
-            self?.articleList = data as! HomeArticleList
-            self?.tableView.reloadData()
+        if entry == 1 {
+            APIRequest.collectedArticleListAPI(page: 1) { [weak self](data) in
+                self?.tableView.cr.endHeaderRefresh()
+                self?.tableView.cr.resetNoMore()
+                self?.page = 1
+                self?.articleList = data as! HomeArticleList
+                self?.tableView.reloadData()
+            }
+        }
+        else if entry == 2 {
+            APIRequest.readArticleListAPI(page: 1) { [weak self](data) in
+                self?.tableView.cr.endHeaderRefresh()
+                self?.tableView.cr.resetNoMore()
+                self?.page = 1
+                self?.articleList = data as! HomeArticleList
+                self?.tableView.reloadData()
+            }
         }
     }
     
@@ -156,12 +169,24 @@ class CollectionNewsListController: BaseViewController, UITableViewDataSource, U
         }
         
         page = page + 1
-        APIRequest.collectedArticleListAPI(page: page) { [weak self](data) in
-            self?.page = 1
-            let list = data as? HomeArticleList
-            if list != nil {
-                self?.articleList.list.append(contentsOf: list!.list)
-                self?.tableView.cr.endLoadingMore()
+        if entry == 1 {
+            APIRequest.collectedArticleListAPI(page: page) { [weak self](data) in
+                self?.page = 1
+                let list = data as? HomeArticleList
+                if list != nil {
+                    self?.articleList.list.append(contentsOf: list!.list)
+                    self?.tableView.cr.endLoadingMore()
+                }
+            }
+        }
+        else if entry == 2 {
+            APIRequest.readArticleListAPI(page: page) { [weak self](data) in
+                self?.page = 1
+                let list = data as? HomeArticleList
+                if list != nil {
+                    self?.articleList.list.append(contentsOf: list!.list)
+                    self?.tableView.cr.endLoadingMore()
+                }
             }
         }
     }

@@ -36,6 +36,8 @@ class FastNewsController: BaseViewController, UITableViewDataSource, UITableView
     
     ///是否加过滤 仅收藏
     var collectFilter: Bool = false
+    
+    /// 0 快讯 1 收藏  2 历史
     var entry = 0
     var emptyView = BaseEmptyView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
     
@@ -123,6 +125,11 @@ class FastNewsController: BaseViewController, UITableViewDataSource, UITableView
         return 0.1
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let news = newsList!.newsIn(section: indexPath.section, row: indexPath.row)
+        return news.cellHeight()
+    }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header") as! FastNewsSectionHeaderView
         let title = newsList?.titleForSection(section)
@@ -161,7 +168,7 @@ extension FastNewsController {
     
     func reloadArticleList() {
         
-        APIRequest.getFastNewsListAPI(page: 1, collect: collectFilter) { [weak self](data) in
+        APIRequest.getFastNewsListAPI(page: 1, collect: collectFilter, history: (entry == 2)) { [weak self](data) in
             self?.tableView.cr.endHeaderRefresh()
             self?.tableView.cr.resetNoMore()
             self?.page = 1
@@ -177,7 +184,7 @@ extension FastNewsController {
             return
         }
         page = page + 1
-        APIRequest.getFastNewsListAPI(page: page, collect: collectFilter) { [weak self](data) in
+        APIRequest.getFastNewsListAPI(page: page, collect: collectFilter, history: (entry == 2)) { [weak self](data) in
             self?.tableView.cr.endLoadingMore()
             let list = data as? FastNewsList
             if list != nil {

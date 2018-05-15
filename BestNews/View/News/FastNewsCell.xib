@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -24,17 +24,17 @@
                         <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="正文" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQG-y0-7Jx">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bQG-y0-7Jx">
                         <rect key="frame" x="65" y="15" width="236" height="62.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mGy-du-22I">
-                        <rect key="frame" x="279" y="87.5" width="22" height="22"/>
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mGy-du-22I">
+                        <rect key="frame" x="300" y="87.5" width="1" height="22"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="22" id="58H-wA-jC9"/>
-                            <constraint firstAttribute="width" constant="22" id="8wP-K7-bv6"/>
+                            <constraint firstAttribute="width" constant="1" id="8wP-K7-bv6"/>
                         </constraints>
                         <state key="normal" image="repost_dark"/>
                         <connections>
@@ -42,30 +42,52 @@
                         </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="APK-O0-6A6">
-                        <rect key="frame" x="236" y="87" width="23" height="23"/>
+                        <rect key="frame" x="277" y="87" width="23" height="23"/>
                         <state key="normal" image="star_dark"/>
                         <state key="selected" image="star_select"/>
                         <connections>
                             <action selector="handleTapCollectionBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="uqy-k9-IGc"/>
                         </connections>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EZF-Qb-zmY">
+                        <rect key="frame" x="65" y="84.5" width="80" height="29"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="80" id="4oE-89-Aaj"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <state key="normal" title="展开">
+                            <color key="titleColor" red="0.33333333329999998" green="0.33333333329999998" blue="0.33333333329999998" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                        <connections>
+                            <action selector="handleTapFoldBtn:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="fH8-sY-QVu"/>
+                        </connections>
+                    </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="arrow-gray-down" translatesAutoresizingMaskIntoConstraints="NO" id="Nzy-UB-G8L">
+                        <rect key="frame" x="95" y="96" width="14" height="6"/>
+                    </imageView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="Nzy-UB-G8L" firstAttribute="leading" secondItem="EZF-Qb-zmY" secondAttribute="leading" constant="30" id="GlV-b5-Gfe"/>
                     <constraint firstItem="APK-O0-6A6" firstAttribute="centerY" secondItem="mGy-du-22I" secondAttribute="centerY" id="N4i-T7-GRo"/>
+                    <constraint firstItem="EZF-Qb-zmY" firstAttribute="leading" secondItem="bQG-y0-7Jx" secondAttribute="leading" id="TMf-6J-Zqr"/>
                     <constraint firstItem="bQG-y0-7Jx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="65" id="UZr-vW-W8U"/>
                     <constraint firstItem="d9j-mU-hF0" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="Vqk-iX-91E"/>
-                    <constraint firstItem="mGy-du-22I" firstAttribute="leading" secondItem="APK-O0-6A6" secondAttribute="trailing" constant="20" id="XJs-Vh-x5T"/>
+                    <constraint firstItem="mGy-du-22I" firstAttribute="leading" secondItem="APK-O0-6A6" secondAttribute="trailing" id="XJs-Vh-x5T"/>
+                    <constraint firstItem="Nzy-UB-G8L" firstAttribute="centerY" secondItem="EZF-Qb-zmY" secondAttribute="centerY" id="ZQr-Jb-jGM"/>
                     <constraint firstItem="mGy-du-22I" firstAttribute="top" secondItem="bQG-y0-7Jx" secondAttribute="bottom" constant="10" id="cHz-HJ-Xiw"/>
                     <constraint firstItem="d9j-mU-hF0" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="dD0-RL-Yk3"/>
                     <constraint firstAttribute="bottom" secondItem="mGy-du-22I" secondAttribute="bottom" constant="15" id="jtn-Ig-kMl"/>
                     <constraint firstAttribute="trailing" secondItem="bQG-y0-7Jx" secondAttribute="trailing" constant="19" id="llc-yk-KlB"/>
                     <constraint firstItem="bQG-y0-7Jx" firstAttribute="top" secondItem="d9j-mU-hF0" secondAttribute="top" id="m04-NR-ulz"/>
+                    <constraint firstItem="EZF-Qb-zmY" firstAttribute="centerY" secondItem="APK-O0-6A6" secondAttribute="centerY" id="nPX-gF-ich"/>
                     <constraint firstItem="mGy-du-22I" firstAttribute="trailing" secondItem="bQG-y0-7Jx" secondAttribute="trailing" id="uRg-wh-6q3"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="arrowIv" destination="Nzy-UB-G8L" id="ZFx-27-ETD"/>
                 <outlet property="collectBtn" destination="APK-O0-6A6" id="FSf-NI-1Sx"/>
                 <outlet property="contentLb" destination="bQG-y0-7Jx" id="tPQ-OA-6LM"/>
+                <outlet property="foldBtn" destination="EZF-Qb-zmY" id="o38-b7-PbY"/>
                 <outlet property="repostBtn" destination="mGy-du-22I" id="MBJ-Y4-cHn"/>
                 <outlet property="timeLb" destination="d9j-mU-hF0" id="Enq-X9-d0p"/>
             </connections>
@@ -73,6 +95,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="arrow-gray-down" width="14" height="6"/>
         <image name="repost_dark" width="23" height="23"/>
         <image name="star_dark" width="23" height="23"/>
         <image name="star_select" width="23" height="23"/>

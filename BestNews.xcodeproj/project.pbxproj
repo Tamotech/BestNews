@@ -265,6 +265,7 @@
 		CC0170631F6840D00069D38B /* ActivityDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC0170611F6840D00069D38B /* ActivityDetailController.xib */; };
 		CC0BFA96206746D10024252B /* ShareAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0BFA94206746D10024252B /* ShareAppViewController.swift */; };
 		CC0BFA97206746D10024252B /* ShareAppViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC0BFA95206746D10024252B /* ShareAppViewController.xib */; };
+		CC15D0D320AA62AC00515E76 /* HistoryRecordListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC15D0D220AA62AC00515E76 /* HistoryRecordListController.swift */; };
 		CC2906C91F6599C7001894DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2906C81F6599C7001894DA /* AppDelegate.swift */; };
 		CC2906D21F6599C7001894DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC2906D11F6599C7001894DA /* Assets.xcassets */; };
 		CC2906D51F6599C7001894DA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC2906D31F6599C7001894DA /* LaunchScreen.storyboard */; };
@@ -634,6 +635,7 @@
 		CC0170611F6840D00069D38B /* ActivityDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityDetailController.xib; sourceTree = "<group>"; };
 		CC0BFA94206746D10024252B /* ShareAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareAppViewController.swift; sourceTree = "<group>"; };
 		CC0BFA95206746D10024252B /* ShareAppViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShareAppViewController.xib; sourceTree = "<group>"; };
+		CC15D0D220AA62AC00515E76 /* HistoryRecordListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRecordListController.swift; sourceTree = "<group>"; };
 		CC2906C51F6599C7001894DA /* BestNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BestNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC2906C81F6599C7001894DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC2906D11F6599C7001894DA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -1304,6 +1306,7 @@
 				CC70F5F720A69D4800E52A46 /* AboutUsViewController.swift */,
 				CC70F5FF20A6C27500E52A46 /* ContactUsController.swift */,
 				CC70F60020A6C27500E52A46 /* ContactUsController.xib */,
+				CC15D0D220AA62AC00515E76 /* HistoryRecordListController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -1886,6 +1889,7 @@
 				5ABB92B81FA5E096002E3180 /* MyBase64.m in Sources */,
 				5ABB92B91FA5E096002E3180 /* BestNews-Bridging-Header.h in Sources */,
 				5AF9CAE01FA5D0F00071285D /* APIManager.swift in Sources */,
+				CC15D0D320AA62AC00515E76 /* HistoryRecordListController.swift in Sources */,
 				5AF9CAE11FA5D0F00071285D /* APIRequest.swift in Sources */,
 				5AF9CAE21FA5D0F00071285D /* BSLShareManager.swift in Sources */,
 				5AF9CAE31FA5D0F00071285D /* SessionManager.swift in Sources */,

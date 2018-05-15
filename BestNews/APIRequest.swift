@@ -323,14 +323,18 @@ class APIRequest: NSObject {
     ///
     /// - Parameters:
     /// - collect 是否仅收藏
+    /// - history 是否浏览
     ///   - page: 页
     ///   - result: 结果
-    class func getFastNewsListAPI(page: Int, collect: Bool, result: @escaping JSONResult) {
+    class func getFastNewsListAPI(page: Int, collect: Bool, history: Bool, result: @escaping JSONResult) {
         let path = "/article/getNewsFlashPage.htm"
         var params = ["page": page,
         "rows": 20] as [String: Any]
         if collect {
             params["collectflag"] = "true"
+        }
+        if history {
+            params["viewhistflag"] = "true"
         }
         APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
             if code == 0 {
@@ -451,12 +455,16 @@ class APIRequest: NSObject {
     ///
     /// - Parameters:
     /// - collect: 是否收藏
+    /// - history: 是否浏览历史
     ///   - page: 分页
     ///   - result: 结果
-    class func activityListAPI(collect: Bool, page: Int, result: @escaping JSONResult) {
+    class func activityListAPI(collect: Bool, history: Bool, page: Int, result: @escaping JSONResult) {
         var path = "/activity/listPage.htm?page=\(page)&rows=\(20)"
         if collect {
             path = path+"&collectflag=true"
+        }
+        if history {
+            path = path+"&viewhistflag=true"
         }
         APIManager.shareInstance.postRequest(urlString: path, params: nil) { (JSON, code, msg) in
             if code == 0 {
@@ -729,6 +737,26 @@ class APIRequest: NSObject {
         }
     }
     
+    /// 查询用户浏览文章
+    ///
+    /// - Parameters:
+    ///   - result: 列表
+    class func readArticleListAPI(page:Int, result: @escaping JSONResult) {
+        let path = "/articleoperate/getViewHistArticlePage.htm"
+        let params = ["page": "\(page)",
+            "rows": "20"]
+        
+        APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
+            if code == 0 {
+                let data = HomeArticleList.deserialize(from: JSON!["data"].rawString())
+                result(data)
+            }
+            else {
+                BLHUDBarManager.showError(msg: msg)
+            }
+        }
+    }
+    
     
     /// 文章打赏
     ///
@@ -859,13 +887,19 @@ class APIRequest: NSObject {
     /// - Parameters:
     ///   - page: 页
     ///   - collect: 收藏
+    ///   - history: 历史浏览
     ///   - result: 结果
-    class func getLivePageListAPI(page: Int, collect: Bool, result: @escaping JSONResult) {
+    class func getLivePageListAPI(page: Int, collect: Bool, history: Bool, result: @escaping JSONResult) {
         let path = "/live/getLivePageList.htm"
-        let params = ["page": page,
-                      "collectflag": (collect ? "true": "false"),
+        var params = ["page": page,
                       "rows": "10"]
             as [String : Any]
+        if collect {
+            params["collectflag"] = "true"
+        }
+        if history {
+            params["viewhistflag"] = "true"
+        }
         APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
             if code == 0 {
                 let data = LiveModelList.deserialize(from: JSON!["data"].rawString())

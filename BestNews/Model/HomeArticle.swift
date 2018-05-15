@@ -22,6 +22,7 @@ class HomeArticle: HandyJSON {
     var preimgtype: String = ""
     var publisher: String = ""
     var linkurl = ""
+    var reporter = ""
     
     ///是否是推荐新闻
     var recommendFlag = false
@@ -49,7 +50,10 @@ class HomeArticle: HandyJSON {
     
     func cellListPublisher() -> String {
         if marks == "原创" {
-            return ""
+            if reporter.contains("null") {
+                reporter = ""
+            }
+            return "新华日报财经 \(reporter)"
         }
         return publisher
     }

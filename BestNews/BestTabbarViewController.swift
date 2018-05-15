@@ -70,6 +70,7 @@ class BestTabbarViewController: UIViewController, UINavigationControllerDelegate
                     vc.view.isHidden = true
                 }
             }
+            NotificationCenter.default.post(name: kSwitchTabbarItemNotify, object: index)
         }
     }
     

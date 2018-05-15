@@ -19,7 +19,7 @@ class LiveListController: BaseViewController, UITableViewDelegate, UITableViewDa
     
     var collect = false
     var liveList = LiveModelList()
-    // 0: 首页 1: 收藏  2: 视频
+    // 0: 首页 1: 收藏  2: 视频  3 历史
     var entry = 0
     var emptyView = BaseEmptyView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
     
@@ -138,7 +138,7 @@ extension LiveListController {
     
     func reloadLiveList() {
         
-        APIRequest.getLivePageListAPI(page: 1, collect: collect) { [weak self](data) in
+        APIRequest.getLivePageListAPI(page: 1, collect: collect, history: (entry == 3)) { [weak self](data) in
             self?.tableView.cr.endHeaderRefresh()
             self?.tableView.cr.resetNoMore()
             self?.liveList.page = 1
@@ -158,7 +158,7 @@ extension LiveListController {
         }
         
         liveList.page = liveList.page + 1
-        APIRequest.getLivePageListAPI(page: liveList.page, collect: collect) { [weak self](data) in
+        APIRequest.getLivePageListAPI(page: liveList.page, collect: collect, history: (entry == 3)) { [weak self](data) in
             let list = data as? LiveModelList
             if list != nil {
                 self?.liveList.list.append(contentsOf: list!.list)
