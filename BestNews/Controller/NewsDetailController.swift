@@ -49,6 +49,8 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
     @IBOutlet weak var avatarInfoView: UIView!
     
     @IBOutlet weak var tableHeaderView: UIView!
+    
+    @IBOutlet weak var line1: UIView!
     /// 夜间模式 日间模式
     lazy var nightModeBtns: [UIBarButtonItem] = {
         //夜间模式
@@ -61,7 +63,8 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
     } ()
     
     
-    let htmlModelString = "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><title></title><style>body {font:48px/1.5 tahoma,arial,sans-serif;color:#55555;text-align:justify;text-align-last:justify;line-height:70px}hr {height:1px;border:none;border-top:1px solid #e8e8e8;} img {width:100%;height:auto}</style></head><body><div style='margin:35px' id=\"content\">${contentHtml}${author}</div></body></html>"
+    let htmlModelString = "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><title></title><style>body {font:48px/1.5 tahoma,arial,sans-serif;color:#555555;text-align:justify;text-align-last:justify;line-height:70px}hr {height:1px;border:none;border-top:1px solid #e8e8e8;} img {width:100%;height:auto}</style></head><body><div style='margin:35px' id=\"content\">${contentHtml}${author}</div></body></html>"
+    var currentHTML = ""
     
     ///是否订阅作者 (需要查阅)
     var authorSubscribe = false
@@ -133,7 +136,11 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
         self.loadCommentList()
         self.loadRewardList()
         
-        //self.navigationItem.rightBarButtonItem = nightModeBtns[0]
+        self.navigationItem.rightBarButtonItem = nightModeBtns[0]
+        if SessionManager.sharedInstance.daynightModel == 2 {
+            self.navigationItem.rightBarButtonItem = nightModeBtns[1]
+            changeReadBGMode(night: true)
+        }
     }
     
     //MARK: - tableView
@@ -510,6 +517,7 @@ extension NewsDetailController {
         else {
             htmlString = NSString(string: htmlString).replacingOccurrences(of: "${author}", with: "")
         }
+        currentHTML = htmlString
         webView.loadHTMLString(htmlString, baseURL: URL(string: htmlString))
     }
     
@@ -594,25 +602,45 @@ extension NewsDetailController {
             titleLb.textColor = UIColor(hexString: "#9b9b9b")
             self.view.backgroundColor = UIColor(hexString: "#222222")
             self.barView.backgroundColor = UIColor(hexString: "#222222")
+            self.barView.shadowOpacity = 0.2
+            self.avatarInfoView.backgroundColor = UIColor(hexString: "#222222")
             self.scrollView.subviews.first!.backgroundColor = UIColor(hexString: "#222222")
+            self.scrollView.backgroundColor = UIColor(hexString: "#222222")
             self.tableView.backgroundColor = UIColor(hexString: "#222222")
             self.tableHeaderView.backgroundColor = UIColor(hexString: "#222222")
             self.webParentView.backgroundColor = UIColor(hexString: "#222222")
             self.webView.backgroundColor = UIColor(hexString: "#222222")
+            self.webView.isOpaque = false
+            currentHTML = currentHTML.replacingOccurrences(of: "#555555", with: "#9b9b9b")
+            currentHTML = currentHTML.replacingOccurrences(of: "#999999", with: "#464646")
+            self.webView.loadHTMLString(currentHTML, baseURL: nil)
             self.tableView.tag = 1
             commentBar.changeReadBGMode(night: true)
+            SessionManager.sharedInstance.daynightModel = 2
+            line1.backgroundColor = UIColor(hexString: "#111111")
+            self.tableView.separatorColor = UIColor(hexString: "#2a2a2a")
         }
         else {
             titleLb.textColor = UIColor(hexString: "#000000")
-            self.view.backgroundColor = UIColor(hexString: "#000000")
-            self.barView.backgroundColor = UIColor(hexString: "#000000")
+            self.view.backgroundColor = UIColor(hexString: "#ffffff")
+            self.avatarInfoView.backgroundColor = UIColor(hexString: "#ffffff")
+            self.barView.backgroundColor = UIColor(hexString: "#ffffff")
+            self.barView.shadowOpacity = 0.8
             self.scrollView.subviews.first!.backgroundColor = UIColor.white
+            self.scrollView.backgroundColor = UIColor.white
             self.tableView.backgroundColor = UIColor.white
             self.tableHeaderView.backgroundColor = UIColor.white
             self.webView.backgroundColor = UIColor.white
+            self.webView.isOpaque = false
             self.webParentView.backgroundColor = .white
             self.tableView.tag = 0
             commentBar.changeReadBGMode(night: false)
+            currentHTML = currentHTML.replacingOccurrences(of: "#9b9b9b", with: "#555555")
+            currentHTML = currentHTML.replacingOccurrences(of: "#464646", with: "#999999")
+            self.webView.loadHTMLString(currentHTML, baseURL: nil)
+            SessionManager.sharedInstance.daynightModel = 1
+            line1.backgroundColor = UIColor.groupTableViewBackground
+            self.tableView.separatorColor = UIColor(hexString: "#e5e5e5")
         }
     }
     

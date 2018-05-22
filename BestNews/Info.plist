@@ -52,7 +52,7 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>2</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>wexin</string>
@@ -77,6 +77,10 @@
 	<string>为了保障您的用户体验, 我们需要访问您的麦克风</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>为了保障您的用户体验, 我们需要访问您的相册</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

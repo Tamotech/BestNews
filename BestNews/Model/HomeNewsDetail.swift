@@ -41,6 +41,7 @@ class HomeNewsDetail: HandyJSON {
     var publishdate: Int = 0
     var publisher: String = ""
     var channelid: String = ""
+//    var source = ""     //来源
     var linkurl = ""
     var proofread = ""      //申校
     var reporter = ""       //记者

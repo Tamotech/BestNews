@@ -35,13 +35,12 @@ class AboutUsViewController: BaseWKWebViewController {
             make.left.right.bottom.equalTo(0)
             make.height.equalTo(48)
         }
+        webView.snp.updateConstraints { (make) in
+            make.bottom.equalTo(-48)
+            make.left.right.top.equalTo(0)
+        }
         self.showCustomTitle(title: "关于我们")
         self.getTouchWay()
-    }
-
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        self.webView.bottom = self.view.bottom-48
     }
 
     //获取联系方式
@@ -53,7 +52,15 @@ class AboutUsViewController: BaseWKWebViewController {
             self?.touchWay["s_contact_address"] = data["s_contact_address"]["v"].stringValue
             self?.touchWay["u_contact_map"] = data["u_contact_map"]["v"].stringValue
 //            self?.htmlString = data["f_aboutus_introduce"]["v"].stringValue
-            self?.htmlString = "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><title></title><style>body {font:48px/1.5 tahoma,arial,sans-serif;color:#55555;text-align:justify;text-align-last:justify;line-height:70px}hr {height:1px;border:none;border-top:1px solid #e8e8e8;} img {width:100%;height:auto}</style></head><body><div style='margin:35px' id=\"content\">\(data["f_aboutus_introduce"]["v"].stringValue)</div></body></html>"
+            let htmlPath = Bundle.main.path(forResource: "baseHtml", ofType: "html")
+            let htmlStr =
+                try? String.init(contentsOfFile: htmlPath!, encoding: String.Encoding.utf8)
+            var contentHTML = data["f_aboutus_introduce"]["v"].stringValue
+            //去除font
+            
+            let reg = try! NSRegularExpression(pattern: "font-size:\\d+px", options: [])
+            contentHTML =  reg.stringByReplacingMatches(in: contentHTML, options: [], range: NSMakeRange(0, contentHTML.count), withTemplate: "")
+            self?.htmlString = htmlStr!.replacingOccurrences(of: "${contentHTML}", with: contentHTML)
             self?.webView.loadHTMLString(self?.htmlString ?? "", baseURL: nil)
         }
     }

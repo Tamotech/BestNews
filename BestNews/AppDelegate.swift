@@ -86,7 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, TencentSes
         
         ///清除角标和通知
         application.applicationIconBadgeNumber = 0
-        UIApplication.shared.cancelAllLocalNotifications()
+        JPUSHService.setBadge(0)
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {

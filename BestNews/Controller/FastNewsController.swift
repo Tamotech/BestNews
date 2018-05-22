@@ -141,8 +141,9 @@ class FastNewsController: BaseViewController, UITableViewDataSource, UITableView
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! FastNewsCell
         let news = newsList!.newsIn(section: indexPath.section, row: indexPath.row)
         //记录仪浏览历史
-        APIRequest.recordViewHistoryAPI(ids: news.id, type: "newsflash") { (data) in
-            
+        if SessionManager.sharedInstance.loginInfo.isLogin {
+            APIRequest.recordViewHistoryAPI(ids: news.id, type: "newsflash") { (data) in
+            }
         }
         cell.updateCell(news: news)
         cell.clickRepostCallback = {

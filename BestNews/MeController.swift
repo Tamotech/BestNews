@@ -88,7 +88,6 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
         self.navigationController?.navigationBar.barTintColor = gray51
         SessionManager.sharedInstance.getUserInfo()
         loadInfoCount()
-        updateUI()
     }
     
     ///切换tab
@@ -305,7 +304,7 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
         cell.iconView.image = data.1
         cell.titleLb.text = data.0
         if data.0 == "清除缓存" {
-            cell.detailTextLabel?.isHidden = false
+            cell.detailLb?.isHidden = false
             //计算缓存
             ImageCache.default.calculateDiskCacheSize { (size) in
                 let msize = size/1024/1024
@@ -313,7 +312,7 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
             }
         }
         else {
-            cell.detailTextLabel?.isHidden = true
+            cell.detailLb?.isHidden = true
         }
         return cell
     }

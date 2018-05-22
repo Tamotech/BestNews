@@ -60,6 +60,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
         self.loadHomeAD()
         self.readADModel()
     
+        NotificationCenter.default.addObserver(self, selector: #selector(loginStatusChangeNotifi(_:)), name: kUserLoginStatusChangeNoti, object: nil)
     }
     
     
@@ -77,6 +78,13 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: false)    }
+    
+    
+    @objc func loginStatusChangeNotifi(_ noti: Notification) {
+        currentIndex = 0
+        titleView?.pageViewScrollEnd(pageIndex: 0)
+        switchToIndex(index: 0)
+    }
     
     func setupChildView() {
         

@@ -23,6 +23,7 @@ class HomeArticle: HandyJSON {
     var publisher: String = ""
     var linkurl = ""
     var reporter = ""
+    var source = ""     //来源
     
     ///是否是推荐新闻
     var recommendFlag = false
@@ -53,7 +54,7 @@ class HomeArticle: HandyJSON {
             if reporter.contains("null") {
                 reporter = ""
             }
-            return "新华日报财经 \(reporter)"
+            return "\(source) \(reporter)"
         }
         return publisher
     }

@@ -265,6 +265,7 @@
 		CC0170631F6840D00069D38B /* ActivityDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC0170611F6840D00069D38B /* ActivityDetailController.xib */; };
 		CC0BFA96206746D10024252B /* ShareAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0BFA94206746D10024252B /* ShareAppViewController.swift */; };
 		CC0BFA97206746D10024252B /* ShareAppViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC0BFA95206746D10024252B /* ShareAppViewController.xib */; };
+		CC0DC8F420AC8C06007EF02D /* baseHtml.html in Resources */ = {isa = PBXBuildFile; fileRef = CC0DC8F320AC8C06007EF02D /* baseHtml.html */; };
 		CC15D0D320AA62AC00515E76 /* HistoryRecordListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC15D0D220AA62AC00515E76 /* HistoryRecordListController.swift */; };
 		CC2906C91F6599C7001894DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2906C81F6599C7001894DA /* AppDelegate.swift */; };
 		CC2906D21F6599C7001894DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC2906D11F6599C7001894DA /* Assets.xcassets */; };
@@ -635,6 +636,7 @@
 		CC0170611F6840D00069D38B /* ActivityDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityDetailController.xib; sourceTree = "<group>"; };
 		CC0BFA94206746D10024252B /* ShareAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareAppViewController.swift; sourceTree = "<group>"; };
 		CC0BFA95206746D10024252B /* ShareAppViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShareAppViewController.xib; sourceTree = "<group>"; };
+		CC0DC8F320AC8C06007EF02D /* baseHtml.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = baseHtml.html; sourceTree = "<group>"; };
 		CC15D0D220AA62AC00515E76 /* HistoryRecordListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRecordListController.swift; sourceTree = "<group>"; };
 		CC2906C51F6599C7001894DA /* BestNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BestNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC2906C81F6599C7001894DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -1266,6 +1268,7 @@
 				5A84B64B1FFD1F9F006DC3AA /* bg3_guide@3x.png */,
 				5A063F3E1FF1D12400AFAA40 /* startLaunch.png */,
 				5A0B5DA51FF0628B0047F64A /* clickImg.js */,
+				CC0DC8F320AC8C06007EF02D /* baseHtml.html */,
 			);
 			name = Resource;
 			sourceTree = "<group>";
@@ -1636,6 +1639,9 @@
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.Push = {
 								enabled = 1;
 							};
@@ -1770,6 +1776,7 @@
 				5A90CFF31F81273900F16869 /* LiveListCell.xib in Resources */,
 				5A84B6401FFC4EF4006DC3AA /* EndLiveAlertView.xib in Resources */,
 				5AA4E8581FD43378007A04FA /* watermark_small.png in Resources */,
+				CC0DC8F420AC8C06007EF02D /* baseHtml.html in Resources */,
 				5A0A13961F9EB1B400DF57B9 /* LoginViewController.xib in Resources */,
 				CCC8E6C72086382D004CF6B3 /* RongCloud.bundle in Resources */,
 				5AFF05F41FE62E1800B7FE7D /* zh-Hans.lproj in Resources */,

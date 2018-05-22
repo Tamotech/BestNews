@@ -37,7 +37,9 @@ class Toolkit: NSObject {
             let loginVC = LoginViewController(nibName: "LoginViewController", bundle: nil)
             let navVC = BaseNavigationController(rootViewController: loginVC)
             let rootVC = Toolkit.getCurrentViewController()
-            rootVC?.present(navVC, animated: true, completion: nil)
+            if rootVC?.presentedViewController == nil {
+                rootVC?.present(navVC, animated: true, completion: nil)
+            }
         }
     }
 }

@@ -67,6 +67,11 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
     
     var initRMFlag = false
     
+    
+    
+    /// 1 日间模式   2 夜间模式
+    var daynightModel = 1
+    
     override init() {
         super.init()
         
@@ -169,6 +174,7 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
         APIManager.shareInstance.headers["token"] = ""
         UserDefaults.standard.removeObject(forKey: kLoginInfo)
         NotificationCenter.default.post(name: kUserInfoDidUpdateNotify, object: nil)
+        NotificationCenter.default.post(name: kUserLoginStatusChangeNoti, object: nil)
         
     }
     

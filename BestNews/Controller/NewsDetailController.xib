@@ -15,6 +15,7 @@
                 <outlet property="avatarInfoView" destination="O0i-rY-gLk" id="uWK-Rq-yGP"/>
                 <outlet property="avtarBtn" destination="njg-js-NTy" id="7jd-qW-UA9"/>
                 <outlet property="dateLb" destination="R2S-Cw-4bT" id="rPY-J3-O7I"/>
+                <outlet property="line1" destination="6tg-FL-Cgo" id="Llc-7H-q0O"/>
                 <outlet property="rewardBottom" destination="DH4-yU-CtH" id="gLI-iJ-0Zl"/>
                 <outlet property="rewardBtn" destination="vlN-hw-j7m" id="aWd-yu-G8t"/>
                 <outlet property="rewardHeight" destination="FCq-hw-Ngc" id="I3n-4W-Qr9"/>

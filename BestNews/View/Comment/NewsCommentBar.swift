@@ -42,6 +42,10 @@ class NewsCommentBar: UIView, UITextViewDelegate {
         return commentBtn
     }()
     
+    let pencil = UIImageView.init(image: #imageLiteral(resourceName: "pencil_icon"))
+    let repostBtn = UIButton()
+    let reportBtn = UIButton()
+    let collectionBtn = UIButton()
     lazy var barView: UIView = {
         let v = UIView()
         v.backgroundColor = UIColor.white
@@ -51,9 +55,8 @@ class NewsCommentBar: UIView, UITextViewDelegate {
         })
         
         
-        let pencil = UIImageView.init(image: #imageLiteral(resourceName: "pencil_icon"))
-        v.addSubview(pencil)
-        pencil.snp.makeConstraints({ (make) in
+        v.addSubview(self.pencil)
+        self.pencil.snp.makeConstraints({ (make) in
             make.left.equalTo(15)
             make.centerY.equalTo(v.snp.centerY)
             make.width.height.equalTo(22)
@@ -65,47 +68,45 @@ class NewsCommentBar: UIView, UITextViewDelegate {
         lb.text = "评一下"
         v.addSubview(lb)
         lb.snp.makeConstraints({ (make) in
-            make.left.equalTo(pencil.snp.right).offset(10)
-            make.centerY.equalTo(pencil.snp.centerY)
+            make.left.equalTo(self.pencil.snp.right).offset(10)
+            make.centerY.equalTo(self.pencil.snp.centerY)
         })
         
         let btnWidth:CGFloat = 35
         
-        let reportBtn = UIButton()
-        reportBtn.setImage(#imageLiteral(resourceName: "report_icon"), for: .normal)
-        reportBtn.addTarget(self, action: #selector(handleTapReportBtn(sender:)), for: .touchUpInside)
-        v.addSubview(reportBtn)
-        reportBtn.snp.makeConstraints({ (make) in
+        
+        self.reportBtn.setImage(#imageLiteral(resourceName: "report_icon"), for: .normal)
+        self.reportBtn.addTarget(self, action: #selector(handleTapReportBtn(sender:)), for: .touchUpInside)
+        v.addSubview(self.reportBtn)
+        self.reportBtn.snp.makeConstraints({ (make) in
             make.top.bottom.equalTo(0)
             make.right.equalTo(-15)
             make.width.equalTo(btnWidth)
         })
         
-        let repostBtn = UIButton()
-        repostBtn.setImage(#imageLiteral(resourceName: "repost_dark"), for: .normal)
-        repostBtn.addTarget(self, action: #selector(handleTapRepostBtn(sender:)), for: .touchUpInside)
-        v.addSubview(repostBtn)
-        repostBtn.snp.makeConstraints({ (make) in
+        self.repostBtn.setImage(#imageLiteral(resourceName: "repost_dark"), for: .normal)
+        self.repostBtn.addTarget(self, action: #selector(handleTapRepostBtn(sender:)), for: .touchUpInside)
+        v.addSubview(self.repostBtn)
+        self.repostBtn.snp.makeConstraints({ (make) in
             make.top.bottom.equalTo(0)
-            make.right.equalTo(reportBtn.snp.left)
+            make.right.equalTo(self.reportBtn.snp.left)
             make.width.equalTo(btnWidth)
         })
         
-        let collectionBtn = UIButton()
-        collectionBtn.tag = 222
-        collectionBtn.setImage(#imageLiteral(resourceName: "star_dark"), for: .normal)
-        collectionBtn.addTarget(self, action: #selector(handleTapCollectionBtn(sender:)), for: .touchUpInside)
-        v.addSubview(collectionBtn)
-        collectionBtn.snp.makeConstraints({ (make) in
+        self.collectionBtn.tag = 222
+        self.collectionBtn.setImage(#imageLiteral(resourceName: "star_dark"), for: .normal)
+        self.collectionBtn.addTarget(self, action: #selector(handleTapCollectionBtn(sender:)), for: .touchUpInside)
+        v.addSubview(self.collectionBtn)
+        self.collectionBtn.snp.makeConstraints({ (make) in
             make.top.bottom.equalTo(0)
-            make.right.equalTo(repostBtn.snp.left)
+            make.right.equalTo(self.repostBtn.snp.left)
             make.width.equalTo(btnWidth)
         })
         
         v.addSubview(self.commentBtn)
         self.commentBtn.snp.makeConstraints({ (make) in
             make.top.bottom.equalTo(0)
-            make.right.equalTo(collectionBtn.snp.left)
+            make.right.equalTo(self.collectionBtn.snp.left)
             make.width.equalTo(52)
         })
         
@@ -166,6 +167,7 @@ class NewsCommentBar: UIView, UITextViewDelegate {
     }()
     
     weak var delegate: CommentBarDelegate?
+    let shadowLine = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 1))
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -173,9 +175,8 @@ class NewsCommentBar: UIView, UITextViewDelegate {
         barView.alpha = 1
         textView.alpha = 0
         //阴影线
-        let line = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 1))
-        line.backgroundColor = gray229
-        self.addSubview(line)
+        shadowLine.backgroundColor = gray229
+        self.addSubview(shadowLine)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -188,7 +189,12 @@ class NewsCommentBar: UIView, UITextViewDelegate {
             btn.setImage(#imageLiteral(resourceName: "iconCollectionOn"), for: .normal)
         }
         else {
-            btn.setImage(#imageLiteral(resourceName: "star_dark"), for: .normal)
+            if SessionManager.sharedInstance.daynightModel == 2 {
+                btn.setImage(#imageLiteral(resourceName: "icon_collect_night"), for: .normal)
+            }
+            else {
+                btn.setImage(#imageLiteral(resourceName: "star_dark"), for: .normal)
+            }
         }
     }
     
@@ -402,10 +408,28 @@ extension NewsCommentBar {
         if night {
             self.backgroundColor = UIColor(hexString: "#353535")
             self.barView.backgroundColor = UIColor(hexString: "#353535")
+            commentBtn.setImage(#imageLiteral(resourceName: "icon_comment_night"), for: .normal)
+            pencil.image = #imageLiteral(resourceName: "icon_pencil_night")
+            self.reportBtn.setImage(#imageLiteral(resourceName: "icon_report_night"), for: .normal)
+            self.repostBtn.setImage(#imageLiteral(resourceName: "icon_share_night"), for: .normal)
+            self.collectionBtn.setImage(#imageLiteral(resourceName: "icon_collect_night"), for: .normal)
+            commentBtn.setTitleColor(UIColor(hexString: "#9b9b9b"), for: .normal)
+            textView.backgroundColor = UIColor(hexString: "#353535")
+            self.textField.backgroundColor = UIColor(hexString: "#222222")
+            self.shadowLine.backgroundColor = UIColor(hexString: "000000")
         }
         else {
             self.backgroundColor = UIColor(hexString: "#ffffff")
             self.barView.backgroundColor = UIColor(hexString: "#ffffff")
+            commentBtn.setImage(#imageLiteral(resourceName: "comment_dark"), for: .normal)
+            pencil.image = #imageLiteral(resourceName: "pencil_icon")
+            self.reportBtn.setImage(#imageLiteral(resourceName: "report_icon"), for: .normal)
+            self.repostBtn.setImage(#imageLiteral(resourceName: "repost_dark"), for: .normal)
+            self.collectionBtn.setImage(#imageLiteral(resourceName: "star_dark"), for: .normal)
+            commentBtn.setTitleColor(gray34, for: .normal)
+            textView.backgroundColor = UIColor.white
+            self.textField.backgroundColor = gray244
+            self.shadowLine.backgroundColor = gray229
         }
     }
 }
