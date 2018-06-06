@@ -41,6 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, TencentSes
         umConfig.appKey = umengAppKey
         MobClick.start(withConfigure: umConfig)
         MobClick.startSession(nil)
+        MobClick.setLogEnabled(true)
         
         
         //注册推送

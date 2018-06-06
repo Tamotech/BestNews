@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MeController" customModule="BestNews" customModuleProvider="target">
             <connections>
+                <outlet property="activityAmountLb" destination="djj-XC-mDT" id="L0E-wu-HMS"/>
                 <outlet property="articleAmountLb" destination="wI6-DZ-vYX" id="DLJ-FR-bHf"/>
                 <outlet property="avatarView" destination="89a-zd-o0u" id="hDH-Ut-MOT"/>
                 <outlet property="collectionAmountLb" destination="RVU-If-eAP" id="XF1-K8-6cE"/>
-                <outlet property="historyAmountLb" destination="djj-XC-mDT" id="GaZ-OL-SO4"/>
                 <outlet property="identityBtn" destination="cXj-ka-FcW" id="rEe-wW-T2g"/>
                 <outlet property="loginView" destination="cgx-zt-E4Y" id="CTb-nZ-YBP"/>
                 <outlet property="nameLb" destination="gsB-4i-2mf" id="Cdp-lX-awd"/>
@@ -216,7 +216,7 @@
                                                         <outletCollection property="gestureRecognizers" destination="wZQ-g4-QTr" appends="YES" id="ke1-Kc-UXH"/>
                                                     </connections>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="历史" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxn-1Z-RcW">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="活动" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxn-1Z-RcW">
                                                     <rect key="frame" x="31" y="74" width="31" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -371,7 +371,7 @@
         </tapGestureRecognizer>
         <tapGestureRecognizer id="wZQ-g4-QTr">
             <connections>
-                <action selector="handleTapHistory:" destination="-1" id="zwm-hq-qS4"/>
+                <action selector="handleTapActivity:" destination="-1" id="o3e-30-oyK"/>
             </connections>
         </tapGestureRecognizer>
         <tapGestureRecognizer id="sjW-Ga-YE0">

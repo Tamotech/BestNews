@@ -136,11 +136,11 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
         self.loadCommentList()
         self.loadRewardList()
         
-        self.navigationItem.rightBarButtonItem = nightModeBtns[0]
-        if SessionManager.sharedInstance.daynightModel == 2 {
-            self.navigationItem.rightBarButtonItem = nightModeBtns[1]
-            changeReadBGMode(night: true)
-        }
+//        self.navigationItem.rightBarButtonItem = nightModeBtns[0]
+//        if SessionManager.sharedInstance.daynightModel == 2 {
+//            self.navigationItem.rightBarButtonItem = nightModeBtns[1]
+//            changeReadBGMode(night: true)
+//        }
     }
     
     //MARK: - tableView

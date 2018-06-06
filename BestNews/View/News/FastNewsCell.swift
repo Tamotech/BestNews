@@ -21,8 +21,6 @@ class FastNewsCell: UITableViewCell {
     
     @IBOutlet weak var repostBtn: UIButton!
     
-    @IBOutlet weak var arrowIv: UIImageView!
-    @IBOutlet weak var foldBtn: UIButton!
     
     var clickRepostCallback: RepostFastNewsCallback?
     
@@ -46,24 +44,8 @@ class FastNewsCell: UITableViewCell {
         contentLb.text = news.content
         timeLb.text = news.timeStr()
         collectBtn.isSelected = (news.collect == 1)
-        if news.cellType == 0 {
-            arrowIv.isHidden = true
-            foldBtn.isHidden = true
-        }
-        else {
-            foldBtn.isHidden = false
-            arrowIv.isHidden = false
-            if news.cellType == 1 {
-                foldBtn.setTitle("展开", for: UIControlState.normal)
-                arrowIv.image = #imageLiteral(resourceName: "arrow-gray-down")
-            }
-            else {
-                foldBtn.setTitle("收起", for: UIControlState.normal)
-                arrowIv.image = #imageLiteral(resourceName: "arrow-gray-up")
-            }
-        }
     }
-
+    
     @IBAction func handTapRepostBtn(_ sender: UIButton) {
         
         if !SessionManager.sharedInstance.loginInfo.isLogin {
@@ -102,17 +84,6 @@ class FastNewsCell: UITableViewCell {
         }
         
     }
-    
-    @IBAction func handleTapFoldBtn(_ sender: UIButton) {
-        if self.news.cellType == 1 {
-            self.news.cellType = 2
-        }
-        else {
-            self.news.cellType = 1
-        }
-        self.superTableView()?.reloadData()
-    }
-    
     
     
 }

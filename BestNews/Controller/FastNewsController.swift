@@ -10,7 +10,7 @@ import UIKit
 import CRRefresh
 
 class FastNewsController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
-
+    
     @IBOutlet weak var tableView: UITableView!
     
     @IBOutlet var headerView: UIView!
@@ -43,7 +43,7 @@ class FastNewsController: BaseViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         setupView()
         self.shouldClearNavBar = entry == 0
@@ -123,11 +123,6 @@ class FastNewsController: BaseViewController, UITableViewDataSource, UITableView
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.1
-    }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let news = newsList!.newsIn(section: indexPath.section, row: indexPath.row)
-        return news.cellHeight()
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

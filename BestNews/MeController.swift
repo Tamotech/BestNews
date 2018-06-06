@@ -25,7 +25,7 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
     
     @IBOutlet weak var collectionAmountLb: UILabel!
     
-    @IBOutlet weak var historyAmountLb: UILabel!
+    @IBOutlet weak var activityAmountLb: UILabel!
     
     @IBOutlet weak var articleAmountLb: UILabel!
     @IBOutlet weak var scrollView: UIScrollView!
@@ -39,24 +39,19 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
     
     
     var settingData: [(String, UIImage)] = [
-        ("我的活动", #imageLiteral(resourceName: "icon_history")),
-//                     ("实名认证", #imageLiteral(resourceName: "me_identity")),
-                       ("开通VIP", #imageLiteral(resourceName: "me_open_vip")),
-//                       ("我要投稿", #imageLiteral(resourceName: "me_post_article")),
-                       ("成为名人", #imageLiteral(resourceName: "me_become_star")),
-                       ("分享APP", #imageLiteral(resourceName: "me_share_app")),
-                       ("意见反馈", #imageLiteral(resourceName: "me_feed_back")),
-                       ("关于我们", #imageLiteral(resourceName: "icon_about")),
-                       ("清除缓存", #imageLiteral(resourceName: "clear_icon")),
-                       ("退出登录", #imageLiteral(resourceName: "me_logout"))]
+        //                     ("实名认证", #imageLiteral(resourceName: "me_identity")),
+        ("开通VIP", #imageLiteral(resourceName: "me_open_vip")),
+        ("我要投稿", #imageLiteral(resourceName: "me_post_article")),
+        ("成为名人", #imageLiteral(resourceName: "me_become_star")),
+        ("分享APP", #imageLiteral(resourceName: "me_share_app")),
+        ("意见反馈", #imageLiteral(resourceName: "me_feed_back")),
+        ("退出登录", #imageLiteral(resourceName: "me_logout"))]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(didSwitchToMeControllerNoti(_:)), name: kSwitchTabbarItemNotify, object: nil)
     }
-
+    
     func setupView() {
         
         self.shouldClearNavBar = false
@@ -88,16 +83,7 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
         self.navigationController?.navigationBar.barTintColor = gray51
         SessionManager.sharedInstance.getUserInfo()
         loadInfoCount()
-    }
-    
-    ///切换tab
-    @objc func didSwitchToMeControllerNoti(_ noti: Notification) {
-        let index = noti.object as! Int
-        if index == 4 {
-            SessionManager.sharedInstance.getUserInfo()
-            loadInfoCount()
-            updateUI()
-        }
+        updateUI()
     }
     
     ///更新UI
@@ -114,12 +100,11 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
                 nameLb.text = user.name
                 if user.celebrityflag {
                     settingData = [
-                                   ("我的活动", #imageLiteral(resourceName: "icon_history")),
-                                   ("分享APP", #imageLiteral(resourceName: "me_share_app")),
-                                   ("意见反馈", #imageLiteral(resourceName: "me_feed_back")),
-                                   ("关于我们", #imageLiteral(resourceName: "icon_about")),
-                                   ("清除缓存", #imageLiteral(resourceName: "clear_icon")),
-                                   ("退出登录", #imageLiteral(resourceName: "me_logout"))]
+                        ("我要投稿", #imageLiteral(resourceName: "me_post_article")),
+                        //("开通VIP", #imageLiteral(resourceName: "me_open_vip")),
+                        ("分享APP", #imageLiteral(resourceName: "me_share_app")),
+                        ("意见反馈", #imageLiteral(resourceName: "me_feed_back")),
+                        ("退出登录", #imageLiteral(resourceName: "me_logout"))]
                     showArticle = true
                 }
                 else if user.idproveflag {
@@ -127,38 +112,32 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
                     identityBtn.borderColor = themeColor!
                     identityBtn.setTitle("已认证", for: .normal)
                     settingData = [
-                        ("我的活动", #imageLiteral(resourceName: "icon_history")),
-//                     ("实名认证", #imageLiteral(resourceName: "me_identity")),
-                     //("开通VIP", #imageLiteral(resourceName: "me_open_vip")),
-//                     ("我要投稿", #imageLiteral(resourceName: "me_post_article")),
-                     //("成为名人", #imageLiteral(resourceName: "me_become_star")),
-                     ("分享APP", #imageLiteral(resourceName: "me_share_app")),
-                     ("意见反馈", #imageLiteral(resourceName: "me_feed_back")),
-                     ("关于我们", #imageLiteral(resourceName: "icon_about")),
-                     ("清除缓存", #imageLiteral(resourceName: "clear_icon")),
-                     ("退出登录", #imageLiteral(resourceName: "me_logout"))]
+                        //                     ("实名认证", #imageLiteral(resourceName: "me_identity")),
+                        //("开通VIP", #imageLiteral(resourceName: "me_open_vip")),
+                        ("我要投稿", #imageLiteral(resourceName: "me_post_article")),
+                        //("成为名人", #imageLiteral(resourceName: "me_become_star")),
+                        ("分享APP", #imageLiteral(resourceName: "me_share_app")),
+                        ("意见反馈", #imageLiteral(resourceName: "me_feed_back")),
+                        ("退出登录", #imageLiteral(resourceName: "me_logout"))]
                 }
                 else {
                     identityBtn.setTitleColor(gray181, for: .normal)
                     identityBtn.borderColor = gray181!
                     identityBtn.setTitle("未认证", for: .normal)
                     settingData = [
-                        ("我的活动", #imageLiteral(resourceName: "icon_history")),
-//                     ("实名认证", #imageLiteral(resourceName: "me_identity")),
-                     //("开通VIP", #imageLiteral(resourceName: "me_open_vip")),
-//                     ("我要投稿", #imageLiteral(resourceName: "me_post_article")),
-                     //("成为名人", #imageLiteral(resourceName: "me_become_star")),
-                     ("分享APP", #imageLiteral(resourceName: "me_share_app")),
-                     ("意见反馈", #imageLiteral(resourceName: "me_feed_back")),
-                     ("关于我们", #imageLiteral(resourceName: "icon_about")),
-                     ("清除缓存", #imageLiteral(resourceName: "clear_icon")),
-                     ("退出登录", #imageLiteral(resourceName: "me_logout"))]
+                        //                     ("实名认证", #imageLiteral(resourceName: "me_identity")),
+                        //("开通VIP", #imageLiteral(resourceName: "me_open_vip")),
+                        ("我要投稿", #imageLiteral(resourceName: "me_post_article")),
+                        //("成为名人", #imageLiteral(resourceName: "me_become_star")),
+                        ("分享APP", #imageLiteral(resourceName: "me_share_app")),
+                        ("意见反馈", #imageLiteral(resourceName: "me_feed_back")),
+                        ("退出登录", #imageLiteral(resourceName: "me_logout"))]
                 }
             }
             loginView.isHidden = true
             subscriptionAmountLb.isHidden = false
             collectionAmountLb.isHidden = false
-            historyAmountLb.isHidden = false
+            activityAmountLb.isHidden = false
             articleAmountLb.isHidden = false
             
         }
@@ -167,15 +146,13 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
             loginView.isHidden = false
             subscriptionAmountLb.isHidden = true
             collectionAmountLb.isHidden = true
-            historyAmountLb.isHidden = true
+            activityAmountLb.isHidden = true
             articleAmountLb.isHidden = true
             settingData = [
-//                0op0-------------("我要投稿", #imageLiteral(resourceName: "me_post_article")),
+                ("我要投稿", #imageLiteral(resourceName: "me_post_article")),
                 //("开通VIP", #imageLiteral(resourceName: "me_open_vip")),
                 ("分享APP", #imageLiteral(resourceName: "me_share_app")),
-                ("意见反馈", #imageLiteral(resourceName: "me_feed_back")),
-                ("关于我们", #imageLiteral(resourceName: "icon_about")),
-                ("清除缓存", #imageLiteral(resourceName: "clear_icon"))]
+                ("意见反馈", #imageLiteral(resourceName: "me_feed_back"))]
         }
         
         if showArticle {
@@ -262,12 +239,12 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    @IBAction func handleTapHistory(_ sender: UITapGestureRecognizer) {
+    @IBAction func handleTapActivity(_ sender: UITapGestureRecognizer) {
+        let vc = MyActivityListController()
         if !SessionManager.sharedInstance.loginInfo.isLogin {
             Toolkit.showLoginVC()
             return
         }
-        let vc = HistoryRecordListController()
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -280,7 +257,7 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
         navigationController?.pushViewController(vc, animated: true)
     }
     
-
+    
     //MARK: - tableView
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -291,7 +268,7 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-         return 0.1
+        return 0.1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -303,17 +280,6 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
         let data = settingData[indexPath.row]
         cell.iconView.image = data.1
         cell.titleLb.text = data.0
-        if data.0 == "清除缓存" {
-            cell.detailLb?.isHidden = false
-            //计算缓存
-            ImageCache.default.calculateDiskCacheSize { (size) in
-                let msize = size/1024/1024
-                cell.detailLb.text = "\(msize)MB"
-            }
-        }
-        else {
-            cell.detailLb?.isHidden = true
-        }
         return cell
     }
     
@@ -334,15 +300,8 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
             Toolkit.showLoginVC()
             return
         }
-        if name == "我的活动" {
-            let vc = MyActivityListController()
-            if !SessionManager.sharedInstance.loginInfo.isLogin {
-                Toolkit.showLoginVC()
-                return
-            }
-            navigationController?.pushViewController(vc, animated: true)
-        }
-        else if name == "实名认证" {
+        
+        if name == "实名认证" {
             let vc = ApplyIdentifyController(nibName: "ApplyIdentifyController", bundle: nil)
             navigationController?.pushViewController(vc, animated: true)
         }
@@ -364,50 +323,13 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
             navigationController?.pushViewController(vc, animated: true)
         }
         else if name == "退出登录" {
-            let alert = XHAlertController()
-            alert.modalPresentationStyle = .overCurrentContext
-            self.modalPresentationStyle = .currentContext
-            alert.tit = "确认退出登录?"
-            alert.callback = {
-                (buttonType) in
-                if buttonType == 0 {
-                    DispatchQueue.main.async {
-                        SessionManager.sharedInstance.logoutCurrentUser()
-                        //跳转到首页
-                        let vc = keyWindow?.rootViewController as? BestTabbarViewController
-                        vc?.tabbarView.switchToIndex(index: 0)
-                    }
-                }
-            }
-            alert.style = 0
-            present(alert, animated: false, completion: nil)
-            
-        }
-        else if name == "关于我们" {
-            let vc = AboutUsViewController()
-            navigationController?.pushViewController(vc, animated: true)
-        }
-        else if name == "清除缓存" {
-            let alert = XHAlertController()
-            alert.modalPresentationStyle = .overCurrentContext
-            self.modalPresentationStyle = .currentContext
-            alert.tit = "确认清除缓存?"
-            alert.msg = ""
-            alert.callback = {
-                [weak self](buttonType) in
-                if buttonType == 0 {
-                    DispatchQueue.main.async {
-                        ImageCache.default.clearDiskCache()
-                        BLHUDBarManager.showSuccess(msg: "缓存清除成功", seconds: 1)
-                        self?.tableView.reloadData()
-                    }
-                }
-            }
-            alert.style = 0
-            present(alert, animated: false, completion: nil)
+            SessionManager.sharedInstance.logoutCurrentUser()
+            let vc = LoginViewController(nibName: "LoginViewController", bundle: nil)
+            let navVC = BaseNavigationController(rootViewController: vc)
+            navigationController?.present(navVC, animated: true, completion: nil)
         }
     }
-
+    
 }
 
 extension MeController {
@@ -420,11 +342,11 @@ extension MeController {
             let json = data as! JSON
             let subscribeNum = json["subscribeNum"].intValue
             let collectNum = json["collectNum"].intValue
-            let viewhistNum = json["viewhistNum"].intValue
+            let activityNum = json["activityNum"].intValue
             let articleNum = json["articleNum"].intValue
             self?.subscriptionAmountLb.text = "\(subscribeNum)"
             self?.collectionAmountLb.text = "\(collectNum)"
-            self?.historyAmountLb.text = "\(viewhistNum)"
+            self?.activityAmountLb.text = "\(activityNum)"
             self?.articleAmountLb.text = "\(articleNum)"
         }
     }
