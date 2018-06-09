@@ -380,7 +380,6 @@ class HomeSearchController: UIViewController, UITableViewDelegate, UITableViewDa
                 let model = searchResult!.model(section: indexPath.section, row: indexPath.row) as! FastNews
                 cell.updateCell(news: model)
                 cell.collectBtn.isHidden = true
-                cell.repostBtn.isHidden = true
                 cell.contentLb.numberOfLines = 2
                 return cell
             }
