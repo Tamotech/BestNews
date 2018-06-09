@@ -119,8 +119,8 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
         tableView2.dataSource = self
         let nib2 = UINib.init(nibName: "ChatroomMessageCell", bundle: nil)
         tableView2.register(nib2, forCellReuseIdentifier: "Cell")
-        tableView1.isHidden = false
-        tableView2.isHidden = true
+        tableView1.isHidden = true
+        tableView2.isHidden = false
         //tableView2.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 1))
         setPlayerContentView()
         setCacheForPlaying()
@@ -171,6 +171,9 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
         contentTf.leftViewMode = .always
         publishBt.isEnabled = false
         commentBarChangeState(false)
+        
+        //2018-06-6
+        commentBar.isHidden = false
         
 //        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         loadLiveDetail()

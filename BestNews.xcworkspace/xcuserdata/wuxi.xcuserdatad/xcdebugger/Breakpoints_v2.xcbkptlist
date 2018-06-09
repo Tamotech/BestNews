@@ -35,6 +35,38 @@
             endingLineNumber = "48"
             landmarkName = "NewsCommentBar"
             landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "variable initialization expression of BestNews.NewsCommentBar.collectionBtn : __ObjC.UIButton"
+                  moduleName = "BestNews"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wuxi/code/workspace/BestNews/BestNews/View/Comment/NewsCommentBar.swift"
+                  timestampString = "550233382.939144"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "12">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "BestNews.NewsCommentBar.collectionBtn.getter : __ObjC.UIButton"
+                  moduleName = "BestNews"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/wuxi/code/workspace/BestNews/BestNews/View/Comment/NewsCommentBar.swift"
+                  timestampString = "550233382.941309"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "48"
+                  endingLineNumber = "48"
+                  offsetFromSymbolStart = "104">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

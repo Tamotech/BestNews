@@ -63,6 +63,7 @@ class ActivityController: BaseViewController, UITableViewDelegate, UITableViewDa
         reloadData()
         emptyView.emptyString = "还没有活动~"
         tableView.addSubview(emptyView)
+        emptyView.isHidden = true
     }
     
     
@@ -73,7 +74,6 @@ class ActivityController: BaseViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        emptyView.isHidden = activityList.list.count > 0
         return activityList.list.count
     }
     
@@ -131,6 +131,7 @@ extension ActivityController {
             self?.tableView.cr.resetNoMore()
             self?.activityList = data as! ActivityList
             self?.tableView.reloadData()
+            self?.emptyView.isHidden = self?.activityList.list.count ?? 0 > 0
         }
     }
     

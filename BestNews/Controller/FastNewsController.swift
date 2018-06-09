@@ -64,6 +64,7 @@ class FastNewsController: BaseViewController, UITableViewDataSource, UITableView
         
         self.view.addSubview(emptyView)
         emptyView.emptyString = "还没有快讯~"
+        emptyView.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -92,7 +93,6 @@ class FastNewsController: BaseViewController, UITableViewDataSource, UITableView
         
         if !collectFilter {
             tableView.tableHeaderView = headerView
-            self.loadStockStatus()
         }
         
         t = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(timerEvent(_:)), userInfo: nil, repeats: true)
@@ -101,6 +101,14 @@ class FastNewsController: BaseViewController, UITableViewDataSource, UITableView
     }
     
     
+    func didSwitchNav(_ sender: Notification) {
+        
+        let index = sender.object as! Int
+        if newsList == nil && CGFloat(index)*screenWidth == self.view.x && !collectFilter {
+            self.tableView.cr.beginHeaderRefresh()
+        }
+    }
+    
     func timerEvent(_ sender: Timer) {
         self.loadStockStatus()
     }
@@ -108,12 +116,12 @@ class FastNewsController: BaseViewController, UITableViewDataSource, UITableView
     //MARK: - tableView
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        emptyView.isHidden = (newsList?.numberOfSections() ?? 0) > 0
+//        emptyView.isHidden = (newsList?.numberOfSections() ?? 0) > 0
         return newsList?.numberOfSections() ?? 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        emptyView.isHidden = (newsList?.numberOsRowsInSection(section: section) ?? 0) > 0
+//        emptyView.isHidden = (newsList?.numberOsRowsInSection(section: section) ?? 0) > 0
         return newsList?.numberOsRowsInSection(section: section) ?? 0
     }
     
@@ -174,6 +182,7 @@ extension FastNewsController {
             self?.page = 1
             self?.newsList = data as? FastNewsList
             self?.tableView.reloadData()
+            self?.emptyView.isHidden = (self?.newsList?.numberOfSections() ?? 0) > 0
         }
     }
     

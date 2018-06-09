@@ -386,6 +386,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
         }
         //设置viewFrame
         switchToIndex(index: index)
+        NotificationCenter.default.post(name: kDidSwitchNavTitleNotify, object: index)
         //让pageView滚动起来
         titleView?.pageViewScrollEnd(pageIndex: index)
         titleView?.pageViewScroll(nextIndex: index-1, progress: 0)
@@ -394,8 +395,9 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
     //MARK: - TYTitleView
     
     func pageView(pageView: TYPageTitleView, selectIndex: Int) {
-        switchToIndex(index: selectIndex)
         scrollView.setContentOffset(CGPoint.init(x: screenWidth*CGFloat(selectIndex), y: 0), animated: true)
+        switchToIndex(index: selectIndex)
+        NotificationCenter.default.post(name: kDidSwitchNavTitleNotify, object: selectIndex)
     }
     
     
@@ -436,8 +438,6 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
         else if vc.view.tag == kUnstabelChildTag {
             self.navBarTurnBg(white: true)
         }
-    
-        
     }
     
     /// 导航栏颜色变化

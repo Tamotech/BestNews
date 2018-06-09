@@ -57,7 +57,7 @@ class NoPhotoNewsCell: BaseNewsCell {
             
         }
         else {
-            titleLb.textColor = UIColor(hexString: "#9b9b9b")
+            titleLb.textColor = UIColor(hexString: "#000000")
             self.backgroundColor = UIColor.white
             descLb.textColor = UIColor(hexString: "#484848")
         }

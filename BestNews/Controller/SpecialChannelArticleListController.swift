@@ -20,6 +20,7 @@ class SpecialChannelArticleListController: BaseViewController, UITableViewDelega
     var articleList: HomeArticleList?
     var coverArticles: [HomeArticle] = []
     var page: Int = 1
+    var entry = 0           //0 首页  1 专题详情
     
     var emptyView = BaseEmptyView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
     
@@ -47,8 +48,15 @@ class SpecialChannelArticleListController: BaseViewController, UITableViewDelega
             showCustomTitle(title: newsChannel!.fullname)
         }
         setupView()
-        self.reloadArticleList()
-        self.loadCoverArticle()
+        if entry == 1 {
+            self.loadCoverArticle()
+            self.tableView.cr.beginHeaderRefresh()
+        }
+//        self.reloadArticleList()
+//        self.loadCoverArticle()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didSwitchNav(_:)), name: kDidSwitchNavTitleNotify, object: nil)
+        
     }
     
     func setupView() {
@@ -77,16 +85,28 @@ class SpecialChannelArticleListController: BaseViewController, UITableViewDelega
             self?.loadMoreArticleList()
         }
         
+//        tableView.cr.beginHeaderRefresh()
+        
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 50))
         
         tableView.addSubview(emptyView)
         emptyView.emptyString = "还没有新闻~"
+        emptyView.isHidden = true
         
         if channel != nil {
             
         }
     }
     
+    
+    func didSwitchNav(_ sender: Notification) {
+        
+        let index = sender.object as! Int
+        if articleList == nil && CGFloat(index)*screenWidth == self.view.x {
+            self.loadCoverArticle()
+            tableView.cr.beginHeaderRefresh()
+        }
+    }
     
     //MARK: - banner delegate
     
@@ -107,10 +127,8 @@ class SpecialChannelArticleListController: BaseViewController, UITableViewDelega
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if articleList == nil {
-            emptyView.isHidden = false
             return 0
         }
-        emptyView.isHidden = articleList!.list.count > 0
         return articleList!.list.count
     }
     
@@ -210,6 +228,7 @@ extension SpecialChannelArticleListController {
             self?.tableView.cr.resetNoMore()
             self?.page = 1
             self?.articleList = data as? HomeArticleList
+            self?.emptyView.isHidden = self?.articleList?.list.count ?? 0 > 0
             self?.tableView.reloadData()
         }
     }
@@ -227,8 +246,7 @@ extension SpecialChannelArticleListController {
         page = page + 1
         let id = channel == nil ? newsChannel!.id : channel!.id
         APIRequest.articleListAPI(id: id, type: "channelid", page: page) { [weak self](data) in
-            
-            self?.page = 1
+            self?.tableView.cr.endLoadingMore()
             let list = data as? HomeArticleList
             if list != nil {
                 self?.articleList?.list.append(contentsOf: list!.list)

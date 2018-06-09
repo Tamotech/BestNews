@@ -88,6 +88,7 @@ class OrgnizationListController: BaseViewController, UITableViewDataSource, UITa
         }
         emptyView.emptyString = "还没有订阅~"
         self.tableView.addSubview(emptyView)
+        emptyView.isHidden = true
         
     }
     
@@ -102,11 +103,9 @@ class OrgnizationListController: BaseViewController, UITableViewDataSource, UITa
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if type == 0 {
-            emptyView.isHidden = ognizationList.list.count>0
             return ognizationList.list.count
         }
         else {
-            emptyView.isHidden = famousList.list.count>0
             return famousList.list.count
         }
     }
@@ -161,6 +160,7 @@ extension OrgnizationListController {
             self?.tableView.cr.resetNoMore()
             self?.ognizationList = data as! OgnizationList
             self?.tableView.reloadData()
+            self?.emptyView.isHidden = self?.ognizationList.list.count ?? 0 > 0
         }
     }
     
@@ -186,6 +186,7 @@ extension OrgnizationListController {
             self?.famousPage = 1
             self?.famousList = data as! OgnizationList
             self?.tableView.reloadData()
+            self?.emptyView.isHidden = self?.ognizationList.list.count ?? 0 > 0
         }
     }
     

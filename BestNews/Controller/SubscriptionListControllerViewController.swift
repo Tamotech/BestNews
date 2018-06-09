@@ -87,6 +87,7 @@ class SubscriptionListControllerViewController: UIViewController, UITableViewDel
         
         newsTableView.addSubview(emptyView)
         emptyView.emptyString = "还没有订阅~"
+        emptyView.isHidden = true
         
         let nib2 = UINib(nibName: "SubscriptListCell", bundle: nil)
         columeTableView.register(nib2, forCellReuseIdentifier: "ColumeCell")
@@ -133,7 +134,7 @@ class SubscriptionListControllerViewController: UIViewController, UITableViewDel
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == self.newsTableView {
-            emptyView.isHidden = articles.list.count > 0
+//            emptyView.isHidden = articles.list.count > 0
             return articles.list.count
         }
         else {
@@ -290,6 +291,7 @@ extension SubscriptionListControllerViewController {
             self?.page = 1
             self?.articles = data as! HomeArticleList
             self?.newsTableView.reloadData()
+            self?.emptyView.isHidden = self?.articles.list.count ?? 0 > 0
         }
     }
     

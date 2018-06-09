@@ -41,7 +41,7 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
     var settingData: [(String, UIImage)] = [
         //                     ("实名认证", #imageLiteral(resourceName: "me_identity")),
         ("开通VIP", #imageLiteral(resourceName: "me_open_vip")),
-        ("我要投稿", #imageLiteral(resourceName: "me_post_article")),
+//        ("我要投稿", #imageLiteral(resourceName: "me_post_article")),
         ("成为名人", #imageLiteral(resourceName: "me_become_star")),
         ("分享APP", #imageLiteral(resourceName: "me_share_app")),
         ("意见反馈", #imageLiteral(resourceName: "me_feed_back")),
@@ -50,6 +50,17 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+    }
+    
+    
+    
+    func switchTabNotify(_ sender: Notification) {
+        let index = sender.object as! Int
+        if index == 4 {
+            SessionManager.sharedInstance.getUserInfo()
+            loadInfoCount()
+            updateUI()
+        }
     }
     
     func setupView() {
@@ -75,15 +86,13 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
         navigationItem.rightBarButtonItem = messageItem
         
         NotificationCenter.default.addObserver(self, selector: #selector(didUpdateUserInfo(_:)), name: kUserInfoDidUpdateNotify, object: nil)
+         NotificationCenter.default.addObserver(self, selector: #selector(switchTabNotify(_:)), name: kSwitchTabbarItemNotify, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.tintColor = gray51
         self.navigationController?.navigationBar.barTintColor = gray51
-        SessionManager.sharedInstance.getUserInfo()
-        loadInfoCount()
-        updateUI()
     }
     
     ///更新UI
@@ -100,7 +109,7 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
                 nameLb.text = user.name
                 if user.celebrityflag {
                     settingData = [
-                        ("我要投稿", #imageLiteral(resourceName: "me_post_article")),
+//                        ("我要投稿", #imageLiteral(resourceName: "me_post_article")),
                         //("开通VIP", #imageLiteral(resourceName: "me_open_vip")),
                         ("分享APP", #imageLiteral(resourceName: "me_share_app")),
                         ("意见反馈", #imageLiteral(resourceName: "me_feed_back")),
@@ -114,7 +123,7 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
                     settingData = [
                         //                     ("实名认证", #imageLiteral(resourceName: "me_identity")),
                         //("开通VIP", #imageLiteral(resourceName: "me_open_vip")),
-                        ("我要投稿", #imageLiteral(resourceName: "me_post_article")),
+//                        ("我要投稿", #imageLiteral(resourceName: "me_post_article")),
                         //("成为名人", #imageLiteral(resourceName: "me_become_star")),
                         ("分享APP", #imageLiteral(resourceName: "me_share_app")),
                         ("意见反馈", #imageLiteral(resourceName: "me_feed_back")),
@@ -127,7 +136,7 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
                     settingData = [
                         //                     ("实名认证", #imageLiteral(resourceName: "me_identity")),
                         //("开通VIP", #imageLiteral(resourceName: "me_open_vip")),
-                        ("我要投稿", #imageLiteral(resourceName: "me_post_article")),
+//                        ("我要投稿", #imageLiteral(resourceName: "me_post_article")),
                         //("成为名人", #imageLiteral(resourceName: "me_become_star")),
                         ("分享APP", #imageLiteral(resourceName: "me_share_app")),
                         ("意见反馈", #imageLiteral(resourceName: "me_feed_back")),
@@ -149,7 +158,7 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
             activityAmountLb.isHidden = true
             articleAmountLb.isHidden = true
             settingData = [
-                ("我要投稿", #imageLiteral(resourceName: "me_post_article")),
+//                ("我要投稿", #imageLiteral(resourceName: "me_post_article")),
                 //("开通VIP", #imageLiteral(resourceName: "me_open_vip")),
                 ("分享APP", #imageLiteral(resourceName: "me_share_app")),
                 ("意见反馈", #imageLiteral(resourceName: "me_feed_back"))]

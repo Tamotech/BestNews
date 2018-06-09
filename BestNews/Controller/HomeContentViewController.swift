@@ -55,6 +55,9 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
     
     func setupView() {
         self.view.addSubview(tableView)
+        tableView.snp.makeConstraints { (make) in
+            make.top.right.left.bottom.equalTo(0)
+        }
         tableView.tableHeaderView = headerBannerView
         for i in 0..<cellIdentifiers.count {
             let identifier = cellIdentifiers[i]
@@ -73,8 +76,8 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.cr.addHeadRefresh {
             [weak self] in
             self?.reloadArticleList()
-            self?.loadSpecialCannelData()
-            self?.loadNavChannel()
+//            self?.loadSpecialCannelData()
+//            self?.loadNavChannel()
             self?.updateBanner()
         }
         tableView.cr.addFootRefresh {
@@ -82,6 +85,7 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
             self?.loadMoreArticleList()
         }
         
+        tableView.cr.beginHeaderRefresh()
         tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 50))
     }
     
@@ -132,6 +136,7 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
                 [weak self] (channel) in
                 let vc = SpecialChannelArticleListController()
                 vc.channel = channel
+                vc.entry = 1
                 self?.navigationController?.pushViewController(vc, animated: true)
             }
             return cell

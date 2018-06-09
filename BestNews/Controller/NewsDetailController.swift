@@ -458,14 +458,16 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
 extension NewsDetailController {
     
     func loadNewsDetail() {
+        SwiftNotice.wait()
         APIRequest.newsDetailAPI(id: articleId) { [weak self](newsDetail) in
+            SwiftNotice.clear()
             self?.article = newsDetail as! HomeNewsDetail?
             self?.updateView()
         }
     }
     
     func loadRecommendArticleList() {
-        APIRequest.getRecommendArticleListAPI(articleId: articleId, page: 1, row: 20) { (data) in
+        APIRequest.getRecommendArticleListAPI(articleId: articleId, page: 1, row: 5) { (data) in
             self.recommendArticleList = data as? HomeArticleList
             self.tableView.reloadData()
         }

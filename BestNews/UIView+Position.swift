@@ -195,4 +195,31 @@ public extension UIView {
         }
         return nil
     }
+    
+    
+    ///判断View是否显示在屏幕上
+    ///
+    /// - Returns: 是否
+    func isDisplayedInScreen() -> Bool {
+        
+        let screenRect = UIScreen.main.bounds
+        let rect = self.convert(self.frame, from: nil)
+        if rect.isNull || rect.isEmpty {
+            return false
+        }
+        if self.isHidden {
+            return false
+        }
+        if superview == nil {
+            return false
+        }
+        if rect.size == CGSize.zero {
+            return false
+        }
+        let interRect = rect.intersection(screenRect)
+        if interRect.isNull || interRect.isEmpty {
+            return false
+        }
+        return true
+    }
 }

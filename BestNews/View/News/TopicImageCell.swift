@@ -28,6 +28,9 @@ class TopicImageCell: UICollectionViewCell {
             let rc = ImageResource(downloadURL: URL(string: img)!)
             coverImageView.kf.setImage(with: rc)
         }
+        else {
+            coverImageView.image = #imageLiteral(resourceName: "m24_default")
+        }
         topicLabel.text = name
     }
 }

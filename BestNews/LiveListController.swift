@@ -73,6 +73,7 @@ class LiveListController: BaseViewController, UITableViewDelegate, UITableViewDa
         
         self.view.addSubview(emptyView)
         emptyView.emptyString = "还没有直播~"
+        emptyView.isHidden = true
         
 //        let messageItem = UIBarButtonItem(image: #imageLiteral(resourceName: "icon_message_white"), style: .plain, target: self, action: #selector(handleTapMessageItem(sender:)))
 //        navigationItem.rightBarButtonItem = messageItem
@@ -86,7 +87,6 @@ class LiveListController: BaseViewController, UITableViewDelegate, UITableViewDa
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        emptyView.isHidden = liveList.list.count > 0
         return liveList.list.count
     }
     
@@ -144,6 +144,7 @@ extension LiveListController {
             self?.liveList.page = 1
             self?.liveList = data as! LiveModelList
             self?.tableView.reloadData()
+            self?.emptyView.isHidden = self?.liveList.list.count ?? 0 > 0
         }
     }
     

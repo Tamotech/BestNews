@@ -13,7 +13,15 @@ class BaseEmptyView: UIView {
 
     
     var emptyString = "还没有消息~"
-    var emptyLb = UILabel()
+    lazy var emptyLb: UILabel = {
+        let lb = UILabel()
+        lb.text = self.emptyString
+        lb.textColor = UIColor(hexString: "b5b5b5")
+        lb.numberOfLines = 0
+        lb.textAlignment = .center
+        lb.font = UIFont.systemFont(ofSize: 14)
+        return lb
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -28,19 +36,12 @@ class BaseEmptyView: UIView {
             make.size.equalTo(CGSize(width: 100, height: 170))
         }
         
-        let lb = UILabel()
-        lb.text = emptyString
-        lb.textColor = UIColor(hexString: "b5b5b5")
-        lb.numberOfLines = 0
-        lb.textAlignment = .center
-        lb.font = UIFont.systemFont(ofSize: 14)
-        self.addSubview(lb)
-        lb.snp.makeConstraints { (make) in
+        self.addSubview(emptyLb)
+        emptyLb.snp.makeConstraints { (make) in
             make.top.equalTo(img.snp.bottom).offset(20)
             make.left.equalTo(20)
             make.right.equalTo(-20)
         }
-        emptyLb = lb
     }
     
     required init?(coder aDecoder: NSCoder) {
