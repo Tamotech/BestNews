@@ -28,7 +28,7 @@ class MyActivityListController: BaseViewController, UITableViewDelegate, UITable
         super.viewDidLoad()
 
         self.setupView()
-        reloadData()
+//        reloadData()
         
         NotificationCenter.default.addObserver(self, selector: #selector(refundTicketSuccessNoti(_:)), name: kActivityRefundSuccessNotify, object: nil)
     }
@@ -56,9 +56,10 @@ class MyActivityListController: BaseViewController, UITableViewDelegate, UITable
             [weak self] in
             self?.loadMoreData()
         }
-        
+        tableView.cr.beginHeaderRefresh()
         self.view.addSubview(emptyView)
         emptyView.emptyString = "还没有票券~"
+        emptyView.isHidden = true
     }
 
     
@@ -73,7 +74,6 @@ class MyActivityListController: BaseViewController, UITableViewDelegate, UITable
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        emptyView.isHidden = ticketList.list.count > 0
         return ticketList.list.count
     }
     
@@ -111,6 +111,7 @@ extension MyActivityListController {
             self?.tableView.cr.resetNoMore()
             self?.ticketList = data as! ActivityTicketDetailList
             self?.tableView.reloadData()
+            self?.emptyView.isHidden = self?.ticketList.list.count ?? 0 > 0
         }
     }
     

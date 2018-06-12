@@ -19,7 +19,6 @@ class MessageCenterController: BaseViewController, UITableViewDelegate, UITableV
         super.viewDidLoad()
 
         setupView()
-        self.reloadArticleList()
     }
     
     func setupView() {
@@ -46,8 +45,10 @@ class MessageCenterController: BaseViewController, UITableViewDelegate, UITableV
             self?.loadMoreArticleList()
         }
         
+        tableView.cr.beginHeaderRefresh()
         self.view.addSubview(emptyView)
         emptyView.emptyString = "还没有消息~"
+        emptyView.isHidden = true
 
         if #available(iOS 11.0, *) {
             tableView.contentInsetAdjustmentBehavior = .never
@@ -70,7 +71,6 @@ class MessageCenterController: BaseViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        emptyView.isHidden = messageList.list.count > 0
         return messageList.list.count
     }
     
@@ -113,6 +113,7 @@ extension MessageCenterController {
             self?.messageList.page = 1
             self?.messageList = data as! MessageList
             self?.tableView.reloadData()
+            self?.emptyView.isHidden = self?.messageList.list.count ?? 0 > 0
         }
     }
     

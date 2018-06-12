@@ -29,12 +29,6 @@ class OrgnizationListController: BaseViewController, UITableViewDataSource, UITa
         super.viewDidLoad()
         shouldClearNavBar = false
         setupView()
-        if type == 0 {
-            reloadOgnizationList()
-        }
-        else if type == 1 {
-            reloadFamousList()
-        }
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -71,7 +65,7 @@ class OrgnizationListController: BaseViewController, UITableViewDataSource, UITa
                 self?.loadMoreFamousList()
             }
         }
-        
+        tableView.cr.beginHeaderRefresh()
         if entry == 0 {
             if #available(iOS 11.0, *) {
                 tableView.contentInsetAdjustmentBehavior = .never

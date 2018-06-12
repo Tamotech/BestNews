@@ -143,6 +143,7 @@ class SelectColumeView: UIView {
         }
         else {
             let vc = SpecialChannelArticleListController()
+            vc.entry = 1
             vc.newsChannel = channels[btn.tag]
             dismiss()
             mainVC?.navigationController?.pushViewController(vc, animated: true)

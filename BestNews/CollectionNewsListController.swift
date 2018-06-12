@@ -73,6 +73,7 @@ class CollectionNewsListController: BaseViewController, UITableViewDataSource, U
         
         self.view.addSubview(emptyView)
         emptyView.emptyString = "还没有新闻~"
+        emptyView.isHidden = true
     }
     
     
@@ -83,7 +84,6 @@ class CollectionNewsListController: BaseViewController, UITableViewDataSource, U
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        emptyView.isHidden = articleList.list.count != 0
         return articleList.list.count
     }
     
@@ -145,6 +145,7 @@ class CollectionNewsListController: BaseViewController, UITableViewDataSource, U
                 self?.page = 1
                 self?.articleList = data as! HomeArticleList
                 self?.tableView.reloadData()
+                self?.emptyView.isHidden = self?.articleList.list.count ?? 0 > 0
             }
         }
         else if entry == 2 {
@@ -154,6 +155,7 @@ class CollectionNewsListController: BaseViewController, UITableViewDataSource, U
                 self?.page = 1
                 self?.articleList = data as! HomeArticleList
                 self?.tableView.reloadData()
+                self?.emptyView.isHidden = self?.articleList.list.count ?? 0 > 0
             }
         }
     }

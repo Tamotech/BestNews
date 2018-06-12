@@ -50,6 +50,7 @@ class SubscriptionListControllerViewController: UIViewController, UITableViewDel
             reloadArticleList()
         }
         
+        NotificationCenter.default.addObserver(self, selector: #selector(didSwitchNav(_:)), name: kDidSwitchNavTitleNotify, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(loginStatusChangeNiti(noti:)), name: kUserLoginStatusChangeNoti, object: nil)
     }
     
@@ -63,6 +64,16 @@ class SubscriptionListControllerViewController: UIViewController, UITableViewDel
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+    }
+    
+    
+    func didSwitchNav(_ sender: Notification) {
+        
+        let index = sender.object as! Int
+        if CGFloat(index)*screenWidth == self.view.x && !SessionManager.sharedInstance.loginInfo.isLogin {
+            Toolkit.showLoginVC()
+            NotificationCenter.default.post(name: kUserLoginStatusChangeNoti, object: nil)
+        }
     }
     
     func setupView() {
@@ -79,10 +90,15 @@ class SubscriptionListControllerViewController: UIViewController, UITableViewDel
         newsTableView.cr.addHeadRefresh {
             [weak self] in
             self?.reloadArticleList()
+            self?.reloadOgnizationList()
         }
         newsTableView.cr.addFootRefresh {
             [weak self] in
             self?.loadMoreArticleList()
+        }
+        
+        if SessionManager.sharedInstance.loginInfo.isLogin {
+            newsTableView.cr.beginHeaderRefresh()
         }
         
         newsTableView.addSubview(emptyView)
@@ -105,6 +121,7 @@ class SubscriptionListControllerViewController: UIViewController, UITableViewDel
             [weak self] in
             self?.loadNewsChannel()
         }
+        
         scrollview.delegate = self
         layout.minimumLineSpacing = 8
         layout.minimumInteritemSpacing = 8
@@ -277,7 +294,7 @@ extension SubscriptionListControllerViewController {
     func reloadOgnizationList() {
         ognizationList.page = 1
         APIRequest.ognizationListAPI(xgorganizeid: nil, subscribe: false, page: 1) { [weak self](data) in
-            
+            self?.columeTableView.cr.endHeaderRefresh()
             self?.ognizationList = data as! OgnizationList
             self?.columeTableView.reloadData()
         }

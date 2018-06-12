@@ -23,7 +23,7 @@ class BaseSegmentControl: UIView {
     
     convenience init(items: [String], defaultIndex: Int) {
         self.init(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 44))
-        
+        currentIndex = defaultIndex
         let width = screenWidth/CGFloat(items.count)
         var maxTitleWidth:CGFloat = 0
         var fontSize:CGFloat = 18

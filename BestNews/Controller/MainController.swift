@@ -83,6 +83,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
     @objc func loginStatusChangeNotifi(_ noti: Notification) {
         currentIndex = 0
         titleView?.pageViewScrollEnd(pageIndex: 0)
+        scrollView.setContentOffset(CGPoint(x: 0, y: 0), animated: false)
         switchToIndex(index: 0)
     }
     

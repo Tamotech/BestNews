@@ -15,7 +15,7 @@ CommentCellDelegate, CommentBarDelegate {
     
     var commentList: CommentList?
     var articleId: String = ""
-    var tableView = UITableView(frame: CGRect(x: 0, y: 40, width: screenWidth, height: screenHeight-49), style: .grouped)
+    var tableView = UITableView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight-49), style: .grouped)
     var commentBar = NewsCommentBar(frame: CGRect(x: 0, y: screenHeight-49, width: screenWidth, height: 49))
 //    var targetCommentId: String?
     
@@ -29,6 +29,11 @@ CommentCellDelegate, CommentBarDelegate {
         tableView.separatorColor = gray229
         tableView.separatorInset = UIEdgeInsetsMake(0, 67, 0, 0)
         view.addSubview(tableView)
+        tableView.snp.makeConstraints { (make) in
+            make.left.right.equalTo(0)
+            make.top.equalTo(40)
+            make.bottom.equalTo(-49)
+        }
         let nib = UINib(nibName: "CommentCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "Cell")
         
@@ -40,9 +45,7 @@ CommentCellDelegate, CommentBarDelegate {
             [weak self] in
             self?.loadMore()
         }
-        if (commentList == nil) {
-            tableView.cr.beginHeaderRefresh()
-        }
+        tableView.cr.beginHeaderRefresh()
         view.addSubview(commentBar)
         commentBar.delegate = self
         commentBar.articleId = articleId
@@ -60,6 +63,7 @@ CommentCellDelegate, CommentBarDelegate {
 //        self.reload()
         tableView.addSubview(emptyView)
         emptyView.emptyString = "还没有评论~"
+        emptyView.isHidden = true
         
         
     }
@@ -70,7 +74,6 @@ CommentCellDelegate, CommentBarDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        emptyView.isHidden = (commentList?.list.count ?? 0) > 0
         return commentList?.list.count ?? 0
     }
     
@@ -169,6 +172,7 @@ extension CommentListController {
             }
             self?.showCustomTitle(title: "评论(\(self?.commentList?.total ?? 0))")
             self?.tableView.reloadData()
+            self?.emptyView.isHidden = (self?.commentList?.list.count ?? 0) > 0
         }
     }
 }

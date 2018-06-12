@@ -12,9 +12,6 @@ import Kingfisher
 
 class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, ConversationDelegate, RCIMClientReceiveMessageDelegate, UITextFieldDelegate, AliyunVodPlayerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    
-
-    
     var token = ""
     var userId = ""
     var liveModel: LiveModel?
@@ -80,7 +77,7 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
     var emptyView2 = BaseEmptyView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 400))
     
     lazy var segment: BaseSegmentControl = {
-        let v = BaseSegmentControl(items: ["主持区", "评论区"], defaultIndex: 0)
+        let v = BaseSegmentControl(items: ["主持区", "评论区"], defaultIndex: 1)
         v.frame = self.segParentView.bounds
         self.segParentView.addSubview(v)
         return v
@@ -135,10 +132,19 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
         swipedown.direction = .down
         segment.addGestureRecognizer(swipedown)
         
+        tableView2.cr.addHeadRefresh {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+2, execute: {
+                self.tableView2.cr.endHeaderRefresh()
+                self.emptyView2.isHidden = self.list.count > 0
+            })
+        }
+        tableView2.cr.beginHeaderRefresh()
         tableView1.addSubview(emptyView1)
         tableView2.addSubview(emptyView2)
         emptyView1.emptyString = "还没有主持图文~"
         emptyView2.emptyString = "还没有评论~"
+        emptyView1.isHidden = true
+        emptyView2.isHidden = true
 
         
         segment.selectItemAction = {[weak self](index, name) in
@@ -638,11 +644,9 @@ extension ChatRoomViewController {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == tableView1 {
-            emptyView1.isHidden = anchorList.count > 0
             return anchorList.count
         }
         else {
-            emptyView2.isHidden = list.count > 0
             return list.count
         }
     }
@@ -891,6 +895,9 @@ extension ChatRoomViewController {
         if message.targetId == liveModel!.chatroom_id_group {
             list.append(message)
             DispatchQueue.main.async {
+                if !self.tableView2.isHidden {
+                    self.emptyView2.isHidden = self.list.count > 0
+                }
                 self.tableView2.reloadData()
                 //滚动到底部
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.5, execute: {
@@ -901,10 +908,15 @@ extension ChatRoomViewController {
         else if message.targetId == liveModel!.chatroom_id_compere {
             anchorList.append(message)
             DispatchQueue.main.async {
+                if !self.tableView1.isHidden {
+                    self.emptyView1.isHidden = self.anchorList.count > 0
+                }
                 self.tableView1.reloadData()
                 //滚动到底部
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.5, execute: {
-                    self.tableView1.scrollToRow(at: IndexPath.init(row: self.anchorList.count - 1, section: 0), at: UITableViewScrollPosition.bottom, animated: true)
+                    DispatchQueue.main.async {
+                        self.tableView1.scrollToRow(at: IndexPath.init(row: self.anchorList.count - 1, section: 0), at: UITableViewScrollPosition.bottom, animated: true)
+                    }
                 })
             }
         }
