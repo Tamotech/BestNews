@@ -44,7 +44,7 @@
                   moduleName = "BestNews"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wuxi/code/workspace/BestNews/BestNews/View/Comment/NewsCommentBar.swift"
-                  timestampString = "550504490.157841"
+                  timestampString = "553047502.286442"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "48"
@@ -59,7 +59,7 @@
                   moduleName = "BestNews"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/wuxi/code/workspace/BestNews/BestNews/View/Comment/NewsCommentBar.swift"
-                  timestampString = "550504490.1625201"
+                  timestampString = "553047502.288753"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "48"
@@ -67,6 +67,22 @@
                   offsetFromSymbolStart = "104">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "BestNews/Controller/BaseShareViewController.swift"
+            timestampString = "551196401.109367"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "40"
+            endingLineNumber = "40"
+            landmarkName = "handleTapWechatBtn(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

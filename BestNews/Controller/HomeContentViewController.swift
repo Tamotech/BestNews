@@ -178,6 +178,7 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
                 let share = ShareModel()
                 share.title = article?.title ?? ""
                 share.msg = "新华财经日报"
+                share.link = article!.linkurl
                 if article!.preimglist.count > 0 {
                     share.thumb = article!.preimglist.first!
                 }

@@ -63,7 +63,7 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
     } ()
     
     
-    let htmlModelString = "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><title></title><style>body {font:48px/1.5 tahoma,arial,sans-serif;color:#555555;text-align:justify;text-align-last:justify;line-height:70px}hr {height:1px;border:none;border-top:1px solid #e8e8e8;} img {width:100%;height:auto}</style></head><body><div style='margin:35px' id=\"content\">${contentHtml}${author}</div></body></html>"
+    let htmlModelString = "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><title></title><style>body {font:48px/1.5 tahoma,arial,sans-serif;color:#333333;text-align:justify;text-align-last:justify;line-height:70px}hr {height:1px;border:none;border-top:1px solid #e8e8e8;} img {width:100%;height:auto}</style></head><body><div style='margin:35px' id=\"content\">${contentHtml}${author}</div></body></html>"
     var currentHTML = ""
     
     ///是否订阅作者 (需要查阅)
@@ -372,13 +372,17 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
                     vc.articleId = id
                     navigationController?.pushViewController(vc, animated: true)
                 }
+                decisionHandler(WKNavigationActionPolicy.cancel)
             }
             else if path.hasPrefix("http") {
                 let vc = BaseWKWebViewController()
                 vc.urlString = path
                 navigationController?.pushViewController(vc, animated: true)
+                decisionHandler(WKNavigationActionPolicy.cancel)
             }
-            decisionHandler(WKNavigationActionPolicy.allow)
+            else {
+                decisionHandler(WKNavigationActionPolicy.allow)
+            }
         }
         
     }

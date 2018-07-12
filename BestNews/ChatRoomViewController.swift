@@ -77,7 +77,7 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
     var emptyView2 = BaseEmptyView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 400))
     
     lazy var segment: BaseSegmentControl = {
-        let v = BaseSegmentControl(items: ["主持区", "评论区"], defaultIndex: 1)
+        let v = BaseSegmentControl(items: ["主持区", "评论区"], defaultIndex: 0)
         v.frame = self.segParentView.bounds
         self.segParentView.addSubview(v)
         return v
@@ -116,8 +116,8 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
         tableView2.dataSource = self
         let nib2 = UINib.init(nibName: "ChatroomMessageCell", bundle: nil)
         tableView2.register(nib2, forCellReuseIdentifier: "Cell")
-        tableView1.isHidden = true
-        tableView2.isHidden = false
+        tableView1.isHidden = false
+        tableView2.isHidden = true
         //tableView2.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 1))
         setPlayerContentView()
         setCacheForPlaying()
@@ -132,13 +132,6 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
         swipedown.direction = .down
         segment.addGestureRecognizer(swipedown)
         
-        tableView2.cr.addHeadRefresh {
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+2, execute: {
-                self.tableView2.cr.endHeaderRefresh()
-                self.emptyView2.isHidden = self.list.count > 0
-            })
-        }
-        tableView2.cr.beginHeaderRefresh()
         tableView1.addSubview(emptyView1)
         tableView2.addSubview(emptyView2)
         emptyView1.emptyString = "还没有主持图文~"
@@ -146,6 +139,21 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
         emptyView1.isHidden = true
         emptyView2.isHidden = true
 
+        tableView2.cr.addHeadRefresh {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+2, execute: {
+                self.tableView2.cr.endHeaderRefresh()
+                self.emptyView2.isHidden = self.list.count > 0
+            })
+        }
+        tableView2.cr.beginHeaderRefresh()
+        
+        tableView1.cr.addHeadRefresh {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+2, execute: {
+                self.tableView1.cr.endHeaderRefresh()
+                self.emptyView1.isHidden = self.anchorList.count > 0
+            })
+        }
+        tableView1.cr.beginHeaderRefresh()
         
         segment.selectItemAction = {[weak self](index, name) in
             if index == 0 {
@@ -177,9 +185,6 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
         contentTf.leftViewMode = .always
         publishBt.isEnabled = false
         commentBarChangeState(false)
-        
-        //2018-06-6
-        commentBar.isHidden = false
         
 //        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
         loadLiveDetail()

@@ -42,7 +42,7 @@ class BaseWKWebViewController: BaseViewController, WKNavigationDelegate {
             webView.loadHTMLString(htmlString!, baseURL: nil)
         }
         else if urlString != nil {
-            if !urlString!.hasPrefix("http://") {
+            if !urlString!.hasPrefix("http") {
                 urlString = baseUrlString+urlString!
             }
             let url = URL(string: urlString!)!
@@ -67,5 +67,19 @@ class BaseWKWebViewController: BaseViewController, WKNavigationDelegate {
         }
     }
 
-
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        SwiftNotice.wait()
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        SwiftNotice.clear()
+    }
+    
+    func webView(_ webView: WKWebView, didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!) {
+        SwiftNotice.clear()
+    }
+    
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        SwiftNotice.clear()
+    }
 }
