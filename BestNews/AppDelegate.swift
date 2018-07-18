@@ -282,6 +282,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, TencentSes
                     navVC?.pushViewController(vc, animated: true)
                 }
             }
+            else if type == "live" {
+                NotificationCenter.default.post(name: kLiveDidEndNotify, object: userInfo)
+            }
         }
 //        print("content: \(String(describing: content)), badge: \(String(describing: badge))")
         

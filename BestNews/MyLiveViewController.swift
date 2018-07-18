@@ -31,6 +31,8 @@ class MyLiveViewController: BaseViewController, AlivcLivePusherInfoDelegate, Ali
                 BLHUDBarManager.showError(msg: msg)
             }
         }
+        
+        UIApplication.shared.isIdleTimerDisabled = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,6 +44,7 @@ class MyLiveViewController: BaseViewController, AlivcLivePusherInfoDelegate, Ali
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         pusher?.stopPush()
+        UIApplication.shared.isIdleTimerDisabled = false
     }
 
     func initPusher() {

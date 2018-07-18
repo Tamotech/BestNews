@@ -30,6 +30,7 @@ let kWexinPayFailNotify = Notification.Name("wexin_pay_fail_noti_key")
 let kActivityRefundSuccessNotify = Notification.Name("activity_refund_ticket_success_noti")
 let kSwitchTabbarItemNotify = Notification.Name("switch_tabbar_item_noti")
 let kDidSwitchNavTitleNotify = Notification.Name("switch_nav_title_item_noti")
+let kLiveDidEndNotify = Notification.Name("live_did_end_noti")
 
 let screenWidth = UIScreen.main.bounds.size.width
 let screenHeight = UIScreen.main.bounds.size.height

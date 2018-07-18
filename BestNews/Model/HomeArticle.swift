@@ -25,6 +25,9 @@ class HomeArticle: HandyJSON {
     var reporter = ""
     var source = ""     //来源
     
+    // normal  原创 grasp 抓取
+    var type = ""
+    
     ///是否是推荐新闻
     var recommendFlag = false
     
@@ -50,7 +53,7 @@ class HomeArticle: HandyJSON {
     
     
     func cellListPublisher() -> String {
-        if marks == "原创" {
+        if type == "normal" {
             if reporter.contains("null") {
                 reporter = ""
             }

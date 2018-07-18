@@ -51,6 +51,7 @@ class SpecialChannelListController: BaseViewController, UITableViewDelegate, UIT
         let channel = specialList[indexPath.row]
         let vc = SpecialChannelArticleListController()
         vc.channel = channel
+        vc.entry = 1
         navigationController?.pushViewController(vc, animated: true)
     }
 }

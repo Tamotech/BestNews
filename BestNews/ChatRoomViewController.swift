@@ -186,7 +186,7 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
         publishBt.isEnabled = false
         commentBarChangeState(false)
         
-//        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidEnterForeground), name: NSNotification.Name.UIApplicationWillEnterForeground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(liveDidEndNoti(noti:)), name: kLiveDidEndNotify, object: nil)
         loadLiveDetail()
         
         //禁止屏
@@ -215,6 +215,31 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
 //        }
 //        self.aliyunVodPlayer.release()
             UIApplication.shared.isIdleTimerDisabled = false
+    }
+    
+    
+    //MARK:- 通知结束直播
+    func liveDidEndNoti(noti: Notification) {
+        if let id = noti.userInfo!["id"] {
+            if "\(id)" == liveModel!.id {
+                //结束通知
+                DispatchQueue.main.async {
+                    let alert = XHAlertController()
+                    alert.modalPresentationStyle = .overCurrentContext
+                    self.modalPresentationStyle = .currentContext
+                    alert.tit = "?"
+                    alert.msg = "直播已结束, 去观看更多精彩内容吧"
+                    alert.callback = {
+                        [weak self](buttonType)in
+                        if buttonType == 0 {
+                            self?.navigationController?.popViewController(animated: true)
+                        }
+                    }
+                    self.present(alert, animated: false, completion: nil)
+                    
+                }
+            }
+        }
     }
 
     //MARK:析构函数
