@@ -37,12 +37,12 @@ class LiveListController: BaseViewController, UITableViewDelegate, UITableViewDa
         }
 
         setupView()
-        reloadLiveList()
+//        reloadLiveList()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        reloadLiveList()
+        reloadLiveList()
     }
     
     override func viewDidDisappear(_ animated: Bool) {

@@ -40,7 +40,7 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
     let locationManager = CLLocationManager()
     var currentLocation: CLLocation = CLLocation()        ///定位
     ///推送tags
-    var pushTags = ["system", "articlecomment", "articlereply", "articlecommentzan", "live"]
+    var pushTags = ["system", "articlecomment", "articlereply", "articlecommentzan", "livefinish", "livestart"]
     
     ///下载链接
     var downloadURL: String?

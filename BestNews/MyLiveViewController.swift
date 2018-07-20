@@ -33,6 +33,7 @@ class MyLiveViewController: BaseViewController, AlivcLivePusherInfoDelegate, Ali
         }
         
         UIApplication.shared.isIdleTimerDisabled = true
+        NotificationCenter.default.addObserver(self, selector: #selector(didreceiveEndLiveNoti(_:)), name: kLiveDidEndNotify, object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -45,6 +46,45 @@ class MyLiveViewController: BaseViewController, AlivcLivePusherInfoDelegate, Ali
         super.viewDidDisappear(animated)
         pusher?.stopPush()
         UIApplication.shared.isIdleTimerDisabled = false
+    }
+    
+    
+    /// 直播结束通知
+    ///
+    /// - Parameter sender: sender
+    func didreceiveEndLiveNoti(_ sender: Notification) {
+        let obj = sender.object as! [String: String]
+        let id = obj["id"]
+        if id != liveModel?.id ?? "" {
+            return
+        }
+        DispatchQueue.main.async {
+            let alert = XHAlertController()
+            alert.modalPresentationStyle = .overCurrentContext
+            self.modalPresentationStyle = .currentContext
+            alert.tit = ""
+            alert.msg = "直播已结束, 去观看更多精彩内容吧"
+            alert.callback = {
+                [weak self](buttonType)in
+                if buttonType == 0 {
+                    let path = "/live/liveFinish.htm?id=\(self?.liveModel?.id ?? "")"
+                    APIManager.shareInstance.postRequest(urlString: path, params: nil) { (JSON, code, msg) in
+                        if code != 0 {
+                            BLHUDBarManager.showError(msg: msg)
+                        }
+                        else {
+                            self?.pusher?.stopPush()
+                            self?.pusher?.destory()
+                            self?.pusher = nil
+                            self?.navigationController?.popViewController(animated: true)
+                        }
+                    }
+                    
+                }
+            }
+            self.present(alert, animated: false, completion: nil)
+            
+        }
     }
 
     func initPusher() {
