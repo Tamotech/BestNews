@@ -37,6 +37,8 @@ class LiveListController: BaseViewController, UITableViewDelegate, UITableViewDa
         }
 
         setupView()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(didreceiveLiveStartNoti(_:)), name: kLiveDidStartNotify, object: nil)
 //        reloadLiveList()
     }
     
@@ -45,15 +47,15 @@ class LiveListController: BaseViewController, UITableViewDelegate, UITableViewDa
         reloadLiveList()
     }
     
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         //self.tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 44))
     }
     
-//    override func viewWillLayoutSubviews() {
-//        super.viewWillLayoutSubviews()
-//        reloadLiveList()
-//    }
+    func didreceiveLiveStartNoti(_ sender: Notification) {
+        reloadLiveList()
+    }
     
     func setupView() {
         let nib = UINib(nibName: "LiveListCell", bundle: nil)

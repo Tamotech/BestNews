@@ -220,26 +220,35 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
     
     //MARK:- 通知结束直播
     func liveDidEndNoti(noti: Notification) {
-        if let id = noti.userInfo!["id"] {
-            if "\(id)" == liveModel!.id {
-                //结束通知
-                DispatchQueue.main.async {
-                    let alert = XHAlertController()
-                    alert.modalPresentationStyle = .overCurrentContext
-                    self.modalPresentationStyle = .currentContext
-                    alert.tit = "?"
-                    alert.msg = "直播已结束, 去观看更多精彩内容吧"
-                    alert.callback = {
-                        [weak self](buttonType)in
-                        if buttonType == 0 {
-                            self?.navigationController?.popViewController(animated: true)
+        if noti.object == nil || self.liveModel == nil {
+            return
+        }
+        let obj = noti.object as! [String: String]
+        let id = obj["id"]
+        if id == liveModel!.id {
+            //结束通知
+            DispatchQueue.main.async {
+                let alert = XHAlertController()
+                alert.modalPresentationStyle = .overCurrentContext
+                self.modalPresentationStyle = .currentContext
+                alert.tit = "?"
+                alert.msg = "直播已结束, 去观看更多精彩内容吧"
+                alert.callback = {
+                    [weak self](buttonType)in
+                    if buttonType == 0 {
+                        self?.aliyunVodPlayer.stop()
+                        if self?.aliyunVodPlayer.playerView != nil {
+                            self?.aliyunVodPlayer.playerView.removeFromSuperview()
                         }
+                        self?.aliyunVodPlayer.release()
+                        self?.navigationController?.popViewController(animated: true)
                     }
-                    self.present(alert, animated: false, completion: nil)
-                    
                 }
+                self.present(alert, animated: false, completion: nil)
+                
             }
         }
+        
     }
 
     //MARK:析构函数

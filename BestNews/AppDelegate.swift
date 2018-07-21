@@ -64,6 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, TencentSes
         }
         
         JPUSHService.setup(withOption: launchOptions, appKey: jPushKey, channel: "app store", apsForProduction: true)
+        NotificationCenter.default.addObserver(self, selector: #selector(networkDidReceiveMessage(_:)), name: NSNotification.Name.jpfNetworkDidReceiveMessage, object: nil)
         
         
         checkAppUpdate()
@@ -282,9 +283,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, TencentSes
                     navVC?.pushViewController(vc, animated: true)
                 }
             }
-            else if type == "livefinish" {
-                NotificationCenter.default.post(name: kLiveDidEndNotify, object: userInfo)
-            }
         }
 //        print("content: \(String(describing: content)), badge: \(String(describing: badge))")
         
@@ -297,6 +295,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, TencentSes
     }
     
     
+    ///极光自定义消息
+    func networkDidReceiveMessage(_ sender: Notification) {
+        let extra = sender.userInfo!["extras"] as! [String: Any]
+        let type = extra["type"] as! String
+        if type == "livefinish" {
+            NotificationCenter.default.post(name: kLiveDidEndNotify, object: extra)
+        }
+        else if type == "livestart" {
+            NotificationCenter.default.post(name: kLiveDidStartNotify, object: extra)
+        }
+        
+    }
     
     ///检查版本更新
     func checkAppUpdate() {
