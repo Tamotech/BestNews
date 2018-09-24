@@ -231,7 +231,7 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
                 let alert = XHAlertController()
                 alert.modalPresentationStyle = .overCurrentContext
                 self.modalPresentationStyle = .currentContext
-                alert.tit = "?"
+                alert.tit = ""
                 alert.msg = "直播已结束, 去观看更多精彩内容吧"
                 alert.callback = {
                     [weak self](buttonType)in

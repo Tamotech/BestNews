@@ -547,6 +547,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
     //展现广告
     func showHomeAD(_ ad: AdvertiseModel) {
         let im = UIImageView(frame: UIScreen.main.bounds)
+        im.contentMode = .scaleAspectFill
         im.backgroundColor = .white
         if ad.imgData != nil {
             im.image = UIImage(data: ad.imgData!)

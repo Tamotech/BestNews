@@ -95,10 +95,26 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
     func clickedCycleView(_ cycleView: YLCycleView, selectedIndex index: Int) {
         if headerBannerView.banner.count > index {
             let article = headerBannerView.banner[index]
-            let vc = NewsDetailController.init(nibName: "NewsDetailController", bundle: nil) as NewsDetailController
-            vc.articleId = article.id
-            vc.articleHome = article
-            navigationController?.pushViewController(vc, animated: true)
+            if article.linkurl.count > 0 && !article.linkurl.contains("null") {
+                let wkvc = BaseWKWebViewController()
+                wkvc.shareEnable = true
+                let share = ShareModel()
+                share.title = article.title
+                share.msg = "新华财经日报"
+                share.link = article.linkurl
+                if article.preimglist.count > 0 {
+                    share.thumb = article.preimglist.first!
+                }
+                wkvc.share = share
+                wkvc.urlString = article.linkurl
+                navigationController?.pushViewController(wkvc, animated: true)
+            }
+            else {
+                let vc = NewsDetailController.init(nibName: "NewsDetailController", bundle: nil) as NewsDetailController
+                vc.articleId = article.id
+                vc.articleHome = article
+                navigationController?.pushViewController(vc, animated: true)
+            }
         }
     }
     
