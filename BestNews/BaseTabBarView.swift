@@ -19,6 +19,11 @@ class BaseTabBarView: BaseView {
     
     var selectItemAction: SelectTabItemAction?
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.height = 49 + bottomGuideHeight
+    }
+    
     func switchToIndex(index: Int) {
         for (i,icon) in tabIcons.enumerated() {
             if i == index {

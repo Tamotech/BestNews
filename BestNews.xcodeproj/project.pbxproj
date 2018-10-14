@@ -290,6 +290,8 @@
 		CC29070D1F65A334001894DA /* BaseTabBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC29070C1F65A334001894DA /* BaseTabBarView.xib */; };
 		CC29070F1F65A8B5001894DA /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC29070E1F65A8B5001894DA /* BaseView.swift */; };
 		CC2907111F65AC08001894DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC2907101F65AC08001894DA /* Main.storyboard */; };
+		CC4D21752173603B00E18F2D /* NetworkFailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4D21732173603B00E18F2D /* NetworkFailViewController.swift */; };
+		CC4D21762173603B00E18F2D /* NetworkFailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC4D21742173603B00E18F2D /* NetworkFailViewController.xib */; };
 		CC70F5F920A69D4800E52A46 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC70F5F720A69D4800E52A46 /* AboutUsViewController.swift */; };
 		CC70F60120A6C27500E52A46 /* ContactUsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC70F5FF20A6C27500E52A46 /* ContactUsController.swift */; };
 		CC70F60220A6C27500E52A46 /* ContactUsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC70F60020A6C27500E52A46 /* ContactUsController.xib */; };
@@ -663,6 +665,8 @@
 		CC29070C1F65A334001894DA /* BaseTabBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaseTabBarView.xib; sourceTree = "<group>"; };
 		CC29070E1F65A8B5001894DA /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		CC2907101F65AC08001894DA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		CC4D21732173603B00E18F2D /* NetworkFailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkFailViewController.swift; sourceTree = "<group>"; };
+		CC4D21742173603B00E18F2D /* NetworkFailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NetworkFailViewController.xib; sourceTree = "<group>"; };
 		CC70F5F720A69D4800E52A46 /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 		CC70F5FF20A6C27500E52A46 /* ContactUsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsController.swift; sourceTree = "<group>"; };
 		CC70F60020A6C27500E52A46 /* ContactUsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactUsController.xib; sourceTree = "<group>"; };
@@ -1545,6 +1549,8 @@
 				5AFE24D91FCCCACD006353C3 /* SpecialChannelArticleListController.swift */,
 				5A063F301FF1325800AFAA40 /* ReportArticleController.swift */,
 				5A063F311FF1325800AFAA40 /* ReportArticleController.xib */,
+				CC4D21732173603B00E18F2D /* NetworkFailViewController.swift */,
+				CC4D21742173603B00E18F2D /* NetworkFailViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1780,6 +1786,7 @@
 				5A0A13961F9EB1B400DF57B9 /* LoginViewController.xib in Resources */,
 				CCC8E6C72086382D004CF6B3 /* RongCloud.bundle in Resources */,
 				5AFF05F41FE62E1800B7FE7D /* zh-Hans.lproj in Resources */,
+				CC4D21762173603B00E18F2D /* NetworkFailViewController.xib in Resources */,
 				5A0A139A1F9EB7C300DF57B9 /* LoginCaptchaController.xib in Resources */,
 				CCDB6D4C1F7A2E7A0012432E /* HomeContentViewController.xib in Resources */,
 				5A90CFEF1F8123F500F16869 /* LiveListController.xib in Resources */,
@@ -1802,6 +1809,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/CRRefresh/CRRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/DynamicBlurView/DynamicBlurView.framework",
 				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/ImagePicker/ImagePicker.framework",
@@ -1818,6 +1826,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CRRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicBlurView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImagePicker.framework",
@@ -1961,6 +1970,7 @@
 				5A063F321FF1325800AFAA40 /* ReportArticleController.swift in Sources */,
 				5A547EE51FA2157C00FA0C36 /* ProfileCenterController.swift in Sources */,
 				5A0D23C61F832BD000FC9D4D /* NewsDetailController.swift in Sources */,
+				CC4D21752173603B00E18F2D /* NetworkFailViewController.swift in Sources */,
 				CC2906ED1F659EBA001894DA /* UIImageExtension.swift in Sources */,
 				CC01705E1F6835400069D38B /* ActivityCoverCell.swift in Sources */,
 				5AA4E8091FD42B86007A04FA /* AlivcDebugChartView.m in Sources */,
@@ -2191,6 +2201,7 @@
 					"$(PROJECT_DIR)/BestNews",
 					"$(PROJECT_DIR)/Framework",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ruicaijing.bestNews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

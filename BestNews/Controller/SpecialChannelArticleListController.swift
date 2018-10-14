@@ -21,6 +21,8 @@ class SpecialChannelArticleListController: BaseViewController, UITableViewDelega
     var coverArticles: [HomeArticle] = []
     var page: Int = 1
     var entry = 0           //0 首页  1 专题详情
+    var timer: Timer?
+    var seconds: Int = 0
     
     var emptyView = BaseEmptyView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
     
@@ -57,6 +59,54 @@ class SpecialChannelArticleListController: BaseViewController, UITableViewDelega
         
         NotificationCenter.default.addObserver(self, selector: #selector(didSwitchNav(_:)), name: kDidSwitchNavTitleNotify, object: nil)
         
+        NotificationCenter.default.addObserver(self, selector: #selector(needReloadData(_:)), name: kTapReloadNotify, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.needReloadData(_:)), name: kAppDidBecomeActiveNotify, object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupTimer()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        stopTimer()
+    }
+    
+    func setupTimer() {
+        if timer != nil {
+            timer?.invalidate()
+            timer = nil
+        }
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerEvent(_:)), userInfo: nil, repeats: true)
+        RunLoop.main.add(timer!, forMode: RunLoopMode.commonModes)
+        timer?.fire()
+    }
+    
+    func stopTimer() {
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    ///定时器
+    @objc func timerEvent(_ timer: Timer) {
+        seconds = seconds + 1
+        if seconds >= 20*60 {
+            self.reloadArticleList()
+            if entry == 1 {
+                self.loadCoverArticle()
+                self.tableView.cr.beginHeaderRefresh()
+            }
+            seconds = 0
+        }
+    }
+    
+    @objc func needReloadData(_ noti: Notification) {
+        self.reloadArticleList()
+        if entry == 1 {
+            self.loadCoverArticle()
+            self.tableView.cr.beginHeaderRefresh()
+        }
     }
     
     func setupView() {

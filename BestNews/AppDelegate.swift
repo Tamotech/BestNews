@@ -35,8 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, TencentSes
         OpenInstallSDK.setAppKey("v2t7d4", withDelegate: self)
         OpenInstallSDK.reportRegister()
         
-        IQKeyboardManager.sharedManager().enable = true
-        
+        IQKeyboardManager.shared.enable = true
         let umConfig = UMAnalyticsConfig()
         umConfig.appKey = umengAppKey
         MobClick.start(withConfigure: umConfig)

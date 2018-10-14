@@ -15,6 +15,8 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
     var specialList: [SpecialChannel] = []
     var articleList: HomeArticleList?
     var page: Int = 1
+    var seconds: Int = 0
+    var timer: Timer?
     
     lazy var headerBannerView: YLCycleView = {
        let v = YLCycleView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenWidth*243.0/375.0), images:["m24_default"], titles: [""])
@@ -48,6 +50,53 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
 
         setupView()
         updateBanner()
+        self.reloadArticleList()
+        self.loadSpecialCannelData()
+        self.loadNavChannel()
+        NotificationCenter.default.addObserver(self, selector: #selector(needReloadData(_:)), name: kTapReloadNotify, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.needReloadData(_:)), name: kAppDidBecomeActiveNotify, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: kTapReloadNotify, object: nil)
+        NotificationCenter.default.removeObserver(self, name: kAppDidBecomeActiveNotify, object: nil)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupTimer()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        stopTimer()
+    }
+    
+    func setupTimer() {
+        if timer != nil {
+            timer?.invalidate()
+            timer = nil
+        }
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(timerEvent(_:)), userInfo: nil, repeats: true)
+        RunLoop.main.add(timer!, forMode: RunLoopMode.commonModes)
+        timer?.fire()
+    }
+    
+    func stopTimer() {
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    ///定时器
+    @objc func timerEvent(_ timer: Timer) {
+        seconds = seconds + 1
+        if seconds >= 20*60 {
+            tableView.cr.beginHeaderRefresh()
+            seconds = 0
+        }
+    }
+    
+    @objc func needReloadData(_ noti: Notification) {
         self.reloadArticleList()
         self.loadSpecialCannelData()
         self.loadNavChannel()

@@ -1,61 +1,64 @@
 PODS:
-  - Alamofire (4.5.0)
-  - AlamofireObjectMapper (4.1.0):
+  - Alamofire (4.7.3)
+  - AlamofireObjectMapper (5.1.0):
     - Alamofire (~> 4.1)
-    - ObjectMapper (~> 2.0)
-  - AMPopTip (2.1.6)
-  - CRRefresh (1.0.5)
-  - HandyJSON (1.7.1)
-  - ImagePicker (2.1.1)
-  - IQKeyboardManagerSwift (5.0.0)
-  - JCore (1.1.6)
-  - JPush (3.0.7):
-    - JCore (~> 1.1.6)
-  - Kingfisher (3.10.2)
-  - ObjectMapper (2.2.7)
-  - PopupDialog (0.5.4)
-  - Presentr (1.2.3)
-  - SnapKit (3.2.0)
-  - SwiftyJSON (3.1.4)
+    - ObjectMapper (~> 3.3)
+  - AMPopTip (3.5.0)
+  - CRRefresh (1.1.2)
+  - DynamicBlurView (3.0.1)
+  - HandyJSON (4.2.0)
+  - ImagePicker (3.1.0)
+  - IQKeyboardManagerSwift (6.2.0)
+  - JCore (1.2.2)
+  - JPush (3.1.0):
+    - JCore (~> 1.2.0)
+  - Kingfisher (4.10.0)
+  - ObjectMapper (3.3.0)
+  - PopupDialog (0.9.1):
+    - DynamicBlurView (~> 3.0.1)
+  - Presentr (1.3.2)
+  - SnapKit (4.0.1)
+  - SwiftyJSON (4.2.0)
   - UMengAnalytics (4.2.4)
-  - WechatOpenSDK (1.8.0)
+  - WechatOpenSDK (1.8.3)
 
 DEPENDENCIES:
   - Alamofire
-  - AlamofireObjectMapper (~> 4.0)
+  - AlamofireObjectMapper
   - AMPopTip
   - CRRefresh
   - HandyJSON
-  - ImagePicker (~> 2.0)
-  - IQKeyboardManagerSwift (= 5.0.0)
+  - ImagePicker
+  - IQKeyboardManagerSwift
   - JPush
-  - Kingfisher (~> 3.0)
-  - PopupDialog (~> 0.5)
+  - Kingfisher
+  - PopupDialog
   - Presentr
-  - SnapKit (~> 3.2.0)
+  - SnapKit
   - SwiftyJSON
   - UMengAnalytics
   - WechatOpenSDK
 
 SPEC CHECKSUMS:
-  Alamofire: f28cdffd29de33a7bfa022cbd63ae95a27fae140
-  AlamofireObjectMapper: 435adc82f5b367679bd9e71c4974a54efd0b2521
-  AMPopTip: 81f57556ae12500d30ff595078b1b6d11076ced8
-  CRRefresh: 718be57647db922a4a3af3f17fc41289145d8e83
-  HandyJSON: 54b6ce942795f7b2e61b82fe73cf25d9f139d125
-  ImagePicker: fe4c699abb56ff03994fa98d8b02e3883ee118be
-  IQKeyboardManagerSwift: 3f340202ebe1a7076279b9b9b3c817243ddb3aab
-  JCore: 18fc8725124f26e55625eaf224659b3a999dcf63
-  JPush: 111b79b8a0169ab8fd4c486dac3ed166ed69293e
-  Kingfisher: 7297492bf8cec9b2e2dee3519f2219948580d98e
-  ObjectMapper: 65abcfd9a61cf7396cbd14a4fb22fddfcc46577e
-  PopupDialog: 75cf955693590b0cb2fdde00223fb65d99c57247
-  Presentr: a21c7bbb3532c8ff60320e235c0a4869e72f8885
-  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
-  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  AlamofireObjectMapper: 3395e698901d8b0e6f48b7d0c43bd47875325102
+  AMPopTip: 871ae0570b68fe396e714922b3f7d8ed6a36bb71
+  CRRefresh: d2981e419e87b0868c19f8b1f8f562d8704f6db3
+  DynamicBlurView: b1df5415f9bd31897549e5d7077e5ec120a4d636
+  HandyJSON: 9dfc026c7d7adc1f0f8ba8b181495f0e0763b0f4
+  ImagePicker: db1fd7626337b2577c523bef5f499bbbe5a37079
+  IQKeyboardManagerSwift: b07ccf9d8cafe993dcd6cb794eb4ba34611a0c4e
+  JCore: f14c0549968a63c22e246a4875aa9d428446f373
+  JPush: 5921e25ad13e0386351079217b009f2039084eac
+  Kingfisher: 43c4b802d8b5256cf1f4379e9cd10b329be6d3e2
+  ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
+  PopupDialog: 03985b669c29802661c187513bf827340db1ae4d
+  Presentr: 797ae6ec8904eaba4ec58a4c2065bd66e31569ea
+  SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
+  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   UMengAnalytics: ef8d45f94c0e5771dc364cf6a5731d9d3b101da2
-  WechatOpenSDK: 0ee07a8d492299d3e47372a33da5af26524a7576
+  WechatOpenSDK: 3117412f8aafde4758cac1e8d20b93c67cafcfef
 
-PODFILE CHECKSUM: b1823c8194baf7d874d6209548eccc57ceba67b9
+PODFILE CHECKSUM: ae9e0caf79ca9f51af249ad2ff62646643046df6
 
 COCOAPODS: 1.4.0

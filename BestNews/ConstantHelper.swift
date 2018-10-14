@@ -18,6 +18,20 @@ let aliPayAppid = "2017122000999924"
 let jPushKey = "d5db367eb1abec4c03a051dc"
 let jPushSecret = "8be34e6163e6b1a40f6df5f9"
 
+///屏幕适配
+///去年适配的iPhoneX 的分辨率：2436 * 1125 || pt: 812 * 375
+//iPhoneXr的分辨率：1792 * 828 || pt: 896 * 414
+//iPhoneXs 的分辨率： 2436 * 1125 || pt: 812 * 375
+//iPhoneXs Max 的分辨率：2688 * 1242 || pt: 896 * 414
+
+let IS_IPHONEX: Bool = screenHeight == 812.0
+let IS_IPHONEXMAX: Bool = screenHeight == 896.0
+
+/// 顶部距离 （适配iPhone X） 64 | 88
+
+let topGuideHeight: CGFloat = screenHeight >= 812.0 ? 88.0 : 64.0
+/// 底部距离
+let bottomGuideHeight: CGFloat = screenHeight >= 812.0 ? 34 : 0
 
 let kLoginWechatSuccessNotifi = Notification.Name(rawValue:"Login_Wechat_Success_Notify_key")
 let kUserLoginStatusChangeNoti = Notification.Name("user_login_status_change_key")
@@ -32,6 +46,8 @@ let kSwitchTabbarItemNotify = Notification.Name("switch_tabbar_item_noti")
 let kDidSwitchNavTitleNotify = Notification.Name("switch_nav_title_item_noti")
 let kLiveDidEndNotify = Notification.Name("live_did_end_noti")
 let kLiveDidStartNotify = Notification.Name("live_did_start_noti")
+let kNetFailNotify = Notification.Name("network_fail_noti")
+let kTapReloadNotify = Notification.Name("tap_reloaddata_noti")
 
 let screenWidth = UIScreen.main.bounds.size.width
 let screenHeight = UIScreen.main.bounds.size.height

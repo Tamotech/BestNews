@@ -134,10 +134,7 @@ class ApplyFamousController: BaseViewController, UIImagePickerControllerDelegate
     //MARK: - actions
     
     func handleTapBackButton(_:Any) {
-        let dialog = PopupDialog(title: "确认要离开本页?", message: "离开后已填写的信息将不再保存", image: nil, buttonAlignment: .horizontal, transitionStyle: .zoomIn, gestureDismissal: false) {
-            
-        }
-        //PopupDialog(title: "确认要离开本页?", message: "离开后已填写的信息将不再保存")
+        let dialog = PopupDialog(title: "确认要离开本页?", message: "离开后已填写的信息将不再保存")
         dialog.addButton(PopupDialogButton(title: "取消", action: {
             
         }))

@@ -59,7 +59,8 @@ class BestTabbarViewController: UIViewController, UINavigationControllerDelegate
         super.viewDidLoad()
 
         initChildControllers()
-        tabbarView.frame = CGRect(x: 0, y: screenHeight-49, width: screenWidth, height: 49)
+        let h = 49+bottomGuideHeight
+        tabbarView.frame = CGRect(x: 0, y: screenHeight-h, width: screenWidth, height: h)
         self.view.addSubview(tabbarView)
         tabbarView.selectItemAction = {index in
             for (i, vc) in self.childViewControllers.enumerated() {

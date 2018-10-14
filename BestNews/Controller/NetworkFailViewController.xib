@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NetworkFailViewController" customModule="BestNews" customModuleProvider="target">
+            <connections>
+                <outlet property="barHeight" destination="ZYI-7Q-RLh" id="SmB-z2-LQ4"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="no_connect" translatesAutoresizingMaskIntoConstraints="NO" id="oxV-e9-evJ">
+                    <rect key="frame" x="142.5" y="173" width="90" height="81"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dO-pe-f1n">
+                    <rect key="frame" x="30" y="284" width="315" height="46"/>
+                    <attributedString key="attributedText">
+                        <fragment content="网络连接失败，请到“设置”中">
+                            <attributes>
+                                <color key="NSColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <font key="NSFont" size="16" name=".PingFangSC-Regular"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.3" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                        <fragment content="  ">
+                            <attributes>
+                                <color key="NSColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <font key="NSFont" size="16" name=".AppleSystemUIFont"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.3" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                        <fragment content="查看“蜂窝移动数据”是否打开">
+                            <attributes>
+                                <color key="NSColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <font key="NSFont" size="16" name=".PingFangSC-Regular"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1.3" tighteningFactorForTruncation="0.0"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gh1-0t-N7V">
+                    <rect key="frame" x="137.5" y="350" width="100" height="35"/>
+                    <color key="backgroundColor" red="0.0" green="0.59607843140000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="35" id="VEc-Np-2Xy"/>
+                        <constraint firstAttribute="width" constant="100" id="WTR-iQ-VEa"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <state key="normal" title="重新加载">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="6"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                            <real key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                            <size key="value" width="0.0" height="3"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                            <real key="value" value="0.29999999999999999"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                            <color key="value" red="0.0" green="0.59607843140000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="tapReload:" destination="-1" eventType="touchUpInside" id="lGc-Zo-4Ce"/>
+                    </connections>
+                </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pbv-jy-zDq">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1JZ-PN-Z1Z">
+                            <rect key="frame" x="326" y="20" width="44" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="Jty-WP-NxW"/>
+                                <constraint firstAttribute="width" constant="44" id="v9T-OR-vTH"/>
+                            </constraints>
+                            <state key="normal" image="close-light-gray"/>
+                            <connections>
+                                <action selector="tapclose:" destination="-1" eventType="touchUpInside" id="Nsc-J2-WXv"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="1JZ-PN-Z1Z" secondAttribute="bottom" id="Lxp-vb-Dyi"/>
+                        <constraint firstAttribute="trailing" secondItem="1JZ-PN-Z1Z" secondAttribute="trailing" constant="5" id="WH2-CN-nAK"/>
+                        <constraint firstAttribute="height" constant="64" id="ZYI-7Q-RLh"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.96862745098039216" green="0.96862745098039216" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="gh1-0t-N7V" firstAttribute="top" secondItem="5dO-pe-f1n" secondAttribute="bottom" constant="20" id="CRq-WO-JH4"/>
+                <constraint firstItem="gh1-0t-N7V" firstAttribute="centerX" secondItem="5dO-pe-f1n" secondAttribute="centerX" id="Dbo-KV-Tzx"/>
+                <constraint firstItem="Pbv-jy-zDq" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="FtA-lu-wpy"/>
+                <constraint firstItem="oxV-e9-evJ" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="KWO-DP-ieb"/>
+                <constraint firstItem="Pbv-jy-zDq" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="MFb-zP-Qtz"/>
+                <constraint firstItem="5dO-pe-f1n" firstAttribute="top" secondItem="oxV-e9-evJ" secondAttribute="bottom" constant="30" id="Nrv-XV-kJE"/>
+                <constraint firstItem="oxV-e9-evJ" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" constant="-120" id="ZMo-G1-cNu"/>
+                <constraint firstItem="Pbv-jy-zDq" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="caQ-pH-ch7"/>
+                <constraint firstItem="5dO-pe-f1n" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="30" id="chK-Ge-r2s"/>
+                <constraint firstAttribute="trailing" secondItem="5dO-pe-f1n" secondAttribute="trailing" constant="30" id="ttW-lP-dyx"/>
+            </constraints>
+        </view>
+    </objects>
+    <resources>
+        <image name="close-light-gray" width="19" height="20"/>
+        <image name="no_connect" width="90" height="81"/>
+    </resources>
+</document>

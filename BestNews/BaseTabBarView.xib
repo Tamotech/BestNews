@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -19,10 +19,10 @@
                     <rect key="frame" x="-1" y="0.0" width="75" height="49"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab1On" translatesAutoresizingMaskIntoConstraints="NO" id="lrp-2b-cAA">
-                            <rect key="frame" x="24" y="4.5" width="28" height="28"/>
+                            <rect key="frame" x="23.5" y="4.5" width="28" height="28"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="首页" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U78-dM-kJh">
-                            <rect key="frame" x="28" y="34.5" width="20.5" height="12"/>
+                            <rect key="frame" x="27.5" y="34.5" width="20.5" height="12"/>
                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                             <color key="textColor" red="0.5725490196078431" green="0.5725490196078431" blue="0.5725490196078431" alpha="0.63" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -33,6 +33,7 @@
                         <constraint firstItem="lrp-2b-cAA" firstAttribute="centerX" secondItem="rzP-fk-WCi" secondAttribute="centerX" id="AMf-H5-R58"/>
                         <constraint firstItem="lrp-2b-cAA" firstAttribute="centerY" secondItem="rzP-fk-WCi" secondAttribute="centerY" constant="-6" id="EvA-uY-spu"/>
                         <constraint firstItem="U78-dM-kJh" firstAttribute="centerX" secondItem="lrp-2b-cAA" secondAttribute="centerX" id="WoY-vc-SgR"/>
+                        <constraint firstAttribute="height" constant="49" id="xq4-JJ-VKe"/>
                         <constraint firstItem="U78-dM-kJh" firstAttribute="top" secondItem="lrp-2b-cAA" secondAttribute="bottom" constant="2" id="yz1-vs-Y8R"/>
                     </constraints>
                 </view>
@@ -40,10 +41,10 @@
                     <rect key="frame" x="74" y="0.0" width="75.5" height="49"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" tag="2" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab2Off" translatesAutoresizingMaskIntoConstraints="NO" id="acw-CJ-2Sh">
-                            <rect key="frame" x="24.5" y="4.5" width="28" height="28"/>
+                            <rect key="frame" x="24" y="4.5" width="28" height="28"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="活动" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vEc-j7-m2p">
-                            <rect key="frame" x="28.5" y="34.5" width="20.5" height="12"/>
+                            <rect key="frame" x="27.5" y="34.5" width="20.5" height="12"/>
                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                             <color key="textColor" red="0.57254901960000004" green="0.57254901960000004" blue="0.57254901960000004" alpha="0.63" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -61,10 +62,10 @@
                     <rect key="frame" x="149.5" y="0.0" width="75" height="49"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" tag="3" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab3Off" translatesAutoresizingMaskIntoConstraints="NO" id="erf-FW-XCB">
-                            <rect key="frame" x="24" y="4.5" width="28" height="28"/>
+                            <rect key="frame" x="23.5" y="4.5" width="28" height="28"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="视频" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uku-9y-MDT">
-                            <rect key="frame" x="28" y="34.5" width="20.5" height="12"/>
+                            <rect key="frame" x="27.5" y="34.5" width="20.5" height="12"/>
                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                             <color key="textColor" red="0.57254901960000004" green="0.57254901960000004" blue="0.57254901960000004" alpha="0.63" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -82,10 +83,10 @@
                     <rect key="frame" x="224.5" y="0.0" width="75.5" height="49"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" tag="4" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab4Off" translatesAutoresizingMaskIntoConstraints="NO" id="pXn-yG-c4H">
-                            <rect key="frame" x="24" y="4.5" width="28" height="28"/>
+                            <rect key="frame" x="23.5" y="4.5" width="28" height="28"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="财经号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1XE-hP-sbh">
-                            <rect key="frame" x="23" y="34.5" width="31" height="12"/>
+                            <rect key="frame" x="22" y="34.5" width="31" height="12"/>
                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                             <color key="textColor" red="0.57254901960000004" green="0.57254901960000004" blue="0.57254901960000004" alpha="0.63" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -103,10 +104,10 @@
                     <rect key="frame" x="300" y="0.0" width="75" height="49"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" tag="5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab5Off" translatesAutoresizingMaskIntoConstraints="NO" id="wHe-C7-bv6">
-                            <rect key="frame" x="24" y="4.5" width="28" height="28"/>
+                            <rect key="frame" x="23.5" y="4.5" width="28" height="28"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="我的" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T9y-9w-ScG">
-                            <rect key="frame" x="28" y="34.5" width="20.5" height="12"/>
+                            <rect key="frame" x="27" y="34.5" width="20.5" height="12"/>
                             <fontDescription key="fontDescription" type="system" pointSize="10"/>
                             <color key="textColor" red="0.57254901960000004" green="0.57254901960000004" blue="0.57254901960000004" alpha="0.63" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -147,7 +148,6 @@
                 <constraint firstItem="Ibp-fX-jUF" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="ljv-ob-1l7"/>
                 <constraint firstItem="rzP-fk-WCi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="-1" id="mZi-XZ-WNi"/>
                 <constraint firstItem="Q9G-oR-bvP" firstAttribute="top" secondItem="eMK-Xv-X8q" secondAttribute="top" id="ndh-tV-hLW"/>
-                <constraint firstAttribute="bottom" secondItem="rzP-fk-WCi" secondAttribute="bottom" id="uds-ap-pan"/>
                 <constraint firstItem="4cV-pH-K80" firstAttribute="bottom" secondItem="fjL-i3-s0j" secondAttribute="bottom" id="vsJ-dh-f2G"/>
                 <constraint firstItem="4cV-pH-K80" firstAttribute="leading" secondItem="fjL-i3-s0j" secondAttribute="trailing" id="wJB-7d-qUn"/>
                 <constraint firstItem="Q9G-oR-bvP" firstAttribute="top" secondItem="fjL-i3-s0j" secondAttribute="top" id="wJJ-ZE-Spw"/>
@@ -167,7 +167,7 @@
                 <outletCollection property="tabIcons" destination="pXn-yG-c4H" collectionClass="NSMutableArray" id="esB-jZ-DIL"/>
                 <outletCollection property="tabIcons" destination="wHe-C7-bv6" collectionClass="NSMutableArray" id="mBX-Vg-Wqd"/>
             </connections>
-            <point key="canvasLocation" x="24.5" y="-257.5"/>
+            <point key="canvasLocation" x="23.199999999999999" y="-257.72113943028489"/>
         </view>
     </objects>
     <resources>

@@ -61,6 +61,8 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
         self.readADModel()
     
         NotificationCenter.default.addObserver(self, selector: #selector(loginStatusChangeNotifi(_:)), name: kUserLoginStatusChangeNoti, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(networkFailNoti(_:)), name: kNetFailNotify, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(needReloadData(_:)), name: kTapReloadNotify, object: nil)
     }
     
     
@@ -87,6 +89,18 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
         switchToIndex(index: 0)
     }
     
+    @objc func networkFailNoti(_ noti: Notification) {
+        if self.presentedViewController == nil {
+            let vc = NetworkFailViewController.init(nibName: "NetworkFailViewController", bundle: nil)
+            present(vc, animated: true, completion: nil)
+        }
+    }
+    
+    @objc func needReloadData(_ noti: Notification) {
+        self.loadHomeAD()
+        self.readADModel()
+    }
+ 
     func setupChildView() {
         
         let titles = HomeModel.shareInstansce.navTitles()
@@ -97,7 +111,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
             }
         }
         
-        scrollView.contentSize = CGSize(width: screenWidth*CGFloat(HomeModel.shareInstansce.navTitles().count), height: screenHeight-49)
+        scrollView.contentSize = CGSize(width: screenWidth*CGFloat(HomeModel.shareInstansce.navTitles().count), height: screenHeight-49-bottomGuideHeight)
         scrollView.showsVerticalScrollIndicator = false
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.isPagingEnabled = true

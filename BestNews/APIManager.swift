@@ -66,6 +66,7 @@ class APIManager: NSObject {
             }
             else {
                 result(nil, -2222, "网络请求失败!")
+                NotificationCenter.default.post(name: kNetFailNotify, object: nil)
             }
         }
     }
