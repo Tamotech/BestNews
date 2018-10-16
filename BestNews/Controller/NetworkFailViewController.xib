@@ -85,7 +85,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pbv-jy-zDq">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1JZ-PN-Z1Z">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1JZ-PN-Z1Z">
                             <rect key="frame" x="326" y="20" width="44" height="44"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="44" id="Jty-WP-NxW"/>
@@ -97,7 +97,7 @@
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="1JZ-PN-Z1Z" secondAttribute="bottom" id="Lxp-vb-Dyi"/>
                         <constraint firstAttribute="trailing" secondItem="1JZ-PN-Z1Z" secondAttribute="trailing" constant="5" id="WH2-CN-nAK"/>

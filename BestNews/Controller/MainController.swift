@@ -537,7 +537,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
     
     //获取广告 保存本地
     func loadHomeAD() {
-        APIRequest.advertisementAPI { (data) in
+        APIRequest.advertisementAPI { [weak self](data) in
             if data != nil {
                 let ad = data as! AdvertiseModel
                 do {
@@ -549,6 +549,15 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
                         "data": data,
                     ]
                     UserDefaults.standard.set(dic, forKey: "start_ad_key001")
+                    if self?.ad?.path != ad.path {
+                        //新下载的广告不同于上次的广告
+                        if let adimg = keyWindow?.viewWithTag(1213) as? UIImageView {
+                            if let url = URL(string: ad.path) {
+                                let rc = ImageResource(downloadURL: url)
+                                adimg.kf.setImage(with: rc)
+                            }
+                        }
+                    }
                 }
                 catch {
                     
@@ -589,6 +598,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
         lb.text = "跳过"
         btn.addSubview(lb)
         
+        im.tag = 1213
         keyWindow?.addSubview(im)
         self.ad = ad
         adView = im

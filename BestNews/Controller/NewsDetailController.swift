@@ -465,7 +465,7 @@ extension NewsDetailController {
         SwiftNotice.wait()
         APIRequest.newsDetailAPI(id: articleId) { [weak self](newsDetail) in
             SwiftNotice.clear()
-            self?.article = newsDetail as! HomeNewsDetail?
+            self?.article = newsDetail as? HomeNewsDetail
             self?.updateView()
         }
     }

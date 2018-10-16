@@ -149,7 +149,9 @@ class APIRequest: NSObject {
                 let data = [SpecialChannel].deserialize(from: JSON!["data"].rawString())
                 result(data)
             }
-            
+            else {
+                result(nil)
+            }
         }
     }
     
@@ -173,7 +175,9 @@ class APIRequest: NSObject {
                 let data = HomeArticleList.deserialize(from: JSON!["data"].rawString())
                 result(data)
             }
-            
+            else {
+                result(nil)
+            }
         }
     }
     
@@ -185,7 +189,9 @@ class APIRequest: NSObject {
                 let data = HomeArticleList.deserialize(from: JSON!["data"].rawString())
                 result(data)
             }
-            
+            else {
+                result(nil)
+            }
         }
     }
     
@@ -197,7 +203,9 @@ class APIRequest: NSObject {
                 let data = HomeNewsDetail.deserialize(from: JSON!["data"].rawString())
                 result(data)
             }
-            
+            else {
+                result(nil)
+            }
         }
     }
     
@@ -649,6 +657,7 @@ class APIRequest: NSObject {
                 result(data)
             }
             else {
+                result(nil)
                 BLHUDBarManager.showError(msg: msg)
             }
         }

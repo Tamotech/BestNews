@@ -330,14 +330,17 @@ extension HomeContentViewController {
             self?.tableView.cr.endHeaderRefresh()
             self?.tableView.cr.resetNoMore()
             self?.page = 1
-            self?.articleList = data as? HomeArticleList
-            self?.tableView.reloadData()
+            if data != nil {
+                self?.articleList = data as? HomeArticleList
+                self?.tableView.reloadData()
+            }
         }
     }
     
     func loadMoreArticleList() {
         if self.articleList == nil {
             self.reloadArticleList()
+            tableView.cr.footer?.endRefreshing()
             return
         }
         if self.articleList?.list.count ?? 0 >= self.articleList?.total ?? 0 {
@@ -359,11 +362,13 @@ extension HomeContentViewController {
     /// load data
     func loadSpecialCannelData() {
         APIRequest.getSpecialListAPI { [weak self](data) in
-            self?.specialList = data as! [SpecialChannel]
-            self?.tableView.reloadData()
-            HomeModel.shareInstansce.specilList1 = data as! [SpecialChannel]
-            DispatchQueue.main.async {
-                self?.updateTitlesView()
+            if data != nil {
+                self?.specialList = data as! [SpecialChannel]
+                self?.tableView.reloadData()
+                HomeModel.shareInstansce.specilList1 = data as! [SpecialChannel]
+                DispatchQueue.main.async {
+                    self?.updateTitlesView()
+                }
             }
         }
         
