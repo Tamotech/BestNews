@@ -124,8 +124,7 @@ CommentCellDelegate, CommentBarDelegate {
     func tapRepostHandler() {
         let vc = BaseShareViewController(nibName: "BaseShareViewController", bundle: nil)
         presentr.viewControllerForContext = self
-        presentr.shouldIgnoreTapOutsideContext = false
-        presentr.dismissOnTap = true
+        presentr.dismissOnSwipe = true
         customPresentViewController(presentr, viewController: vc, animated: true) {
             
         }

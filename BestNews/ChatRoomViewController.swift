@@ -414,8 +414,7 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
         share.thumb = liveModel?.preimgpath ?? ""
         vc.share = share
         self.presentr.viewControllerForContext = self
-        self.presentr.shouldIgnoreTapOutsideContext = false
-        self.presentr.dismissOnTap = true
+        self.presentr.dismissOnSwipe = true
         self.customPresentViewController(self.presentr, viewController: vc, animated: true) {
             
         }

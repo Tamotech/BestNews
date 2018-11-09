@@ -17,6 +17,9 @@ class Toolkit: NSObject {
         while(topVC?.presentedViewController != nil) {
             topVC = topVC?.presentedViewController
         }
+        if topVC == nil {
+            return nil
+        }
         if topVC is UINavigationController {
             let navVC = topVC as! UINavigationController
             return navVC.childViewControllers.last

@@ -18,6 +18,7 @@ let umengAppKey = "5a6b6592b27b0a1c6200049d"
 class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, TencentSessionDelegate, OpenInstallDelegate, JPUSHRegisterDelegate {
 
     var window: UIWindow?
+    var allowRotation: Bool = false
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -237,6 +238,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, TencentSes
         }
     }
     
+    @available(iOS 10.0, *)
+    func jpushNotificationCenter(_ center: UNUserNotificationCenter!, openSettingsFor notification: UNNotification?) {
+        
+    }
+    
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("did Fail To Register For Remote Notifications With Error = \(error)")
     }
@@ -340,7 +346,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, TencentSes
         }
         
     }
+    
 
 }
 
 
+extension AppDelegate {
+    func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        if allowRotation {
+            return UIInterfaceOrientationMask.landscapeRight
+        }
+        return UIInterfaceOrientationMask.portrait
+    }
+}

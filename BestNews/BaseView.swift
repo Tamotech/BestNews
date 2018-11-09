@@ -14,7 +14,7 @@ class BaseView: UIView {
     lazy var presentr:Presentr = {
         let pr = Presentr(presentationType: .fullScreen)
         pr.transitionType = TransitionType.coverVertical
-        pr.dismissOnTap = true
+        pr.dismissOnSwipe = true
         pr.dismissAnimated = true
         return pr
     }()

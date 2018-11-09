@@ -159,11 +159,8 @@ class FastNewsController: BaseViewController, UITableViewDataSource, UITableView
             share.msg = "新华日报财经"
             vc.share = share
             rootVC.presentr.viewControllerForContext = rootVC
-            rootVC.presentr.shouldIgnoreTapOutsideContext = false
-            rootVC.presentr.dismissOnTap = true
-            rootVC.customPresentViewController(self!.presentr, viewController: vc, animated: true) {
-                
-            }
+            rootVC.presentr.dismissOnSwipe = true
+            rootVC.customPresentViewController(self!.presentr, viewController: vc, animated: true)
         }
         return cell
     }

@@ -26,22 +26,27 @@ class GuideViewController: UIViewController {
         
         let im1 = UIImageView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
         im1.contentMode = UIViewContentMode.scaleAspectFill
-        im1.image = #imageLiteral(resourceName: "bg1_guide.png")
+        im1.clipsToBounds = true
+        im1.image = UIImage(named: "bg1_guide")
         scrollView.addSubview(im1)
         
         let im2 = UIImageView(frame: CGRect(x: screenWidth, y: 0, width: screenWidth, height: screenHeight))
         im2.contentMode = UIViewContentMode.scaleAspectFill
-        im2.image = #imageLiteral(resourceName: "bg2_guide.png")
+        im2.clipsToBounds = true
+        im2.image = UIImage(named: "bg2_guide")
         scrollView.addSubview(im2)
         
         let im3 = UIImageView(frame: CGRect(x: screenWidth*2, y: 0, width: screenWidth, height: screenHeight))
         im3.contentMode = UIViewContentMode.scaleAspectFill
-        im3.image = #imageLiteral(resourceName: "bg3_guide.png")
+        im3.clipsToBounds = true
+        im3.image = UIImage(named: "bg3_guide")
         scrollView.addSubview(im3)
         
         navigationController?.setNavigationBarHidden(true, animated: false)
         
-        let skipBtn = UIButton(frame: CGRect(x: screenWidth-80, y: 20, width: 80, height: 44))
+        let skipBtn = UIButton(frame: CGRect(x: screenWidth-80, y: topGuideHeight - 44, width: 80, height: 44))
+        skipBtn.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        skipBtn.setTitle("跳过", for: UIControlState.normal)
         skipBtn.addTarget(self, action: #selector(handleTapSkipBtn(_:)), for: UIControlEvents.touchUpInside)
         view.addSubview(skipBtn)
         

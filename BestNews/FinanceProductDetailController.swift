@@ -93,7 +93,7 @@ class FinanceProductDetailController: BaseViewController, UIScrollViewDelegate {
     func handleTapShareItem(_: UIBarButtonItem) {
         let vc = BaseShareViewController(nibName: "BaseShareViewController", bundle: nil)
         presentr.viewControllerForContext = self
-        presentr.dismissOnTap = true
+        presentr.dismissOnSwipe = true
         customPresentViewController(presentr, viewController: vc, animated: true) {
             
         }

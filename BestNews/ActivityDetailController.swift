@@ -127,7 +127,6 @@ class ActivityDetailController: BaseViewController, ActivityTicketListController
         share.thumb = activity.preimgpath+"?x-oss-process=image/resize,w_150"
         vc.share = share
         presentr.viewControllerForContext = self
-        presentr.shouldIgnoreTapOutsideContext = false
         customPresentViewController(presentr, viewController: vc, animated: true) {
             
         }
@@ -172,7 +171,6 @@ class ActivityDetailController: BaseViewController, ActivityTicketListController
         vc.tickets = activity.tickets
         vc.delegate = self
         presentr.viewControllerForContext = self
-        presentr.shouldIgnoreTapOutsideContext = true
         customPresentViewController(presentr, viewController: vc, animated: true) {
             
         }

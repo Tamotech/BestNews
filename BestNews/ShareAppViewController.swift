@@ -72,7 +72,6 @@ class ShareAppViewController: BaseViewController {
             share.link = "http://xhfmedia.com/app.htm?channelCode=1&uid=\(SessionManager.sharedInstance.userInfo!.id)"
         }
         presentr.viewControllerForContext = self
-        presentr.shouldIgnoreTapOutsideContext = false
         customPresentViewController(presentr, viewController: vc, animated: true) {
             
         }

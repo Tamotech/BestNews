@@ -204,8 +204,7 @@ class ActivityRegistController: BaseViewController, UINavigationControllerDelega
         let vc = ProfessionListController()
         vc.delegate = self
         presentr.viewControllerForContext = self
-        presentr.shouldIgnoreTapOutsideContext = false
-        presentr.dismissOnTap = true
+        presentr.dismissOnSwipe = true
         customPresentViewController(presentr, viewController: vc, animated: true) {
             
         }

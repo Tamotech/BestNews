@@ -60,8 +60,7 @@ class BaseWKWebViewController: BaseViewController, WKNavigationDelegate {
         let vc = BaseShareViewController(nibName: "BaseShareViewController", bundle: nil)
         vc.share = share!
         self.presentr.viewControllerForContext = self
-        self.presentr.shouldIgnoreTapOutsideContext = false
-        self.presentr.dismissOnTap = true
+        self.presentr.dismissOnSwipe = true
         self.customPresentViewController(self.presentr, viewController: vc, animated: true) {
             
         }

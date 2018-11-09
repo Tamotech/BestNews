@@ -127,9 +127,6 @@
 		5A84B6421FFC503C006DC3AA /* EndLiveAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A84B6411FFC503C006DC3AA /* EndLiveAlertView.swift */; };
 		5A84B6451FFC5B32006DC3AA /* RefundAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A84B6431FFC5B32006DC3AA /* RefundAlertController.swift */; };
 		5A84B6461FFC5B32006DC3AA /* RefundAlertController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A84B6441FFC5B32006DC3AA /* RefundAlertController.xib */; };
-		5A84B6481FFD1F8B006DC3AA /* bg1_guide@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A84B6471FFD1F8B006DC3AA /* bg1_guide@3x.png */; };
-		5A84B64A1FFD1F97006DC3AA /* bg2_guide@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A84B6491FFD1F96006DC3AA /* bg2_guide@3x.png */; };
-		5A84B64C1FFD1F9F006DC3AA /* bg3_guide@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5A84B64B1FFD1F9F006DC3AA /* bg3_guide@3x.png */; };
 		5A85556C1FD702050070C82B /* MyLiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A85556B1FD702050070C82B /* MyLiveViewController.swift */; };
 		5A8B8649200EAFED0023F584 /* SearchArticleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A8B8647200EAFED0023F584 /* SearchArticleCell.swift */; };
 		5A8B864A200EAFED0023F584 /* SearchArticleCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A8B8648200EAFED0023F584 /* SearchArticleCell.xib */; };
@@ -290,6 +287,7 @@
 		CC29070D1F65A334001894DA /* BaseTabBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC29070C1F65A334001894DA /* BaseTabBarView.xib */; };
 		CC29070F1F65A8B5001894DA /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC29070E1F65A8B5001894DA /* BaseView.swift */; };
 		CC2907111F65AC08001894DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC2907101F65AC08001894DA /* Main.storyboard */; };
+		CC2BA39A2195F915001F04B1 /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2BA3992195F915001F04B1 /* UIDeviceExtension.swift */; };
 		CC4D21752173603B00E18F2D /* NetworkFailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4D21732173603B00E18F2D /* NetworkFailViewController.swift */; };
 		CC4D21762173603B00E18F2D /* NetworkFailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC4D21742173603B00E18F2D /* NetworkFailViewController.xib */; };
 		CC70F5F920A69D4800E52A46 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC70F5F720A69D4800E52A46 /* AboutUsViewController.swift */; };
@@ -476,9 +474,6 @@
 		5A84B6411FFC503C006DC3AA /* EndLiveAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndLiveAlertView.swift; sourceTree = "<group>"; };
 		5A84B6431FFC5B32006DC3AA /* RefundAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefundAlertController.swift; sourceTree = "<group>"; };
 		5A84B6441FFC5B32006DC3AA /* RefundAlertController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RefundAlertController.xib; sourceTree = "<group>"; };
-		5A84B6471FFD1F8B006DC3AA /* bg1_guide@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg1_guide@3x.png"; sourceTree = "<group>"; };
-		5A84B6491FFD1F96006DC3AA /* bg2_guide@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg2_guide@3x.png"; sourceTree = "<group>"; };
-		5A84B64B1FFD1F9F006DC3AA /* bg3_guide@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "bg3_guide@3x.png"; sourceTree = "<group>"; };
 		5A85556B1FD702050070C82B /* MyLiveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLiveViewController.swift; sourceTree = "<group>"; };
 		5A8B8647200EAFED0023F584 /* SearchArticleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchArticleCell.swift; sourceTree = "<group>"; };
 		5A8B8648200EAFED0023F584 /* SearchArticleCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchArticleCell.xib; sourceTree = "<group>"; };
@@ -665,6 +660,7 @@
 		CC29070C1F65A334001894DA /* BaseTabBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BaseTabBarView.xib; sourceTree = "<group>"; };
 		CC29070E1F65A8B5001894DA /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		CC2907101F65AC08001894DA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		CC2BA3992195F915001F04B1 /* UIDeviceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
 		CC4D21732173603B00E18F2D /* NetworkFailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkFailViewController.swift; sourceTree = "<group>"; };
 		CC4D21742173603B00E18F2D /* NetworkFailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NetworkFailViewController.xib; sourceTree = "<group>"; };
 		CC70F5F720A69D4800E52A46 /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
@@ -1267,9 +1263,6 @@
 		5ADF7ACA1FEA952500D9607A /* Resource */ = {
 			isa = PBXGroup;
 			children = (
-				5A84B6471FFD1F8B006DC3AA /* bg1_guide@3x.png */,
-				5A84B6491FFD1F96006DC3AA /* bg2_guide@3x.png */,
-				5A84B64B1FFD1F9F006DC3AA /* bg3_guide@3x.png */,
 				5A063F3E1FF1D12400AFAA40 /* startLaunch.png */,
 				5A0B5DA51FF0628B0047F64A /* clickImg.js */,
 				CC0DC8F320AC8C06007EF02D /* baseHtml.html */,
@@ -1443,6 +1436,7 @@
 				5A0DEBAE1FB7D464007EDF6B /* TableViewCellExtension.swift */,
 				5A04B41F1FD44EA100DE58D2 /* UIView+Layout.h */,
 				5A04B4201FD44EA100DE58D2 /* UIView+Layout.m */,
+				CC2BA3992195F915001F04B1 /* UIDeviceExtension.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1617,7 +1611,6 @@
 				CC2906C21F6599C7001894DA /* Frameworks */,
 				CC2906C31F6599C7001894DA /* Resources */,
 				5799AFBF694AEB3711AF1921 /* [CP] Embed Pods Frameworks */,
-				7722DC2021E2A5D91490BD32 /* [CP] Copy Pods Resources */,
 				5A04B4301FD46A9900DE58D2 /* Embed Frameworks */,
 			);
 			buildRules = (
@@ -1707,12 +1700,10 @@
 				5AA4E85A1FD43378007A04FA /* Line@3x.png in Resources */,
 				5ACCDD2C1F9F75CE004D3809 /* SelectInterestItemController.xib in Resources */,
 				5AA4E8531FD43378007A04FA /* volume_off@2x.png in Resources */,
-				5A84B64A1FFD1F97006DC3AA /* bg2_guide@3x.png in Resources */,
 				5A0D23C71F832BD000FC9D4D /* NewsDetailController.xib in Resources */,
 				5A8B864A200EAFED0023F584 /* SearchArticleCell.xib in Resources */,
 				5AC684821F7FFC2E006CEB53 /* ThreePhotosNewsCell.xib in Resources */,
 				5A84B6461FFC5B32006DC3AA /* RefundAlertController.xib in Resources */,
-				5A84B64C1FFD1F9F006DC3AA /* bg3_guide@3x.png in Resources */,
 				5A32A7081F930CC100773884 /* MessageCenterListCell.xib in Resources */,
 				5AA4E7E11FD385A9007A04FA /* ActivityApplySuccessAlertControllerViewController.xib in Resources */,
 				5A0612D41FDD69AC00E7F20A /* ApplyFamousComplateController.xib in Resources */,
@@ -1791,7 +1782,6 @@
 				CCDB6D4C1F7A2E7A0012432E /* HomeContentViewController.xib in Resources */,
 				5A90CFEF1F8123F500F16869 /* LiveListController.xib in Resources */,
 				5A90D0041F8138EE00F16869 /* OrgnizationListController.xib in Resources */,
-				5A84B6481FFD1F8B006DC3AA /* bg1_guide@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1860,21 +1850,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		7722DC2021E2A5D91490BD32 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BestNews/Pods-BestNews-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1889,6 +1864,7 @@
 				5A8B8649200EAFED0023F584 /* SearchArticleCell.swift in Sources */,
 				5A186C621FAA8B0B007216CE /* YLCycleView.swift in Sources */,
 				5ABB92C31FA5EB1A002E3180 /* BaseAlertView.swift in Sources */,
+				CC2BA39A2195F915001F04B1 /* UIDeviceExtension.swift in Sources */,
 				5ABB92C51FA5EB1A002E3180 /* BLHUDBarManager.swift in Sources */,
 				5ABB92C61FA5EB1A002E3180 /* BottomWechatShareView.swift in Sources */,
 				5A85556C1FD702050070C82B /* MyLiveViewController.swift in Sources */,

@@ -33,18 +33,29 @@ class MyLiveViewController: BaseViewController, AlivcLivePusherInfoDelegate, Ali
         }
         
         UIApplication.shared.isIdleTimerDisabled = true
+        
+        ///屏幕方向
+        let app = UIApplication.shared.delegate! as! AppDelegate
+        app.allowRotation = true
+        UIDevice.switchOritation(UIInterfaceOrientation.landscapeRight)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.barView.removeFromSuperview()
         self.navigationController?.setNavigationBarHidden(true, animated: false)
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         pusher?.stopPush()
         UIApplication.shared.isIdleTimerDisabled = false
+        navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+        let app = UIApplication.shared.delegate! as! AppDelegate
+        app.allowRotation = false
+        UIDevice.switchOritation(UIInterfaceOrientation.portrait)
     }
 
     func initPusher() {
@@ -52,7 +63,8 @@ class MyLiveViewController: BaseViewController, AlivcLivePusherInfoDelegate, Ali
         config?.fps = AlivcLivePushFPS.FPS30
         config?.targetVideoBitrate = 1200
         config?.minVideoBitrate = 400
-        config?.orientation = .portrait
+        ///判断当前手机方向
+        config?.orientation = .landscapeRight
         config?.cameraType = AlivcLivePushCameraType.back
         self.config = config
         pusher = AlivcLivePusher(config: config)
@@ -247,8 +259,8 @@ extension MyLiveViewController {
         APIRequest.liveDetailAPI(id: liveModel!.id) { [weak self](data) in
             self?.liveModel = data as? LiveModel
 //            let url = "rtmp://video-center.alivecdn.com/\(self!.liveModel!.livepush_appname)/\(self!.liveModel!.livepush_streamname)"
-            
             self?.initPusher()
         }
     }
+        
 }

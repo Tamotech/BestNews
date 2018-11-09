@@ -257,7 +257,6 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
     
     func tapReportHandler() {
         presentr.viewControllerForContext = self
-        presentr.shouldIgnoreTapOutsideContext = true
         let vc = ReportArticleController(nibName: "ReportArticleController", bundle: nil)
         customPresentViewController(presentr, viewController: vc, animated: true) {
             
@@ -324,8 +323,7 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
         }
         vc.share = share
         presentr.viewControllerForContext = self
-        presentr.shouldIgnoreTapOutsideContext = false
-        presentr.dismissOnTap = true
+        presentr.dismissOnSwipe = true
         customPresentViewController(presentr, viewController: vc, animated: true) {
             
         }
