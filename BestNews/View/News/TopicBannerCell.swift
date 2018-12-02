@@ -9,7 +9,7 @@
 import UIKit
 
 
-typealias SelectOneChannelCallback = (SpecialChannel)->()
+typealias SelectOneChannelCallback = (Any)->()
 
 /// 专题列表
 class TopicBannerCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
@@ -18,10 +18,13 @@ class TopicBannerCell: UITableViewCell, UICollectionViewDelegate, UICollectionVi
     @IBOutlet weak var titleLb: UILabel!
     
     @IBOutlet weak var collectionView: UICollectionView!
+    
+    @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
+    
     var selectOneChannel: SelectOneChannelCallback?
     
     
-    var specialList: [SpecialChannel] = []
+    var specialList: [Any] = []
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -36,8 +39,18 @@ class TopicBannerCell: UITableViewCell, UICollectionViewDelegate, UICollectionVi
         
     }
     
-    func updateCell(data: [SpecialChannel]) {
+    func updateCell(data: [Any], title: String? = "专题") {
+        titleLb.text = title
         self.specialList = data
+        collectionView.contentOffset = CGPoint.zero
+        if data is [HomeArticle] {
+            (collectionView.collectionViewLayout as! UICollectionViewFlowLayout).itemSize = CGSize(width: 160, height: 137)
+            collectionViewHeight.constant = 137
+        }
+        else {
+            (collectionView.collectionViewLayout as! UICollectionViewFlowLayout).itemSize = CGSize(width: 160, height: 92)
+            collectionViewHeight.constant = 92
+        }
         collectionView.reloadData()
     }
     

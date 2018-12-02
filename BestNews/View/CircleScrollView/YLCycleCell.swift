@@ -14,6 +14,8 @@ class YLCycleCell: UICollectionViewCell {
     lazy var iconImageView = UIImageView()
     lazy var titleLabel = UILabel()
     lazy var bottomView = UIView()
+    lazy var adLabel = UILabel()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupUI()
@@ -44,11 +46,17 @@ extension YLCycleCell {
         titleLabel.textColor = .white
         titleLabel.numberOfLines = 1
         titleLabel.font = UIFont.systemFont(ofSize: 16)
+        
+        adLabel.frame = CGRect(x: self.bounds.size.width-10-37, y: 10, width: 37, height: 17)
+        adLabel.layer.borderWidth = 1
+        adLabel.layer.cornerRadius = 4
+        adLabel.textColor = UIColor(white: 1, alpha: 0.6)
+        adLabel.layer.borderColor = UIColor(white: 1, alpha: 0.6).cgColor
 
         contentView.addSubview(iconImageView)
         contentView.addSubview(bottomView)
         contentView.addSubview(titleLabel)
-
+        contentView.addSubview(adLabel)
     }
 
 }

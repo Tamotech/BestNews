@@ -21,5 +21,7 @@ class AdvertiseModel: HandyJSON {
     var outlinktitle = ""
     var path = ""
     var imgData: Data?
+    /// iphoneX 的广告图
+    var code = ""
     
 }

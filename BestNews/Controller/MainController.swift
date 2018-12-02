@@ -544,7 +544,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
                     let data = try Data(contentsOf: URL(string: ad.path)!)
                     //保存本地
                     let dic: [String: Any] = [
-                        "path": ad.path,
+                        "path": (IS_IPHONEX || IS_IPHONEXMAX) ? ad.code : ad.path,
                         "link": ad.outlink,
                         "data": data,
                     ]

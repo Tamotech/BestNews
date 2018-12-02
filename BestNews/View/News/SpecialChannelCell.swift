@@ -15,8 +15,6 @@ class SpecialChannelCell: UITableViewCell {
     
     @IBOutlet weak var titleLb: UILabel!
     
-    
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

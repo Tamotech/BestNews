@@ -9,6 +9,7 @@
 import UIKit
 import SnapKit
 import Kingfisher
+import WebKit
 
 class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, ConversationDelegate, RCIMClientReceiveMessageDelegate, UITextFieldDelegate, AliyunVodPlayerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -66,18 +67,38 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
     
     @IBOutlet weak var playerTop: NSLayoutConstraint!
     
+    @IBOutlet weak var webParentView: UIView!
     
+    lazy var webView: WKWebView = {
+        let config = WKWebViewConfiguration()
+        config.preferences = WKPreferences()
+        config.preferences.javaScriptEnabled = true
+        config.preferences.javaScriptCanOpenWindowsAutomatically = false
+        let web = WKWebView(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: 400), configuration: config)
+        web.scrollView.isScrollEnabled = false
+        web.autoresizingMask = .flexibleHeight
+        web.navigationDelegate = self
+        return web
+    } ()
+    @IBOutlet weak var shareBtn: UIButton!
+    
+    @IBOutlet var timerView: UIView!
+    
+    @IBOutlet weak var hourLb: UILabel!
+    @IBOutlet weak var miniteLb: UILabel!
+    @IBOutlet weak var secondLb: UILabel!
     
     var backBt: UIButton!
     
     var timer: Timer?
     
     var expandBt: UIButton!
+    var emptyView0 = BaseEmptyView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 400))
     var emptyView1 = BaseEmptyView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 400))
     var emptyView2 = BaseEmptyView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 400))
     
     lazy var segment: BaseSegmentControl = {
-        let v = BaseSegmentControl(items: ["主持区", "评论区"], defaultIndex: 0)
+        let v = BaseSegmentControl(items: ["介绍", "主持区", "评论区"], defaultIndex: 0)
         v.frame = self.segParentView.bounds
         self.segParentView.addSubview(v)
         return v
@@ -98,6 +119,9 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
         let bar = VideoPlayControlBar.instanceFromXib() as! VideoPlayControlBar
         return bar
     }()
+    
+    ///直播倒计时timer
+    var rtimer: Timer?
     
     var playerBtn: UIButton?
     
@@ -134,8 +158,10 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
         
         tableView1.addSubview(emptyView1)
         tableView2.addSubview(emptyView2)
+        emptyView0.emptyString = "还没有介绍~"
         emptyView1.emptyString = "还没有主持图文~"
         emptyView2.emptyString = "还没有评论~"
+        emptyView0.isHidden = true
         emptyView1.isHidden = true
         emptyView2.isHidden = true
 
@@ -157,8 +183,17 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
         
         segment.selectItemAction = {[weak self](index, name) in
             if index == 0 {
+                self?.tableView1.isHidden = true
+                self?.tableView2.isHidden = true
+                self?.webParentView.isHidden = false
+                self?.commentBar.isHidden = true
+                self?.shareBtn.isHidden = false
+            }
+            else if index == 1 {
                 self?.tableView1.isHidden = false
                 self?.tableView2.isHidden = true
+                self?.webParentView.isHidden = true
+                self?.shareBtn.isHidden = true
                 if self?.liveModel != nil && SessionManager.sharedInstance.userId != self?.liveModel!.compereuserid {
                     self?.commentBar.isHidden = true
                 }
@@ -169,6 +204,8 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
             else {
                 self?.tableView1.isHidden = true
                 self?.tableView2.isHidden = false
+                self?.webParentView.isHidden = true
+                self?.shareBtn.isHidden = true
                 if self?.liveModel != nil && SessionManager.sharedInstance.userId != self?.liveModel!.compereuserid {
                     self?.commentBar.isHidden = false
                 }
@@ -187,10 +224,22 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
         commentBarChangeState(false)
         
         NotificationCenter.default.addObserver(self, selector: #selector(liveDidEndNoti(noti:)), name: kLiveDidEndNotify, object: nil)
-        loadLiveDetail()
         
         //禁止屏
         UIApplication.shared.isIdleTimerDisabled = true
+        
+        //2018-11-24
+        webParentView.insertSubview(webView, belowSubview: shareBtn)
+        webView.addSubview(emptyView0)
+        webView.snp.makeConstraints { (make) in
+            make.top.equalTo(tableView1.snp.top)
+            make.left.equalTo(tableView1.snp.left)
+            make.right.equalTo(tableView1.snp.right)
+            make.bottom.equalTo(-65)
+        }
+        webView.backgroundColor = .red
+        webView.loadHTMLString(liveModel?.webHtmlStr ?? "暂无介绍", baseURL: nil)
+        loadLiveDetail()
     }
     
     
@@ -214,7 +263,18 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
 //            self.aliyunVodPlayer.playerView.removeFromSuperview()
 //        }
 //        self.aliyunVodPlayer.release()
-            UIApplication.shared.isIdleTimerDisabled = false
+        UIApplication.shared.isIdleTimerDisabled = false
+        timer?.invalidate()
+        timer = nil
+        rtimer?.invalidate()
+        rtimer = nil
+        self.aliyunVodPlayer.stop()
+        if self.aliyunVodPlayer.playerView != nil {
+            self.aliyunVodPlayer.playerView.removeFromSuperview()
+        }
+        self.aliyunVodPlayer.release()
+        print("back click")
+        
     }
     
     
@@ -249,21 +309,6 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
             }
         }
         
-    }
-
-    //MARK:析构函数
-    deinit {
-        if timer != nil {
-            timer?.invalidate()
-            self.timer = nil
-        }
-
-        self.aliyunVodPlayer.stop()
-        if self.aliyunVodPlayer.playerView != nil {
-            self.aliyunVodPlayer.playerView.removeFromSuperview()
-        }
-        self.aliyunVodPlayer.release()
-        print("back click")
     }
    
     ///设置播放视图
@@ -339,7 +384,6 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
             self?.aliyunVodPlayer.resume()
             
         }
-        
     }
     
     
@@ -652,6 +696,20 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
         }
     }
     
+    ///点击分享
+    @IBAction func handleTapShare(_ sender: Any) {
+        let vc = BaseShareViewController(nibName: "BaseShareViewController", bundle: nil)
+        let share = ShareModel()
+        share.title = liveModel?.title ?? ""
+        share.msg = "新华财经日报"
+        share.thumb = liveModel?.preimgpath ?? ""
+        vc.share = share
+        self.presentr.viewControllerForContext = self
+        self.presentr.dismissOnSwipe = true
+        self.customPresentViewController(self.presentr, viewController: vc, animated: true) {
+            
+        }
+    }
     
     ///滑动评论/主持一栏
     func swipeSegment(_ sender: UISwipeGestureRecognizer) {
@@ -794,30 +852,9 @@ extension ChatRoomViewController {
     func loadLiveDetail() {
         APIRequest.liveDetailAPI(id: liveModel!.id) { [weak self](data) in
             self?.liveModel = data as? LiveModel
-            
-            self?.titleLb.text = self?.liveModel?.title
-            self?.dateLb.text = self?.liveModel?.dateStr()
-            if let url = URL(string: self!.liveModel!.anchorheadimg) {
-                let rc = ImageResource(downloadURL: url)
-                self?.anchorAvatar.kf.setImage(with: rc, placeholder: #imageLiteral(resourceName: "defaultUser"), options: nil, progressBlock: nil, completionHandler: nil)
-            }
-            self?.anchorNameLb.text = self?.liveModel?.anchorusername
-            if self?.liveModel?.subscribe == 1 {
-                self?.subBt.switchStateSub(true)
-            }
-            else {
-                self?.subBt.switchStateSub(false)
-            }
-            if self?.liveModel?.collect == 1 {
-                self?.collectBt.setImage(#imageLiteral(resourceName: "star_select"), for: .normal)
-            }
-            else {
-                self?.collectBt.setImage(#imageLiteral(resourceName: "star_dark"), for: .normal)
-            }
+            self?.updateUI()
             let path = "/\(self!.liveModel!.livepush_appname)/\(self!.liveModel!.livepush_streamname)"
             let key = ConversationClientManager.addAuthorKey(url: path)
-            
-        
             if self?.liveModel?.state == "l1_finish" {
                 self?.controlBar.isHidden = false
                 if self?.liveModel?.videopath == "" {
@@ -830,6 +867,24 @@ extension ChatRoomViewController {
                 
                 self?.aliyunVodPlayer.prepare(with: URL(string: videoPath!)!)
                 self?.aliyunVodPlayer.start()
+                if ConversationClientManager.shareInstanse.finishConnectRMSDK {
+                    self?.initRoomView()
+                }
+            }
+            else if self?.liveModel?.state == "l2_coming" {
+                if self!.timerView.superview == nil {
+                    self?.aliyunVodPlayer.playerView?.addSubview(self!.timerView)
+                }
+                self?.timerView.isHidden = false
+                self?.timerView.snp.remakeConstraints { (make) in
+                    make.bottom.equalTo(-20)
+                    make.width.equalTo(245)
+                    make.height.equalTo(40)
+                    make.centerX.equalTo(self!.aliyunVodPlayer.playerView!.snp.centerX)
+                }
+                self?.setupRTimer()
+                self?.rtimer?.fire()
+                self?.controlBar.isHidden = true
                 if ConversationClientManager.shareInstanse.finishConnectRMSDK {
                     self?.initRoomView()
                 }
@@ -849,6 +904,42 @@ extension ChatRoomViewController {
             self?.timer = Timer(timeInterval: 1, target: self!, selector: #selector(self?.timerEvent(_:)), userInfo: nil, repeats: true)
             RunLoop.main.add(self!.timer!, forMode: RunLoopMode.commonModes)
             self?.timer?.fire()
+            
+            
+        }
+    }
+    
+    func updateUI() {
+        activity.isHidden = true
+        titleLb.text = liveModel?.title
+        dateLb.text = liveModel?.dateStr()
+        if let url = URL(string: liveModel?.anchorheadimg ?? "") {
+            let rc = ImageResource(downloadURL: url)
+            anchorAvatar.kf.setImage(with: rc, placeholder: #imageLiteral(resourceName: "defaultUser"), options: nil, progressBlock: nil, completionHandler: nil)
+        }
+        anchorNameLb.text = liveModel?.anchorusername
+        if liveModel?.subscribe == 1 {
+            subBt.switchStateSub(true)
+        }
+        else {
+            subBt.switchStateSub(false)
+        }
+        if liveModel?.collect == 1 {
+            collectBt.setImage(#imageLiteral(resourceName: "star_select"), for: .normal)
+        }
+        else {
+            collectBt.setImage(#imageLiteral(resourceName: "star_dark"), for: .normal)
+        }
+        
+        
+        controlBar.isHidden = true
+        if liveModel?.description.count ?? 0 == 0 {
+            emptyView0.isHidden = false
+        }
+        else {
+            emptyView0.isHidden = true
+            webView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: 400)
+            webView.loadHTMLString(liveModel?.webHtmlStr ?? "暂无介绍", baseURL: nil)
         }
     }
     
@@ -1017,4 +1108,63 @@ extension ChatRoomViewController {
     
     
     
+}
+
+
+extension ChatRoomViewController {
+    
+    func setupRTimer() {
+        rtimer?.invalidate()
+        let t = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(handleTimerEvent(_:)), userInfo: nil, repeats: true)
+        RunLoop.current.add(t, forMode: RunLoopMode.commonModes)
+        rtimer = t
+    }
+    
+    ///倒计时
+    @objc func handleTimerEvent(_ t: Timer) {
+        //计算倒计时时间
+        guard let model = liveModel else {
+            rtimer?.invalidate()
+            rtimer = nil
+            timerView.isHidden = true
+            return
+        }
+        if model.livedatestart <= 0 {
+            rtimer?.invalidate()
+            rtimer = nil
+            timerView.isHidden = true
+            //重新刷新
+            if self.view.tag <= 2 {
+                loadLiveDetail()
+                self.view.tag = self.view.tag + 1
+            }
+            return
+        }
+        liveModel?.livedatestart = liveModel!.livedatestart - 1000
+        let hour = model.livedatestart / 3600 / 1000
+        let minite = model.livedatestart / 1000 % 3600 / 60
+        let second = model.livedatestart / 1000 % 60
+        hourLb.text = String(format: "%.2d", hour)
+        miniteLb.text = String(format: "%.2d", minite)
+        secondLb.text = String(format: "%.2d", second)
+    }
+}
+
+extension ChatRoomViewController: WKNavigationDelegate {
+    
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        print("finish load webview")
+    }
+    
+    func webView(_ webView: WKWebView, didReceiveServerRedirectForProvisionalNavigation navigation: WKNavigation!) {
+        print("did receive redirect webview")
+    }
+    
+    func webView(_ webView: WKWebView, didFailProvisionalNavigation navigation: WKNavigation!, withError error: Error) {
+        print("receive error in webview")
+    }
 }

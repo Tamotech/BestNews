@@ -115,9 +115,9 @@ class LiveListController: BaseViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         let model = liveList.list[indexPath.row]
-        if model.state == "l2_coming" {
-            return
-        }
+//        if model.state == "l2_coming" {
+//            return
+//        }
         if model.state == "l1_finish" && model.videopath.count == 0{
             return
         }

@@ -22,7 +22,7 @@ class LiveModel: HandyJSON {
     var collectnum: Int = 0
     var collect: Int = 0
     var createdate: Int = 0
-    /// 直播开始时间
+    /// 直播开始时间 剩余毫秒数
     var livedatestart: Int = 0
     ///主持人用户的id
     var compereuserid: String = ""
@@ -44,6 +44,15 @@ class LiveModel: HandyJSON {
     var videopath: String = ""
     
     var subscribe: Int = 0
+    
+    ///直播介绍 富文本
+    var description = ""
+    
+    var webHtmlStr: String {
+        get {
+            return "<header><meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no'></header>\(self.description)"
+        }
+    }
     
     
     func stateStr() -> String {

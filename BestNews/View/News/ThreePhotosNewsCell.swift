@@ -40,9 +40,19 @@ class ThreePhotosNewsCell: BaseNewsCell {
             tipBtn.isHidden = false
             tipBtn.setTitle(article.marks, for: .normal)
             tipBtn.backgroundColor = article.markColor()
+            tipBtn.layer.borderWidth = 0
+            tipBtn.setTitleColor(UIColor.white, for: UIControlState.normal)
         }
         else {
             tipBtn.isHidden = true
+        }
+        if article.type == "adv" {
+            //广告
+            tipBtn.isHidden = false
+            tipBtn.layer.borderWidth = 1
+            tipBtn.layer.borderColor = UIColor(hex: 0xb5b5b5)?.cgColor
+            tipBtn.setTitle("广告", for: UIControlState.normal)
+            tipBtn.setTitleColor(UIColor(hex: 0xb5b5b5), for: UIControlState.normal)
         }
         for i in 0..<article.preimglist.count {
             let img = article.preimglist[i]

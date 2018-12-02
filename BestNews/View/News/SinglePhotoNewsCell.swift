@@ -48,9 +48,19 @@ class SinglePhotoNewsCell: BaseNewsCell {
             labelBtn.isHidden = false
             labelBtn.setTitle(article.marks, for: .normal)
             labelBtn.backgroundColor = article.markColor()
+            labelBtn.layer.borderWidth = 0
+            labelBtn.setTitleColor(UIColor.white, for: UIControlState.normal)
         }
         else {
             labelBtn.isHidden = true
+        }
+        if article.type == "adv" {
+            //广告
+            labelBtn.isHidden = false
+            labelBtn.layer.borderWidth = 1
+            labelBtn.layer.borderColor = UIColor(hex: 0xb5b5b5)?.cgColor
+            labelBtn.setTitle("广告", for: UIControlState.normal)
+            labelBtn.setTitleColor(UIColor(hex: 0xb5b5b5), for: UIControlState.normal)
         }
     }
     

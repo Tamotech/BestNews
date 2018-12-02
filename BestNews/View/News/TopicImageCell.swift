@@ -21,16 +21,30 @@ class TopicImageCell: UICollectionViewCell {
         // Initialization code
     }
 
-    func updateCell(data: SpecialChannel) {
-        let img = data.preimgpath
-        let name = data.fullname
-        if img.count > 0 {
-            let rc = ImageResource(downloadURL: URL(string: img)!)
-            coverImageView.kf.setImage(with: rc)
+    func updateCell(data: Any) {
+        if data is SpecialChannel {
+            let channel = data as! SpecialChannel
+            let img = channel.preimgpath
+            let name = channel.fullname
+            if img.count > 0 {
+                let rc = ImageResource(downloadURL: URL(string: img)!)
+                coverImageView.kf.setImage(with: rc)
+            }
+            else {
+                coverImageView.image = #imageLiteral(resourceName: "m24_default")
+            }
+            topicLabel.text = name
         }
-        else {
-            coverImageView.image = #imageLiteral(resourceName: "m24_default")
+        else if data is HomeArticle {
+            let article = data as! HomeArticle
+            if let url = article.preimglist.first {
+                let rc = ImageResource(downloadURL: URL(string: url)!)
+                coverImageView.kf.setImage(with: rc)
+            }
+            else {
+                coverImageView.image = #imageLiteral(resourceName: "m24_default")
+            }
+            topicLabel.text = article.title
         }
-        topicLabel.text = name
     }
 }

@@ -322,7 +322,8 @@ extension SpecialChannelArticleListController {
                 titles.append(article.title)
                 imgs.append(article.titleimgpath)
             }
-            let v = YLCycleView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenWidth*243.0/375.0), images:imgs, titles: titles)
+            let v = YLCycleView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenWidth*166.0/375.0), images:imgs, titles: titles)
+            v.banner = coverArticles
             v.delegate = self
             tableView.tableHeaderView = v
         }

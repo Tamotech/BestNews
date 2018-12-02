@@ -645,11 +645,11 @@ class APIRequest: NSObject {
     ///   - id: id
     ///   - type: channelid/organizeid/userid
     ///   - result: 列表
-    class func articleListAPI(id: String, type: String, page:Int, result: @escaping JSONResult) {
+    class func articleListAPI(id: String, type: String, page:Int, row: Int? = 20, result: @escaping JSONResult) {
         let path = "/article/getArticlePage.htm"
         let params = ["page": "\(page)",
                       type: id,
-                      "rows": "20"]
+                      "rows": "\(row ?? 20)"]
         
         APIManager.shareInstance.postRequest(urlString: path, params: params) { (JSON, code, msg) in
             if code == 0 {

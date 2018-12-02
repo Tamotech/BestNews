@@ -9,7 +9,11 @@
 import UIKit
 import HandyJSON
 
-class HomeArticle: HandyJSON {
+class HomeArticle: HandyJSON, Equatable {
+    static func == (lhs: HomeArticle, rhs: HomeArticle) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
 
     var id: String = ""
     var title: String = ""
@@ -77,4 +81,49 @@ class HomeArticleList: HandyJSON {
     var total: Int = 0
     var page: Int = 1
     var list: [HomeArticle] = []
+    
+    ///横向专栏文章集 2018-11-27
+    var channelArticleList: [String: [HomeArticle]] = [:]
+    var synthesizeArr: [Any] = []
+    
+    func numOfSections() -> Int {
+        return 1
+    }
+    
+    func numberOfRows() -> Int {
+        genSynthesizeArray()
+        return synthesizeArr.count
+    }
+    
+    func cellModel(row: Int) -> Any {
+        genSynthesizeArray()
+        return synthesizeArr[row]
+    }
+    
+    ///整合专题文章和首页文章为大列表 每三个插一个
+    private func genSynthesizeArray() {
+        if synthesizeArr.count == list.count + channelArticleList.count {
+            return
+        }
+        var index = 0
+        var result: [Any] = list
+        for channelList in channelArticleList.values {
+            index = index + 3
+            if index >= result.count {
+                break
+            }
+            result.insert(channelList, at: index)
+        }
+        synthesizeArr = result
+    }
+    
+    /// 获取专题id
+    func getChannelTitle(list: [HomeArticle]) -> String? {
+        for (_, v) in channelArticleList.enumerated() {
+            if v.value == list {
+                return v.key
+            }
+        }
+        return nil
+    }
 }

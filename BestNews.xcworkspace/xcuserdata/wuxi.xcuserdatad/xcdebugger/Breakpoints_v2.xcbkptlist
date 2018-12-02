@@ -43,13 +43,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "BestNews/Controller/BaseShareViewController.swift"
-            timestampString = "551196401.109367"
+            filePath = "BestNews/Controller/SpecialChannelArticleListController.swift"
+            timestampString = "565373935.863394"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "handleTapWechatBtn(_:)"
+            startingLineNumber = "326"
+            endingLineNumber = "326"
+            landmarkName = "updateCover()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

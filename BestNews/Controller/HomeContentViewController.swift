@@ -19,7 +19,7 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
     var timer: Timer?
     
     lazy var headerBannerView: YLCycleView = {
-       let v = YLCycleView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenWidth*243.0/375.0), images:["m24_default"], titles: [""])
+       let v = YLCycleView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenWidth*166.0/375.0), images:["m24_default"], titles: [""])
         //顶部加一个 渐变黑色蒙版
         let maskLayer = CAGradientLayer()
         maskLayer.frame = CGRect(x: 0, y: 0, width: screenWidth, height: 64)
@@ -125,7 +125,7 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
         tableView.cr.addHeadRefresh {
             [weak self] in
             self?.reloadArticleList()
-//            self?.loadSpecialCannelData()
+            self?.loadSpecialCannelData()
 //            self?.loadNavChannel()
             self?.updateBanner()
         }
@@ -177,7 +177,7 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
         if articleList == nil {
             return 0
         }
-        return articleList!.list.count+1
+        return articleList?.numberOfRows() ?? 0 + 1
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
@@ -198,34 +198,71 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
             let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! TopicBannerCell
             cell.updateCell(data: specialList)
             cell.selectOneChannel = {
-                [weak self] (channel) in
-                let vc = SpecialChannelArticleListController()
-                vc.channel = channel
-                vc.entry = 1
-                self?.navigationController?.pushViewController(vc, animated: true)
+                [weak self] (data) in
+                if data is SpecialChannel {
+                    let vc = SpecialChannelArticleListController()
+                    vc.channel = data as? SpecialChannel
+                    vc.entry = 1
+                    self?.navigationController?.pushViewController(vc, animated: true)
+                }
+                else if data is HomeArticle {
+                    self?.jumpToNewsDetail(article: data as! HomeArticle)
+                }
             }
             return cell
         }
         else {
-            let article = articleList!.list[indexPath.row - 1];
-            if article.preimglist.count == 0 {
-                index = 3
+            let model = articleList!.cellModel(row: indexPath.row - 1)
+            if model is HomeArticle {
+                let article = model as! HomeArticle
+                if article.preimglist.count == 0 {
+                    index = 3
+                }
+                else if article.preimglist.count == 1 && article.preimgtype == "big1" {
+                    index = 4
+                }
+                else if article.preimglist.count == 1 && article.preimgtype == "small3" {
+                    index = 1
+                }
+                else {
+                    index = 2
+                }
+                
+                let identifier = cellIdentifiers[index]
+                let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! BaseNewsCell
+                cell.updateCell(article: article)
+                return cell
             }
-            else if article.preimglist.count == 1 && article.preimgtype == "big1" {
-                index = 4
+            else if model is [HomeArticle] {
+                let articleList = model as! [HomeArticle]
+                let cid = self.articleList?.getChannelTitle(list: articleList)
+                var title = ""
+                for c in self.specialList {
+                    if c.id == cid {
+                        title = c.name
+                        break
+                    }
+                }
+                index = 0
+                let identifier = cellIdentifiers[index]
+                let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! TopicBannerCell
+                cell.updateCell(data: articleList, title: title)
+                cell.selectOneChannel = {
+                    [weak self] (data) in
+                    if data is SpecialChannel {
+                        let vc = SpecialChannelArticleListController()
+                        vc.channel = data as? SpecialChannel
+                        vc.entry = 1
+                        self?.navigationController?.pushViewController(vc, animated: true)
+                    }
+                    else if data is HomeArticle {
+                        self?.jumpToNewsDetail(article: data as! HomeArticle)
+                    }
+                }
+                return cell
             }
-            else if article.preimglist.count == 1 && article.preimgtype == "small3" {
-                index = 1
-            }
-            else {
-                index = 2
-            }
-            
-            let identifier = cellIdentifiers[index]
-            let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! BaseNewsCell
-            cell.updateCell(article: article)
-            return cell
         }
+        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -236,30 +273,50 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
             navigationController?.pushViewController(vc, animated: true)
         }
         else {
-            let article = articleList?.list[indexPath.row - 1]
-            if article!.linkurl.count > 0 && !article!.linkurl.contains("null") {
-                let wkvc = BaseWKWebViewController()
-                wkvc.shareEnable = true
-                let share = ShareModel()
-                share.title = article?.title ?? ""
-                share.msg = "新华财经日报"
-                share.link = article!.linkurl
-                if article!.preimglist.count > 0 {
-                    share.thumb = article!.preimglist.first!
-                }
-                article?.linkurl = article!.linkurl
-                wkvc.share = share
-                wkvc.urlString = article!.linkurl
-                navigationController?.pushViewController(wkvc, animated: true)
+            let model = articleList!.cellModel(row: indexPath.row - 1)
+            if model is HomeArticle {
+                jumpToNewsDetail(article: model as! HomeArticle)
             }
-            else {
-                let vc = NewsDetailController.init(nibName: "NewsDetailController", bundle: nil) as NewsDetailController
-                vc.articleId = article!.id
-                vc.articleHome = article
-                navigationController?.pushViewController(vc, animated: true)
+            else if model is [HomeArticle] {
+                if let id = self.articleList?.getChannelTitle(list: model as! [HomeArticle]) {
+                    var channel: SpecialChannel? = nil
+                    for c in self.specialList {
+                        if c.id == id {
+                            channel = c
+                            break
+                        }
+                    }
+                    let vc = SpecialChannelArticleListController()
+                    vc.channel = channel
+                    vc.entry = 1
+                    navigationController?.pushViewController(vc, animated: true)
+                }
             }
         }
         
+    }
+    
+    func jumpToNewsDetail(article: HomeArticle) {
+        if article.linkurl.count > 0 && !article.linkurl.contains("null") {
+            let wkvc = BaseWKWebViewController()
+            wkvc.shareEnable = true
+            let share = ShareModel()
+            share.title = article.title
+            share.msg = "新华财经日报"
+            share.link = article.linkurl
+            if article.preimglist.count > 0 {
+                share.thumb = article.preimglist.first!
+            }
+            wkvc.share = share
+            wkvc.urlString = article.linkurl
+            navigationController?.pushViewController(wkvc, animated: true)
+        }
+        else {
+            let vc = NewsDetailController.init(nibName: "NewsDetailController", bundle: nil) as NewsDetailController
+            vc.articleId = article.id
+            vc.articleHome = article
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -331,7 +388,11 @@ extension HomeContentViewController {
             self?.tableView.cr.resetNoMore()
             self?.page = 1
             if data != nil {
+                let oldList = self?.articleList
                 self?.articleList = data as? HomeArticleList
+                ///继承衣钵
+                self?.articleList?.channelArticleList = oldList?.channelArticleList ?? [:]
+                self?.articleList?.synthesizeArr = oldList?.synthesizeArr ?? []
                 self?.tableView.reloadData()
             }
         }
@@ -366,13 +427,35 @@ extension HomeContentViewController {
                 self?.specialList = data as! [SpecialChannel]
                 self?.tableView.reloadData()
                 HomeModel.shareInstansce.specilList1 = data as! [SpecialChannel]
+                ///加载横向文章集
+                for channel in self!.specialList {
+                    self?.loadArticleListWithChannel(channelID: channel.id)
+                }
                 DispatchQueue.main.async {
                     self?.updateTitlesView()
                 }
             }
         }
-        
-        
+    }
+    
+    /// 加载专题下的文章列表(横向展示)
+    func loadArticleListWithChannel(channelID: String) {
+        APIRequest.articleListAPI(id: channelID, type: "channelid", page: 1, row: 6) { [weak self](data) in
+            if data == nil {
+                return
+            }
+            if self?.articleList == nil {
+                self?.articleList = HomeArticleList()
+            }
+            if let m = data as? HomeArticleList {
+                ///防止重复
+                if !self!.articleList!.channelArticleList.keys.contains(channelID) {
+                    self?.articleList?.channelArticleList[channelID] = m.list
+                    self?.tableView.reloadData()
+                }
+            }
+            
+        }
     }
     
     ///首页导航栏频道

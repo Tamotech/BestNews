@@ -146,7 +146,7 @@ extension YLCycleView : UICollectionViewDataSource {
                 cell.titleLabel.text = ""
                 cell.bottomView.isHidden = true
             }
-        }else {
+        } else {
             cell.titleLabel.text = ""
             cell.bottomView.isHidden = true
         }
@@ -163,6 +163,10 @@ extension YLCycleView : UICollectionViewDataSource {
             cell.iconImageView.kf.setImage(with: url)
         }else {
             cell.iconImageView.image = UIImage(named: images![indexPath.row % images!.count])
+        }
+        if banner.count > indexPath.row {
+            let article = banner[indexPath.row]
+            cell.adLabel.isHidden = article.type != "adv"
         }
         return cell
     }
