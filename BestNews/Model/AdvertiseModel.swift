@@ -24,4 +24,12 @@ class AdvertiseModel: HandyJSON {
     /// iphoneX 的广告图
     var code = ""
     
+    ///合适的尺寸
+    var suitADImg: String {
+        if IS_IPHONEX || IS_IPHONEXMAX {
+            return code
+        }
+        return path
+    }
+    
 }

@@ -526,9 +526,10 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
         let dic = UserDefaults.standard.object(forKey: "start_ad_key001") as? [String: Any]
         if dic != nil {
             let ad = AdvertiseModel()
-            ad.path = dic!["path"] as! String
-            ad.outlink = dic!["link"] as! String
+            ad.path = dic!["path"] as? String ?? ""
+            ad.outlink = dic!["link"] as? String ?? ""
             ad.imgData = dic!["data"] as? Data
+            ad.code = dic!["code"] as? String ?? ""
             self.ad = ad
             self.showHomeAD(ad)
         }
@@ -541,18 +542,18 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
             if data != nil {
                 let ad = data as! AdvertiseModel
                 do {
-                    let data = try Data(contentsOf: URL(string: ad.path)!)
+                    let data = try Data(contentsOf: URL(string: ad.suitADImg)!)
                     //保存本地
                     let dic: [String: Any] = [
-                        "path": (IS_IPHONEX || IS_IPHONEXMAX) ? ad.code : ad.path,
+                        "path": ad.suitADImg,
                         "link": ad.outlink,
                         "data": data,
                     ]
                     UserDefaults.standard.set(dic, forKey: "start_ad_key001")
-                    if self?.ad?.path != ad.path {
+                    if self?.ad?.suitADImg != ad.suitADImg {
                         //新下载的广告不同于上次的广告
                         if let adimg = keyWindow?.viewWithTag(1213) as? UIImageView {
-                            if let url = URL(string: ad.path) {
+                            if let url = URL(string: ad.suitADImg) {
                                 let rc = ImageResource(downloadURL: url)
                                 adimg.kf.setImage(with: rc)
                             }

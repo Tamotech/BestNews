@@ -18,8 +18,15 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="196.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab1On" translatesAutoresizingMaskIntoConstraints="NO" id="erT-bp-GVh">
+                        <rect key="frame" x="15" y="10" width="24" height="24"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="24" id="HQB-uR-HSa"/>
+                            <constraint firstAttribute="height" constant="24" id="Pg2-HO-tvy"/>
+                        </constraints>
+                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="专题" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qEq-3n-rnx">
-                        <rect key="frame" x="15" y="10" width="225" height="24"/>
+                        <rect key="frame" x="49" y="10" width="191" height="24"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="24" id="ij4-dO-Xr3"/>
                         </constraints>
@@ -64,13 +71,15 @@
                     <constraint firstItem="2zr-WW-DLT" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="JWq-AF-5eB"/>
                     <constraint firstItem="2zr-WW-DLT" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" id="LOT-Y5-yHy"/>
                     <constraint firstItem="7AX-Qj-Bas" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="NjI-Pk-k67"/>
+                    <constraint firstItem="erT-bp-GVh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="WCP-0O-y4l"/>
                     <constraint firstItem="2zr-WW-DLT" firstAttribute="top" secondItem="7AX-Qj-Bas" secondAttribute="bottom" constant="15" id="cAT-O7-IuK"/>
                     <constraint firstAttribute="trailing" secondItem="qEq-3n-rnx" secondAttribute="trailing" constant="80" id="dHQ-ys-o6j"/>
+                    <constraint firstItem="erT-bp-GVh" firstAttribute="centerY" secondItem="qEq-3n-rnx" secondAttribute="centerY" id="dPG-o6-I4e"/>
                     <constraint firstItem="mbe-M5-fTQ" firstAttribute="centerY" secondItem="V45-e5-Axi" secondAttribute="centerY" id="hag-Ba-v7K"/>
                     <constraint firstItem="V45-e5-Axi" firstAttribute="centerY" secondItem="qEq-3n-rnx" secondAttribute="centerY" id="iSI-bL-JPq"/>
+                    <constraint firstItem="qEq-3n-rnx" firstAttribute="leading" secondItem="erT-bp-GVh" secondAttribute="trailing" constant="10" id="kMa-XM-9xo"/>
                     <constraint firstItem="7AX-Qj-Bas" firstAttribute="top" secondItem="qEq-3n-rnx" secondAttribute="bottom" constant="7.5" id="meK-Z2-Gpz"/>
                     <constraint firstAttribute="trailing" secondItem="7AX-Qj-Bas" secondAttribute="trailing" id="mg1-Ci-3zB"/>
-                    <constraint firstItem="qEq-3n-rnx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="rtm-iP-eP0"/>
                     <constraint firstAttribute="bottom" secondItem="2zr-WW-DLT" secondAttribute="bottom" id="yK7-5l-Avq"/>
                 </constraints>
             </tableViewCellContentView>
@@ -78,6 +87,7 @@
             <connections>
                 <outlet property="collectionView" destination="7AX-Qj-Bas" id="RXp-wO-fLu"/>
                 <outlet property="collectionViewHeight" destination="0ql-WN-DZG" id="jU0-LO-ukk"/>
+                <outlet property="iconImg" destination="erT-bp-GVh" id="5yV-bw-mvx"/>
                 <outlet property="titleLb" destination="qEq-3n-rnx" id="fA0-SL-uQi"/>
             </connections>
             <point key="canvasLocation" x="30.399999999999999" y="132.68365817091455"/>
@@ -85,5 +95,6 @@
     </objects>
     <resources>
         <image name="icon_more_blue" width="16" height="16"/>
+        <image name="tab1On" width="28" height="28"/>
     </resources>
 </document>

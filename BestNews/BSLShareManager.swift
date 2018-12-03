@@ -134,11 +134,13 @@ class BSLShareManager: NSObject {
         }
         if qqOrZorn == 0 {
             //qq
-            _ = QQApiInterface.send(send)
+            let ret = QQApiInterface.send(send)
+            print("分享qq...\(ret)")
         }
         else {
             //qq空间
-            _ = QQApiInterface.sendReq(toQZone: send)
+            let ret = QQApiInterface.sendReq(toQZone: send)
+            print("分享空间...\(ret)")
         }
     }
 }

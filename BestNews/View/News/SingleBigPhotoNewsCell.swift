@@ -55,6 +55,7 @@ class SingleBigPhotoNewsCell: BaseNewsCell {
             tipBtn.layer.borderColor = UIColor(hex: 0xb5b5b5)?.cgColor
             tipBtn.setTitle("广告", for: UIControlState.normal)
             tipBtn.setTitleColor(UIColor(hex: 0xb5b5b5), for: UIControlState.normal)
+            tipBtn.backgroundColor = .clear
         }
     }
     

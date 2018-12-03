@@ -237,7 +237,6 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
             make.right.equalTo(tableView1.snp.right)
             make.bottom.equalTo(-65)
         }
-        webView.backgroundColor = .red
         webView.loadHTMLString(liveModel?.webHtmlStr ?? "暂无介绍", baseURL: nil)
         loadLiveDetail()
     }
@@ -701,7 +700,8 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
         let vc = BaseShareViewController(nibName: "BaseShareViewController", bundle: nil)
         let share = ShareModel()
         share.title = liveModel?.title ?? ""
-        share.msg = "新华财经日报"
+        share.msg = "新华日报财经|视频栏目"
+        share.link = "http://xhfmedia.com/livedetail.htm?id=\(liveModel?.id ?? "")"
         share.thumb = liveModel?.preimgpath ?? ""
         vc.share = share
         self.presentr.viewControllerForContext = self

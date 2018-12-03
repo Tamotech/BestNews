@@ -61,6 +61,7 @@ class SinglePhotoNewsCell: BaseNewsCell {
             labelBtn.layer.borderColor = UIColor(hex: 0xb5b5b5)?.cgColor
             labelBtn.setTitle("广告", for: UIControlState.normal)
             labelBtn.setTitleColor(UIColor(hex: 0xb5b5b5), for: UIControlState.normal)
+            labelBtn.backgroundColor = .clear
         }
     }
     

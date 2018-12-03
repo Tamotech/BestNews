@@ -21,6 +21,9 @@ class TopicBannerCell: UITableViewCell, UICollectionViewDelegate, UICollectionVi
     
     @IBOutlet weak var collectionViewHeight: NSLayoutConstraint!
     
+    @IBOutlet weak var iconImg: UIImageView!
+    
+    
     var selectOneChannel: SelectOneChannelCallback?
     
     
@@ -33,7 +36,7 @@ class TopicBannerCell: UITableViewCell, UICollectionViewDelegate, UICollectionVi
         collectionView.delegate = self
         collectionView.dataSource = self
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.itemSize = CGSize(width: 160, height: 92)
+        layout.itemSize = CGSize(width: 160, height: 137)
         layout.minimumLineSpacing = 10
         layout.minimumInteritemSpacing = 10
         
@@ -48,8 +51,8 @@ class TopicBannerCell: UITableViewCell, UICollectionViewDelegate, UICollectionVi
             collectionViewHeight.constant = 137
         }
         else {
-            (collectionView.collectionViewLayout as! UICollectionViewFlowLayout).itemSize = CGSize(width: 160, height: 92)
-            collectionViewHeight.constant = 92
+            (collectionView.collectionViewLayout as! UICollectionViewFlowLayout).itemSize = CGSize(width: 160, height: 137)
+            collectionViewHeight.constant = 137
         }
         collectionView.reloadData()
     }
