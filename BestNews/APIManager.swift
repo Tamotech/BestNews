@@ -15,8 +15,13 @@ class APIManager: NSObject {
 
     
     static let shareInstance:APIManager = APIManager()
-
+    #if DEBUG
+    let baseUrl:String = "http://xhfmedia.com:8080"
+    #else
     let baseUrl:String = "http://xhfmedia.com"
+    #endif
+    
+    
     var headers: HTTPHeaders = [
         "device": "app",
         "X-Requested-With":"XMLHttpRequest"

@@ -263,6 +263,7 @@
 		CC0BFA96206746D10024252B /* ShareAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0BFA94206746D10024252B /* ShareAppViewController.swift */; };
 		CC0BFA97206746D10024252B /* ShareAppViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC0BFA95206746D10024252B /* ShareAppViewController.xib */; };
 		CC0DC8F420AC8C06007EF02D /* baseHtml.html in Resources */ = {isa = PBXBuildFile; fileRef = CC0DC8F320AC8C06007EF02D /* baseHtml.html */; };
+		CC11805521B6D367007D7097 /* AppBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC11805421B6D367007D7097 /* AppBannerView.swift */; };
 		CC15D0D320AA62AC00515E76 /* HistoryRecordListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC15D0D220AA62AC00515E76 /* HistoryRecordListController.swift */; };
 		CC2906C91F6599C7001894DA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2906C81F6599C7001894DA /* AppDelegate.swift */; };
 		CC2906D21F6599C7001894DA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC2906D11F6599C7001894DA /* Assets.xcassets */; };
@@ -634,6 +635,7 @@
 		CC0BFA94206746D10024252B /* ShareAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareAppViewController.swift; sourceTree = "<group>"; };
 		CC0BFA95206746D10024252B /* ShareAppViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShareAppViewController.xib; sourceTree = "<group>"; };
 		CC0DC8F320AC8C06007EF02D /* baseHtml.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = baseHtml.html; sourceTree = "<group>"; };
+		CC11805421B6D367007D7097 /* AppBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBannerView.swift; sourceTree = "<group>"; };
 		CC15D0D220AA62AC00515E76 /* HistoryRecordListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryRecordListController.swift; sourceTree = "<group>"; };
 		CC2906C51F6599C7001894DA /* BestNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BestNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC2906C81F6599C7001894DA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -1009,6 +1011,7 @@
 			children = (
 				5A690B221FAA0394008FF1EC /* YLCycleCell.swift */,
 				5A690B231FAA0394008FF1EC /* YLCycleView.swift */,
+				CC11805421B6D367007D7097 /* AppBannerView.swift */,
 			);
 			path = CircleScrollView;
 			sourceTree = "<group>";
@@ -1802,11 +1805,11 @@
 				"${BUILT_PRODUCTS_DIR}/DynamicBlurView/DynamicBlurView.framework",
 				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/ImagePicker/ImagePicker.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/PopupDialog/PopupDialog.framework",
 				"${BUILT_PRODUCTS_DIR}/Presentr/Presentr.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
@@ -1819,11 +1822,11 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DynamicBlurView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ImagePicker.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PopupDialog.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Presentr.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
@@ -1993,6 +1996,7 @@
 				CCDB6D461F7A28A20012432E /* BaseWKWebViewController.swift in Sources */,
 				5A32A70F1F93353700773884 /* BaseSegmentControl.swift in Sources */,
 				5A8B8691200F728D0023F584 /* AdvertiseModel.swift in Sources */,
+				CC11805521B6D367007D7097 /* AppBannerView.swift in Sources */,
 				5A8364CC1FFB0005001AD740 /* ImageSelectSheetView.swift in Sources */,
 				CC2906F21F659F58001894DA /* ConstantHelper.swift in Sources */,
 				5AF9CE3D1F814880002AA4A6 /* ProfileCenterCell.swift in Sources */,

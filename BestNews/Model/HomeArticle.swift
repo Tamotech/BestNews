@@ -120,7 +120,7 @@ class HomeArticleList: HandyJSON {
     /// 获取专题id
     func getChannelTitle(list: [HomeArticle]) -> String? {
         for (_, v) in channelArticleList.enumerated() {
-            if v.value == list {
+            if v.value == list && list.count > 0 {
                 return v.key
             }
         }

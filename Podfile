@@ -18,7 +18,7 @@ target 'BestNews' do
    pod 'WechatOpenSDK'
    pod 'IQKeyboardManagerSwift'
    pod 'CRRefresh'
-   pod 'ImagePicker'
    pod 'UMengAnalytics'
    pod 'JPush'
+   pod 'SDWebImage'
 end

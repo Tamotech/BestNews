@@ -70,6 +70,7 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         stopTimer()
+        headerBannerView.resetContentOffset()
     }
     
     func setupTimer() {

@@ -7,7 +7,6 @@ PODS:
   - CRRefresh (1.1.2)
   - DynamicBlurView (3.0.1)
   - HandyJSON (4.2.0)
-  - ImagePicker (3.1.0)
   - IQKeyboardManagerSwift (6.2.0)
   - JCore (1.2.5)
   - JPush (3.1.1.1):
@@ -17,6 +16,9 @@ PODS:
   - PopupDialog (0.9.1):
     - DynamicBlurView (~> 3.0.1)
   - Presentr (1.9)
+  - SDWebImage (4.4.2):
+    - SDWebImage/Core (= 4.4.2)
+  - SDWebImage/Core (4.4.2)
   - SnapKit (4.2.0)
   - SwiftyJSON (4.2.0)
   - UMengAnalytics (4.2.4)
@@ -28,12 +30,12 @@ DEPENDENCIES:
   - AMPopTip
   - CRRefresh
   - HandyJSON
-  - ImagePicker
   - IQKeyboardManagerSwift
   - JPush
   - Kingfisher
   - PopupDialog
   - Presentr
+  - SDWebImage
   - SnapKit
   - SwiftyJSON
   - UMengAnalytics
@@ -47,7 +49,6 @@ SPEC REPOS:
     - CRRefresh
     - DynamicBlurView
     - HandyJSON
-    - ImagePicker
     - IQKeyboardManagerSwift
     - JCore
     - JPush
@@ -55,6 +56,7 @@ SPEC REPOS:
     - ObjectMapper
     - PopupDialog
     - Presentr
+    - SDWebImage
     - SnapKit
     - SwiftyJSON
     - UMengAnalytics
@@ -67,7 +69,6 @@ SPEC CHECKSUMS:
   CRRefresh: d2981e419e87b0868c19f8b1f8f562d8704f6db3
   DynamicBlurView: b1df5415f9bd31897549e5d7077e5ec120a4d636
   HandyJSON: 9dfc026c7d7adc1f0f8ba8b181495f0e0763b0f4
-  ImagePicker: db1fd7626337b2577c523bef5f499bbbe5a37079
   IQKeyboardManagerSwift: b07ccf9d8cafe993dcd6cb794eb4ba34611a0c4e
   JCore: 14706de2640b25fb77dbd02332696491407f37c9
   JPush: 25dd9013fbe106082c14f9f30a82364ee98852fb
@@ -75,11 +76,12 @@ SPEC CHECKSUMS:
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
   PopupDialog: 03985b669c29802661c187513bf827340db1ae4d
   Presentr: 7078d7eb5d1661ebeaae60c9e42a1e534de1b993
+  SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
   UMengAnalytics: ef8d45f94c0e5771dc364cf6a5731d9d3b101da2
   WechatOpenSDK: 3117412f8aafde4758cac1e8d20b93c67cafcfef
 
-PODFILE CHECKSUM: ae9e0caf79ca9f51af249ad2ff62646643046df6
+PODFILE CHECKSUM: 77ba9378b5792ec03a693210d5ea1fa5452f3cb8
 
 COCOAPODS: 1.5.3

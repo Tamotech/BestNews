@@ -63,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, TencentSes
             JPUSHService.register(forRemoteNotificationTypes: type, categories: nil)
         }
         
-        JPUSHService.setup(withOption: launchOptions, appKey: jPushKey, channel: "app store", apsForProduction: true)
+        JPUSHService.setup(withOption: launchOptions, appKey: jPushKey, channel: "app store", apsForProduction: !debugEnv)
         NotificationCenter.default.addObserver(self, selector: #selector(networkDidReceiveMessage(_:)), name: NSNotification.Name.jpfNetworkDidReceiveMessage, object: nil)
         
         
@@ -310,7 +310,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, TencentSes
         else if type == "livestart" {
             NotificationCenter.default.post(name: kLiveDidStartNotify, object: extra)
         }
-        
+        else if type == "messagerecall" {
+            NotificationCenter.default.post(name: kLiveDidStartNotify, object: extra)
+        }
+
     }
     
     ///检查版本更新

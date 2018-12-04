@@ -224,6 +224,7 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
         commentBarChangeState(false)
         
         NotificationCenter.default.addObserver(self, selector: #selector(liveDidEndNoti(noti:)), name: kLiveDidEndNotify, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(liveDidCllbackMsgNoti(_:)), name: kLiveDidCallbackNotify, object: nil)
         
         //禁止屏
         UIApplication.shared.isIdleTimerDisabled = true
@@ -308,6 +309,18 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
             }
         }
         
+    }
+    
+    /// 消息撤回
+    func liveDidCllbackMsgNoti(_ sender: Notification) {
+        if sender.object == nil || self.liveModel == nil {
+            return
+        }
+        let obj = sender.object as! [String: String]
+        if let id = obj["id"] {
+            anchorList = anchorList.filter{"\($0.messageId)" == id}
+            tableView1.reloadData()
+        }
     }
    
     ///设置播放视图

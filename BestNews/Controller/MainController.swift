@@ -63,6 +63,14 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
         NotificationCenter.default.addObserver(self, selector: #selector(loginStatusChangeNotifi(_:)), name: kUserLoginStatusChangeNoti, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(networkFailNoti(_:)), name: kNetFailNotify, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(needReloadData(_:)), name: kTapReloadNotify, object: nil)
+        
+        #if DEBUG
+        let lb = UILabel(frame: CGRect(x: 20, y: 100, width: 200, height: 100))
+        lb.textColor = .red
+        lb.font = UIFont.systemFont(ofSize: 30, weight: UIFontWeightSemibold)
+        lb.text = "测试环境"
+        keyWindow?.addSubview(lb)
+        #endif
     }
     
     

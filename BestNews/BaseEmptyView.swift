@@ -19,7 +19,8 @@ class BaseEmptyView: UIView {
         lb.textColor = UIColor(hexString: "b5b5b5")
         lb.numberOfLines = 0
         lb.textAlignment = .center
-        lb.font = UIFont.systemFont(ofSize: 14)
+        lb.font = UIFont.systemFont(ofSize: 12)
+        lb.textAlignment = .center
         return lb
     }()
     

@@ -52,6 +52,9 @@ extension YLCycleCell {
         adLabel.layer.cornerRadius = 4
         adLabel.textColor = UIColor(white: 1, alpha: 0.6)
         adLabel.layer.borderColor = UIColor(white: 1, alpha: 0.6).cgColor
+        adLabel.text = "广告"
+        adLabel.font = UIFont.systemFont(ofSize: 12)
+        adLabel.textAlignment = .center
 
         contentView.addSubview(iconImageView)
         contentView.addSubview(bottomView)

@@ -15,8 +15,19 @@ let qqKey = "VkRdgEBjxTriHGiE"
 let weiboAppid = "2973921044"
 let weiboKey = "3b47f9bec148972d0dc4e0e31afbea58"
 let aliPayAppid = "2017122000999924"
+
+
+#if DEBUG
+let rongyunAppKey = "k51hidwqknfrb"
 let jPushKey = "d5db367eb1abec4c03a051dc"
 let jPushSecret = "8be34e6163e6b1a40f6df5f9"
+let debugEnv = true
+#else
+let rongyunAppKey = "tdrvipkstqg35"
+let jPushKey = "d5db367eb1abec4c03a051dc"
+let jPushSecret = "8be34e6163e6b1a40f6df5f9"
+let debugEnv = false
+#endif
 
 ///屏幕适配
 ///去年适配的iPhoneX 的分辨率：2436 * 1125 || pt: 812 * 375
@@ -46,6 +57,7 @@ let kSwitchTabbarItemNotify = Notification.Name("switch_tabbar_item_noti")
 let kDidSwitchNavTitleNotify = Notification.Name("switch_nav_title_item_noti")
 let kLiveDidEndNotify = Notification.Name("live_did_end_noti")
 let kLiveDidStartNotify = Notification.Name("live_did_start_noti")
+let kLiveDidCallbackNotify = Notification.Name("live_did_callback_noti")
 let kNetFailNotify = Notification.Name("network_fail_noti")
 let kTapReloadNotify = Notification.Name("tap_reloaddata_noti")
 

@@ -78,7 +78,7 @@ class ConversationClientManager: NSObject {
     
     func initSDK() {
         
-        RCIM.shared().initWithAppKey("tdrvipkstqg35")
+        RCIM.shared().initWithAppKey(rongyunAppKey)
         SessionManager.sharedInstance.initRMFlag = true
         SessionManager.sharedInstance.getChatroomToken {
             [weak self](token, userid, success) in

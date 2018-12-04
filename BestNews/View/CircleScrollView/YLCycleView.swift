@@ -220,7 +220,10 @@ extension YLCycleView {
         cycleTimer = nil
     }
     @objc fileprivate func scrollToNextPage() {
-        let currentOffsetX = collectionView.contentOffset.x
+        var currentOffsetX = collectionView.contentOffset.x
+        if Int(currentOffsetX) % Int(screenWidth) > 2 {
+            currentOffsetX = currentOffsetX - CGFloat(Int(currentOffsetX) % Int(screenWidth))
+        }
         let offsetX = Int(currentOffsetX + collectionView.bounds.width) %  Int(collectionView.bounds.width * CGFloat(self.titles?.count ?? 1))
         //滚动到该位置
         collectionView.setContentOffset(CGPoint(x: offsetX, y: 0), animated: true)
@@ -238,5 +241,11 @@ extension YLCycleView {
             delegate?.clickedCycleView(self, selectedIndex: pageControl.currentPage)
         }
         print("点击了第: \(pageControl.currentPage)页")
+    }
+    
+    
+    /// 重置scrollView的offset
+    public func resetContentOffset() {
+        collectionView.contentOffset = CGPoint.zero
     }
 }
