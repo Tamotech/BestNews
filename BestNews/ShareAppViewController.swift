@@ -42,7 +42,7 @@ class ShareAppViewController: BaseViewController {
                 avatar.kf.setImage(with: rc)
             }
             nameLb.text = user.name
-            let link = "http://xhfmedia.com/app.htm?channelCode=1&uid=\(SessionManager.sharedInstance.userInfo!.id)"
+            let link = "\(baseUrlString)/app.htm?channelCode=1&uid=\(SessionManager.sharedInstance.userInfo!.id)"
             let im = UIImage.createQRForString(qrString: link)
             qrcodeIv.image = im
         }
@@ -69,7 +69,7 @@ class ShareAppViewController: BaseViewController {
         share.img = newImg
         vc.share = share
         if SessionManager.sharedInstance.userInfo != nil {
-            share.link = "http://xhfmedia.com/app.htm?channelCode=1&uid=\(SessionManager.sharedInstance.userInfo!.id)"
+            share.link = "\(baseUrlString)/app.htm?channelCode=1&uid=\(SessionManager.sharedInstance.userInfo!.id)"
         }
         presentr.viewControllerForContext = self
         customPresentViewController(presentr, viewController: vc, animated: true) {

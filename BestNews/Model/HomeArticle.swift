@@ -83,7 +83,7 @@ class HomeArticleList: HandyJSON {
     var list: [HomeArticle] = []
     
     ///横向专栏文章集 2018-11-27
-    var channelArticleList: [String: [HomeArticle]] = [:]
+    var channelArticleList: [HengChannelNewsModel] = []
     var synthesizeArr: [Any] = []
     
     func numOfSections() -> Int {
@@ -102,28 +102,21 @@ class HomeArticleList: HandyJSON {
     
     ///整合专题文章和首页文章为大列表 每三个插一个
     private func genSynthesizeArray() {
+        //过滤掉空文章集
+        channelArticleList = channelArticleList.filter{ $0.pageData.count > 0 }
         if synthesizeArr.count == list.count + channelArticleList.count {
             return
         }
         var index = 0
         var result: [Any] = list
-        for channelList in channelArticleList.values {
+        for channel in channelArticleList {
             index = index + 3
             if index >= result.count {
                 break
             }
-            result.insert(channelList, at: index)
+            result.insert(channel, at: index)
+            index = index + 1
         }
         synthesizeArr = result
-    }
-    
-    /// 获取专题id
-    func getChannelTitle(list: [HomeArticle]) -> String? {
-        for (_, v) in channelArticleList.enumerated() {
-            if v.value == list && list.count > 0 {
-                return v.key
-            }
-        }
-        return nil
     }
 }

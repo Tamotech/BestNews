@@ -52,6 +52,7 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
         updateBanner()
         self.reloadArticleList()
         self.loadSpecialCannelData()
+        self.loadHengSpecialCannelData()
         self.loadNavChannel()
         NotificationCenter.default.addObserver(self, selector: #selector(needReloadData(_:)), name: kTapReloadNotify, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.needReloadData(_:)), name: kAppDidBecomeActiveNotify, object: nil)
@@ -100,6 +101,7 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
     @objc func needReloadData(_ noti: Notification) {
         self.reloadArticleList()
         self.loadSpecialCannelData()
+        self.loadHengSpecialCannelData()
         self.loadNavChannel()
     }
     
@@ -127,6 +129,7 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
             [weak self] in
             self?.reloadArticleList()
             self?.loadSpecialCannelData()
+            self?.loadHengSpecialCannelData()
 //            self?.loadNavChannel()
             self?.updateBanner()
         }
@@ -234,20 +237,12 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
                 cell.updateCell(article: article)
                 return cell
             }
-            else if model is [HomeArticle] {
-                let articleList = model as! [HomeArticle]
-                let cid = self.articleList?.getChannelTitle(list: articleList)
-                var title = ""
-                for c in self.specialList {
-                    if c.id == cid {
-                        title = c.name
-                        break
-                    }
-                }
+            else if model is HengChannelNewsModel {
+                let channel = model as! HengChannelNewsModel
                 index = 0
                 let identifier = cellIdentifiers[index]
                 let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! TopicBannerCell
-                cell.updateCell(data: articleList, title: title)
+                cell.updateCell(data: channel.pageData, title: channel.name)
                 cell.selectOneChannel = {
                     [weak self] (data) in
                     if data is SpecialChannel {
@@ -278,20 +273,17 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
             if model is HomeArticle {
                 jumpToNewsDetail(article: model as! HomeArticle)
             }
-            else if model is [HomeArticle] {
-                if let id = self.articleList?.getChannelTitle(list: model as! [HomeArticle]) {
-                    var channel: SpecialChannel? = nil
-                    for c in self.specialList {
-                        if c.id == id {
-                            channel = c
-                            break
-                        }
-                    }
-                    let vc = SpecialChannelArticleListController()
-                    vc.channel = channel
-                    vc.entry = 1
-                    navigationController?.pushViewController(vc, animated: true)
-                }
+            else if model is HengChannelNewsModel {
+                let hm = model as! HengChannelNewsModel
+                let channel = SpecialChannel()
+                channel.id = hm.id
+                channel.name = hm.name
+                channel.fullname = hm.fullname
+                channel.preimgpath = hm.icon
+                let vc = SpecialChannelArticleListController()
+                vc.channel = channel
+                vc.entry = 1
+                navigationController?.pushViewController(vc, animated: true)
             }
         }
         
@@ -392,7 +384,7 @@ extension HomeContentViewController {
                 let oldList = self?.articleList
                 self?.articleList = data as? HomeArticleList
                 ///继承衣钵
-                self?.articleList?.channelArticleList = oldList?.channelArticleList ?? [:]
+                self?.articleList?.channelArticleList = oldList?.channelArticleList ?? []
                 self?.articleList?.synthesizeArr = oldList?.synthesizeArr ?? []
                 self?.tableView.reloadData()
             }
@@ -426,14 +418,25 @@ extension HomeContentViewController {
         APIRequest.getSpecialListAPI { [weak self](data) in
             if data != nil {
                 self?.specialList = data as! [SpecialChannel]
-                self?.tableView.reloadData()
                 HomeModel.shareInstansce.specilList1 = data as! [SpecialChannel]
-                ///加载横向文章集
-                for channel in self!.specialList {
-                    self?.loadArticleListWithChannel(channelID: channel.id)
-                }
+                self?.tableView.reloadData()
                 DispatchQueue.main.async {
                     self?.updateTitlesView()
+                }
+            }
+        }
+    }
+    
+    /// load data
+    func loadHengSpecialCannelData() {
+        APIRequest.getHengSpecialListAPI { [weak self](data) in
+            if data != nil {
+                if self?.articleList == nil {
+                    self?.articleList = HomeArticleList()
+                }
+                if let m = data as? [HengChannelNewsModel] {
+                    self?.articleList?.channelArticleList = m
+                    self?.tableView.reloadData()
                 }
             }
         }
@@ -448,12 +451,9 @@ extension HomeContentViewController {
             if self?.articleList == nil {
                 self?.articleList = HomeArticleList()
             }
-            if let m = data as? HomeArticleList {
-                ///防止重复
-                if !self!.articleList!.channelArticleList.keys.contains(channelID) {
-                    self?.articleList?.channelArticleList[channelID] = m.list
-                    self?.tableView.reloadData()
-                }
+            if let m = data as? [HengChannelNewsModel] {
+                self?.articleList?.channelArticleList = m
+                self?.tableView.reloadData()
             }
             
         }

@@ -289,6 +289,7 @@
 		CC29070F1F65A8B5001894DA /* BaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC29070E1F65A8B5001894DA /* BaseView.swift */; };
 		CC2907111F65AC08001894DA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC2907101F65AC08001894DA /* Main.storyboard */; };
 		CC2BA39A2195F915001F04B1 /* UIDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2BA3992195F915001F04B1 /* UIDeviceExtension.swift */; };
+		CC2DA8F821B8279A00D10A20 /* HengChannelNewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2DA8F721B8279900D10A20 /* HengChannelNewsModel.swift */; };
 		CC4D21752173603B00E18F2D /* NetworkFailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4D21732173603B00E18F2D /* NetworkFailViewController.swift */; };
 		CC4D21762173603B00E18F2D /* NetworkFailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC4D21742173603B00E18F2D /* NetworkFailViewController.xib */; };
 		CC70F5F920A69D4800E52A46 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC70F5F720A69D4800E52A46 /* AboutUsViewController.swift */; };
@@ -663,6 +664,7 @@
 		CC29070E1F65A8B5001894DA /* BaseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseView.swift; sourceTree = "<group>"; };
 		CC2907101F65AC08001894DA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		CC2BA3992195F915001F04B1 /* UIDeviceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDeviceExtension.swift; sourceTree = "<group>"; };
+		CC2DA8F721B8279900D10A20 /* HengChannelNewsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HengChannelNewsModel.swift; sourceTree = "<group>"; };
 		CC4D21732173603B00E18F2D /* NetworkFailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkFailViewController.swift; sourceTree = "<group>"; };
 		CC4D21742173603B00E18F2D /* NetworkFailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NetworkFailViewController.xib; sourceTree = "<group>"; };
 		CC70F5F720A69D4800E52A46 /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
@@ -1566,6 +1568,7 @@
 				5A026D8D1FE8954900B99466 /* HomeModel.swift */,
 				5A8B864B200EB6980023F584 /* HomeSearchModel.swift */,
 				5A8B8690200F728D0023F584 /* AdvertiseModel.swift */,
+				CC2DA8F721B8279900D10A20 /* HengChannelNewsModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1994,6 +1997,7 @@
 				5A90D0031F8138EE00F16869 /* OrgnizationListController.swift in Sources */,
 				5AC684811F7FFC2E006CEB53 /* ThreePhotosNewsCell.swift in Sources */,
 				CCDB6D461F7A28A20012432E /* BaseWKWebViewController.swift in Sources */,
+				CC2DA8F821B8279A00D10A20 /* HengChannelNewsModel.swift in Sources */,
 				5A32A70F1F93353700773884 /* BaseSegmentControl.swift in Sources */,
 				5A8B8691200F728D0023F584 /* AdvertiseModel.swift in Sources */,
 				CC11805521B6D367007D7097 /* AppBannerView.swift in Sources */,

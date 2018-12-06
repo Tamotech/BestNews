@@ -155,6 +155,20 @@ class APIRequest: NSObject {
         }
     }
     
+    /// 首页横向专题列表
+    class func getHengSpecialListAPI(result: @escaping JSONResult) {
+        let path = "/article/getIdxHengChannel.htm"
+        APIManager.shareInstance.postRequest(urlString: path, params: nil) { (JSON, code, msg) in
+            if code == 0 {
+                let data = [HengChannelNewsModel].deserialize(from: JSON!["data"].rawString())
+                result(data)
+            }
+            else {
+                result(nil)
+            }
+        }
+    }
+    
     /// 首页导航栏栏目
     class func getNavChannelListAPI(result: @escaping JSONResult) {
         let path = "/article/getNavChannel.htm"

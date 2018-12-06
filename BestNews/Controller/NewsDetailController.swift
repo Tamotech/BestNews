@@ -317,7 +317,7 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
         let vc = BaseShareViewController(nibName: "BaseShareViewController", bundle: nil)
         let share = ShareModel()
         share.title = article!.title
-        share.link = "http://xhfmedia.com/newsdetail.htm?id=\(articleId)"
+        share.link = "\(baseUrlString)/newsdetail.htm?id=\(articleId)"
         if articleHome != nil && articleHome!.preimglist.count > 0 {
             share.thumb = articleHome!.preimglist.first!
         }

@@ -25,7 +25,7 @@ class TopicImageCell: UICollectionViewCell {
         if data is SpecialChannel {
             let channel = data as! SpecialChannel
             let img = channel.preimgpath
-            let name = channel.fullname
+            let name = channel.name
             if img.count > 0 {
                 let rc = ImageResource(downloadURL: URL(string: img)!)
                 coverImageView.kf.setImage(with: rc)

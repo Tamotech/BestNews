@@ -311,7 +311,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, TencentSes
             NotificationCenter.default.post(name: kLiveDidStartNotify, object: extra)
         }
         else if type == "messagerecall" {
-            NotificationCenter.default.post(name: kLiveDidStartNotify, object: extra)
+            NotificationCenter.default.post(name: kLiveDidCallbackNotify, object: extra)
         }
 
     }

@@ -318,7 +318,14 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
         }
         let obj = sender.object as! [String: String]
         if let id = obj["id"] {
-            anchorList = anchorList.filter{"\($0.messageId)" == id}
+            print("===============================")
+            print(id)
+            print(anchorList.count)
+            print("--------分割--------")
+            _ = anchorList.map {print($0.messageUId)}
+            anchorList = anchorList.filter{"\($0.messageUId)" != id}
+            print(anchorList.count)
+            print("===============================")
             tableView1.reloadData()
         }
     }
@@ -714,7 +721,7 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
         let share = ShareModel()
         share.title = liveModel?.title ?? ""
         share.msg = "新华日报财经|视频栏目"
-        share.link = "http://xhfmedia.com/livedetail.htm?id=\(liveModel?.id ?? "")"
+        share.link = "\(baseUrlString)/livedetail.htm?id=\(liveModel?.id ?? "")"
         share.thumb = liveModel?.preimgpath ?? ""
         vc.share = share
         self.presentr.viewControllerForContext = self
@@ -1048,7 +1055,13 @@ extension ChatRoomViewController {
             }
         }
         else if message.targetId == liveModel!.chatroom_id_compere {
-            anchorList.append(message)
+            //防止重复
+            if !anchorList.contains(where: { (msg) -> Bool in
+                return msg.messageId == message.messageId
+            }) {
+                anchorList.append(message)
+            }
+            
             DispatchQueue.main.async {
                 if !self.tableView1.isHidden {
                     self.emptyView1.isHidden = self.anchorList.count > 0

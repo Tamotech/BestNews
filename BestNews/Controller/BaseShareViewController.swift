@@ -12,7 +12,7 @@ class ShareModel: NSObject {
     var title = "新华日报财经"
     var thumb = ""
     var msg = "新华日报财经"
-    var link = "http://xhfmedia.com/app.htm"
+    var link = "\(baseUrlString)/app.htm"
     var img: UIImage?
 }
 
