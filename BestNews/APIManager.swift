@@ -15,6 +15,7 @@ class APIManager: NSObject {
 
     
     static let shareInstance:APIManager = APIManager()
+    var tasks: [DataRequest] = []
     #if DEBUG
     let baseUrl:String = "http://xhfmedia.com:8080"
     #else
@@ -42,12 +43,11 @@ class APIManager: NSObject {
             url = baseUrl+urlString
         }
         
-        
         /// 一部分host 忽略其登录
         let loginBacknames = ["/member/countUserOPNum.htm", "/articleoperate/getSubscribeArticlePage.htm", "/articleoperate/getCollectArticlePage.htm", "/article/getAllChannnel.htm"]
         
-        Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers).responseJSON { (response) in
-            
+        let request =  Alamofire.request(url, method: .post, parameters: params, encoding: URLEncoding.default, headers: headers).responseJSON { (response) in
+            self.filterTasks()
             if let value = response.result.value {
                 
                 let resultDic = JSON(value)
@@ -69,11 +69,16 @@ class APIManager: NSObject {
                     result(resultDic, num.intValue, info.stringValue)
                 }
             }
-            else {
-                result(nil, -2222, "网络请求失败!")
-                NotificationCenter.default.post(name: kNetFailNotify, object: nil)
+            else if response.error != nil {
+                let error = response.error!
+                if (error as NSError).code != -999 {
+                    //非取消
+                    NotificationCenter.default.post(name: kNetFailNotify, object: nil)
+                    result(nil, -2222, "网络请求失败!")
+                }
             }
         }
+        tasks.append(request)
     }
     
     ///上传文件
@@ -114,4 +119,14 @@ class APIManager: NSObject {
         }
     }
 
+    
+    private func filterTasks() {
+        tasks = tasks.filter{[URLSessionTask.State.running, URLSessionTask.State.suspended].contains($0.task?.state)}
+    }
+    
+    ///取消所有网络请求
+    public func cancelAllTask() {
+        _ = tasks.map{$0.cancel()}
+        SwiftNotice.clear()
+    }
 }

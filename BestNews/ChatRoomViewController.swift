@@ -10,6 +10,7 @@ import UIKit
 import SnapKit
 import Kingfisher
 import WebKit
+import SwiftyJSON
 
 class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate, ConversationDelegate, RCIMClientReceiveMessageDelegate, UITextFieldDelegate, AliyunVodPlayerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -124,6 +125,8 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
     var rtimer: Timer?
     
     var playerBtn: UIButton?
+    ///撤回的消息列表
+    var recallMessages: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -240,6 +243,7 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
         }
         webView.loadHTMLString(liveModel?.webHtmlStr ?? "暂无介绍", baseURL: nil)
         loadLiveDetail()
+        loadRecallMessages()
     }
     
     
@@ -317,17 +321,23 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
             return
         }
         let obj = sender.object as! [String: String]
-        if let id = obj["id"] {
-            print("===============================")
-            print(id)
-            print(anchorList.count)
-            print("--------分割--------")
-            _ = anchorList.map {print($0.messageUId)}
-            anchorList = anchorList.filter{"\($0.messageUId)" != id}
-            print(anchorList.count)
-            print("===============================")
-            tableView1.reloadData()
-        }
+        anchorList = anchorList.filter({ (msg) -> Bool in
+            if let extra = (msg.content as? RCTextMessage)?.extra {
+                if let id = JSON(parseJSON: extra)["id"].rawString(),
+                   let mid2 = obj["id"] {
+                    if id == mid2 {
+                        RCIMClient.shared()?.recall(msg, pushContent: "消息撤回", success: { (msg) in
+                            print("消息撤回成功-----\(id)")
+                        }, error: { (error) in
+                            print("消息撤回失败---\(error.rawValue)")
+                        })
+                        return false
+                    }
+                }
+            }
+            return true
+        })
+        tableView1.reloadData()
     }
    
     ///设置播放视图
@@ -616,7 +626,7 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
             senderUserInfo.name = username
             senderUserInfo.portraitUri = headimg
             msg?.senderUserInfo = senderUserInfo
-            msg?.extra = "{\"messageType\":\"compere\",\"date\":\(Int(Date().timeIntervalSince1970)*1000),\"img\":\"\",\"userName\":\"\(username)\",\"userImg\":\"\(headimg)\"}"
+            msg?.extra = "{\"messageType\":\"compere\",\"date\":\(Int(Date().timeIntervalSince1970)*1000),\"img\":\"\",\"userName\":\"\(username)\",\"userImg\":\"\(headimg)\")}"
             
             RCIMClient.shared().sendMessage(RCConversationType.ConversationType_CHATROOM, targetId: liveModel?.chatroom_id_compere, content: msg, pushContent: contentTf.text, pushData: "", success: { [weak self](id) in
                 print("发送消息成功, --- \(id)")
@@ -1040,7 +1050,9 @@ extension ChatRoomViewController {
     
     /// 接收到消息
     func onReceived(_ message: RCMessage!, left nLeft: Int32, object: Any!) {
-        
+        print(message.sentStatus.rawValue)
+        print(message.receivedStatus.rawValue)
+        print(message.content.rawJSONData)
         if message.targetId == liveModel!.chatroom_id_group {
             list.append(message)
             DispatchQueue.main.async {
@@ -1061,8 +1073,8 @@ extension ChatRoomViewController {
             }) {
                 anchorList.append(message)
             }
-            
             DispatchQueue.main.async {
+                self.filterMessage()
                 if !self.tableView1.isHidden {
                     self.emptyView1.isHidden = self.anchorList.count > 0
                 }
@@ -1070,6 +1082,10 @@ extension ChatRoomViewController {
                 //滚动到底部
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+0.5, execute: {
                     DispatchQueue.main.async {
+                        if self.tableView1.numberOfRows(inSection: 0) < self.anchorList.count ||
+                            self.anchorList.count == 0 {
+                            return
+                        }
                         self.tableView1.scrollToRow(at: IndexPath.init(row: self.anchorList.count - 1, section: 0), at: UITableViewScrollPosition.bottom, animated: true)
                     }
                 })
@@ -1078,6 +1094,34 @@ extension ChatRoomViewController {
         
     }
     
+    
+    func loadRecallMessages() {
+        let path = "/chatroom/getChatRoomRecallMessageidList.htm?id=\(liveModel?.id ?? "")"
+        APIManager.shareInstance.postRequest(urlString: path, params: nil) { [weak self] (json, code, msg) in
+            if let arr = json!["data"].arrayObject as? [String] {
+                print("过滤的消息: \(arr)")
+                self?.recallMessages = arr
+                self?.filterMessage()
+            }
+        }
+    }
+    
+    ///过滤撤回的消息
+    func filterMessage() {
+        anchorList = anchorList.filter({!recallMessages.contains(getIDFromMessage(msg: $0) ?? "")})
+        self.emptyView1.isHidden = self.anchorList.count > 0
+        tableView1.reloadData()
+    }
+    
+    ///获取消息id
+    func getIDFromMessage(msg: RCMessage) -> String? {
+        if let extra = (msg.content as? RCTextMessage)?.extra {
+            if let id = JSON(parseJSON: extra)["id"].rawString() {
+                return id
+            }
+        }
+        return nil
+    }
 }
 
 

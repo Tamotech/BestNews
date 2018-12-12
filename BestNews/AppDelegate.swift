@@ -10,6 +10,7 @@ import UIKit
 import IQKeyboardManagerSwift
 import SwiftyJSON
 import UserNotifications
+import Alamofire
 
 let kFirstLoadApp = "firstLoadAppKey"
 let umengAppKey = "5a6b6592b27b0a1c6200049d"
@@ -81,6 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, TencentSes
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        APIManager.shareInstance.cancelAllTask()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {

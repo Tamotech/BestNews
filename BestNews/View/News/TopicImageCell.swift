@@ -28,7 +28,7 @@ class TopicImageCell: UICollectionViewCell {
             let name = channel.name
             if img.count > 0 {
                 let rc = ImageResource(downloadURL: URL(string: img)!)
-                coverImageView.kf.setImage(with: rc)
+                coverImageView.kf.setImage(with: rc, placeholder: #imageLiteral(resourceName: "m231_default"), options: nil, progressBlock: nil, completionHandler: nil)
             }
             else {
                 coverImageView.image = #imageLiteral(resourceName: "m24_default")
@@ -37,9 +37,10 @@ class TopicImageCell: UICollectionViewCell {
         }
         else if data is HomeArticle {
             let article = data as! HomeArticle
-            if let url = article.preimglist.first {
+            if let url = article.preimglist.first,
+                url.count > 0 {
                 let rc = ImageResource(downloadURL: URL(string: url)!)
-                coverImageView.kf.setImage(with: rc)
+                coverImageView.kf.setImage(with: rc, placeholder: #imageLiteral(resourceName: "m231_default"), options: nil, progressBlock: nil, completionHandler: nil)
             }
             else {
                 coverImageView.image = #imageLiteral(resourceName: "m24_default")

@@ -44,10 +44,10 @@ class SpecialChannelArticleListController: BaseViewController, UITableViewDelega
         super.viewDidLoad()
         
         if channel != nil {
-            showCustomTitle(title: channel!.fullname)
+            showCustomTitle(title: channel!.name)
         }
         else if newsChannel != nil {
-            showCustomTitle(title: newsChannel!.fullname)
+            showCustomTitle(title: newsChannel!.name)
         }
         setupView()
         if entry == 1 {
