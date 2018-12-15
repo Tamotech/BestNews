@@ -483,7 +483,7 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
         let vc = BaseShareViewController(nibName: "BaseShareViewController", bundle: nil)
         let share = ShareModel()
         share.title = liveModel?.title ?? ""
-        share.msg = "新华财经日报"
+        share.msg = "新华日报财经"
         share.thumb = liveModel?.preimgpath ?? ""
         vc.share = share
         self.presentr.viewControllerForContext = self

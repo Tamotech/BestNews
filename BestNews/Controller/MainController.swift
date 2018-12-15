@@ -33,6 +33,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
     var adSeconds: Int = 5
     var adView: UIView?
     var skipADBtn: UIButton?
+    var logoUrl: String?
     
     
     lazy var blackLayer: CAGradientLayer = {
@@ -59,6 +60,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
         
         self.loadHomeAD()
         self.readADModel()
+        self.getLogoInfo()
     
         NotificationCenter.default.addObserver(self, selector: #selector(loginStatusChangeNotifi(_:)), name: kUserLoginStatusChangeNoti, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(networkFailNoti(_:)), name: kNetFailNotify, object: nil)
@@ -303,45 +305,6 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
         self.navBarTurnBg(white: true)
     }
     
-    ///V1.0 隐藏 首页搜索
-    /*func setupTitleView() {
-        
-        let barView = UIView(frame: .zero)
-        barView.backgroundColor = UIColor.white
-        self.view.addSubview(barView)
-        barView.snp.makeConstraints { (make) in
-            make.left.top.right.equalTo(0)
-            make.height.equalTo(64)
-        }
-        
-        let logo = UIImageView(frame: .zero)
-        logo.image = #imageLiteral(resourceName: "xinhua_logo_red")
-        logo.contentMode = .scaleAspectFit
-        barView.addSubview(logo)
-        logo.snp.makeConstraints { (make) in
-            make.left.equalTo(10)
-            make.top.equalTo(20)
-            make.width.equalTo(80)
-            make.height.equalTo(44)
-        }
-        
-        let menubt = UIButton(frame: .zero)
-        menubt.setImage(#imageLiteral(resourceName: "icon_menu_dark"), for: .normal)
-        menubt.addTarget(self, action: #selector(handleTapMenuItem(sender:)), for: UIControlEvents.touchUpInside)
-        barView.addSubview(menubt)
-        menubt.snp.makeConstraints { (make) in
-            make.right.equalTo(-4)
-            make.bottom.equalTo(0)
-            make.size.equalTo(CGSize(width: 50, height: 40))
-        }
-        
-        self.barView.removeFromSuperview()
-        self.navBarView = barView
-        self.logoView = logo
-        self.menuBt = menubt
-        
-    }*/
-    
     func setupNavTitleView() {
         if titleView?.superview != nil {
             titleView?.removeFromSuperview()
@@ -472,7 +435,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
                 self.navBarView?.backgroundColor = .white
                 self.blackLayer.opacity = 0
             })
-            logoView?.image = #imageLiteral(resourceName: "xinhua_logo_red")
+            logoView?.sd_setImage(with: URL(string: logoUrl ?? ""), completed: nil)
             searchButton?.setTitleColor(gray181, for: UIControlState.normal)
             searchButton?.setImage(#imageLiteral(resourceName: "m221_search_black"), for: UIControlState.normal)
             menuBt?.setImage(#imageLiteral(resourceName: "icon_menu_dark"), for: UIControlState.normal)
@@ -501,10 +464,10 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
     func logoTurnColor(_ red: Bool) {
         
         if red {
-            logoView?.image = #imageLiteral(resourceName: "xinhua_logo_red")
+            logoView?.sd_setImage(with: URL(string: logoUrl ?? ""), completed: nil)
         }
         else {
-            logoView?.image = #imageLiteral(resourceName: "xinhua_logo_white")
+            logoView?.sd_setImage(with: URL(string: logoUrl ?? ""), completed: nil)
         }
     }
 
@@ -644,4 +607,14 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
         }
     }
     
+    ///获取首页logo
+    func getLogoInfo() {
+        let path = "/config/appLogo.htm"
+        APIManager.shareInstance.postRequest(urlString: path, params: nil) { [weak self] (json, code, msg) in
+            if let data = json?["data"]["ios"]["size_3x"].rawString() {
+                self?.logoUrl = data
+                self?.logoView?.sd_setImage(with: URL(string: data), completed: nil)
+            }
+        }
+    }
 }

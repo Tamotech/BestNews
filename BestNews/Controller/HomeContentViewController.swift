@@ -19,7 +19,7 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
     var timer: Timer?
     
     lazy var headerBannerView: YLCycleView = {
-       let v = YLCycleView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenWidth*166.0/375.0), images:["m24_default"], titles: [""])
+       let v = YLCycleView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenWidth*182.0/375.0), images:["m24_default"], titles: [""])
         //顶部加一个 渐变黑色蒙版
         let maskLayer = CAGradientLayer()
         maskLayer.frame = CGRect(x: 0, y: 0, width: screenWidth, height: 64)
@@ -52,7 +52,6 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
         updateBanner()
         self.reloadArticleList()
         self.loadSpecialCannelData()
-        self.loadHengSpecialCannelData()
         self.loadNavChannel()
         NotificationCenter.default.addObserver(self, selector: #selector(needReloadData(_:)), name: kTapReloadNotify, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.needReloadData(_:)), name: kAppDidBecomeActiveNotify, object: nil)
@@ -101,7 +100,6 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
     @objc func needReloadData(_ noti: Notification) {
         self.reloadArticleList()
         self.loadSpecialCannelData()
-        self.loadHengSpecialCannelData()
         self.loadNavChannel()
     }
     
@@ -129,7 +127,6 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
             [weak self] in
             self?.reloadArticleList()
             self?.loadSpecialCannelData()
-            self?.loadHengSpecialCannelData()
 //            self?.loadNavChannel()
             self?.updateBanner()
         }
@@ -153,7 +150,7 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
                 wkvc.shareEnable = true
                 let share = ShareModel()
                 share.title = article.title
-                share.msg = "新华财经日报"
+                share.msg = "新华日报财经"
                 share.link = article.linkurl
                 if article.preimglist.count > 0 {
                     share.thumb = article.preimglist.first!
@@ -237,12 +234,13 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
                 cell.updateCell(article: article)
                 return cell
             }
-            else if model is HengChannelNewsModel {
-                let channel = model as! HengChannelNewsModel
+            else if model is [HomeArticle] {
+                let articleList = model as! [HomeArticle]
+                let c = self.articleList?.getChannelTitle(list: articleList)
                 index = 0
                 let identifier = cellIdentifiers[index]
                 let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as! TopicBannerCell
-                cell.updateCell(data: channel.pageData, title: channel.name)
+                cell.updateCell(data: articleList, title: c?.name ?? "专题")
                 cell.selectOneChannel = {
                     [weak self] (data) in
                     if data is SpecialChannel {
@@ -273,17 +271,13 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
             if model is HomeArticle {
                 jumpToNewsDetail(article: model as! HomeArticle)
             }
-            else if model is HengChannelNewsModel {
-                let hm = model as! HengChannelNewsModel
-                let channel = SpecialChannel()
-                channel.id = hm.id
-                channel.name = hm.name
-                channel.fullname = hm.fullname
-                channel.preimgpath = hm.icon
-                let vc = SpecialChannelArticleListController()
-                vc.channel = channel
-                vc.entry = 1
-                navigationController?.pushViewController(vc, animated: true)
+            else if model is [HomeArticle] {
+                if let channel = self.articleList?.getChannelTitle(list: model as! [HomeArticle]) {
+                    let vc = SpecialChannelArticleListController()
+                    vc.channel = channel
+                    vc.entry = 1
+                    navigationController?.pushViewController(vc, animated: true)
+                }
             }
         }
         
@@ -295,7 +289,7 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
             wkvc.shareEnable = true
             let share = ShareModel()
             share.title = article.title
-            share.msg = "新华财经日报"
+            share.msg = "新华日报财经"
             share.link = article.linkurl
             if article.preimglist.count > 0 {
                 share.thumb = article.preimglist.first!
@@ -384,7 +378,7 @@ extension HomeContentViewController {
                 let oldList = self?.articleList
                 self?.articleList = data as? HomeArticleList
                 ///继承衣钵
-                self?.articleList?.channelArticleList = oldList?.channelArticleList ?? []
+                self?.articleList?.channelArticleList = oldList?.channelArticleList ?? [:]
                 self?.articleList?.synthesizeArr = oldList?.synthesizeArr ?? []
                 self?.tableView.reloadData()
             }
@@ -413,30 +407,27 @@ extension HomeContentViewController {
         }
     }
     
-    /// load data
+    /// 横向专题 专题
     func loadSpecialCannelData() {
         APIRequest.getSpecialListAPI { [weak self](data) in
             if data != nil {
                 self?.specialList = data as! [SpecialChannel]
-                HomeModel.shareInstansce.specilList1 = data as! [SpecialChannel]
+                HomeModel.shareInstansce.specilList = data as! [SpecialChannel]
                 self?.tableView.reloadData()
                 DispatchQueue.main.async {
                     self?.updateTitlesView()
                 }
             }
         }
-    }
-    
-    /// load data
-    func loadHengSpecialCannelData() {
-        APIRequest.getHengSpecialListAPI { [weak self](data) in
+        APIRequest.getHengChannelListAPI{ [weak self](data) in
             if data != nil {
-                if self?.articleList == nil {
-                    self?.articleList = HomeArticleList()
+                HomeModel.shareInstansce.specilList1 = data as! [SpecialChannel]
+                ///加载横向文章集
+                for channel in HomeModel.shareInstansce.specilList1 {
+                    self?.loadArticleListWithChannel(channelID: channel.id)
                 }
-                if let m = data as? [HengChannelNewsModel] {
-                    self?.articleList?.channelArticleList = m
-                    self?.tableView.reloadData()
+                DispatchQueue.main.async {
+                    self?.updateTitlesView()
                 }
             }
         }
@@ -451,9 +442,12 @@ extension HomeContentViewController {
             if self?.articleList == nil {
                 self?.articleList = HomeArticleList()
             }
-            if let m = data as? [HengChannelNewsModel] {
-                self?.articleList?.channelArticleList = m
-                self?.tableView.reloadData()
+            if let m = data as? HomeArticleList {
+                ///防止重复
+                if !self!.articleList!.channelArticleList.keys.contains(channelID) && m.list.count > 0 {
+                    self?.articleList?.channelArticleList[channelID] = m.list
+                    self?.tableView.reloadData()
+                }
             }
             
         }

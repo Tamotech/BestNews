@@ -71,7 +71,7 @@ class APIManager: NSObject {
             }
             else if response.error != nil {
                 let error = response.error!
-                if (error as NSError).code != -999 {
+                if (error as NSError).code != -999 && !urlString.contains("getHangqing.htm") {
                     //非取消
                     NotificationCenter.default.post(name: kNetFailNotify, object: nil)
                     result(nil, -2222, "网络请求失败!")

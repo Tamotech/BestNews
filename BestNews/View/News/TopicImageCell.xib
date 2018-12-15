@@ -12,10 +12,10 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="Cell" id="gTV-IL-0wX" customClass="TopicImageCell" customModule="BestNews" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="148" height="111"/>
+            <rect key="frame" x="0.0" y="0.0" width="148" height="115"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="148" height="111"/>
+                <rect key="frame" x="0.0" y="0.0" width="148" height="115"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="m24_default" translatesAutoresizingMaskIntoConstraints="NO" id="eIW-wq-hgm">
@@ -30,7 +30,7 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="专题" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZi-4n-ETQ">
-                        <rect key="frame" x="0.0" y="87.5" width="148" height="19.5"/>
+                        <rect key="frame" x="0.0" y="89.5" width="148" height="21.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
@@ -39,19 +39,19 @@
             </view>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="HZi-4n-ETQ" secondAttribute="trailing" id="9lq-e0-Fog"/>
-                <constraint firstItem="HZi-4n-ETQ" firstAttribute="top" secondItem="eIW-wq-hgm" secondAttribute="bottom" constant="4" id="BFe-Mx-2hI"/>
+                <constraint firstItem="HZi-4n-ETQ" firstAttribute="top" secondItem="eIW-wq-hgm" secondAttribute="bottom" constant="6" id="BFe-Mx-2hI"/>
                 <constraint firstItem="eIW-wq-hgm" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="D5D-vp-u9R"/>
                 <constraint firstItem="eIW-wq-hgm" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="VUf-SJ-Ucp"/>
                 <constraint firstItem="HZi-4n-ETQ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="WJR-zk-JVN"/>
                 <constraint firstAttribute="bottom" secondItem="HZi-4n-ETQ" secondAttribute="bottom" constant="4" id="fFa-In-U2u"/>
                 <constraint firstItem="eIW-wq-hgm" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="tNR-R1-l2s"/>
             </constraints>
-            <size key="customSize" width="148" height="111"/>
+            <size key="customSize" width="148" height="115"/>
             <connections>
                 <outlet property="coverImageView" destination="eIW-wq-hgm" id="QPZ-db-UOa"/>
                 <outlet property="topicLabel" destination="HZi-4n-ETQ" id="3qZ-YL-pfn"/>
             </connections>
-            <point key="canvasLocation" x="-27.199999999999999" y="73.313343328335833"/>
+            <point key="canvasLocation" x="-27.199999999999999" y="75.112443778110944"/>
         </collectionViewCell>
     </objects>
     <resources>

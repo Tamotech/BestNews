@@ -34,6 +34,7 @@ class TopicImageCell: UICollectionViewCell {
                 coverImageView.image = #imageLiteral(resourceName: "m24_default")
             }
             topicLabel.text = name
+            topicLabel.numberOfLines = 1
         }
         else if data is HomeArticle {
             let article = data as! HomeArticle
@@ -46,6 +47,7 @@ class TopicImageCell: UICollectionViewCell {
                 coverImageView.image = #imageLiteral(resourceName: "m24_default")
             }
             topicLabel.text = article.title
+            topicLabel.numberOfLines = 2
         }
     }
 }

@@ -49,10 +49,11 @@ class TopicBannerCell: UITableViewCell, UICollectionViewDelegate, UICollectionVi
         if data is [HomeArticle] {
             (collectionView.collectionViewLayout as! UICollectionViewFlowLayout).itemSize = CGSize(width: 160, height: 137)
             collectionViewHeight.constant = 137
+            
         }
         else {
-            (collectionView.collectionViewLayout as! UICollectionViewFlowLayout).itemSize = CGSize(width: 160, height: 137)
-            collectionViewHeight.constant = 137
+            (collectionView.collectionViewLayout as! UICollectionViewFlowLayout).itemSize = CGSize(width: 160, height: 118)
+            collectionViewHeight.constant = 118
         }
         collectionView.reloadData()
     }

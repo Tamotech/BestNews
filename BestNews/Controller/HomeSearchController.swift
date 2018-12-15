@@ -428,7 +428,7 @@ class HomeSearchController: UIViewController, UITableViewDelegate, UITableViewDa
                     wkvc.shareEnable = true
                     let share = ShareModel()
                     share.title = model.title
-                    share.msg = "新华财经日报"
+                    share.msg = "新华日报财经"
                     if model.preimglist.count > 0 {
                         share.thumb = model.preimglist.first!
                     }
