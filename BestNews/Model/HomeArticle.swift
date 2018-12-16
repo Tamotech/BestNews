@@ -107,13 +107,18 @@ class HomeArticleList: HandyJSON {
         }
         var index = 0
         var result: [Any] = list
-        for channelList in channelArticleList.values {
+        for c in HomeModel.shareInstansce.hengChannels {
             index = index + 3
             if index >= result.count {
                 break
             }
-            result.insert(channelList, at: index)
-            index = index + 1
+            if let channelList = channelArticleList[c.id],
+                channelList.count > 0 {
+                result.insert(channelList, at: index)
+                index = index + 1
+            } else {
+                index = index - 3
+            }
         }
         synthesizeArr = result
     }
@@ -122,7 +127,7 @@ class HomeArticleList: HandyJSON {
     func getChannelTitle(list: [HomeArticle]) -> SpecialChannel? {
         for (_, v) in channelArticleList.enumerated() {
             if v.value == list {
-                return HomeModel.shareInstansce.specilList1.first(where: { (c) -> Bool in
+                return HomeModel.shareInstansce.hengChannels.first(where: { (c) -> Bool in
                     return c.id == v.key
                 })
             }

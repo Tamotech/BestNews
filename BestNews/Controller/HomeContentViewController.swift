@@ -412,7 +412,7 @@ extension HomeContentViewController {
         APIRequest.getSpecialListAPI { [weak self](data) in
             if data != nil {
                 self?.specialList = data as! [SpecialChannel]
-                HomeModel.shareInstansce.specilList = data as! [SpecialChannel]
+                HomeModel.shareInstansce.specilList1 = data as! [SpecialChannel]
                 self?.tableView.reloadData()
                 DispatchQueue.main.async {
                     self?.updateTitlesView()
@@ -421,9 +421,10 @@ extension HomeContentViewController {
         }
         APIRequest.getHengChannelListAPI{ [weak self](data) in
             if data != nil {
-                HomeModel.shareInstansce.specilList1 = data as! [SpecialChannel]
+                let list = data as! [SpecialChannel]
+                HomeModel.shareInstansce.hengChannels = list
                 ///加载横向文章集
-                for channel in HomeModel.shareInstansce.specilList1 {
+                for channel in list {
                     self?.loadArticleListWithChannel(channelID: channel.id)
                 }
                 DispatchQueue.main.async {

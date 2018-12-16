@@ -17,6 +17,7 @@ class HomeModel: NSObject {
     
     ///专题列表(非导航)
     var specilList1: [SpecialChannel] = []
+    var hengChannels: [SpecialChannel] = []
     
     //首页所有频道
     var allChannels: [NewsChannel] = []
