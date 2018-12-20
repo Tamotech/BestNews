@@ -76,7 +76,7 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
         config.preferences.javaScriptEnabled = true
         config.preferences.javaScriptCanOpenWindowsAutomatically = false
         let web = WKWebView(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: 400), configuration: config)
-        web.scrollView.isScrollEnabled = false
+        web.scrollView.isScrollEnabled = true
         web.autoresizingMask = .flexibleHeight
         web.navigationDelegate = self
         return web
@@ -968,7 +968,7 @@ extension ChatRoomViewController {
         }
         else {
             emptyView0.isHidden = true
-            webView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: 400)
+            webView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: 200)
             webView.loadHTMLString(liveModel?.webHtmlStr ?? "暂无介绍", baseURL: nil)
         }
     }

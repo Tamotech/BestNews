@@ -99,6 +99,7 @@ class BestTabbarViewController: UIViewController, UINavigationControllerDelegate
     }
     
     func showTabbarViewAnimated(show: Bool) {
+        self.tabbarView.height = 49+bottomGuideHeight
         if show {
             UIView.animate(withDuration: 0.3, animations: {
                 self.tabbarView.top = screenHeight-self.tabbarView.height

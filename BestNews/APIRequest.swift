@@ -1077,4 +1077,18 @@ class APIRequest: NSObject {
             }
         }
     }
+    
+    ///获取鉴权后的推流地址
+    class func getLivePushURL(liveID: String, result: @escaping JSONResult) {
+        let path = "/live/getLiveUrl.htm?id=\(liveID)&type=push"
+        SwiftNotice.wait()
+        APIManager.shareInstance.postRequest(urlString: path, params: nil) { (json, code, msg) in
+            SwiftNotice.clear()
+            if code == 0 {
+                result(json!["info"].rawString())
+            } else {
+                result(nil)
+            }
+        }
+    }
 }

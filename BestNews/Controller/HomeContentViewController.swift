@@ -424,11 +424,12 @@ extension HomeContentViewController {
                 let list = data as! [SpecialChannel]
                 HomeModel.shareInstansce.hengChannels = list
                 ///加载横向文章集
+                self?.articleList?.channelArticleList = [:]
                 for channel in list {
                     self?.loadArticleListWithChannel(channelID: channel.id)
                 }
                 DispatchQueue.main.async {
-                    self?.updateTitlesView()
+                    self?.tableView.reloadData()
                 }
             }
         }
@@ -436,7 +437,7 @@ extension HomeContentViewController {
     
     /// 加载专题下的文章列表(横向展示)
     func loadArticleListWithChannel(channelID: String) {
-        APIRequest.articleListAPI(id: channelID, type: "channelid", page: 1, row: 6) { [weak self](data) in
+        APIRequest.articleListAPI(id: channelID, type: "channelid", page: 1, row: 5) { [weak self](data) in
             if data == nil {
                 return
             }

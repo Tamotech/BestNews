@@ -195,11 +195,17 @@ class MyLiveViewController: BaseViewController, AlivcLivePusherInfoDelegate, Ali
         //开始推流
 //        pusher.startPush(withURL: pushUrl)
         
-        let path = "/\(liveModel!.livepush_appname)/\(liveModel!.livepush_streamname)"
-        let key = ConversationClientManager.addAuthorKey(url: path)
-        let url = "rtmp://video-center.alivecdn.com\(path)?vhost=videolive.xhfmedia.com&auth_key=\(key)"
-        print("正在推流.....\(url)")
-        pusher.startPush(withURLAsync: url)
+//        let path = "/\(liveModel!.livepush_appname)/\(liveModel!.livepush_streamname)"
+//        let key = ConversationClientManager.addAuthorKey(url: path)
+//        let url = "rtmp://video-center.alivecdn.com\(path)?vhost=videolive.xhfmedia.com&auth_key=\(key)"
+        APIRequest.getLivePushURL(liveID: liveModel!.id) { [weak self] (url) in
+            if url != nil {
+                DispatchQueue.main.async {
+                    print("正在推流.....\(url!)")
+                    self?.pusher?.startPush(withURLAsync: url as? String)
+                }
+            }
+        }
     }
     
     func onPreviewStoped(_ pusher: AlivcLivePusher!) {
