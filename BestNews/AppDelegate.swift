@@ -71,6 +71,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, TencentSes
         checkAppUpdate()
         //清除角标
         UIApplication.shared.applicationIconBadgeNumber = 0
+        
+        if #available(iOS 10.3, *) {
+            self.changeIcon()
+        }
         return true
     }
 
@@ -362,5 +366,29 @@ extension AppDelegate {
             return UIInterfaceOrientationMask.landscapeRight
         }
         return UIInterfaceOrientationMask.portrait
+    }
+
+    
+    /// 更换logo
+    @available(iOS 10.3, *)
+    func changeIcon() {
+        
+        if !UIApplication.shared.supportsAlternateIcons {
+            return;
+        }
+        
+        let path = "/config/getCfgByCodes.htm?codes=s_xh_app_icon"
+        APIManager.shareInstance.postRequest(urlString: path, params: nil) { (json, code, msg) in
+            if let v = json?["data"]["s_xh_app_icon"]["v"].rawString() {
+                let change = v == "2"
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+5) {
+                    UIApplication.shared.setAlternateIconName(change ? "XH_logo_1year" : nil) { (error) in
+                        print(">>>>>>>>\(error.debugDescription)")
+                    }
+                }
+            }
+            
+        }
+        
     }
 }

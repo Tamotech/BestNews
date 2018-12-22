@@ -260,6 +260,9 @@
 		CC01705F1F6835400069D38B /* ActivityCoverCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC01705D1F6835400069D38B /* ActivityCoverCell.xib */; };
 		CC0170621F6840D00069D38B /* ActivityDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0170601F6840D00069D38B /* ActivityDetailController.swift */; };
 		CC0170631F6840D00069D38B /* ActivityDetailController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC0170611F6840D00069D38B /* ActivityDetailController.xib */; };
+		CC04341C21CE19290006DF74 /* XH_logo_1year@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC04341A21CE19280006DF74 /* XH_logo_1year@2x.png */; };
+		CC04341D21CE19290006DF74 /* XH_logo_1year@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC04341B21CE19280006DF74 /* XH_logo_1year@3x.png */; };
+		CC04342021CE1A560006DF74 /* UIViewController+LQNoPresent.m in Sources */ = {isa = PBXBuildFile; fileRef = CC04341F21CE1A560006DF74 /* UIViewController+LQNoPresent.m */; };
 		CC0BFA96206746D10024252B /* ShareAppViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0BFA94206746D10024252B /* ShareAppViewController.swift */; };
 		CC0BFA97206746D10024252B /* ShareAppViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC0BFA95206746D10024252B /* ShareAppViewController.xib */; };
 		CC0DC8F420AC8C06007EF02D /* baseHtml.html in Resources */ = {isa = PBXBuildFile; fileRef = CC0DC8F320AC8C06007EF02D /* baseHtml.html */; };
@@ -633,6 +636,10 @@
 		CC01705D1F6835400069D38B /* ActivityCoverCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityCoverCell.xib; sourceTree = "<group>"; };
 		CC0170601F6840D00069D38B /* ActivityDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityDetailController.swift; sourceTree = "<group>"; };
 		CC0170611F6840D00069D38B /* ActivityDetailController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ActivityDetailController.xib; sourceTree = "<group>"; };
+		CC04341A21CE19280006DF74 /* XH_logo_1year@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "XH_logo_1year@2x.png"; sourceTree = "<group>"; };
+		CC04341B21CE19280006DF74 /* XH_logo_1year@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "XH_logo_1year@3x.png"; sourceTree = "<group>"; };
+		CC04341E21CE1A560006DF74 /* UIViewController+LQNoPresent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+LQNoPresent.h"; sourceTree = "<group>"; };
+		CC04341F21CE1A560006DF74 /* UIViewController+LQNoPresent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LQNoPresent.m"; sourceTree = "<group>"; };
 		CC0BFA94206746D10024252B /* ShareAppViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareAppViewController.swift; sourceTree = "<group>"; };
 		CC0BFA95206746D10024252B /* ShareAppViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShareAppViewController.xib; sourceTree = "<group>"; };
 		CC0DC8F320AC8C06007EF02D /* baseHtml.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = baseHtml.html; sourceTree = "<group>"; };
@@ -1268,6 +1275,7 @@
 		5ADF7ACA1FEA952500D9607A /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				CC04341721CE0E150006DF74 /* icons */,
 				5A063F3E1FF1D12400AFAA40 /* startLaunch.png */,
 				5A0B5DA51FF0628B0047F64A /* clickImg.js */,
 				CC0DC8F320AC8C06007EF02D /* baseHtml.html */,
@@ -1356,6 +1364,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		CC04341721CE0E150006DF74 /* icons */ = {
+			isa = PBXGroup;
+			children = (
+				CC04341A21CE19280006DF74 /* XH_logo_1year@2x.png */,
+				CC04341B21CE19280006DF74 /* XH_logo_1year@3x.png */,
+			);
+			name = icons;
+			sourceTree = "<group>";
+		};
 		CC2906BC1F6599C7001894DA = {
 			isa = PBXGroup;
 			children = (
@@ -1442,6 +1459,8 @@
 				5A04B41F1FD44EA100DE58D2 /* UIView+Layout.h */,
 				5A04B4201FD44EA100DE58D2 /* UIView+Layout.m */,
 				CC2BA3992195F915001F04B1 /* UIDeviceExtension.swift */,
+				CC04341E21CE1A560006DF74 /* UIViewController+LQNoPresent.h */,
+				CC04341F21CE1A560006DF74 /* UIViewController+LQNoPresent.m */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1719,6 +1738,7 @@
 				5AC6848A1F8054C1006CEB53 /* SingleBigPhotoNewsCell.xib in Resources */,
 				5A063F331FF1325800AFAA40 /* ReportArticleController.xib in Resources */,
 				5A10F58B1FAEF0A900316832 /* SpecialChannelCell.xib in Resources */,
+				CC04341D21CE19290006DF74 /* XH_logo_1year@3x.png in Resources */,
 				5A0612CE1FDCDFA300E7F20A /* ApplyFamousController.xib in Resources */,
 				5AA4E84E1FD43378007A04FA /* back@3x.png in Resources */,
 				5A0A139E1F9EBC4100DF57B9 /* LoginSMSCaptchaController.xib in Resources */,
@@ -1737,6 +1757,7 @@
 				5AA4E85C1FD43378007A04FA /* watermark.png in Resources */,
 				5A0612BA1FDBA1D300E7F20A /* ApplyIdentifySuccessAlertController.xib in Resources */,
 				5A0B5DA61FF0628B0047F64A /* clickImg.js in Resources */,
+				CC04341C21CE19290006DF74 /* XH_logo_1year@2x.png in Resources */,
 				5A8C29E11FE032DC00E51095 /* LiveMessageCell.xib in Resources */,
 				5A8364D01FFB0024001AD740 /* ImageSelectSheetView.xib in Resources */,
 				5A5446101F852A1E0004F192 /* ActivityRegistController.xib in Resources */,
@@ -1932,6 +1953,7 @@
 				5A8B864C200EB6980023F584 /* HomeSearchModel.swift in Sources */,
 				5A0A6D781FE572D30059EDBF /* ChatRoomViewController.swift in Sources */,
 				5AC684851F7FFF24006CEB53 /* NoPhotoNewsCell.swift in Sources */,
+				CC04342021CE1A560006DF74 /* UIViewController+LQNoPresent.m in Sources */,
 				5A06DF491FCAA9A600F225F1 /* ProfessionListController.swift in Sources */,
 				5AF9CADA1FA5C16E0071285D /* MyActivityListController.swift in Sources */,
 				5A62A4661FABE73B0087D936 /* ListManager.swift in Sources */,
