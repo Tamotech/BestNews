@@ -298,6 +298,8 @@
 		CC70F5F920A69D4800E52A46 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC70F5F720A69D4800E52A46 /* AboutUsViewController.swift */; };
 		CC70F60120A6C27500E52A46 /* ContactUsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC70F5FF20A6C27500E52A46 /* ContactUsController.swift */; };
 		CC70F60220A6C27500E52A46 /* ContactUsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC70F60020A6C27500E52A46 /* ContactUsController.xib */; };
+		CC9A1F0721D1165D0024DD0F /* XH_logo_f@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC9A1F0521D1165C0024DD0F /* XH_logo_f@3x.png */; };
+		CC9A1F0821D1165D0024DD0F /* XH_logo_f@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC9A1F0621D1165D0024DD0F /* XH_logo_f@2x.png */; };
 		CCC8E6C320863804004CF6B3 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCC8E6C220863804004CF6B3 /* TencentOpenAPI.framework */; };
 		CCC8E6C62086382D004CF6B3 /* RongIMKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCC8E6C42086382C004CF6B3 /* RongIMKit.framework */; };
 		CCC8E6C72086382D004CF6B3 /* RongCloud.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CCC8E6C52086382D004CF6B3 /* RongCloud.bundle */; };
@@ -677,6 +679,8 @@
 		CC70F5F720A69D4800E52A46 /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 		CC70F5FF20A6C27500E52A46 /* ContactUsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsController.swift; sourceTree = "<group>"; };
 		CC70F60020A6C27500E52A46 /* ContactUsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactUsController.xib; sourceTree = "<group>"; };
+		CC9A1F0521D1165C0024DD0F /* XH_logo_f@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "XH_logo_f@3x.png"; sourceTree = "<group>"; };
+		CC9A1F0621D1165D0024DD0F /* XH_logo_f@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "XH_logo_f@2x.png"; sourceTree = "<group>"; };
 		CCC8E6C220863804004CF6B3 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TencentOpenAPI.framework; path = Framework/TencentOpenAPI.framework; sourceTree = SOURCE_ROOT; };
 		CCC8E6C42086382C004CF6B3 /* RongIMKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RongIMKit.framework; path = Framework/RongIMKit.framework; sourceTree = SOURCE_ROOT; };
 		CCC8E6C52086382D004CF6B3 /* RongCloud.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = RongCloud.bundle; path = Framework/RongCloud.bundle; sourceTree = SOURCE_ROOT; };
@@ -1367,6 +1371,8 @@
 		CC04341721CE0E150006DF74 /* icons */ = {
 			isa = PBXGroup;
 			children = (
+				CC9A1F0621D1165D0024DD0F /* XH_logo_f@2x.png */,
+				CC9A1F0521D1165C0024DD0F /* XH_logo_f@3x.png */,
 				CC04341A21CE19280006DF74 /* XH_logo_1year@2x.png */,
 				CC04341B21CE19280006DF74 /* XH_logo_1year@3x.png */,
 			);
@@ -1749,6 +1755,7 @@
 				5AFF34A31F93A78600D8115E /* BaseShareViewController.xib in Resources */,
 				CC2906D51F6599C7001894DA /* LaunchScreen.storyboard in Resources */,
 				5A8364CA1FF9CFB6001AD740 /* VideoPlayControlBar.xib in Resources */,
+				CC9A1F0821D1165D0024DD0F /* XH_logo_f@2x.png in Resources */,
 				5A38B6BA1F80871100AF4A91 /* FastNewsCell.xib in Resources */,
 				CC2907111F65AC08001894DA /* Main.storyboard in Resources */,
 				5A0612C21FDBE1BA00E7F20A /* ActivityTicketDetailCell.xib in Resources */,
@@ -1800,6 +1807,7 @@
 				5A90CFF31F81273900F16869 /* LiveListCell.xib in Resources */,
 				5A84B6401FFC4EF4006DC3AA /* EndLiveAlertView.xib in Resources */,
 				5AA4E8581FD43378007A04FA /* watermark_small.png in Resources */,
+				CC9A1F0721D1165D0024DD0F /* XH_logo_f@3x.png in Resources */,
 				CC0DC8F420AC8C06007EF02D /* baseHtml.html in Resources */,
 				5A0A13961F9EB1B400DF57B9 /* LoginViewController.xib in Resources */,
 				CCC8E6C72086382D004CF6B3 /* RongCloud.bundle in Resources */,

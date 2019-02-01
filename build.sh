@@ -69,8 +69,8 @@ echo '*** 打包完成 ***'
 echo "即将上传蒲公英"
 
 ipaPath=${exportFilePath}/${project_name}".ipa"
-pgyUkey="f71d4a51b19e43f7e95602ed96b041a1"
-pgyApiKey="67d197411b960851b00945752be32591"
+pgyUkey="92f78840299740f1ab1e5718a2479032"
+pgyApiKey="49fc7e14fde5a2847b37b4abd2404dcd"
 
 RESULT=$(curl -F "file=@$ipaPath" -F "uKey=$pgyUkey" -F "_api_key=$pgyApiKey" -F "publishRange=2" http://www.pgyer.com/apiv1/app/upload)
 echo "完成上传"

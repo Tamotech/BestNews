@@ -308,7 +308,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, TencentSes
     
     ///极光自定义消息
     func networkDidReceiveMessage(_ sender: Notification) {
-        let extra = sender.userInfo!["extras"] as! [String: Any]
+        guard let extra = sender.userInfo!["extras"] as? [String: Any] else {
+            return
+        }
         let type = extra["type"] as! String
         if type == "livefinish" {
             NotificationCenter.default.post(name: kLiveDidEndNotify, object: extra)
@@ -380,9 +382,16 @@ extension AppDelegate {
         let path = "/config/getCfgByCodes.htm?codes=s_xh_app_icon"
         APIManager.shareInstance.postRequest(urlString: path, params: nil) { (json, code, msg) in
             if let v = json?["data"]["s_xh_app_icon"]["v"].rawString() {
-                let change = v == "2"
+                ///3--一周年  2--春节
+                var logo: String? = nil
+                if v == "2" {
+                    logo = "XH_logo_f"
+                }
+                else if v == "3" {
+                    logo = "XH_logo_1year"
+                }
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+5) {
-                    UIApplication.shared.setAlternateIconName(change ? "XH_logo_1year" : nil) { (error) in
+                    UIApplication.shared.setAlternateIconName(logo) { (error) in
                         print(">>>>>>>>\(error.debugDescription)")
                     }
                 }
