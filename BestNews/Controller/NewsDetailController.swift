@@ -63,7 +63,7 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
     } ()
     
     
-    let htmlModelString = "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><title></title><style>body {font:48px/1.5 tahoma,arial,sans-serif;color:#333333;text-align:justify;text-align-last:justify;line-height:70px}hr {height:1px;border:none;border-top:1px solid #e8e8e8;} img {width:100%;height:auto}</style></head><body><div style='margin:35px' id=\"content\">${contentHtml}${author}</div></body></html>"
+    let htmlModelString = "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><title></title><style>body {font:48px/1.5 tahoma,arial,sans-serif;color:#333333;text-align:justify;text-align-last:justify;line-height:70px}hr {height:1px;border:none;border-top:1px solid #e8e8e8;} img {width:100%;height:auto} .sm_copyright{font-size:42px;} </style></head><body><div style='margin:35px' id=\"content\">${contentHtml}${author}</div></body></html>"
     var currentHTML = ""
     
     ///是否订阅作者 (需要查阅)
