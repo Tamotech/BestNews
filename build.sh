@@ -57,6 +57,7 @@ xcodebuild -exportArchive -archivePath ${build_path}/${project_name}.xcarchive \
 -configuration ${development_mode} \
 -exportPath ${exportFilePath} \
 -exportOptionsPlist ${exportOptionsPlistPath} \
+-allowProvisioningUpdates \
 -quiet || exit
 
 if [ -e $exportFilePath/$scheme_name.ipa ]; then

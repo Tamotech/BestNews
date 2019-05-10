@@ -29,8 +29,11 @@ class HomeArticle: HandyJSON, Equatable {
     var reporter = ""
     var source = ""     //来源
     
-    // normal  原创 grasp 抓取
+    // normal  原创 grasp 抓取  adv 广告  linkchannel  连接到栏目
     var type = ""
+    var linkchannelid = ""
+    var linkchannename = ""
+    var linkchannetype = ""
     
     ///是否是推荐新闻
     var recommendFlag = false

@@ -145,7 +145,17 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
     func clickedCycleView(_ cycleView: YLCycleView, selectedIndex index: Int) {
         if headerBannerView.banner.count > index {
             let article = headerBannerView.banner[index]
-            if article.linkurl.count > 0 && !article.linkurl.contains("null") {
+            if article.type == "linkchannel" {
+                let vc = SpecialChannelArticleListController()
+                let channel = SpecialChannel()
+                channel.id = article.linkchannelid
+                channel.name = article.linkchannename
+                channel.fullname = article.linkchannename
+                vc.entry = 1
+                vc.channel = channel
+                navigationController?.pushViewController(vc, animated: true)
+            }
+            else if article.linkurl.count > 0 && !article.linkurl.contains("null") {
                 let wkvc = BaseWKWebViewController()
                 wkvc.shareEnable = true
                 let share = ShareModel()

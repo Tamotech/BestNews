@@ -39,6 +39,12 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
     var wxUserInfo: WXUserInfo?
     let locationManager = CLLocationManager()
     var currentLocation: CLLocation = CLLocation()        ///定位
+    
+    ///原创文章版权说明
+    var f_original_copyright = ""
+    ///转载文章版权说明
+    var f_zhuanzai_copyright = ""
+    
     ///推送tags
     var pushTags = ["system", "articlecomment", "articlereply", "articlecommentzan", "livefinish", "livestart"]
     
