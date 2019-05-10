@@ -63,7 +63,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate, TencentSessi
     
     //MARK: - notification
     
-    func receiveLoginWechatSuccessNoti(noti: Notification) {
+    @objc func receiveLoginWechatSuccessNoti(noti: Notification) {
         let info = JSON(noti.object ?? [])
         let code = info["code"]
         let state = info["state"]
@@ -157,7 +157,7 @@ class LoginViewController: BaseViewController, UITextFieldDelegate, TencentSessi
     }
     
     //MARK: - actions
-    func handleTapClose(_ sender: Any) {
+    @objc func handleTapClose(_ sender: Any) {
         navigationController?.dismiss(animated: true, completion: nil)
     }
     

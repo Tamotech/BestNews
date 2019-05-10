@@ -71,7 +71,7 @@ class BaseSegmentControl: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func handleSelectItem(btn:UIButton) {
+    @objc func handleSelectItem(btn:UIButton) {
         
         currentIndex = btn.tag
         let centerX = (CGFloat(currentIndex)+0.5)*(screenWidth/CGFloat(buttons.count))

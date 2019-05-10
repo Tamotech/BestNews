@@ -69,7 +69,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
         #if DEBUG
         let lb = UILabel(frame: CGRect(x: 20, y: 100, width: 200, height: 100))
         lb.textColor = .red
-        lb.font = UIFont.systemFont(ofSize: 30, weight: UIFontWeightSemibold)
+        lb.font = UIFont.systemFont(ofSize: 30, weight: UIFont.Weight.semibold)
         lb.text = "测试环境"
         keyWindow?.addSubview(lb)
         #endif
@@ -389,19 +389,19 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
     
     //MARK: - actions
     
-    func handleTapSearchItem(sender: Any) {
+    @objc func handleTapSearchItem(sender: Any) {
         let vc = HomeSearchController(nibName: "HomeSearchController", bundle: nil)
         let navVC = BaseNavigationController(rootViewController: vc)
         navigationController?.present(navVC, animated: false, completion: nil)
     }
     
-    func handleTapMenuItem(sender: Any) {
+    @objc func handleTapMenuItem(sender: Any) {
         let selectColumnView = SelectColumeView(frame: CGRect(x: 0, y: 64, width: screenWidth, height: screenHeight-64))
         selectColumnView.mainVC = self
         selectColumnView.show()
     }
     
-    func handleTapMessageItem(sender: Any) {
+    @objc func handleTapMessageItem(sender: Any) {
         let vc = MessageCenterController()
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -581,7 +581,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
         t.fire()
     }
     
-    func handleADTimerEvent(_ t: Timer) {
+    @objc func handleADTimerEvent(_ t: Timer) {
         adSeconds = adSeconds - 1
         if adSeconds <= 0 {
             t.invalidate()
@@ -593,7 +593,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
     }
     
     
-    func tapSkip(_ sender: UIButton) {
+    @objc func tapSkip(_ sender: UIButton) {
         let adView = sender.superview
         adView?.removeFromSuperview()
     }

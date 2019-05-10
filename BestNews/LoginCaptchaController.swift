@@ -86,7 +86,7 @@ class LoginCaptchaController: BaseViewController, SwiftyVerificationCodeViewDele
         self.loadCaptcha()
     }
     
-    func handleTapClose(_ sender: Any) {
+    @objc func handleTapClose(_ sender: Any) {
         navigationController?.dismiss(animated: true, completion: nil)
     }
     

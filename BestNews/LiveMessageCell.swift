@@ -179,7 +179,7 @@ class LiveMessageCell: UITableViewCell {
     }
     
     
-    func handleTapPhoto(_ sender : Any) {
+    @objc func handleTapPhoto(_ sender : Any) {
         let v = UIImageView(image: photoIm.image)
         let frame = keyWindow!.convert(photoIm.frame, from: photoIm.superview)
         v.frame = frame
@@ -194,7 +194,7 @@ class LiveMessageCell: UITableViewCell {
         }
     }
     
-    func photodismiss(_ sender: UIGestureRecognizer) {
+    @objc func photodismiss(_ sender: UIGestureRecognizer) {
         let frame = keyWindow!.convert(photoIm.frame, from: photoIm.superview)
         UIView.animate(withDuration: 0.3, animations: {
             sender.view?.frame = frame

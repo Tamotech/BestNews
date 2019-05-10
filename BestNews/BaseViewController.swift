@@ -33,7 +33,7 @@ class BaseViewController: UIViewController {
         let label = UILabel(frame: CGRect(x: 80, y: 20, width: screenWidth-160, height: 44))
         
         if #available(iOS 8.2, *) {
-            label.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightMedium)
+            label.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.medium)
         } else {
             label.font = UIFont.systemFont(ofSize: 18)
         }
@@ -69,7 +69,7 @@ class BaseViewController: UIViewController {
     class public func instanceFromStoryboard()->UIViewController {
         
         let sb = UIStoryboard.init(name: "Main", bundle: nil)
-        let vc = sb.instantiateViewController(withIdentifier:NSStringFromClass( object_getClass(self.classForCoder())).components(separatedBy: ".").last!)
+        let vc = sb.instantiateViewController(withIdentifier:NSStringFromClass( object_getClass(self.classForCoder())!).components(separatedBy: ".").last!)
         return vc
     }
 
@@ -114,7 +114,7 @@ class BaseViewController: UIViewController {
     
     
     
-    func handleTapCloseVc(sender: UIButton) {
+    @objc func handleTapCloseVc(sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
     

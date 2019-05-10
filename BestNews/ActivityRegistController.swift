@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import PopupDialog
 import Presentr
 import Kingfisher
 
@@ -91,7 +90,7 @@ class ActivityRegistController: BaseViewController, UINavigationControllerDelega
 
     // MARK: - Navigation
     
-    func handleTapBackButton(_:Any) {
+    @objc func handleTapBackButton(_:Any) {
         
         let alert = XHAlertController()
         alert.modalPresentationStyle = .overCurrentContext
@@ -266,7 +265,7 @@ class ActivityRegistController: BaseViewController, UINavigationControllerDelega
         }
     }
     
-    func zhifubaoPaySuccess(_: Any?) {
+    @objc func zhifubaoPaySuccess(_: Any?) {
         DispatchQueue.main.async {
             self.navigationController?.popViewController(animated: false)
             if self.completeApplyCallback != nil {
@@ -276,14 +275,14 @@ class ActivityRegistController: BaseViewController, UINavigationControllerDelega
         
     }
     
-    func zhifubaoPayFail(_: Any?) {
+    @objc func zhifubaoPayFail(_: Any?) {
         DispatchQueue.main.async {
             BLHUDBarManager.showError(msg: "支付失败")
         }
     }
     
     
-    func handleTapConfirmBtn(vc: ProfessionListController, item: String) {
+    @objc func handleTapConfirmBtn(vc: ProfessionListController, item: String) {
         professionField.text = item
     }
     

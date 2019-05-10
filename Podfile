@@ -7,13 +7,12 @@ target 'BestNews' do
 
   # Pods for BestNews
    pod 'Kingfisher'
-   pod 'Alamofire'
+   pod 'Alamofire', '~> 4.0'
    pod 'AlamofireObjectMapper'
    pod 'SwiftyJSON'
-   pod 'HandyJSON'
+   pod 'HandyJSON', '~> 5.0'
    pod 'SnapKit'
    pod 'Presentr'
-   pod 'PopupDialog'
    pod 'AMPopTip'
    pod 'WechatOpenSDK'
    pod 'IQKeyboardManagerSwift'

@@ -56,7 +56,7 @@ class BaseWKWebViewController: BaseViewController, WKNavigationDelegate {
     }
     
     //分享
-    func handleTapShare(_ sender: Any) {
+    @objc func handleTapShare(_ sender: Any) {
         let vc = BaseShareViewController(nibName: "BaseShareViewController", bundle: nil)
         if urlString?.count ?? 0 > 0 {
             share?.link = urlString!

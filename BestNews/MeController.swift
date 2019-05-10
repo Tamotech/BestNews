@@ -54,7 +54,7 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
     
     
     
-    func switchTabNotify(_ sender: Notification) {
+    @objc func switchTabNotify(_ sender: Notification) {
         let index = sender.object as! Int
         if index == 4 {
             SessionManager.sharedInstance.getUserInfo()
@@ -191,14 +191,14 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
     }
     
     ///通知
-    func didUpdateUserInfo(_ noti: Notification) {
+    @objc func didUpdateUserInfo(_ noti: Notification) {
         self.updateUI()
         loadInfoCount()
     }
     
     
     //MARK: - actions
-    func handleTapMessageBtn(sender: Any) {
+    @objc func handleTapMessageBtn(sender: Any) {
         
         if !SessionManager.sharedInstance.loginInfo.isLogin {
             Toolkit.showLoginVC()
@@ -207,7 +207,7 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
         let vc = MessageCenterController()
         navigationController?.pushViewController(vc, animated: true)
     }
-    func handleTapLoginView(_ sender: Any) {
+    @objc func handleTapLoginView(_ sender: Any) {
         Toolkit.showLoginVC()
     }
     

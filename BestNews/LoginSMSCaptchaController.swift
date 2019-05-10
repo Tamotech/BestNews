@@ -98,7 +98,7 @@ class LoginSMSCaptchaController: BaseViewController, SwiftyVerificationCodeViewD
     
     //MARK: - actions
     
-    func handleTapClose(_ sender: Any) {
+    @objc func handleTapClose(_ sender: Any) {
         navigationController?.dismiss(animated: true, completion: nil)
     }
     

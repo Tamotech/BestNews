@@ -199,7 +199,7 @@ class NewsCommentBar: UIView, UITextViewDelegate {
     }
     
     //MARK: - actions
-    func handleTapCommentBtn(sender: UIButton) {
+    @objc func handleTapCommentBtn(sender: UIButton) {
         if !SessionManager.sharedInstance.loginInfo.isLogin {
             Toolkit.showLoginVC()
             return
@@ -230,31 +230,31 @@ class NewsCommentBar: UIView, UITextViewDelegate {
         }
     }
     
-    func handleTapCollectionBtn(sender: UIButton) {
+    @objc func handleTapCollectionBtn(sender: UIButton) {
         
         if delegate != nil {
             delegate?.tapCollectionHandler()
         }
     }
     
-    func handleTapRepostBtn(sender: UIButton) {
+    @objc func handleTapRepostBtn(sender: UIButton) {
         if delegate != nil {
             delegate?.tapRepostHandler()
         }
     }
     
-    func handleTapReportBtn(sender: UIButton) {
+    @objc func handleTapReportBtn(sender: UIButton) {
         if delegate != nil {
             delegate?.tapReportHandler()
         }
     }
     
-    func handleTapPostBtn(sender: UIButton) {
+    @objc func handleTapPostBtn(sender: UIButton) {
         
         postComment()
     }
     
-    func handleTapBarView(sender: Any) {
+    @objc func handleTapBarView(sender: Any) {
         if !SessionManager.sharedInstance.loginInfo.isLogin {
             Toolkit.showLoginVC()
             return
@@ -352,7 +352,7 @@ class NewsCommentBar: UIView, UITextViewDelegate {
     override func sizeToFit() {
         let maxSize = CGSize(width: textField.width-26, height: 500)
         let text = NSString(cString: textField.text.cString(using: String.Encoding.utf8)!, encoding: String.Encoding.utf8.rawValue)
-        let frame = text?.boundingRect(with: maxSize, options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName: textField.font!], context: nil)
+        let frame = text?.boundingRect(with: maxSize, options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font: textField.font!], context: nil)
         var tarHeight = frame!.size.height+15*2
         if tarHeight > 200 {
             tarHeight = 200

@@ -53,15 +53,15 @@ class ReportArticleController: UIViewController, UITableViewDataSource, UITableV
         cell.selectionStyle = .none
         let item = items[indexPath.row]
         if selectItem == item {
-            let att = NSAttributedString(string: item, attributes: [NSForegroundColorAttributeName: themeColor!,
-                                                                    NSFontAttributeName: UIFont.systemFont(ofSize: 14)])
+            let att = NSAttributedString(string: item, attributes: [NSAttributedStringKey.foregroundColor: themeColor!,
+                                                                    NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)])
             cell.textLabel?.attributedText = att
             cell.accessoryType = .checkmark
             cell.tintColor = themeColor!
         }
         else {
-            let att = NSAttributedString(string: item, attributes: [NSForegroundColorAttributeName: gray72!,
-                                                                    NSFontAttributeName: UIFont.systemFont(ofSize: 14)])
+            let att = NSAttributedString(string: item, attributes: [NSAttributedStringKey.foregroundColor: gray72!,
+                                                                    NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)])
             cell.textLabel?.attributedText = att
             cell.accessoryType = .none
         }

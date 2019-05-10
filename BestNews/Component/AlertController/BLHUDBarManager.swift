@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import PopupDialog
 
 /// 弹窗样式
 class BLHUDBarManager: NSObject {

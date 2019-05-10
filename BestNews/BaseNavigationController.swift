@@ -19,7 +19,7 @@ class BaseNavigationController: UINavigationController {
     
     func setTintColor(tint: UIColor) {
         
-        self.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: tint, NSFontAttributeName: UIFont.systemFont(ofSize: 17)]
+        self.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: tint, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 17)]
         self.navigationBar.tintColor = tint
         self.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationBar.shadowImage = UIImage()

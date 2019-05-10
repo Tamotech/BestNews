@@ -158,7 +158,7 @@ class HomeSearchController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     //Notification
-    func keyboardWillShow(_ noti: Notification) {
+    @objc func keyboardWillShow(_ noti: Notification) {
         let userinfo = noti.userInfo!
         let bounds = (userinfo[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         historyTableViewBottom.constant = bounds.height
@@ -166,7 +166,7 @@ class HomeSearchController: UIViewController, UITableViewDelegate, UITableViewDa
 
     //MARK: - actions
     
-    func handleCleanHistory(_ sender: UIButton) {
+   @objc  func handleCleanHistory(_ sender: UIButton) {
         historyKeywords.removeAll()
         hostoryTableView.reloadData()
     }
@@ -177,7 +177,7 @@ class HomeSearchController: UIViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
-    func handleTapHotwords(_ sender: UIButton) {
+    @objc func handleTapHotwords(_ sender: UIButton) {
         let hotword = self.hotwords[sender.tag]
         searchBar.text = hotword
         switchToMode(mode: 2)

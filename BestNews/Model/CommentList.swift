@@ -26,11 +26,11 @@ class CommentList: HandyJSON {
     func replyListString() -> NSAttributedString {
         let result = NSMutableAttributedString()
         for comment in list {
-            let author = NSAttributedString(string: "\(comment.username):", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 12, weight: UIFontWeightMedium),
-               NSForegroundColorAttributeName: UIColor.init(hexString: "#222222")!])
+            let author = NSAttributedString(string: "\(comment.username):", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.medium),
+                                                                                         NSAttributedStringKey.foregroundColor: UIColor.init(hexString: "#222222")!])
             result.append(author)
-            let content = NSAttributedString(string: "\(comment.content)\n", attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 12, weight: UIFontWeightRegular),
-                NSForegroundColorAttributeName: UIColor.init(hexString: "#555555")!])
+            let content = NSAttributedString(string: "\(comment.content)\n", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.regular),
+                                                                                          NSAttributedStringKey.foregroundColor: UIColor.init(hexString: "#555555")!])
             result.append(content)
         }
         return result as NSAttributedString

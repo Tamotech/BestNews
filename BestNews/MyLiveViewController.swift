@@ -113,7 +113,7 @@ class MyLiveViewController: BaseViewController, AlivcLivePusherInfoDelegate, Ali
         
     }
     
-    func handleTapMoreBtn(_ sender: UIButton) {
+    @objc func handleTapMoreBtn(_ sender: UIButton) {
         
         
         let sheet = EndLiveAlertView.instanceFromXib() as! EndLiveAlertView
@@ -155,11 +155,11 @@ class MyLiveViewController: BaseViewController, AlivcLivePusherInfoDelegate, Ali
     }
     
     
-    func handleSwitchCamerabtn(_ sender: Any) {
+    @objc func handleSwitchCamerabtn(_ sender: Any) {
         self.pusher?.switchCamera()
     }
     
-    func handleTapBackBtn(_ sender: UIButton) {
+    @objc func handleTapBackBtn(_ sender: UIButton) {
         self.pusher?.stopPush()
         self.pusher?.destory()
         self.pusher = nil

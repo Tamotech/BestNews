@@ -33,7 +33,7 @@ extension UIImage {
         ctx.setFillColor(backColor.cgColor)
         // 填充绘制
         ctx.fill(rect)
-        let attr = [ NSForegroundColorAttributeName : textColor, NSFontAttributeName : UIFont.systemFont(ofSize: minSide*0.9)]
+        let attr = [ NSAttributedStringKey.foregroundColor : textColor, NSAttributedStringKey.font : UIFont.systemFont(ofSize: minSide*0.9)]
         // 写入文字
         (letter as NSString).draw(at: CGPoint(x: minSide*0.05, y: minSide*0.0), withAttributes: attr)
         // 得到图片
@@ -102,7 +102,7 @@ extension UIImage {
         colorFilter.setValue(CIColor(red: 0, green: 0, blue: 0), forKey: "inputColor0")
         colorFilter.setValue(CIColor(red: 1, green: 1, blue: 1), forKey: "inputColor1")
         
-        let ciImage = colorFilter.outputImage!.applying(CGAffineTransform.init(scaleX: 5, y: 5))
+        let ciImage = colorFilter.outputImage!.transformed(by: CGAffineTransform.init(scaleX: 5, y: 5))
         let codeImage = UIImage(ciImage: ciImage)
         
         //内嵌logo

@@ -283,7 +283,7 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
     
     
     //MARK:- 通知结束直播
-    func liveDidEndNoti(noti: Notification) {
+    @objc func liveDidEndNoti(noti: Notification) {
         if noti.object == nil || self.liveModel == nil {
             return
         }
@@ -316,7 +316,7 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
     }
     
     /// 消息撤回
-    func liveDidCllbackMsgNoti(_ sender: Notification) {
+    @objc func liveDidCllbackMsgNoti(_ sender: Notification) {
         if sender.object == nil || self.liveModel == nil {
             return
         }
@@ -428,7 +428,7 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
     //MARK: - actions
     
     
-    func handleTapPlayerBtn(_ sender: UIButton) {
+    @objc func handleTapPlayerBtn(_ sender: UIButton) {
         if self.aliyunVodPlayer.playerState() == AliyunVodPlayerState.play {
             self.aliyunVodPlayer.pause()
             self.playerBtn?.isHidden = false
@@ -742,7 +742,7 @@ class ChatRoomViewController: BaseViewController, UITableViewDataSource, UITable
     }
     
     ///滑动评论/主持一栏
-    func swipeSegment(_ sender: UISwipeGestureRecognizer) {
+    @objc func swipeSegment(_ sender: UISwipeGestureRecognizer) {
         if sender.direction == .up {
             UIView.animate(withDuration: 0.3, animations: {
                 self.playerTop.constant = -self.playerParentView.height
@@ -973,7 +973,7 @@ extension ChatRoomViewController {
         }
     }
     
-    func timerEvent(_ sender: Timer) {
+    @objc func timerEvent(_ sender: Timer) {
         
         if self.aliyunVodPlayer.duration > 0 {
             let progress = self.aliyunVodPlayer.currentTime/self.aliyunVodPlayer.duration

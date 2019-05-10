@@ -139,7 +139,7 @@ class ProfileCenterController: BaseViewController, UINavigationControllerDelegat
 
     //MARK: - actions
     
-    func handleTapSave(_ : Any) {
+    @objc func handleTapSave(_ : Any) {
         let nickname = nicknameTf.text
         if nickname != SessionManager.sharedInstance.userInfo?.name {
             view.tag = 2

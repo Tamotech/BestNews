@@ -134,7 +134,7 @@ extension TYPageTitleView{
     }
     
     fileprivate func widthForContent(_ label:UILabel) -> CGFloat{
-       return ((label.text! as NSString).boundingRect(with: CGSize(width : CGFloat.greatestFiniteMagnitude, height: 0), options: .usesLineFragmentOrigin, attributes: [NSFontAttributeName:label.font], context: nil)).width
+        return ((label.text! as NSString).boundingRect(with: CGSize(width : CGFloat.greatestFiniteMagnitude, height: 0), options: .usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font:label.font], context: nil)).width
     }
 
 }

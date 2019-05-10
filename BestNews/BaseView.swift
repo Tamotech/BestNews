@@ -20,7 +20,7 @@ class BaseView: UIView {
     }()
     
     class func instanceFromXib() -> UIView {
-        let className = NSStringFromClass( object_getClass(self.classForCoder())).components(separatedBy: ".").last!
+        let className = NSStringFromClass( object_getClass(self.classForCoder())!).components(separatedBy: ".").last!
         let view = Bundle.main.loadNibNamed(className, owner: nil, options: nil)?.first as! UIView
         return view
     }

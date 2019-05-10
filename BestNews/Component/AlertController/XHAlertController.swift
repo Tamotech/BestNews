@@ -119,7 +119,7 @@ class XHAlertController: UIViewController {
 
     }
 
-    func tapConfirm(_ sender: Any) {
+    @objc func tapConfirm(_ sender: Any) {
         dismiss(animated: false) {
             if self.callback != nil {
                 self.callback!(0)
@@ -127,7 +127,7 @@ class XHAlertController: UIViewController {
         }
     }
     
-    func tapCancel(_ sender: Any) {
+    @objc func tapCancel(_ sender: Any) {
         dismiss(animated: false) {
             if self.callback != nil {
                 self.callback!(1)

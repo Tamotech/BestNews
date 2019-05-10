@@ -149,7 +149,7 @@ class SpecialChannelArticleListController: BaseViewController, UITableViewDelega
     }
     
     
-    func didSwitchNav(_ sender: Notification) {
+    @objc func didSwitchNav(_ sender: Notification) {
         
         let index = sender.object as! Int
         if articleList == nil && CGFloat(index)*screenWidth == self.view.x {

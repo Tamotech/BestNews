@@ -129,14 +129,14 @@ class ProfessionListController: UIViewController, UITableViewDataSource, UITable
         
         let item = items[indexPath.row]
         if item == selectedItem {
-            let att = NSAttributedString(string: item, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 14),
-                                                                    NSForegroundColorAttributeName: themeColor!])
+            let att = NSAttributedString(string: item, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14),
+                                                                    NSAttributedStringKey.foregroundColor: themeColor!])
             cell?.textLabel?.attributedText = att
             cell?.accessoryType = .checkmark
         }
         else {
-            let att = NSAttributedString(string: item, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 14),
-                                                                    NSForegroundColorAttributeName: UIColor(hexString: "#cbcbcb")!])
+            let att = NSAttributedString(string: item, attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14),
+                                                                    NSAttributedStringKey.foregroundColor: UIColor(hexString: "#cbcbcb")!])
             cell?.textLabel?.attributedText = att
             cell?.accessoryType = .none
         }

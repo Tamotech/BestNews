@@ -59,7 +59,7 @@ class GuideViewController: UIViewController {
         self.view.backgroundColor = .white
     }
     
-    func handleTapSkipBtn(_: Any) {
+    @objc func handleTapSkipBtn(_: Any) {
         UIApplication.shared.keyWindow?.rootViewController = BestTabbarViewController()
     }
 

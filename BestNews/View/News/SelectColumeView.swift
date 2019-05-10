@@ -127,7 +127,7 @@ class SelectColumeView: UIView {
     }
     
     
-    func handleSelectItemBtn(btn: UIButton) {
+    @objc func handleSelectItemBtn(btn: UIButton) {
         if btn.tag >= 100 {
             let name = stableChannels[btn.tag-100]
             if name == "专题" {
@@ -150,7 +150,7 @@ class SelectColumeView: UIView {
         }
     }
     
-    func handleTapCloseBtn() {
+    @objc func handleTapCloseBtn() {
         self.dismiss()
     }
     

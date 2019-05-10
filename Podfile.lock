@@ -5,16 +5,13 @@ PODS:
     - ObjectMapper (~> 3.3)
   - AMPopTip (3.5.0)
   - CRRefresh (1.1.2)
-  - DynamicBlurView (3.0.1)
-  - HandyJSON (4.2.0)
+  - HandyJSON (5.0.0)
   - IQKeyboardManagerSwift (6.2.0)
   - JCore (1.2.5)
   - JPush (3.1.1.1):
     - JCore (~> 1.2.5)
   - Kingfisher (4.10.1)
   - ObjectMapper (3.3.0)
-  - PopupDialog (0.9.1):
-    - DynamicBlurView (~> 3.0.1)
   - Presentr (1.9)
   - SDWebImage (4.4.2):
     - SDWebImage/Core (= 4.4.2)
@@ -25,15 +22,14 @@ PODS:
   - WechatOpenSDK (1.8.3)
 
 DEPENDENCIES:
-  - Alamofire
+  - Alamofire (~> 4.0)
   - AlamofireObjectMapper
   - AMPopTip
   - CRRefresh
-  - HandyJSON
+  - HandyJSON (~> 5.0)
   - IQKeyboardManagerSwift
   - JPush
   - Kingfisher
-  - PopupDialog
   - Presentr
   - SDWebImage
   - SnapKit
@@ -47,14 +43,12 @@ SPEC REPOS:
     - AlamofireObjectMapper
     - AMPopTip
     - CRRefresh
-    - DynamicBlurView
     - HandyJSON
     - IQKeyboardManagerSwift
     - JCore
     - JPush
     - Kingfisher
     - ObjectMapper
-    - PopupDialog
     - Presentr
     - SDWebImage
     - SnapKit
@@ -67,14 +61,12 @@ SPEC CHECKSUMS:
   AlamofireObjectMapper: 3395e698901d8b0e6f48b7d0c43bd47875325102
   AMPopTip: 871ae0570b68fe396e714922b3f7d8ed6a36bb71
   CRRefresh: d2981e419e87b0868c19f8b1f8f562d8704f6db3
-  DynamicBlurView: b1df5415f9bd31897549e5d7077e5ec120a4d636
-  HandyJSON: 9dfc026c7d7adc1f0f8ba8b181495f0e0763b0f4
+  HandyJSON: 992f2d661716d6a91de82d0056927bc7813b5770
   IQKeyboardManagerSwift: b07ccf9d8cafe993dcd6cb794eb4ba34611a0c4e
   JCore: 14706de2640b25fb77dbd02332696491407f37c9
   JPush: 25dd9013fbe106082c14f9f30a82364ee98852fb
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
-  PopupDialog: 03985b669c29802661c187513bf827340db1ae4d
   Presentr: 7078d7eb5d1661ebeaae60c9e42a1e534de1b993
   SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
@@ -82,6 +74,6 @@ SPEC CHECKSUMS:
   UMengAnalytics: ef8d45f94c0e5771dc364cf6a5731d9d3b101da2
   WechatOpenSDK: 3117412f8aafde4758cac1e8d20b93c67cafcfef
 
-PODFILE CHECKSUM: 77ba9378b5792ec03a693210d5ea1fa5452f3cb8
+PODFILE CHECKSUM: a8aedae9b1521af0edc719e3584292356865cca2
 
 COCOAPODS: 1.5.3

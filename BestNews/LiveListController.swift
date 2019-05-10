@@ -53,7 +53,7 @@ class LiveListController: BaseViewController, UITableViewDelegate, UITableViewDa
         //self.tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: 1, height: 44))
     }
     
-    func didreceiveLiveStartNoti(_ sender: Notification) {
+    @objc func didreceiveLiveStartNoti(_ sender: Notification) {
         reloadLiveList()
     }
     

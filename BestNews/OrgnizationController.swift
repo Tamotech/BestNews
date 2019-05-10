@@ -417,9 +417,9 @@ extension OrgnizationController {
         let para = NSMutableParagraphStyle()
         para.lineSpacing = 5
         let memo = NSAttributedString(string: ognization!.memo, attributes:
-            [NSParagraphStyleAttributeName: para,
-             NSForegroundColorAttributeName: UIColor.init(white: 1, alpha: 0.7),
-             NSFontAttributeName: UIFont.systemFont(ofSize: 13)])
+            [NSAttributedStringKey.paragraphStyle: para,
+             NSAttributedStringKey.foregroundColor: UIColor.init(white: 1, alpha: 0.7),
+             NSAttributedStringKey.font: UIFont.systemFont(ofSize: 13)])
         descLb.attributedText = memo
         
         if let url = URL(string: ognization!.headimg) {

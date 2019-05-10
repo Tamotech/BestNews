@@ -81,7 +81,7 @@ class ActivityDetailController: BaseViewController, ActivityTicketListController
     
 
     //MARK: - acions
-    func handleTapCollectionBtn(sender: Any) {
+    @objc func handleTapCollectionBtn(sender: Any) {
         if !SessionManager.sharedInstance.loginInfo.isLogin {
             Toolkit.showLoginVC()
             return
@@ -114,7 +114,7 @@ class ActivityDetailController: BaseViewController, ActivityTicketListController
         }
     }
     
-    func handleTapRepostBtn(sender: Any) {
+    @objc func handleTapRepostBtn(sender: Any) {
         if !SessionManager.sharedInstance.loginInfo.isLogin {
             Toolkit.showLoginVC()
             return

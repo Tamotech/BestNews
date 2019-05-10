@@ -44,7 +44,7 @@ class EndLiveAlertView: BaseView {
     }
     
     
-    func handleTapBG() {
+    @objc func handleTapBG() {
         dismiss()
     }
     

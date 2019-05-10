@@ -45,7 +45,7 @@ class ApplyIdentifyController: BaseViewController {
     }
     
     
-    func timerEvent(_ t: Timer) {
+    @objc func timerEvent(_ t: Timer) {
         seconds = seconds - 1
         if seconds <= 0 {
             t.invalidate()

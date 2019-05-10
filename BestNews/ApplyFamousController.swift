@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import PopupDialog
 
 ///申请名人
 class ApplyFamousController: BaseViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, ProfessionListControllerDelegate {
@@ -133,18 +132,13 @@ class ApplyFamousController: BaseViewController, UIImagePickerControllerDelegate
     
     //MARK: - actions
     
-    func handleTapBackButton(_:Any) {
-        let dialog = PopupDialog(title: "确认要离开本页?", message: "离开后已填写的信息将不再保存")
-        dialog.addButton(PopupDialogButton(title: "取消", action: {
-            
-        }))
-        dialog.addButton(PopupDialogButton(title: "确认", action: {
+    @objc func handleTapBackButton(_:Any) {
+        let alert = UIAlertController(title: "确认要离开本页?", message: "离开后已填写的信息将不再保存", preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "确认", style: UIAlertActionStyle.default, handler: { (ok) in
             self.navigationController?.popViewController(animated: true)
         }))
-        self.present(dialog, animated: true, completion: {
-            
-        })
-        
+        alert.addAction(UIAlertAction(title: "取消", style: UIAlertActionStyle.cancel, handler: nil))
+        present(alert, animated: true, completion: nil)
     }
     
     @IBAction func handleTapProfession(_ sender: UITapGestureRecognizer) {

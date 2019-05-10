@@ -307,7 +307,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, WXApiDelegate, TencentSes
     
     
     ///极光自定义消息
-    func networkDidReceiveMessage(_ sender: Notification) {
+    @objc func networkDidReceiveMessage(_ sender: Notification) {
         guard let extra = sender.userInfo!["extras"] as? [String: Any] else {
             return
         }

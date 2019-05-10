@@ -67,7 +67,7 @@ class SubscriptionListControllerViewController: UIViewController, UITableViewDel
     }
     
     
-    func didSwitchNav(_ sender: Notification) {
+    @objc func didSwitchNav(_ sender: Notification) {
         
         let index = sender.object as! Int
         if CGFloat(index)*screenWidth == self.view.x && !SessionManager.sharedInstance.loginInfo.isLogin {
@@ -134,7 +134,7 @@ class SubscriptionListControllerViewController: UIViewController, UITableViewDel
     
     
     // 登陆成功通知
-    func loginStatusChangeNiti(noti: Notification) {
+    @objc func loginStatusChangeNiti(noti: Notification) {
         if SessionManager.sharedInstance.loginInfo.isLogin {
             reloadOgnizationList()
             reloadArticleList()

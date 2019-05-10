@@ -134,7 +134,7 @@ class RewardAlertController: UIViewController, UITextFieldDelegate {
     }
     
     
-    func zhifubaoPaySuccess(_ : Any?) {
+    @objc func zhifubaoPaySuccess(_ : Any?) {
         dismiss(animated: true) {
             [weak self] in
             if self?.confirmCallback != nil {
@@ -143,7 +143,7 @@ class RewardAlertController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func zhifubaoPayFail(_ : Any?) {
+    @objc func zhifubaoPayFail(_ : Any?) {
         DispatchQueue.main.async {
             BLHUDBarManager.showError(msg: "支付失败")
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1, execute: {
@@ -155,7 +155,7 @@ class RewardAlertController: UIViewController, UITextFieldDelegate {
         
     }
     
-    func handleTapPriceBtn(_ sender: UIButton) {
+    @objc func handleTapPriceBtn(_ sender: UIButton) {
         let p: [Double] = [5, 10, 50, 100]
         for i in 0..<p.count {
             let btn = priceBtns[i]

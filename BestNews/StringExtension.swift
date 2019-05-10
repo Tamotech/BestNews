@@ -61,7 +61,7 @@ extension String {
     func getLabHeigh(font:UIFont,width:CGFloat) -> CGFloat {
         let statusLabelText: NSString = NSString(string: self)
         let size = CGSize(width: width, height: 900)
-        let dic = [NSFontAttributeName: font]
+        let dic = [NSAttributedStringKey.font: font]
         let strSize = statusLabelText.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: dic, context: nil)
         return strSize.height
     }
@@ -75,7 +75,7 @@ extension String {
     func getLabWidth(font:UIFont,height:CGFloat) -> CGFloat {
         let statusLabelText: NSString = NSString(string: self)
         let size = CGSize(width: 900, height: height)
-        let dic = [NSFontAttributeName: font]
+        let dic = [NSAttributedStringKey.font: font]
         let strSize = statusLabelText.boundingRect(with: size, options: .usesLineFragmentOrigin, attributes: dic, context: nil)
         return strSize.width
     }
@@ -119,7 +119,7 @@ extension String {
         colorFilter.setValue(CIColor(red: 0, green: 0, blue: 0), forKey: "inputColor0")
         colorFilter.setValue(CIColor(red: 1, green: 1, blue: 1), forKey: "inputColor1")
         // 返回二维码image
-        let codeImage = UIImage(ciImage: (colorFilter.outputImage!.applying(CGAffineTransform(scaleX: 5, y: 5))))
+        let codeImage = UIImage(ciImage: (colorFilter.outputImage!.transformed(by: CGAffineTransform(scaleX: 5, y: 5))))
         
         // 中间一般放logo
         if qrImageName != nil {

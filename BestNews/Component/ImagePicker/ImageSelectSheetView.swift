@@ -63,7 +63,7 @@ class ImageSelectSheetView: BaseView {
         dismiss()
     }
     
-    func handleTapBG() {
+    @objc func handleTapBG() {
         dismiss()
     }
     

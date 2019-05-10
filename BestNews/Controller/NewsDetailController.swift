@@ -385,7 +385,7 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
         
     }
     
-    func dismissPhoto(_ sender: UIGestureRecognizer) {
+    @objc func dismissPhoto(_ sender: UIGestureRecognizer) {
         let v = sender.view!
         UIView.animate(withDuration: 0.3, animations: {
             v.alpha = 0

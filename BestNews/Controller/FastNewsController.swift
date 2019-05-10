@@ -101,7 +101,7 @@ class FastNewsController: BaseViewController, UITableViewDataSource, UITableView
     }
     
     
-    func didSwitchNav(_ sender: Notification) {
+    @objc func didSwitchNav(_ sender: Notification) {
         
         let index = sender.object as! Int
         if newsList == nil && CGFloat(index)*screenWidth == self.view.x && !collectFilter {
@@ -109,7 +109,7 @@ class FastNewsController: BaseViewController, UITableViewDataSource, UITableView
         }
     }
     
-    func timerEvent(_ sender: Timer) {
+    @objc func timerEvent(_ sender: Timer) {
         self.loadStockStatus()
     }
     

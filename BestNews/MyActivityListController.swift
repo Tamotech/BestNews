@@ -63,7 +63,7 @@ class MyActivityListController: BaseViewController, UITableViewDelegate, UITable
     }
 
     
-    func refundTicketSuccessNoti(_ sender: Notification) {
+    @objc func refundTicketSuccessNoti(_ sender: Notification) {
         self.reloadData()
     }
     
