@@ -149,8 +149,8 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
                 let vc = SpecialChannelArticleListController()
                 let channel = SpecialChannel()
                 channel.id = article.linkchannelid
-                channel.name = article.linkchannename
-                channel.fullname = article.linkchannename
+                channel.name = article.title
+                channel.fullname = article.title
                 vc.entry = 1
                 vc.channel = channel
                 navigationController?.pushViewController(vc, animated: true)
