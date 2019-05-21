@@ -268,5 +268,17 @@ extension MyLiveViewController {
             self?.initPusher()
         }
     }
+    
+    func onConnectionLost(_ pusher: AlivcLivePusher!) {
+        
+    }
+    
+    func onPushURLAuthenticationOverdue(_ pusher: AlivcLivePusher!) -> String! {
+        return ""
+    }
+    
+    func onSendSeiMessage(_ pusher: AlivcLivePusher!) {
+        
+    }
         
 }

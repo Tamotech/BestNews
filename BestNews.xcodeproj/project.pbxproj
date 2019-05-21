@@ -8,9 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5A026D8E1FE8954900B99466 /* HomeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A026D8D1FE8954900B99466 /* HomeModel.swift */; };
-		5A04B4091FD44AD400DE58D2 /* BasicFunctionDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A04B4081FD44AD300DE58D2 /* BasicFunctionDemoViewController.swift */; };
 		5A04B4151FD44CAA00DE58D2 /* AliyunPlayMessageShowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A04B4141FD44CAA00DE58D2 /* AliyunPlayMessageShowView.swift */; };
-		5A04B4181FD44DE300DE58D2 /* AliyunPlayerLivePlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A04B4171FD44DE200DE58D2 /* AliyunPlayerLivePlayViewController.m */; };
 		5A04B41B1FD44E0500DE58D2 /* AliyunPlayMessageShowView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A04B41A1FD44E0500DE58D2 /* AliyunPlayMessageShowView.m */; };
 		5A04B41E1FD44E7900DE58D2 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A04B41C1FD44E7800DE58D2 /* Reachability.m */; };
 		5A04B4211FD44EA100DE58D2 /* UIView+Layout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A04B4201FD44EA100DE58D2 /* UIView+Layout.m */; };
@@ -162,48 +160,7 @@
 		5AA4E7DD1FD2B083007A04FA /* RewardAlertController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AA4E7DB1FD2B083007A04FA /* RewardAlertController.xib */; };
 		5AA4E7E01FD385A9007A04FA /* ActivityApplySuccessAlertControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA4E7DE1FD385A9007A04FA /* ActivityApplySuccessAlertControllerViewController.swift */; };
 		5AA4E7E11FD385A9007A04FA /* ActivityApplySuccessAlertControllerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AA4E7DF1FD385A9007A04FA /* ActivityApplySuccessAlertControllerViewController.xib */; };
-		5AA4E7FC1FD42B4E007A04FA /* AlivcLivePusherViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = 5AA4E7F81FD42B4D007A04FA /* AlivcLivePusherViewController.mm */; };
-		5AA4E7FD1FD42B4E007A04FA /* AlivcLivePushConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA4E7FB1FD42B4D007A04FA /* AlivcLivePushConfigViewController.m */; };
-		5AA4E8081FD42B86007A04FA /* AlivcPublisherView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA4E7FE1FD42B84007A04FA /* AlivcPublisherView.m */; };
-		5AA4E8091FD42B86007A04FA /* AlivcDebugChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA4E8001FD42B84007A04FA /* AlivcDebugChartView.m */; };
-		5AA4E80A1FD42B86007A04FA /* AlivcChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA4E8051FD42B85007A04FA /* AlivcChartView.m */; };
-		5AA4E80B1FD42B86007A04FA /* AlivcWatermarkSettingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA4E8061FD42B85007A04FA /* AlivcWatermarkSettingView.m */; };
-		5AA4E80C1FD42B86007A04FA /* AlivcDebugTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA4E8071FD42B86007A04FA /* AlivcDebugTextView.m */; };
 		5AA4E80E1FD42BF2007A04FA /* PrefixHeader.pch in Sources */ = {isa = PBXBuildFile; fileRef = 5AA4E80D1FD42BB6007A04FA /* PrefixHeader.pch */; };
-		5AA4E8181FD42C81007A04FA /* AlivcParamTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA4E8121FD42C80007A04FA /* AlivcParamTableViewCell.m */; };
-		5AA4E8191FD42C81007A04FA /* AlivcSweepCodeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA4E8131FD42C80007A04FA /* AlivcSweepCodeView.m */; };
-		5AA4E81A1FD42C81007A04FA /* AlivcGuidePageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA4E8171FD42C81007A04FA /* AlivcGuidePageView.m */; };
-		5AA4E81D1FD42D0A007A04FA /* AlivcParamModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA4E81B1FD42D0A007A04FA /* AlivcParamModel.m */; };
-		5AA4E8281FD42DC1007A04FA /* 版权信息.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5AA4E81F1FD42DC1007A04FA /* 版权信息.txt */; };
-		5AA4E8291FD42DC1007A04FA /* AlivcCopyrightInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA4E8211FD42DC1007A04FA /* AlivcCopyrightInfoViewController.m */; };
-		5AA4E82A1FD42DC1007A04FA /* AlivcNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA4E8241FD42DC1007A04FA /* AlivcNavigationController.m */; };
-		5AA4E82B1FD42DC1007A04FA /* AlivcQRCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA4E8251FD42DC1007A04FA /* AlivcQRCodeViewController.m */; };
-		5AA4E82C1FD42DC1007A04FA /* AlivcRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA4E8261FD42DC1007A04FA /* AlivcRootViewController.m */; };
-		5AA4E8341FD42E9B007A04FA /* AlivcLiveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AA4E82F1FD42E9B007A04FA /* AlivcLiveViewController.xib */; };
-		5AA4E8351FD42E9B007A04FA /* AlivcLiveConfigViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5AA4E8311FD42E9B007A04FA /* AlivcLiveConfigViewController.xib */; };
-		5AA4E8361FD42E9B007A04FA /* AlivcLiveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA4E8321FD42E9B007A04FA /* AlivcLiveViewController.m */; };
-		5AA4E8371FD42E9B007A04FA /* AlivcLiveConfigViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AA4E8331FD42E9B007A04FA /* AlivcLiveConfigViewController.m */; };
-		5AA4E84E1FD43378007A04FA /* back@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA4E8391FD43372007A04FA /* back@3x.png */; };
-		5AA4E84F1FD43378007A04FA /* record_beauty@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA4E83A1FD43372007A04FA /* record_beauty@2x.png */; };
-		5AA4E8501FD43378007A04FA /* record_beauty_on@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA4E83B1FD43373007A04FA /* record_beauty_on@3x.png */; };
-		5AA4E8511FD43378007A04FA /* Line@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA4E83C1FD43373007A04FA /* Line@2x.png */; };
-		5AA4E8521FD43378007A04FA /* camera_id@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA4E83D1FD43373007A04FA /* camera_id@2x.png */; };
-		5AA4E8531FD43378007A04FA /* volume_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA4E83E1FD43373007A04FA /* volume_off@2x.png */; };
-		5AA4E8541FD43378007A04FA /* QR@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA4E83F1FD43374007A04FA /* QR@3x.png */; };
-		5AA4E8551FD43378007A04FA /* camera_flash_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA4E8401FD43374007A04FA /* camera_flash_on@2x.png */; };
-		5AA4E8561FD43378007A04FA /* QR@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA4E8411FD43374007A04FA /* QR@2x.png */; };
-		5AA4E8571FD43378007A04FA /* volume_off@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA4E8421FD43374007A04FA /* volume_off@3x.png */; };
-		5AA4E8581FD43378007A04FA /* watermark_small.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA4E8431FD43375007A04FA /* watermark_small.png */; };
-		5AA4E8591FD43378007A04FA /* camera_flash_on@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA4E8441FD43375007A04FA /* camera_flash_on@3x.png */; };
-		5AA4E85A1FD43378007A04FA /* Line@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA4E8451FD43375007A04FA /* Line@3x.png */; };
-		5AA4E85B1FD43378007A04FA /* camera_flash_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA4E8461FD43376007A04FA /* camera_flash_close@2x.png */; };
-		5AA4E85C1FD43378007A04FA /* watermark.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA4E8471FD43376007A04FA /* watermark.png */; };
-		5AA4E85D1FD43378007A04FA /* record_beauty_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA4E8481FD43376007A04FA /* record_beauty_on@2x.png */; };
-		5AA4E85E1FD43378007A04FA /* back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA4E8491FD43376007A04FA /* back@2x.png */; };
-		5AA4E85F1FD43378007A04FA /* record_beauty@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA4E84A1FD43377007A04FA /* record_beauty@3x.png */; };
-		5AA4E8601FD43378007A04FA /* volume_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA4E84B1FD43377007A04FA /* volume_on@2x.png */; };
-		5AA4E8611FD43378007A04FA /* volume_on@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA4E84C1FD43378007A04FA /* volume_on@3x.png */; };
-		5AA4E8621FD43378007A04FA /* camera_flash_close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5AA4E84D1FD43378007A04FA /* camera_flash_close@3x.png */; };
 		5ABB14D41FBD073E006EEE59 /* ActivityList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABB14D31FBD073E006EEE59 /* ActivityList.swift */; };
 		5ABB14D61FBD0F83006EEE59 /* ActivityDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABB14D51FBD0F83006EEE59 /* ActivityDetail.swift */; };
 		5ABB92B51FA5E096002E3180 /* DES3EncryptUtil.h in Sources */ = {isa = PBXBuildFile; fileRef = 5ABB92B21FA5DD79002E3180 /* DES3EncryptUtil.h */; };
@@ -300,28 +257,29 @@
 		CC70F60220A6C27500E52A46 /* ContactUsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC70F60020A6C27500E52A46 /* ContactUsController.xib */; };
 		CC9A1F0721D1165D0024DD0F /* XH_logo_f@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC9A1F0521D1165C0024DD0F /* XH_logo_f@3x.png */; };
 		CC9A1F0821D1165D0024DD0F /* XH_logo_f@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC9A1F0621D1165D0024DD0F /* XH_logo_f@2x.png */; };
+		CCA369B22293FB510022A74B /* AliThirdparty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA369B02293FB2A0022A74B /* AliThirdparty.framework */; };
+		CCA369B4229400610022A74B /* AliyunVodPlayerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCC8E6CD20863849004CF6B3 /* AliyunVodPlayerSDK.framework */; };
+		CCA369B5229400610022A74B /* AliyunVodPlayerSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CCC8E6CD20863849004CF6B3 /* AliyunVodPlayerSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CCA369B7229400860022A74B /* AlivcLivePusher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCC8E6CA20863848004CF6B3 /* AlivcLivePusher.framework */; };
+		CCA369B8229400860022A74B /* AlivcLivePusher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CCC8E6CA20863848004CF6B3 /* AlivcLivePusher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CCA369B9229400A30022A74B /* AlivcLibRtmp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCC8E6CB20863848004CF6B3 /* AlivcLibRtmp.framework */; };
+		CCA369BA229400A30022A74B /* AlivcLibRtmp.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CCC8E6CB20863848004CF6B3 /* AlivcLibRtmp.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CCA369BB229400A30022A74B /* AliyunPlayerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCC8E6CC20863849004CF6B3 /* AliyunPlayerSDK.framework */; };
+		CCA369BC229400A30022A74B /* AliyunPlayerSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CCC8E6CC20863849004CF6B3 /* AliyunPlayerSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CCA369BD229400A30022A74B /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A3DD44A1FFE939800AADE12 /* AlipaySDK.framework */; };
+		CCA369C2229401DA0022A74B /* AliThirdparty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCA369B02293FB2A0022A74B /* AliThirdparty.framework */; };
+		CCA369C3229401DA0022A74B /* AliThirdparty.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CCA369B02293FB2A0022A74B /* AliThirdparty.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CCC8E6C320863804004CF6B3 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCC8E6C220863804004CF6B3 /* TencentOpenAPI.framework */; };
 		CCC8E6C62086382D004CF6B3 /* RongIMKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCC8E6C42086382C004CF6B3 /* RongIMKit.framework */; };
 		CCC8E6C72086382D004CF6B3 /* RongCloud.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CCC8E6C52086382D004CF6B3 /* RongCloud.bundle */; };
-		CCC8E6CF20863849004CF6B3 /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCC8E6C820863848004CF6B3 /* AlipaySDK.framework */; };
 		CCC8E6D020863849004CF6B3 /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CCC8E6C920863848004CF6B3 /* AlipaySDK.bundle */; };
-		CCC8E6D120863849004CF6B3 /* AlivcLivePusher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCC8E6CA20863848004CF6B3 /* AlivcLivePusher.framework */; };
-		CCC8E6D320863849004CF6B3 /* AliyunPlayerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCC8E6CC20863849004CF6B3 /* AliyunPlayerSDK.framework */; };
-		CCC8E6D420863849004CF6B3 /* AliyunVodPlayerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCC8E6CD20863849004CF6B3 /* AliyunVodPlayerSDK.framework */; };
 		CCC8E6D520863849004CF6B3 /* AliyunVodPlayerViewSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCC8E6CE20863849004CF6B3 /* AliyunVodPlayerViewSDK.framework */; };
 		CCC8E6D720863892004CF6B3 /* libOpenInstallSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CCC8E6D620863892004CF6B3 /* libOpenInstallSDK.a */; };
-		CCC8E6D820863EFB004CF6B3 /* AliyunVodPlayerViewSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCC8E6CE20863849004CF6B3 /* AliyunVodPlayerViewSDK.framework */; };
-		CCC8E6D920863EFB004CF6B3 /* AliyunVodPlayerViewSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CCC8E6CE20863849004CF6B3 /* AliyunVodPlayerViewSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CCC8E6DA20863F35004CF6B3 /* AlivcLivePusher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCC8E6CA20863848004CF6B3 /* AlivcLivePusher.framework */; };
-		CCC8E6DB20863F35004CF6B3 /* AlivcLivePusher.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CCC8E6CA20863848004CF6B3 /* AlivcLivePusher.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CCC8E6DC20863F6A004CF6B3 /* AliyunPlayerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCC8E6CC20863849004CF6B3 /* AliyunPlayerSDK.framework */; };
-		CCC8E6DD20863F6A004CF6B3 /* AliyunPlayerSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CCC8E6CC20863849004CF6B3 /* AliyunPlayerSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CCC8E6DE20863F70004CF6B3 /* AliyunVodPlayerSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCC8E6CD20863849004CF6B3 /* AliyunVodPlayerSDK.framework */; };
-		CCC8E6DF20863F70004CF6B3 /* AliyunVodPlayerSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CCC8E6CD20863849004CF6B3 /* AliyunVodPlayerSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CCC8E6E020863FB0004CF6B3 /* AgoraRtcEngineKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A8C29C91FDFC29E00E51095 /* AgoraRtcEngineKit.framework */; };
 		CCC8E6E220863FB0004CF6B3 /* AlivcLibRtmp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCC8E6CB20863848004CF6B3 /* AlivcLibRtmp.framework */; };
-		CCC8E6E420864295004CF6B3 /* AlivcLibRtmp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCC8E6CB20863848004CF6B3 /* AlivcLibRtmp.framework */; };
-		CCC8E6E520864295004CF6B3 /* AlivcLibRtmp.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CCC8E6CB20863848004CF6B3 /* AlivcLibRtmp.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CCDB6D3B1F79C6DF0012432E /* TYPageStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDB6D381F79C58C0012432E /* TYPageStyle.swift */; };
 		CCDB6D3C1F79C6DF0012432E /* TYPageTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDB6D3A1F79C58C0012432E /* TYPageTitleView.swift */; };
 		CCDB6D411F79D6C30012432E /* TYPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDB6D401F79D6C30012432E /* TYPageView.swift */; };
@@ -337,17 +295,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		5A04B4301FD46A9900DE58D2 /* Embed Frameworks */ = {
+		CCA369B6229400610022A74B /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				CCC8E6D920863EFB004CF6B3 /* AliyunVodPlayerViewSDK.framework in Embed Frameworks */,
-				CCC8E6DB20863F35004CF6B3 /* AlivcLivePusher.framework in Embed Frameworks */,
-				CCC8E6DF20863F70004CF6B3 /* AliyunVodPlayerSDK.framework in Embed Frameworks */,
-				CCC8E6E520864295004CF6B3 /* AlivcLibRtmp.framework in Embed Frameworks */,
-				CCC8E6DD20863F6A004CF6B3 /* AliyunPlayerSDK.framework in Embed Frameworks */,
+				CCA369B5229400610022A74B /* AliyunVodPlayerSDK.framework in Embed Frameworks */,
+				CCA369BA229400A30022A74B /* AlivcLibRtmp.framework in Embed Frameworks */,
+				CCA369BC229400A30022A74B /* AliyunPlayerSDK.framework in Embed Frameworks */,
+				CCA369B8229400860022A74B /* AlivcLivePusher.framework in Embed Frameworks */,
+				CCA369C3229401DA0022A74B /* AliThirdparty.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,10 +316,7 @@
 		11340A3AC197F199C7182F7A /* Pods-BestNews.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BestNews.release.xcconfig"; path = "Pods/Target Support Files/Pods-BestNews/Pods-BestNews.release.xcconfig"; sourceTree = "<group>"; };
 		49FBDE1023696FAD0FCB9971 /* Pods-BestNews.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BestNews.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BestNews/Pods-BestNews.debug.xcconfig"; sourceTree = "<group>"; };
 		5A026D8D1FE8954900B99466 /* HomeModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeModel.swift; sourceTree = "<group>"; };
-		5A04B4081FD44AD300DE58D2 /* BasicFunctionDemoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BasicFunctionDemoViewController.swift; path = "AliyunPlayerMediaDemo/AliyunPlayerMediaDemo-Swift/基础功能演示/BasicFunctionDemoViewController.swift"; sourceTree = SOURCE_ROOT; };
 		5A04B4141FD44CAA00DE58D2 /* AliyunPlayMessageShowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AliyunPlayMessageShowView.swift; path = "AliyunPlayerMediaDemo/AliyunPlayerMediaDemo-Swift/基础功能演示/AliyunPlayMessageShowView.swift"; sourceTree = SOURCE_ROOT; };
-		5A04B4161FD44DE200DE58D2 /* AliyunPlayerLivePlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AliyunPlayerLivePlayViewController.h; path = "AliyunPlayerMediaDemo/AliyunPlayerMediaDemo/Basic player/live/AliyunPlayerLivePlayViewController.h"; sourceTree = SOURCE_ROOT; };
-		5A04B4171FD44DE200DE58D2 /* AliyunPlayerLivePlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AliyunPlayerLivePlayViewController.m; path = "AliyunPlayerMediaDemo/AliyunPlayerMediaDemo/Basic player/live/AliyunPlayerLivePlayViewController.m"; sourceTree = SOURCE_ROOT; };
 		5A04B4191FD44E0500DE58D2 /* AliyunPlayMessageShowView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AliyunPlayMessageShowView.h; path = "AliyunPlayerMediaDemo/AliyunPlayerMediaDemo/Advanced player/base_vod/AliyunPlayMessageShowView.h"; sourceTree = SOURCE_ROOT; };
 		5A04B41A1FD44E0500DE58D2 /* AliyunPlayMessageShowView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AliyunPlayMessageShowView.m; path = "AliyunPlayerMediaDemo/AliyunPlayerMediaDemo/Advanced player/base_vod/AliyunPlayMessageShowView.m"; sourceTree = SOURCE_ROOT; };
 		5A04B41C1FD44E7800DE58D2 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = AliyunPlayerMediaDemo/AliyunPlayerMediaDemo/Reachability.m; sourceTree = SOURCE_ROOT; };
@@ -521,65 +476,7 @@
 		5AA4E7DB1FD2B083007A04FA /* RewardAlertController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RewardAlertController.xib; sourceTree = "<group>"; };
 		5AA4E7DE1FD385A9007A04FA /* ActivityApplySuccessAlertControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityApplySuccessAlertControllerViewController.swift; sourceTree = "<group>"; };
 		5AA4E7DF1FD385A9007A04FA /* ActivityApplySuccessAlertControllerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ActivityApplySuccessAlertControllerViewController.xib; sourceTree = "<group>"; };
-		5AA4E7F81FD42B4D007A04FA /* AlivcLivePusherViewController.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = AlivcLivePusherViewController.mm; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Controllers/AlivcLivePusher/AlivcLivePusherViewController.mm; sourceTree = SOURCE_ROOT; };
-		5AA4E7F91FD42B4D007A04FA /* AlivcLivePusherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlivcLivePusherViewController.h; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Controllers/AlivcLivePusher/AlivcLivePusherViewController.h; sourceTree = SOURCE_ROOT; };
-		5AA4E7FA1FD42B4D007A04FA /* AlivcLivePushConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlivcLivePushConfigViewController.h; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Controllers/AlivcLivePusher/AlivcLivePushConfigViewController.h; sourceTree = SOURCE_ROOT; };
-		5AA4E7FB1FD42B4D007A04FA /* AlivcLivePushConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlivcLivePushConfigViewController.m; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Controllers/AlivcLivePusher/AlivcLivePushConfigViewController.m; sourceTree = SOURCE_ROOT; };
-		5AA4E7FE1FD42B84007A04FA /* AlivcPublisherView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlivcPublisherView.m; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Views/AlivcLivePusher/AlivcPublisherView.m; sourceTree = SOURCE_ROOT; };
-		5AA4E7FF1FD42B84007A04FA /* AlivcChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlivcChartView.h; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Views/AlivcLivePusher/AlivcChartView.h; sourceTree = SOURCE_ROOT; };
-		5AA4E8001FD42B84007A04FA /* AlivcDebugChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlivcDebugChartView.m; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Views/AlivcLivePusher/AlivcDebugChartView.m; sourceTree = SOURCE_ROOT; };
-		5AA4E8011FD42B85007A04FA /* AlivcDebugTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlivcDebugTextView.h; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Views/AlivcLivePusher/AlivcDebugTextView.h; sourceTree = SOURCE_ROOT; };
-		5AA4E8021FD42B85007A04FA /* AlivcPublisherView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlivcPublisherView.h; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Views/AlivcLivePusher/AlivcPublisherView.h; sourceTree = SOURCE_ROOT; };
-		5AA4E8031FD42B85007A04FA /* AlivcWatermarkSettingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlivcWatermarkSettingView.h; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Views/AlivcLivePusher/AlivcWatermarkSettingView.h; sourceTree = SOURCE_ROOT; };
-		5AA4E8041FD42B85007A04FA /* AlivcDebugChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlivcDebugChartView.h; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Views/AlivcLivePusher/AlivcDebugChartView.h; sourceTree = SOURCE_ROOT; };
-		5AA4E8051FD42B85007A04FA /* AlivcChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlivcChartView.m; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Views/AlivcLivePusher/AlivcChartView.m; sourceTree = SOURCE_ROOT; };
-		5AA4E8061FD42B85007A04FA /* AlivcWatermarkSettingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlivcWatermarkSettingView.m; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Views/AlivcLivePusher/AlivcWatermarkSettingView.m; sourceTree = SOURCE_ROOT; };
-		5AA4E8071FD42B86007A04FA /* AlivcDebugTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlivcDebugTextView.m; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Views/AlivcLivePusher/AlivcDebugTextView.m; sourceTree = SOURCE_ROOT; };
 		5AA4E80D1FD42BB6007A04FA /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = PrefixHeader.pch; path = AlivcLivePusherDemo/AlivcLivePusherDemo/PrefixHeader.pch; sourceTree = SOURCE_ROOT; };
-		5AA4E8121FD42C80007A04FA /* AlivcParamTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlivcParamTableViewCell.m; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Views/Others/AlivcParamTableViewCell.m; sourceTree = SOURCE_ROOT; };
-		5AA4E8131FD42C80007A04FA /* AlivcSweepCodeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlivcSweepCodeView.m; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Views/Others/AlivcSweepCodeView.m; sourceTree = SOURCE_ROOT; };
-		5AA4E8141FD42C80007A04FA /* AlivcParamTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlivcParamTableViewCell.h; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Views/Others/AlivcParamTableViewCell.h; sourceTree = SOURCE_ROOT; };
-		5AA4E8151FD42C81007A04FA /* AlivcGuidePageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlivcGuidePageView.h; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Views/Others/AlivcGuidePageView.h; sourceTree = SOURCE_ROOT; };
-		5AA4E8161FD42C81007A04FA /* AlivcSweepCodeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlivcSweepCodeView.h; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Views/Others/AlivcSweepCodeView.h; sourceTree = SOURCE_ROOT; };
-		5AA4E8171FD42C81007A04FA /* AlivcGuidePageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlivcGuidePageView.m; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Views/Others/AlivcGuidePageView.m; sourceTree = SOURCE_ROOT; };
-		5AA4E81B1FD42D0A007A04FA /* AlivcParamModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlivcParamModel.m; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Models/AlivcParamModel.m; sourceTree = SOURCE_ROOT; };
-		5AA4E81C1FD42D0A007A04FA /* AlivcParamModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlivcParamModel.h; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Models/AlivcParamModel.h; sourceTree = SOURCE_ROOT; };
-		5AA4E81F1FD42DC1007A04FA /* 版权信息.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "版权信息.txt"; path = "AlivcLivePusherDemo/AlivcLivePusherDemo/Controllers/Others/版权信息.txt"; sourceTree = SOURCE_ROOT; };
-		5AA4E8201FD42DC1007A04FA /* AlivcCopyrightInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlivcCopyrightInfoViewController.h; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Controllers/Others/AlivcCopyrightInfoViewController.h; sourceTree = SOURCE_ROOT; };
-		5AA4E8211FD42DC1007A04FA /* AlivcCopyrightInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlivcCopyrightInfoViewController.m; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Controllers/Others/AlivcCopyrightInfoViewController.m; sourceTree = SOURCE_ROOT; };
-		5AA4E8221FD42DC1007A04FA /* AlivcNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlivcNavigationController.h; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Controllers/Others/AlivcNavigationController.h; sourceTree = SOURCE_ROOT; };
-		5AA4E8231FD42DC1007A04FA /* AlivcRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlivcRootViewController.h; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Controllers/Others/AlivcRootViewController.h; sourceTree = SOURCE_ROOT; };
-		5AA4E8241FD42DC1007A04FA /* AlivcNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlivcNavigationController.m; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Controllers/Others/AlivcNavigationController.m; sourceTree = SOURCE_ROOT; };
-		5AA4E8251FD42DC1007A04FA /* AlivcQRCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlivcQRCodeViewController.m; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Controllers/Others/AlivcQRCodeViewController.m; sourceTree = SOURCE_ROOT; };
-		5AA4E8261FD42DC1007A04FA /* AlivcRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlivcRootViewController.m; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Controllers/Others/AlivcRootViewController.m; sourceTree = SOURCE_ROOT; };
-		5AA4E8271FD42DC1007A04FA /* AlivcQRCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlivcQRCodeViewController.h; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Controllers/Others/AlivcQRCodeViewController.h; sourceTree = SOURCE_ROOT; };
-		5AA4E82E1FD42E9B007A04FA /* AlivcLiveConfigViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlivcLiveConfigViewController.h; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Controllers/AlivcLiveSession/AlivcLiveConfigViewController.h; sourceTree = SOURCE_ROOT; };
-		5AA4E82F1FD42E9B007A04FA /* AlivcLiveViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AlivcLiveViewController.xib; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Controllers/AlivcLiveSession/AlivcLiveViewController.xib; sourceTree = SOURCE_ROOT; };
-		5AA4E8301FD42E9B007A04FA /* AlivcLiveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AlivcLiveViewController.h; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Controllers/AlivcLiveSession/AlivcLiveViewController.h; sourceTree = SOURCE_ROOT; };
-		5AA4E8311FD42E9B007A04FA /* AlivcLiveConfigViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AlivcLiveConfigViewController.xib; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Controllers/AlivcLiveSession/AlivcLiveConfigViewController.xib; sourceTree = SOURCE_ROOT; };
-		5AA4E8321FD42E9B007A04FA /* AlivcLiveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlivcLiveViewController.m; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Controllers/AlivcLiveSession/AlivcLiveViewController.m; sourceTree = SOURCE_ROOT; };
-		5AA4E8331FD42E9B007A04FA /* AlivcLiveConfigViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AlivcLiveConfigViewController.m; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Controllers/AlivcLiveSession/AlivcLiveConfigViewController.m; sourceTree = SOURCE_ROOT; };
-		5AA4E8391FD43372007A04FA /* back@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back@3x.png"; path = "AlivcLivePusherDemo/AlivcLivePusherDemo/Resources/back@3x.png"; sourceTree = SOURCE_ROOT; };
-		5AA4E83A1FD43372007A04FA /* record_beauty@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "record_beauty@2x.png"; path = "AlivcLivePusherDemo/AlivcLivePusherDemo/Resources/record_beauty@2x.png"; sourceTree = SOURCE_ROOT; };
-		5AA4E83B1FD43373007A04FA /* record_beauty_on@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "record_beauty_on@3x.png"; path = "AlivcLivePusherDemo/AlivcLivePusherDemo/Resources/record_beauty_on@3x.png"; sourceTree = SOURCE_ROOT; };
-		5AA4E83C1FD43373007A04FA /* Line@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Line@2x.png"; path = "AlivcLivePusherDemo/AlivcLivePusherDemo/Resources/Line@2x.png"; sourceTree = SOURCE_ROOT; };
-		5AA4E83D1FD43373007A04FA /* camera_id@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "camera_id@2x.png"; path = "AlivcLivePusherDemo/AlivcLivePusherDemo/Resources/camera_id@2x.png"; sourceTree = SOURCE_ROOT; };
-		5AA4E83E1FD43373007A04FA /* volume_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "volume_off@2x.png"; path = "AlivcLivePusherDemo/AlivcLivePusherDemo/Resources/volume_off@2x.png"; sourceTree = SOURCE_ROOT; };
-		5AA4E83F1FD43374007A04FA /* QR@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "QR@3x.png"; path = "AlivcLivePusherDemo/AlivcLivePusherDemo/Resources/QR@3x.png"; sourceTree = SOURCE_ROOT; };
-		5AA4E8401FD43374007A04FA /* camera_flash_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "camera_flash_on@2x.png"; path = "AlivcLivePusherDemo/AlivcLivePusherDemo/Resources/camera_flash_on@2x.png"; sourceTree = SOURCE_ROOT; };
-		5AA4E8411FD43374007A04FA /* QR@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "QR@2x.png"; path = "AlivcLivePusherDemo/AlivcLivePusherDemo/Resources/QR@2x.png"; sourceTree = SOURCE_ROOT; };
-		5AA4E8421FD43374007A04FA /* volume_off@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "volume_off@3x.png"; path = "AlivcLivePusherDemo/AlivcLivePusherDemo/Resources/volume_off@3x.png"; sourceTree = SOURCE_ROOT; };
-		5AA4E8431FD43375007A04FA /* watermark_small.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = watermark_small.png; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Resources/watermark_small.png; sourceTree = SOURCE_ROOT; };
-		5AA4E8441FD43375007A04FA /* camera_flash_on@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "camera_flash_on@3x.png"; path = "AlivcLivePusherDemo/AlivcLivePusherDemo/Resources/camera_flash_on@3x.png"; sourceTree = SOURCE_ROOT; };
-		5AA4E8451FD43375007A04FA /* Line@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Line@3x.png"; path = "AlivcLivePusherDemo/AlivcLivePusherDemo/Resources/Line@3x.png"; sourceTree = SOURCE_ROOT; };
-		5AA4E8461FD43376007A04FA /* camera_flash_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "camera_flash_close@2x.png"; path = "AlivcLivePusherDemo/AlivcLivePusherDemo/Resources/camera_flash_close@2x.png"; sourceTree = SOURCE_ROOT; };
-		5AA4E8471FD43376007A04FA /* watermark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = watermark.png; path = AlivcLivePusherDemo/AlivcLivePusherDemo/Resources/watermark.png; sourceTree = SOURCE_ROOT; };
-		5AA4E8481FD43376007A04FA /* record_beauty_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "record_beauty_on@2x.png"; path = "AlivcLivePusherDemo/AlivcLivePusherDemo/Resources/record_beauty_on@2x.png"; sourceTree = SOURCE_ROOT; };
-		5AA4E8491FD43376007A04FA /* back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "back@2x.png"; path = "AlivcLivePusherDemo/AlivcLivePusherDemo/Resources/back@2x.png"; sourceTree = SOURCE_ROOT; };
-		5AA4E84A1FD43377007A04FA /* record_beauty@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "record_beauty@3x.png"; path = "AlivcLivePusherDemo/AlivcLivePusherDemo/Resources/record_beauty@3x.png"; sourceTree = SOURCE_ROOT; };
-		5AA4E84B1FD43377007A04FA /* volume_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "volume_on@2x.png"; path = "AlivcLivePusherDemo/AlivcLivePusherDemo/Resources/volume_on@2x.png"; sourceTree = SOURCE_ROOT; };
-		5AA4E84C1FD43378007A04FA /* volume_on@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "volume_on@3x.png"; path = "AlivcLivePusherDemo/AlivcLivePusherDemo/Resources/volume_on@3x.png"; sourceTree = SOURCE_ROOT; };
-		5AA4E84D1FD43378007A04FA /* camera_flash_close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "camera_flash_close@3x.png"; path = "AlivcLivePusherDemo/AlivcLivePusherDemo/Resources/camera_flash_close@3x.png"; sourceTree = SOURCE_ROOT; };
 		5ABB14D31FBD073E006EEE59 /* ActivityList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityList.swift; sourceTree = "<group>"; };
 		5ABB14D51FBD0F83006EEE59 /* ActivityDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityDetail.swift; sourceTree = "<group>"; };
 		5ABB92B01FA5DD78002E3180 /* BestNews-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BestNews-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -681,6 +578,7 @@
 		CC70F60020A6C27500E52A46 /* ContactUsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactUsController.xib; sourceTree = "<group>"; };
 		CC9A1F0521D1165C0024DD0F /* XH_logo_f@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "XH_logo_f@3x.png"; sourceTree = "<group>"; };
 		CC9A1F0621D1165D0024DD0F /* XH_logo_f@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "XH_logo_f@2x.png"; sourceTree = "<group>"; };
+		CCA369B02293FB2A0022A74B /* AliThirdparty.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AliThirdparty.framework; sourceTree = "<group>"; };
 		CCC8E6C220863804004CF6B3 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TencentOpenAPI.framework; path = Framework/TencentOpenAPI.framework; sourceTree = SOURCE_ROOT; };
 		CCC8E6C42086382C004CF6B3 /* RongIMKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RongIMKit.framework; path = Framework/RongIMKit.framework; sourceTree = SOURCE_ROOT; };
 		CCC8E6C52086382D004CF6B3 /* RongCloud.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = RongCloud.bundle; path = Framework/RongCloud.bundle; sourceTree = SOURCE_ROOT; };
@@ -719,27 +617,28 @@
 				5A8BFC0A1FF88A7B004145AC /* libz.tbd in Frameworks */,
 				CCC8E6D520863849004CF6B3 /* AliyunVodPlayerViewSDK.framework in Frameworks */,
 				CCC8E6DE20863F70004CF6B3 /* AliyunVodPlayerSDK.framework in Frameworks */,
+				CCA369B4229400610022A74B /* AliyunVodPlayerSDK.framework in Frameworks */,
 				5A8C29D71FDFD33500E51095 /* CoreTelephony.framework in Frameworks */,
 				CCC8E6DA20863F35004CF6B3 /* AlivcLivePusher.framework in Frameworks */,
-				CCC8E6D120863849004CF6B3 /* AlivcLivePusher.framework in Frameworks */,
+				CCA369BD229400A30022A74B /* AlipaySDK.framework in Frameworks */,
 				5A8C29D51FDFD31F00E51095 /* CoreMedia.framework in Frameworks */,
-				CCC8E6D420863849004CF6B3 /* AliyunVodPlayerSDK.framework in Frameworks */,
+				CCA369BB229400A30022A74B /* AliyunPlayerSDK.framework in Frameworks */,
 				CCC8E6E220863FB0004CF6B3 /* AlivcLibRtmp.framework in Frameworks */,
+				CCA369B22293FB510022A74B /* AliThirdparty.framework in Frameworks */,
 				5A8C29DB1FDFD35E00E51095 /* libc++.tbd in Frameworks */,
 				CCC8E6D720863892004CF6B3 /* libOpenInstallSDK.a in Frameworks */,
 				5A8C29D31FDFD18D00E51095 /* VideoToolbox.framework in Frameworks */,
-				CCC8E6D820863EFB004CF6B3 /* AliyunVodPlayerViewSDK.framework in Frameworks */,
 				CCC8E6C62086382D004CF6B3 /* RongIMKit.framework in Frameworks */,
 				CCC8E6DC20863F6A004CF6B3 /* AliyunPlayerSDK.framework in Frameworks */,
 				5A8C29D01FDFC2AA00E51095 /* libopencore-amrnb.a in Frameworks */,
 				5A8C29CF1FDFC2AA00E51095 /* RongIMLib.framework in Frameworks */,
 				5A6E61F61FF9BEED0056E679 /* libiconv.tbd in Frameworks */,
-				CCC8E6CF20863849004CF6B3 /* AlipaySDK.framework in Frameworks */,
+				CCA369C2229401DA0022A74B /* AliThirdparty.framework in Frameworks */,
+				CCA369B7229400860022A74B /* AlivcLivePusher.framework in Frameworks */,
 				5A8C29DD1FDFD38600E51095 /* libresolv.9.tbd in Frameworks */,
-				CCC8E6D320863849004CF6B3 /* AliyunPlayerSDK.framework in Frameworks */,
 				CCC8E6C320863804004CF6B3 /* TencentOpenAPI.framework in Frameworks */,
 				97116F55FBF85B351A8EEBAC /* Pods_BestNews.framework in Frameworks */,
-				CCC8E6E420864295004CF6B3 /* AlivcLibRtmp.framework in Frameworks */,
+				CCA369B9229400A30022A74B /* AlivcLibRtmp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -759,8 +658,6 @@
 		5A04B3ED1FD4464600DE58D2 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				5A04B3FB1FD4486400DE58D2 /* Vod */,
-				5A04B3F71FD4485500DE58D2 /* Live */,
 				5A90CFEC1F8123F500F16869 /* LiveListController.swift */,
 				5A90CFED1F8123F500F16869 /* LiveListController.xib */,
 				5A85556B1FD702050070C82B /* MyLiveViewController.swift */,
@@ -770,23 +667,6 @@
 				5A84B63E1FFC4EF4006DC3AA /* EndLiveAlertView.xib */,
 			);
 			name = Controller;
-			sourceTree = "<group>";
-		};
-		5A04B3F71FD4485500DE58D2 /* Live */ = {
-			isa = PBXGroup;
-			children = (
-				5A04B4161FD44DE200DE58D2 /* AliyunPlayerLivePlayViewController.h */,
-				5A04B4171FD44DE200DE58D2 /* AliyunPlayerLivePlayViewController.m */,
-				5A04B4081FD44AD300DE58D2 /* BasicFunctionDemoViewController.swift */,
-			);
-			name = Live;
-			sourceTree = "<group>";
-		};
-		5A04B3FB1FD4486400DE58D2 /* Vod */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Vod;
 			sourceTree = "<group>";
 		};
 		5A04B3FF1FD4489200DE58D2 /* View */ = {
@@ -1102,146 +982,10 @@
 			name = Controller;
 			sourceTree = "<group>";
 		};
-		5AA4E7F41FD42B20007A04FA /* LivePusher */ = {
-			isa = PBXGroup;
-			children = (
-				5AA4E8381FD43362007A04FA /* Resource */,
-				5AA4E7F71FD42B35007A04FA /* Model */,
-				5AA4E7F61FD42B2F007A04FA /* View */,
-				5AA4E7F51FD42B28007A04FA /* Controller */,
-			);
-			name = LivePusher;
-			sourceTree = "<group>";
-		};
-		5AA4E7F51FD42B28007A04FA /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				5AA4E82D1FD42E8E007A04FA /* AlivcLiveSession */,
-				5AA4E81E1FD42DB3007A04FA /* Other */,
-				5AA4E8101FD42C55007A04FA /* AlivcLivePusher */,
-			);
-			name = Controller;
-			sourceTree = "<group>";
-		};
-		5AA4E7F61FD42B2F007A04FA /* View */ = {
-			isa = PBXGroup;
-			children = (
-				5AA4E8111FD42C76007A04FA /* Other */,
-				5AA4E80F1FD42C3F007A04FA /* AlivcLivePusher */,
-			);
-			name = View;
-			sourceTree = "<group>";
-		};
-		5AA4E7F71FD42B35007A04FA /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				5AA4E81C1FD42D0A007A04FA /* AlivcParamModel.h */,
-				5AA4E81B1FD42D0A007A04FA /* AlivcParamModel.m */,
-			);
-			name = Model;
-			sourceTree = "<group>";
-		};
-		5AA4E80F1FD42C3F007A04FA /* AlivcLivePusher */ = {
-			isa = PBXGroup;
-			children = (
-				5AA4E7FF1FD42B84007A04FA /* AlivcChartView.h */,
-				5AA4E8051FD42B85007A04FA /* AlivcChartView.m */,
-				5AA4E8041FD42B85007A04FA /* AlivcDebugChartView.h */,
-				5AA4E8001FD42B84007A04FA /* AlivcDebugChartView.m */,
-				5AA4E8011FD42B85007A04FA /* AlivcDebugTextView.h */,
-				5AA4E8071FD42B86007A04FA /* AlivcDebugTextView.m */,
-				5AA4E8021FD42B85007A04FA /* AlivcPublisherView.h */,
-				5AA4E7FE1FD42B84007A04FA /* AlivcPublisherView.m */,
-				5AA4E8031FD42B85007A04FA /* AlivcWatermarkSettingView.h */,
-				5AA4E8061FD42B85007A04FA /* AlivcWatermarkSettingView.m */,
-			);
-			name = AlivcLivePusher;
-			sourceTree = "<group>";
-		};
-		5AA4E8101FD42C55007A04FA /* AlivcLivePusher */ = {
-			isa = PBXGroup;
-			children = (
-				5AA4E7FA1FD42B4D007A04FA /* AlivcLivePushConfigViewController.h */,
-				5AA4E7FB1FD42B4D007A04FA /* AlivcLivePushConfigViewController.m */,
-				5AA4E7F91FD42B4D007A04FA /* AlivcLivePusherViewController.h */,
-				5AA4E7F81FD42B4D007A04FA /* AlivcLivePusherViewController.mm */,
-			);
-			name = AlivcLivePusher;
-			sourceTree = "<group>";
-		};
-		5AA4E8111FD42C76007A04FA /* Other */ = {
-			isa = PBXGroup;
-			children = (
-				5AA4E8151FD42C81007A04FA /* AlivcGuidePageView.h */,
-				5AA4E8171FD42C81007A04FA /* AlivcGuidePageView.m */,
-				5AA4E8141FD42C80007A04FA /* AlivcParamTableViewCell.h */,
-				5AA4E8121FD42C80007A04FA /* AlivcParamTableViewCell.m */,
-				5AA4E8161FD42C81007A04FA /* AlivcSweepCodeView.h */,
-				5AA4E8131FD42C80007A04FA /* AlivcSweepCodeView.m */,
-			);
-			name = Other;
-			sourceTree = "<group>";
-		};
-		5AA4E81E1FD42DB3007A04FA /* Other */ = {
-			isa = PBXGroup;
-			children = (
-				5AA4E81F1FD42DC1007A04FA /* 版权信息.txt */,
-				5AA4E8201FD42DC1007A04FA /* AlivcCopyrightInfoViewController.h */,
-				5AA4E8211FD42DC1007A04FA /* AlivcCopyrightInfoViewController.m */,
-				5AA4E8221FD42DC1007A04FA /* AlivcNavigationController.h */,
-				5AA4E8241FD42DC1007A04FA /* AlivcNavigationController.m */,
-				5AA4E8271FD42DC1007A04FA /* AlivcQRCodeViewController.h */,
-				5AA4E8251FD42DC1007A04FA /* AlivcQRCodeViewController.m */,
-				5AA4E8231FD42DC1007A04FA /* AlivcRootViewController.h */,
-				5AA4E8261FD42DC1007A04FA /* AlivcRootViewController.m */,
-			);
-			name = Other;
-			sourceTree = "<group>";
-		};
-		5AA4E82D1FD42E8E007A04FA /* AlivcLiveSession */ = {
-			isa = PBXGroup;
-			children = (
-				5AA4E82E1FD42E9B007A04FA /* AlivcLiveConfigViewController.h */,
-				5AA4E8331FD42E9B007A04FA /* AlivcLiveConfigViewController.m */,
-				5AA4E8311FD42E9B007A04FA /* AlivcLiveConfigViewController.xib */,
-				5AA4E8301FD42E9B007A04FA /* AlivcLiveViewController.h */,
-				5AA4E8321FD42E9B007A04FA /* AlivcLiveViewController.m */,
-				5AA4E82F1FD42E9B007A04FA /* AlivcLiveViewController.xib */,
-			);
-			name = AlivcLiveSession;
-			sourceTree = "<group>";
-		};
-		5AA4E8381FD43362007A04FA /* Resource */ = {
-			isa = PBXGroup;
-			children = (
-				5AA4E8491FD43376007A04FA /* back@2x.png */,
-				5AA4E8391FD43372007A04FA /* back@3x.png */,
-				5AA4E8461FD43376007A04FA /* camera_flash_close@2x.png */,
-				5AA4E84D1FD43378007A04FA /* camera_flash_close@3x.png */,
-				5AA4E8401FD43374007A04FA /* camera_flash_on@2x.png */,
-				5AA4E8441FD43375007A04FA /* camera_flash_on@3x.png */,
-				5AA4E83D1FD43373007A04FA /* camera_id@2x.png */,
-				5AA4E83C1FD43373007A04FA /* Line@2x.png */,
-				5AA4E8451FD43375007A04FA /* Line@3x.png */,
-				5AA4E8411FD43374007A04FA /* QR@2x.png */,
-				5AA4E83F1FD43374007A04FA /* QR@3x.png */,
-				5AA4E8481FD43376007A04FA /* record_beauty_on@2x.png */,
-				5AA4E83B1FD43373007A04FA /* record_beauty_on@3x.png */,
-				5AA4E83A1FD43372007A04FA /* record_beauty@2x.png */,
-				5AA4E84A1FD43377007A04FA /* record_beauty@3x.png */,
-				5AA4E83E1FD43373007A04FA /* volume_off@2x.png */,
-				5AA4E8421FD43374007A04FA /* volume_off@3x.png */,
-				5AA4E84B1FD43377007A04FA /* volume_on@2x.png */,
-				5AA4E84C1FD43378007A04FA /* volume_on@3x.png */,
-				5AA4E8431FD43375007A04FA /* watermark_small.png */,
-				5AA4E8471FD43376007A04FA /* watermark.png */,
-			);
-			name = Resource;
-			sourceTree = "<group>";
-		};
 		5ABAD5871FD5A22900C866C0 /* AliSDK */ = {
 			isa = PBXGroup;
 			children = (
+				CCA369B02293FB2A0022A74B /* AliThirdparty.framework */,
 				CCC8E6C920863848004CF6B3 /* AlipaySDK.bundle */,
 				CCC8E6C820863848004CF6B3 /* AlipaySDK.framework */,
 				CCC8E6CB20863848004CF6B3 /* AlivcLibRtmp.framework */,
@@ -1490,7 +1234,6 @@
 			isa = PBXGroup;
 			children = (
 				5A04B3EC1FD4462800DE58D2 /* LivePlayer */,
-				5AA4E7F41FD42B20007A04FA /* LivePusher */,
 				5A0A138F1F9EB16800DF57B9 /* Login */,
 				CC2906F61F65A048001894DA /* Home */,
 				CC2906F71F65A052001894DA /* Activity */,
@@ -1642,7 +1385,7 @@
 				CC2906C21F6599C7001894DA /* Frameworks */,
 				CC2906C31F6599C7001894DA /* Resources */,
 				5799AFBF694AEB3711AF1921 /* [CP] Embed Pods Frameworks */,
-				5A04B4301FD46A9900DE58D2 /* Embed Frameworks */,
+				CCA369B6229400610022A74B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1706,32 +1449,20 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5AA4E84F1FD43378007A04FA /* record_beauty@2x.png in Resources */,
 				CC0BFA97206746D10024252B /* ShareAppViewController.xib in Resources */,
 				5ABB92CC1FA5EB3F002E3180 /* BaseAlertView.xib in Resources */,
-				5AA4E8511FD43378007A04FA /* Line@2x.png in Resources */,
 				5A0612C61FDCBE6B00E7F20A /* OpenVIPController.xib in Resources */,
 				CC70F60220A6C27500E52A46 /* ContactUsController.xib in Resources */,
-				5AA4E8611FD43378007A04FA /* volume_on@3x.png in Resources */,
-				5AA4E8591FD43378007A04FA /* camera_flash_on@3x.png in Resources */,
 				5ABB92CD1FA5EB3F002E3180 /* BottomWechatShareView.xib in Resources */,
-				5AA4E85F1FD43378007A04FA /* record_beauty@3x.png in Resources */,
-				5AA4E8351FD42E9B007A04FA /* AlivcLiveConfigViewController.xib in Resources */,
 				5ABB92CE1FA5EB3F002E3180 /* ConfirmAlertView.xib in Resources */,
-				5AA4E8541FD43378007A04FA /* QR@3x.png in Resources */,
 				5ABB92CF1FA5EB3F002E3180 /* SimpleHUDController.xib in Resources */,
-				5AA4E8551FD43378007A04FA /* camera_flash_on@2x.png in Resources */,
-				5AA4E8561FD43378007A04FA /* QR@2x.png in Resources */,
 				5A5446081F84A6220004F192 /* ActivityTicketCell.xib in Resources */,
 				5AF9CE3E1F814880002AA4A6 /* ProfileCenterCell.xib in Resources */,
 				5A27D4F02042C87D0020BA29 /* UpdateVersionController.xib in Resources */,
 				5A0D23CE1F839B2900FC9D4D /* CommentCell.xib in Resources */,
-				5AA4E8501FD43378007A04FA /* record_beauty_on@3x.png in Resources */,
 				5ACCDD301F9F7AEA004D3809 /* InterestColumnCell.xib in Resources */,
 				5A32A7001F92FDF300773884 /* HomeSearchController.xib in Resources */,
-				5AA4E85A1FD43378007A04FA /* Line@3x.png in Resources */,
 				5ACCDD2C1F9F75CE004D3809 /* SelectInterestItemController.xib in Resources */,
-				5AA4E8531FD43378007A04FA /* volume_off@2x.png in Resources */,
 				5A0D23C71F832BD000FC9D4D /* NewsDetailController.xib in Resources */,
 				5A8B864A200EAFED0023F584 /* SearchArticleCell.xib in Resources */,
 				5AC684821F7FFC2E006CEB53 /* ThreePhotosNewsCell.xib in Resources */,
@@ -1740,14 +1471,12 @@
 				5AA4E7E11FD385A9007A04FA /* ActivityApplySuccessAlertControllerViewController.xib in Resources */,
 				5A0612D41FDD69AC00E7F20A /* ApplyFamousComplateController.xib in Resources */,
 				5A0612D81FDD793100E7F20A /* ApplyFamousConditionController.xib in Resources */,
-				5AA4E8521FD43378007A04FA /* camera_id@2x.png in Resources */,
 				5AC684941F807BBD006CEB53 /* FastNewsController.xib in Resources */,
 				5AC6848A1F8054C1006CEB53 /* SingleBigPhotoNewsCell.xib in Resources */,
 				5A063F331FF1325800AFAA40 /* ReportArticleController.xib in Resources */,
 				5A10F58B1FAEF0A900316832 /* SpecialChannelCell.xib in Resources */,
 				CC04341D21CE19290006DF74 /* XH_logo_1year@3x.png in Resources */,
 				5A0612CE1FDCDFA300E7F20A /* ApplyFamousController.xib in Resources */,
-				5AA4E84E1FD43378007A04FA /* back@3x.png in Resources */,
 				5A0A139E1F9EBC4100DF57B9 /* LoginSMSCaptchaController.xib in Resources */,
 				CCDB6D501F7A32B40012432E /* TopicBannerCell.xib in Resources */,
 				5A3DD44D1FFE939800AADE12 /* AlipaySDK.bundle in Resources */,
@@ -1761,28 +1490,21 @@
 				CC2907111F65AC08001894DA /* Main.storyboard in Resources */,
 				5A0612C21FDBE1BA00E7F20A /* ActivityTicketDetailCell.xib in Resources */,
 				5A32A70C1F93299500773884 /* OrgnizationController.xib in Resources */,
-				5AA4E8571FD43378007A04FA /* volume_off@3x.png in Resources */,
-				5AA4E85C1FD43378007A04FA /* watermark.png in Resources */,
 				5A0612BA1FDBA1D300E7F20A /* ApplyIdentifySuccessAlertController.xib in Resources */,
 				5A0B5DA61FF0628B0047F64A /* clickImg.js in Resources */,
 				CC04341C21CE19290006DF74 /* XH_logo_1year@2x.png in Resources */,
 				5A8C29E11FE032DC00E51095 /* LiveMessageCell.xib in Resources */,
 				5A8364D01FFB0024001AD740 /* ImageSelectSheetView.xib in Resources */,
 				5A5446101F852A1E0004F192 /* ActivityRegistController.xib in Resources */,
-				5AA4E8281FD42DC1007A04FA /* 版权信息.txt in Resources */,
 				5A8C29D11FDFC2AA00E51095 /* RCConfig.plist in Resources */,
 				5A0A6D7E1FE58D6E0059EDBF /* ChatroomMessageCell.xib in Resources */,
-				5AA4E85E1FD43378007A04FA /* back@2x.png in Resources */,
 				5AA4E7DD1FD2B083007A04FA /* RewardAlertController.xib in Resources */,
-				5AA4E8341FD42E9B007A04FA /* AlivcLiveViewController.xib in Resources */,
-				5AA4E8601FD43378007A04FA /* volume_on@2x.png in Resources */,
 				CC2906D21F6599C7001894DA /* Assets.xcassets in Resources */,
 				5A38B6BE1F808FB100AF4A91 /* FastNewsSectionHeaderView.xib in Resources */,
 				5AFF05EA1FE60F8E00B7FE7D /* ChatRoomViewController.xib in Resources */,
 				5A90CFE71F80F7F900F16869 /* SubscriptListCell.xib in Resources */,
 				5A38B6C21F80CC9A00AF4A91 /* SubscriptionListControllerViewController.xib in Resources */,
 				CC01705F1F6835400069D38B /* ActivityCoverCell.xib in Resources */,
-				5AA4E85B1FD43378007A04FA /* camera_flash_close@2x.png in Resources */,
 				5AC684861F7FFF24006CEB53 /* NoPhotoNewsCell.xib in Resources */,
 				5AFF05F21FE62E1800B7FE7D /* en.lproj in Resources */,
 				5AF9CE371F813F06002AA4A6 /* CircleHomeViewController.xib in Resources */,
@@ -1792,8 +1514,6 @@
 				5A06DF4F1FCABCE600F225F1 /* WXImagePickerViewController.xib in Resources */,
 				CCDB6D581F7A526C0012432E /* SinglePhotoNewsCell.xib in Resources */,
 				CC2907091F65A0F0001894DA /* MeController.xib in Resources */,
-				5AA4E85D1FD43378007A04FA /* record_beauty_on@2x.png in Resources */,
-				5AA4E8621FD43378007A04FA /* camera_flash_close@3x.png in Resources */,
 				CC0170631F6840D00069D38B /* ActivityDetailController.xib in Resources */,
 				5A27E7281F935361007C5D6B /* RecommendColumnCell.xib in Resources */,
 				5A0612B61FDB85AE00E7F20A /* ApplyIdentifyController.xib in Resources */,
@@ -1807,7 +1527,6 @@
 				CCDB6D541F7A39CE0012432E /* TopicImageCell.xib in Resources */,
 				5A90CFF31F81273900F16869 /* LiveListCell.xib in Resources */,
 				5A84B6401FFC4EF4006DC3AA /* EndLiveAlertView.xib in Resources */,
-				5AA4E8581FD43378007A04FA /* watermark_small.png in Resources */,
 				CC9A1F0721D1165D0024DD0F /* XH_logo_f@3x.png in Resources */,
 				CC0DC8F420AC8C06007EF02D /* baseHtml.html in Resources */,
 				5A0A13961F9EB1B400DF57B9 /* LoginViewController.xib in Resources */,
@@ -1830,7 +1549,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-BestNews/Pods-BestNews-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-BestNews/Pods-BestNews-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AMPopTip/AMPopTip.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
@@ -1861,7 +1580,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BestNews/Pods-BestNews-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BestNews/Pods-BestNews-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		72D918B5801B1AF2E73A7CBB /* [CP] Check Pods Manifest.lock */ = {
@@ -1907,7 +1626,6 @@
 				5ABB92B51FA5E096002E3180 /* DES3EncryptUtil.h in Sources */,
 				5A8B864E200ED1BD0023F584 /* MessageList.swift in Sources */,
 				5ABB92B61FA5E096002E3180 /* DES3EncryptUtil.m in Sources */,
-				5AA4E82B1FD42DC1007A04FA /* AlivcQRCodeViewController.m in Sources */,
 				5ABB92B71FA5E096002E3180 /* MyBase64.h in Sources */,
 				5A8BFC111FF8AF40004145AC /* APOrderInfo.m in Sources */,
 				5ABB92B81FA5E096002E3180 /* MyBase64.m in Sources */,
@@ -1918,13 +1636,11 @@
 				5AF9CAE21FA5D0F00071285D /* BSLShareManager.swift in Sources */,
 				5AF9CAE31FA5D0F00071285D /* SessionManager.swift in Sources */,
 				5A0612D31FDD69AC00E7F20A /* ApplyFamousComplateController.swift in Sources */,
-				5A04B4091FD44AD400DE58D2 /* BasicFunctionDemoViewController.swift in Sources */,
 				5A0979B71F9F2632004BB0AD /* SwiftyTextField.swift in Sources */,
 				5A0979B81F9F2632004BB0AD /* SwiftyVerificationCodeView.swift in Sources */,
 				CCDB6D3B1F79C6DF0012432E /* TYPageStyle.swift in Sources */,
 				5A04B41B1FD44E0500DE58D2 /* AliyunPlayMessageShowView.m in Sources */,
 				5A90CFE61F80F7F900F16869 /* SubscriptListCell.swift in Sources */,
-				5AA4E80A1FD42B86007A04FA /* AlivcChartView.m in Sources */,
 				CCDB6D3C1F79C6DF0012432E /* TYPageTitleView.swift in Sources */,
 				5A27E72B1F936857007C5D6B /* FinanceProductDetailController.swift in Sources */,
 				5A063F361FF1BF1200AFAA40 /* GuideViewController.swift in Sources */,
@@ -1948,8 +1664,6 @@
 				5A27D4EE2042C8730020BA29 /* UpdateVersionController.swift in Sources */,
 				CC29070B1F65A323001894DA /* BaseTabBarView.swift in Sources */,
 				CC2906EF1F659EBA001894DA /* UIView+Position.swift in Sources */,
-				5AA4E80C1FD42B86007A04FA /* AlivcDebugTextView.m in Sources */,
-				5AA4E8291FD42DC1007A04FA /* AlivcCopyrightInfoViewController.m in Sources */,
 				CC29070F1F65A8B5001894DA /* BaseView.swift in Sources */,
 				5A5446071F84A6220004F192 /* ActivityTicketCell.swift in Sources */,
 				5A62A46A1FAE1AEB0087D936 /* HomeNewsDetail.swift in Sources */,
@@ -1971,7 +1685,6 @@
 				5A8C29E01FE032DC00E51095 /* LiveMessageCell.swift in Sources */,
 				CC70F5F920A69D4800E52A46 /* AboutUsViewController.swift in Sources */,
 				5AFF34A21F93A78600D8115E /* BaseShareViewController.swift in Sources */,
-				5AA4E80B1FD42B86007A04FA /* AlivcWatermarkSettingView.m in Sources */,
 				5A0A6D761FE49ECF0059EDBF /* LiveModelList.swift in Sources */,
 				5A90CFEE1F8123F500F16869 /* LiveListController.swift in Sources */,
 				5A90CFE31F80F48A00F16869 /* SubscriptSectionHeaderView.swift in Sources */,
@@ -1982,8 +1695,6 @@
 				CC4D21752173603B00E18F2D /* NetworkFailViewController.swift in Sources */,
 				CC2906ED1F659EBA001894DA /* UIImageExtension.swift in Sources */,
 				CC01705E1F6835400069D38B /* ActivityCoverCell.swift in Sources */,
-				5AA4E8091FD42B86007A04FA /* AlivcDebugChartView.m in Sources */,
-				5AA4E8181FD42C81007A04FA /* AlivcParamTableViewCell.m in Sources */,
 				5A06DF4E1FCABCE600F225F1 /* WXImagePickerViewController.swift in Sources */,
 				5ABB92D41FA5F715002E3180 /* UserInfo.swift in Sources */,
 				5A573E091FB86D7C006420BA /* RewardManList.swift in Sources */,
@@ -1993,7 +1704,6 @@
 				5AF9CE361F813F06002AA4A6 /* CircleHomeViewController.swift in Sources */,
 				5A38B6BC1F808BA600AF4A91 /* FastNewsSectionHeaderView.swift in Sources */,
 				5A62A4681FAE039B0087D936 /* BaseNewsCell.swift in Sources */,
-				5AA4E8371FD42E9B007A04FA /* AlivcLiveConfigViewController.m in Sources */,
 				5A38B6C51F80ED1800AF4A91 /* ColumesCollectionViewCell.swift in Sources */,
 				5ACCDD321F9F809F004D3809 /* InterestColumn.swift in Sources */,
 				5A0A13991F9EB7C300DF57B9 /* LoginCaptchaController.swift in Sources */,
@@ -2001,7 +1711,6 @@
 				5A32A6FF1F92FDF300773884 /* HomeSearchController.swift in Sources */,
 				5AC684931F807BBD006CEB53 /* FastNewsController.swift in Sources */,
 				5A0612B51FDB85AE00E7F20A /* ApplyIdentifyController.swift in Sources */,
-				5A04B4181FD44DE300DE58D2 /* AliyunPlayerLivePlayViewController.m in Sources */,
 				5A47F2E71F92EA0700C483C1 /* SelectColumeView.swift in Sources */,
 				5AFE24DC1FCCD907006353C3 /* SubscribeButton.swift in Sources */,
 				5AF9CAD71FA5BD340071285D /* MyArticleListController.swift in Sources */,
@@ -2015,10 +1724,7 @@
 				5AFE24DA1FCCCACD006353C3 /* SpecialChannelArticleListController.swift in Sources */,
 				5A04B4151FD44CAA00DE58D2 /* AliyunPlayMessageShowView.swift in Sources */,
 				5AA4E7E01FD385A9007A04FA /* ActivityApplySuccessAlertControllerViewController.swift in Sources */,
-				5AA4E82A1FD42DC1007A04FA /* AlivcNavigationController.m in Sources */,
-				5AA4E7FD1FD42B4E007A04FA /* AlivcLivePushConfigViewController.m in Sources */,
 				CC2906EB1F659EBA001894DA /* StringExtension.swift in Sources */,
-				5AA4E7FC1FD42B4E007A04FA /* AlivcLivePusherViewController.mm in Sources */,
 				5A0612B91FDBA1D300E7F20A /* ApplyIdentifySuccessAlertController.swift in Sources */,
 				5A10F58A1FAEF0A900316832 /* SpecialChannelCell.swift in Sources */,
 				5A90D0031F8138EE00F16869 /* OrgnizationListController.swift in Sources */,
@@ -2033,30 +1739,24 @@
 				5AF9CE3D1F814880002AA4A6 /* ProfileCenterCell.swift in Sources */,
 				5ACCDD2F1F9F7AEA004D3809 /* InterestColumnCell.swift in Sources */,
 				5A8BFC131FF92CF3004145AC /* ActivityPayResult.swift in Sources */,
-				5AA4E8081FD42B86007A04FA /* AlivcPublisherView.m in Sources */,
 				CCDB6D531F7A39CE0012432E /* TopicImageCell.swift in Sources */,
 				5AF9CAD51FA4CE340071285D /* MySubscriptListController.swift in Sources */,
 				CCDB6D411F79D6C30012432E /* TYPageView.swift in Sources */,
 				5A0612CD1FDCDFA300E7F20A /* ApplyFamousController.swift in Sources */,
 				5ABB14D41FBD073E006EEE59 /* ActivityList.swift in Sources */,
 				CC0BFA96206746D10024252B /* ShareAppViewController.swift in Sources */,
-				5AA4E81A1FD42C81007A04FA /* AlivcGuidePageView.m in Sources */,
-				5AA4E8191FD42C81007A04FA /* AlivcSweepCodeView.m in Sources */,
 				CC0170621F6840D00069D38B /* ActivityDetailController.swift in Sources */,
 				CC2907081F65A0F0001894DA /* MeController.swift in Sources */,
 				5A8364C81FF9CFA6001AD740 /* VideoPlayControlBar.swift in Sources */,
 				5A27E7271F935361007C5D6B /* RecommendColumnCell.swift in Sources */,
-				5AA4E8361FD42E9B007A04FA /* AlivcLiveViewController.m in Sources */,
 				5A0612C91FDCD4E100E7F20A /* SubmitPaperController.swift in Sources */,
 				CC2906EC1F659EBA001894DA /* UIColorExtensions.swift in Sources */,
 				5A06DF461FCA4F2C00F225F1 /* ActivityPrepare.swift in Sources */,
 				5A4A21551FC1E53200648126 /* LabelsContainerView.swift in Sources */,
 				5A573E0B1FB87156006420BA /* FastNewsList.swift in Sources */,
-				5AA4E82C1FD42DC1007A04FA /* AlivcRootViewController.m in Sources */,
 				5A0D23C31F83225A00FC9D4D /* NewsCommentBar.swift in Sources */,
 				5A54460F1F852A1E0004F192 /* ActivityRegistController.swift in Sources */,
 				5A0A6D7A1FE575A30059EDBF /* ConversationClientManager.swift in Sources */,
-				5AA4E81D1FD42D0A007A04FA /* AlivcParamModel.m in Sources */,
 				CCDB6D4F1F7A32B40012432E /* TopicBannerCell.swift in Sources */,
 				5AA4E7DC1FD2B083007A04FA /* RewardAlertController.swift in Sources */,
 				5A0A6D7D1FE58D6E0059EDBF /* ChatroomMessageCell.swift in Sources */,

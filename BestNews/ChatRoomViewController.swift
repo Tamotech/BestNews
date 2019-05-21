@@ -910,7 +910,9 @@ extension ChatRoomViewController {
                     make.bottom.equalTo(-20)
                     make.width.equalTo(245)
                     make.height.equalTo(40)
-                    make.centerX.equalTo(self!.aliyunVodPlayer.playerView!.snp.centerX)
+                    if let centerX = self?.aliyunVodPlayer.playerView.snp.centerX {
+                        make.centerX.equalTo(centerX)
+                    }
                 }
                 self?.setupRTimer()
                 self?.rtimer?.fire()
@@ -1156,13 +1158,13 @@ extension ChatRoomViewController {
         
     }
     
-    func vodPlayer(_ vodPlayer: AliyunVodPlayer!, playBack errorModel: ALPlayerVideoErrorModel!) {
+    func vodPlayer(_ vodPlayer: AliyunVodPlayer!, playBack errorModel: AliyunPlayerVideoErrorModel!) {
         print("播放失败----- \(errorModel.debugDescription)")
         vodPlayer.playerView.bringSubview(toFront: backBt)
         vodPlayer.playerView.bringSubview(toFront: expandBt)
         coverView.isHidden = false
     }
-    
+
     func vodPlayer(_ vodPlayer: AliyunVodPlayer!, willSwitchTo quality: AliyunVodPlayerVideoQuality) {
         
     }

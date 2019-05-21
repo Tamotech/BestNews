@@ -10,7 +10,7 @@ target 'BestNews' do
    pod 'Alamofire', '~> 4.0'
    pod 'AlamofireObjectMapper'
    pod 'SwiftyJSON'
-   pod 'HandyJSON', '~> 5.0'
+   pod 'HandyJSON', '~> 4.0'
    pod 'SnapKit'
    pod 'Presentr'
    pod 'AMPopTip'

@@ -32,7 +32,7 @@ class HomeArticle: HandyJSON, Equatable {
     // normal  原创 grasp 抓取  adv 广告  linkchannel  连接到栏目
     var type = ""
     var linkchannelid = ""
-    var linkchannename = ""
+    var linkchannelname = ""
     var linkchannetype = ""
     
     ///是否是推荐新闻

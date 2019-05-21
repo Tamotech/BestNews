@@ -8,3 +8,4 @@ Framework
 .DS_Store
 ipa/
 build/
+*/.DS_Store
