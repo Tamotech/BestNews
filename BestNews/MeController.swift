@@ -9,6 +9,7 @@
 import UIKit
 import SwiftyJSON
 import Kingfisher
+import SnapKit
 
 class MeController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
     
@@ -50,6 +51,19 @@ class MeController: BaseViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        #if DEBUG
+        let lb = UILabel()
+        lb.textColor = UIColor(hex: 0xdddddd)
+        lb.font = UIFont.systemFont(ofSize: 10)
+        lb.text = "测试环境"
+        lb.textAlignment = .center
+        tableView.addSubview(lb)
+        lb.snp.makeConstraints{ make in
+            make.left.right.equalToSuperview()
+            make.bottom.equalToSuperview().offset(-50)
+            make.height.equalTo(14)
+        }
+        #endif
     }
     
     
