@@ -149,8 +149,8 @@ class HomeContentViewController: UIViewController, UITableViewDelegate, UITableV
                 let vc = SpecialChannelArticleListController()
                 let channel = SpecialChannel()
                 channel.id = article.linkchannelid
-                channel.name = article.title
-                channel.fullname = article.title
+                channel.name = article.channelname
+                channel.fullname = article.channelname
                 vc.entry = 1
                 vc.channel = channel
                 navigationController?.pushViewController(vc, animated: true)
@@ -411,7 +411,18 @@ extension HomeContentViewController {
             self?.tableView.cr.endLoadingMore()
             let list = data as? HomeArticleList
             if list != nil {
-                self?.articleList?.list.append(contentsOf: list!.list)
+                //去重
+                guard let ol = self?.articleList?.list else { return }
+                let plist = list?.list.filter({ (h) -> Bool in
+                    let c = ol.contains(where: { (lh) -> Bool in
+                        if lh.id == h.id {
+                            return true
+                        }
+                        return false
+                    })
+                    return !c
+                })
+                self?.articleList?.list.append(contentsOf: plist ?? [])
                 self?.tableView.reloadData()
             }
         }

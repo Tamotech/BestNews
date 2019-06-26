@@ -298,8 +298,17 @@ extension SpecialChannelArticleListController {
         APIRequest.articleListAPI(id: id, type: "channelid", page: page) { [weak self](data) in
             self?.tableView.cr.endLoadingMore()
             let list = data as? HomeArticleList
-            if list != nil {
-                self?.articleList?.list.append(contentsOf: list!.list)
+            if let nl = list?.list, let ol = self?.articleList?.list {
+                let fl = nl.filter({ (m) -> Bool in
+                    let c = ol.contains(where: { (lm) -> Bool in
+                        if lm.id == m.id {
+                            return true
+                        }
+                        return false
+                    })
+                    return !c
+                })
+                self?.articleList?.list.append(contentsOf: fl)
                 self?.tableView.reloadData()
             }
         }
