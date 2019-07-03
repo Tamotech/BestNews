@@ -65,6 +65,9 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
     ///所有搜索热词
     var hotwords: [String] = []
     
+    ///文章举报类型
+    var reportTypes: [String] = ["广告" ,"色情低俗", "谣言", "疑似抄袭", "标题夸张/文不对题", "违法犯罪", "欺诈/恶意营销"]
+    
     ///直播室聊天token
     var liveToken = ""
     
@@ -246,6 +249,15 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
                     for a in arr {
                         self?.famousTradeArr.append(a["name"].rawString()!)
                     }
+                }
+            }
+        }
+        
+        let path4 = "/config/getDict.htm?code=FIX_ARTICLE_INFORM_CATEGORY"
+        APIManager.shareInstance.postRequest(urlString: path4, params: nil) {[weak self] (JSON, code, msg) in
+            if code == 0 {
+                if let arr = JSON!["data"].array {
+                    self?.reportTypes = arr.compactMap{ $0["name"].rawString() }
                 }
             }
         }

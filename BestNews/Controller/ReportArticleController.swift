@@ -17,7 +17,8 @@ class ReportArticleController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var textView: IQTextView!
     
     var selectItem = "广告"
-    var items = ["广告" ,"色青低俗", "谣言", "疑似抄袭", "标题夸张/文不对题", "违法犯罪", "欺诈/恶意营销"]
+    
+    var items: [String] = SessionManager.sharedInstance.reportTypes
     
     override func viewDidLoad() {
         super.viewDidLoad()
