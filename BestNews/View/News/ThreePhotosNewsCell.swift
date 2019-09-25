@@ -70,6 +70,12 @@ class ThreePhotosNewsCell: BaseNewsCell {
                 }
             }
         }
+        
+        if SessionManager.isWithinCountrysDay() {
+            tipBtn.backgroundColor = lightRed
+        } else {
+            tipBtn.backgroundColor = lightBlue
+        }
     }
     
     

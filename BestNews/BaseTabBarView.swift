@@ -22,13 +22,21 @@ class BaseTabBarView: BaseView {
     override func awakeFromNib() {
         super.awakeFromNib()
         self.height = 49 + bottomGuideHeight
+        switchToIndex(index: 0)
     }
     
     func switchToIndex(index: Int) {
         for (i,icon) in tabIcons.enumerated() {
+            
+            var name = "tab\(i+1)On"
+            var color = themeColor
+            if SessionManager.isWithinCountrysDay() {
+                name = "\(name)_red"
+                color = flagRed
+            }
             if i == index {
-                icon.image = UIImage(named: "tab\(i+1)On")
-                 tabItemLabels[i].textColor = themeColor
+                icon.image = UIImage(named: name)
+                 tabItemLabels[i].textColor = color
             }
             else {
                 icon.image = UIImage(named: "tab\(i+1)Off")

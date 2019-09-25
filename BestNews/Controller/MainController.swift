@@ -282,7 +282,11 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
 //        }
      
         let menubt = UIButton(frame: .zero)
-        menubt.setImage(#imageLiteral(resourceName: "icon_menu_white"), for: .normal)
+        if SessionManager.isWithinCountrysDay() {
+            menubt.setImage(UIImage(named: "icon_menu_red"), for: .normal)
+        } else {
+            menubt.setImage(UIImage(named: "icon_menu_dark"), for: .normal)
+        }
         menubt.addTarget(self, action: #selector(handleTapMenuItem(sender:)), for: UIControlEvents.touchUpInside)
         barView.addSubview(menubt)
         menubt.snp.makeConstraints { (make) in  
@@ -298,6 +302,14 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
         self.navBarTurnBg(white: true)
     }
     
+    var titleViewColors: (highlightColor: UIColor, normalColor: UIColor) {
+        if SessionManager.isWithinCountrysDay() {
+            return (flagRed!, flagRed!.withAlphaComponent(0.5))
+        } else {
+            return (gray51!, gray51!.withAlphaComponent(0.5))
+        }
+    }
+    
     func setupNavTitleView() {
         if titleView?.superview != nil {
             titleView?.removeFromSuperview()
@@ -311,7 +323,8 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
             make.height.equalTo(36)
             make.right.equalTo(-64)
         })
-        titleView?.updateTintcolor(currentItemColor: gray51!, unselectItemColor: UIColor(ri: 51, gi: 51, bi: 51, alpha: 0.5)!)
+        
+        titleView?.updateTintcolor(currentItemColor: titleViewColors.highlightColor, unselectItemColor: titleViewColors.normalColor)
     }
     
     //MARK: - scrollView
@@ -423,7 +436,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
     func navBarTurnBg(white: Bool) {
         
         if white {
-            titleView?.updateTintcolor(currentItemColor: gray51!, unselectItemColor: UIColor(ri: 51, gi: 51, bi: 51, alpha: 0.5)!)
+            titleView?.updateTintcolor(currentItemColor: titleViewColors.highlightColor, unselectItemColor: titleViewColors.normalColor)
             UIView.animate(withDuration: 0.3, animations: {
                 self.navBarView?.backgroundColor = .white
                 self.blackLayer.opacity = 0
@@ -431,7 +444,7 @@ class MainController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewD
             logoView?.sd_setImage(with: URL(string: logoUrl ?? ""), completed: nil)
             searchButton?.setTitleColor(gray181, for: UIControlState.normal)
             searchButton?.setImage(#imageLiteral(resourceName: "m221_search_black"), for: UIControlState.normal)
-            menuBt?.setImage(#imageLiteral(resourceName: "icon_menu_dark"), for: UIControlState.normal)
+//            menuBt?.setImage(#imageLiteral(resourceName: "icon_menu_dark"), for: UIControlState.normal)
         }
         else {
             //始终显示白色

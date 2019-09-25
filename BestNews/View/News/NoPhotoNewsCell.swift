@@ -55,6 +55,12 @@ class NoPhotoNewsCell: BaseNewsCell {
             tipBtn.setTitleColor(UIColor(hex: 0xb5b5b5), for: UIControlState.normal)
             tipBtn.backgroundColor = .clear
         }
+        
+        if SessionManager.isWithinCountrysDay() {
+            tipBtn.backgroundColor = lightRed
+        } else {
+            tipBtn.backgroundColor = lightBlue
+        }
     }
     
     /// 切换夜间模式

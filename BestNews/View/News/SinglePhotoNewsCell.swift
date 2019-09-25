@@ -63,6 +63,12 @@ class SinglePhotoNewsCell: BaseNewsCell {
             labelBtn.setTitleColor(UIColor(hex: 0xb5b5b5), for: UIControlState.normal)
             labelBtn.backgroundColor = .clear
         }
+        
+        if SessionManager.isWithinCountrysDay() {
+            labelBtn.backgroundColor = lightRed
+        } else {
+            labelBtn.backgroundColor = lightBlue
+        }
     }
     
     /// 切换夜间模式

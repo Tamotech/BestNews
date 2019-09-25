@@ -64,6 +64,11 @@ extension TYPageTitleView{
         //初始化title
         setupLabels()
         self.backgroundColor = style.backgroundColor
+        if SessionManager.isWithinCountrysDay() {
+            lineView.backgroundColor = flagRed
+        } else {
+            lineView.backgroundColor = style.bottomLineColor
+        }
     }
     
     // MARK: 初始化Item

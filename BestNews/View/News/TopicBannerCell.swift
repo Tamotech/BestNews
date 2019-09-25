@@ -23,6 +23,7 @@ class TopicBannerCell: UITableViewCell, UICollectionViewDelegate, UICollectionVi
     
     @IBOutlet weak var iconImg: UIImageView!
     
+    @IBOutlet weak var moreIcon: UIImageView!
     
     var selectOneChannel: SelectOneChannelCallback?
     
@@ -40,6 +41,13 @@ class TopicBannerCell: UITableViewCell, UICollectionViewDelegate, UICollectionVi
         layout.minimumLineSpacing = 10
         layout.minimumInteritemSpacing = 10
         
+        if SessionManager.isWithinCountrysDay() {
+            iconImg.image = UIImage(named: "tab1On_red")
+            moreIcon.image = UIImage(named: "icon_more_red")
+        } else {
+            iconImg.image = UIImage(named: "tab1On")
+            moreIcon.image = UIImage(named: "icon_more_blue")
+        }
     }
     
     func updateCell(data: [Any], title: String? = "专题") {

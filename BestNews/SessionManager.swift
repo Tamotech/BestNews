@@ -357,3 +357,18 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
     }
     
 }
+
+extension SessionManager {
+    
+    /// 是否国庆期间
+    static func isWithinCountrysDay() -> Bool {
+        let now = Date()
+        let calendar = Calendar.current
+        let mon = calendar.component(Calendar.Component.month, from: now)
+        let day = calendar.component(Calendar.Component.day, from: now)
+        if mon == 10 && day >= 1 && day <= 7 {
+            return true
+        }
+        return false
+    }
+}
