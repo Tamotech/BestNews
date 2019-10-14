@@ -10,7 +10,7 @@ import UIKit
 import SwiftyJSON
 import Alamofire
 import Kingfisher
-import WatchKit
+import WatchConnectivity
 
 class LoginViewController: BaseViewController, UITextFieldDelegate, TencentSessionDelegate {
     

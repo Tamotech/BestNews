@@ -275,7 +275,6 @@
 		CC2906E21F659E77001894DA /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2906E01F659E77001894DA /* BaseViewController.swift */; };
 		CC2906EA1F659EBA001894DA /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2906E41F659EBA001894DA /* DateExtension.swift */; };
 		CC2906EB1F659EBA001894DA /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2906E51F659EBA001894DA /* StringExtension.swift */; };
-		CC2906EC1F659EBA001894DA /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2906E61F659EBA001894DA /* UIColorExtensions.swift */; };
 		CC2906ED1F659EBA001894DA /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2906E71F659EBA001894DA /* UIImageExtension.swift */; };
 		CC2906EE1F659EBA001894DA /* UIView+IBInspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2906E81F659EBA001894DA /* UIView+IBInspectable.swift */; };
 		CC2906EF1F659EBA001894DA /* UIView+Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC2906E91F659EBA001894DA /* UIView+Position.swift */; };
@@ -300,6 +299,7 @@
 		CC70F60220A6C27500E52A46 /* ContactUsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC70F60020A6C27500E52A46 /* ContactUsController.xib */; };
 		CC9A1F0721D1165D0024DD0F /* XH_logo_f@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC9A1F0521D1165C0024DD0F /* XH_logo_f@3x.png */; };
 		CC9A1F0821D1165D0024DD0F /* XH_logo_f@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC9A1F0621D1165D0024DD0F /* XH_logo_f@2x.png */; };
+		CCA073612354B5B3009D6AC9 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA073602354B5B3009D6AC9 /* UIColorExtension.swift */; };
 		CCC8E6C320863804004CF6B3 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCC8E6C220863804004CF6B3 /* TencentOpenAPI.framework */; };
 		CCC8E6C62086382D004CF6B3 /* RongIMKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCC8E6C42086382C004CF6B3 /* RongIMKit.framework */; };
 		CCC8E6C72086382D004CF6B3 /* RongCloud.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CCC8E6C52086382D004CF6B3 /* RongCloud.bundle */; };
@@ -656,7 +656,6 @@
 		CC2906E01F659E77001894DA /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		CC2906E41F659EBA001894DA /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		CC2906E51F659EBA001894DA /* StringExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
-		CC2906E61F659EBA001894DA /* UIColorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		CC2906E71F659EBA001894DA /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		CC2906E81F659EBA001894DA /* UIView+IBInspectable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+IBInspectable.swift"; sourceTree = "<group>"; };
 		CC2906E91F659EBA001894DA /* UIView+Position.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Position.swift"; sourceTree = "<group>"; };
@@ -681,6 +680,7 @@
 		CC70F60020A6C27500E52A46 /* ContactUsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactUsController.xib; sourceTree = "<group>"; };
 		CC9A1F0521D1165C0024DD0F /* XH_logo_f@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "XH_logo_f@3x.png"; sourceTree = "<group>"; };
 		CC9A1F0621D1165D0024DD0F /* XH_logo_f@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "XH_logo_f@2x.png"; sourceTree = "<group>"; };
+		CCA073602354B5B3009D6AC9 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		CCC8E6C220863804004CF6B3 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TencentOpenAPI.framework; path = Framework/TencentOpenAPI.framework; sourceTree = SOURCE_ROOT; };
 		CCC8E6C42086382C004CF6B3 /* RongIMKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RongIMKit.framework; path = Framework/RongIMKit.framework; sourceTree = SOURCE_ROOT; };
 		CCC8E6C52086382D004CF6B3 /* RongCloud.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = RongCloud.bundle; path = Framework/RongCloud.bundle; sourceTree = SOURCE_ROOT; };
@@ -1457,7 +1457,7 @@
 			children = (
 				CC2906E41F659EBA001894DA /* DateExtension.swift */,
 				CC2906E51F659EBA001894DA /* StringExtension.swift */,
-				CC2906E61F659EBA001894DA /* UIColorExtensions.swift */,
+				CCA073602354B5B3009D6AC9 /* UIColorExtension.swift */,
 				CC2906E71F659EBA001894DA /* UIImageExtension.swift */,
 				CC2906E81F659EBA001894DA /* UIView+IBInspectable.swift */,
 				CC2906E91F659EBA001894DA /* UIView+Position.swift */,
@@ -1906,6 +1906,7 @@
 				5ABB92CA1FA5EB1A002E3180 /* SimpleHUDController.swift in Sources */,
 				5ABB92B51FA5E096002E3180 /* DES3EncryptUtil.h in Sources */,
 				5A8B864E200ED1BD0023F584 /* MessageList.swift in Sources */,
+				CCA073612354B5B3009D6AC9 /* UIColorExtension.swift in Sources */,
 				5ABB92B61FA5E096002E3180 /* DES3EncryptUtil.m in Sources */,
 				5AA4E82B1FD42DC1007A04FA /* AlivcQRCodeViewController.m in Sources */,
 				5ABB92B71FA5E096002E3180 /* MyBase64.h in Sources */,
@@ -2048,7 +2049,6 @@
 				5A27E7271F935361007C5D6B /* RecommendColumnCell.swift in Sources */,
 				5AA4E8361FD42E9B007A04FA /* AlivcLiveViewController.m in Sources */,
 				5A0612C91FDCD4E100E7F20A /* SubmitPaperController.swift in Sources */,
-				CC2906EC1F659EBA001894DA /* UIColorExtensions.swift in Sources */,
 				5A06DF461FCA4F2C00F225F1 /* ActivityPrepare.swift in Sources */,
 				5A4A21551FC1E53200648126 /* LabelsContainerView.swift in Sources */,
 				5A573E0B1FB87156006420BA /* FastNewsList.swift in Sources */,
@@ -2192,6 +2192,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = R6A6PP7495;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2213,6 +2214,7 @@
 					"$(PROJECT_DIR)/BestNews",
 					"$(PROJECT_DIR)/Framework",
 				);
+				MARKETING_VERSION = 1.4.9;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ruicaijing.bestNews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2234,6 +2236,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = R6A6PP7495;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2255,6 +2258,7 @@
 					"$(PROJECT_DIR)/BestNews",
 					"$(PROJECT_DIR)/Framework",
 				);
+				MARKETING_VERSION = 1.4.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ruicaijing.bestNews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

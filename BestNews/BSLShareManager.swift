@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import WatchKit
+import WatchConnectivity
 
 class BSLShareManager: NSObject {
 

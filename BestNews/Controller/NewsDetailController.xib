@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -22,6 +20,7 @@
                 <outlet property="rewardMenView" destination="Tyf-q9-8Lf" id="Nsv-Ry-Fj8"/>
                 <outlet property="rewardParentHeight" destination="GGe-YT-vPr" id="dX0-hT-BUa"/>
                 <outlet property="rewardView" destination="sK7-qi-NTZ" id="2Hc-IY-sDt"/>
+                <outlet property="scrollBottom" destination="cP3-Ye-l4g" id="ZzR-TP-sgu"/>
                 <outlet property="scrollView" destination="N3R-rR-IBP" id="rwn-hA-bRO"/>
                 <outlet property="subscriptBtn" destination="6G9-kn-O7X" id="Vr7-pd-nUv"/>
                 <outlet property="tableHeaderView" destination="rqp-J2-BHz" id="JVd-lJ-5Ll"/>
@@ -51,7 +50,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O0i-rY-gLk">
-                                    <rect key="frame" x="-0.5" y="74" width="375" height="108"/>
+                                    <rect key="frame" x="0.0" y="74" width="375" height="108"/>
                                     <subviews>
                                         <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="njg-js-NTy">
                                             <rect key="frame" x="20" y="39" width="30" height="30"/>
@@ -73,7 +72,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6G9-kn-O7X" customClass="SubscribeButton" customModule="BestNews" customModuleProvider="target">
-                                            <rect key="frame" x="295" y="38.5" width="60" height="30"/>
+                                            <rect key="frame" x="295" y="39" width="60" height="30"/>
                                             <color key="backgroundColor" red="0.0" green="0.59607843140000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="60" id="5jx-xV-52F"/>
@@ -125,7 +124,7 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7jo-PT-III">
-                                    <rect key="frame" x="-0.5" y="182" width="375" height="400"/>
+                                    <rect key="frame" x="0.0" y="182" width="375" height="400"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="400" id="4Ww-t0-f4T"/>
@@ -135,7 +134,7 @@
                                     <rect key="frame" x="0.0" y="582" width="375" height="223"/>
                                     <subviews>
                                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vlN-hw-j7m">
-                                            <rect key="frame" x="158" y="0.0" width="58" height="58"/>
+                                            <rect key="frame" x="158.5" y="0.0" width="58" height="58"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="58" id="pqO-bD-Zr8"/>
                                                 <constraint firstAttribute="width" constant="58" id="xDj-OU-cPi"/>
@@ -170,17 +169,17 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6tg-FL-Cgo" userLabel="line">
-                                    <rect key="frame" x="-0.5" y="805" width="375" height="10"/>
+                                    <rect key="frame" x="0.0" y="805" width="375" height="10"/>
                                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="10" id="a7p-hr-yhY"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rqp-J2-BHz" userLabel="headerView">
-                                    <rect key="frame" x="-0.5" y="815" width="375" height="49"/>
+                                    <rect key="frame" x="0.0" y="815" width="375" height="49"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="相关推荐" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iBL-g7-ARV">
-                                            <rect key="frame" x="155" y="14.5" width="65.5" height="19.5"/>
+                                            <rect key="frame" x="155" y="15" width="65.5" height="19.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -244,9 +243,9 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="N3R-rR-IBP" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="Kk5-vS-9cv"/>
-                <constraint firstItem="N3R-rR-IBP" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="LVe-0a-0NB"/>
+                <constraint firstItem="N3R-rR-IBP" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="OyM-wP-5Xu"/>
                 <constraint firstItem="N3R-rR-IBP" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="UrV-p5-9OZ"/>
+                <constraint firstAttribute="bottom" secondItem="N3R-rR-IBP" secondAttribute="bottom" id="cP3-Ye-l4g"/>
                 <constraint firstItem="N3R-rR-IBP" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="kXD-uZ-Fjx"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

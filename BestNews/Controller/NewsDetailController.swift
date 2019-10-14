@@ -17,6 +17,7 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
 
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBOutlet weak var scrollBottom: NSLayoutConstraint!
     @IBOutlet weak var titleLb: UILabel!
     
     @IBOutlet weak var avtarBtn: UIButton!
@@ -113,6 +114,16 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
         commentBar.frame = CGRect(x: 0, y: screenHeight-49, width: screenWidth, height: 49)
         commentBar.delegate = self
         view.addSubview(commentBar)
+        commentBar.snp.makeConstraints { (make) in
+            make.left.right.equalTo(0)
+            make.height.equalTo(49)
+            if #available(iOS 11.0, *) {
+                make.bottom.equalTo(-(keyWindow?.safeAreaInsets.bottom ?? 0))
+            } else {
+                make.bottom.equalToSuperview()
+            }
+        }
+        
         let nib = UINib(nibName: "SinglePhotoNewsCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "SinglePhotoNewsCell")
         let nib1 = UINib(nibName: "NoPhotoNewsCell", bundle: nil)
@@ -125,6 +136,7 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
         tableView.rowHeight = UITableViewAutomaticDimension
         if #available(iOS 11.0, *) {
             scrollView.contentInsetAdjustmentBehavior = .never
+            scrollBottom.constant = keyWindow?.safeAreaInsets.bottom ?? 0
         } else {
             // Fallback on earlier versions
         }
@@ -136,11 +148,6 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
         self.loadCommentList()
         self.loadRewardList()
         
-//        self.navigationItem.rightBarButtonItem = nightModeBtns[0]
-//        if SessionManager.sharedInstance.daynightModel == 2 {
-//            self.navigationItem.rightBarButtonItem = nightModeBtns[1]
-//            changeReadBGMode(night: true)
-//        }
     }
     
     //MARK: - tableView
