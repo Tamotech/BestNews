@@ -14,7 +14,7 @@ sender = '1134532311@qq.com'
 receivers = ['1134532311@qq.com', '619375143@qq.com', '2627049476@qq.com']  # 接收邮件，可设置为你的QQ邮箱或者其他邮箱
  
 # 三个参数：第一个为文本内容，第二个 plain 设置文本格式，第三个 utf-8 设置编码
-message = MIMEText('BestNews: iOS客户端打包上传完成! 详情请见 https://www.pgyer.com/manager/dashboard/app/8d846fc8729f93ec2dbdd26854a4f385', 'plain', 'utf-8')
+message = MIMEText('BestNews: iOS客户端打包上传完成! 详情请见 https://www.pgyer.com/jXn4', 'plain', 'utf-8')
 message['From'] = "武淅"   # 发送者
 message['To'] =  "测试"       # 接收者
  
