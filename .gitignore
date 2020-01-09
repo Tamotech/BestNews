@@ -1,3 +1,4 @@
+*.DS_Store
 Pods/
 BestNews.xcodeproj/project.xcworkspace/xcuserdata/
 BestNews.xcodeproj/xcuserdata/
