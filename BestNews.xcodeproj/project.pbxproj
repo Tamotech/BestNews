@@ -297,6 +297,8 @@
 		CC70F5F920A69D4800E52A46 /* AboutUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC70F5F720A69D4800E52A46 /* AboutUsViewController.swift */; };
 		CC70F60120A6C27500E52A46 /* ContactUsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC70F5FF20A6C27500E52A46 /* ContactUsController.swift */; };
 		CC70F60220A6C27500E52A46 /* ContactUsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC70F60020A6C27500E52A46 /* ContactUsController.xib */; };
+		CC88660B23C6CFFA007112E1 /* XH_logo_2year@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC88660923C6CFFA007112E1 /* XH_logo_2year@2x.png */; };
+		CC88660C23C6CFFA007112E1 /* XH_logo_2year@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC88660A23C6CFFA007112E1 /* XH_logo_2year@3x.png */; };
 		CC9A1F0721D1165D0024DD0F /* XH_logo_f@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC9A1F0521D1165C0024DD0F /* XH_logo_f@3x.png */; };
 		CC9A1F0821D1165D0024DD0F /* XH_logo_f@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = CC9A1F0621D1165D0024DD0F /* XH_logo_f@2x.png */; };
 		CCA073612354B5B3009D6AC9 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA073602354B5B3009D6AC9 /* UIColorExtension.swift */; };
@@ -678,6 +680,8 @@
 		CC70F5F720A69D4800E52A46 /* AboutUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutUsViewController.swift; sourceTree = "<group>"; };
 		CC70F5FF20A6C27500E52A46 /* ContactUsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsController.swift; sourceTree = "<group>"; };
 		CC70F60020A6C27500E52A46 /* ContactUsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactUsController.xib; sourceTree = "<group>"; };
+		CC88660923C6CFFA007112E1 /* XH_logo_2year@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "XH_logo_2year@2x.png"; sourceTree = "<group>"; };
+		CC88660A23C6CFFA007112E1 /* XH_logo_2year@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "XH_logo_2year@3x.png"; sourceTree = "<group>"; };
 		CC9A1F0521D1165C0024DD0F /* XH_logo_f@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "XH_logo_f@3x.png"; sourceTree = "<group>"; };
 		CC9A1F0621D1165D0024DD0F /* XH_logo_f@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "XH_logo_f@2x.png"; sourceTree = "<group>"; };
 		CCA073602354B5B3009D6AC9 /* UIColorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
@@ -1373,6 +1377,8 @@
 			children = (
 				CC9A1F0621D1165D0024DD0F /* XH_logo_f@2x.png */,
 				CC9A1F0521D1165C0024DD0F /* XH_logo_f@3x.png */,
+				CC88660923C6CFFA007112E1 /* XH_logo_2year@2x.png */,
+				CC88660A23C6CFFA007112E1 /* XH_logo_2year@3x.png */,
 				CC04341A21CE19280006DF74 /* XH_logo_1year@2x.png */,
 				CC04341B21CE19280006DF74 /* XH_logo_1year@3x.png */,
 			);
@@ -1731,6 +1737,7 @@
 				5A32A7001F92FDF300773884 /* HomeSearchController.xib in Resources */,
 				5AA4E85A1FD43378007A04FA /* Line@3x.png in Resources */,
 				5ACCDD2C1F9F75CE004D3809 /* SelectInterestItemController.xib in Resources */,
+				CC88660B23C6CFFA007112E1 /* XH_logo_2year@2x.png in Resources */,
 				5AA4E8531FD43378007A04FA /* volume_off@2x.png in Resources */,
 				5A0D23C71F832BD000FC9D4D /* NewsDetailController.xib in Resources */,
 				5A8B864A200EAFED0023F584 /* SearchArticleCell.xib in Resources */,
@@ -1783,6 +1790,7 @@
 				5A38B6C21F80CC9A00AF4A91 /* SubscriptionListControllerViewController.xib in Resources */,
 				CC01705F1F6835400069D38B /* ActivityCoverCell.xib in Resources */,
 				5AA4E85B1FD43378007A04FA /* camera_flash_close@2x.png in Resources */,
+				CC88660C23C6CFFA007112E1 /* XH_logo_2year@3x.png in Resources */,
 				5AC684861F7FFF24006CEB53 /* NoPhotoNewsCell.xib in Resources */,
 				5AFF05F21FE62E1800B7FE7D /* en.lproj in Resources */,
 				5AF9CE371F813F06002AA4A6 /* CircleHomeViewController.xib in Resources */,
@@ -1830,7 +1838,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-BestNews/Pods-BestNews-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-BestNews/Pods-BestNews-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AMPopTip/AMPopTip.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
@@ -1861,7 +1869,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BestNews/Pods-BestNews-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BestNews/Pods-BestNews-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		72D918B5801B1AF2E73A7CBB /* [CP] Check Pods Manifest.lock */ = {
@@ -2188,11 +2196,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = BestNews/BestNews.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_ENTITLEMENTS = "";
+				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = R6A6PP7495;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2214,7 +2222,7 @@
 					"$(PROJECT_DIR)/BestNews",
 					"$(PROJECT_DIR)/Framework",
 				);
-				MARKETING_VERSION = 1.4.9;
+				MARKETING_VERSION = 1.5.1;
 				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ruicaijing.bestNews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2232,11 +2240,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = BestNews/BestNews.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_TEAM = R6A6PP7495;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2258,7 +2266,7 @@
 					"$(PROJECT_DIR)/BestNews",
 					"$(PROJECT_DIR)/Framework",
 				);
-				MARKETING_VERSION = 1.4.9;
+				MARKETING_VERSION = 1.5.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.ruicaijing.bestNews;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

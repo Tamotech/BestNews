@@ -382,13 +382,15 @@ extension AppDelegate {
         let path = "/config/getCfgByCodes.htm?codes=s_xh_app_icon"
         APIManager.shareInstance.postRequest(urlString: path, params: nil) { (json, code, msg) in
             if let v = json?["data"]["s_xh_app_icon"]["v"].rawString() {
-                ///3--一周年  2--春节
+                ///3--一周年  2--春节 4 - 两周年
                 var logo: String? = nil
                 if v == "2" {
                     logo = "XH_logo_f"
                 }
                 else if v == "3" {
                     logo = "XH_logo_1year"
+                } else if v == "4" {
+                    logo = "XH_logo_2year"
                 }
                 DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+5) {
                     UIApplication.shared.setAlternateIconName(logo) { (error) in

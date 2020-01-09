@@ -38,7 +38,7 @@ DEPENDENCIES:
   - WechatOpenSDK
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  https://github.com/CocoaPods/Specs.git:
     - Alamofire
     - AlamofireObjectMapper
     - AMPopTip
@@ -76,4 +76,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: a8aedae9b1521af0edc719e3584292356865cca2
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.8.4

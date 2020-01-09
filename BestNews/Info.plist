@@ -21,6 +21,15 @@
 				<key>UIPrerenderedIcon</key>
 				<false/>
 			</dict>
+			<key>XH_logo_2year</key>
+			<dict>
+				<key>CFBundleIconFiles</key>
+				<array>
+					<string>XH_logo_2year</string>
+				</array>
+				<key>UIPrerenderedIcon</key>
+				<false/>
+			</dict>
 			<key>XH_logo_f</key>
 			<dict>
 				<key>CFBundleIconFiles</key>
