@@ -360,13 +360,17 @@ class SessionManager: NSObject, CLLocationManagerDelegate {
 
 extension SessionManager {
     
-    /// 是否国庆期间
+    /// 是否国庆期间 是否是春节期间
     static func isWithinCountrysDay() -> Bool {
         let now = Date()
         let calendar = Calendar.current
         let mon = calendar.component(Calendar.Component.month, from: now)
         let day = calendar.component(Calendar.Component.day, from: now)
+        let year = calendar.component(Calendar.Component.year, from: now)
         if mon == 10 && day >= 1 && day <= 7 {
+            return true
+        }
+        if year == 2020 && mon == 1 && day >= 24 && day <= 30 {
             return true
         }
         return false
