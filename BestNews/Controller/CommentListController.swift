@@ -28,6 +28,7 @@ CommentCellDelegate, CommentBarDelegate {
         tableView.dataSource = self
         tableView.separatorColor = gray229
         tableView.separatorInset = UIEdgeInsetsMake(0, 67, 0, 0)
+        tableView.backgroundColor = UIColor(hex: 0xf2f2f7)
         view.addSubview(tableView)
         tableView.snp.makeConstraints { (make) in
             make.left.right.equalTo(0)
