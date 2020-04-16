@@ -27,7 +27,7 @@ class SpecialChannelArticleListController: BaseViewController, UITableViewDelega
     var emptyView = BaseEmptyView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: screenHeight))
     
     lazy var tableView: UITableView = {
-        let v = UITableView(frame: CGRect.init(x: 0, y: 64, width: screenWidth, height: screenHeight-64), style: .plain)
+        let v = UITableView(frame: CGRect.init(x: 0, y: navBarHeight, width: screenWidth, height: screenHeight-navBarHeight), style: .plain)
         v.separatorStyle = .singleLine
         v.separatorInset = UIEdgeInsetsMake(0, 15, 0, 15)
         v.separatorColor = UIColor(hexString: "f0f0f0")
