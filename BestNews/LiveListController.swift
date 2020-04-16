@@ -72,7 +72,7 @@ class LiveListController: BaseViewController, UITableViewDelegate, UITableViewDa
         tableView.cr.addFootRefresh {
             self.loadMoreLiveList()
         }
-        
+        tableView.backgroundColor = UIColor(hex: 0xf2f2f7)
         self.view.addSubview(emptyView)
         emptyView.emptyString = "还没有直播~"
         emptyView.isHidden = true

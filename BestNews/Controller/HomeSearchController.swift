@@ -125,6 +125,7 @@ class HomeSearchController: UIViewController, UITableViewDelegate, UITableViewDa
         hostoryTableView.separatorInset = .zero
         hostoryTableView.delegate = self
         hostoryTableView.dataSource = self
+        hostoryTableView.backgroundColor = UIColor(hex: 0xf2f2f7)
         
         let footer = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 40))
         footer.backgroundColor = .white

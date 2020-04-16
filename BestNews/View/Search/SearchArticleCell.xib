@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,17 +13,17 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="106"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="58i-d3-dTT" id="1VM-RW-Vb6">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="105.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="106"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题标题标题标题标题标题标题标题标题标题标题" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jab-df-zjQ">
-                        <rect key="frame" x="15" y="15" width="290" height="46.5"/>
+                        <rect key="frame" x="15" y="15" width="290" height="47"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="justified" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9ih-Kf-7ce">
-                        <rect key="frame" x="15" y="65.5" width="290" height="0.0"/>
+                        <rect key="frame" x="15" y="66" width="290" height="0.0"/>
                         <constraints>
                             <constraint firstAttribute="height" id="tph-mq-teZ"/>
                         </constraints>
@@ -34,7 +32,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="作者" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="HW0-gf-Yvk">
-                        <rect key="frame" x="15" y="73.5" width="25" height="17"/>
+                        <rect key="frame" x="15" y="74" width="25" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="17" id="aLs-Vg-dJZ"/>
                         </constraints>
@@ -43,10 +41,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="time-clock" translatesAutoresizingMaskIntoConstraints="NO" id="M5B-1c-eBK">
-                        <rect key="frame" x="46" y="76.5" width="11" height="11"/>
+                        <rect key="frame" x="46" y="77" width="11" height="11"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="作者" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="jfT-gW-f3N">
-                        <rect key="frame" x="60" y="73.5" width="25" height="17"/>
+                        <rect key="frame" x="60" y="74" width="25" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="17" id="eLZ-ge-hNy"/>
                         </constraints>
@@ -55,6 +53,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="jfT-gW-f3N" firstAttribute="leading" secondItem="M5B-1c-eBK" secondAttribute="trailing" constant="3" id="0Oy-xi-REb"/>
                     <constraint firstItem="Jab-df-zjQ" firstAttribute="top" secondItem="1VM-RW-Vb6" secondAttribute="top" constant="15" id="1sK-G6-ZRy"/>
@@ -71,6 +70,7 @@
                     <constraint firstAttribute="trailing" secondItem="Jab-df-zjQ" secondAttribute="trailing" constant="15" id="xPZ-Vm-8BV"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="articleTitleLb" destination="Jab-df-zjQ" id="FaO-AU-DQm"/>

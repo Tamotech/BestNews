@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,7 +13,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="265"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="264.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="265"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="m24_default" translatesAutoresizingMaskIntoConstraints="NO" id="QFs-8n-mh3">
@@ -39,12 +37,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oYu-Ec-2Y6">
-                        <rect key="frame" x="15" y="220" width="345" height="34.5"/>
+                        <rect key="frame" x="15" y="220" width="345" height="35"/>
                         <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="QPC-Cf-zpL" firstAttribute="centerX" secondItem="fw9-Vy-Rnv" secondAttribute="centerX" id="5ye-Ct-mEZ"/>
                     <constraint firstItem="QFs-8n-mh3" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="Im1-N5-Uzf"/>
@@ -59,6 +58,7 @@
                     <constraint firstItem="fw9-Vy-Rnv" firstAttribute="top" secondItem="QFs-8n-mh3" secondAttribute="top" constant="10" id="oA6-Jh-xux"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
                 <outlet property="coverImg" destination="QFs-8n-mh3" id="uc0-cK-Q3s"/>
                 <outlet property="titleLb" destination="oYu-Ec-2Y6" id="wgp-cX-x6p"/>

@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,16 +13,16 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="260"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jhT-ff-lbf" id="xeG-Be-npl">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="259.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="260"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="如何布局未来" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CUO-xm-tkS">
-                        <rect key="frame" x="15" y="15" width="290" height="25"/>
+                        <rect key="frame" x="15" y="15" width="290" height="25.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="m24_default" translatesAutoresizingMaskIntoConstraints="NO" id="LMT-fG-viR">
-                        <rect key="frame" x="15" y="50" width="290" height="164"/>
+                        <rect key="frame" x="15" y="50.5" width="290" height="164"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="LMT-fG-viR" secondAttribute="height" multiplier="345:195" priority="900" id="FMa-m3-CqL"/>
                         </constraints>
@@ -35,11 +33,11 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <view hidden="YES" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="j2h-up-ZeG">
-                        <rect key="frame" x="15" y="50" width="290" height="164"/>
+                        <rect key="frame" x="15" y="50.5" width="290" height="164"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.25" colorSpace="calibratedRGB"/>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="作者" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="YHA-gd-gMq">
-                        <rect key="frame" x="15" y="224" width="25" height="20.5"/>
+                        <rect key="frame" x="15" y="224.5" width="25" height="20.5"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20.5" id="imI-f8-Zz7"/>
                         </constraints>
@@ -48,10 +46,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="time-clock" translatesAutoresizingMaskIntoConstraints="NO" id="vgi-oW-giS">
-                        <rect key="frame" x="46" y="229" width="11" height="11"/>
+                        <rect key="frame" x="46" y="229.5" width="11" height="11"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="作者" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="nh6-XQ-Ubm">
-                        <rect key="frame" x="60" y="224" width="25" height="20.5"/>
+                        <rect key="frame" x="60" y="224.5" width="25" height="20.5"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20.5" id="mhW-Cr-31M"/>
                         </constraints>
@@ -60,7 +58,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pJh-HQ-9qn">
-                        <rect key="frame" x="271" y="226" width="34" height="17"/>
+                        <rect key="frame" x="271" y="226.5" width="34" height="17"/>
                         <color key="backgroundColor" red="0.37647058820000001" green="0.67450980390000004" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="34" id="ETs-Ee-Stc"/>
@@ -77,6 +75,7 @@
                         </userDefinedRuntimeAttributes>
                     </button>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="nh6-XQ-Ubm" firstAttribute="leading" secondItem="vgi-oW-giS" secondAttribute="trailing" constant="3" id="8Zg-Wy-YN1"/>
                     <constraint firstAttribute="trailing" secondItem="LMT-fG-viR" secondAttribute="trailing" constant="15" id="IQy-hW-bwK"/>
@@ -99,6 +98,7 @@
                     <constraint firstAttribute="trailing" secondItem="pJh-HQ-9qn" secondAttribute="trailing" constant="15" id="zh7-KK-IaA"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="dateLb" destination="nh6-XQ-Ubm" id="Xfe-xc-Jga"/>

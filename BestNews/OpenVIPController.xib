@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -39,19 +36,19 @@
                             <rect key="frame" x="0.0" y="0.0" width="375" height="858"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VipHeaderM5-10" translatesAutoresizingMaskIntoConstraints="NO" id="4ih-og-AQ1">
-                                    <rect key="frame" x="-0.5" y="44" width="375" height="74"/>
+                                    <rect key="frame" x="0.0" y="44" width="375" height="74"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="74" id="7pF-9g-ztY"/>
                                     </constraints>
                                 </imageView>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wmu-36-NoJ" userLabel="价格">
-                                    <rect key="frame" x="-0.5" y="118" width="375" height="208"/>
+                                    <rect key="frame" x="0.0" y="118" width="375" height="208"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hzg-FC-z9b" userLabel="包月">
-                                            <rect key="frame" x="20" y="16" width="159.5" height="80"/>
+                                            <rect key="frame" x="20" y="16" width="159.5" height="160"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vip-bg-2" translatesAutoresizingMaskIntoConstraints="NO" id="lCB-4b-muv">
-                                                    <rect key="frame" x="0.0" y="0.0" width="159.5" height="80"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="159.5" height="160"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="连续包月" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Fs-n3-Vz9">
                                                     <rect key="frame" x="12" y="20" width="61.5" height="18"/>
@@ -87,10 +84,10 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ma4-gk-STw" userLabel="包月">
-                                            <rect key="frame" x="195.5" y="16" width="159.5" height="80"/>
+                                            <rect key="frame" x="195.5" y="16" width="159.5" height="160"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vip-bg-1" translatesAutoresizingMaskIntoConstraints="NO" id="Kg0-aY-0TF">
-                                                    <rect key="frame" x="0.0" y="0.0" width="159.5" height="80"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="159.5" height="160"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="包月" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Rl-CM-7jf">
                                                     <rect key="frame" x="12" y="20" width="31" height="18"/>
@@ -126,10 +123,10 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qa3-9X-hbm" userLabel="包月">
-                                            <rect key="frame" x="20" y="112" width="159.5" height="80"/>
+                                            <rect key="frame" x="20" y="192" width="159.5" height="160"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vip-bg-1" translatesAutoresizingMaskIntoConstraints="NO" id="IlT-tD-axg">
-                                                    <rect key="frame" x="0.0" y="0.0" width="159.5" height="80"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="159.5" height="160"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="包季" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eeC-PH-yao">
                                                     <rect key="frame" x="12" y="20" width="31" height="18"/>
@@ -165,10 +162,10 @@
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rzH-M3-vd2" userLabel="包月">
-                                            <rect key="frame" x="195.5" y="112" width="159.5" height="80"/>
+                                            <rect key="frame" x="195.5" y="192" width="159.5" height="160"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vip-bg-1" translatesAutoresizingMaskIntoConstraints="NO" id="Rbz-zm-VaL">
-                                                    <rect key="frame" x="0.0" y="0.0" width="159.5" height="80"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="159.5" height="160"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="包年" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WnF-iv-MhP">
                                                     <rect key="frame" x="12" y="20" width="31" height="18"/>
@@ -227,16 +224,16 @@
                                     <rect key="frame" x="0.0" y="341" width="375" height="149"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c9u-LM-G2E">
-                                            <rect key="frame" x="-0.5" y="0.0" width="375" height="49"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付方式" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qO3-yl-ZZo">
-                                                    <rect key="frame" x="20" y="16" width="61.5" height="18"/>
+                                                    <rect key="frame" x="20" y="15.5" width="61.5" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q2p-R9-7ZY" userLabel="line">
-                                                    <rect key="frame" x="-0.5" y="48" width="375" height="1"/>
+                                                    <rect key="frame" x="0.0" y="48" width="375" height="1"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="KYc-1p-icd"/>
@@ -257,19 +254,19 @@
                                             <rect key="frame" x="0.0" y="49" width="375" height="50"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PayZhi" translatesAutoresizingMaskIntoConstraints="NO" id="3ne-Ga-bKQ">
-                                                    <rect key="frame" x="24" y="12" width="26" height="26"/>
+                                                    <rect key="frame" x="24" y="-1" width="52" height="52"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付宝" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mux-5Q-CNM">
-                                                    <rect key="frame" x="66" y="18" width="46" height="15"/>
+                                                    <rect key="frame" x="66" y="16.5" width="45" height="17"/>
                                                     <fontDescription key="fontDescription" name=".PingFangSC-Regular" family=".PingFang SC" pointSize="15"/>
                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TickOnM3-3b" translatesAutoresizingMaskIntoConstraints="NO" id="8ch-x3-EGs">
-                                                    <rect key="frame" x="326" y="13" width="24" height="24"/>
+                                                    <rect key="frame" x="302" y="1" width="48" height="48"/>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qmn-2g-3bR" userLabel="line">
-                                                    <rect key="frame" x="14.5" y="49" width="345" height="1"/>
+                                                    <rect key="frame" x="15" y="49" width="345" height="1"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="RIa-rT-A7m"/>
@@ -298,16 +295,16 @@
                                             <rect key="frame" x="0.0" y="99" width="375" height="50"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="PayWechat" translatesAutoresizingMaskIntoConstraints="NO" id="bZt-ap-3i3">
-                                                    <rect key="frame" x="24" y="12" width="26" height="26"/>
+                                                    <rect key="frame" x="24" y="-1" width="52" height="52"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="微信" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O4D-Cs-Uxv">
-                                                    <rect key="frame" x="66" y="18" width="31" height="15"/>
+                                                    <rect key="frame" x="66" y="16.5" width="30" height="17"/>
                                                     <fontDescription key="fontDescription" name=".PingFangSC-Regular" family=".PingFang SC" pointSize="15"/>
                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="TickOffM3-3b" translatesAutoresizingMaskIntoConstraints="NO" id="m5f-tN-yLV">
-                                                    <rect key="frame" x="326" y="13" width="24" height="24"/>
+                                                    <rect key="frame" x="302" y="1" width="48" height="48"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -344,16 +341,16 @@
                                     <rect key="frame" x="0.0" y="505" width="375" height="162"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oHV-7Q-aep">
-                                            <rect key="frame" x="-0.5" y="0.0" width="375" height="49"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="认证特权" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sMJ-Ep-5Z2">
-                                                    <rect key="frame" x="20" y="16" width="61.5" height="18"/>
+                                                    <rect key="frame" x="20" y="15.5" width="61.5" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wBP-sx-m7m" userLabel="line">
-                                                    <rect key="frame" x="-0.5" y="48" width="375" height="1"/>
+                                                    <rect key="frame" x="0.0" y="48" width="375" height="1"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="aYe-kP-h8J"/>
@@ -374,10 +371,10 @@
                                             <rect key="frame" x="0.0" y="49" width="125" height="113"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vip-brand1" translatesAutoresizingMaskIntoConstraints="NO" id="JFC-QE-ZpL">
-                                                    <rect key="frame" x="37.5" y="12" width="49" height="49"/>
+                                                    <rect key="frame" x="13.5" y="12" width="98" height="98"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="特权1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T2h-KY-KFl">
-                                                    <rect key="frame" x="43.5" y="76" width="37.5" height="18"/>
+                                                    <rect key="frame" x="44" y="125" width="37.5" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -395,10 +392,10 @@
                                             <rect key="frame" x="125" y="49" width="125" height="113"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vip-brand2" translatesAutoresizingMaskIntoConstraints="NO" id="c0h-rV-gug">
-                                                    <rect key="frame" x="37.5" y="12" width="49" height="49"/>
+                                                    <rect key="frame" x="13.5" y="12" width="98" height="98"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="特权2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ed8-1k-Zwk">
-                                                    <rect key="frame" x="42.5" y="76" width="39.5" height="18"/>
+                                                    <rect key="frame" x="43" y="125" width="39.5" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -416,10 +413,10 @@
                                             <rect key="frame" x="250" y="49" width="125" height="113"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="vip-brand3" translatesAutoresizingMaskIntoConstraints="NO" id="dme-9m-edB">
-                                                    <rect key="frame" x="37.5" y="12" width="49" height="49"/>
+                                                    <rect key="frame" x="13.5" y="12" width="98" height="98"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="特权3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MuE-Jh-D8n">
-                                                    <rect key="frame" x="42.5" y="76" width="40" height="18"/>
+                                                    <rect key="frame" x="42.5" y="125" width="40" height="18"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -548,7 +545,7 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="总价格:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zK9-sn-JzR">
-                                    <rect key="frame" x="25" y="22" width="47" height="17"/>
+                                    <rect key="frame" x="25" y="22.5" width="47" height="17"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>

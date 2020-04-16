@@ -20,6 +20,7 @@ class SpecialChannelListController: BaseViewController, UITableViewDelegate, UIT
         v.register(nib, forCellReuseIdentifier: "Cell")
         v.estimatedRowHeight = 211
         v.rowHeight = UITableViewAutomaticDimension
+        v.backgroundColor = UIColor(hex: 0xf2f2f7)
         self.view.addSubview(v)
         return v
     }()

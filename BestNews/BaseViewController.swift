@@ -11,6 +11,9 @@ import CRRefresh
 import Presentr
 import Kingfisher
 
+let statusBarHeight = UIApplication.shared.statusBarFrame.size.height
+let navBarHeight = statusBarHeight + 44
+
 class BaseViewController: UIViewController {
     
     
@@ -23,14 +26,14 @@ class BaseViewController: UIViewController {
     }()
     
     lazy var closeBtn: UIButton = {
-        let btn = UIButton(frame: CGRect(x: 10, y: 20, width: 44, height: 44))
+        let btn = UIButton(frame: CGRect(x: 10, y: 20, width: 44, height: navBarHeight))
         btn.setImage(UIImage(named: "close-gray-bold"), for: .normal)
         btn.addTarget(self, action: #selector(handleTapCloseVc(sender:)), for: .touchUpInside)
         return btn
     } ()
     
     lazy var titleLabel: UILabel = {
-        let label = UILabel(frame: CGRect(x: 80, y: 20, width: screenWidth-160, height: 44))
+        let label = UILabel(frame: CGRect(x: 80, y: statusBarHeight, width: screenWidth-160, height: 44))
         
         if #available(iOS 8.2, *) {
             label.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.medium)
@@ -43,7 +46,7 @@ class BaseViewController: UIViewController {
     } ()
     
     lazy var barView: UIView = {
-        let view = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: 64))
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: screenWidth, height: navBarHeight))
         view.backgroundColor = UIColor.white
         view.shadowColor = UIColor(hexString: "e8e8e8")!
         view.shadowOffset = CGSize(width: 0, height: 1)
@@ -122,7 +125,4 @@ class BaseViewController: UIViewController {
         print("deinit ----- \(self.classForCoder)")
         NotificationCenter.default.removeObserver(self)
     }
-
-    
-
 }

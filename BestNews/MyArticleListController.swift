@@ -17,6 +17,7 @@ class MyArticleListController: BaseViewController, UITableViewDataSource, UITabl
         v.delegate = self
         v.dataSource = self
         v.rowHeight = 136
+        v.backgroundColor = UIColor(hex: 0xf2f2f7)
         return v
     }()
     let cellIdentifiers = ["TopicBannerCell", "SinglePhotoNewsCell", "ThreePhotosNewsCell", "NoPhotoNewsCell", "SingleBigPhotoNewsCell"]

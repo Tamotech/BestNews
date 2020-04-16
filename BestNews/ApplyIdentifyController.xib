@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -36,12 +34,12 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZw-Qz-YVf">
-                                            <rect key="frame" x="20" y="15" width="61.5" height="15"/>
+                                            <rect key="frame" x="20" y="13" width="61.5" height="18"/>
                                             <attributedString key="attributedText">
                                                 <fragment content="用户昵称">
                                                     <attributes>
                                                         <color key="NSColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="15" name=".PingFangSC-Regular"/>
+                                                        <font key="NSFont" metaFont="system" size="15"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
                                                 </fragment>
@@ -49,13 +47,13 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NFT-vu-8HU">
-                                            <rect key="frame" x="311" y="11.5" width="44" height="20"/>
+                                            <rect key="frame" x="315" y="11.5" width="40" height="21"/>
                                             <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mgb-NJ-8nP" userLabel="line">
-                                            <rect key="frame" x="14.5" y="43" width="345" height="1"/>
+                                            <rect key="frame" x="15" y="43" width="345" height="1"/>
                                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="1" id="p2j-F4-ifO"/>
@@ -81,12 +79,12 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gwo-9e-Hp1">
-                                                    <rect key="frame" x="20" y="15" width="61.5" height="15"/>
+                                                    <rect key="frame" x="20" y="13" width="61.5" height="18"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="真实姓名">
                                                             <attributes>
                                                                 <color key="NSColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <font key="NSFont" size="15" name=".PingFangSC-Regular"/>
+                                                                <font key="NSFont" metaFont="system" size="15"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
@@ -94,13 +92,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入你的真实姓名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wrk-Dk-jAF">
-                                                    <rect key="frame" x="110" y="11.5" width="265" height="20"/>
+                                                    <rect key="frame" x="110" y="12" width="265" height="20"/>
                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L7P-2y-z0w" userLabel="line">
-                                                    <rect key="frame" x="14.5" y="43" width="345" height="1"/>
+                                                    <rect key="frame" x="15" y="43" width="345" height="1"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="jK5-dm-m0P"/>
@@ -124,12 +122,12 @@
                                             <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DXH-iR-foQ">
-                                                    <rect key="frame" x="20" y="15" width="61.5" height="15"/>
+                                                    <rect key="frame" x="20" y="13" width="61.5" height="18"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="身份证号">
                                                             <attributes>
                                                                 <color key="NSColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <font key="NSFont" size="15" name=".PingFangSC-Regular"/>
+                                                                <font key="NSFont" metaFont="system" size="15"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
@@ -137,7 +135,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="输入您的身份证号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="r2p-0m-Cop">
-                                                    <rect key="frame" x="110" y="11.5" width="265" height="20"/>
+                                                    <rect key="frame" x="110" y="12" width="265" height="20"/>
                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -167,12 +165,12 @@
                                             <rect key="frame" x="0.0" y="89" width="375" height="44"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fdV-QM-Q8l">
-                                                    <rect key="frame" x="20" y="15" width="61.5" height="15"/>
+                                                    <rect key="frame" x="20" y="13" width="61.5" height="18"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="手机号码">
                                                             <attributes>
                                                                 <color key="NSColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <font key="NSFont" size="15" name=".PingFangSC-Regular"/>
+                                                                <font key="NSFont" metaFont="system" size="15"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
@@ -180,7 +178,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qM7-3E-kjx">
-                                                    <rect key="frame" x="110" y="11.5" width="145" height="20"/>
+                                                    <rect key="frame" x="110" y="12" width="145" height="20"/>
                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
@@ -205,7 +203,7 @@
                                                     </connections>
                                                 </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dD7-xf-HzH" userLabel="line">
-                                                    <rect key="frame" x="14.5" y="43" width="345" height="1"/>
+                                                    <rect key="frame" x="15" y="43" width="345" height="1"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="4GG-7j-ebq"/>
@@ -231,12 +229,12 @@
                                             <rect key="frame" x="0.0" y="133" width="375" height="44"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dNw-8z-mrN">
-                                                    <rect key="frame" x="20" y="15" width="46" height="15"/>
+                                                    <rect key="frame" x="20" y="13" width="46" height="18"/>
                                                     <attributedString key="attributedText">
                                                         <fragment content="验证码">
                                                             <attributes>
                                                                 <color key="NSColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <font key="NSFont" size="15" name=".PingFangSC-Regular"/>
+                                                                <font key="NSFont" metaFont="system" size="15"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>
@@ -244,13 +242,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入验证码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XDV-La-eYU">
-                                                    <rect key="frame" x="110" y="11.5" width="245" height="20"/>
+                                                    <rect key="frame" x="110" y="12" width="245" height="20"/>
                                                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
                                                 </textField>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e5y-HD-fTi" userLabel="line">
-                                                    <rect key="frame" x="14.5" y="43" width="345" height="1"/>
+                                                    <rect key="frame" x="15" y="43" width="345" height="1"/>
                                                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="JpR-jR-YyP"/>

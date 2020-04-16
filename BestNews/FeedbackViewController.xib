@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -73,7 +71,7 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+            <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="1ch-r8-5xZ" firstAttribute="trailing" secondItem="2oS-kP-EEA" secondAttribute="trailing" id="6PB-4G-y2u"/>
                 <constraint firstAttribute="trailing" secondItem="2oS-kP-EEA" secondAttribute="trailing" constant="15" id="JFB-2A-BMU"/>
@@ -84,6 +82,7 @@
                 <constraint firstItem="2oS-kP-EEA" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="75" id="ZJF-rK-Io3"/>
                 <constraint firstItem="2oS-kP-EEA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="15" id="sXd-FA-1O7"/>
             </constraints>
+            <point key="canvasLocation" x="138" y="150"/>
         </view>
     </objects>
 </document>

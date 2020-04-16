@@ -33,6 +33,7 @@ class SpecialChannelArticleListController: BaseViewController, UITableViewDelega
         v.separatorColor = UIColor(hexString: "f0f0f0")
         v.delegate = self
         v.dataSource = self
+        v.backgroundColor = UIColor(hex: 0xf2f2f7)
         v.estimatedRowHeight = 220
         v.rowHeight = UITableViewAutomaticDimension
         return v

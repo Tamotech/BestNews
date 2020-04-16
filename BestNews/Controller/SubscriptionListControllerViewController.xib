@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -36,7 +34,7 @@
                     </connections>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vzg-jz-P16" userLabel="订阅更多">
-                    <rect key="frame" x="-0.5" y="44" width="375" height="574"/>
+                    <rect key="frame" x="0.0" y="44" width="375" height="574"/>
                     <subviews>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0m6-m8-UzK">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="574"/>
@@ -57,7 +55,7 @@
                                                     <rect key="frame" x="344" y="17" width="16" height="16"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="更多" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eHK-C4-tXW">
-                                                    <rect key="frame" x="305" y="15.5" width="33" height="19.5"/>
+                                                    <rect key="frame" x="305" y="15" width="33" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.70980392160000005" green="0.70980392160000005" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -96,7 +94,7 @@
                                             </connections>
                                         </collectionView>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Abh-Br-1Fe" userLabel="header">
-                                            <rect key="frame" x="-0.5" y="458" width="375" height="44"/>
+                                            <rect key="frame" x="0.0" y="458" width="375" height="44"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="精选财经号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ctO-2T-sdK">
                                                     <rect key="frame" x="15" y="15" width="82" height="19.5"/>
@@ -108,7 +106,7 @@
                                                     <rect key="frame" x="344" y="17" width="16" height="16"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="更多" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ojm-Dh-njY">
-                                                    <rect key="frame" x="305" y="15.5" width="33" height="19.5"/>
+                                                    <rect key="frame" x="305" y="15" width="33" height="19.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <color key="textColor" red="0.70980392160000005" green="0.70980392160000005" blue="0.70980392160000005" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -188,7 +186,7 @@
                                     <fragment content=" 我的订阅">
                                         <attributes>
                                             <color key="NSColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="15" name=".PingFangSC-Regular"/>
+                                            <font key="NSFont" metaFont="system" size="15"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
@@ -198,7 +196,7 @@
                                     <fragment content=" 我的订阅">
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.59607843137254901" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="15" name=".PingFangSC-Regular"/>
+                                            <font key="NSFont" metaFont="system" size="15"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>
@@ -215,7 +213,7 @@
                                     <fragment content=" 订阅更多">
                                         <attributes>
                                             <color key="NSColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="15" name=".PingFangSC-Regular"/>
+                                            <font key="NSFont" metaFont="system" size="15"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
@@ -225,7 +223,7 @@
                                     <fragment content=" 订阅更多">
                                         <attributes>
                                             <color key="NSColor" red="0.0" green="0.59607843137254901" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="15" name=".PingFangSC-Regular"/>
+                                            <font key="NSFont" metaFont="system" size="15"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                         </attributes>
                                     </fragment>

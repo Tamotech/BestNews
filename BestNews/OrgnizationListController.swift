@@ -47,6 +47,7 @@ class OrgnizationListController: BaseViewController, UITableViewDataSource, UITa
         tableView.estimatedRowHeight = 125
         tableView.sectionHeaderHeight = 0.1
         tableView.sectionFooterHeight = 0.1
+        tableView.backgroundColor = UIColor(hex: 0xf2f2f7)
         tableView.cr.addHeadRefresh {
             [weak self] in
             if self?.type == 0 {

@@ -30,6 +30,7 @@ class ActivityController: BaseViewController, UITableViewDelegate, UITableViewDa
         }
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.backgroundColor = UIColor(hex: 0xf2f2f7)
         self.view.addSubview(tableView)
         
         let nib = UINib(nibName: "ActivityCoverCell", bundle: nil)

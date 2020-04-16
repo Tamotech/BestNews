@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -37,8 +35,8 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Gsl-jS-Ile">
-                    <rect key="frame" x="-0.5" y="0.0" width="375" height="667"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <color key="backgroundColor" red="0.94117647058823528" green="0.94117647058823528" blue="0.94117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                     <color key="separatorColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                     <inset key="separatorInset" minX="65" minY="0.0" maxX="0.0" maxY="0.0"/>
                     <connections>
@@ -47,13 +45,14 @@
                     </connections>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="Gsl-jS-Ile" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="DEh-mC-jEZ"/>
                 <constraint firstItem="Gsl-jS-Ile" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="eYc-GL-lDL"/>
                 <constraint firstItem="Gsl-jS-Ile" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="k8f-qn-Pp3"/>
                 <constraint firstItem="Gsl-jS-Ile" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="oVM-TA-dbb"/>
             </constraints>
+            <point key="canvasLocation" x="138" y="150"/>
         </view>
         <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YWX-rP-Ioe">
             <rect key="frame" x="0.0" y="0.0" width="375" height="140"/>
@@ -63,7 +62,7 @@
                     <rect key="frame" x="15" y="15" width="108.5" height="100"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg1M2-2" translatesAutoresizingMaskIntoConstraints="NO" id="t3j-z0-K69">
-                            <rect key="frame" x="0.0" y="-0.5" width="108.5" height="100"/>
+                            <rect key="frame" x="0.0" y="0.0" width="108.5" height="100"/>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nys-jH-pnR" userLabel="line">
                             <rect key="frame" x="15" y="39" width="78.5" height="2"/>
@@ -73,7 +72,7 @@
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="上证指数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DI9-Fg-gl0">
-                            <rect key="frame" x="22" y="9.5" width="65.5" height="19.5"/>
+                            <rect key="frame" x="21.5" y="9.5" width="65.5" height="19.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
@@ -126,7 +125,7 @@
                     <rect key="frame" x="133.5" y="15" width="108" height="100"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg2M2-2" translatesAutoresizingMaskIntoConstraints="NO" id="4Ih-b3-IKD">
-                            <rect key="frame" x="-0.5" y="0.0" width="108.5" height="100"/>
+                            <rect key="frame" x="0.0" y="0.0" width="108" height="100"/>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AEe-bk-RCi" userLabel="line">
                             <rect key="frame" x="15" y="39" width="78" height="2"/>
@@ -189,7 +188,7 @@
                     <rect key="frame" x="251.5" y="15" width="108.5" height="100"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg3M2-2" translatesAutoresizingMaskIntoConstraints="NO" id="9Lx-14-myk">
-                            <rect key="frame" x="-0.5" y="0.0" width="108.5" height="100"/>
+                            <rect key="frame" x="0.0" y="0.0" width="108.5" height="100"/>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="v32-eZ-vQe" userLabel="line">
                             <rect key="frame" x="15" y="39" width="78.5" height="2"/>
@@ -249,7 +248,7 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="17f-gr-6cL">
-                    <rect key="frame" x="-0.5" y="130" width="375" height="10"/>
+                    <rect key="frame" x="0.0" y="130" width="375" height="10"/>
                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="10" id="xbj-cT-aM3"/>

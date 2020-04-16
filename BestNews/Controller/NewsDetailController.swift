@@ -90,6 +90,7 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
         web.scrollView.isScrollEnabled = false
         web.autoresizingMask = .flexibleHeight
         web.navigationDelegate = self
+        web.backgroundColor = .white
         let url = Bundle.main.url(forResource: "clickImg", withExtension: "js")
         do {
             let functionStr = try String.init(contentsOf: url!, encoding: String.Encoding.utf8)
@@ -132,6 +133,7 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
         tableView.sectionFooterHeight = 0.1
         tableView.sectionHeaderHeight = 0.1
 //        tableView.rowHeight = 108
+        tableView.backgroundColor = .white
         tableView.estimatedRowHeight = 220
         tableView.rowHeight = UITableViewAutomaticDimension
         if #available(iOS 11.0, *) {

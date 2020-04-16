@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,17 +13,17 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="188"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="br7-De-LLG" id="Mez-9Y-Zbz">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="187.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="188"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题标题标题标题标题标题标题标题标题标题标题" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bal-5f-ATa">
-                        <rect key="frame" x="15" y="15" width="290" height="49.5"/>
+                        <rect key="frame" x="15" y="15" width="290" height="50"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="m231_default" translatesAutoresizingMaskIntoConstraints="NO" id="T8Y-Ax-YOf">
-                        <rect key="frame" x="15" y="74.5" width="95" height="71"/>
+                        <rect key="frame" x="15" y="75" width="94.5" height="71"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="T8Y-Ax-YOf" secondAttribute="height" multiplier="4:3" id="HWj-5N-Ok1"/>
                         </constraints>
@@ -37,7 +34,7 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="m231_default" translatesAutoresizingMaskIntoConstraints="NO" id="VTg-Ol-j7i">
-                        <rect key="frame" x="113" y="74.5" width="94.5" height="71"/>
+                        <rect key="frame" x="112.5" y="75" width="95" height="71"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                 <real key="value" value="4"/>
@@ -45,7 +42,7 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="m231_default" translatesAutoresizingMaskIntoConstraints="NO" id="XQp-NR-szI">
-                        <rect key="frame" x="210.5" y="74.5" width="94.5" height="71"/>
+                        <rect key="frame" x="210.5" y="75" width="94.5" height="71"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                 <real key="value" value="4"/>
@@ -53,7 +50,7 @@
                         </userDefinedRuntimeAttributes>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="作者." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="og7-rY-H42">
-                        <rect key="frame" x="15" y="155.5" width="28.5" height="17"/>
+                        <rect key="frame" x="15" y="156" width="28.5" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="17" id="glQ-Dl-XHc"/>
                         </constraints>
@@ -62,10 +59,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="time-clock" translatesAutoresizingMaskIntoConstraints="NO" id="5R2-DC-bMm">
-                        <rect key="frame" x="49.5" y="158.5" width="11" height="11"/>
+                        <rect key="frame" x="49.5" y="159" width="11" height="11"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="小时前 " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="Ar4-Qy-zeZ">
-                        <rect key="frame" x="63.5" y="155.5" width="40.5" height="17"/>
+                        <rect key="frame" x="63.5" y="156" width="40.5" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="17" id="epz-Ic-57j"/>
                         </constraints>
@@ -74,7 +71,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HsO-u2-sfR">
-                        <rect key="frame" x="271" y="155.5" width="34" height="17"/>
+                        <rect key="frame" x="271" y="156" width="34" height="17"/>
                         <color key="backgroundColor" red="0.37647058820000001" green="0.67450980390000004" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="17" id="43f-S1-2cX"/>
@@ -91,6 +88,7 @@
                         </userDefinedRuntimeAttributes>
                     </button>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="5R2-DC-bMm" firstAttribute="centerY" secondItem="og7-rY-H42" secondAttribute="centerY" id="2N5-4d-caw"/>
                     <constraint firstItem="Ar4-Qy-zeZ" firstAttribute="leading" secondItem="5R2-DC-bMm" secondAttribute="trailing" constant="3" id="4s0-2U-mi8"/>
@@ -117,6 +115,7 @@
                     <constraint firstItem="bal-5f-ATa" firstAttribute="leading" secondItem="Mez-9Y-Zbz" secondAttribute="leading" constant="15" id="vJg-UG-Vjb"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="dateLb" destination="Ar4-Qy-zeZ" id="JGf-fq-oV7"/>

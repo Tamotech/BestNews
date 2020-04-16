@@ -63,7 +63,7 @@ class CircleHomeViewController: BaseViewController, UIScrollViewDelegate, TYPage
             vc.shouldClearNavBar = true
             addChildViewController(vc)
             let x = screenWidth*CGFloat(i)
-            vc.view.frame = CGRect(x: x, y: 64, width: screenWidth, height: screenHeight-49)
+            vc.view.frame = CGRect(x: x, y: navBarHeight, width: screenWidth, height: screenHeight-49 - statusBarHeight)
             scrollView.addSubview(vc.view)
         }
     }

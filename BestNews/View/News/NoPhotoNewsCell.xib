@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -15,17 +13,17 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="104"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OEe-Rd-kdA" id="Spt-Sg-GZc">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="103.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="104"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="标题标题标题标题标题标题标题标题标题标题标题" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w0y-d5-ZRA">
-                        <rect key="frame" x="15" y="15" width="290" height="48.5"/>
+                        <rect key="frame" x="15" y="15" width="290" height="49"/>
                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="作者" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="gT0-sV-Ijj">
-                        <rect key="frame" x="15" y="71.5" width="25" height="17"/>
+                        <rect key="frame" x="15" y="72" width="25" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="17" id="OMe-9r-Ftt"/>
                         </constraints>
@@ -34,10 +32,10 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="time-clock" translatesAutoresizingMaskIntoConstraints="NO" id="jPa-tT-Emh">
-                        <rect key="frame" x="46" y="74.5" width="11" height="11"/>
+                        <rect key="frame" x="46" y="75" width="11" height="11"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="作者" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="6" translatesAutoresizingMaskIntoConstraints="NO" id="Gma-Cd-H22">
-                        <rect key="frame" x="60" y="71.5" width="25" height="17"/>
+                        <rect key="frame" x="60" y="72" width="25" height="17"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="17" id="r2A-SQ-gdH"/>
                         </constraints>
@@ -46,7 +44,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TbC-0L-bB1">
-                        <rect key="frame" x="271" y="71.5" width="34" height="17"/>
+                        <rect key="frame" x="271" y="72" width="34" height="17"/>
                         <color key="backgroundColor" red="0.37647058820000001" green="0.67450980390000004" blue="0.99215686270000003" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="17" id="i7w-bg-r35"/>
@@ -63,6 +61,7 @@
                         </userDefinedRuntimeAttributes>
                     </button>
                 </subviews>
+                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="w0y-d5-ZRA" firstAttribute="leading" secondItem="Spt-Sg-GZc" secondAttribute="leading" constant="15" id="1NW-ib-XYs"/>
                     <constraint firstItem="w0y-d5-ZRA" firstAttribute="top" secondItem="Spt-Sg-GZc" secondAttribute="top" constant="15" id="1xc-U5-sZU"/>
@@ -78,6 +77,7 @@
                     <constraint firstAttribute="trailing" secondItem="TbC-0L-bB1" secondAttribute="trailing" constant="15" id="yA2-To-kA5"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
             <connections>
                 <outlet property="dateLb" destination="Gma-Cd-H22" id="dAc-rM-bwM"/>
