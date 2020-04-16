@@ -91,6 +91,7 @@ class NewsDetailController: BaseViewController, UITableViewDelegate, UITableView
         web.autoresizingMask = .flexibleHeight
         web.navigationDelegate = self
         web.backgroundColor = .white
+        web.scrollView.backgroundColor = UIColor(hex: 0xf2f2f8)
         let url = Bundle.main.url(forResource: "clickImg", withExtension: "js")
         do {
             let functionStr = try String.init(contentsOf: url!, encoding: String.Encoding.utf8)
@@ -632,6 +633,7 @@ extension NewsDetailController {
             SessionManager.sharedInstance.daynightModel = 2
             line1.backgroundColor = UIColor(hexString: "#111111")
             self.tableView.separatorColor = UIColor(hexString: "#2a2a2a")
+
         }
         else {
             titleLb.textColor = UIColor(hexString: "#000000")
@@ -654,6 +656,12 @@ extension NewsDetailController {
             SessionManager.sharedInstance.daynightModel = 1
             line1.backgroundColor = UIColor.groupTableViewBackground
             self.tableView.separatorColor = UIColor(hexString: "#e5e5e5")
+        }
+        if #available(iOS 11.0, *) {
+            self.tableView.contentInsetAdjustmentBehavior = .never
+        } else {
+            // Fallback on earlier versions
+            self.automaticallyAdjustsScrollViewInsets = false
         }
     }
     
