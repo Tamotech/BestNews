@@ -12,12 +12,18 @@ import CRRefresh
 class MyArticleListController: BaseViewController, UITableViewDataSource, UITableViewDelegate {
 
     lazy var tableView: UITableView = {
-        let v = UITableView(frame: CGRect.init(x: 0, y: 64, width: screenWidth, height: screenHeight-64), style: .plain)
+        let v = UITableView(frame: CGRect.init(x: 0, y: navBarHeight, width: screenWidth, height: screenHeight-navBarHeight), style: .plain)
         v.separatorStyle = .none
         v.delegate = self
         v.dataSource = self
         v.rowHeight = 136
         v.backgroundColor = UIColor(hex: 0xf2f2f7)
+        if #available(iOS 11.0, *) {
+            v.contentInsetAdjustmentBehavior = .never
+        } else {
+            // Fallback on earlier version
+            self.automaticallyAdjustsScrollViewInsets = false
+        }
         return v
     }()
     let cellIdentifiers = ["TopicBannerCell", "SinglePhotoNewsCell", "ThreePhotosNewsCell", "NoPhotoNewsCell", "SingleBigPhotoNewsCell"]

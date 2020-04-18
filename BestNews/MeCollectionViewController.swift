@@ -11,7 +11,7 @@ import UIKit
 class MeCollectionViewController: BaseViewController, UIScrollViewDelegate, TYPageTitleViewDelegate {
     
     
-    var scrollView = UIScrollView(frame: CGRect(x: 0, y: 64, width: screenWidth, height: screenHeight-64))
+    var scrollView = UIScrollView(frame: CGRect(x: 0, y: navBarHeight, width: screenWidth, height: screenHeight-navBarHeight))
     var titleView: TYPageTitleView?
     fileprivate var startOffsetX:CGFloat = 0  //按下瞬间的offsetX
     fileprivate var isForbideScroll:Bool = false
@@ -38,7 +38,7 @@ class MeCollectionViewController: BaseViewController, UIScrollViewDelegate, TYPa
         style.selectColor = UIColor(hexString: "#333333", alpha: 1)!
         style.backgroundColor = UIColor.white
         style.labelLayout = .divide
-        titleView = TYPageTitleView(frame: CGRect.init(x: 0, y: 64, width: screenWidth, height: 44), titles: titles, style: style)
+        titleView = TYPageTitleView(frame: CGRect.init(x: 0, y: navBarHeight, width: screenWidth, height: 44), titles: titles, style: style)
         titleView?.layer.shadowColor = UIColor(white: 0, alpha: 0.1).cgColor
         titleView?.layer.shadowOffset = CGSize(width: 0, height: 1)
         titleView?.layer.shadowRadius = 3
@@ -65,7 +65,7 @@ class MeCollectionViewController: BaseViewController, UIScrollViewDelegate, TYPa
                 addChildViewController(vc)
                 vc.entry = 1
                 let x = screenWidth*CGFloat(i)
-                vc.view.frame = CGRect(x: x, y: 44, width: screenWidth, height: screenHeight-44-64)
+                vc.view.frame = CGRect(x: x, y: 44, width: screenWidth, height: screenHeight-44-navBarHeight)
                 scrollView.addSubview(vc.view)
                 continue
             }
@@ -75,7 +75,7 @@ class MeCollectionViewController: BaseViewController, UIScrollViewDelegate, TYPa
                 vc.collectFilter = true
                 addChildViewController(vc)
                 let x = screenWidth*CGFloat(i)
-                vc.view.frame = CGRect(x: x, y: 44, width: screenWidth, height: screenHeight-44-64)
+                vc.view.frame = CGRect(x: x, y: 44, width: screenWidth, height: screenHeight-44-navBarHeight)
                 scrollView.addSubview(vc.view)
                 continue
             }
@@ -85,7 +85,7 @@ class MeCollectionViewController: BaseViewController, UIScrollViewDelegate, TYPa
                 vc.entry = 1
                 addChildViewController(vc)
                 let x = screenWidth*CGFloat(i)
-                vc.view.frame = CGRect(x: x, y: 44, width: screenWidth, height: screenHeight-44)
+                vc.view.frame = CGRect(x: x, y: 44, width: screenWidth, height: screenHeight-navBarHeight)
                 scrollView.addSubview(vc.view)
                 continue
             }

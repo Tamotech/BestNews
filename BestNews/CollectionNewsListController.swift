@@ -17,7 +17,7 @@ class CollectionNewsListController: BaseViewController, UITableViewDataSource, U
     var page: Int = 1
     
     lazy var tableView: UITableView = {
-        let v = UITableView(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: screenHeight-64-44), style: .plain)
+        let v = UITableView(frame: CGRect.init(x: 0, y: 0, width: screenWidth, height: screenHeight-navBarHeight-44), style: .plain)
         v.separatorStyle = .none
         v.delegate = self
         v.dataSource = self
